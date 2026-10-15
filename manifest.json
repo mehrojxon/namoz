@@ -1,0 +1,9 @@
+{
+  "name": "Namoz vaqtlari",
+  "short_name": "Namoz",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#eef3f1",
+  "theme_color": "#0e6b63",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}
