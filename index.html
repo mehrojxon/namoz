@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Namoz vaqtlari</title>
+<title>Jannat sari</title>
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg">
 <meta name="theme-color" content="#0e6b63">
@@ -12,10 +12,13 @@
 @media(prefers-color-scheme:dark){:root{--bg:#0c1c1b;--card:#132928;--ink:#e6f1ee;--mut:#8aa8a2;--ac:#4cb5a9;--gold:#e0b24f;--line:#1f3d3a}}
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.4 system-ui,sans-serif;min-height:100dvh;padding:env(safe-area-inset-top) 0 calc(72px + env(safe-area-inset-bottom))}
-main{max-width:460px;margin:0 auto;padding:18px}
+main{max-width:460px;margin:0 auto;padding:14px 18px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.top h1{margin:0;font:700 22px Georgia,serif;color:var(--ac)}
+#info{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--mut);background:none;color:var(--mut);font:italic 700 20px Georgia,serif}
 .tab{display:none}.tab.on{display:block}
 .mut{color:var(--mut);font-size:14px}
-.hero{padding:22px 0 18px}
+.hero{padding:18px 0}
 #cd{font:700 52px/1.1 Georgia,serif;font-variant-numeric:tabular-nums;margin:6px 0}
 #nn{color:var(--gold);font-weight:700}
 ul{list-style:none;margin:8px 0;padding:0;background:var(--card);border-radius:14px;border:1px solid var(--line)}
@@ -24,23 +27,33 @@ li:last-child{border:0}
 li b{font:700 20px Georgia,serif;font-variant-numeric:tabular-nums}
 li.now{background:var(--ac);color:#fff;border-radius:14px}
 li.now b{color:#fff}
-#cnt{font:700 84px/1 Georgia,serif;text-align:center;margin:26px 0 8px;font-variant-numeric:tabular-nums}
-#tap{display:block;width:210px;height:210px;margin:18px auto;border-radius:50%;border:0;background:var(--ac);color:#fff;font-size:20px;box-shadow:0 0 0 10px var(--line)}
-#tap:active{transform:scale(.97)}
-.row{display:flex;gap:8px;justify-content:center;margin-top:18px}
+#cnt{font:700 64px/1 Georgia,serif;text-align:center;margin:10px 0 2px;font-variant-numeric:tabular-nums}
+#strip{position:relative;height:330px;overflow:hidden;margin:6px auto;cursor:pointer;-webkit-mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent)}
+#strip:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;margin-left:-2px;background:var(--gold);opacity:.7}
+#col{position:absolute;left:50%;margin-left:-28px;top:-64px}
+.bead{width:56px;height:56px;margin-bottom:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe0d3,var(--ac) 58%,#06332f);box-shadow:0 3px 6px rgba(0,0,0,.3)}
+.row{display:flex;gap:8px;justify-content:center;margin-top:12px}
 .row button{padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px}
 .row button.on{background:var(--gold);border-color:var(--gold);color:#fff}
 nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
 nav button{flex:1;padding:16px;border:0;background:none;color:var(--mut);font-size:16px}
 nav button.on{color:var(--ac);font-weight:700}
+.sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;z-index:9}
+.sheet.on{display:flex}
+.box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center}
+.box img{width:72px;border-radius:18px}
+.box h2{margin:10px 0 2px;font-family:Georgia,serif;color:var(--ac)}
+.box hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.box button{margin-top:8px;padding:12px 34px;border:0;border-radius:24px;background:var(--ac);color:#fff;font-size:16px}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
 <body>
 <main>
+<div class="top"><h1>Jannat sari</h1><button id="info" aria-label="Dastur haqida">i</button></div>
 <section class="tab on" id="t1">
   <div class="hero">
-    <div class="mut"><span id="joy"></span> <span id="sana"></span></div>
+    <div class="mut">Qashqadaryo viloyati · <span id="sana"></span></div>
     <div>Keyingi namoz: <span id="nn">…</span></div>
     <div id="cd">--:--:--</div>
   </div>
@@ -50,30 +63,38 @@ button:focus-visible{outline:3px solid var(--gold)}
 <section class="tab" id="t2">
   <div id="cnt">0</div>
   <div class="mut" style="text-align:center" id="rounds"></div>
-  <button id="tap">Bosing</button>
+  <div id="strip"><div id="col"></div></div>
   <div class="row" id="targets"></div>
   <div class="row"><button id="reset">Nolga qaytarish</button></div>
+  <p class="mut" style="text-align:center" id="jami"></p>
 </section>
 </main>
 <nav>
   <button data-t="t1" class="on">Vaqtlar</button>
   <button data-t="t2">Tasbeh</button>
 </nav>
+<div class="sheet" id="ab"><div class="box">
+  <img src="icon.svg" alt="">
+  <h2>Jannat sari</h2>
+  <div class="mut">Namoz vaqtlari va tasbeh · 1.1</div>
+  <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
+  <hr>
+  <div class="mut">Muallif</div>
+  <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
+  <button id="cl">Yopish</button>
+</div></div>
 <script>
 const $=id=>document.getElementById(id);
 const N=[["bomdod","Bomdod"],["quyosh","Namoz uyqudan afzal"],["peshin","Peshin"],["asr","Asr"],["shom","Shom"],["xufton","Xufton"]];
-const DEF={joy:"",yangilangan:"",vaqtlar:{bomdod:"05:30",quyosh:"06:50",peshin:"12:30",asr:"15:45",shom:"18:05",xufton:"19:30"}};
+const DEF={yangilangan:"",vaqtlar:{bomdod:"05:30",quyosh:"06:50",peshin:"12:30",asr:"15:45",shom:"18:05",xufton:"19:30"}};
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 let D=get("vaqt",DEF);
-
-/* Namoz vaqtlari: internetdan olinadi, bo'lmasa oxirgi saqlangani ko'rsatiladi */
 async function sync(){
   try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;
     D=await r.json();localStorage.setItem("vaqt",JSON.stringify(D))}catch(e){}
   draw();
 }
 function draw(){
-  $("joy").textContent=D.joy||"";
   $("sana").textContent=new Date().toLocaleDateString("uz",{day:"numeric",month:"long"});
   $("list").innerHTML=N.map(([k,n])=>`<li><span>${n}</span><b>${D.vaqtlar[k]}</b></li>`).join("");
   $("yang").textContent=D.yangilangan?"Vaqtlar yangilangan: "+D.yangilangan:"";
@@ -93,25 +114,38 @@ setInterval(tick,1000);
 addEventListener("online",sync);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)sync()});
 
-/* Tasbeh */
-let T=get("tasbeh",{n:0,max:33,r:0});
+/* Tasbeh: ipga tizilgan donalar */
+let T=get("tasbeh",{n:0,max:33,r:0,total:0});
+T.total=T.total||0;
 const vib=ms=>navigator.vibrate&&navigator.vibrate(ms);
+$("col").innerHTML='<div class="bead"></div>'.repeat(8);
 function showT(){
   $("cnt").textContent=T.n;
   $("rounds").textContent="Aylanishlar: "+T.r+" (har biri "+T.max+" ta)";
+  $("jami").textContent="Jami o‘qilgan: "+T.total+" marta";
   [...$("targets").children].forEach(b=>b.classList.toggle("on",+b.dataset.v===T.max));
   localStorage.setItem("tasbeh",JSON.stringify(T));
 }
 $("targets").innerHTML=[33,99,100].map(v=>`<button data-v="${v}">${v}</button>`).join("");
 $("targets").onclick=e=>{const v=+e.target.dataset.v;if(v){T.max=v;T.n=0;showT()}};
-$("tap").onclick=()=>{T.n++;if(T.n>=T.max){T.n=0;T.r++;vib(200)}else vib(12);showT()};
+$("strip").onclick=()=>{
+  const c=$("col");
+  c.style.transition="transform .12s";c.style.transform="translateY(64px)";
+  setTimeout(()=>{c.style.transition="none";c.style.transform="translateY(0)"},120);
+  T.n++;T.total++;
+  if(T.n>=T.max){T.n=0;T.r++;vib(200)}else vib(12);
+  showT();
+};
 $("reset").onclick=()=>{T.n=0;T.r=0;showT()};
 
-/* Bo'limlar (keyin Duolar yoki Qibla qo'shish uchun: yangi <section> va yangi tugma) */
+/* Bo'limlar va "Dastur haqida" */
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tab,nav button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");$(b.dataset.t).classList.add("on");
 });
+$("info").onclick=()=>$("ab").classList.add("on");
+$("cl").onclick=()=>$("ab").classList.remove("on");
+$("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();
