@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kalit yaratish</title>
+<style>
+body{font:16px system-ui,sans-serif;max-width:460px;margin:0 auto;padding:20px}
+textarea{width:100%;height:90px;font:13px monospace}
+button{padding:12px 20px;font-size:16px;margin:6px 0}
+</style>
+</head>
+<body>
+<h2>Kalit yaratish</h2>
+<button id="g">Kalitlarni yaratish</button>
+<p><b>OCHIQ kalit</b> (buni menga yuboring):</p>
+<textarea id="pub" readonly></textarea><br>
+<button id="cp1">Nusxalash</button>
+<p><b>MAXFIY kalit</b> (hech kimga bermang, faqat Supabase'ga qo'yiladi):</p>
+<textarea id="prv" readonly></textarea><br>
+<button id="cp2">Nusxalash</button>
+<script>
+const b64=a=>btoa(String.fromCharCode(...new Uint8Array(a))).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+document.getElementById("g").onclick=async()=>{
+  const k=await crypto.subtle.generateKey({name:"ECDSA",namedCurve:"P-256"},true,["sign"]);
+  const raw=await crypto.subtle.exportKey("raw",k.publicKey);
+  const jwk=await crypto.subtle.exportKey("jwk",k.privateKey);
+  document.getElementById("pub").value=b64(raw);
+  document.getElementById("prv").value=jwk.d;
+};
+document.getElementById("cp1").onclick=()=>navigator.clipboard.writeText(document.getElementById("pub").value);
+document.getElementById("cp2").onclick=()=>navigator.clipboard.writeText(document.getElementById("prv").value);
+</script>
+</body>
+</html>
