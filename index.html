@@ -45,12 +45,15 @@ nav button.on{color:var(--ac);font-weight:700}
 .box h2{margin:10px 0 2px;font-family:Georgia,serif;color:var(--ac)}
 .box hr{border:0;border-top:1px solid var(--line);margin:16px 0}
 .box button{margin-top:8px;padding:12px 34px;border:0;border-radius:24px;background:var(--ac);color:#fff;font-size:16px}
+.box input{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
+#tm label{display:flex;justify-content:space-between;align-items:center;margin:6px 0;text-align:left}
+#tm input{width:140px}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
 <body>
 <main>
-<div class="top"><h1>Jannat sari</h1><button id="info" aria-label="Dastur haqida">i</button></div>
+<div class="top"><h1 id="ttl">Jannat sari</h1><button id="info" aria-label="Dastur haqida">i</button></div>
 <section class="tab on" id="t1">
   <div class="hero">
     <div class="mut">Qashqadaryo viloyati · <span id="sana"></span></div>
@@ -83,16 +86,44 @@ button:focus-visible{outline:3px solid var(--gold)}
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
   <button id="cl">Yopish</button>
 </div></div>
+<div class="sheet" id="adm"><div class="box">
+  <h2>Admin</h2>
+  <div id="lg">
+    <input id="em" type="email" placeholder="Elektron pochta" autocomplete="username">
+    <input id="pw" type="password" placeholder="Parol" autocomplete="current-password">
+    <button id="kir">Kirish</button>
+  </div>
+  <div id="pn" style="display:none">
+    <div id="tm"></div>
+    <button id="sav">Saqlash</button>
+    <p class="mut" id="msg"></p>
+    <p class="mut" id="st"></p>
+    <button id="out" style="background:none;color:var(--mut);border:1px solid var(--line)">Chiqish</button>
+  </div>
+  <p class="mut" id="msg2"></p>
+  <button id="adc" style="background:none;color:var(--mut)">Yopish</button>
+</div></div>
 <script>
 const $=id=>document.getElementById(id);
 const N=[["bomdod","Bomdod"],["quyosh","Namoz uyqudan afzal"],["peshin","Peshin"],["asr","Asr"],["shom","Shom"],["xufton","Xufton"]];
 const DEF={yangilangan:"",vaqtlar:{bomdod:"05:30",quyosh:"06:50",peshin:"12:30",asr:"15:45",shom:"18:05",xufton:"19:30"}};
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 let D=get("vaqt",DEF);
+const SB="https://pxwrvdmegjrspvzcjvcs.supabase.co",KEY="sb_publishable_VIboAeheatxih3ixWmyfgw_k4hz9DY0";
+const H=tok=>({apikey:KEY,Authorization:"Bearer "+(tok||KEY),"Content-Type":"application/json"});
 async function sync(){
-  try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;
-    D=await r.json();localStorage.setItem("vaqt",JSON.stringify(D))}catch(e){}
-  draw();
+  let ok=false;
+  try{const r=await fetch(SB+"/rest/v1/settings?select=vaqtlar,yangilangan&id=eq.1",{headers:H(),cache:"no-store"});
+    if(r.ok){const a=await r.json();if(a[0]&&a[0].vaqtlar){D=a[0];ok=true}}}catch(e){}
+  if(!ok)try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;D=await r.json();ok=true}catch(e){}
+  if(ok)localStorage.setItem("vaqt",JSON.stringify(D));
+  draw();reg();
+}
+function reg(){
+  if(window._r)return;window._r=1;
+  let id=localStorage.getItem("did");
+  if(!id){id=crypto.randomUUID();localStorage.setItem("did",id)}
+  fetch(SB+"/rest/v1/rpc/register_device",{method:"POST",headers:H(),body:JSON.stringify({d:id})}).catch(()=>{});
 }
 function draw(){
   $("sana").textContent=new Date().toLocaleDateString("uz",{day:"numeric",month:"long"});
@@ -146,6 +177,48 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
 $("info").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
+
+/* Admin (sarlavhani 5 marta bosing) */
+let ses=get("ses",null);
+const say=t=>{$("msg").textContent=t;$("msg2").textContent=t};
+function setS(j){ses={at:j.access_token,rt:j.refresh_token,exp:Date.now()+j.expires_in*1000};localStorage.setItem("ses",JSON.stringify(ses))}
+async function tok(){
+  if(!ses)return null;
+  if(Date.now()<ses.exp-60000)return ses.at;
+  try{const r=await fetch(SB+"/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:H(),body:JSON.stringify({refresh_token:ses.rt})});
+    const j=await r.json();if(!j.access_token)throw 0;setS(j);return ses.at}
+  catch(e){ses=null;localStorage.removeItem("ses");return null}
+}
+async function showAdm(){
+  $("adm").classList.add("on");say("");
+  const t=await tok();
+  $("lg").style.display=t?"none":"block";$("pn").style.display=t?"block":"none";
+  if(!t)return;
+  $("tm").innerHTML=N.map(([k,n])=>`<label>${n}<input type="time" id="a_${k}" value="${D.vaqtlar[k]}"></label>`).join("");
+  try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
+    $("st").textContent="Foydalanuvchilar: jami "+x.jami+", bugun "+x.bugun+", 7 kunda "+x.hafta}catch(e){}
+}
+$("kir").onclick=async()=>{
+  say("");
+  try{const r=await fetch(SB+"/auth/v1/token?grant_type=password",{method:"POST",headers:H(),body:JSON.stringify({email:$("em").value.trim(),password:$("pw").value})});
+    const j=await r.json();if(!j.access_token)throw 0;setS(j);$("pw").value="";showAdm()}
+  catch(e){say("Pochta yoki parol noto‘g‘ri")}
+};
+$("sav").onclick=async()=>{
+  const t=await tok();if(!t){showAdm();return}
+  const v={};
+  for(const[k]of N){v[k]=$("a_"+k).value;if(!v[k]){say("Hamma vaqtni kiriting");return}}
+  const y=new Date().toLocaleDateString("sv");
+  try{const r=await fetch(SB+"/rest/v1/settings?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({vaqtlar:v,yangilangan:y})});
+    const a=await r.json();if(!r.ok||!a.length)throw 0;
+    D={vaqtlar:v,yangilangan:y};localStorage.setItem("vaqt",JSON.stringify(D));draw();say("Saqlandi ✓")}
+  catch(e){say("Saqlanmadi. Qaytadan urinib ko‘ring")}
+};
+$("out").onclick=()=>{ses=null;localStorage.removeItem("ses");showAdm()};
+$("adc").onclick=()=>$("adm").classList.remove("on");
+$("adm").onclick=e=>{if(e.target.id==="adm")$("adm").classList.remove("on")};
+let tc=0,tt;
+$("ttl").onclick=()=>{tc++;clearTimeout(tt);tt=setTimeout(()=>tc=0,1500);if(tc>=5){tc=0;showAdm()}};
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();
