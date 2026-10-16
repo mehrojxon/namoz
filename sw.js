@@ -14,3 +14,18 @@ self.addEventListener("fetch", e => {
       .catch(() => caches.match(e.request.url, { ignoreSearch: true }).then(r => r || caches.match("index.html")))
   );
 });
+
+self.addEventListener("push", e => {
+  let d = { title: "Jannat sari", body: "" };
+  try { d = e.data.json(); } catch (x) {}
+  e.waitUntil(self.registration.showNotification(d.title, {
+    body: d.body, icon: "icon.svg", badge: "icon.svg", tag: d.tag || "jannat", renotify: true
+  }));
+});
+self.addEventListener("notificationclick", e => {
+  e.notification.close();
+  e.waitUntil(clients.matchAll({ type: "window" }).then(l => {
+    for (const c of l) if ("focus" in c) return c.focus();
+    return clients.openWindow("./");
+  }));
+});

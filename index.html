@@ -47,7 +47,7 @@ nav button.on{color:var(--ac);font-weight:700}
 .box button{margin-top:8px;padding:12px 34px;border:0;border-radius:24px;background:var(--ac);color:#fff;font-size:16px}
 .box input{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
 #tm label{display:flex;justify-content:space-between;align-items:center;margin:6px 0;text-align:left}
-#tm input{width:140px}
+#tm input,#tm select{width:140px;padding:8px;font-size:16px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
@@ -57,11 +57,13 @@ button:focus-visible{outline:3px solid var(--gold)}
 <section class="tab on" id="t1">
   <div class="hero">
     <div class="mut">Qashqadaryo viloyati · <span id="sana"></span></div>
+    <div class="mut" id="hij"></div>
     <div>Keyingi namoz: <span id="nn">…</span></div>
     <div id="cd">--:--:--</div>
   </div>
   <ul id="list"></ul>
   <p class="mut" id="yang"></p>
+  <div class="row"><button id="bell" style="display:none">🔔 Bildirishnomani yoqish</button></div>
 </section>
 <section class="tab" id="t2">
   <div id="cnt">0</div>
@@ -125,7 +127,16 @@ function reg(){
   if(!id){id=crypto.randomUUID();localStorage.setItem("did",id)}
   fetch(SB+"/rest/v1/rpc/register_device",{method:"POST",headers:H(),body:JSON.stringify({d:id})}).catch(()=>{});
 }
+const HM=["Muharram","Safar","Rabiul avval","Rabiul oxir","Jumodul avval","Jumodul oxir","Rajab","Sha’bon","Ramazon","Shavvol","Zulqa’da","Zulhijja"];
+function hijri(){
+  try{
+    const d=new Date();d.setDate(d.getDate()+(+((D.vaqtlar||{}).hijri)||0));
+    const p=Object.fromEntries(new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric"}).formatToParts(d).map(x=>[x.type,x.value]));
+    return parseInt(p.day)+"-"+HM[p.month-1]+", "+parseInt(p.year)+"-yil";
+  }catch(e){return ""}
+}
 function draw(){
+  $("hij").textContent=hijri();
   $("sana").textContent=new Date().toLocaleDateString("uz",{day:"numeric",month:"long"});
   $("list").innerHTML=N.map(([k,n])=>`<li><span>${n}</span><b>${D.vaqtlar[k]}</b></li>`).join("");
   $("yang").textContent=D.yangilangan?"Vaqtlar yangilangan: "+D.yangilangan:"";
@@ -194,7 +205,9 @@ async function showAdm(){
   const t=await tok();
   $("lg").style.display=t?"none":"block";$("pn").style.display=t?"block":"none";
   if(!t)return;
-  $("tm").innerHTML=N.map(([k,n])=>`<label>${n}<input type="time" id="a_${k}" value="${D.vaqtlar[k]}"></label>`).join("");
+  $("tm").innerHTML=N.map(([k,n])=>`<label>${n}<input type="time" id="a_${k}" value="${D.vaqtlar[k]}"></label>`).join("")+
+    `<label>Hijriy sana tuzatish<select id="a_hij"><option value="-1">-1 kun</option><option value="0">0 (tuzatishsiz)</option><option value="1">+1 kun</option></select></label>`;
+  $("a_hij").value=String(+D.vaqtlar.hijri||0);
   try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
     $("st").textContent="Foydalanuvchilar: jami "+x.jami+", bugun "+x.bugun+", 7 kunda "+x.hafta}catch(e){}
 }
@@ -208,6 +221,7 @@ $("sav").onclick=async()=>{
   const t=await tok();if(!t){showAdm();return}
   const v={};
   for(const[k]of N){v[k]=$("a_"+k).value;if(!v[k]){say("Hamma vaqtni kiriting");return}}
+  v.hijri=+$("a_hij").value;
   const y=new Date().toLocaleDateString("sv");
   try{const r=await fetch(SB+"/rest/v1/settings?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({vaqtlar:v,yangilangan:y})});
     const a=await r.json();if(!r.ok||!a.length)throw 0;
@@ -220,8 +234,31 @@ $("adm").onclick=e=>{if(e.target.id==="adm")$("adm").classList.remove("on")};
 let tc=0,tt;
 $("ttl").onclick=()=>{tc++;clearTimeout(tt);tt=setTimeout(()=>tc=0,1500);if(tc>=5){tc=0;showAdm()}};
 
+/* Bildirishnoma */
+const VK="BBp2PCSQOptsWv3cUxUypRLTfJZBKVgmMDNLzBUBKLJlCBx44nGPZmeUSX2gfx6kJABeclWuxbI4H4jGEM4F084";
+const u8=s=>{const b=(s+"=".repeat((4-s.length%4)%4)).replace(/-/g,"+").replace(/_/g,"/");return Uint8Array.from(atob(b),c=>c.charCodeAt(0))};
+const bellOn=on=>{const b=$("bell");b.textContent=on?"🔔 Bildirishnoma yoqilgan":"🔔 Bildirishnomani yoqish";b.classList.toggle("on",on);b.dataset.on=on?"1":""};
+async function bellInit(){
+  if(!("serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window))return;
+  const reg=await navigator.serviceWorker.ready;
+  const s=await reg.pushManager.getSubscription();
+  $("bell").style.display="";
+  bellOn(!!s&&Notification.permission==="granted");
+}
+$("bell").onclick=async()=>{
+  const b=$("bell"),reg=await navigator.serviceWorker.ready;
+  if(b.dataset.on){const s=await reg.pushManager.getSubscription();if(s)await s.unsubscribe();bellOn(false);return}
+  try{
+    if(await Notification.requestPermission()!=="granted"){b.textContent="Ruxsat berilmadi";return}
+    const s=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VK)});
+    const r=await fetch(SB+"/rest/v1/rpc/save_push",{method:"POST",headers:H(),body:JSON.stringify({s:s.toJSON()})});
+    if(!r.ok)throw 0;
+    bellOn(true);
+  }catch(e){b.textContent="Xato. Qaytadan urinib ko‘ring"}
+};
+
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
-showT();sync();
+showT();sync();bellInit();
 </script>
 </body>
 </html>
