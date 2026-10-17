@@ -232,6 +232,7 @@ function E(t,a,p){const e=document.createElementNS("http://www.w3.org/2000/svg",
   for(let i=0;i<72;i++){const a=i*5,mj=a%30===0;E("line",{x1:0,y1:mj?-126:-132,x2:0,y2:-142,class:mj?"tk mj":"tk",transform:"rotate("+a+")"},d)}
   for(let a=0;a<360;a+=30){if(a%90)E("text",{x:0,y:-108,class:"nm",transform:"rotate("+a+")"},d).textContent=a}
   [["N",0],["E",90],["S",180],["W",270]].forEach(([l,a])=>E("text",{x:0,y:-96,class:"cd"+(l=="N"?" n":""),transform:"rotate("+a+")"},d).textContent=l);
+  d.appendChild($("qg"));
 })();
 const qBearing=(a,b,c,d)=>{const p1=a*RAD,p2=c*RAD,dl=(d-b)*RAD;return(Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl))/RAD+360)%360};
 const qDist=(a,b,c,d)=>{const p1=a*RAD,p2=c*RAD,x=Math.sin((p2-p1)/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin((d-b)*RAD/2)**2;return 12742*Math.asin(Math.sqrt(x))};
