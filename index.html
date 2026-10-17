@@ -46,7 +46,7 @@ nav button{flex:1;padding:16px;border:0;background:none;color:var(--mut);font-si
 nav button.on{color:var(--ac);font-weight:700}
 .sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;z-index:9}
 .sheet.on{display:flex}
-.box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center}
+.box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center;max-height:92dvh;overflow-y:auto}
 .box img{width:72px;border-radius:18px}
 .box h2{margin:10px 0 2px;font-family:Georgia,serif;color:var(--ac)}
 .box hr{border:0;border-top:1px solid var(--line);margin:16px 0}
@@ -68,6 +68,13 @@ nav button.on{color:var(--ac);font-weight:700}
 #qhint{text-align:center;font:600 19px system-ui,sans-serif;margin:6px 0 2px;min-height:26px}
 #qhint.ok{color:#34d27b}
 .qs{text-align:center;margin:2px 0}
+#hk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin:14px 0}
+#hk .mut{color:var(--gold);font-weight:700;letter-spacing:.05em;text-transform:uppercase;font-size:12px}
+#hkm{font:italic 18px/1.5 Georgia,serif;margin:8px 0;white-space:pre-wrap}
+#hks{color:var(--mut);font-size:14px;text-align:right}
+.box textarea{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:16px system-ui,sans-serif;resize:vertical}
+.ck{display:flex;gap:10px;align-items:center;text-align:left;margin:8px 0;font-size:14px}
+.ck input{width:20px;height:20px;margin:0}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
@@ -82,6 +89,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <div id="cd">--:--:--</div>
   </div>
   <ul id="list"></ul>
+  <div id="hk" style="display:none"><div class="mut">Kun hikmati</div><p id="hkm"></p><div id="hks"></div></div>
   <p class="mut" id="yang"></p>
 </section>
 <section class="tab" id="t2">
@@ -138,6 +146,12 @@ button:focus-visible{outline:3px solid var(--gold)}
   <div id="pn" style="display:none">
     <div id="tm"></div>
     <button id="sav">Saqlash</button>
+    <hr style="border:0;border-top:1px solid var(--line);margin:18px 0">
+    <div class="mut">Kun hikmati</div>
+    <textarea id="hm" rows="4" placeholder="Hikmatli so‘z yoki hadis matni"></textarea>
+    <input id="hs" placeholder="Manba (masalan: Imom Buxoriy, Sahih)">
+    <label class="ck"><input type="checkbox" id="hp"> Saqlagach hamma foydalanuvchiga bildirishnoma yuborish</label>
+    <button id="hsav">Hikmatni saqlash</button>
     <p class="mut" id="msg"></p>
     <p class="mut" id="st"></p>
     <button id="out" style="background:none;color:var(--mut);border:1px solid var(--line)">Chiqish</button>
@@ -151,6 +165,7 @@ const N=[["bomdod","Bomdod"],["quyosh","Namoz uyqudan afzal"],["peshin","Peshin"
 const DEF={yangilangan:"",vaqtlar:{bomdod:"05:30",quyosh:"06:50",peshin:"12:30",asr:"15:45",shom:"18:05",xufton:"19:30"}};
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 let D=get("vaqt",DEF);
+let HK=get("hikmat",{matn:"",manba:""});
 const SB="https://pxwrvdmegjrspvzcjvcs.supabase.co",KEY="sb_publishable_VIboAeheatxih3ixWmyfgw_k4hz9DY0";
 const H=tok=>({apikey:KEY,Authorization:"Bearer "+(tok||KEY),"Content-Type":"application/json"});
 async function sync(){
@@ -159,7 +174,17 @@ async function sync(){
     if(r.ok){const a=await r.json();if(a[0]&&a[0].vaqtlar){D=a[0];ok=true}}}catch(e){}
   if(!ok)try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;D=await r.json();ok=true}catch(e){}
   if(ok)localStorage.setItem("vaqt",JSON.stringify(D));
-  draw();reg();
+  draw();reg();hikmatSync();
+}
+function drawH(){
+  const c=$("hk");
+  if(!HK.matn){c.style.display="none";return}
+  c.style.display="";$("hkm").textContent=HK.matn;$("hks").textContent=HK.manba||"";
+}
+async function hikmatSync(){
+  try{const r=await fetch(SB+"/rest/v1/hikmat?select=matn,manba&id=eq.1",{headers:H(),cache:"no-store"});
+    if(!r.ok)return;const a=await r.json();
+    if(a[0]){HK={matn:a[0].matn||"",manba:a[0].manba||""};localStorage.setItem("hikmat",JSON.stringify(HK));drawH()}}catch(e){}
 }
 function reg(){
   if(window._r)return;window._r=1;
@@ -176,7 +201,7 @@ function hijri(){
   }catch(e){return ""}
 }
 function draw(){
-  $("hij").textContent=hijri();
+  $("hij").textContent=hijri();drawH();
   $("sana").textContent=new Date().toLocaleDateString("uz",{day:"numeric",month:"long"});
   $("list").innerHTML=N.map(([k,n])=>`<li><span>${n}</span><b>${D.vaqtlar[k]}</b></li>`).join("");
   $("yang").textContent=D.yangilangan?"Vaqtlar yangilangan: "+D.yangilangan:"";
@@ -318,6 +343,7 @@ async function showAdm(){
   $("tm").innerHTML=N.map(([k,n])=>`<label>${n}<input type="time" id="a_${k}" value="${D.vaqtlar[k]}"></label>`).join("")+
     `<label>Hijriy sana tuzatish<select id="a_hij"><option value="-1">-1 kun</option><option value="0">0 (tuzatishsiz)</option><option value="1">+1 kun</option></select></label>`;
   $("a_hij").value=String(+D.vaqtlar.hijri||0);
+  $("hm").value=HK.matn;$("hs").value=HK.manba;
   try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
     $("st").textContent="Foydalanuvchilar: jami "+x.jami+", bugun "+x.bugun+", 7 kunda "+x.hafta}catch(e){}
 }
@@ -337,6 +363,21 @@ $("sav").onclick=async()=>{
     const a=await r.json();if(!r.ok||!a.length)throw 0;
     D={vaqtlar:v,yangilangan:y};localStorage.setItem("vaqt",JSON.stringify(D));draw();say("Saqlandi ✓")}
   catch(e){say("Saqlanmadi. Qaytadan urinib ko‘ring")}
+};
+$("hsav").onclick=async()=>{
+  const t=await tok();if(!t){showAdm();return}
+  const m=$("hm").value.trim(),sr=$("hs").value.trim();
+  if(!m){say("Matnni yozing");return}
+  try{
+    const r=await fetch(SB+"/rest/v1/hikmat?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({matn:m,manba:sr,yangilangan:new Date().toLocaleDateString("sv")})});
+    const a=await r.json();if(!r.ok||!a.length)throw 0;
+    HK={matn:m,manba:sr};localStorage.setItem("hikmat",JSON.stringify(HK));drawH();
+    if($("hp").checked){
+      const p=await fetch(SB+"/rest/v1/rpc/hikmat_yubor",{method:"POST",headers:H(t),body:JSON.stringify({m:m.length>180?m.slice(0,177)+"…":m})});
+      if(!p.ok)throw 1;
+      $("hp").checked=false;say("Saqlandi va bildirishnoma yuborildi ✓");
+    }else say("Hikmat saqlandi ✓");
+  }catch(e){say("Saqlanmadi. Qaytadan urinib ko‘ring")}
 };
 $("out").onclick=()=>{ses=null;localStorage.removeItem("ses");showAdm()};
 $("adc").onclick=()=>$("adm").classList.remove("on");
