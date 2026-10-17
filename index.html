@@ -54,6 +54,20 @@ nav button.on{color:var(--ac);font-weight:700}
 .box input{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
 #tm label{display:flex;justify-content:space-between;align-items:center;margin:6px 0;text-align:left}
 #tm input,#tm select{width:140px;padding:8px;font-size:16px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+#qhead{text-align:center;padding:10px 0 0}
+#qdeg{font:700 38px/1.1 Georgia,serif}
+#qwrap{width:100%;max-width:340px;margin:8px auto;cursor:pointer}
+#qsvg{width:100%;height:auto;display:block;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+.tk{stroke:var(--mut);stroke-width:1;opacity:.7}
+.tk.mj{stroke:var(--ink);stroke-width:2;opacity:1}
+.nm{fill:var(--mut);font:11px system-ui,sans-serif;text-anchor:middle}
+.cd{fill:var(--ink);font:700 20px Georgia,serif;text-anchor:middle}
+.cd.n{fill:#e5484d}
+#ring{fill:none;stroke:var(--gold);stroke-width:5;transition:stroke .25s}
+#qsvg.ok #ring{stroke:#34d27b;filter:drop-shadow(0 0 8px #34d27b)}
+#qhint{text-align:center;font:600 19px system-ui,sans-serif;margin:6px 0 2px;min-height:26px}
+#qhint.ok{color:#34d27b}
+.qs{text-align:center;margin:2px 0}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
@@ -78,16 +92,36 @@ button:focus-visible{outline:3px solid var(--gold)}
   <div class="row"><button id="reset">Nolga qaytarish</button></div>
   <p class="mut" style="text-align:center" id="jami"></p>
 </section>
+<section class="tab" id="t3">
+  <div id="qhead"><div id="qdeg">--°</div><div class="mut" id="qdir">Qibla yo‘nalishi</div></div>
+  <div id="qwrap"><svg id="qsvg" viewBox="-170 -170 340 340">
+    <defs><radialGradient id="fg"><stop offset="0" style="stop-color:var(--card)"/><stop offset="1" style="stop-color:var(--bg)"/></radialGradient></defs>
+    <circle r="150" fill="var(--line)"/><circle r="146" fill="url(#fg)"/>
+    <g id="dial"></g>
+    <g id="qg"><polygon points="0,-88 5,0 -5,0" fill="var(--gold)"/><polygon points="0,24 4,0 -4,0" fill="var(--mut)"/>
+      <circle cy="-118" r="17" fill="var(--bg)" stroke="var(--gold)" stroke-width="1.5"/>
+      <g transform="translate(0,-118)"><polygon points="-10,-5 10,-5 10,9 -10,9" fill="#141414" stroke="#d9a93a" stroke-width=".8"/><rect x="-10" y="-1" width="20" height="3.5" fill="#d9a93a"/><polygon points="-10,-5 -6,-9 14,-9 10,-5" fill="#333"/></g></g>
+    <circle id="ring" r="150"/>
+    <polygon points="0,-170 -9,-152 9,-152" fill="var(--gold)"/>
+    <circle r="9" fill="var(--gold)" stroke="var(--bg)" stroke-width="3"/>
+  </svg></div>
+  <div id="qhint"></div>
+  <div class="mut qs" id="qinfo"></div>
+  <div class="mut qs" id="qloc"></div>
+  <div class="row"><button id="qm">−</button><span class="mut" id="qadj" style="align-self:center">Tuzatish: 0°</span><button id="qp">+</button></div>
+  <p class="mut qs" style="margin-top:14px">Aniq natija uchun telefonni tekis ushlang, metall va magnitdan uzoqroq turing. Kerak bo‘lsa telefonni havoda 8 raqami shaklida aylantirib kalibrlang.</p>
+</section>
 </main>
 <nav>
   <button data-t="t1" class="on">Vaqtlar</button>
   <button data-t="t2">Tasbeh</button>
+  <button data-t="t3">Qibla</button>
 </nav>
 <div id="toast"></div>
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari va tasbeh · 1.1</div>
+  <div class="mut">Namoz vaqtlari, tasbeh va qibla · 1.2</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -186,10 +220,79 @@ $("strip").onclick=()=>{
 };
 $("reset").onclick=()=>{T.n=0;T.r=0;showT()};
 
+/* Qibla kompasi */
+const KLAT=21.4225,KLON=39.8262,DECL=4.5,RAD=Math.PI/180;
+const QDIR=["Shimol","Shimoli-sharq","Sharq","Janubi-sharq","Janub","Janubi-g‘arb","G‘arb","Shimoli-g‘arb"];
+let qloc=get("qloc",{lat:38.86,lon:65.79,gps:0}),qadj=+localStorage.getItem("qadj")||0;
+let qB=0,qH=null,qS=0,qrun=false,qraf=0,qgot=false,qok=false,qtilt=0,qlast=-1;
+const EV="ondeviceorientationabsolute" in window?"deviceorientationabsolute":"deviceorientation";
+function E(t,a,p){const e=document.createElementNS("http://www.w3.org/2000/svg",t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
+(function(){
+  const d=$("dial");
+  for(let i=0;i<72;i++){const a=i*5,mj=a%30===0;E("line",{x1:0,y1:mj?-126:-132,x2:0,y2:-142,class:mj?"tk mj":"tk",transform:"rotate("+a+")"},d)}
+  for(let a=0;a<360;a+=30){if(a%90)E("text",{x:0,y:-108,class:"nm",transform:"rotate("+a+")"},d).textContent=a}
+  [["N",0],["E",90],["S",180],["W",270]].forEach(([l,a])=>E("text",{x:0,y:-96,class:"cd"+(l=="N"?" n":""),transform:"rotate("+a+")"},d).textContent=l);
+})();
+const qBearing=(a,b,c,d)=>{const p1=a*RAD,p2=c*RAD,dl=(d-b)*RAD;return(Math.atan2(Math.sin(dl)*Math.cos(p2),Math.cos(p1)*Math.sin(p2)-Math.sin(p1)*Math.cos(p2)*Math.cos(dl))/RAD+360)%360};
+const qDist=(a,b,c,d)=>{const p1=a*RAD,p2=c*RAD,x=Math.sin((p2-p1)/2)**2+Math.cos(p1)*Math.cos(p2)*Math.sin((d-b)*RAD/2)**2;return 12742*Math.asin(Math.sqrt(x))};
+function qCalc(){
+  qB=qBearing(qloc.lat,qloc.lon,KLAT,KLON);
+  $("qg").setAttribute("transform","rotate("+qB+")");
+  $("qdeg").textContent=Math.round(qB)+"° "+QDIR[Math.round(qB/45)%8];
+  $("qinfo").textContent="Ka’bagacha taxminan "+Math.round(qDist(qloc.lat,qloc.lon,KLAT,KLON)).toLocaleString("uz").replace(/,/g," ")+" km";
+  $("qloc").textContent=qloc.gps?"Joylashuv: "+qloc.lat.toFixed(2)+"°, "+qloc.lon.toFixed(2)+"° (GPS)":"Joylashuv: Qarshi shahri (GPS yoqilmagan)";
+}
+function qLocate(){
+  if(!navigator.geolocation)return;
+  navigator.geolocation.getCurrentPosition(p=>{qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};localStorage.setItem("qloc",JSON.stringify(qloc));qCalc()},()=>{},{timeout:8000,maximumAge:86400000});
+}
+function qHeading(a,b,g){
+  const x=b*RAD,y=g*RAD,z=a*RAD,cY=Math.cos(y),cZ=Math.cos(z),sX=Math.sin(x),sY=Math.sin(y),sZ=Math.sin(z);
+  const vx=-cZ*sY-sZ*sX*cY,vy=-sZ*sY+cZ*sX*cY;let h=Math.atan(vx/vy);
+  if(vy<0)h+=Math.PI;else if(vx<0)h+=2*Math.PI;return h/RAD;
+}
+function qOri(e){
+  let h=null;
+  if(typeof e.webkitCompassHeading==="number")h=e.webkitCompassHeading;
+  else if(e.alpha!=null&&(e.absolute||e.type==="deviceorientationabsolute"))h=qHeading(e.alpha,e.beta,e.gamma);
+  if(h==null)return;
+  qH=(h+DECL+qadj+720)%360;qgot=true;qtilt=Math.max(Math.abs(e.beta||0),Math.abs(e.gamma||0));
+}
+function qLoop(){
+  if(!qrun)return;
+  if(qH!==null){
+    qS=(qS+(((qH-qS+540)%360)-180)*.18+360)%360;
+    $("dial").setAttribute("transform","rotate("+(-qS)+")");
+    const df=((qB-qS+540)%360)-180,r=Math.round(qS);
+    if(r!==qlast){
+      qlast=r;const ok=Math.abs(df)<3;
+      if(ok&&!qok&&navigator.vibrate)navigator.vibrate(40);
+      qok=ok;$("qsvg").classList.toggle("ok",ok);$("qhint").classList.toggle("ok",ok);
+      $("qhint").textContent=qtilt>40?"Telefonni tekis ushlang":ok?"Qibla shu yo‘nalishda ✓":(df>0?"O‘ngga ":"Chapga ")+Math.round(Math.abs(df))+"° buring";
+    }
+  }
+  qraf=requestAnimationFrame(qLoop);
+}
+async function qStart(){
+  if(qrun)return;
+  try{
+    if(typeof DeviceOrientationEvent!=="undefined"&&typeof DeviceOrientationEvent.requestPermission==="function"&&await DeviceOrientationEvent.requestPermission()!=="granted"){$("qhint").textContent="Kompas uchun ruxsat berilmadi";return}
+  }catch(e){$("qhint").textContent="Kompasni yoqib bo‘lmadi";return}
+  addEventListener(EV,qOri,true);qrun=true;qgot=false;qLoop();qLocate();
+  setTimeout(()=>{if(qrun&&!qgot)$("qhint").textContent="Kompas sensori topilmadi yoki ishlamayapti"},2500);
+}
+function qStop(){if(!qrun)return;removeEventListener(EV,qOri,true);qrun=false;cancelAnimationFrame(qraf)}
+const qAdj=d=>{qadj+=d;localStorage.setItem("qadj",qadj);$("qadj").textContent="Tuzatish: "+(qadj>0?"+":"")+qadj+"°";if(qH!==null)qH=(qH+d+720)%360};
+$("qm").onclick=()=>qAdj(-1);$("qp").onclick=()=>qAdj(1);
+$("qwrap").onclick=()=>{if(!qrun)qStart()};
+$("qadj").textContent="Tuzatish: "+(qadj>0?"+":"")+qadj+"°";
+qCalc();
+
 /* Bo'limlar va "Dastur haqida" */
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tab,nav button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");$(b.dataset.t).classList.add("on");
+  if(b.dataset.t==="t3")qStart();else qStop();
 });
 $("info").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
