@@ -79,6 +79,35 @@ nav button.on{color:var(--ac);font-weight:700}
 .mut.warn{color:#e5484d;font-weight:700}
 #sun{z-index:10}
 button:disabled{opacity:.45}
+#zp{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;scrollbar-width:none}
+#zp::-webkit-scrollbar{display:none}
+#zp button{flex:0 0 auto;scroll-snap-align:start;padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;white-space:nowrap}
+#zp button.on{background:var(--ac);border-color:var(--ac);color:#fff}
+#zc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;text-align:center}
+#zar{font:34px/1.7 "Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl;color:var(--ink)}
+#ztr{color:var(--mut);font-size:14px;margin-top:2px}
+#zc.fi{animation:fi .35s ease}
+.al{font-feature-settings:"liga" 0,"rlig" 0,"clig" 0,"dlig" 0,"calt" 0;font-variant-ligatures:none}
+@keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+#cntrow{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:14px 0 8px}
+#cntrow #cnt{font:700 54px/1 Georgia,serif;margin:0}
+#zof{font:20px Georgia,serif;color:var(--mut)}
+#zbar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;max-width:260px;margin:0 auto 8px}
+#zfill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--gold));transition:width .15s}
+#t2 #strip{height:250px}
+#t2.on{display:flex;flex-direction:column;min-height:calc(100dvh - 150px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+#zp{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;overflow:visible;padding:2px 0 10px;scroll-snap-type:none}
+#zp button{padding:9px 4px;border-radius:14px;font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis}
+#zc{padding:10px 12px 8px}
+#zar{font-size:32px;line-height:1.6}
+#cntrow{margin:8px 0 6px}
+#t2 #strip{height:auto;flex:1;min-height:130px;margin:2px 0}
+body.tas .top{display:none}
+body.tas #t2.on{min-height:calc(100dvh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
+#targets{margin-top:6px}
+#tbar{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 0}
+#tbar button{background:none;border:1px solid var(--line);color:var(--mut);border-radius:16px;padding:7px 14px;font-size:14px}
+#jami{color:var(--mut);font-size:14px}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
@@ -97,12 +126,14 @@ button:focus-visible{outline:3px solid var(--gold)}
   <p class="mut" id="yang"></p>
 </section>
 <section class="tab" id="t2">
-  <div id="cnt">0</div>
+  <div id="zp"></div>
+  <div id="zc"><div id="zar"></div><div id="ztr"></div></div>
+  <div id="cntrow"><div id="cnt">0</div><div id="zof"></div></div>
+  <div id="zbar"><i id="zfill"></i></div>
   <div class="mut" style="text-align:center" id="rounds"></div>
   <div id="strip"><div id="col"></div></div>
   <div class="row" id="targets"></div>
-  <div class="row"><button id="reset">Nolga qaytarish</button></div>
-  <p class="mut" style="text-align:center" id="jami"></p>
+  <div id="tbar"><button id="reset">Nolga qaytarish</button><span id="jami"></span></div>
 </section>
 <section class="tab" id="t3">
   <div id="qhead"><div id="qdeg">--°</div><div class="mut" id="qdir">Qibla yo‘nalishi</div></div>
@@ -133,7 +164,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh va qibla · 1.2</div>
+  <div class="mut">Namoz vaqtlari, tasbeh va qibla · 1.8</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -244,29 +275,63 @@ setInterval(tick,1000);
 addEventListener("online",sync);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)sync()});
 
-/* Tasbeh: ipga tizilgan donalar */
-let T=get("tasbeh",{n:0,max:33,r:0,total:0});
-T.total=T.total||0;
+/* Tasbeh: zikr turlari va ipga tizilgan donalar */
+const ZK=[
+ {sh:"Subhanalloh",ar:"سُبْحَانَ {ا‌للَّهِ}",tr:"Subhanalloh",ma:"Alloh har qanday nuqsondan pokdir"},
+ {sh:"Alhamdulillah",ar:"الْحَمْدُ {لِلَّهِ}",tr:"Alhamdulillah",ma:"Barcha hamd-sano Allohgadir"},
+ {sh:"Allohu akbar",ar:"{ا‌للَّهُ} أَكْبَرُ",tr:"Allohu akbar",ma:"Alloh eng ulug‘dir"},
+ {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
+ {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
+ {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ",tr:"Allohumma solli ala Muhammad",ma:"Ey Alloh, Muhammadga salovot (rahmat) yubor"}
+];
+const SQN=[33,33,34];
+let Z=get("zikr",null);
+if(!Z){const o=get("tasbeh",{});Z={sel:0,max:o.max||33,seq:false,step:0,d:{},grand:o.total||0}}
+if(![33,100,0].includes(Z.max))Z.max=Z.max>=99?100:33;
+const zd=()=>Z.d[Z.sel]||(Z.d[Z.sel]={n:0,r:0,t:0});
+const zmax=()=>Z.seq?SQN[Z.step]:(Z.max||Infinity);
 const vib=ms=>navigator.vibrate&&navigator.vibrate(ms);
-$("col").innerHTML='<div class="bead"></div>'.repeat(8);
-function showT(){
-  $("cnt").textContent=T.n;
-  $("rounds").textContent="Aylanishlar: "+T.r+" (har biri "+T.max+" ta)";
-  $("jami").textContent="Jami o‘qilgan: "+T.total+" marta";
-  [...$("targets").children].forEach(b=>b.classList.toggle("on",+b.dataset.v===T.max));
-  localStorage.setItem("tasbeh",JSON.stringify(T));
+$("col").innerHTML='<div class="bead"></div>'.repeat(12);
+$("zp").innerHTML=ZK.map((k,i)=>`<button data-i="${i}">${k.sh}</button>`).join("");
+$("targets").innerHTML=[[33,"33"],[100,"100"],[0,"∞"]].map(([v,t])=>`<button data-v="${v}" aria-label="${v?v+" ta":"cheksiz"}">${t}</button>`).join("")+'<button id="seq">Namoz tasbehi</button>';
+function showT(anim){
+  const k=ZK[Z.sel],d=zd(),m=zmax();
+  $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="al">$1</span>');$("ztr").textContent=k.tr+" · "+k.ma;
+  $("cnt").textContent=d.n;$("zof").textContent=m===Infinity?"":"/ "+m;
+  $("zfill").style.width=m===Infinity?"0":Math.min(100,d.n/m*100)+"%";$("zbar").style.visibility=m===Infinity?"hidden":"";
+  $("rounds").textContent=Z.seq?"Namozdan keyingi tasbeh: "+(Z.step+1)+"/3 qadam":Z.grand===0?"Pastdagi donalarni bosib sanang":(m===Infinity?"Cheksiz hisob":"Aylanishlar: "+d.r)+" · bu zikr jami: "+d.t;
+  $("jami").textContent="Jami: "+Z.grand;
+  [...$("zp").children].forEach((b,i)=>b.classList.toggle("on",i===Z.sel));
+  [...$("targets").children].forEach(b=>{if(b.dataset.v){b.classList.toggle("on",!Z.seq&&+b.dataset.v===Z.max);b.style.display=Z.seq?"none":""}});
+  $("seq").classList.toggle("on",Z.seq);
+  if(anim){
+    const c=$("zc");c.classList.remove("fi");void c.offsetWidth;c.classList.add("fi");
+  }
+  localStorage.setItem("zikr",JSON.stringify(Z));
 }
-$("targets").innerHTML=[33,99,100].map(v=>`<button data-v="${v}">${v}</button>`).join("");
-$("targets").onclick=e=>{const v=+e.target.dataset.v;if(v){T.max=v;T.n=0;showT()}};
+$("zp").onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;Z.seq=false;Z.sel=+i;showT(true)};
+$("targets").onclick=e=>{
+  const t=e.target;
+  if(t.dataset.v){Z.max=+t.dataset.v;zd().n=0;showT();return}
+  if(t.id==="seq"){Z.seq=!Z.seq;if(Z.seq){Z.step=0;Z.sel=0;zd().n=0}showT(true)}
+};
 $("strip").onclick=()=>{
   const c=$("col");
   c.style.transition="transform .12s";c.style.transform="translateY(64px)";
   setTimeout(()=>{c.style.transition="none";c.style.transform="translateY(0)"},120);
-  T.n++;T.total++;
-  if(T.n>=T.max){T.n=0;T.r++;vib(200)}else vib(12);
+  const d=zd();d.n++;d.t++;Z.grand++;
+  if(d.n>=zmax()){
+    d.n=0;d.r++;
+    if(Z.seq){
+      if(Z.step<2){Z.step++;Z.sel=Z.step;vib([120,60,120])}
+      else{Z.step=0;Z.sel=0;vib(400);toast("Tasbeh tugadi. Alloh qabul qilsin")}
+      showT(true);return;
+    }
+    vib(200);
+  }else vib(d.n%100===0?120:12);
   showT();
 };
-$("reset").onclick=()=>{T.n=0;T.r=0;showT()};
+$("reset").onclick=()=>{const d=zd();d.n=0;if(Z.seq){Z.step=0;Z.sel=0;zd().n=0}else d.r=0;showT(true)};
 
 /* Qibla kompasi */
 const KLAT=21.4225,KLON=39.8262,DECL=4.5,RAD=Math.PI/180;
@@ -388,6 +453,7 @@ qCalText();
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tab,nav button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");$(b.dataset.t).classList.add("on");
+  document.body.classList.toggle("tas",b.dataset.t==="t2");
   if(b.dataset.t==="t3")qStart();else qStop();
 });
 $("info").onclick=()=>$("ab").classList.add("on");
