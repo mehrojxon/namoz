@@ -113,7 +113,7 @@ body.tas #t2.on{min-height:calc(100dvh - 104px - env(safe-area-inset-top) - env(
 #csum{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:10px;font-size:15px}
 #csum b{font-weight:700}#csum span{color:var(--gold)}
 #csum em{font-style:normal;color:var(--mut);font-size:13px}
-#ctd{margin-left:6px;padding:5px 14px;border-radius:14px;border:1px solid var(--gold);background:none;color:var(--gold);font-size:13px}
+#ctd,#cpk{margin-left:6px;padding:5px 14px;border-radius:14px;border:1px solid var(--gold);background:none;color:var(--gold);font-size:13px}
 .cal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 8px 6px;margin-bottom:10px}
 .ch{display:flex;align-items:center;gap:6px;margin-bottom:2px}
 .ch .cm{flex:1;text-align:center;font-weight:700;letter-spacing:.08em;font-size:14px}
@@ -128,6 +128,10 @@ body.tas #t2.on{min-height:calc(100dvh - 104px - env(safe-area-inset-top) - env(
 .cg b.t{box-shadow:inset 0 0 0 1.5px var(--gold)}
 .cg b.s{background:var(--ac);color:#fff}
 body.tak .top{display:none}
+#pkrow{display:grid;grid-template-columns:1fr 1.7fr 1.3fr;gap:8px;margin:10px 0 4px}
+.box select{width:100%;padding:12px 8px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-size:16px}
+#pkres{font:700 20px/1.3 Georgia,serif;color:var(--gold);margin:8px 0 2px;min-height:28px}
+#csum em.cu{color:var(--gold)}
 @media(max-height:700px){.cg b{height:26px;line-height:26px}.cg i{height:20px;line-height:20px}.cal{margin-bottom:8px}}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
@@ -192,12 +196,21 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla va taqvim · 1.9</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla va taqvim · 2.0</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
   <button id="cl">Yopish</button>
+</div></div>
+<div class="sheet" id="pk"><div class="box">
+  <h2>Sanani tanlang</h2>
+  <div class="mut">Milodiy sana hijriyda qanday bo‘lishini ko‘ring</div>
+  <div id="pkrow"><input id="pkd" type="number" inputmode="numeric" min="1" max="31" placeholder="Kun"><select id="pkm"></select><input id="pky" type="number" inputmode="numeric" min="1583" max="2500" placeholder="Yil"></div>
+  <div id="pkres"></div>
+  <div class="mut" id="pknote"></div>
+  <button id="pkgo">Taqvimda ko‘rsatish</button>
+  <button id="pkx" style="background:none;color:var(--mut)">Bekor qilish</button>
 </div></div>
 <div class="sheet" id="sun"><div class="box">
   <h2>Quyosh bilan kalibrlash</h2>
@@ -483,10 +496,10 @@ const WD=["Du","Se","Ch","Pa","Ju","Sh","Ya"],WDF=["yakshanba","dushanba","sesha
 const day0=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
 const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return day0(x)};
 const HF=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric"});
-function hj(d){const o=+((D.vaqtlar||{}).hijri)||0,p=Object.fromEntries(HF.formatToParts(addD(d,o)).map(x=>[x.type,x.value]));return{d:+p.day,m:+p.month,y:parseInt(p.year)}}
+function hj(d,o){if(o===undefined)o=cust?0:(+((D.vaqtlar||{}).hijri)||0);const p=Object.fromEntries(HF.formatToParts(addD(d,o)).map(x=>[x.type,x.value]));return{d:+p.day,m:+p.month,y:parseInt(p.year)}}
 const hStart=d=>addD(d,-(hj(d).d-1));
 function hLen(f){let n=1;const m=hj(f).m;while(n<31&&hj(addD(f,n)).m===m)n++;return n}
-let sel=day0(new Date());
+let sel=day0(new Date()),cust=false,pkHist=false;
 function drawGrid(el,first,len,cmp){
   el._f=first;const tod=day0(new Date()).getTime(),off=(first.getDay()+6)%7;
   let h=WD.map((w,i)=>`<i${i==4?' class="fr"':''}>${w}</i>`).join("")+"<b></b>".repeat(off).replace(/<b><\/b>/g,'<u></u>');
@@ -498,8 +511,9 @@ function renderCal(){
   $("chm").textContent=HM[h.m-1].toUpperCase();$("chy").textContent=h.y;
   $("cgm").textContent=GM[sel.getMonth()].toUpperCase();$("cgy").textContent=sel.getFullYear();
   drawGrid($("chg"),hf,hl);drawGrid($("cgg"),gf,gl);
-  $("csum").innerHTML=`<b>${h.d}-${HM[h.m-1]}, ${h.y}</b><span>⇄</span><b>${sel.getDate()}-${GM[sel.getMonth()].toLowerCase()}, ${sel.getFullYear()}</b><button id="ctd">Bugun</button><em style="flex-basis:100%;text-align:center">${WDF[sel.getDay()]}</em>`;
-  $("ctd").onclick=()=>{sel=day0(new Date());renderCal()};
+  $("csum").innerHTML=`<b>${h.d}-${HM[h.m-1]}, ${h.y}</b><span>⇄</span><b>${sel.getDate()}-${GM[sel.getMonth()].toLowerCase()}, ${sel.getFullYear()}</b><button id="cpk">Sana tanlash</button>${cust?'<button id="ctd">Bugun</button>':''}<em class="${cust?"cu":""}" style="flex-basis:100%;text-align:center">${WDF[sel.getDay()]}${cust?" · tanlangan sana":""}</em>`;
+  $("cpk").onclick=openPick;
+  if(cust)$("ctd").onclick=calReset;
 }
 $("chg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("chg")._f,n-1);renderCal()}};
 $("cgg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("cgg")._f,n-1);renderCal()}};
@@ -513,6 +527,42 @@ function gMove(k){
 }
 $("chp").onclick=()=>hMove(-1);$("chn").onclick=()=>hMove(1);
 $("cgp").onclick=()=>gMove(-1);$("cgn").onclick=()=>gMove(1);
+/* Ixtiyoriy sana: faqat vaqtincha, asosiy taqvimga ta'sir qilmaydi */
+$("pkm").innerHTML=GM.map((m,i)=>`<option value="${i}">${m}</option>`).join("");
+function pkDate(){
+  const d=+$("pkd").value,m=+$("pkm").value,y=+$("pky").value;
+  if(!d||!y)return null;
+  if(y<1583||y>2500)return "yil";
+  const t=new Date(2000,0,1,12);t.setFullYear(y,m,d);
+  return t.getMonth()===m&&t.getDate()===d?t:"kun";
+}
+function pkShow(){
+  const t=pkDate(),r=$("pkres"),n=$("pknote");n.textContent="";
+  $("pkgo").disabled=!(t instanceof Date);
+  if(t===null){r.textContent="";return}
+  if(t==="yil"){r.textContent="Yil 1583 dan 2500 gacha bo‘lsin";return}
+  if(t==="kun"){r.textContent="Bunday sana yo‘q";return}
+  const h=hj(day0(t),0);
+  r.textContent=h.d+"-"+HM[h.m-1]+", "+h.y+"-yil";
+  if(h.y<1300||h.y>1600)n.textContent="Bu oraliqda hisob taxminiy bo‘lishi mumkin (±1 kun).";
+}
+function openPick(){
+  $("pkd").value=sel.getDate();$("pkm").value=sel.getMonth();$("pky").value=sel.getFullYear();
+  $("pk").classList.add("on");pkShow();
+  if(!pkHist){history.pushState({pk:1},"");pkHist=true}
+}
+const closePick=()=>$("pk").classList.remove("on");
+function calReset(){
+  cust=false;sel=day0(new Date());closePick();
+  if(pkHist){pkHist=false;history.back()}
+  if($("t4").classList.contains("on"))renderCal();
+}
+["pkd","pkm","pky"].forEach(i=>$(i).oninput=pkShow);
+$("pkgo").onclick=()=>{const t=pkDate();if(!(t instanceof Date))return;sel=day0(t);cust=true;closePick();renderCal()};
+$("pkx").onclick=()=>{closePick();if(!cust&&pkHist){pkHist=false;history.back()}};
+$("pk").onclick=e=>{if(e.target.id==="pk")$("pkx").click()};
+addEventListener("popstate",()=>{pkHist=false;if($("pk").classList.contains("on")||cust){cust=false;sel=day0(new Date());closePick();renderCal()}});
+
 $("hij").onclick=()=>document.querySelector('nav button[data-t="t4"]').click();
 
 /* Bo'limlar va "Dastur haqida" */
@@ -520,6 +570,7 @@ document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tab,nav button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");$(b.dataset.t).classList.add("on");
   document.body.classList.toggle("tas",b.dataset.t==="t2");document.body.classList.toggle("tak",b.dataset.t==="t4");
+  if(cust)calReset();
   if(b.dataset.t==="t4"){sel=day0(new Date());renderCal()}
   if(b.dataset.t==="t3")qStart();else qStop();
 });
