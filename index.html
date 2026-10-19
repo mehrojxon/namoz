@@ -108,6 +108,27 @@ body.tas #t2.on{min-height:calc(100dvh - 104px - env(safe-area-inset-top) - env(
 #tbar{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 0}
 #tbar button{background:none;border:1px solid var(--line);color:var(--mut);border-radius:16px;padding:7px 14px;font-size:14px}
 #jami{color:var(--mut);font-size:14px}
+#hij{cursor:pointer}#hij:after{content:" ›";color:var(--gold);font-weight:700}
+#ctitle{text-align:center;font:700 16px Georgia,serif;color:var(--ac);margin:2px 0 8px}
+#csum{display:flex;flex-wrap:wrap;gap:4px 10px;justify-content:center;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px;margin-bottom:10px;font-size:15px}
+#csum b{font-weight:700}#csum span{color:var(--gold)}
+#csum em{font-style:normal;color:var(--mut);font-size:13px}
+#ctd{margin-left:6px;padding:5px 14px;border-radius:14px;border:1px solid var(--gold);background:none;color:var(--gold);font-size:13px}
+.cal{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 8px 6px;margin-bottom:10px}
+.ch{display:flex;align-items:center;gap:6px;margin-bottom:2px}
+.ch .cm{flex:1;text-align:center;font-weight:700;letter-spacing:.08em;font-size:14px}
+.ch .cy{color:var(--mut);font-size:14px}
+.cn{width:34px;height:30px;border:0;background:none;color:var(--ac);font-size:22px;line-height:1;padding:0}
+.cg{display:grid;grid-template-columns:repeat(7,1fr);text-align:center}
+.cg i,.cg b{font-style:normal;height:31px;line-height:31px;font-size:14px;border-radius:8px}
+.cg i{height:24px;line-height:24px;font-size:12px;color:var(--mut);font-weight:700}
+.cg i.fr{color:var(--gold)}
+.cg b{font-weight:600;cursor:pointer}
+.cg b:active{opacity:.7}
+.cg b.t{box-shadow:inset 0 0 0 1.5px var(--gold)}
+.cg b.s{background:var(--ac);color:#fff}
+body.tak .top{display:none}
+@media(max-height:700px){.cg b{height:26px;line-height:26px}.cg i{height:20px;line-height:20px}.cal{margin-bottom:8px}}
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
@@ -154,17 +175,24 @@ button:focus-visible{outline:3px solid var(--gold)}
   <div class="row"><button id="qm">−</button><span class="mut" id="qadj" style="align-self:center">Tuzatish: 0°</span><button id="qp">+</button></div>
   <p class="mut qs" style="margin-top:14px">Aniq natija uchun telefonni tekis ushlang, metall va magnitdan uzoqroq turing. Kerak bo‘lsa telefonni havoda 8 raqami shaklida aylantirib kalibrlang.</p>
 </section>
+<section class="tab" id="t4">
+  <div id="ctitle">Hijriy / Milodiy konvertor</div>
+  <div id="csum"></div>
+  <div class="cal"><div class="ch"><button class="cn" id="chp" aria-label="Oldingi hijriy oy">‹</button><span class="cm" id="chm"></span><span class="cy" id="chy"></span><button class="cn" id="chn" aria-label="Keyingi hijriy oy">›</button></div><div class="cg" id="chg"></div></div>
+  <div class="cal"><div class="ch"><button class="cn" id="cgp" aria-label="Oldingi oy">‹</button><span class="cm" id="cgm"></span><span class="cy" id="cgy"></span><button class="cn" id="cgn" aria-label="Keyingi oy">›</button></div><div class="cg" id="cgg"></div></div>
+</section>
 </main>
 <nav>
   <button data-t="t1" class="on">Vaqtlar</button>
   <button data-t="t2">Tasbeh</button>
   <button data-t="t3">Qibla</button>
+  <button data-t="t4">Taqvim</button>
 </nav>
 <div id="toast"></div>
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh va qibla · 1.8</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla va taqvim · 1.9</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -449,11 +477,50 @@ $("sgo").onclick=()=>{
 $("srs").onclick=()=>{qcal=null;localStorage.removeItem("qcal");qCalText();$("sres").textContent="Standart holatga qaytarildi"};
 qCalText();
 
+/* Taqvim: hijriy / milodiy konvertor */
+const GM=["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
+const WD=["Du","Se","Ch","Pa","Ju","Sh","Ya"],WDF=["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"];
+const day0=d=>new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);
+const addD=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return day0(x)};
+const HF=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{day:"numeric",month:"numeric",year:"numeric"});
+function hj(d){const o=+((D.vaqtlar||{}).hijri)||0,p=Object.fromEntries(HF.formatToParts(addD(d,o)).map(x=>[x.type,x.value]));return{d:+p.day,m:+p.month,y:parseInt(p.year)}}
+const hStart=d=>addD(d,-(hj(d).d-1));
+function hLen(f){let n=1;const m=hj(f).m;while(n<31&&hj(addD(f,n)).m===m)n++;return n}
+let sel=day0(new Date());
+function drawGrid(el,first,len,cmp){
+  el._f=first;const tod=day0(new Date()).getTime(),off=(first.getDay()+6)%7;
+  let h=WD.map((w,i)=>`<i${i==4?' class="fr"':''}>${w}</i>`).join("")+"<b></b>".repeat(off).replace(/<b><\/b>/g,'<u></u>');
+  for(let n=1;n<=len;n++){const t=addD(first,n-1).getTime();h+=`<b data-n="${n}" class="${t===sel.getTime()?"s":""} ${t===tod?"t":""}">${n}</b>`}
+  el.innerHTML=h;
+}
+function renderCal(){
+  const h=hj(sel),hf=hStart(sel),hl=hLen(hf),gf=new Date(sel.getFullYear(),sel.getMonth(),1,12),gl=new Date(sel.getFullYear(),sel.getMonth()+1,0).getDate();
+  $("chm").textContent=HM[h.m-1].toUpperCase();$("chy").textContent=h.y;
+  $("cgm").textContent=GM[sel.getMonth()].toUpperCase();$("cgy").textContent=sel.getFullYear();
+  drawGrid($("chg"),hf,hl);drawGrid($("cgg"),gf,gl);
+  $("csum").innerHTML=`<b>${h.d}-${HM[h.m-1]}, ${h.y}</b><span>⇄</span><b>${sel.getDate()}-${GM[sel.getMonth()].toLowerCase()}, ${sel.getFullYear()}</b><button id="ctd">Bugun</button><em style="flex-basis:100%;text-align:center">${WDF[sel.getDay()]}</em>`;
+  $("ctd").onclick=()=>{sel=day0(new Date());renderCal()};
+}
+$("chg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("chg")._f,n-1);renderCal()}};
+$("cgg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("cgg")._f,n-1);renderCal()}};
+function hMove(k){
+  const h=hj(sel),hf=hStart(sel),f=k>0?addD(hf,hLen(hf)):hStart(addD(hf,-1));
+  sel=addD(f,Math.min(h.d,hLen(f))-1);renderCal();
+}
+function gMove(k){
+  const y=sel.getFullYear(),m=sel.getMonth()+k,dm=new Date(y,m+1,0).getDate();
+  sel=new Date(y,m,Math.min(sel.getDate(),dm),12);renderCal();
+}
+$("chp").onclick=()=>hMove(-1);$("chn").onclick=()=>hMove(1);
+$("cgp").onclick=()=>gMove(-1);$("cgn").onclick=()=>gMove(1);
+$("hij").onclick=()=>document.querySelector('nav button[data-t="t4"]').click();
+
 /* Bo'limlar va "Dastur haqida" */
 document.querySelectorAll("nav button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".tab,nav button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on");$(b.dataset.t).classList.add("on");
-  document.body.classList.toggle("tas",b.dataset.t==="t2");
+  document.body.classList.toggle("tas",b.dataset.t==="t2");document.body.classList.toggle("tak",b.dataset.t==="t4");
+  if(b.dataset.t==="t4"){sel=day0(new Date());renderCal()}
   if(b.dataset.t==="t3")qStart();else qStop();
 });
 $("info").onclick=()=>$("ab").classList.add("on");
