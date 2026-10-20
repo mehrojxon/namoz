@@ -129,10 +129,10 @@ li.past .chip{color:var(--mut)}
 #ztap:active #cnt{transform:scale(.93)}
 #ztap.pulse:after{content:"";position:absolute;inset:3%;border-radius:50%;border:2px solid #f0c869;animation:zp .45s ease-out forwards;pointer-events:none}
 @keyframes zp{from{opacity:.7;transform:scale(.92)}to{opacity:0;transform:scale(1.06)}}
-#zst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
-#zst div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:11px 6px;text-align:center}
-#zst b{display:block;font:700 21px Georgia,serif;font-variant-numeric:tabular-nums;color:var(--ac)}
-#zst span{font-size:11.5px;color:var(--mut)}
+#zstat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+#zstat div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:11px 6px;text-align:center}
+#zstat b{display:block;font:700 21px Georgia,serif;font-variant-numeric:tabular-nums;color:var(--ac)}
+#zstat span{font-size:11.5px;color:var(--mut)}
 #zseg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--line);border-radius:14px;padding:4px}
 #zseg button{border:0;background:none;color:var(--mut);padding:11px 4px;border-radius:11px;font-size:14px;font-weight:600}
 #zseg button.on{background:var(--ac);color:#fff}
@@ -338,6 +338,7 @@ button:disabled{opacity:.45}
 .kbl{display:flex;justify-content:space-between;font-size:12px;color:var(--mut)}
 .kbd{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 14px;margin-top:12px}
 .kr{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:15px;color:var(--mut)}
+.kr small{color:var(--mut);font-size:12.5px}
 .kr:last-child{border:0}.kr b{color:var(--ink);text-align:right}
 .ka{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-top:14px}
 .ka .kf2{margin-top:0}
@@ -493,7 +494,7 @@ button:focus-visible{outline:3px solid var(--gold)}
    <button id="ztap" aria-label="Sanash uchun bosing"><svg viewBox="0 0 300 300"><defs><radialGradient id="zbg" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#ffe9a8"/><stop offset=".55" stop-color="#e0b24f"/><stop offset="1" stop-color="#a87a1f"/></radialGradient></defs><circle class="ri" cx="150" cy="150" r="132"/><circle class="ri" cx="150" cy="150" r="104"/><g id="zbd"></g></svg>
     <div id="zin"><div id="cnt">0</div><div id="zof"></div><div id="zhint">Bosing</div></div></button>
   </div>
-  <div id="zst"><div><b id="zr">0</b><span>Aylanish</span></div><div><b id="zt">0</b><span>Bu zikr</span></div><div><b id="zg">0</b><span>Jami</span></div></div>
+  <div id="zstat"><div><b id="zr">0</b><span>Aylanish</span></div><div><b id="zt">0</b><span>Bu zikr</span></div><div><b id="zg">0</b><span>Jami</span></div></div>
   <div id="zseg"></div>
   <div id="zact"><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Shu zikrni nolga qaytarish</button></div>
   <p id="zjami"></p>
@@ -550,7 +551,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.3<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
+  <p class="mut mfoot">Jannat sari · 3.4<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
 </section>
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
@@ -571,7 +572,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.3</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.4</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -1008,6 +1009,9 @@ const pv=id=>{const v=parseFloat(String($(id).value).replace(/\s/g,"").replace("
 const isN=x=>typeof x==="number"&&!isNaN(x);
 const kRow=(a,b)=>`<div class="kr"><span>${a}</span><b>${b}</b></div>`;
 const G=[["b","Bug‘doy"],["b2","Bug‘doy (2)"],["a","Arpa"],["m","Mayiz"],["x","Xurmo"]];
+const GK={b:2,b2:2,a:4,m:2,x:4};
+const zkg=c=>{const k=(zs().kg||{})[c];return isN(k)&&k>0?k:GK[c]};
+const kgs=c=>fk(zkg(c))+" kg";
 const gname=c=>((zs().nom||{})[c])||G.find(x=>x[0]===c)[1];
 const zg=(z,k)=>{const o=z[k];return typeof o==="number"?{b:o}:(o&&typeof o==="object"?o:{})};
 const CT={bm:["Bintu maxoz","1 yoshga to‘lib, 2 yoshga kirgan urg‘ochi tuya"],bl:["Bintu labun","2 yoshga to‘lib, 3 yoshga kirgan urg‘ochi tuya"],hq:["Hiqqa","3 yoshga to‘lib, 4 yoshga kirgan urg‘ochi tuya"],jz:["Jaza’a","4 yoshga to‘lib, 5 yoshga kirgan urg‘ochi tuya"],sh:["Qo‘y","bir yoshga to‘lgan qo‘y yoki echki"]};
@@ -1084,7 +1088,7 @@ function kRender(){$("kct").textContent=TT[KS.p];$("kbody").innerHTML=PG[KS.p]()
 const cond=()=>`<div class="kf2 kcond"><div class="kl2">Chorva bir yildan beri sizdami?</div>${seg("own","Ha","Yo‘q")}</div><div class="kf2 kcond"><div class="kl2">Yilning ko‘p qismida o‘tlab yuribdimi?</div><div class="kh2">Ishlatiladigan yoki doim yem berib boqiladigan chorvadan zakot berilmaydi</div>${seg("sa","Ha","Yo‘q")}</div>`;
 const grainPage=(kind,cnt,unit,q)=>{
   const o=zg(zs(),kind);
-  return `<div class="kf2" style="margin-top:6px"><div class="kl2">Qaysi turda bermoqchisiz?</div><div class="kh2">Har bir tur uchun miqdor alohida e’lon qilingan</div><div class="kgr">${G.map(([c])=>{const n=gname(c);return `<button type="button" class="kgc${KS.gr===c?" on":""}${isN(o[c])?"":" off"}" data-g="${c}"><b>${n}</b><span>${isN(o[c])?fm(o[c])+" so‘m":"e’lon qilinmagan"}</span></button>`}).join("")}</div></div>`+
+  return `<div class="kf2" style="margin-top:6px"><div class="kl2">Qaysi turda bermoqchisiz?</div><div class="kh2">Har bir tur uchun miqdor alohida e’lon qilingan</div><div class="kgr">${G.map(([c])=>{const n=gname(c);return `<button type="button" class="kgc${KS.gr===c?" on":""}${isN(o[c])?"":" off"}" data-g="${c}"><b>${n}</b><span>≈ ${kgs(c)}</span><span>${isN(o[c])?fm(o[c])+" so‘m":"narxi e’lon qilinmagan"}</span></button>`}).join("")}</div></div>`+
    fld(cnt,q[0],q[1],{c:1,u:unit})+`<div id="kres" style="margin-top:18px"></div>`;
 };
 const lst=(a,m)=>`<div class="kls">${a.map((t,i)=>`<div class="kl ${m}"><i>${m==="n"?i+1:m==="y"?"✓":m==="x"?"✕":"•"}</i><div>${t}</div></div>`).join("")}</div>`;
@@ -1140,8 +1144,9 @@ const molNum=()=>{const parts=kn("k_cash")+kn("k_gold")+kn("k_trade")+kn("k_recv
 function grainRes(kind,cnt,unit,title){
   const z=zs(),o=zg(z,kind),n=kn(cnt),c=KS.gr,nm=gname(c),r=$("kres");
   if(!n){r.innerHTML=verdict("neu","Sonini kiriting","");return}
-  const rows=G.filter(([k])=>isN(o[k])).map(([k])=>kRow(gname(k),fm(n*o[k])+" so‘m")).join("");
-  r.innerHTML=(!isN(o[c])?miss(nm+" uchun miqdor"):verdict("ok",title+" · "+nm.toLowerCase()+" bilan",fm(n)+" "+unit+" × "+fm(o[c])+" so‘m",fm(n*o[c])+" so‘m"))+(rows?`<h3 class="kh3">Boshqa turlar bilan</h3><div class="kbd">${rows}</div>`:"");
+  const rows=G.filter(([k])=>isN(o[k])).map(([k])=>kRow(gname(k)+' <small>· '+fk(n*zkg(k))+' kg</small>',fm(n*o[k])+" so‘m")).join("");
+  const kg=zkg(c);
+  r.innerHTML=(!isN(o[c])?miss(nm+" uchun narx"):verdict("ok",title+" · "+nm.toLowerCase(),fm(n)+" "+unit+" × "+fk(kg)+" kg = <b>"+fk(n*kg)+" kg</b> "+nm.toLowerCase()+"<br>yoki qiymati: "+fm(n)+" × "+fm(o[c])+" so‘m",fm(n*o[c])+" so‘m"))+(rows?`<h3 class="kh3">Boshqa turlar bilan</h3><div class="kbd">${rows}</div>`:"");
 }
 function kUpd(){kUpd0();kPdf()}
 function kUpd0(){
@@ -1242,7 +1247,7 @@ function pdfDoc(keys){
   $("prt").className=many>1?"pall":"";
   $("prt").innerHTML=`<div class="pz"><header class="pt"><div><div class="pb">Jannat sari</div><div class="psb">Zakot va sadaqa hisob-kitobi</div></div><div class="pm"><b>${no}</b><br>${ds}</div></header><div class="psc">${secs}</div>
    <footer class="pf"><b>Muhim eslatma.</b> Hisob-kitob yordamchi vosita sifatida taqdim etilgan. Yakuniy hukm uchun albatta ishonchli ulamo yoki muftiylikka murojaat qiling: ilova natijasi ularning fatvosi o‘rnini bosa olmaydi.<div class="pf2">Jannat sari · ${no}</div></footer></div>`;
-  {const e=$("prt");e.style.cssText="display:block;position:absolute;left:-10000px;top:0;width:186mm;visibility:hidden";const pz=e.querySelector(".pz");let z=1;for(;z>.45;z-=.025){pz.style.zoom=z;if(pz.getBoundingClientRect().height<=1000)break}pz.style.zoom="";e.style.cssText="";e.style.setProperty("--pz",Math.max(z,.45).toFixed(3))}
+  {const e=$("prt");e.style.cssText="display:block;position:absolute;left:-10000px;top:0;width:186mm;visibility:hidden";const pz=e.querySelector(".pz");let z=1;for(;z>.45;z-=.025){pz.style.zoom=z;if(pz.getBoundingClientRect().height<=860)break}pz.style.zoom="";e.style.cssText="";e.style.setProperty("--pz",Math.max(z,.45).toFixed(3))}
   const old=document.title;document.title="Jannat-sari-hisobot-"+dStr(t);
   document.body.classList.add("printing");
   setTimeout(()=>{try{window.print()}catch(e){toast("Chop etish bu qurilmada mavjud emas")}setTimeout(()=>{document.title=old},800)},200);
@@ -1259,9 +1264,10 @@ const zn=id=>{const e=$(id);if(!e)return null;const x=parseFloat(String(e.value)
 function zAdmHtml(){
   const z=zs(),v=(x,d)=>isN(x)?x:d,fi=zg(z,"fitr"),fd=zg(z,"fidya");
   const f=(id,l,h,val,u,m)=>`<div class="af"><div class="al">${l}</div>${h?`<div class="ah">${h}</div>`:""}<div class="ai"><input type="text" inputmode="decimal" id="${id}" class="${m?"zm":""}" value="${m&&val!==""?fm(val):val}" placeholder="kiriting"><span>${u}</span></div></div>`;
-  const gs=(p,o,ed)=>G.map(([c])=>`<div class="af">${ed?`<input type="text" class="znm" id="z_nom_${c}" value="${esc(gname(c))}" aria-label="Tur nomi">`:`<div class="al">${esc(gname(c))}</div>`}<div class="ai"><input type="text" inputmode="decimal" id="${p+c}" class="zm" value="${v(o[c],"")===""?"":fm(o[c])}" placeholder="narxi"><span>so‘m</span></div></div>`).join("");
+  const gs=(p,o,ed)=>G.map(([c])=>`<div class="af">${ed?`<input type="text" class="znm" id="z_nom_${c}" value="${esc(gname(c))}" aria-label="Tur nomi">`:`<div class="al">${esc(gname(c))} <span class="ah" style="display:inline">· ≈ ${kgs(c)}</span></div>`}${ed?`<div class="ai"><input type="text" inputmode="decimal" id="z_kg_${c}" value="${fk(zkg(c))}" aria-label="Miqdori"><span>kg</span></div>`:""}<div class="ai"><input type="text" inputmode="decimal" id="${p+c}" class="zm" value="${v(o[c],"")===""?"":fm(o[c])}" placeholder="narxi"><span>so‘m</span></div></div>`).join("");
   return `<div class="atabs" id="ztabs">${[["u","Umumiy"],["m","Mol"],["f","Fitr"],["d","Fidya"],["h","Ushr"],["c","Chorva"]].map(([k,t],i)=>`<button type="button" data-z="${k}" class="${i?"":"on"}">${t}</button>`).join("")}</div>`+
   `<div class="apane on" data-z="u"><div class="ac"><div class="ag">Holat</div><div id="zst"></div></div>
+    <div class="ac"><div class="ag">Rasmiy qiymatlar</div><div class="ah">O‘zbekiston musulmonlari idorasi Fatvo markazining 2026-yil Ramazon qarori: nisob, fitr va fidya miqdorlari. Tugma maydonlarni to‘ldiradi, siz tekshirib “Saqlash”ni bosasiz.</div><button type="button" class="alink" id="zpre">2026-yil qiymatlarini kiritish</button></div>
     <div class="ac"><div class="ag">Manba</div><div class="af"><div class="ah">Foydalanuvchilarga ko‘rinadi. Masalan: “Muftiylik qarori, 2026-yil”.</div><input type="text" id="z_man" value="${esc(z.manba||"")}"></div></div></div>`+
   `<div class="apane" data-z="m"><div class="ac"><div class="ag">Mol zakoti</div>`+
     f("z_nis","Nisob","Zakot farz bo‘ladigan eng kam mol miqdori (so‘mda).",v(z.nisob,""),"so‘m",1)+
@@ -1281,7 +1287,7 @@ function zSt(){
 }
 function readZ(){
   const d=(x,f)=>x===null?f:x,gx=p=>{const o={};G.forEach(([c])=>{const x=zn(p+c);if(x!==null)o[c]=x});return o};
-  return{nisob:zn("z_nis"),foiz:d(zn("z_fz"),2.5),fitr:gx("z_fit_"),fidya:gx("z_fid_"),nom:Object.fromEntries(G.map(([c])=>[c,($("z_nom_"+c).value||"").trim()||G.find(x=>x[0]===c)[1]])),ushrT:d(zn("z_ut"),10),ushrS:d(zn("z_us"),5),manba:$("z_man").value.trim(),ok:$("z_ok").checked,sana:new Date().toLocaleDateString("sv")};
+  return{nisob:zn("z_nis"),foiz:d(zn("z_fz"),2.5),fitr:gx("z_fit_"),fidya:gx("z_fid_"),kg:(()=>{const o={};G.forEach(([c])=>{const x=zn("z_kg_"+c);if(x!==null&&x>0)o[c]=x});return o})(),nom:Object.fromEntries(G.map(([c])=>[c,($("z_nom_"+c).value||"").trim()||G.find(x=>x[0]===c)[1]])),ushrT:d(zn("z_ut"),10),ushrS:d(zn("z_us"),5),manba:$("z_man").value.trim(),ok:$("z_ok").checked,sana:new Date().toLocaleDateString("sv")};
 }
 
 /* Bo'limlar va "Dastur haqida" */
@@ -1535,6 +1541,11 @@ $("abody").addEventListener("click",e=>{
   if(e.target.id==="zcopy"){G.forEach(([c])=>{const x=$("z_fit_"+c).value;$("z_fid_"+c).value=x});zSt();say("Nusxalandi");return}
   if(e.target.id==="qsun"){sunOpen();return}
   if(e.target.id==="hdel"){hikmatDel();return}
+  if(e.target.id==="zpre"){
+    const P={b:10000,b2:12000,a:20000,m:110000,x:200000},fz=x=>fm(x);
+    $("z_nis").value=fz(100000000);$("z_man").value="O‘zbekiston musulmonlari idorasi Fatvo markazi, 2026-yil";
+    G.forEach(([c])=>{$("z_fit_"+c).value=fz(P[c]);$("z_fid_"+c).value=fz(P[c]);$("z_kg_"+c).value=String(GK[c])});
+    zSt();say("Qiymatlar kiritildi. Tekshirib “Saqlash”ni bosing");return}
   if(e.target.id==="out"){ses=null;AS=null;localStorage.removeItem("ses");showAdm()}
 });
 $("abody").addEventListener("input",e=>{
@@ -1576,7 +1587,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.3";
+const APPV="3.4";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
