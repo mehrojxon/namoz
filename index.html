@@ -27,7 +27,7 @@ main{max-width:460px;margin:0 auto;padding:14px 18px}
 .hero2{position:relative;overflow:hidden;border-radius:26px;padding:16px 20px 18px;margin:8px 0 14px;color:#fff;background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.18),transparent 55%),linear-gradient(150deg,#0f7a70,#0a4b46);box-shadow:0 10px 26px rgba(8,60,55,.25)}
 @media(prefers-color-scheme:dark){.hero2{background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.09),transparent 55%),linear-gradient(150deg,#12615a,#082f2c);box-shadow:none;border:1px solid rgba(255,255,255,.06)}}
 .top{display:none;justify-content:space-between;align-items:center}
-body[data-s="t0"] .top{display:flex}
+body[data-scr="t0"] .top{display:flex}
 .top .acts{display:none}
 #sbar{display:none;align-items:center;gap:12px;margin:0 0 12px}
 body.sub #sbar{display:flex}
@@ -71,6 +71,7 @@ button.nx{display:block;width:100%;text-align:left;font:inherit;border:0;margin-
 .sw.on{background:var(--ac)}.sw.on:after{transform:translateX(19px)}
 .mfoot{text-align:center;font-size:12.5px;line-height:1.6;margin-top:18px}
 .hr-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;opacity:.92}
+.hr-loc i{font-style:normal}
 .hr-loc{display:flex;gap:6px;align-items:center}
 .hr-loc svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hr-hij{margin-top:3px;font-size:13px;opacity:.85}
@@ -102,11 +103,83 @@ li b{font:700 20px Georgia,serif;font-variant-numeric:tabular-nums}
 li.cur .chip{background:var(--ac);color:#fff}
 li.nxt .chip{border:1px solid var(--gold);color:var(--gold)}
 li.past .chip{color:var(--mut)}
-#cnt{font:700 64px/1 Georgia,serif;text-align:center;margin:10px 0 2px;font-variant-numeric:tabular-nums}
-#strip{position:relative;height:330px;overflow:hidden;margin:6px auto;cursor:pointer;-webkit-mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent);mask-image:linear-gradient(transparent,#000 15%,#000 85%,transparent)}
-#strip:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:4px;margin-left:-2px;background:var(--gold);opacity:.7}
-#col{position:absolute;left:50%;margin-left:-28px;top:-64px}
-.bead{width:56px;height:56px;margin-bottom:8px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#8fe0d3,var(--ac) 58%,#06332f);box-shadow:0 3px 6px rgba(0,0,0,.3)}
+
+#zp{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:none;scroll-snap-type:x proximity}
+#zp::-webkit-scrollbar{display:none}
+#zp button{flex:0 0 auto;scroll-snap-align:start;padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap}
+#zp button.on{background:var(--ac);border-color:var(--ac);color:#fff;box-shadow:0 4px 12px rgba(14,107,99,.3)}
+#zc{position:relative;background:linear-gradient(160deg,var(--card),var(--bg));border:1px solid var(--line);border-radius:22px;padding:16px 14px 14px;text-align:center;overflow:hidden}
+#zc:before{content:"";position:absolute;inset:6px;border:1px solid rgba(224,178,79,.35);border-radius:17px;pointer-events:none}
+#zar{font:34px/1.65 "Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl;color:var(--ink)}
+#ztr{font-weight:700;font-size:15px;margin-top:2px}
+#zma{color:var(--mut);font-size:13px;margin-top:3px}
+#zc.fi{animation:fi .35s ease}
+#zdw{display:flex;flex-direction:column;align-items:center;margin:14px 0 6px}
+#ztap{position:relative;width:min(272px,72vw);aspect-ratio:1;border:0;background:none;padding:0;border-radius:50%;-webkit-tap-highlight-color:transparent;touch-action:manipulation;color:var(--ink)}
+#ztap svg{width:100%;height:100%;display:block;transform:rotate(-90deg)}
+#ztap .tk{fill:none;stroke:var(--line);stroke-width:10;stroke-linecap:round}
+#ztap .pg{fill:none;stroke:url(#zgr);stroke-width:10;stroke-linecap:round;transition:stroke-dashoffset .18s ease}
+#ztap .bd{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-dasharray:0 7.12;opacity:.55}
+#ztap .fc{fill:var(--card);stroke:var(--line);stroke-width:1}
+#zin{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;pointer-events:none}
+#cnt{font:700 66px/1 Georgia,serif;font-variant-numeric:tabular-nums;transition:transform .12s}
+#zof{font:17px Georgia,serif;color:var(--mut);margin-top:4px;min-height:20px}
+#zhint{font-size:12px;color:var(--mut);margin-top:8px;letter-spacing:.04em;text-transform:uppercase}
+#ztap:active #cnt{transform:scale(.92)}
+#ztap.pulse:after{content:"";position:absolute;inset:8%;border-radius:50%;border:2px solid var(--gold);animation:zp .45s ease-out forwards;pointer-events:none}
+@keyframes zp{from{opacity:.8;transform:scale(.9)}to{opacity:0;transform:scale(1.12)}}
+#zst{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+#zst div{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 6px;text-align:center}
+#zst b{display:block;font:700 20px Georgia,serif;font-variant-numeric:tabular-nums}
+#zst span{font-size:11.5px;color:var(--mut)}
+#zseg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--line);border-radius:14px;padding:4px}
+#zseg button{border:0;background:none;color:var(--mut);padding:11px 4px;border-radius:11px;font-size:14px;font-weight:600}
+#zseg button.on{background:var(--ac);color:#fff}
+#zact{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+#zact button{display:flex;align-items:center;justify-content:center;gap:8px;padding:12px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;font-weight:600}
+#zact button.on{border-color:var(--gold);color:var(--gold)}
+#zact svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#zsq{display:none;gap:6px;margin:0 0 10px}
+#zsq.on{display:flex}
+#zsq i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+#zsq i.on{background:var(--gold)}
+#zsq i.dn{background:var(--ac)}
+#zjami{text-align:center;color:var(--mut);font-size:13px;margin:12px 0 4px}
+.rgb{text-align:left}.rgb h2{text-align:center}.rgb>.mut{text-align:center;margin:0 0 12px}
+#rgl button{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0 0 6px;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:15px;font-weight:600;text-align:left}
+#rgl button.on{border-color:var(--ac);background:rgba(14,107,99,.08);color:var(--ac)}
+#rgl button small{font-weight:400;color:var(--mut);font-size:12.5px}
+#rgl h4{text-align:left;margin:12px 2px 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+.rgb #rgx{display:block;margin:10px auto 0;background:var(--line);color:var(--ink)}
+.mch{color:var(--mut);font-size:22px}
+.kpdf{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:14px;padding:15px 16px;border:0;border-radius:16px;background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff;font:700 15px system-ui,sans-serif;box-shadow:0 6px 16px rgba(14,107,99,.28)}
+.kpdf svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.kpdf span{background:rgba(255,255,255,.2);border-radius:10px;padding:2px 9px;font-size:12.5px}
+.klr{display:block;margin:10px auto 0;border:0;background:none;color:var(--mut);font-size:13px;text-decoration:underline}
+#prt{display:none}
+@media print{
+ @page{size:A4;margin:13mm 12mm}
+ body.printing>*:not(#prt){display:none!important}
+ body.printing{background:#fff!important}
+ body.printing #prt{display:block;--bg:#fff;--card:#fff;--ink:#12231f;--mut:#5b6b66;--line:#dfe6e3;--ac:#0e6b63;--gold:#b8892b;color:#12231f;font:13px/1.5 system-ui,-apple-system,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ #prt .pt{display:flex;justify-content:space-between;align-items:flex-end;padding:0 0 12px;border-bottom:3px solid #0e6b63;margin-bottom:16px;position:relative}
+ #prt .pt:after{content:"";position:absolute;left:0;bottom:-6px;width:70px;height:3px;background:#b8892b}
+ #prt .pb{font:700 28px Georgia,serif;color:#0e6b63}
+ #prt .psb{color:#5b6b66;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+ #prt .pm{text-align:right;font-size:11.5px;color:#5b6b66}#prt .pm b{color:#12231f;font-size:12.5px}
+ #prt .ps{break-inside:avoid;border:1px solid #dfe6e3;border-radius:12px;padding:14px 16px;margin:0 0 14px}
+ #prt .ph{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+ #prt .pnn{width:26px;height:26px;border-radius:50%;background:#0e6b63;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px}
+ #prt h2{margin:0;font:700 18px Georgia,serif;color:#0e6b63}
+ #prt h3{margin:12px 0 6px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5b6b66}
+ #prt table{width:100%;border-collapse:collapse}
+ #prt td{padding:6px 0;border-bottom:1px solid #eef2f0;vertical-align:top}#prt td:last-child{text-align:right;font-weight:700;white-space:nowrap;padding-left:14px}
+ #prt .pres .kv{border-radius:10px;padding:12px 14px;margin:0 0 8px}
+ #prt .pres .kbig{font:700 24px Georgia,serif}
+ #prt .pres .kbar2,#prt .pres .kbl{display:none}
+ #prt .pf{margin-top:18px;padding:12px 14px;border:1px solid #b8892b;border-radius:10px;background:#fbf6ea;font-size:12px;color:#3d3a2c;break-inside:avoid}
+ #prt .pf2{margin-top:8px;color:#8a8470;font-size:11px;text-align:right}
+}
 .row{display:flex;gap:8px;justify-content:center;margin-top:12px}
 .row button{padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px}
 .row button.on{background:var(--gold);border-color:var(--gold);color:#fff}
@@ -145,7 +218,7 @@ body.kb nav{display:none}
 #hk{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:16px;padding:14px 18px 12px;margin:14px 0}
 .hk-h{color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:12px}
 #hkm{font:italic 18px/1.55 Georgia,serif;margin:8px 0 4px;white-space:pre-wrap}
-#hkm.clamp{display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+#hkm.clamp{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 #hkt{border:0;background:none;color:var(--ac);font-weight:700;font-size:14px;padding:4px 0}
 #hks{color:var(--mut);font-size:14px;text-align:right}
 .box textarea{width:100%;padding:12px;margin:6px 0;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:16px system-ui,sans-serif;resize:vertical}
@@ -155,32 +228,8 @@ body.kb nav{display:none}
 .mut.warn{color:#e5484d;font-weight:700}
 #sun{z-index:10}
 button:disabled{opacity:.45}
-#zp{display:flex;gap:8px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x proximity;scrollbar-width:none}
-#zp::-webkit-scrollbar{display:none}
-#zp button{flex:0 0 auto;scroll-snap-align:start;padding:9px 16px;border-radius:20px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:15px;white-space:nowrap}
-#zp button.on{background:var(--ac);border-color:var(--ac);color:#fff}
-#zc{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 14px 12px;text-align:center}
-#zar{font:34px/1.7 "Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl;color:var(--ink)}
-#ztr{color:var(--mut);font-size:14px;margin-top:2px}
-#zc.fi{animation:fi .35s ease}
 .al{font-feature-settings:"liga" 0,"rlig" 0,"clig" 0,"dlig" 0,"calt" 0;font-variant-ligatures:none}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-#cntrow{display:flex;align-items:baseline;justify-content:center;gap:8px;margin:14px 0 8px}
-#cntrow #cnt{font:700 54px/1 Georgia,serif;margin:0}
-#zof{font:20px Georgia,serif;color:var(--mut)}
-#zbar{height:6px;border-radius:3px;background:var(--line);overflow:hidden;max-width:260px;margin:0 auto 8px}
-#zfill{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--ac),var(--gold));transition:width .15s}
-#t2 #strip{height:250px}
-#t2.on{display:flex;flex-direction:column;min-height:calc(100dvh - 124px - env(safe-area-inset-top) - env(safe-area-inset-bottom))}
-#zp{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;overflow:visible;padding:2px 0 10px;scroll-snap-type:none}
-#zp button{padding:9px 4px;border-radius:14px;font-size:13px;min-width:0;overflow:hidden;text-overflow:ellipsis}
-#zc{padding:10px 12px 8px}
-#zar{font-size:32px;line-height:1.6}
-#cntrow{margin:8px 0 6px}
-#t2 #strip{height:auto;flex:1;min-height:130px;margin:2px 0}
-#targets{margin-top:6px}
-#tbar{display:flex;justify-content:space-between;align-items:center;padding:8px 2px 0}
-#tbar button{background:none;border:1px solid var(--line);color:var(--mut);border-radius:16px;padding:7px 14px;font-size:14px}
 #jami{color:var(--mut);font-size:14px}
 #hij{cursor:pointer}
 #ctitle{text-align:center;font:700 16px Georgia,serif;color:var(--ac);margin:2px 0 8px}
@@ -297,6 +346,9 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 .kar-a{font:26px/2 "Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl;text-align:right;color:var(--ink)}
 .kar p{margin:10px 0 6px;font-size:14.5px;line-height:1.6}
 .kitem.kno>b{color:var(--gold);font:700 20px system-ui,sans-serif}
+.mtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--line);border-radius:14px;padding:4px;margin-bottom:16px}
+.mtabs button{border:0;background:none;color:var(--mut);padding:11px 6px;border-radius:11px;font-size:14px;font-weight:600}
+.mtabs button.on{background:var(--ac);color:#fff}
 .klink{display:flex;justify-content:space-between;align-items:center;width:100%;margin-top:12px;padding:14px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ac);font:600 15px system-ui,sans-serif;text-align:left}
 .kitem{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:8px}
 .kitem>b{flex:none;min-width:58px;text-align:center;font:700 22px Georgia,serif;color:var(--ac)}
@@ -346,6 +398,12 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 #pn .atabs button{flex:none;padding:9px 15px;border-radius:18px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-size:14px}
 #pn .atabs button.on{background:var(--ac);border-color:var(--ac);color:#fff}
 .apane{display:none}.apane.on{display:block}
+#pn .stp{display:flex;align-items:center;gap:8px}
+#pn .stp button{width:38px;height:38px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);font-size:20px;font-weight:600;color:var(--ink)}
+#pn .stp b{min-width:34px;text-align:center;font-size:17px;font-variant-numeric:tabular-nums}
+#pn .stp em{font-style:normal;min-width:48px;text-align:right;color:var(--mut);font-size:13px}
+.chps{display:flex;flex-wrap:wrap;gap:6px}
+#pn .chp{padding:7px 12px;border:1.5px solid var(--ac);border-radius:14px;color:var(--ac);font-size:13px;font-weight:600}
 #pn .alink{padding:11px 16px;border:1.5px solid var(--ac);border-radius:12px;color:var(--ac);font-weight:600;font-size:14px;margin-bottom:12px}
 .zs{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:15px}
 .znm{font-weight:600;margin-bottom:6px!important}
@@ -357,13 +415,14 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 button:focus-visible{outline:3px solid var(--gold)}
 </style>
 </head>
-<body data-s="t0">
+<body data-scr="t0">
+<div id="prt"></div>
 <main>
 <div class="top"><h1 id="ttl">Jannat sari</h1><div class="acts"><button id="bell" class="ib" aria-label="Bildirishnoma" style="display:none"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></button></div></div>
 <div id="sbar"><button id="sback" aria-label="Orqaga"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button><span id="stt"></span></div>
 <section class="tab on" id="t0">
   <button class="hero2 nx" id="nxcard" aria-label="Namoz vaqtlarini ochish">
-    <div class="hr-top"><span class="hr-loc"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Qashqadaryo viloyati</span><span id="hdate"></span></div>
+    <div class="hr-top"><span class="hr-loc"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><i class="rgn">Qashqadaryo viloyati</i></span><span id="hdate"></span></div>
     <div class="nx-row"><div class="nx-l"><span class="nx-lbl">Keyingi vaqt</span><b id="hnm">…</b><span id="htm"></span></div><div class="nx-r"><span id="hcd">--:--:--</span><span class="nx-s">qoldi</span></div></div>
     <div class="hr-bar"><i id="hpb"></i></div>
     <div class="hr-ends"><span id="hnow"></span><span id="hhij"></span></div>
@@ -372,7 +431,7 @@ button:focus-visible{outline:3px solid var(--gold)}
   <div class="qgrid">
     <button class="qa" data-go="t3"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span><b>Qibla</b><span>Makka yo‘nalishi</span></button>
     <button class="qa" data-go="t2"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="4.00" r="1.7"/><circle cx="17.66" cy="6.34" r="1.7"/><circle cx="20.00" cy="12.00" r="1.7"/><circle cx="17.66" cy="17.66" r="1.7"/><circle cx="12.00" cy="20.00" r="1.7"/><circle cx="6.34" cy="17.66" r="1.7"/><circle cx="4.00" cy="12.00" r="1.7"/><circle cx="6.34" cy="6.34" r="1.7"/></svg></span><b>Tasbeh</b><span id="qa-t">Elektron zikr</span></button>
-    <button class="qa" data-go="t5"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="9" r="6"/><path d="M15 9.5A6 6 0 1 1 9.5 15"/></svg></span><b>Zakot va sadaqa</b><span>Zakot, ushr, fitr, fidya</span></button>
+    <button class="qa" data-go="t5"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14V9"/><path d="M12 11c0-3 2-5 5.5-5 0 3-2 5-5.5 5z"/><path d="M12 12.5c0-2.2-1.6-3.7-4.2-3.7 0 2.2 1.6 3.7 4.2 3.7z"/><path d="M4 15c0 3 3.6 5.5 8 5.5s8-2.5 8-5.5z"/></svg></span><b>Tazkiya</b><span>Zakot, ushr, fitr, fidya</span></button>
     <button class="qa" data-go="t4"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><b>Islomiy taqvim</b><span id="qa-c">Hijriy sanalar</span></button>
   </div>
   <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><div id="hks"></div></div>
@@ -380,7 +439,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <section class="tab" id="t1">
   <div class="sc-t">Namoz vaqtlari</div>
   <div class="hero2">
-    <div class="hr-top"><span class="hr-loc"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Qashqadaryo viloyati</span><span id="sana"></span></div>
+    <div class="hr-top"><span class="hr-loc"><svg viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><i class="rgn">Qashqadaryo viloyati</i></span><span id="sana"></span></div>
     <div id="hij" class="hr-hij"></div>
     <div class="hr-now">Hozir<b id="nowN">…</b></div>
     <div id="cd">--:--:--</div>
@@ -393,13 +452,16 @@ button:focus-visible{outline:3px solid var(--gold)}
 </section>
 <section class="tab" id="t2">
   <div id="zp"></div>
-  <div id="zc"><div id="zar"></div><div id="ztr"></div></div>
-  <div id="cntrow"><div id="cnt">0</div><div id="zof"></div></div>
-  <div id="zbar"><i id="zfill"></i></div>
-  <div class="mut" style="text-align:center" id="rounds"></div>
-  <div id="strip"><div id="col"></div></div>
-  <div class="row" id="targets"></div>
-  <div id="tbar"><button id="reset">Nolga qaytarish</button><span id="jami"></span></div>
+  <div id="zc"><div id="zar"></div><div id="ztr"></div><div id="zma"></div></div>
+  <div id="zdw">
+   <div id="zsq"><i></i><i></i><i></i></div>
+   <button id="ztap" aria-label="Sanash uchun bosing"><svg viewBox="0 0 260 260"><defs><linearGradient id="zgr" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1d9a8c"/><stop offset="1" stop-color="#e0b24f"/></linearGradient></defs><circle class="fc" cx="130" cy="130" r="104"/><circle class="bd" cx="130" cy="130" r="118"/><circle class="tk" cx="130" cy="130" r="112" id="ztk"/><circle class="pg" cx="130" cy="130" r="112" id="zpg" stroke-dasharray="703.7" stroke-dashoffset="703.7"/></svg>
+    <div id="zin"><div id="cnt">0</div><div id="zof"></div><div id="zhint">Bosing</div></div></button>
+  </div>
+  <div id="zst"><div><b id="zr">0</b><span>Aylanish</span></div><div><b id="zt">0</b><span>Bu zikr</span></div><div><b id="zg">0</b><span>Jami</span></div></div>
+  <div id="zseg"></div>
+  <div id="zact"><button id="seq"><svg viewBox="0 0 24 24"><path d="M5 12l4 4 10-10"/></svg>Namoz tasbehi</button><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Nolga qaytarish</button></div>
+  <p id="zjami"></p>
 </section>
 <section class="tab" id="t3">
   <div id="qhead"><div id="qdeg">--°</div><div class="mut" id="qdir">Qibla yo‘nalishi</div></div>
@@ -431,7 +493,8 @@ button:focus-visible{outline:3px solid var(--gold)}
   <p class="kh-s">Kerakli bo‘limni tanlang. Ilova savollar berib, hisobni o‘zi bajaradi.</p>
   <div id="kcards"></div>
   <div id="kinfo"></div>
-  <p class="mut kt">Hisob-kitob yordamchi vosita. Yakuniy hukm uchun ulamoga murojaat qiling. Kiritgan ma’lumotlaringiz telefondan tashqariga chiqmaydi.</p>
+  <div id="kpdfh"></div>
+  <p class="mut kt">Hisob-kitob yordamchi vosita sifatida taqdim etilgan. Yakuniy hukm uchun albatta ishonchli ulamo yoki muftiylikka murojaat qiling: ilova natijasi ularning fatvosi o‘rnini bosa olmaydi.</p>
  </div>
  <div id="kc" style="display:none">
   <div class="kbar"><button id="kback">‹ Orqaga</button><span id="kct"></span></div>
@@ -444,19 +507,28 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mbell"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="mt"><b>Bildirishnomalar</b><span id="mbs">Bu qurilmada mavjud emas</span></span><span class="sw" id="msw" style="display:none"></span></button>
   </div>
   <div class="mg">
+    <button class="mr" id="mreg"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span class="mt"><b>Mintaqa</b><span id="mrs">Avtomatik</span></span><span class="mch">›</span></button>
+  </div>
+  <div class="mg">
     <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Muallif va dastur ma’lumotlari</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.1<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
+  <p class="mut mfoot">Jannat sari · 3.2<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
 </section>
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
 <div id="toast"></div>
+<div class="sheet" id="rgs"><div class="box rgb">
+  <h2>Mintaqa</h2>
+  <p class="mut">Namoz vaqtlari tanlangan joy uchun hisoblanadi.</p>
+  <div id="rgl"></div>
+  <button id="rgx" type="button">Yopish</button>
+</div></div>
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.1</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.2</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -550,32 +622,68 @@ function hijri(){
   }catch(e){return ""}
 }
 const PI={"bomdod": "<path d=\"M3 19h18\"/><path d=\"M8 19a4 4 0 0 1 8 0\"/><path d=\"M12 7v3M6.2 9.2L8 11M17.8 9.2L16 11\"/>", "quyosh": "<path d=\"M3 19h18\"/><path d=\"M6.5 19a5.5 5.5 0 0 1 11 0\"/><path d=\"M12 4v5M9.5 6.5L12 4l2.5 2.5\"/>", "peshin": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4\"/>", "asr": "<circle cx=\"12\" cy=\"13\" r=\"3.5\"/><path d=\"M12 5v1.5M4.5 13H6M18 13h1.5M6.7 7.7l1 1M17.3 7.7l-1 1\"/>", "shom": "<path d=\"M3 19h18\"/><path d=\"M6.5 19a5.5 5.5 0 0 1 11 0\"/><path d=\"M12 4v5M9.5 6.5L12 9l2.5-2.5\"/>", "xufton": "<path d=\"M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z\"/><path d=\"M17 3.5v3M15.5 5h3\"/>"};
+/* Mintaqaviy vaqtlar: asosiy mintaqa vaqti + quyosh geometriyasi farqi + admin tuzatishi */
+const REG=[["qarshi","Qarshi",38.861,65.789],["shahrisabz","Shahrisabz",39.058,66.832],["kitob","Kitob",39.118,66.886],["guzor","G‘uzor",38.622,66.248],["koson","Koson",39.037,65.585],["muborak","Muborak",39.255,65.153],["dehqonobod","Dehqonobod",38.357,66.510],["chiroqchi","Chiroqchi",39.033,66.573],["yakkabogh","Yakkabog‘",38.972,66.683],["qamashi","Qamashi",38.822,66.457],["samarqand","Samarqand",39.654,66.960],["buxoro","Buxoro",39.775,64.423],["navoiy","Navoiy",40.103,65.374],["jizzax","Jizzax",40.116,67.842],["guliston","Guliston",40.489,68.784],["toshkent","Toshkent",41.311,69.240],["fargona","Farg‘ona",40.384,71.784],["andijon","Andijon",40.783,72.344],["namangan","Namangan",41.000,71.673],["termiz","Termiz",37.224,67.278],["urganch","Urganch",41.550,60.633],["nukus","Nukus",42.460,59.603]];
+const RG=Object.fromEntries(REG.map(r=>[r[0],r]));
+const DEGR=Math.PI/180,gpsLoc=()=>{const q=get("qloc",null);return q&&q.gps?q:null};
+let MINT=get("mint",{m:"auto"});
+function sunEv(dt,lat,lon){
+  const n=Math.round((Date.UTC(dt.getFullYear(),dt.getMonth(),dt.getDate())-Date.UTC(dt.getFullYear(),0,0))/864e5),g=2*Math.PI/365*(n-1);
+  const eq=229.18*(0.000075+0.001868*Math.cos(g)-0.032077*Math.sin(g)-0.014615*Math.cos(2*g)-0.040849*Math.sin(2*g));
+  const de=0.006918-0.399912*Math.cos(g)+0.070257*Math.sin(g)-0.006758*Math.cos(2*g)+0.000907*Math.sin(2*g)-0.002697*Math.cos(3*g)+0.00148*Math.sin(3*g);
+  const f=lat*DEGR,noon=720-4*lon-eq+300;
+  const H=a=>{const c=(Math.sin(a*DEGR)-Math.sin(f)*Math.sin(de))/(Math.cos(f)*Math.cos(de));return Math.acos(Math.max(-1,Math.min(1,c)))/DEGR*4};
+  const asrA=Math.atan(1/(2+Math.tan(Math.abs(f-de))))/DEGR;
+  return{bomdod:noon-H(-15),quyosh:noon-H(-0.833),peshin:noon,asr:noon+H(asrA),shom:noon+H(-0.833),xufton:noon+H(-15)};
+}
+const baseReg=()=>RG[(D.vaqtlar||{}).baza]||RG.qarshi;
+function nearestReg(lat,lon){let b=null,bd=1e9;for(const r of REG){const dy=(r[2]-lat)*111.2,dx=(r[3]-lon)*111.2*Math.cos(lat*DEGR),d=Math.hypot(dx,dy);if(d<bd){bd=d;b=r}}return{r:b,d:bd}}
+function myLoc(){
+  if(MINT.m!=="auto"&&RG[MINT.m]){const r=RG[MINT.m];return{lat:r[2],lon:r[3],id:r[0],name:r[1],mode:"m"}}
+  const q=gpsLoc();
+  if(q){const n=nearestReg(q.lat,q.lon);return{lat:q.lat,lon:q.lon,id:n.r[0],name:n.d<=40?n.r[1]:n.r[1]+" yaqinida",mode:"g"}}
+  const b=baseReg();return{lat:b[2],lon:b[3],id:b[0],name:b[1],mode:"b"}
+}
+const dStr=d=>d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());
+const fT=m=>{m=((Math.round(m)%1440)+1440)%1440;return p2(m/60|0)+":"+p2(m%60)};
+function calcT(loc,when,ov){
+  const v=D.vaqtlar||{},b=baseReg(),today=when||new Date();
+  let bd=new Date(v.bazaSana||D.yangilangan||"");if(isNaN(bd)||Math.abs(today-bd)>400*864e5)bd=today;
+  else bd=new Date(bd.getFullYear(),bd.getMonth(),bd.getDate());
+  const A=sunEv(today,loc.lat,loc.lon),B=sunEv(bd,b[2],b[3]),adj=ov===null?{}:(ov||(v.mint||{})[loc.id]||{}),o={};
+  for(const[k]of N){const[h,m]=String(v[k]||"00:00").split(":");o[k]=fT((+h*60+ +m)+(A[k]-B[k])+(+adj[k]||0))}
+  return o;
+}
+let ET={},EL=null,ED="";
+function refT(){EL=myLoc();ET=calcT(EL);ED=dStr(new Date())}
+const TM=k=>ET[k]||(D.vaqtlar||{})[k]||"--:--";
 const PER=["Bomdod vaqti","Peshindan oldingi vaqt","Peshin vaqti","Asr vaqti","Shom vaqti","Xufton vaqti"];
 function draw(){
-  $("hij").textContent=hijri();drawH();kInfo();
+  refT();if($("rgl"))rgDraw();document.querySelectorAll(".rgn").forEach(e=>e.textContent=EL.name+(EL.mode==="g"?" · GPS":""));$("hij").textContent=hijri();drawH();kInfo();
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
-  $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${D.vaqtlar[k]}</b></li>`).join("");
+  $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
-  $("yang").textContent=D.yangilangan?"Vaqtlar yangilangan: "+D.yangilangan:"";
+  {const t=new Date();$("yang").textContent="Vaqtlar yangilangan: "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()+" · "+EL.name}
   tick();
 }
 const sec=t=>{const[a,b]=t.split(":");return(+a*60+ +b)*60};
 const p2=x=>String(x).padStart(2,"0");
 function tick(){
-  const d=new Date(),s=d.getHours()*3600+d.getMinutes()*60+d.getSeconds(),n=N.length,T=N.map(([id])=>sec(D.vaqtlar[id]));
+  const d=new Date(),s=d.getHours()*3600+d.getMinutes()*60+d.getSeconds(),n=N.length,T=N.map(([id])=>sec(TM(id)));
+  if(ED&&ED!==dStr(d)){draw();return}
   let k=T.findIndex(t=>t>s),pi,prevT,nextT,cur,nxt,past;
   if(k<0){k=0;pi=n-1;prevT=T[pi];nextT=T[0]+86400;cur=pi;nxt=0;past=pi}
   else if(k===0){pi=n-1;prevT=T[pi]-86400;nextT=T[0];cur=-1;nxt=0;past=0}
   else{pi=k-1;prevT=T[pi];nextT=T[k];cur=pi;nxt=k;past=pi}
   const diff=nextT-s,span=Math.max(nextT-prevT,1),pr=Math.min(1,Math.max(0,(s-prevT)/span));
   const cds=p2(diff/3600|0)+":"+p2(diff%3600/60|0)+":"+p2(diff%60);
-  $("hnm").textContent=k===1?"Bomdod vaqti tugaydi":N[k][1];$("htm").textContent=D.vaqtlar[N[k][0]]+(nxt===0&&s>=T[n-1]?" · ertaga":"");
+  $("hnm").textContent=k===1?"Bomdod vaqti tugaydi":N[k][1];$("htm").textContent=TM(N[k][0])+(nxt===0&&s>=T[n-1]?" · ertaga":"");
   $("hcd").textContent=cds;$("hpb").style.width=(pr*100).toFixed(2)+"%";$("hnow").textContent="Hozir: "+PER[pi];
   $("nowN").textContent=PER[pi];
   $("cd").textContent=p2(diff/3600|0)+":"+p2(diff%3600/60|0)+":"+p2(diff%60);
   $("cap").textContent=k===1?"Bomdod vaqti tugashiga":N[k][1]+" vaqti kirishiga";
   $("pb").style.width=(pr*100).toFixed(2)+"%";
-  $("pa").textContent=D.vaqtlar[N[pi][0]];$("pc").textContent=D.vaqtlar[N[k][0]];
+  $("pa").textContent=TM(N[pi][0]);$("pc").textContent=TM(N[k][0]);
   [...$("list").children].forEach((li,i)=>{
     li.classList.toggle("cur",i===cur);li.classList.toggle("nxt",i===nxt);li.classList.toggle("past",i<past);
     const c=li.querySelector(".chip");c.textContent=i===cur?"Hozir":i===nxt?(nxt===0&&s>=T[n-1]?"Ertaga":"Keyingi"):i<past?"✓":"";
@@ -601,34 +709,28 @@ if(![33,100,0].includes(Z.max))Z.max=Z.max>=99?100:33;
 const zd=()=>Z.d[Z.sel]||(Z.d[Z.sel]={n:0,r:0,t:0});
 const zmax=()=>Z.seq?SQN[Z.step]:(Z.max||Infinity);
 const vib=ms=>navigator.vibrate&&navigator.vibrate(ms);
-$("col").innerHTML='<div class="bead"></div>'.repeat(12);
 $("zp").innerHTML=ZK.map((k,i)=>`<button data-i="${i}">${k.sh}</button>`).join("");
-$("targets").innerHTML=[[33,"33"],[100,"100"],[0,"∞"]].map(([v,t])=>`<button data-v="${v}" aria-label="${v?v+" ta":"cheksiz"}">${t}</button>`).join("")+'<button id="seq">Namoz tasbehi</button>';
+$("zseg").innerHTML=[[33,"33"],[100,"100"],[0,"∞"]].map(([v,t])=>`<button data-v="${v}" aria-label="${v?v+" ta":"cheksiz"}">${t}</button>`).join("");
+const ZC=703.7;
 function showT(anim){
   const k=ZK[Z.sel],d=zd(),m=zmax();
-  $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="al">$1</span>');$("ztr").textContent=k.tr+" · "+k.ma;
-  $("cnt").textContent=d.n;$("zof").textContent=m===Infinity?"":"/ "+m;
-  $("zfill").style.width=m===Infinity?"0":Math.min(100,d.n/m*100)+"%";$("zbar").style.visibility=m===Infinity?"hidden":"";
-  $("rounds").textContent=Z.seq?"Namozdan keyingi tasbeh: "+(Z.step+1)+"/3 qadam":Z.grand===0?"Pastdagi donalarni bosib sanang":(m===Infinity?"Cheksiz hisob":"Aylanishlar: "+d.r)+" · bu zikr jami: "+d.t;
-  $("jami").textContent="Jami: "+Z.grand;
+  $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="al">$1</span>');$("ztr").textContent=k.tr;$("zma").textContent=k.ma;
+  $("cnt").textContent=d.n;$("zof").textContent=m===Infinity?"cheksiz":"/ "+m;
+  $("zpg").style.strokeDashoffset=m===Infinity?ZC:ZC*(1-Math.min(1,d.n/m));
+  $("zr").textContent=d.r;$("zt").textContent=d.t;$("zg").textContent=Z.grand;
+  $("zjami").textContent=Z.seq?"Namozdan keyingi tasbeh · "+(Z.step+1)+"-qadam / 3":Z.grand===0?"Doira ichini bosib sanang":"Telefon yopilsa ham hisob saqlanadi";
+  const sq=$("zsq");sq.classList.toggle("on",Z.seq);[...sq.children].forEach((e,i)=>{e.className=i<Z.step?"dn":i===Z.step?"on":""});
   [...$("zp").children].forEach((b,i)=>b.classList.toggle("on",i===Z.sel));
-  [...$("targets").children].forEach(b=>{if(b.dataset.v){b.classList.toggle("on",!Z.seq&&+b.dataset.v===Z.max);b.style.display=Z.seq?"none":""}});
+  [...$("zseg").children].forEach(b=>{b.classList.toggle("on",!Z.seq&&+b.dataset.v===Z.max);b.style.opacity=Z.seq?".4":""});
   $("seq").classList.toggle("on",Z.seq);
-  if(anim){
-    const c=$("zc");c.classList.remove("fi");void c.offsetWidth;c.classList.add("fi");
-  }
+  if(anim){const c=$("zc");c.classList.remove("fi");void c.offsetWidth;c.classList.add("fi")}
   localStorage.setItem("zikr",JSON.stringify(Z));
 }
 $("zp").onclick=e=>{const i=e.target.dataset.i;if(i===undefined)return;Z.seq=false;Z.sel=+i;showT(true)};
-$("targets").onclick=e=>{
-  const t=e.target;
-  if(t.dataset.v){Z.max=+t.dataset.v;zd().n=0;showT();return}
-  if(t.id==="seq"){Z.seq=!Z.seq;if(Z.seq){Z.step=0;Z.sel=0;zd().n=0}showT(true)}
-};
-$("strip").onclick=()=>{
-  const c=$("col");
-  c.style.transition="transform .12s";c.style.transform="translateY(64px)";
-  setTimeout(()=>{c.style.transition="none";c.style.transform="translateY(0)"},120);
+$("zseg").onclick=e=>{const t=e.target;if(t.dataset.v===undefined)return;Z.seq=false;Z.max=+t.dataset.v;zd().n=0;showT()};
+$("seq").onclick=()=>{Z.seq=!Z.seq;if(Z.seq){Z.step=0;Z.sel=0;zd().n=0}showT(true)};
+$("ztap").onclick=()=>{
+  const b=$("ztap");b.classList.remove("pulse");void b.offsetWidth;b.classList.add("pulse");
   const d=zd();d.n++;d.t++;Z.grand++;
   if(d.n>=zmax()){
     d.n=0;d.r++;
@@ -670,7 +772,7 @@ function qCalc(){
 }
 function qLocate(){
   if(!navigator.geolocation)return;
-  navigator.geolocation.getCurrentPosition(p=>{qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};localStorage.setItem("qloc",JSON.stringify(qloc));qCalc()},()=>{},{timeout:8000,maximumAge:86400000});
+  navigator.geolocation.getCurrentPosition(p=>{qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};localStorage.setItem("qloc",JSON.stringify(qloc));qCalc();draw()},()=>{},{timeout:8000,maximumAge:86400000});
 }
 function qHeading(a,b,g){
   const x=b*RAD,y=g*RAD,z=a*RAD,cY=Math.cos(y),cZ=Math.cos(z),sX=Math.sin(x),sY=Math.sin(y),sZ=Math.sin(z);
@@ -876,13 +978,12 @@ const legend=o=>o===CW?`<div class="kbd klg">${LEG_W.map(([n,d])=>`<div class="k
 
 const KD=[
  {id:"mol",t:"Mol zakoti",d:"Pul, oltin-kumush va savdo mollari",ic:'<circle cx="9" cy="9" r="6"/><path d="M15 9.5A6 6 0 1 1 9.5 15"/>',r:z=>isN(z.nisob)?"Nisob: "+fm(z.nisob)+" so‘m":""},
- {id:"fitr",t:"Sadaqai fitr",d:"Har bir kishi uchun, hayitdan oldin",ic:'<path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/>',r:z=>{const a=G.map(([c])=>zg(z,"fitr")[c]).filter(isN);return a.length?fm(Math.min(...a))+" so‘mdan":""}},
+ {id:"fitr",t:"Fitr sadaqasi",d:"Har bir kishi uchun, hayitdan oldin",ic:'<path d="M5 8h14l-1 12H6z"/><path d="M9 8a3 3 0 0 1 6 0"/>',r:z=>{const a=G.map(([c])=>zg(z,"fitr")[c]).filter(isN);return a.length?fm(Math.min(...a))+" so‘mdan":""}},
  {id:"fidya",t:"Fidya",d:"Ro‘za tuta olmaganlar uchun",ic:'<path d="M3 11h18a9 9 0 0 1-18 0z"/><path d="M8 7c0-2 2-2 2-4M13 7c0-2 2-2 2-4"/>',r:z=>{const a=G.map(([c])=>zg(z,"fidya")[c]).filter(isN);return a.length?fm(Math.min(...a))+" so‘mdan":""}},
  {id:"ushr",t:"Ushr",d:"Dehqonchilik hosilidan",ic:'<path d="M12 21V8"/><path d="M12 12c-4 0-5-3-5-5 4 0 5 2 5 5zM12 12c4 0 5-3 5-5-4 0-5 2-5 5zM12 17c-4 0-5-3-5-5 4 0 5 2 5 5zM12 17c4 0 5-3 5-5-4 0-5 2-5 5z"/>',r:z=>(isN(z.ushrT)?z.ushrT:10)+"% yoki "+(isN(z.ushrS)?z.ushrS:5)+"%"},
- {id:"chorva",t:"Chorva zakoti",d:"Tuya, qora mol, qo‘y va echki",ic:'<path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/>',r:()=>""},
- {id:"kim",t:"Zakot kimlarga beriladi",d:"Sarflanadigan toifalar va tartib",ic:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20a6 6 0 0 1 12 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.2A5 5 0 0 1 21 19"/>',r:()=>""}
+ {id:"chorva",t:"Chorva zakoti",d:"Tuya, qora mol, qo‘y va echki",ic:'<path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/>',r:()=>""}
 ];
-const TT={kim:"Zakot kimlarga beriladi",mol:"Mol zakoti",fitr:"Sadaqai fitr",fidya:"Fidya",ushr:"Ushr",chorva:"Chorva zakoti",tuya:"Tuya zakoti",qora:"Qora mol zakoti",qoy:"Qo‘y va echki zakoti"};
+const TT={kim:"Zakot kimlarga beriladi",mol:"Mol zakoti",fitr:"Fitr sadaqasi",fidya:"Fidya",ushr:"Ushr",chorva:"Chorva zakoti",tuya:"Tuya zakoti",qora:"Qora mol zakoti",qoy:"Qo‘y va echki zakoti"};
 const KV={k_ppl:"1"},KS={p:null,st:0,held:true,sa:true,own:true,irr:true,gr:"b",fs:"a",ut:"t"};let KT=[];
 const kn=id=>{const v=parseFloat(String(KV[id]||"").replace(/\s/g,"").replace(",","."));return isNaN(v)?0:v};
 const ksp=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g," ");
@@ -901,21 +1002,22 @@ function kInfo(){
   const z=zs(),s=(x,u)=>isN(x)?fm(x)+" "+u:"—";
   $("kcards").innerHTML=KD.map(k=>{const r=k.r(z);return `<button class="kcard" data-o="${k.id}"><span class="kic"><svg viewBox="0 0 24 24">${k.ic}</svg></span><span class="kct"><b>${k.t}</b><span>${k.d}</span>${r?`<em>${r}</em>`:""}</span><span class="kch">›</span></button>`}).join("");
   $("kinfo").innerHTML=`<div class="krates"><h3>Joriy miqdorlar</h3><div class="krg"><div><span>Nisob</span><b>${s(z.nisob,"so‘m")}</b></div><div><span>Zakot ulushi</span><b>${pct(isN(z.foiz)?z.foiz:2.5)}</b></div><div><span>Ushr (tabiiy)</span><b>${pct(isN(z.ushrT)?z.ushrT:10)}</b></div><div><span>Ushr (mehnat bilan)</span><b>${pct(isN(z.ushrS)?z.ushrS:5)}</b></div></div>${z.manba||z.sana?`<div class="krs">${esc(z.manba||"")}${z.manba&&z.sana?" · ":""}${z.sana?"yangilangan: "+z.sana:""}</div>`:""}</div>`;
-  if(KS.p)kUpd();
+  kPdfHub();if(KS.p)kUpd();
 }
 $("kcards").onclick=e=>{const b=e.target.closest("[data-o]");if(b)openK(b.dataset.o)};
 function openK(id){
   if(!KT.length){$("kh").style.display="none";$("kc").style.display="block";document.body.classList.add("zsub")}
+  KS.mt=0;if(id==="kim"){id="mol";KS.mt=1}
   KT.push(id);KS.p=id;KS.st=0;kRender();scrollTo(0,0);history.pushState({k:KT.length},"");
 }
-function kShowHub(){document.body.classList.remove("zsub");KS.p=null;$("kc").style.display="none";$("kh").style.display="block";scrollTo(0,0)}
+function kShowHub(){kPdfHub();document.body.classList.remove("zsub");KS.p=null;$("kc").style.display="none";$("kh").style.display="block";scrollTo(0,0)}
 addEventListener("popstate",()=>{
   if(!KT.length)return;KT.pop();
   if(!KT.length){kShowHub();return}
   KS.p=KT[KT.length-1];KS.st=0;kRender();scrollTo(0,0);
 });
 $("kback").onclick=()=>{if(KT.length)history.back()};
-function kRender(){$("kct").textContent=TT[KS.p];$("kbody").innerHTML=PG[KS.p]();kUpd()}
+function kRender(){$("kct").textContent=TT[KS.p];$("kbody").innerHTML=PG[KS.p]()+'<div id="kpdfw"></div>';kUpd()}
 const cond=()=>`<div class="kf2 kcond"><div class="kl2">Chorva bir yildan beri sizdami?</div>${seg("own","Ha","Yo‘q")}</div><div class="kf2 kcond"><div class="kl2">Yilning ko‘p qismida o‘tlab yuribdimi?</div><div class="kh2">Ishlatiladigan yoki doim yem berib boqiladigan chorvadan zakot berilmaydi</div>${seg("sa","Ha","Yo‘q")}</div>`;
 const grainPage=(kind,cnt,unit,q)=>{
   const o=zg(zs(),kind);
@@ -931,7 +1033,9 @@ const FS=[["a","Keksa yoki surunkali bemor","Ro‘za tutishga umuman qodir emasm
 const FV={b:["no","Fidya bermaysiz","Shariat ro‘za tutmaslikka ruxsat beradi, ammo fidya berilmaydi. Tuzalganingizdan keyin qazo bo‘lgan kunlarning ro‘zasini tutib berasiz."],c:["no","Ro‘za tutish farz","Ro‘za tutishga qodir bo‘la turib fidya bersangiz, ro‘za sizdan soqit bo‘lmaydi va fidyangiz o‘z o‘rniga tushmaydi."]};
 const PG={
  mol(){
-  const s=KS.st;let h=dots(s);
+  const s=KS.st,tb=`<div class="mtabs"><button type="button" data-mt="0" class="${KS.mt?"":"on"}">Hisoblash</button><button type="button" data-mt="1" class="${KS.mt?"on":""}">Kimlarga beriladi</button></div>`;
+  if(KS.mt)return tb+KIM;
+  let h=tb+dots(s);
   if(s===0)h+=`<div class="kst">1-qadam · Mol-mulkingiz</div><p class="kp">Zakot hisoblanadigan barcha mol-mulkni kiriting. Yo‘q narsani bo‘sh qoldiring.</p>`+
    fld("k_cash","Naqd pul va bank hisoblari","Qo‘lingizdagi, kartadagi va omonatdagi pul")+
    fld("k_gold","Oltin va kumush","Buyum yoki quyma — bugungi bozor qiymatida")+
@@ -944,7 +1048,7 @@ const PG={
   return h+`<div class="kbtns">${s>0?'<button id="kprev" class="k2">Orqaga</button>':""}${s<2?'<button id="knext">Davom etish</button>':'<button id="kagain" class="k2">Boshidan boshlash</button>'}</div>`;
  },
  kim(){return KIM},
- fitr(){return intro("<b>Sadaqai fitr</b> — Ramazon hayitidan oldin beriladigan sadaqa.<br><br><b>Kimga vojib?</b> Hur, nisob miqdoridagi mulkka ega musulmon erkak va ayolga. Bu yerda molning o‘suvchi bo‘lishi shart emas.<br><br><b>Kim uchun beriladi?</b> Nisob egasi o‘zi va balog‘atga yetmagan bolalari uchun berishi vojib.<br><br><b>Ayol va balog‘atga yetgan farzandlar</b> uchun berish vojib emas, ularning o‘zlari berishi maqbul. Ammo ular aytmasa ham siz ular uchun bersangiz, ularning zimmasidan soqit bo‘ladi.")+grainPage("fitr","k_ppl","kishi",["Necha kishi uchun?","O‘zingiz va balog‘atga yetmagan bolalaringiz soni (xohlasangiz, ayol va katta farzandlaringizni ham qo‘shing)"])+FITR_INFO},
+ fitr(){return intro("<b>Fitr sadaqasi</b> — Ramazon hayitidan oldin beriladigan sadaqa.<br><br><b>Kimga vojib?</b> Hur, nisob miqdoridagi mulkka ega musulmon erkak va ayolga. Bu yerda molning o‘suvchi bo‘lishi shart emas.<br><br><b>Kim uchun beriladi?</b> Nisob egasi o‘zi va balog‘atga yetmagan bolalari uchun berishi vojib.<br><br><b>Ayol va balog‘atga yetgan farzandlar</b> uchun berish vojib emas, ularning o‘zlari berishi maqbul. Ammo ular aytmasa ham siz ular uchun bersangiz, ularning zimmasidan soqit bo‘ladi.")+grainPage("fitr","k_ppl","kishi",["Necha kishi uchun?","O‘zingiz va balog‘atga yetmagan bolalaringiz soni (xohlasangiz, ayol va katta farzandlaringizni ham qo‘shing)"])+FITR_INFO},
  fidya(){return intro("<b>Fidya</b> — ro‘za tutishga umuman qodir bo‘lmagan qariya yoki surunkali bemor tutolmagan har bir kun uchun beradigan to‘lov.")+
   `<div class="kf2"><div class="kl2">Sizning holatingiz qanday?</div><div class="kfs">${FS.map(([k,t,d])=>`<button type="button" class="kfc${KS.fs===k?" on":""}" data-f="${k}"><b>${t}</b><span>${d}</span></button>`).join("")}</div></div><div id="fst" style="margin-top:12px"></div><div id="fcalc">`+
   grainPage("fidya","k_days","kun",["Necha kunlik ro‘za uchun?","Tutilmagan kunlar soni (Ramazon 29 yoki 30 kun)"]).replace('<div id="kres"',`<div class="kq">${[1,10,29,30].map(n=>`<button type="button" data-q="${n}">${n} kun</button>`).join("")}</div><div id="kres"`)+`</div>`+FIDYA_INFO},
@@ -969,9 +1073,11 @@ function grainRes(kind,cnt,unit,title){
   const rows=G.filter(([k])=>isN(o[k])).map(([k])=>kRow(gname(k),fm(n*o[k])+" so‘m")).join("");
   r.innerHTML=(!isN(o[c])?miss(nm+" uchun miqdor"):verdict("ok",title+" · "+nm.toLowerCase()+" bilan",fm(n)+" "+unit+" × "+fm(o[c])+" so‘m",fm(n*o[c])+" so‘m"))+(rows?`<h3 class="kh3">Boshqa turlar bilan</h3><div class="kbd">${rows}</div>`:"");
 }
-function kUpd(){
+function kUpd(){kUpd0();kPdf()}
+function kUpd0(){
   const z=zs(),p=KS.p;if(!p)return;
   if(p==="mol"){
+    if(KS.mt)return;
     const m=molNum(),t=$("ktot");
     if(KS.st===0&&t)t.innerHTML=`Jami mol-mulk<b>${fm(m.parts)} so‘m</b>`;
     if(KS.st===1&&t)t.innerHTML=`Sof mol (mol-mulk − qarz)<b>${fm(m.net)} so‘m</b>`;
@@ -983,11 +1089,11 @@ function kUpd(){
       else if(!KS.held)v=verdict("no","Zakot hozircha farz emas","Mol-mulk bir yil egalikda turmagan. Yil to‘lgach, qayta hisoblang.");
       else if(m.net<z.nisob){const q=Math.min(100,m.net/z.nisob*100);v=verdict("no","Nisobga yetmagan","Sof molingiz nisobdan kam, shuning uchun zakot farz emas.")+`<div class="kbar2"><i style="width:${q}%"></i></div><div class="kbl"><span>Sof mol: ${fm(m.net)}</span><span>Nisob: ${fm(z.nisob)}</span></div>`}
       else{const f=isN(z.foiz)?z.foiz:2.5;v=verdict("ok","Zakot farz",`Sof molingiz nisobga yetgan. Zakot — sof moldan ${pct(f)}.`,fm(m.net*f/100)+" so‘m")}
-      $("kres").innerHTML=v+rows+'<button type="button" class="klink" data-o="kim">Zakot kimlarga beriladi? <span>›</span></button>';
+      $("kres").innerHTML=v+rows+'<button type="button" class="klink" data-mt="1">Zakot kimlarga beriladi? <span>›</span></button>';
     }
     return;
   }
-  if(p==="fitr"){grainRes("fitr","k_ppl","kishi","Sadaqai fitr");return}
+  if(p==="fitr"){grainRes("fitr","k_ppl","kishi","Fitr sadaqasi");return}
   if(p==="fidya"){const v=FV[KS.fs];$("fcalc").style.display=v?"none":"";$("fst").innerHTML=v?verdict(v[0],v[1],v[2]):"";if(!v)grainRes("fidya","k_days","kun","Fidya");return}
   if(p==="chorva"){$("kwarn").innerHTML=z.ok?"":'<div class="kwarn">Diqqat: chorva jadvallari hozir tekshiruvdan o‘tkazilmoqda. Natijani yakuniy deb hisoblamang.</div>';return}
   if(p==="ushr"){const kg=kn("k_kg"),pr=kn("k_price"),u=KS.ut,q=u==="t"?(isN(z.ushrT)?z.ushrT:10):u==="s"?(isN(z.ushrS)?z.ushrS:5):10,nm=u==="a"?"Asal":"Ushr";
@@ -1011,6 +1117,7 @@ function kUpd(){
 $("kbody").addEventListener("input",e=>{const el=e.target;if(!el.classList.contains("kn"))return;
   const d=el.value.replace(/[^\d]/g,"");el.value=ksp(d);KV[el.id]=d;kUpd()});
 $("kbody").addEventListener("click",e=>{
+  const mt=e.target.closest("[data-mt]");if(mt){KS.mt=+mt.dataset.mt;kRender();scrollTo(0,0);return}
   const o=e.target.closest("[data-o]");if(o){openK(o.dataset.o);return}
   const fb=e.target.closest("[data-f]");
   if(fb){KS.fs=fb.dataset.f;document.querySelectorAll(".kfc").forEach(b=>b.classList.toggle("on",b===fb));kUpd();return}
@@ -1029,6 +1136,51 @@ $("kbody").addEventListener("click",e=>{
   else if(id==="kprev"){KS.st--;kRender();scrollTo(0,0)}
   else if(id==="kagain"){KS.st=0;kRender();scrollTo(0,0)}
 });
+
+/* PDF hisobot: har bir hisob-kitob natijasi saqlanadi va chiroyli hisobotga chiqariladi */
+let SNAP=get("snap",{});
+function kPdf(){
+  const p=KS.p,r=$("kres"),w=$("kpdfw");if(!p||!w)return;
+  const v=r&&!(p==="mol"&&KS.mt)?r.querySelector(".kv"):null;
+  if(!v||v.classList.contains("neu")){w.innerHTML="";return}
+  const inp=[];
+  $("kbody").querySelectorAll(".kf2").forEach(f=>{
+    const l=f.querySelector(".kl2"),i=f.querySelector("input"),sg=f.querySelector(".seg button.on"),u=f.querySelector(".kin span,.kin em");
+    if(!l)return;const val=i?(i.value||"0")+(u?" "+u.textContent:""):sg?sg.textContent:"";if(val)inp.push([l.textContent,val]);
+  });
+  [["Tanlangan tur",".kgc.on"],["Holat",".kfc.on"],["Birlik","[data-u].on"]].forEach(([n,q])=>{const e=$("kbody").querySelector(q);if(e)inp.push([n,(e.firstElementChild||e).textContent.trim()])});
+  if(p==="mol"){inp.length=0;[["k_cash","Naqd pul va bank hisoblari"],["k_gold","Oltin va kumush"],["k_trade","Savdo mollari"],["k_recv","Sizga qaytariladigan qarzlar"],["k_debt","Sizning qarzlaringiz"]].forEach(([id,n])=>inp.push([n,fm(kn(id))+" so‘m"]));inp.push(["Mol-mulk bir yildan beri egalikda",KS.held?"Ha":"Yo‘q"])}
+  const c=r.cloneNode(true);c.querySelectorAll("button,.klink").forEach(b=>b.remove());
+  SNAP[p]={t:p==="mol"?"Mol zakoti":TT[p],i:inp,h:c.innerHTML,ts:Date.now()};
+  try{localStorage.setItem("snap",JSON.stringify(SNAP))}catch(e){}
+  w.innerHTML='<button type="button" class="kpdf" data-pdf="one"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg>PDF sifatida saqlash</button>';
+}
+function kPdfHub(){
+  const h=$("kpdfh");if(!h)return;const n=Object.keys(SNAP).length;
+  h.innerHTML=n?`<button type="button" class="kpdf" data-pdf="all"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg>Barcha hisoblarni PDF qilish<span>${n} ta</span></button><button type="button" class="klr" data-pdf="clr">Saqlangan hisoblarni tozalash</button>`:"";
+}
+function pdfDoc(keys){
+  const t=new Date(),M=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"],
+   ds=t.getDate()+"-"+M[t.getMonth()]+" "+t.getFullYear()+", "+p2(t.getHours())+":"+p2(t.getMinutes()),
+   no="JS-"+t.getFullYear()+p2(t.getMonth()+1)+p2(t.getDate())+"-"+p2(t.getHours())+p2(t.getMinutes());
+  const secs=keys.filter(k=>SNAP[k]).map((k,i)=>{const x=SNAP[k];
+    return `<section class="ps"><div class="ph"><span class="pnn">${i+1}</span><h2>${esc(x.t)}</h2></div>
+    ${x.i.length?`<h3>Kiritilgan ma’lumotlar</h3><table>${x.i.map(([a,b])=>`<tr><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join("")}</table>`:""}
+    <h3>Natija</h3><div class="pres">${x.h}</div></section>`}).join("");
+  if(!secs)return;
+  $("prt").innerHTML=`<header class="pt"><div><div class="pb">Jannat sari</div><div class="psb">Zakot va sadaqa hisob-kitobi</div></div><div class="pm"><b>${no}</b><br>${ds}</div></header>${secs}
+   <footer class="pf"><b>Muhim eslatma.</b> Hisob-kitob yordamchi vosita sifatida taqdim etilgan. Yakuniy hukm uchun albatta ishonchli ulamo yoki muftiylikka murojaat qiling: ilova natijasi ularning fatvosi o‘rnini bosa olmaydi.<div class="pf2">Jannat sari · ${no}</div></footer>`;
+  const old=document.title;document.title="Jannat-sari-hisobot-"+dStr(t);
+  document.body.classList.add("printing");
+  setTimeout(()=>{try{window.print()}catch(e){toast("Chop etish bu qurilmada mavjud emas")}setTimeout(()=>{document.title=old},800)},200);
+}
+addEventListener("afterprint",()=>document.body.classList.remove("printing"));
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-pdf]");if(!b)return;const m=b.dataset.pdf;
+  if(m==="one"&&KS.p&&SNAP[KS.p])pdfDoc([KS.p]);
+  else if(m==="all")pdfDoc(["mol","fitr","fidya","ushr","tuya","qora","qoy"]);
+  else if(m==="clr"){SNAP={};localStorage.removeItem("snap");kPdfHub();toast("Tozalandi")}
+});
 /* admin: zakot sozlamalari */
 const zn=id=>{const e=$(id);if(!e)return null;const x=parseFloat(String(e.value).replace(/\s/g,"").replace(",","."));return isNaN(x)?null:x};
 function zAdmHtml(){
@@ -1041,7 +1193,7 @@ function zAdmHtml(){
   `<div class="apane" data-z="m"><div class="ac"><div class="ag">Mol zakoti</div>`+
     f("z_nis","Nisob","Zakot farz bo‘ladigan eng kam mol miqdori (so‘mda).",v(z.nisob,""),"so‘m",1)+
     f("z_fz","Zakot ulushi","Sof moldan chiqariladigan ulush. Odatda 2,5.",v(z.foiz,2.5),"%")+`</div></div>`+
-  `<div class="apane" data-z="f"><div class="ac"><div class="ag">Sadaqai fitr — bir kishi uchun</div><p class="ah">Har bir tur nomini o‘zgartirish va narxini so‘mda kiritish mumkin. Nomlar fidyada ham ishlatiladi. Foydalanuvchi o‘zi tanlaydi.</p>${gs("z_fit_",fi,1)}</div></div>`+
+  `<div class="apane" data-z="f"><div class="ac"><div class="ag">Fitr sadaqasi — bir kishi uchun</div><p class="ah">Har bir tur nomini o‘zgartirish va narxini so‘mda kiritish mumkin. Nomlar fidyada ham ishlatiladi. Foydalanuvchi o‘zi tanlaydi.</p>${gs("z_fit_",fi,1)}</div></div>`+
   `<div class="apane" data-z="d"><div class="ac"><div class="ag">Fidya — bir kun uchun</div><p class="ah">Har bir tur bo‘yicha miqdorni so‘mda kiriting.</p><button type="button" class="alink" id="zcopy">Fitr miqdorlarini nusxalash</button>${gs("z_fid_",fd)}</div></div>`+
   `<div class="apane" data-z="h"><div class="ac"><div class="ag">Ushr</div>`+
     f("z_ut","Tabiiy sug‘orish","Yomg‘ir, buloq, daryo suvi bilan sug‘orilgan hosil. Odatda 10.",v(z.ushrT,10),"%")+
@@ -1052,7 +1204,7 @@ function zCount(p){return G.filter(([c])=>zn(p+c)!==null).length}
 function zSt(){
   const e=$("zst");if(!e)return;
   const it=(ok,t)=>`<div class="zs ${ok?"g":"w"}"><i></i>${t}</div>`;
-  e.innerHTML=it(zn("z_nis")!==null,"Nisob")+it(zCount("z_fit_")===G.length,"Sadaqai fitr ("+zCount("z_fit_")+"/"+G.length+" tur)")+it(zCount("z_fid_")===G.length,"Fidya ("+zCount("z_fid_")+"/"+G.length+" tur)")+it(zn("z_fz")!==null&&zn("z_ut")!==null&&zn("z_us")!==null,"Ulushlar (zakot, ushr)")+it($("z_ok")&&$("z_ok").checked,"Chorva jadvallari tekshirilgan");
+  e.innerHTML=it(zn("z_nis")!==null,"Nisob")+it(zCount("z_fit_")===G.length,"Fitr sadaqasi ("+zCount("z_fit_")+"/"+G.length+" tur)")+it(zCount("z_fid_")===G.length,"Fidya ("+zCount("z_fid_")+"/"+G.length+" tur)")+it(zn("z_fz")!==null&&zn("z_ut")!==null&&zn("z_us")!==null,"Ulushlar (zakot, ushr)")+it($("z_ok")&&$("z_ok").checked,"Chorva jadvallari tekshirilgan");
 }
 function readZ(){
   const d=(x,f)=>x===null?f:x,gx=p=>{const o={};G.forEach(([c])=>{const x=zn(p+c);if(x!==null)o[c]=x});return o};
@@ -1060,7 +1212,7 @@ function readZ(){
 }
 
 /* Bo'limlar va "Dastur haqida" */
-const MAINT=["t0","t1","t6"],SUBT=["t2","t3","t4","t5"],STT={t2:"Tasbeh",t3:"Qibla",t4:"Islomiy taqvim",t5:"Zakot va sadaqalar"};
+const MAINT=["t0","t1","t6"],SUBT=["t2","t3","t4","t5"],STT={t2:"Tasbeh",t3:"Qibla",t4:"Islomiy taqvim",t5:"Tazkiya"};
 let CUR="t0",LASTM="t0";
 function show(t,fromPop){
   if(t===CUR&&!fromPop)return;
@@ -1068,7 +1220,7 @@ function show(t,fromPop){
   CUR=t;if(MAINT.includes(t))LASTM=t;
   document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.id===t));
   const nv=$("nv");[...nv.children].forEach((b,i)=>{const on=b.dataset.t===t;b.classList.toggle("on",on);if(on)nv.style.setProperty("--i",i)});
-  document.body.dataset.s=t;document.body.classList.toggle("sub",SUBT.includes(t));
+  document.body.dataset.scr=t;document.body.classList.toggle("sub",SUBT.includes(t));
   $("stt").textContent=STT[t]||"";
   if(SUBT.includes(t)&&!fromPop)history.pushState({r:t},"");
   scrollTo(0,0);
@@ -1088,6 +1240,30 @@ addEventListener("popstate",()=>{
   if(st&&(st.r===CUR||st.k||st.pk))return;
   if(SUBT.includes(CUR))show(LASTM,true);
 });
+
+/* Mintaqa tanlash */
+function locate(then){
+  if(!navigator.geolocation){toast("Bu qurilmada joylashuv aniqlanmaydi");return}
+  navigator.geolocation.getCurrentPosition(p=>{localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));if(typeof qloc!=="undefined")qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};draw();rgDraw();then&&then()},
+   ()=>toast("Joylashuv aniqlanmadi. Ruxsat bering yoki mintaqani qo‘lda tanlang"),{timeout:10000,maximumAge:3600000});
+}
+function rgDraw(){
+  const sel=MINT.m,q=gpsLoc(),b=[`<button type="button" data-r="auto" class="${sel==="auto"?"on":""}"><span>Avtomatik (GPS)<br><small>${q?"Joylashuvingiz bo‘yicha aniq hisoblanadi":"Joylashuv ruxsati so‘raladi"}</small></span>${sel==="auto"?"✓":""}</button>`];
+  b.push('<h4>Qashqadaryo</h4>');
+  REG.forEach((r,i)=>{if(i===10)b.push('<h4>Boshqa viloyatlar</h4>');b.push(`<button type="button" data-r="${r[0]}" class="${sel===r[0]?"on":""}"><span>${r[1]}</span>${sel===r[0]?"✓":""}</button>`)});
+  $("rgl").innerHTML=b.join("");
+  const L=myLoc();$("mrs").textContent=(sel==="auto"?"Avtomatik · ":"")+L.name;
+}
+$("mreg").onclick=()=>{rgDraw();$("rgs").classList.add("on")};
+$("rgx").onclick=()=>$("rgs").classList.remove("on");
+$("rgs").onclick=e=>{
+  if(e.target.id==="rgs"){$("rgs").classList.remove("on");return}
+  const b=e.target.closest("[data-r]");if(!b)return;
+  const r=b.dataset.r;MINT={m:r};localStorage.setItem("mint",JSON.stringify(MINT));
+  if(r==="auto"&&!gpsLoc())locate();
+  draw();rgDraw();if(r!=="auto")$("rgs").classList.remove("on");
+};
+try{if(navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(x=>{if(x.state==="granted"&&MINT.m==="auto")navigator.geolocation.getCurrentPosition(p=>{const o=gpsLoc();if(!o||Math.abs(o.lat-p.coords.latitude)>.02||Math.abs(o.lon-p.coords.longitude)>.02){localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));draw()}},()=>{},{timeout:8000,maximumAge:86400000})}).catch(()=>{})}catch(e){}
 $("mabout").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
@@ -1119,7 +1295,7 @@ async function patchV(fn){
   const t=await tok();if(!t){showAdm();return false}
   const v=JSON.parse(JSON.stringify(D.vaqtlar||{})),err=fn(v);
   if(err){say(err);return false}
-  const y=new Date().toLocaleDateString("sv");
+  const y=v.bazaSana||D.yangilangan||new Date().toLocaleDateString("sv");
   try{const r=await fetch(SB+"/rest/v1/settings?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({vaqtlar:v,yangilangan:y})});
     const a=await r.json();if(!r.ok||!a.length)throw 0;
     D={vaqtlar:v,yangilangan:y};localStorage.setItem("vaqt",JSON.stringify(D));draw();say("Saqlandi ✓");return true}
@@ -1141,11 +1317,46 @@ async function hikmatSave(){
   }catch(e){say("Saqlanmadi. Qaytadan urinib ko‘ring")}
 }
 const ASEC={
- vaqt:{t:"Namoz vaqtlari",d:"Olti vaqt va hijriy sana tuzatish",
-  html:()=>`<div class="ac"><div class="ag">Vaqtlar</div>${N.map(([k,n])=>`<div class="at"><span>${n}</span><input type="time" id="a_${k}" value="${D.vaqtlar[k]}"></div>`).join("")}</div>
-   <div class="ac"><div class="ag">Hijriy sana tuzatish</div><div class="ah">Ilovadagi hijriy sana kuzatuvdan farq qilsa, shu yerdan bir kunga to‘g‘rilang.</div><select id="a_hij"><option value="-1">−1 kun</option><option value="0">Tuzatishsiz</option><option value="1">+1 kun</option></select></div>`,
-  init:()=>{$("a_hij").value=String(+D.vaqtlar.hijri||0)},
-  save:()=>patchV(v=>{for(const[k]of N){v[k]=$("a_"+k).value;if(!v[k])return"Hamma vaqtni kiriting"}v.hijri=+$("a_hij").value})},
+ vaqt:{t:"Namoz vaqtlari",d:"Asosiy vaqtlar, mintaqa tuzatishlari, hijriy sana",
+  html:()=>{const b=baseReg(),cur=calcT({lat:b[2],lon:b[3],id:b[0]},null,null);
+   return `<div class="ac"><div class="ag">Asosiy mintaqa</div><div class="ah">Quyidagi olti vaqt qaysi shahar uchun kiritiladi. Boshqa mintaqalar shu vaqtdan quyosh holatiga qarab o‘zi hisoblanadi.</div><select id="a_baza">${REG.map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</select></div>
+   <div class="ac"><div class="ag">Bugungi vaqtlar</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div>${N.map(([k,n])=>`<div class="at"><span>${n}</span><input type="time" id="a_${k}" value="${cur[k]}"></div>`).join("")}</div>
+   <div class="ac"><div class="ag">Mintaqa bo‘yicha tuzatish</div><div class="ah">Mintaqani tanlang va kerakli vaqtga ± daqiqa qo‘shing. O‘zgarish faqat shu mintaqa uchun amal qiladi. Tuzatishsiz holatda hammasi avtomatik hisoblanadi.</div>
+    <select id="a_rg">${REG.map(r=>`<option value="${r[0]}">${r[1]}</option>`).join("")}</select>
+    <div class="at"><span>Hammasiga</span><div class="stp"><button type="button" data-all="-1">−</button><b id="m_all">·</b><button type="button" data-all="1">+</button></div></div>
+    ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="stp"><button type="button" data-m="${k}" data-d="-1">−</button><b id="m_${k}">0</b><button type="button" data-m="${k}" data-d="1">+</button><em id="r_${k}"></em></div></div>`).join("")}
+    <div class="ah" style="margin:10px 0 0" id="a_prev"></div><div id="a_used"></div></div>
+   <div class="ac"><div class="ag">Hijriy sana tuzatish</div><div class="ah">Ilovadagi hijriy sana kuzatuvdan farq qilsa, shu yerdan bir kunga to‘g‘rilang.</div><select id="a_hij"><option value="-1">−1 kun</option><option value="0">Tuzatishsiz</option><option value="1">+1 kun</option></select></div>`},
+  init:()=>{
+   $("a_hij").value=String(+D.vaqtlar.hijri||0);
+   AD=JSON.parse(JSON.stringify(D.vaqtlar.mint||{}));let cr=null;
+   const cl=()=>{const o={};for(const[k]of N)o[k]=+$("m_"+k).textContent||0;return o};
+   const sv=()=>{if(cr)AD[cr]=cl()};
+   const loc=id=>({lat:RG[id][2],lon:RG[id][3],id});
+   const show=id=>{sv();cr=id;const a=AD[id]||{};for(const[k]of N)$("m_"+k).textContent=a[k]||0;rf()};
+   const rf=()=>{
+     const id=cr,a=cl(),t=calcT(loc(id),null,a),t0=calcT(loc(id),null,{});
+     for(const[k]of N){const x=a[k]||0;$("m_"+k).style.color=x?"var(--ac)":"";$("r_"+k).textContent=t[k]}
+     $("a_prev").textContent=RG[id][1]+" uchun bugungi vaqtlar: "+N.map(([k])=>t[k]).join(" · ");
+     const u=Object.keys(AD).filter(i=>i!==id&&Object.values(AD[i]||{}).some(x=>x)).map(i=>`<button type="button" class="chp" data-g="${i}">${RG[i][1]}</button>`).join("");
+     $("a_used").innerHTML=u?`<div class="ah" style="margin:10px 0 6px">Tuzatish kiritilgan boshqa mintaqalar:</div><div class="chps">${u}</div>`:"";
+   };
+   $("a_rg").onchange=e=>show(e.target.value);
+   $("abody").onclick=e=>{
+     const m=e.target.closest("[data-m]");if(m){const el=$("m_"+m.dataset.m);el.textContent=Math.max(-30,Math.min(30,(+el.textContent||0)+ +m.dataset.d));rf();return}
+     const al=e.target.closest("[data-all]");if(al){for(const[k]of N){const el=$("m_"+k);el.textContent=Math.max(-30,Math.min(30,(+el.textContent||0)+ +al.dataset.all))}rf();return}
+     const g=e.target.closest("[data-g]");if(g&&g.classList.contains("chp")){$("a_rg").value=g.dataset.g;show(g.dataset.g);return}
+   };
+   $("a_baza").onchange=()=>{};
+   AS_SV=sv;show("qarshi");
+  },
+  save:()=>patchV(v=>{
+   AS_SV&&AS_SV();
+   const b=baseReg(),nb=$("a_baza").value,cur=calcT({lat:b[2],lon:b[3],id:b[0]},null,null);
+   let ch=nb!==b[0];for(const[k]of N){if(!$("a_"+k).value)return"Hamma vaqtni kiriting";if($("a_"+k).value!==cur[k])ch=true}
+   if(ch){for(const[k]of N)v[k]=$("a_"+k).value;v.baza=nb;v.bazaSana=new Date().toLocaleDateString("sv")}
+   const m={};for(const id in AD){const o={};for(const k in AD[id])if(AD[id][k])o[k]=AD[id][k];if(Object.keys(o).length)m[id]=o}
+   v.mint=m;v.hijri=+$("a_hij").value})},
  zakot:{t:"Zakot bo‘limi",d:"Nisob, fitr, fidya, ushr, chorva",
   html:zAdmHtml,init:()=>zSt(),
   save:()=>patchV(v=>{v.zakot=readZ()})},
@@ -1160,7 +1371,7 @@ const ASEC={
   init:()=>{$("hm").value=HK.matn;$("hs").value=HK.manba},
   save:hikmatSave}
 };
-let AS=null;
+let AS=null,AD={},AS_SV=null;
 function aHome(){
   AS=null;$("att").textContent="Boshqaruv";$("aback").style.visibility="hidden";$("afoot").classList.remove("on");
   const z=zs(),miss=(isN(z.nisob)?0:1)+(G.filter(([c])=>!isN(zg(z,"fitr")[c])).length?1:0)+(G.filter(([c])=>!isN(zg(z,"fidya")[c])).length?1:0);
@@ -1172,7 +1383,7 @@ function aHome(){
 }
 function aOpen(k){
   AS=k;const s=ASEC[k];$("att").textContent=s.t;$("aback").style.visibility="visible";
-  $("abody").innerHTML=s.html();s.init();$("afoot").classList.add("on");$("amsg").textContent="";$("abody").scrollTop=0;
+  $("abody").onclick=null;$("abody").innerHTML=s.html();s.init();$("afoot").classList.add("on");$("amsg").textContent="";$("abody").scrollTop=0;
 }
 async function showAdm(){
   $("adm").classList.add("on");say("");
