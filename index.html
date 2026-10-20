@@ -262,6 +262,7 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 .apane{display:none}.apane.on{display:block}
 #pn .alink{padding:11px 16px;border:1.5px solid var(--ac);border-radius:12px;color:var(--ac);font-weight:600;font-size:14px;margin-bottom:12px}
 .zs{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:15px}
+.znm{font-weight:600;margin-bottom:6px!important}
 .zs i{width:12px;height:12px;border-radius:50%;flex:none}
 .zs.g i{background:#34d27b}.zs.w i{background:var(--gold)}
 .zs.w{color:var(--gold)}
@@ -346,7 +347,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 2.3</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 2.4</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -714,10 +715,11 @@ const esc=t=>String(t).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const pv=id=>{const v=parseFloat(String($(id).value).replace(/\s/g,"").replace(",","."));return isNaN(v)?0:v};
 const isN=x=>typeof x==="number"&&!isNaN(x);
 const kRow=(a,b)=>`<div class="kr"><span>${a}</span><b>${b}</b></div>`;
-const G=[["b","Bug‘doy"],["a","Arpa"],["m","Mayiz"],["x","Xurmo"]];
+const G=[["b","Bug‘doy"],["b2","Bug‘doy (2)"],["a","Arpa"],["m","Mayiz"],["x","Xurmo"]];
+const gname=c=>((zs().nom||{})[c])||G.find(x=>x[0]===c)[1];
 const zg=(z,k)=>{const o=z[k];return typeof o==="number"?{b:o}:(o&&typeof o==="object"?o:{})};
 const CT={bm:["Bintu maxoz","1 yoshga to‘lib, 2 yoshga kirgan urg‘ochi tuya"],bl:["Bintu labun","2 yoshga to‘lib, 3 yoshga kirgan urg‘ochi tuya"],hq:["Hiqqa","3 yoshga to‘lib, 4 yoshga kirgan urg‘ochi tuya"],jz:["Jaza’a","4 yoshga to‘lib, 5 yoshga kirgan urg‘ochi tuya"],sh:["Qo‘y","bir yoshga to‘lgan qo‘y yoki echki"]};
-const CW={tb:["Tabi‘","1 yoshga to‘lgan buzoq (erkak yoki urg‘ochi)"],ms:["Musinna","2 yoshga to‘lgan buqacha yoki g‘unajin"]};
+const CW={tb:["Tabi‘ yoki tabi‘a","1 yoshga to‘lgan buzoq (tabi‘) yoki 1 yoshga to‘lgan urg‘ochi buzoq (tabi‘a)"],ms:["Musinn yoki musinna","2 yoshga to‘lgan buqacha (musinn) yoki 2 yoshga to‘lgan g‘unajin (musinna)"]};
 function camelP(n){
   const L=[],add=(c,k)=>{if(c>0)L.push([c,k])};
   if(n<5)return L;
@@ -735,14 +737,15 @@ function cowSol(n){
 }
 const sheepN=n=>n<40?0:n<=120?1:n<=200?2:n<=399?3:Math.floor(n/100);
 const cT=L=>L.map(([c,k])=>c+" ta "+CT[k][0].toLowerCase()).join(" + ");
-const wT=S=>S.map(([a,b])=>[a?a+" ta tabi‘":"",b?b+" ta musinna":""].filter(Boolean).join(" + ")).join(" yoki ");
+const wT=S=>S.map(([a,b])=>[a?a+" ta tabi‘/tabi‘a":"",b?b+" ta musinn/musinna":""].filter(Boolean).join(" + ")).join(" yoki ");
 function grp(from,to,fn){const R=[];let s=from,p=fn(from);for(let n=from+1;n<=to+1;n++){const c=n<=to?fn(n):null;if(c!==p){R.push([s,n-1,p]);s=n;p=c}}return R}
 const rl=(a,b)=>b>=99999?a+" va undan ko‘p":a===b?String(a):a+"–"+b;
 const tbl=(rows,h2)=>`<div class="kbd ktw"><table class="kt2"><thead><tr><th>Soni</th><th>${h2}</th></tr></thead><tbody>${rows.map(([a,b,t])=>`<tr data-a="${a}" data-b="${b}"><td>${rl(a,b)}</td><td>${t}</td></tr>`).join("")}</tbody></table></div>`;
 const CAMEL_T=()=>tbl([[1,4,'<span class="kn0">zakot yo‘q</span>'],...grp(5,199,n=>cT(camelP(n))),[200,99999,"150 dan keyingi tartib har 50 ta uchun qaytariladi"]],"Beriladi");
-const COW_T=()=>tbl([[1,29,'<span class="kn0">zakot yo‘q</span>'],[30,39,"1 ta tabi‘"],[40,59,"1 ta musinna"],...grp(60,129,n=>wT(cowSol(n))),[130,99999,"Har 10 ta ko‘payganda shu tartibda davom etadi: har 30 ta uchun 1 tabi‘, har 40 ta uchun 1 musinna"]],"Beriladi");
+const COW_T=()=>tbl([[1,29,'<span class="kn0">zakot yo‘q</span>'],[30,39,"1 ta tabi‘/tabi‘a"],[40,59,"1 ta musinn/musinna"],...grp(60,129,n=>wT(cowSol(n))),[130,99999,"Har 10 ta ko‘payganda shu tartibda davom etadi: har 30 ta uchun 1 tabi‘/tabi‘a, har 40 ta uchun 1 musinn/musinna"]],"Beriladi");
 const SHEEP_T=()=>tbl([[1,39,'<span class="kn0">zakot yo‘q</span>'],[40,120,"1 ta"],[121,200,"2 ta"],[201,399,"3 ta"],[400,499,"4 ta"],[500,99999,"Har 100 ta ko‘payganda yana 1 ta qo‘shiladi"]],"Beriladi (qo‘y yoki echki)");
-const legend=o=>`<div class="kbd klg">${Object.values(o).filter(x=>x[0]!=="Qo‘y").map(([n,d])=>`<div class="kr"><b>${n}</b><span>${d}</span></div>`).join("")}</div>`;
+const LEG_W=[["Tabi‘","1 yoshga to‘lgan buzoq"],["Tabi‘a","1 yoshga to‘lgan urg‘ochi buzoq"],["Musinn","2 yoshga to‘lgan buqacha"],["Musinna","2 yoshga to‘lgan g‘unajin (urg‘ochi)"]];
+const legend=o=>o===CW?`<div class="kbd klg">${LEG_W.map(([n,d])=>`<div class="kr"><b>${n}</b><span>${d}</span></div>`).join("")}</div>`:`<div class="kbd klg">${Object.values(o).filter(x=>x[0]!=="Qo‘y").map(([n,d])=>`<div class="kr"><b>${n}</b><span>${d}</span></div>`).join("")}</div>`;
 
 const KD=[
  {id:"mol",t:"Mol zakoti",d:"Pul, oltin-kumush va savdo mollari",ic:'<circle cx="9" cy="9" r="6"/><path d="M15 9.5A6 6 0 1 1 9.5 15"/>',r:z=>isN(z.nisob)?"Nisob: "+fm(z.nisob)+" so‘m":""},
@@ -789,9 +792,10 @@ function kRender(){$("kct").textContent=TT[KS.p];$("kbody").innerHTML=PG[KS.p]()
 const cond=()=>`<div class="kf2 kcond"><div class="kl2">Chorva bir yildan beri sizdami?</div>${seg("own","Ha","Yo‘q")}</div><div class="kf2 kcond"><div class="kl2">Yilning ko‘p qismida o‘tlab yuribdimi?</div><div class="kh2">Ishlatiladigan yoki doim yem berib boqiladigan chorvadan zakot berilmaydi</div>${seg("sa","Ha","Yo‘q")}</div>`;
 const grainPage=(kind,cnt,unit,q)=>{
   const o=zg(zs(),kind);
-  return `<div class="kf2" style="margin-top:6px"><div class="kl2">Qaysi turda bermoqchisiz?</div><div class="kh2">Har bir tur uchun miqdor alohida e’lon qilingan</div><div class="kgr">${G.map(([c,n])=>`<button type="button" class="kgc${KS.gr===c?" on":""}${isN(o[c])?"":" off"}" data-g="${c}"><b>${n}</b><span>${isN(o[c])?fm(o[c])+" so‘m":"e’lon qilinmagan"}</span></button>`).join("")}</div></div>`+
+  return `<div class="kf2" style="margin-top:6px"><div class="kl2">Qaysi turda bermoqchisiz?</div><div class="kh2">Har bir tur uchun miqdor alohida e’lon qilingan</div><div class="kgr">${G.map(([c])=>{const n=gname(c);return `<button type="button" class="kgc${KS.gr===c?" on":""}${isN(o[c])?"":" off"}" data-g="${c}"><b>${n}</b><span>${isN(o[c])?fm(o[c])+" so‘m":"e’lon qilinmagan"}</span></button>`}).join("")}</div></div>`+
    fld(cnt,q[0],q[1],{c:1,u:unit})+`<div id="kres" style="margin-top:18px"></div>`;
 };
+const FITR_INFO=`<h3 class="kh3">Kimlarga beriladi?</h3><div class="kintro">Fitr sadaqasi musulmon kambag‘al-miskinlarga beriladi. “Fatavoi Hindiya” kitobida keltirilishicha, fitrni berishda eng afzali, avvalo, (kambag‘al) aka-uka, opa-singillar hisoblanadi. So‘ngra ularning farzandlari. Ulardan keyin amaki-ammalar, so‘ngra ularning farzandlari. Tog‘a-xolalar va ularning farzandlari so‘ng yuqoridagilardan tashqari qarindoshlar. Ulardan keyin qo‘shnilar, kasbdoshlar, keyin hamshaharlar yoki qishloqdoshlar haqli hisoblanadi.</div><h3 class="kh3">Kimlarga berilmaydi?</h3><div class="kintro">Fitr sadaqasi nisob miqdoricha moli bo‘lgan boy kishiga, o‘zining ota-onasi, bobo-momosiga, o‘zining o‘g‘il-qizlariga va ularning farzandlariga, er-xotin bir-biriga berish mumkin emas.<br><br>Shuningdek, g‘ayridinga, fosiqqa, gunoh va ma’siyatga, shuningdek musulmonlarga zarar keltiradigan har qanday ishlarga sarflaydigan kimsalarga berilmaydi.<br><br>Fitr sadaqasini muhtojlarning qo‘llariga qiymatini berish joiz. Bu pullar masjid qurilishi, umumiy xayriya ishlari uchun berilishi mumkin emas.</div>`;
 const PG={
  mol(){
   const s=KS.st;let h=dots(s);
@@ -806,7 +810,7 @@ const PG={
   if(s===2)h+=`<div class="kst">Natija</div><div id="kres"></div>`;
   return h+`<div class="kbtns">${s>0?'<button id="kprev" class="k2">Orqaga</button>':""}${s<2?'<button id="knext">Davom etish</button>':'<button id="kagain" class="k2">Boshidan boshlash</button>'}</div>`;
  },
- fitr(){return intro("<b>Sadaqai fitr</b> — Ramazon hayitidan oldin har bir kishi uchun beriladigan sadaqa. O‘zingiz va qaramog‘ingizdagilar (farzandlar, ota-ona) uchun beriladi.")+grainPage("fitr","k_ppl","kishi",["Necha kishi uchun?","O‘zingiz va qaramog‘ingizdagilar soni"])},
+ fitr(){return intro("<b>Sadaqai fitr</b> — Ramazon hayitidan oldin har bir kishi uchun beriladigan sadaqa. O‘zingiz va qaramog‘ingizdagilar (farzandlar, ota-ona) uchun beriladi.")+grainPage("fitr","k_ppl","kishi",["Necha kishi uchun?","O‘zingiz va qaramog‘ingizdagilar soni"])+FITR_INFO},
  fidya(){return intro("<b>Fidya</b> — ro‘za tutishga umuman qodir bo‘lmaganlar (masalan, keksalik yoki davolanmaydigan kasallik sababli) tutolmagan har bir kun uchun beradigan to‘lov.")+grainPage("fidya","k_days","kun",["Necha kunlik ro‘za uchun?","Tutilmagan kunlar soni"])},
  ushr(){return intro("<b>Ushr</b> — yerdan olingan hosildan beriladigan ulush. Sug‘orish usuliga qarab ulush har xil bo‘ladi.")+
   `<div class="kf2"><div class="kl2">Yer qanday sug‘orilgan?</div>${seg("irr","Tabiiy (yomg‘ir, buloq, daryo)","Mehnat bilan (nasos, quvur)")}</div>`+
@@ -818,14 +822,14 @@ const PG={
    `<div class="kintro" style="margin-top:6px"><b>Zakot farz bo‘lishi uchun:</b><br>1. Chorva nisobga yetgan bo‘lishi (tuya — 5, qora mol — 30, qo‘y-echki — 40 ta);<br>2. Bir yil davomida sizning egaligingizda bo‘lishi;<br>3. Yilning ko‘p qismida o‘tlab yurgan bo‘lishi. Ishlatiladigan yoki doim yem berib boqiladigan chorvadan zakot berilmaydi.</div>`;
  },
  tuya(){return intro("<b>Tuya.</b> Zakot tuyaning yoshiga qarab belgilangan atamalar bilan beriladi. Quyida har bir atamaning yoshi yozilgan.")+cond()+`<div class="ka">${fld("k_tuya","Tuyalaringiz soni","Erkak va urg‘ochi — hammasi birga",{c:1,u:"ta"})}</div><div id="kres" style="margin-top:14px"></div><h3 class="kh3">Atamalar</h3>${legend(CT)}<h3 class="kh3">To‘liq jadval</h3>${CAMEL_T()}`},
- qora(){return intro("<b>Qora mol.</b> Sigir, buqa, g‘unajin va buyvol — hammasi birga sanaladi. Zakotga beriladigan mol yoshiga qarab ikki xil nom bilan ataladi.")+cond()+`<div class="ka">${fld("k_qora","Qora molingiz soni","Sigir, buqa, g‘unajin va buyvol — jami",{c:1,u:"ta"})}</div><div id="kres" style="margin-top:14px"></div><h3 class="kh3">Atamalar</h3>${legend(CW)}<h3 class="kh3">To‘liq jadval</h3>${COW_T()}`},
+ qora(){return intro("<b>Qora mol.</b> Sigir, buqa, g‘unajin va buyvol — hammasi birga sanaladi. Zakotga beriladigan mol yoshi va jinsiga qarab tabi‘, tabi‘a, musinn yoki musinna deb ataladi.")+cond()+`<div class="ka">${fld("k_qora","Qora molingiz soni","Sigir, buqa, g‘unajin va buyvol — jami",{c:1,u:"ta"})}</div><div id="kres" style="margin-top:14px"></div><h3 class="kh3">Atamalar</h3>${legend(CW)}<h3 class="kh3">To‘liq jadval</h3>${COW_T()}`},
  qoy(){return intro("<b>Qo‘y va echki.</b> Ikkalasi birga sanaladi. Zakotga bir yoshga to‘lgan qo‘y yoki echki beriladi.")+cond()+`<div class="ka">${fld("k_qoy","Qo‘y va echkilaringiz soni","Jami",{c:1,u:"ta"})}</div><div id="kres" style="margin-top:14px"></div><h3 class="kh3">To‘liq jadval</h3>${SHEEP_T()}`}
 };
 const molNum=()=>{const parts=kn("k_cash")+kn("k_gold")+kn("k_trade")+kn("k_recv"),debt=kn("k_debt");return{parts,debt,net:Math.max(parts-debt,0)}};
 function grainRes(kind,cnt,unit,title){
-  const z=zs(),o=zg(z,kind),n=kn(cnt),c=KS.gr,nm=G.find(x=>x[0]===c)[1],r=$("kres");
+  const z=zs(),o=zg(z,kind),n=kn(cnt),c=KS.gr,nm=gname(c),r=$("kres");
   if(!n){r.innerHTML=verdict("neu","Sonini kiriting","");return}
-  const rows=G.filter(([k])=>isN(o[k])).map(([k,t])=>kRow(t,fm(n*o[k])+" so‘m")).join("");
+  const rows=G.filter(([k])=>isN(o[k])).map(([k])=>kRow(gname(k),fm(n*o[k])+" so‘m")).join("");
   r.innerHTML=(!isN(o[c])?miss(nm+" uchun miqdor"):verdict("ok",title+" · "+nm.toLowerCase()+" bilan",fm(n)+" "+unit+" × "+fm(o[c])+" so‘m",fm(n*o[c])+" so‘m"))+(rows?`<h3 class="kh3">Boshqa turlar bilan</h3><div class="kbd">${rows}</div>`:"");
 }
 function kUpd(){
@@ -887,14 +891,14 @@ const zn=id=>{const e=$(id);if(!e)return null;const x=parseFloat(String(e.value)
 function zAdmHtml(){
   const z=zs(),v=(x,d)=>isN(x)?x:d,fi=zg(z,"fitr"),fd=zg(z,"fidya");
   const f=(id,l,h,val,u,m)=>`<div class="af"><div class="al">${l}</div>${h?`<div class="ah">${h}</div>`:""}<div class="ai"><input type="text" inputmode="decimal" id="${id}" class="${m?"zm":""}" value="${m&&val!==""?fm(val):val}" placeholder="kiriting"><span>${u}</span></div></div>`;
-  const gs=(p,o)=>G.map(([c,n])=>f(p+c,n,"",v(o[c],""),"so‘m",1)).join("");
+  const gs=(p,o,ed)=>G.map(([c])=>`<div class="af">${ed?`<input type="text" class="znm" id="z_nom_${c}" value="${esc(gname(c))}" aria-label="Tur nomi">`:`<div class="al">${esc(gname(c))}</div>`}<div class="ai"><input type="text" inputmode="decimal" id="${p+c}" class="zm" value="${v(o[c],"")===""?"":fm(o[c])}" placeholder="narxi"><span>so‘m</span></div></div>`).join("");
   return `<div class="atabs" id="ztabs">${[["u","Umumiy"],["m","Mol"],["f","Fitr"],["d","Fidya"],["h","Ushr"],["c","Chorva"]].map(([k,t],i)=>`<button type="button" data-z="${k}" class="${i?"":"on"}">${t}</button>`).join("")}</div>`+
   `<div class="apane on" data-z="u"><div class="ac"><div class="ag">Holat</div><div id="zst"></div></div>
     <div class="ac"><div class="ag">Manba</div><div class="af"><div class="ah">Foydalanuvchilarga ko‘rinadi. Masalan: “Muftiylik qarori, 2026-yil”.</div><input type="text" id="z_man" value="${esc(z.manba||"")}"></div></div></div>`+
   `<div class="apane" data-z="m"><div class="ac"><div class="ag">Mol zakoti</div>`+
     f("z_nis","Nisob","Zakot farz bo‘ladigan eng kam mol miqdori (so‘mda).",v(z.nisob,""),"so‘m",1)+
     f("z_fz","Zakot ulushi","Sof moldan chiqariladigan ulush. Odatda 2,5.",v(z.foiz,2.5),"%")+`</div></div>`+
-  `<div class="apane" data-z="f"><div class="ac"><div class="ag">Sadaqai fitr — bir kishi uchun</div><p class="ah">Har bir tur bo‘yicha miqdorni so‘mda kiriting. Foydalanuvchi o‘zi tanlaydi.</p>${gs("z_fit_",fi)}</div></div>`+
+  `<div class="apane" data-z="f"><div class="ac"><div class="ag">Sadaqai fitr — bir kishi uchun</div><p class="ah">Har bir tur nomini o‘zgartirish va narxini so‘mda kiritish mumkin. Nomlar fidyada ham ishlatiladi. Foydalanuvchi o‘zi tanlaydi.</p>${gs("z_fit_",fi,1)}</div></div>`+
   `<div class="apane" data-z="d"><div class="ac"><div class="ag">Fidya — bir kun uchun</div><p class="ah">Har bir tur bo‘yicha miqdorni so‘mda kiriting.</p><button type="button" class="alink" id="zcopy">Fitr miqdorlarini nusxalash</button>${gs("z_fid_",fd)}</div></div>`+
   `<div class="apane" data-z="h"><div class="ac"><div class="ag">Ushr</div>`+
     f("z_ut","Tabiiy sug‘orish","Yomg‘ir, buloq, daryo suvi bilan sug‘orilgan hosil. Odatda 10.",v(z.ushrT,10),"%")+
@@ -905,11 +909,11 @@ function zCount(p){return G.filter(([c])=>zn(p+c)!==null).length}
 function zSt(){
   const e=$("zst");if(!e)return;
   const it=(ok,t)=>`<div class="zs ${ok?"g":"w"}"><i></i>${t}</div>`;
-  e.innerHTML=it(zn("z_nis")!==null,"Nisob")+it(zCount("z_fit_")===4,"Sadaqai fitr ("+zCount("z_fit_")+"/4 tur)")+it(zCount("z_fid_")===4,"Fidya ("+zCount("z_fid_")+"/4 tur)")+it(zn("z_fz")!==null&&zn("z_ut")!==null&&zn("z_us")!==null,"Ulushlar (zakot, ushr)")+it($("z_ok")&&$("z_ok").checked,"Chorva jadvallari tekshirilgan");
+  e.innerHTML=it(zn("z_nis")!==null,"Nisob")+it(zCount("z_fit_")===G.length,"Sadaqai fitr ("+zCount("z_fit_")+"/"+G.length+" tur)")+it(zCount("z_fid_")===G.length,"Fidya ("+zCount("z_fid_")+"/"+G.length+" tur)")+it(zn("z_fz")!==null&&zn("z_ut")!==null&&zn("z_us")!==null,"Ulushlar (zakot, ushr)")+it($("z_ok")&&$("z_ok").checked,"Chorva jadvallari tekshirilgan");
 }
 function readZ(){
   const d=(x,f)=>x===null?f:x,gx=p=>{const o={};G.forEach(([c])=>{const x=zn(p+c);if(x!==null)o[c]=x});return o};
-  return{nisob:zn("z_nis"),foiz:d(zn("z_fz"),2.5),fitr:gx("z_fit_"),fidya:gx("z_fid_"),ushrT:d(zn("z_ut"),10),ushrS:d(zn("z_us"),5),manba:$("z_man").value.trim(),ok:$("z_ok").checked,sana:new Date().toLocaleDateString("sv")};
+  return{nisob:zn("z_nis"),foiz:d(zn("z_fz"),2.5),fitr:gx("z_fit_"),fidya:gx("z_fid_"),nom:Object.fromEntries(G.map(([c])=>[c,($("z_nom_"+c).value||"").trim()||G.find(x=>x[0]===c)[1]])),ushrT:d(zn("z_ut"),10),ushrS:d(zn("z_us"),5),manba:$("z_man").value.trim(),ok:$("z_ok").checked,sana:new Date().toLocaleDateString("sv")};
 }
 
 /* Bo'limlar va "Dastur haqida" */
