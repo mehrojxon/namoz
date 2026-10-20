@@ -28,6 +28,7 @@ main{max-width:460px;margin:0 auto;padding:14px 18px}
 @media(prefers-color-scheme:dark){.hero2{background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.09),transparent 55%),linear-gradient(150deg,#12615a,#082f2c);box-shadow:none;border:1px solid rgba(255,255,255,.06)}}
 .top{display:none;justify-content:space-between;align-items:center}
 body[data-s="t0"] .top{display:flex}
+.top .acts{display:none}
 #sbar{display:none;align-items:center;gap:12px;margin:0 0 12px}
 body.sub #sbar{display:flex}
 body.zsub #sbar{display:none}
@@ -283,6 +284,7 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 .kgc b{display:block;font-size:15px}.kgc span{display:block;font-size:12px;color:var(--mut);margin-top:2px}
 .kgc.on{border-color:var(--ac);background:rgba(14,107,99,.14)}
 .kgc.off{opacity:.55}
+.kg3{grid-template-columns:repeat(3,1fr)}.kg3 .kgc span{font-size:11px}
 .kfs{display:grid;gap:8px;margin-top:6px}
 .kfc{text-align:left;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:12px 14px;font:inherit}
 .kfc b{display:block;font-size:15px}.kfc span{display:block;font-size:13px;color:var(--mut);margin-top:2px}
@@ -441,7 +443,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 2.9<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
+  <p class="mut mfoot">Jannat sari · 3.0<br>Namoz vaqtlari Qashqadaryo viloyati uchun</p>
 </section>
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
@@ -449,7 +451,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 2.9</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.0</div>
   <p class="mut">Vaqtlar Qashqadaryo viloyati bo‘yicha</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -875,7 +877,7 @@ const KD=[
  {id:"chorva",t:"Chorva zakoti",d:"Tuya, qora mol, qo‘y va echki",ic:'<path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/>',r:()=>""}
 ];
 const TT={mol:"Mol zakoti",fitr:"Sadaqai fitr",fidya:"Fidya",ushr:"Ushr",chorva:"Chorva zakoti",tuya:"Tuya zakoti",qora:"Qora mol zakoti",qoy:"Qo‘y va echki zakoti"};
-const KV={k_ppl:"1"},KS={p:null,st:0,held:true,sa:true,own:true,irr:true,gr:"b",fs:"a"};let KT=[];
+const KV={k_ppl:"1"},KS={p:null,st:0,held:true,sa:true,own:true,irr:true,gr:"b",fs:"a",ut:"t"};let KT=[];
 const kn=id=>{const v=parseFloat(String(KV[id]||"").replace(/\s/g,"").replace(",","."));return isNaN(v)?0:v};
 const ksp=v=>String(v).replace(/\B(?=(\d{3})+(?!\d))/g," ");
 const fld=(id,l,h,o={})=>`<div class="kf2"><div class="kl2">${l}</div>${h?`<div class="kh2">${h}</div>`:""}<div class="kin${o.c?" kc":""}">${o.c?`<button type="button" data-s="${id}" data-d="-1" aria-label="Kamaytirish">−</button>`:""}<input class="kn" id="${id}" inputmode="numeric" placeholder="0" value="${ksp(KV[id]||"")}">${o.c?`<button type="button" data-s="${id}" data-d="1" aria-label="Ko‘paytirish">+</button>`:`<span>${o.u||"so‘m"}</span>`}</div></div>`;
@@ -916,6 +918,7 @@ const grainPage=(kind,cnt,unit,q)=>{
 };
 const FITR_INFO=`<h3 class="kh3">Kimlarga beriladi?</h3><div class="kintro">Fitr sadaqasi musulmon kambag‘al-miskinlarga beriladi. “Fatavoi Hindiya” kitobida keltirilishicha, fitrni berishda eng afzali, avvalo, (kambag‘al) aka-uka, opa-singillar hisoblanadi. So‘ngra ularning farzandlari. Ulardan keyin amaki-ammalar, so‘ngra ularning farzandlari. Tog‘a-xolalar va ularning farzandlari so‘ng yuqoridagilardan tashqari qarindoshlar. Ulardan keyin qo‘shnilar, kasbdoshlar, keyin hamshaharlar yoki qishloqdoshlar haqli hisoblanadi.</div><h3 class="kh3">Kimlarga berilmaydi?</h3><div class="kintro">Fitr sadaqasi nisob miqdoricha moli bo‘lgan boy kishiga, o‘zining ota-onasi, bobo-momosiga, o‘zining o‘g‘il-qizlariga va ularning farzandlariga, er-xotin bir-biriga berish mumkin emas.<br><br>Shuningdek, g‘ayridinga, fosiqqa, gunoh va ma’siyatga, shuningdek musulmonlarga zarar keltiradigan har qanday ishlarga sarflaydigan kimsalarga berilmaydi.<br><br>Fitr sadaqasini muhtojlarning qo‘llariga qiymatini berish joiz. Bu pullar masjid qurilishi, umumiy xayriya ishlari uchun berilishi mumkin emas.</div>`;
 const FIDYA_INFO=`<h3 class="kh3">Qachon va qanday beriladi?</h3><div class="kintro">Fidya Ramazon oyi kirishidan oldin berilmaydi. Oy kirgach, xohlasangiz o‘ttiz kunlik ro‘zaning fidyasini birdaniga jamlab berasiz, xohlasangiz har kuni bo‘lib-bo‘lib to‘lab borasiz. <span class="src">(“Fatovoyi Hindiya”)</span><br><br>Fidyani bir kishiga ham, bir necha kishiga ham berish mumkin. <span class="src">(“Raddul muhtor”)</span></div><h3 class="kh3">Kimlarga beriladi?</h3><div class="kintro">Miskin, faqir, beva-bechora, etim-esir, nochor va zakot berishga qodir bo‘lmaganlarga beriladi.</div><h3 class="kh3">Kimlarga berilmaydi?</h3><div class="kintro">Otasi, onasi, farzandlari, nabiralari, eri, xotini va zakot berishga qodir bo‘lganlarga berish joiz emas.</div><h3 class="kh3">Muhim holatlar</h3><div class="kintro"><b>Fidya berib yurgan</b> qariya yoki surunkali bemor ro‘za tutishga qodir bo‘lib qolsa, bergan fidyasi bekor bo‘ladi va tutmagan ro‘zalarining qazosini tutishi vojib bo‘ladi. <span class="src">(“Raddul muhtor”)</span><br><br><b>Ro‘za tutishga yaraydigan</b> qariyalarga ro‘za tutish farz. Ro‘za tutishga qodir bo‘la turib fidya bersa, ro‘za undan soqit bo‘lmaydi va fidyasi o‘z o‘rniga tushmaydi. <span class="src">(“Raddul muhtor”)</span><br><br><b>Tuzalishiga umid bor bemor</b>, ya’ni odatda ma’lum vaqtdan keyin shifo topadigan, ro‘za tutish zarar qiladigan kishiga shariat ro‘za tutmaslikka ruxsat beradi. Ammo u fidya bermaydi. Tuzalgach, qazo bo‘lgan kunlarning ro‘zasini tutib beradi.</div>`;
+const USHR_INFO=`<h3 class="kh3">Ushr miqdori</h3><div class="kintro">Oqar suv yoki yomg‘irda sug‘orilgan ekinlarning hosilidan xarajatlar chiqarilmasdan ushr (o‘ndan bir) beriladi.<br><br>Suv chiqarishga charxpalak, hayvon va boshqa narsalarni ishlatib, sarf-xarajat qilingan bo‘lsa, mahsulotning yigirmadan biri ushr qilib beriladi. Sug‘orishdan boshqa ishlarga sarflangan xarajatlar e’tiborga olinmaydi.</div><h3 class="kh3">Asal</h3><div class="kintro">Asaldan, garchi oz bo‘lsa ham, o‘ndan biri ushr sifatida faqirlarga beriladi. <span class="src">(“Muxtasarul viqoya”)</span></div><h3 class="kh3">Ushr berilmaydigan holatlar</h3><div class="kintro">Yerga ishlov berilmasdan o‘zi o‘sib chiqqan mahsulotlardan ushr berilmaydi.<br><br>Hovlidagi mevali daraxtlar mevasidan ushr berilmaydi. Dalasidagi daraxtlar mevasidan esa beriladi. Zero, hovlidagi narsalar undagi imoratlarga tobe hisoblanadi. <span class="src">(“Fatavoi Qozixon”)</span></div><h3 class="kh3">Shart bo‘lmagan narsalar</h3><div class="kintro">Ushr berishdan oldin yer xarajatlari va boshqa xarajatlar chiqarib tashlanmaydi.<br><br>Mahsulotlar olingandan so‘ng bir yil o‘tishi yoki nisob miqdori to‘lishi shart emas. Ushr, hosil qancha bo‘lishidan qat’i nazar, beriladi.</div><h3 class="kh3">Boshqa qarash</h3><div class="kintro">Imom Abu Yusuf, Imom Muhammad va jumhur ulamolar: hosil besh vasaq (653 kg) miqdoriga yetsa zakot beriladi, kamidan berilmaydi, deganlar. Ko‘pchilik hanafiy ulamolari esa Imom Abu Hanifaning gapini qabul qilganlar.</div>`;
 const FS=[["a","Keksa yoki surunkali bemor","Ro‘za tutishga umuman qodir emasman"],["b","Tuzalishiga umid bor bemor","Vaqtincha tuta olmayman"],["c","Ro‘za tutishga qodirman","Sog‘man yoki tuta olaman"]];
 const FV={b:["no","Fidya bermaysiz","Shariat ro‘za tutmaslikka ruxsat beradi, ammo fidya berilmaydi. Tuzalganingizdan keyin qazo bo‘lgan kunlarning ro‘zasini tutib berasiz."],c:["no","Ro‘za tutish farz","Ro‘za tutishga qodir bo‘la turib fidya bersangiz, ro‘za sizdan soqit bo‘lmaydi va fidyangiz o‘z o‘rniga tushmaydi."]};
 const PG={
@@ -936,9 +939,10 @@ const PG={
  fidya(){return intro("<b>Fidya</b> — ro‘za tutishga umuman qodir bo‘lmagan qariya yoki surunkali bemor tutolmagan har bir kun uchun beradigan to‘lov.")+
   `<div class="kf2"><div class="kl2">Sizning holatingiz qanday?</div><div class="kfs">${FS.map(([k,t,d])=>`<button type="button" class="kfc${KS.fs===k?" on":""}" data-f="${k}"><b>${t}</b><span>${d}</span></button>`).join("")}</div></div><div id="fst" style="margin-top:12px"></div><div id="fcalc">`+
   grainPage("fidya","k_days","kun",["Necha kunlik ro‘za uchun?","Tutilmagan kunlar soni (Ramazon 29 yoki 30 kun)"]).replace('<div id="kres"',`<div class="kq">${[1,10,29,30].map(n=>`<button type="button" data-q="${n}">${n} kun</button>`).join("")}</div><div id="kres"`)+`</div>`+FIDYA_INFO},
- ushr(){return intro("<b>Ushr</b> — yerdan olingan hosildan beriladigan ulush. Sug‘orish usuliga qarab ulush har xil bo‘ladi.")+
-  `<div class="kf2"><div class="kl2">Yer qanday sug‘orilgan?</div>${seg("irr","Tabiiy (yomg‘ir, buloq, daryo)","Mehnat bilan (nasos, quvur)")}</div>`+
-  fld("k_kg","Hosil miqdori","Yig‘ib olingan jami hosil",{u:"kg"})+fld("k_price","1 kg narxi (ixtiyoriy)","Kiritsangiz, so‘mdagi taxminiy qiymat ham chiqadi")+`<div id="kres" style="margin-top:18px"></div>`},
+ ushr(){const o=[["t","Tabiiy","Yomg‘ir, oqar suv"],["s","Mehnat bilan","Charxpalak, hayvon, nasos"],["a","Asal","Oz bo‘lsa ham"]];
+  return intro("<b>Imom Abu Hanifa rahimahulloh:</b> ekin mahsulotining ozidan ham, ko‘pidan ham zakot (ushr) olinadi. Shuning uchun hisobda nisob shart emas. Hanafiy mazhabi ulamolarining ko‘pchiligi shu gapni qabul qilganlar.")+
+  `<div class="kf2"><div class="kl2">Ushr qaysi turdan?</div><div class="kgr kg3">${o.map(([c,n,d])=>`<button type="button" class="kgc${KS.ut===c?" on":""}" data-u="${c}"><b>${n}</b><span>${d}</span></button>`).join("")}</div></div>`+
+  fld("k_kg","Mahsulot miqdori","Qancha bo‘lsa ham kiriting",{u:"kg"})+fld("k_price","1 kg narxi (ixtiyoriy)","Kiritsangiz, so‘mdagi taxminiy qiymat ham chiqadi")+`<div id="kres" style="margin-top:18px"></div>`+USHR_INFO},
  chorva(){
   const C=[["tuya","Tuya","5 tadan boshlab zakot beriladi"],["qora","Qora mol","Sigir, buqa, g‘unajin va buyvol · 30 tadan boshlab"],["qoy","Qo‘y va echki","40 tadan boshlab zakot beriladi"]];
   return `<div id="kwarn"></div>`+intro("Har bir chorva turi <b>alohida</b> hisoblanadi. Hisoblamoqchi bo‘lgan turingizni tanlang.")+
@@ -977,8 +981,8 @@ function kUpd(){
   if(p==="fitr"){grainRes("fitr","k_ppl","kishi","Sadaqai fitr");return}
   if(p==="fidya"){const v=FV[KS.fs];$("fcalc").style.display=v?"none":"";$("fst").innerHTML=v?verdict(v[0],v[1],v[2]):"";if(!v)grainRes("fidya","k_days","kun","Fidya");return}
   if(p==="chorva"){$("kwarn").innerHTML=z.ok?"":'<div class="kwarn">Diqqat: chorva jadvallari hozir tekshiruvdan o‘tkazilmoqda. Natijani yakuniy deb hisoblamang.</div>';return}
-  if(p==="ushr"){const kg=kn("k_kg"),pr=kn("k_price"),q=KS.irr?(isN(z.ushrT)?z.ushrT:10):(isN(z.ushrS)?z.ushrS:5);
-    $("kres").innerHTML=!kg?verdict("neu","Hosil miqdorini kiriting",""):verdict("ok","Ushr — hosilning "+pct(q),fm(kg)+" kg hosildan"+(pr?" · taxminan "+fm(kg*q/100*pr)+" so‘m":""),fk(kg*q/100)+" kg");return}
+  if(p==="ushr"){const kg=kn("k_kg"),pr=kn("k_price"),u=KS.ut,q=u==="t"?(isN(z.ushrT)?z.ushrT:10):u==="s"?(isN(z.ushrS)?z.ushrS:5):10,nm=u==="a"?"Asal":"Ushr";
+    $("kres").innerHTML=!kg?verdict("neu","Miqdorni kiriting",""):verdict("ok",nm+" — "+pct(q)+(u==="a"?" (o‘ndan bir)":""),fm(kg)+" kg"+(u==="a"?" asaldan":" mahsulotdan")+(pr?" · taxminan "+fm(kg*q/100*pr)+" so‘m":""),fk(kg*q/100)+" kg");return}
   if(p==="tuya"||p==="qora"||p==="qoy"){
     const n=Math.floor(kn("k_"+p)),r=$("kres"),min={tuya:5,qora:30,qoy:40}[p];let h;
     if(!n)h=verdict("neu","Sonini kiriting","");
@@ -1003,6 +1007,8 @@ $("kbody").addEventListener("click",e=>{
   if(fb){KS.fs=fb.dataset.f;document.querySelectorAll(".kfc").forEach(b=>b.classList.toggle("on",b===fb));kUpd();return}
   const qb=e.target.closest("[data-q]");
   if(qb){KV.k_days=qb.dataset.q;$("k_days").value=ksp(KV.k_days);kUpd();return}
+  const ub=e.target.closest("[data-u]");
+  if(ub){KS.ut=ub.dataset.u;document.querySelectorAll("[data-u]").forEach(b=>b.classList.toggle("on",b===ub));kUpd();return}
   const gc=e.target.closest("[data-g]");
   if(gc){KS.gr=gc.dataset.g;document.querySelectorAll(".kgc").forEach(b=>b.classList.toggle("on",b===gc));kUpd();return}
   const st=e.target.closest("[data-s]");
