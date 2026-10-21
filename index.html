@@ -72,7 +72,8 @@ button.nx{display:block;width:100%;text-align:left;font:inherit;border:0;margin-
 .mfoot{text-align:center;font-size:12.5px;line-height:1.6;margin-top:18px}
 .hr-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;opacity:.92}
 .hr-loc i{font-style:normal}
-.hr-loc{display:flex;gap:6px;align-items:center}
+.hr-loc{display:flex;gap:6px;align-items:center;cursor:pointer;padding:5px 10px 5px 8px;margin:-5px 0 -5px -8px;border-radius:14px;background:rgba(255,255,255,.1);-webkit-tap-highlight-color:transparent}
+.hr-loc:after{content:"›";opacity:.8;font-size:17px;line-height:1;margin-left:2px}
 .hr-loc svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .hr-hij{margin-top:3px;font-size:13px;opacity:.85}
 .hr-hij:after{content:" ›";color:#ffd98a;font-weight:700}
@@ -596,7 +597,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.15<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
+  <p class="mut mfoot">Jannat sari · 3.16<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
 </section>
 <section class="tab" id="t7">
  <div id="qls">
@@ -646,7 +647,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.15</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.16</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -1128,7 +1129,7 @@ const FIDYA_INFO=`<h3 class="kh3">Qachon va qanday beriladi?</h3>`+lst(["Fidya R
 `<h3 class="kh3">Muhim holatlar</h3>`+lst(["<b>Fidya berib yurgan</b> qariya yoki surunkali bemor ro‘za tutishga qodir bo‘lib qolsa, bergan fidyasi bekor bo‘ladi va tutmagan ro‘zalarining qazosini tutishi vojib bo‘ladi."+src("Raddul muhtor"),"<b>Ro‘za tutishga yaraydigan</b> qariyalarga ro‘za tutish farz. Ro‘za tutishga qodir bo‘la turib fidya bersa, ro‘za undan soqit bo‘lmaydi va fidyasi o‘z o‘rniga tushmaydi."+src("Raddul muhtor"),"<b>Tuzalishiga umid bor bemor</b>, ya’ni odatda ma’lum vaqtdan keyin shifo topadigan, ro‘za tutish zarar qiladigan kishiga shariat ro‘za tutmaslikka ruxsat beradi. Ammo u fidya bermaydi. Tuzalgach, qazo bo‘lgan kunlarning ro‘zasini tutib beradi."],"b");
 const USHR_INFO=`<h3 class="kh3">Ushr miqdori</h3><div class="kintro">Oqar suv yoki yomg‘irda sug‘orilgan ekinlarning hosilidan xarajatlar chiqarilmasdan ushr (o‘ndan bir) beriladi.<br><br>Suv chiqarishga charxpalak, hayvon va boshqa narsalarni ishlatib, sarf-xarajat qilingan bo‘lsa, mahsulotning yigirmadan biri ushr qilib beriladi. Sug‘orishdan boshqa ishlarga sarflangan xarajatlar e’tiborga olinmaydi.</div><h3 class="kh3">Asal</h3><div class="kintro">Asaldan, garchi oz bo‘lsa ham, o‘ndan biri ushr sifatida faqirlarga beriladi. <span class="src">(“Muxtasarul viqoya”)</span></div><h3 class="kh3">Ushr berilmaydigan holatlar</h3><div class="kintro">Yerga ishlov berilmasdan o‘zi o‘sib chiqqan mahsulotlardan ushr berilmaydi.<br><br>Hovlidagi mevali daraxtlar mevasidan ushr berilmaydi. Dalasidagi daraxtlar mevasidan esa beriladi. Zero, hovlidagi narsalar undagi imoratlarga tobe hisoblanadi. <span class="src">(“Fatavoi Qozixon”)</span></div><h3 class="kh3">Shart bo‘lmagan narsalar</h3><div class="kintro">Ushr berishdan oldin yer xarajatlari va boshqa xarajatlar chiqarib tashlanmaydi.<br><br>Mahsulotlar olingandan so‘ng bir yil o‘tishi yoki nisob miqdori to‘lishi shart emas. Ushr, hosil qancha bo‘lishidan qat’i nazar, beriladi.</div><h3 class="kh3">Boshqa qarash</h3><div class="kintro">Imom Abu Yusuf, Imom Muhammad va jumhur ulamolar: hosil besh vasaq (653 kg) miqdoriga yetsa zakot beriladi, kamidan berilmaydi, deganlar. Ko‘pchilik hanafiy ulamolari esa Imom Abu Hanifaning gapini qabul qilganlar.</div>`;
 const KIM_AR=`إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ <span class="al">ا‌للَّهِ</span> وَاِبْنِ السَّبِيلِ فَرِيضَةً مِنَ <span class="al">ا‌للَّهِ</span> وَ<span class="al">ا‌للَّهُ</span> عَلِيمٌ حَكِيمٌ`;
-const KIM=`<div class="kintro">Zakot kimga berilishi haqida Qur’oni karimda shunday deyiladi:</div><div class="kbd kar"><div class="kar-a">${KIM_AR}</div><p>Ya’ni: “Albatta, sadaqalarni faqat faqirlar, miskinlar, unda (sadaqa ishida) ishlovchilar, dillari oshna qilinuvchi (kofir)lar, (pul to‘lab ozod etiluvchi) qullar, qarzdorlarga va Alloh yo‘lida hamda yo‘lovchiga (musofirga berish) Alloh (tomoni)dan farz (etildi). Alloh ilmli va hikmatli zotdir”.</p><span class="src">(Tavba surasi, 60-oyat)</span></div><h3 class="kh3">Zakot beriladigan 8 toifa</h3><div class="kitems"><div class="kitem"><b>1</b><div><strong>Faqir</strong><span>moli nisobga yetmagan shaxs.</span></div></div><div class="kitem"><b>2</b><div><strong>Miskin</strong><span>hech narsasi yo‘q kishi.</span></div></div><div class="kitem"><b>3</b><div><strong>Zakot yig‘ish ishida band bo‘lganlar</strong></div></div><div class="kitem"><b>4</b><div><strong>Dillari Islomga oshno qilinuvchi g‘ayridinlar</strong></div></div><div class="kitem"><b>5</b><div><strong>Mukotab qullar</strong></div></div><div class="kitem"><b>6</b><div><strong>Qarzdor kishi</strong><span>agar zimmasidagi qarzini bersa, puli nisobdan kamayib qoladigan kishi.</span></div></div><div class="kitem"><b>7</b><div><strong>Alloh yo‘lida yurganlar</strong><span>bunda asosan muhtoj bo‘lib qolgan hojilar tushuniladi.</span></div></div><div class="kitem"><b>8</b><div><strong>Yo‘lda qolganlar</strong><span>moli bor-u, o‘zi bilan birga emas.</span></div></div></div><div class="kintro">Yuqorida sanab o‘tilganlardan “dillari Islomga oshno qilinuvchilar” hazrati Umar davrida zakot beriladiganlar qatoridan chiqarilgan. Quldorlik tugatilgani sababli “mukotab qullar” bugungi kunda mavjud emas.</div><h3 class="kh3">Afzal tartib</h3><div class="kintro">Zakot berishni, haqli bo‘lishsa, aka-uka, opa-singil va ularning farzandlari, amaki-amma va ularning farzandlari, tog‘a-xola va ularning farzandlaridan boshlash afzaldir.</div><h3 class="kh3">Kimlarga zakot berilmaydi?</h3><p class="kp">Shariatimizga ko‘ra quyidagilarga zakot berilmaydi:</p><div class="kitems"><div class="kitem kno"><b>✕</b><div><strong>Boy kishilarga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Boshqa din vakillariga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Boy kishining balog‘atga yetmagan farzandiga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>O‘rtalarida tug‘ilish aloqasi bo‘lganlarga, ya’ni ota-ona va o‘g‘il-qizlarga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Er yoki xotinga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Hoshimiylarga, ya’ni Payg‘ambarimiz alayhissalomning qarindoshlariga.</strong></div></div></div><p class="kp">Valloxu a’lam.</p>`;
+const KIM=`<div class="kintro">Zakot kimga berilishi haqida Qur’oni karimda shunday deyiladi:</div><div class="kbd kar"><div class="kar-a">${KIM_AR}</div><p>Ya’ni: “Albatta, sadaqalarni faqat faqirlar, miskinlar, unda (sadaqa ishida) ishlovchilar, dillari oshna qilinuvchi (kofir)lar, (pul to‘lab ozod etiluvchi) qullar, qarzdorlarga va Alloh yo‘lida hamda yo‘lovchiga (musofirga berish) Alloh (tomoni)dan farz (etildi). Alloh ilmli va hikmatli zotdir”.</p><span class="src">(Tavba surasi, 60-oyat)</span></div><h3 class="kh3">Zakot beriladigan 8 toifa</h3><div class="kitems"><div class="kitem"><b>1</b><div><strong>Faqir</strong><span>moli nisobga yetmagan shaxs.</span></div></div><div class="kitem"><b>2</b><div><strong>Miskin</strong><span>hech narsasi yo‘q kishi.</span></div></div><div class="kitem"><b>3</b><div><strong>Zakot yig‘ish ishida band bo‘lganlar</strong></div></div><div class="kitem"><b>4</b><div><strong>Dillari Islomga oshno qilinuvchi g‘ayridinlar</strong></div></div><div class="kitem"><b>5</b><div><strong>Mukotab qullar</strong></div></div><div class="kitem"><b>6</b><div><strong>Qarzdor kishi</strong><span>agar zimmasidagi qarzini bersa, puli nisobdan kamayib qoladigan kishi.</span></div></div><div class="kitem"><b>7</b><div><strong>Alloh yo‘lida yurganlar</strong><span>bunda asosan muhtoj bo‘lib qolgan hojilar tushuniladi.</span></div></div><div class="kitem"><b>8</b><div><strong>Yo‘lda qolganlar</strong><span>moli bor-u, o‘zi bilan birga emas.</span></div></div></div><div class="kintro">Yuqorida sanab o‘tilganlardan “dillari Islomga oshno qilinuvchilar” hazrati Umar davrida zakot beriladiganlar qatoridan chiqarilgan. Quldorlik tugatilgani sababli “mukotab qullar” bugungi kunda mavjud emas.</div><h3 class="kh3">Afzal tartib</h3><p class="kp">Zakotni, haqli bo‘lishsa, avvalo quyidagi tartibda berish afzal:</p><div class="kitems"><div class="kitem"><b>1</b><div><strong>Aka-uka, opa-singil va ularning farzandlari</strong></div></div><div class="kitem"><b>2</b><div><strong>Amaki-amma va ularning farzandlari</strong></div></div><div class="kitem"><b>3</b><div><strong>Tog‘a-xola va ularning farzandlari</strong></div></div></div><h3 class="kh3">Kimlarga zakot berilmaydi?</h3><p class="kp">Shariatimizga ko‘ra quyidagilarga zakot berilmaydi:</p><div class="kitems"><div class="kitem kno"><b>✕</b><div><strong>Boy kishilarga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Boshqa din vakillariga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Boy kishining balog‘atga yetmagan farzandiga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>O‘rtalarida tug‘ilish aloqasi bo‘lganlarga, ya’ni ota-ona va o‘g‘il-qizlarga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Er yoki xotinga;</strong></div></div><div class="kitem kno"><b>✕</b><div><strong>Hoshimiylarga, ya’ni Payg‘ambarimiz alayhissalomning qarindoshlariga.</strong></div></div></div><p class="kp">Valloxu a’lam.</p>`;
 const FS=[["a","Keksa yoki surunkali bemor","Ro‘za tutishga umuman qodir emasman"],["b","Tuzalishiga umid bor bemor","Vaqtincha tuta olmayman"],["c","Ro‘za tutishga qodirman","Sog‘man yoki tuta olaman"]];
 const FV={b:["no","Fidya bermaysiz","Shariat ro‘za tutmaslikka ruxsat beradi, ammo fidya berilmaydi. Tuzalganingizdan keyin qazo bo‘lgan kunlarning ro‘zasini tutib berasiz."],c:["no","Ro‘za tutish farz","Ro‘za tutishga qodir bo‘la turib fidya bersangiz, ro‘za sizdan soqit bo‘lmaydi va fidyangiz o‘z o‘rniga tushmaydi."]};
 const PG={
@@ -1353,35 +1354,42 @@ function locate(then,fail){
   navigator.geolocation.getCurrentPosition(p=>{localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));if(typeof qloc!=="undefined")qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};draw();rgDraw();then&&then()},
    ()=>{toast("Joylashuv aniqlanmadi. Ruxsat bering yoki mintaqani qo‘lda tanlang");fail&&fail()},{timeout:10000,maximumAge:3600000});
 }
-let RGV=null;
+let RGV=null,RGL=0;
 function rgDraw(){
   const sel=MINT.m,q=gpsLoc(),b=[];
-  if(!RGV){
-    b.push(`<button type="button" data-r="auto" class="${sel==="auto"?"on":""}"><span>Avtomatik (GPS)<br><small>${q?"Joylashuvingiz bo‘yicha aniq hisoblanadi":"Joylashuv ruxsati so‘raladi"}</small></span>${sel==="auto"?"✓":""}</button>`);
+  if(!RGV&&RGL===0){
+    const cur=myLoc();
+    b.push(`<button type="button" data-r="auto" class="${sel==="auto"?"on":""}"><span>Avtomatik (GPS)<br><small>${q?"Joylashuvingiz bo‘yicha aniq hisoblanadi":"Joylashuv ruxsati so‘raladi"}</small></span>${sel==="auto"?"✓":"›"}</button>`);
+    b.push(`<button type="button" data-l="1" class="${sel!=="auto"?"on":""}"><span>Qo‘lda tanlash<br><small>${sel!=="auto"?cur.name:"Viloyat, shahar yoki tumanni o‘zingiz tanlaysiz"}</small></span>${sel!=="auto"?"✓":"›"}</button>`);
+    $("rgt").textContent="Mintaqa";$("rgb").style.display="none";
+  }else if(!RGV){
     b.push("<h4>Viloyatni tanlang</h4>");
     VIL.forEach(v=>{const on=sel!=="auto"&&RG[sel]&&RG[sel][4]===v[0];b.push(`<button type="button" data-v="${v[0]}" class="${on?"on":""}"><span>${v[1]}</span><small>${on?RG[sel][1]+" ›":v[2].length>1?v[2].length+" ta ›":"›"}</small></button>`)});
-    $("rgt").textContent="Mintaqa";$("rgb").style.display="none";
+    $("rgt").textContent="Qo‘lda tanlash";$("rgb").style.display="block";$("rgb").textContent="‹ Orqaga";
   }else{
     const v=VIL.find(x=>x[0]===RGV);
     b.push("<h4>"+v[1]+" — shahar va tumanlar</h4>");
     v[2].forEach(r=>b.push(`<button type="button" data-r="${r[0]}" class="${sel===r[0]?"on":""}"><span>${r[1]}</span>${sel===r[0]?"✓":""}</button>`));
-    $("rgt").textContent=v[1];$("rgb").style.display="";
+    $("rgt").textContent=v[1];$("rgb").style.display="block";$("rgb").textContent="‹ Viloyatlar";
   }
   $("rgl").innerHTML=b.join("");
   const L=myLoc();$("mrs").textContent=(sel==="auto"?"Avtomatik · ":"")+L.name;
 }
-$("mreg").onclick=()=>{RGV=null;rgDraw();$("rgs").classList.add("on")};
+function rgOpen(){RGV=null;RGL=0;rgDraw();$("rgs").classList.add("on");$("rgs").querySelector(".box").scrollTop=0}
+$("mreg").onclick=rgOpen;
+document.querySelectorAll(".hr-loc").forEach(e=>{e.setAttribute("role","button");e.setAttribute("tabindex","0");e.setAttribute("aria-label","Mintaqani o‘zgartirish");e.onclick=ev=>{ev.stopPropagation();rgOpen()};e.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.stopPropagation();rgOpen()}}});
 $("rgx").onclick=()=>rgClose();
-$("rgb").onclick=()=>{RGV=null;rgDraw()};
+$("rgb").onclick=()=>{if(RGV)RGV=null;else RGL=0;rgDraw()};
 $("rgs").onclick=e=>{
   if(e.target.id==="rgs"){rgClose();return}
+  const l=e.target.closest("[data-l]");if(l){RGL=1;RGV=null;rgDraw();$("rgs").querySelector(".box").scrollTop=0;return}
   const v=e.target.closest("[data-v]");if(v){const x=VIL.find(z=>z[0]===v.dataset.v);if(x[2].length===1){pickR(x[2][0][0]);return}RGV=v.dataset.v;rgDraw();$("rgl").scrollTop=0;$("rgs").querySelector(".box").scrollTop=0;return}
   const b=e.target.closest("[data-r]");if(!b)return;pickR(b.dataset.r);
 };
 function pickR(r){
   localStorage.setItem("rgset","1");$("wl").classList.remove("on");delete $("rgs").dataset.fromWl;MINT={m:r};localStorage.setItem("mint",JSON.stringify(MINT));
   if(r==="auto"&&!gpsLoc())locate();
-  draw();rgDraw();if(r!=="auto")$("rgs").classList.remove("on");
+  draw();rgDraw();$("rgs").classList.remove("on");if(r==="auto")toast(gpsLoc()?"Mintaqa: "+myLoc().name:"Joylashuv aniqlanmoqda…");
 }
 try{if(navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(x=>{if(x.state==="granted"&&MINT.m==="auto")navigator.geolocation.getCurrentPosition(p=>{const o=gpsLoc();if(!o||Math.abs(o.lat-p.coords.latitude)>.02||Math.abs(o.lon-p.coords.longitude)>.02){localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));draw()}},()=>{},{timeout:8000,maximumAge:86400000})}).catch(()=>{})}catch(e){}
 
@@ -1403,7 +1411,7 @@ $("wla").onclick=()=>{
   locate(()=>{MINT={m:"auto"};localStorage.setItem("mint",JSON.stringify(MINT));localStorage.setItem("rgset","1");$("wl").classList.remove("on");$("wla").disabled=false;t.textContent=WLT;draw();toast("Mintaqa: "+myLoc().name)},
     ()=>{$("wla").disabled=false;t.textContent=WLT;x.textContent="Joylashuv aniqlanmadi. Ruxsat berilmagan bo‘lishi mumkin. Shahar yoki tumanni qo‘lda tanlang."});
 };
-$("wlm").onclick=()=>{$("wl").classList.remove("on");RGV=null;rgDraw();$("rgs").classList.add("on");$("rgs").dataset.fromWl="1"};
+$("wlm").onclick=()=>{$("wl").classList.remove("on");RGV=null;RGL=1;rgDraw();$("rgs").classList.add("on");$("rgs").dataset.fromWl="1"};
 $("wlk").onclick=()=>{try{localStorage.setItem("rgskip",dStr(new Date()))}catch(e){}$("wl").classList.remove("on")};
 function rgClose(){const f=$("rgs").dataset.fromWl;$("rgs").classList.remove("on");delete $("rgs").dataset.fromWl;if(f&&!localStorage.getItem("rgset"))wlShow()}
 setTimeout(wlMaybe,700);
@@ -1715,7 +1723,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.15";
+const APPV="3.16";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
