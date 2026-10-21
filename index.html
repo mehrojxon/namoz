@@ -451,6 +451,21 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 button:focus-visible{outline:3px solid var(--gold)}
 
 @font-face{font-family:"QPC Hafs";src:url("UthmanicHafs_V22.ttf") format("truetype");font-display:swap}
+#wl{background:rgba(6,24,22,.72);z-index:12}
+#wl .wlb{padding:0 0 calc(22px + env(safe-area-inset-bottom));overflow:hidden;max-width:460px;text-align:center}
+#wl .wlh{background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.16),transparent 55%),linear-gradient(160deg,#0e6b63,#0a4f49);padding:30px 24px 26px;color:#fff}
+#wl .wlic{width:76px;height:76px;margin:0 auto 14px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.14);box-shadow:0 0 0 1px rgba(240,200,105,.5),0 0 0 9px rgba(255,255,255,.06)}
+#wl .wlic svg{width:38px;height:38px;fill:none;stroke:#f0c869;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+#wl h2{margin:0 0 6px;color:#fff;font-size:26px}
+#wl .wlh p{margin:0;color:rgba(255,255,255,.85);font-size:15px;line-height:1.45}
+#wl .wlc{padding:20px 20px 0}
+#wl .wlc button{display:block;width:100%;margin:0 0 10px;border-radius:16px;font:inherit}
+#wl .wlp{padding:15px 16px;background:var(--ac);color:#fff;font-weight:700;font-size:17px;box-shadow:0 6px 16px rgba(14,107,99,.3)}
+#wl .wlp small{display:block;font-weight:400;font-size:12.5px;opacity:.85;margin-top:2px}
+#wl .wls{padding:14px 16px;background:var(--bg);color:var(--ink);border:1.5px solid var(--line);font-weight:600;font-size:16px}
+#wl .wlt{padding:10px;background:none;color:var(--mut);font-size:14.5px;margin:0}
+#wlx{min-height:20px;font-size:13.5px;color:#b4472f;margin:0 0 6px;line-height:1.4}
+#wl .wlf{font-size:12px;color:var(--mut);line-height:1.45;margin:6px 6px 0}
 /* Qur'on */
 #qrs{margin:0}
 #qsr{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;margin:0 0 12px}
@@ -581,7 +596,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.14<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
+  <p class="mut mfoot">Jannat sari · 3.15<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
 </section>
 <section class="tab" id="t7">
  <div id="qls">
@@ -608,6 +623,20 @@ button:focus-visible{outline:3px solid var(--gold)}
   <button id="uar" type="button" class="uarb">Tuzatishlarni tozalash</button>
   <button id="uax" type="button">Tayyor</button>
 </div></div>
+<div class="sheet" id="wl"><div class="box wlb">
+  <div class="wlh">
+   <div class="wlic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg></div>
+   <h2>Qayerdasiz?</h2>
+   <p>Namoz vaqtlari joyingizga qarab aniq hisoblanadi. Bir daqiqada sozlaymiz.</p>
+  </div>
+  <div class="wlc">
+   <button type="button" id="wla" class="wlp"><span>Joylashuvim bo‘yicha aniqlash</span><small>Tavsiya etiladi · eng aniq natija</small></button>
+   <button type="button" id="wlm" class="wls">Shahar yoki tumanni o‘zim tanlayman</button>
+   <div id="wlx" role="status"></div>
+   <button type="button" id="wlk" class="wlt">Keyinroq</button>
+   <p class="wlf">Joylashuvingiz faqat telefoningizda qoladi. Serverga faqat mintaqa nomi yuboriladi. Mintaqani keyin Menyu → Mintaqa bo‘limidan o‘zgartirishingiz mumkin.</p>
+  </div>
+</div></div>
 <div class="sheet" id="rgs"><div class="box rgb">
   <button id="rgb" type="button" class="rgbk">‹ Viloyatlar</button><h2 id="rgt">Mintaqa</h2>
   <p class="mut">Namoz vaqtlari tanlangan joy uchun hisoblanadi.</p>
@@ -617,7 +646,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.14</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.15</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -804,7 +833,7 @@ const ZK=[
  {sh:"Allohu akbar",ar:"{ا‌للَّهُ} أَكْبَرُ",tr:"Allohu akbar",ma:"Alloh eng ulug‘dir"},
  {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
- {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ",tr:"Allohumma solli ala Muhammad",ma:"Ey Alloh, Muhammadga salovot (rahmat) yubor"}
+ {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"}
 ];
 let Z=get("zikr",null);
 if(!Z)Z={sel:0,max:33,d:{},grand:0};
@@ -845,7 +874,7 @@ $("ztap").onclick=()=>{
   if(d.n>=zmax()){d.n=0;d.r++;vib(200)}else vib(d.n%100===0?120:12);
   showT();
 };
-$("reset").onclick=()=>{const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT(true);toast("Nolga qaytarildi")};
+$("reset").onclick=()=>{const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
 
 /* Qibla kompasi */
 const KLAT=21.4225,KLON=39.8262,DECL=5.4,RAD=Math.PI/180;
@@ -1319,10 +1348,10 @@ addEventListener("popstate",()=>{
 });
 
 /* Mintaqa tanlash */
-function locate(then){
+function locate(then,fail){
   if(!navigator.geolocation){toast("Bu qurilmada joylashuv aniqlanmaydi");return}
   navigator.geolocation.getCurrentPosition(p=>{localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));if(typeof qloc!=="undefined")qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};draw();rgDraw();then&&then()},
-   ()=>toast("Joylashuv aniqlanmadi. Ruxsat bering yoki mintaqani qo‘lda tanlang"),{timeout:10000,maximumAge:3600000});
+   ()=>{toast("Joylashuv aniqlanmadi. Ruxsat bering yoki mintaqani qo‘lda tanlang");fail&&fail()},{timeout:10000,maximumAge:3600000});
 }
 let RGV=null;
 function rgDraw(){
@@ -1342,19 +1371,42 @@ function rgDraw(){
   const L=myLoc();$("mrs").textContent=(sel==="auto"?"Avtomatik · ":"")+L.name;
 }
 $("mreg").onclick=()=>{RGV=null;rgDraw();$("rgs").classList.add("on")};
-$("rgx").onclick=()=>$("rgs").classList.remove("on");
+$("rgx").onclick=()=>rgClose();
 $("rgb").onclick=()=>{RGV=null;rgDraw()};
 $("rgs").onclick=e=>{
-  if(e.target.id==="rgs"){$("rgs").classList.remove("on");return}
+  if(e.target.id==="rgs"){rgClose();return}
   const v=e.target.closest("[data-v]");if(v){const x=VIL.find(z=>z[0]===v.dataset.v);if(x[2].length===1){pickR(x[2][0][0]);return}RGV=v.dataset.v;rgDraw();$("rgl").scrollTop=0;$("rgs").querySelector(".box").scrollTop=0;return}
   const b=e.target.closest("[data-r]");if(!b)return;pickR(b.dataset.r);
 };
 function pickR(r){
-  MINT={m:r};localStorage.setItem("mint",JSON.stringify(MINT));
+  localStorage.setItem("rgset","1");$("wl").classList.remove("on");delete $("rgs").dataset.fromWl;MINT={m:r};localStorage.setItem("mint",JSON.stringify(MINT));
   if(r==="auto"&&!gpsLoc())locate();
   draw();rgDraw();if(r!=="auto")$("rgs").classList.remove("on");
 }
 try{if(navigator.permissions)navigator.permissions.query({name:"geolocation"}).then(x=>{if(x.state==="granted"&&MINT.m==="auto")navigator.geolocation.getCurrentPosition(p=>{const o=gpsLoc();if(!o||Math.abs(o.lat-p.coords.latitude)>.02||Math.abs(o.lon-p.coords.longitude)>.02){localStorage.setItem("qloc",JSON.stringify({lat:p.coords.latitude,lon:p.coords.longitude,gps:1}));draw()}},()=>{},{timeout:8000,maximumAge:86400000})}).catch(()=>{})}catch(e){}
+
+/* Birinchi ochilishda mintaqa so'rovi */
+const wlShow=()=>$("wl").classList.add("on");
+function wlMaybe(){
+  try{
+    if(localStorage.getItem("rgset"))return;
+    if(localStorage.getItem("mint")){localStorage.setItem("rgset","1");return}
+    if(localStorage.getItem("rgskip")===dStr(new Date()))return;
+  }catch(e){}
+  wlShow();
+}
+const WLT="Joylashuvim bo‘yicha aniqlash";
+$("wla").onclick=()=>{
+  const x=$("wlx"),t=$("wla").firstChild;x.textContent="";
+  if(!navigator.geolocation){x.textContent="Bu qurilmada joylashuv aniqlanmaydi. Mintaqani qo‘lda tanlang.";return}
+  $("wla").disabled=true;t.textContent="Aniqlanmoqda…";
+  locate(()=>{MINT={m:"auto"};localStorage.setItem("mint",JSON.stringify(MINT));localStorage.setItem("rgset","1");$("wl").classList.remove("on");$("wla").disabled=false;t.textContent=WLT;draw();toast("Mintaqa: "+myLoc().name)},
+    ()=>{$("wla").disabled=false;t.textContent=WLT;x.textContent="Joylashuv aniqlanmadi. Ruxsat berilmagan bo‘lishi mumkin. Shahar yoki tumanni qo‘lda tanlang."});
+};
+$("wlm").onclick=()=>{$("wl").classList.remove("on");RGV=null;rgDraw();$("rgs").classList.add("on");$("rgs").dataset.fromWl="1"};
+$("wlk").onclick=()=>{try{localStorage.setItem("rgskip",dStr(new Date()))}catch(e){}$("wl").classList.remove("on")};
+function rgClose(){const f=$("rgs").dataset.fromWl;$("rgs").classList.remove("on");delete $("rgs").dataset.fromWl;if(f&&!localStorage.getItem("rgset"))wlShow()}
+setTimeout(wlMaybe,700);
 
 /* Foydalanuvchining shaxsiy vaqt tuzatishi */
 function uaDraw(){
@@ -1453,12 +1505,24 @@ $("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.k
 let ses=get("ses",null);
 const say=t=>{$("amsg").textContent=t;$("msg2").textContent=t;if(t)setTimeout(()=>{if($("amsg").textContent===t)$("amsg").textContent=""},3500)};
 function setS(j){ses={at:j.access_token,rt:j.refresh_token,exp:Date.now()+j.expires_in*1000};localStorage.setItem("ses",JSON.stringify(ses))}
+let tokP=null;
 async function tok(){
   if(!ses)return null;
   if(Date.now()<ses.exp-60000)return ses.at;
-  try{const r=await fetch(SB+"/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:H(),body:JSON.stringify({refresh_token:ses.rt})});
-    const j=await r.json();if(!j.access_token)throw 0;setS(j);return ses.at}
-  catch(e){ses=null;localStorage.removeItem("ses");return null}
+  if(tokP)return tokP;
+  tokP=(async()=>{
+    for(let i=0;i<2;i++){
+      try{
+        const r=await fetch(SB+"/auth/v1/token?grant_type=refresh_token",{method:"POST",headers:H(),body:JSON.stringify({refresh_token:ses.rt})});
+        const j=await r.json().catch(()=>({}));
+        if(j.access_token){setS(j);return ses.at}
+        if(r.status===400||r.status===401||r.status===403){ses=null;localStorage.removeItem("ses");return null}
+      }catch(e){}
+      await new Promise(f=>setTimeout(f,800));
+    }
+    return null;
+  })();
+  try{return await tokP}finally{tokP=null}
 }
 const AI={
  vaqt:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
@@ -1590,10 +1654,12 @@ async function showAdm(){
   if(!t)return;
   if(AS)aOpen(AS);else aHome();
 }
+try{$("em").value=localStorage.getItem("aem")||""}catch(e){}
+if(ses)setTimeout(()=>{tok()},3000);
 $("kir").onclick=async()=>{
   say("");
   try{const r=await fetch(SB+"/auth/v1/token?grant_type=password",{method:"POST",headers:H(),body:JSON.stringify({email:$("em").value.trim(),password:$("pw").value})});
-    const j=await r.json();if(!j.access_token)throw 0;setS(j);$("pw").value="";AS=null;showAdm()}
+    const j=await r.json();if(!j.access_token)throw 0;setS(j);try{localStorage.setItem("aem",$("em").value.trim());navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}$("pw").value="";AS=null;showAdm()}
   catch(e){say("Pochta yoki parol noto‘g‘ri")}
 };
 $("abody").addEventListener("click",e=>{
@@ -1649,7 +1715,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.14";
+const APPV="3.15";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
