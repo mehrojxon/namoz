@@ -250,7 +250,6 @@ body.kb nav{display:none}
 .ck input{width:20px;height:20px;margin:0}
 .box ol{text-align:left;padding-left:22px;margin:8px 0;font-size:15px;line-height:1.5}
 .mut.warn{color:#e5484d;font-weight:700}
-#sun{z-index:10}
 button:disabled{opacity:.45}
 .al{font-feature-settings:"liga" 0,"rlig" 0,"clig" 0,"dlig" 0,"calt" 0;font-variant-ligatures:none}
 @keyframes fi{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
@@ -397,7 +396,6 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 .kt2 td:first-child{white-space:nowrap;font-weight:700;width:34%}
 .kt2 tr.hl td{background:rgba(14,107,99,.2);color:var(--ink)}
 .klg .kr{flex-direction:column;gap:2px;align-items:flex-start}.klg .kr b{text-align:left}.klg .kr span{font-size:13.5px}
-#sun{z-index:10}
 #adm .box.full{height:100dvh;max-height:100dvh;border-radius:0;padding:0;text-align:left;overflow:hidden}
 #pn{display:none;flex-direction:column;height:100%}
 #pn button{margin:0;padding:0;border:0;background:none;color:inherit;border-radius:0;font:inherit}
@@ -553,7 +551,7 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.9<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
+  <p class="mut mfoot">Jannat sari · 3.11<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
 </section>
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
@@ -574,7 +572,7 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.9</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, taqvim va zakot · 3.11</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <hr>
   <div class="mut">Muallif</div>
@@ -589,24 +587,6 @@ button:focus-visible{outline:3px solid var(--gold)}
   <div class="mut" id="pknote"></div>
   <button id="pkgo">Taqvimda ko‘rsatish</button>
   <button id="pkx" style="background:none;color:var(--mut)">Bekor qilish</button>
-</div></div>
-<div class="sheet" id="sun"><div class="box">
-  <h2>Quyosh bilan kalibrlash</h2>
-  <p class="mut" id="qcal"></p>
-  <p class="mut warn">Quyoshga to‘g‘ridan-to‘g‘ri qaramang!</p>
-  <ol>
-    <li>Quyosh ko‘rinib turgan ochiq joyda turing (metall va elektr simlaridan uzoqroq).</li>
-    <li>Telefonni tekis ushlang, ekrani tepaga qarasin.</li>
-    <li>Telefon ustiga sim yoki qalamni tik qo‘ying.</li>
-    <li>Telefonni shunday buringki, qalamning soyasi telefonning pastki chetiga qarab, uzun o‘qi bo‘ylab tushsin. Shunda telefonning tepa tomoni Quyoshga qaragan bo‘ladi.</li>
-    <li>Qimirlatmay ushlab turib, pastdagi tugmani bosing.</li>
-  </ol>
-  <div class="mut" id="sinf"></div>
-  <div class="mut warn" id="sok"></div>
-  <button id="sgo">Soya to‘g‘ri tushdi, kalibrlash</button>
-  <div class="mut" id="sres" style="margin:8px 0"></div>
-  <button id="srs" style="background:none;color:var(--mut);border:1px solid var(--line)">Standartga qaytarish</button>
-  <button id="scl" style="background:none;color:var(--mut)">Yopish</button>
 </div></div>
 <div class="sheet" id="adm"><div class="box" id="abox">
   <div id="lg">
@@ -737,7 +717,7 @@ function pushReg(){
   }catch(e){}
 }
 function draw(){
-  refT();if($("ual"))uaDraw();repReg();pushReg();if($("rgl"))rgDraw();document.querySelectorAll(".rgn").forEach(e=>e.textContent=EL.name+(EL.mode==="g"?" · GPS":""));$("hij").textContent=hijri();drawH();kInfo();
+  refT();try{qSync()}catch(e){}if($("ual"))uaDraw();repReg();pushReg();if($("rgl"))rgDraw();document.querySelectorAll(".rgn").forEach(e=>e.textContent=EL.name+(EL.mode==="g"?" · GPS":""));$("hij").textContent=hijri();drawH();kInfo();
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
   $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
@@ -823,11 +803,11 @@ $("ztap").onclick=()=>{
 $("reset").onclick=()=>{const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT(true);toast("Nolga qaytarildi")};
 
 /* Qibla kompasi */
-const KLAT=21.4225,KLON=39.8262,DECL=4.5,RAD=Math.PI/180;
+const KLAT=21.4225,KLON=39.8262,DECL=5.4,RAD=Math.PI/180;
 const QDIR=["Shimol","Shimoli-sharq","Sharq","Janubi-sharq","Janub","Janubi-g‘arb","G‘arb","Shimoli-g‘arb"];
 let qloc=get("qloc",{lat:38.86,lon:65.79,gps:0}),qadj=+localStorage.getItem("qadj")||0;
-const qDef=()=>{const v=(D.vaqtlar||{}).qdecl;return typeof v==="number"?v:DECL};
-let qcal=localStorage.getItem("qcal");qcal=qcal===null?null:+qcal;let qRaw=null;
+const qDef=()=>DECL;
+try{localStorage.removeItem("qcal")}catch(e){}let qRaw=null;
 let qB=0,qH=null,qS=0,qrun=false,qraf=0,qgot=false,qok=false,qtilt=0,qlast=-1;
 const EV="ondeviceorientationabsolute" in window?"deviceorientationabsolute":"deviceorientation";
 function E(t,a,p){const e=document.createElementNS("http://www.w3.org/2000/svg",t);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e}
@@ -845,8 +825,10 @@ function qCalc(){
   $("qg").setAttribute("transform","rotate("+qB+")");
   $("qdeg").textContent=Math.round(qB)+"° "+QDIR[Math.round(qB/45)%8];
   $("qinfo").textContent="Ka’bagacha taxminan "+Math.round(qDist(qloc.lat,qloc.lon,KLAT,KLON)).toLocaleString("uz").replace(/,/g," ")+" km";
-  $("qloc").textContent=qloc.gps?"Joylashuv: "+qloc.lat.toFixed(2)+"°, "+qloc.lon.toFixed(2)+"° (GPS)":"Joylashuv: Qarshi shahri (GPS yoqilmagan)";
+  $("qloc").textContent="Joylashuv: "+(qloc.nm||"Qarshi shahri")+(qloc.gps?" · GPS":"");
 }
+/* Qibla joyi ilovadagi tanlangan mintaqa (yoki GPS) bilan bir xil */
+function qSync(){if(!EL)return;qloc={lat:EL.lat,lon:EL.lon,gps:EL.mode==="g"?1:0,nm:EL.name};qCalc()}
 function qLocate(){
   if(!navigator.geolocation)return;
   navigator.geolocation.getCurrentPosition(p=>{qloc={lat:p.coords.latitude,lon:p.coords.longitude,gps:1};localStorage.setItem("qloc",JSON.stringify(qloc));qCalc();draw()},()=>{},{timeout:8000,maximumAge:86400000});
@@ -861,7 +843,7 @@ function qOri(e){
   if(typeof e.webkitCompassHeading==="number")h=e.webkitCompassHeading;
   else if(e.alpha!=null&&(e.absolute||e.type==="deviceorientationabsolute"))h=Math.abs(e.beta||0)<=65?(360-e.alpha+360)%360:qHeading(e.alpha,e.beta,e.gamma);
   if(h==null)return;
-  qRaw=h;qH=(h+(qcal===null?qDef():qcal)+qadj+720)%360;qgot=true;qtilt=Math.abs(e.beta||0);
+  qRaw=h;qH=(h+qDef()+qadj+720)%360;qgot=true;qtilt=Math.abs(e.beta||0);
 }
 function qLoop(){
   if(!qrun)return;
@@ -893,50 +875,6 @@ $("qwrap").onclick=()=>{if(!qrun)qStart()};
 $("qadj").textContent="Tuzatish: "+(qadj>0?"+":"")+qadj+"°";
 qCalc();
 
-/* Quyosh orqali kalibrlash (NOAA formulalari) */
-function sunPos(date,lat,lon){
-  const T=((date.getTime()/86400000+2440587.5)-2451545)/36525;
-  const L0=(280.46646+T*(36000.76983+T*0.0003032))%360,M=357.52911+T*(35999.05029-0.0001537*T);
-  const e=0.016708634-T*(0.000042037+0.0000001267*T);
-  const C=Math.sin(M*RAD)*(1.914602-T*(0.004817+0.000014*T))+Math.sin(2*M*RAD)*(0.019993-0.000101*T)+Math.sin(3*M*RAD)*0.000289;
-  const om=125.04-1934.136*T,lam=L0+C-0.00569-0.00478*Math.sin(om*RAD);
-  const ep=23+(26+(21.448-T*(46.815+T*(0.00059-T*0.001813)))/60)/60+0.00256*Math.cos(om*RAD);
-  const dec=Math.asin(Math.sin(ep*RAD)*Math.sin(lam*RAD))/RAD;
-  const y=Math.tan(ep*RAD/2)**2;
-  const eot=4*(y*Math.sin(2*L0*RAD)-2*e*Math.sin(M*RAD)+4*e*y*Math.sin(M*RAD)*Math.cos(2*L0*RAD)-.5*y*y*Math.sin(4*L0*RAD)-1.25*e*e*Math.sin(2*M*RAD))/RAD;
-  const um=date.getUTCHours()*60+date.getUTCMinutes()+date.getUTCSeconds()/60;
-  const tst=((um+eot+4*lon)%1440+1440)%1440,ha=tst/4<0?tst/4+180:tst/4-180;
-  const zen=Math.acos(Math.sin(lat*RAD)*Math.sin(dec*RAD)+Math.cos(lat*RAD)*Math.cos(dec*RAD)*Math.cos(ha*RAD));
-  const a=Math.acos(Math.max(-1,Math.min(1,(Math.sin(lat*RAD)*Math.cos(zen)-Math.sin(dec*RAD))/(Math.cos(lat*RAD)*Math.sin(zen)))))/RAD;
-  return{az:ha>0?(a+180)%360:(540-a)%360,el:90-zen/RAD};
-}
-const qCalText=()=>{$("qcal").textContent=qcal===null?"Hozirgi tuzatish: standart ("+(qDef()>0?"+":"")+qDef()+"°)":"Hozirgi tuzatish: Quyosh orqali ("+(qcal>0?"+":"")+qcal.toFixed(1)+"°)"};
-let sunT=0;
-function sunTick(){
-  const p=sunPos(new Date(),qloc.lat,qloc.lon),ok=p.el>10&&p.el<75;
-  $("sinf").textContent="Quyosh balandligi: "+Math.round(p.el)+"° · yo‘nalishi: "+p.az.toFixed(1)+"°";
-  $("sok").textContent=ok?"":"Hozir kalibrlash uchun noqulay vaqt (Quyosh juda past yoki juda baland). Ertalab yoki tushdan keyin urinib ko‘ring.";
-  $("sgo").disabled=!ok||qRaw===null;
-}
-const sunClose=()=>{$("sun").classList.remove("on");clearInterval(sunT);if(!$("t3").classList.contains("on"))qStop()};
-const sunOpen=async()=>{await qStart();$("sun").classList.add("on");$("sres").textContent="";sunTick();sunT=setInterval(sunTick,1000)};
-$("scl").onclick=sunClose;
-$("sun").onclick=e=>{if(e.target.id==="sun")sunClose()};
-$("sgo").onclick=()=>{
-  const sm=[];$("sgo").disabled=true;$("sres").textContent="Telefonni qimirlatmang… 2 soniya";
-  const t=setInterval(()=>{if(qRaw!==null)sm.push(qRaw)},50);
-  setTimeout(()=>{
-    clearInterval(t);
-    if(sm.length<10){$("sres").textContent="Sensor ma’lumoti yetarli emas";return}
-    const mean=(Math.atan2(sm.reduce((a,h)=>a+Math.sin(h*RAD),0),sm.reduce((a,h)=>a+Math.cos(h*RAD),0))/RAD+360)%360;
-    const c=((sunPos(new Date(),qloc.lat,qloc.lon).az-mean+540)%360)-180;
-    if(Math.abs(c)>25){$("sres").textContent="Katta farq ("+c.toFixed(0)+"°): soya yo‘nalishini va telefon atrofidagi metallni tekshirib, qaytadan urinib ko‘ring";return}
-    qcal=c;localStorage.setItem("qcal",c);qCalText();
-    $("sres").textContent="Saqlandi ✓ Bu telefon uchun tuzatish: "+(c>0?"+":"")+c.toFixed(1)+"°";
-  },2000);
-};
-$("srs").onclick=()=>{qcal=null;localStorage.removeItem("qcal");qCalText();$("sres").textContent="Standart holatga qaytarildi"};
-qCalText();
 
 /* Taqvim: hijriy / milodiy konvertor */
 const GM=["Yanvar","Fevral","Mart","Aprel","May","Iyun","Iyul","Avgust","Sentabr","Oktabr","Noyabr","Dekabr"];
@@ -1491,11 +1429,6 @@ const ASEC={
  zakot:{t:"Zakot bo‘limi",d:"Nisob, fitr, fidya, ushr, chorva",
   html:zAdmHtml,init:()=>zSt(),
   save:()=>patchV(v=>{v.zakot=readZ()})},
- qibla:{t:"Qibla",d:"Hamma uchun tuzatish va kalibrlash",
-  html:()=>`<div class="ac"><div class="ag">Hamma uchun tuzatish</div><div class="ah">Kompas hamma telefonda shu qiymatga siljiydi. Quyosh orqali kalibrlab aniqlangan sonni shu yerga yozasiz.</div><div class="ai"><input type="number" step="0.1" id="a_qd" value="${qDef()}"><span>°</span></div></div>
-   <div class="ac"><div class="ag">Quyosh bilan kalibrlash</div><div class="ah">Kunduzi, quyosh ochiq turganda bajariladi. Natijadagi sonni yuqoridagi maydonga yozing.</div><button type="button" class="alink" id="qsun">Kalibrlashni boshlash</button></div>`,
-  init:()=>{},
-  save:()=>patchV(v=>{const q=parseFloat($("a_qd").value);v.qdecl=isNaN(q)?DECL:q})},
  hikmat:{t:"Kun hikmati",d:"Matnni yozish va xabar yuborish",
   html:()=>`<div class="ac"><div class="ag">Matn</div><textarea id="hm" rows="6" placeholder="Hikmatli so‘z yoki hadis matni"></textarea><input id="hs" placeholder="Manba (masalan: Imom Buxoriy, Sahih)"></div>
    <div class="ac"><label class="zsw"><input type="checkbox" id="hp"><span>Saqlagach hamma foydalanuvchiga bildirishnoma yuborish</span></label></div>
@@ -1553,7 +1486,6 @@ $("abody").addEventListener("click",e=>{
   const z=e.target.closest("#ztabs [data-z]");
   if(z){document.querySelectorAll("#ztabs button").forEach(b=>b.classList.toggle("on",b===z));document.querySelectorAll(".apane").forEach(p=>p.classList.toggle("on",p.dataset.z===z.dataset.z));return}
   if(e.target.id==="zcopy"){G.forEach(([c])=>{const x=$("z_fit_"+c).value;$("z_fid_"+c).value=x});zSt();say("Nusxalandi");return}
-  if(e.target.id==="qsun"){sunOpen();return}
   if(e.target.id==="hdel"){hikmatDel();return}
   if(e.target.id==="zpre"){
     const P={b:10000,b2:12000,a:20000,m:110000,x:200000},fz=x=>fm(x);
@@ -1602,7 +1534,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.9";
+const APPV="3.11";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
