@@ -468,32 +468,52 @@ button:focus-visible{outline:3px solid var(--gold)}
 #wlx{min-height:20px;font-size:13.5px;color:#b4472f;margin:0 0 6px;line-height:1.4}
 #wl .wlf{font-size:12px;color:var(--mut);line-height:1.45;margin:6px 6px 0}
 /* Qur'on */
-#qrs{margin:0}
-#qsr{width:100%;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px;margin:0 0 12px}
-#qcont{display:none;width:100%;text-align:left;border:1px solid var(--line);background:var(--card);border-radius:16px;padding:12px 16px;margin:0 0 12px;color:var(--ink);font:inherit}
-#qcont b{display:block;font-size:15px}#qcont span{font-size:13px;color:var(--mut)}
-.qsn{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;background:rgba(14,107,99,.14);color:var(--ac)}
-.qsa{font:22px/1.2 "QPC Hafs","QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;color:var(--ac);direction:rtl;flex:none}
-#qrd{display:none}
-.qtb{display:flex;align-items:center;gap:8px;margin:2px 0 12px}
-.qtb button{border:1px solid var(--line);background:var(--card);color:var(--ac);font-size:15px;font-weight:700;border-radius:20px;padding:9px 14px}
-.qtb .sp{flex:1}
-#qhd{text-align:center;margin:6px 0 4px}
-#qhd .qha{font:30px/1.6 "QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;color:var(--gold)}
-#qhd .qhu{font-size:14px;color:var(--mut)}
-#qbs{text-align:center;direction:rtl;font-family:"QPC Hafs","QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:var(--qfs,28px);line-height:2;margin:4px 0 8px}
-#qtx{direction:rtl;text-align:center;font-family:"QPC Hafs","QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:var(--qfs,28px);line-height:2.3;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px}
-#qtx .ay{border-radius:8px;padding:2px 0;-webkit-tap-highlight-color:transparent}
-#qtx .ay.sel{background:rgba(224,178,79,.28)}
-#qtx .ay.bm{box-shadow:inset 0 -3px 0 var(--gold)}
-#qtx .an{color:var(--gold);white-space:nowrap;margin:0 .1em}
-#qac{display:none;position:sticky;bottom:12px;gap:8px;justify-content:center;margin-top:12px}
+@font-face{font-family:"QPC Hafs";src:url("UthmanicHafs_V22.ttf") format("truetype");font-display:swap}
+body[data-scr="t7"] #sbar{display:none}
+#t7{--qpb:#fbf9f3;--qpt:#1b1a17;--qpm:#1e7f6a;--qph:rgba(240,200,105,.5);--qpg:#6b665b}
+@media(prefers-color-scheme:dark){#t7{--qpb:#16130e;--qpt:#ebe2cd;--qpm:#5fc2a7;--qph:rgba(224,178,79,.35);--qpg:#9a937f}}
+.qbar{display:flex;align-items:center;gap:2px;margin:0 -6px 4px}
+.qbar h1{font:700 25px Georgia,serif;margin:0 0 0 4px;color:var(--ink)}
+.qbar .sp{flex:1}
+.qbar button{width:44px;height:44px;border:0;background:none;color:var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;margin:0;padding:0}
+.qbar button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#qsw{display:none;margin:2px 0 8px}#qsw.on{display:block}
+#qsr{width:100%;padding:12px 16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.qtabs{display:flex;border-bottom:1px solid var(--line);margin:0 -16px 0;position:sticky;top:0;background:var(--bg);z-index:2}
+.qtabs button{flex:1;margin:0;padding:14px 4px 12px;border:0;background:none;color:var(--mut);font:700 14px system-ui;letter-spacing:.06em;border-bottom:3px solid transparent;border-radius:0}
+.qtabs button.on{color:var(--ac);border-bottom-color:var(--ac)}
+#qlist{margin:0 -16px}
+.qjh{display:flex;justify-content:space-between;padding:12px 18px;background:rgba(127,127,127,.14);color:var(--mut);font-size:16px}
+.qrow{display:flex;align-items:center;gap:16px;width:100%;margin:0;padding:14px 18px;border:0;border-bottom:1px solid var(--line);background:var(--card);color:var(--ink);text-align:left;font:inherit;border-radius:0}
+.qrow:active{background:rgba(127,127,127,.15)}
+.qrow .n{width:44px;text-align:center;font-size:30px;font-weight:300;color:var(--mut);flex:none}
+.qrow .t{flex:1;min-width:0}.qrow .t b{display:block;font-size:19px;font-weight:500}.qrow .t span{font-size:14.5px;color:var(--mut)}
+.qrow .p{color:var(--mut);font-size:16px}
+.qempty{padding:40px 24px;text-align:center;color:var(--mut);line-height:1.5}
+#qpg{display:none;position:fixed;inset:0;z-index:10;background:var(--qpb);color:var(--qpt);flex-direction:column}
+#qpg.on{display:flex}
+#qph{display:flex;align-items:center;gap:6px;padding:calc(10px + env(safe-area-inset-top)) 12px 6px 6px;color:var(--qpg);font-size:15px;flex:none}
+#qph button{width:36px;height:36px;border:0;background:none;color:var(--qpg);margin:0;padding:0;display:flex;align-items:center;justify-content:center}
+#qph button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#qph .sp{flex:1}
+#qsc{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;direction:rtl;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+#qsc::-webkit-scrollbar{display:none}
+.qsl{flex:none;width:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;justify-content:center;background:linear-gradient(90deg,rgba(120,100,60,.12),transparent 7%,transparent 93%,rgba(120,100,60,.12))}
+.qpp{width:min(100%,540px);padding:0 10px;direction:rtl;display:flex;flex-direction:column;justify-content:flex-start}
+.qpp.mid{justify-content:center}
+.ql{display:flex;gap:.26em;justify-content:space-between;align-items:center;white-space:nowrap;height:var(--qU);font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:var(--qf);line-height:1.2;flex:none}
+.ql.c{justify-content:center;gap:.26em}.ql.r{justify-content:flex-start;gap:.26em}
+.ql .w{cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:6px}
+.ql .w.hl{background:var(--qph)}
+.ql .an{color:var(--qpm)}
+.qsh{justify-content:center;gap:0;margin:2px 0;border:1.5px solid var(--qpm);border-radius:4px;background:linear-gradient(90deg,transparent,rgba(30,127,106,.08),transparent);position:relative;height:calc(var(--qU) - 6px);align-self:stretch}
+.qsh i{position:absolute;top:3px;bottom:3px;width:26%;background:repeating-linear-gradient(135deg,var(--qpm) 0 1.5px,transparent 1.5px 7px),repeating-linear-gradient(45deg,var(--qpm) 0 1.5px,transparent 1.5px 7px);opacity:.3;border-radius:3px}
+.qsh i:first-child{right:6px}.qsh i:last-child{left:6px}
+.qsh b{position:relative;font-weight:400;font-size:1.15em;color:var(--qpt);padding:0 10px;background:var(--qpb)}
+.qpn{position:absolute;bottom:calc(10px + env(safe-area-inset-bottom));right:18px;color:var(--qpg);font:15px system-ui;direction:ltr}
+#qac{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(26px + env(safe-area-inset-bottom));gap:6px;background:var(--ink);border-radius:26px;padding:6px;z-index:11;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 #qac.on{display:flex}
-#qac button{border:0;background:var(--ink);color:var(--bg);border-radius:20px;padding:11px 16px;font-size:14px;font-weight:700}
-#qnv{display:flex;gap:10px;margin:14px 0 6px}
-#qnv button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:14px;padding:12px;font-size:14px}
-#qnv button:disabled{opacity:.4}
-.qsrc{text-align:center;font-size:12.5px;color:var(--mut);margin:12px 0}.qsrc a{color:var(--ac)}
+#qac button{margin:0;border:0;background:none;color:var(--bg);padding:10px 16px;font:600 14px system-ui;border-radius:20px;white-space:nowrap}
 </style>
 </head>
 <body data-scr="t0">
@@ -597,21 +617,24 @@ button:focus-visible{outline:3px solid var(--gold)}
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
-  <p class="mut mfoot">Jannat sari · 3.16<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
+  <p class="mut mfoot">Jannat sari · 3.17<br>Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
 </section>
 <section class="tab" id="t7">
  <div id="qls">
-  <button id="qcont"></button>
-  <input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off">
-  <div class="mg" id="qrs"></div>
-  <p class="qsrc">Arabcha matn: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project (tanzil.net)</a>, Usmoniy yozuv, 1.1</p>
+  <div class="qbar">
+   <button id="qbk0" aria-label="Orqaga"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+   <h1>Qur'on</h1><span class="sp"></span>
+   <button id="qlast" aria-label="Oxirgi o‘qilgan joy"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.4 5 8 4.5 3.5 4.5V18c4.5 0 6.9.5 8.5 2 1.6-1.5 4-2 8.5-2V4.5c-4.5 0-6.9.5-8.5 2z"/><path d="M12 6.5V20"/></svg></button>
+   <button id="qsb" aria-label="Qidirish"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
+  </div>
+  <div id="qsw"><input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off"></div>
+  <div class="qtabs" id="qtabs"><button data-q="s" class="on">SURA</button><button data-q="j">JUZ</button><button data-q="b">XATCHO‘PLAR</button></div>
+  <div id="qlist"></div>
  </div>
- <div id="qrd">
-  <div class="qtb"><button id="qbk">‹ Suralar</button><span class="sp"></span><button id="qfm" aria-label="Kichraytirish">A−</button><button id="qfp" aria-label="Kattalashtirish">A+</button></div>
-  <div id="qhd"></div><div id="qbs"></div><div id="qtx"></div>
-  <div id="qac"><button id="qcp">Nusxalash</button><button id="qsh">Ulashish</button><button id="qmk">Shu yerda to‘xtadim</button></div>
-  <div id="qnv"><button id="qpv">‹ Oldingi sura</button><button id="qnx">Keyingi sura ›</button></div>
-  <p class="qsrc">Arabcha matn: <a href="https://tanzil.net" target="_blank" rel="noopener">Tanzil Project (tanzil.net)</a></p>
+ <div id="qpg">
+  <div id="qph"><button id="qcl" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span id="qhs"></span><span class="sp"></span><span id="qhj"></span></div>
+  <div id="qsc"></div>
+  <div id="qac"><button id="qcp">Nusxalash</button><button id="qsh">Ulashish</button><button id="qmk">Xatcho‘p</button></div>
  </div>
 </section>
 </main>
@@ -647,8 +670,9 @@ button:focus-visible{outline:3px solid var(--gold)}
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
   <h2>Jannat sari</h2>
-  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.16</div>
+  <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.17</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
+  <p class="mut" style="font-size:12.5px">Qur’on matni va sahifalar joylashuvi: Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali. O‘zgartirilmagan.</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -1332,7 +1356,7 @@ function show(t,fromPop){
   scrollTo(0,0);
   if(t==="t4"){sel=day0(new Date());renderCal()}
   if(t==="t3")qStart();else qStop();
-  if(t==="t7"){$("qrd").style.display="none";$("qls").style.display="block";qList()}
+  if(t==="t7")qEnter();
   if(t==="t5"){KT=[];kShowHub();kInfo()}
   if(t==="t0"||t==="t1")tick();
   if(t==="t0")drawH();
@@ -1434,74 +1458,156 @@ $("mabout").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
 
-/* Qur'on bo'limi: matn Tanzil Project (Usmoniy, 1.1) dan o'zgartirilmasdan olingan */
-const QAR=['الفاتحة', 'البقرة', 'آل عمران', 'النساء', 'المائدة', 'الأنعام', 'الأعراف', 'الأنفال', 'التوبة', 'يونس', 'هود', 'يوسف', 'الرعد', 'إبراهيم', 'الحجر', 'النحل', 'الإسراء', 'الكهف', 'مريم', 'طه', 'الأنبياء', 'الحج', 'المؤمنون', 'النور', 'الفرقان', 'الشعراء', 'النمل', 'القصص', 'العنكبوت', 'الروم', 'لقمان', 'السجدة', 'الأحزاب', 'سبأ', 'فاطر', 'يس', 'الصافات', 'ص', 'الزمر', 'غافر', 'فصلت', 'الشورى', 'الزخرف', 'الدخان', 'الجاثية', 'الأحقاف', 'محمد', 'الفتح', 'الحجرات', 'ق', 'الذاريات', 'الطور', 'النجم', 'القمر', 'الرحمن', 'الواقعة', 'الحديد', 'المجادلة', 'الحشر', 'الممتحنة', 'الصف', 'الجمعة', 'المنافقون', 'التغابن', 'الطلاق', 'التحريم', 'الملك', 'القلم', 'الحاقة', 'المعارج', 'نوح', 'الجن', 'المزمل', 'المدثر', 'القيامة', 'الإنسان', 'المرسلات', 'النبأ', 'النازعات', 'عبس', 'التكوير', 'الانفطار', 'المطففين', 'الانشقاق', 'البروج', 'الطارق', 'الأعلى', 'الغاشية', 'الفجر', 'البلد', 'الشمس', 'الليل', 'الضحى', 'الشرح', 'التين', 'العلق', 'القدر', 'البينة', 'الزلزلة', 'العاديات', 'القارعة', 'التكاثر', 'العصر', 'الهمزة', 'الفيل', 'قريش', 'الماعون', 'الكوثر', 'الكافرون', 'النصر', 'المسد', 'الإخلاص', 'الفلق', 'الناس'];
-const QUZ=['Fotiha', 'Baqara', 'Oli Imron', 'Niso', 'Moida', 'An’om', 'A’rof', 'Anfol', 'Tavba', 'Yunus', 'Hud', 'Yusuf', 'Ra’d', 'Ibrohim', 'Hijr', 'Nahl', 'Isro', 'Kahf', 'Maryam', 'Toha', 'Anbiyo', 'Haj', 'Mu’minun', 'Nur', 'Furqon', 'Shuaro', 'Naml', 'Qasas', 'Ankabut', 'Rum', 'Luqmon', 'Sajda', 'Ahzob', 'Saba', 'Fotir', 'Yosin', 'Soffot', 'Sod', 'Zumar', 'G‘ofir', 'Fussilat', 'Shuro', 'Zuxruf', 'Duxon', 'Josiya', 'Ahqof', 'Muhammad', 'Fath', 'Hujurot', 'Qof', 'Zoriyot', 'Tur', 'Najm', 'Qamar', 'Rahmon', 'Voqe’a', 'Hadid', 'Mujodala', 'Hashr', 'Mumtahana', 'Saff', 'Jum’a', 'Munofiqun', 'Tag‘obun', 'Taloq', 'Tahrim', 'Mulk', 'Qalam', 'Hoqqa', 'Ma’orij', 'Nuh', 'Jin', 'Muzzammil', 'Muddassir', 'Qiyomat', 'Inson', 'Mursalot', 'Naba', 'Noziot', 'Abasa', 'Takvir', 'Infitor', 'Mutaffifin', 'Inshiqoq', 'Buruj', 'Toriq', 'A’lo', 'G‘oshiya', 'Fajr', 'Balad', 'Shams', 'Layl', 'Zuho', 'Sharh', 'Tin', 'Alaq', 'Qadr', 'Bayyina', 'Zalzala', 'Odiyot', 'Qori’a', 'Takosur', 'Asr', 'Humaza', 'Fil', 'Quraysh', 'Mo‘un', 'Kavsar', 'Kofirun', 'Nasr', 'Masad', 'Ixlos', 'Falaq', 'Nos'];
-const QCN=[7, 286, 200, 176, 120, 165, 206, 75, 129, 109, 123, 111, 43, 52, 99, 128, 111, 110, 98, 135, 112, 78, 118, 64, 77, 227, 93, 88, 69, 60, 34, 30, 73, 54, 45, 83, 182, 88, 75, 85, 54, 53, 89, 59, 37, 35, 38, 29, 18, 45, 60, 49, 62, 55, 78, 96, 29, 22, 24, 13, 14, 11, 11, 18, 12, 12, 30, 52, 52, 44, 28, 28, 20, 56, 40, 31, 50, 40, 46, 42, 29, 19, 36, 25, 22, 17, 19, 26, 30, 20, 15, 21, 11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6];
-const QF=localStorage;
-let QD=null,QS=0,QA=0;
-const qg=k=>{try{return QF.getItem(k)}catch(e){return null}},qs=(k,v)=>{try{QF.setItem(k,v)}catch(e){}};
-const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[\u064B-\u065F\u0670\u06D6-\u06ED\u0640]/g,"").replace(/[أإآٱ]/g,"ا");
+/* Qur'on bo'limi. Matn va sahifalar: KFGQPC Hafs (QUL), o'zgartirilmagan */
+const QAR=["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"],QUZ=["Fotiha", "Baqara", "Oli Imron", "Niso", "Moida", "An’om", "A’rof", "Anfol", "Tavba", "Yunus", "Hud", "Yusuf", "Ra’d", "Ibrohim", "Hijr", "Nahl", "Isro", "Kahf", "Maryam", "Toha", "Anbiyo", "Haj", "Mu’minun", "Nur", "Furqon", "Shuaro", "Naml", "Qasas", "Ankabut", "Rum", "Luqmon", "Sajda", "Ahzob", "Saba", "Fotir", "Yosin", "Soffot", "Sod", "Zumar", "G‘ofir", "Fussilat", "Shuro", "Zuxruf", "Duxon", "Josiya", "Ahqof", "Muhammad", "Fath", "Hujurot", "Qof", "Zoriyot", "Tur", "Najm", "Qamar", "Rahmon", "Voqe’a", "Hadid", "Mujodala", "Hashr", "Mumtahana", "Saff", "Jum’a", "Munofiqun", "Tag‘obun", "Taloq", "Tahrim", "Mulk", "Qalam", "Hoqqa", "Ma’orij", "Nuh", "Jin", "Muzzammil", "Muddassir", "Qiyomat", "Inson", "Mursalot", "Naba", "Noziot", "Abasa", "Takvir", "Infitor", "Mutaffifin", "Inshiqoq", "Buruj", "Toriq", "A’lo", "G‘oshiya", "Fajr", "Balad", "Shams", "Layl", "Zuho", "Sharh", "Tin", "Alaq", "Qadr", "Bayyina", "Zalzala", "Odiyot", "Qori’a", "Takosur", "Asr", "Humaza", "Fil", "Quraysh", "Mo‘un", "Kavsar", "Kofirun", "Nasr", "Masad", "Ixlos", "Falaq", "Nos"],QCN=[7, 286, 200, 176, 120, 165, 206, 75, 129, 109, 123, 111, 43, 52, 99, 128, 111, 110, 98, 135, 112, 78, 118, 64, 77, 227, 93, 88, 69, 60, 34, 30, 73, 54, 45, 83, 182, 88, 75, 85, 54, 53, 89, 59, 37, 35, 38, 29, 18, 45, 60, 49, 62, 55, 78, 96, 29, 22, 24, 13, 14, 11, 11, 18, 12, 12, 30, 52, 52, 44, 28, 28, 20, 56, 40, 31, 50, 40, 46, 42, 29, 19, 36, 25, 22, 17, 19, 26, 30, 20, 15, 21, 11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6];
+const QJ=[[1,1],[2,142],[2,253],[3,93],[4,24],[4,148],[5,82],[6,111],[7,88],[8,41],[9,93],[11,6],[12,53],[15,1],[17,1],[18,75],[21,1],[23,1],[25,21],[27,56],[29,46],[33,31],[36,28],[39,32],[41,47],[46,1],[51,31],[58,1],[67,1],[78,1]];
+const QMD=new Set([2,3,4,5,8,9,13,22,24,33,47,48,49,55,57,58,59,60,61,62,63,64,65,66,76,98,99,110]);
+const qg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},qs=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
+const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[ً-ٰٟۖ-ۭـ]/g,"").replace(/[أإآٱ]/g,"ا");
 const qdig=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
+const qjuzOf=(s,a)=>{let j=0;for(let i=0;i<30;i++){if(QJ[i][0]<s||(QJ[i][0]===s&&QJ[i][1]<=a))j=i+1;else break}return j};
+let QD=null,QW=null,QPG=null,QE=null,QSO=null,QAO=null,QIE=null,QFW=null,QFE=null,QPW=null,QPO=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="";
 async function qLoad(){
   if(QD)return QD;
-  const r=await fetch("quran-uthmani.txt");if(!r.ok)throw new Error("fetch");
-  const T=await r.text(),D=[];
-  for(const l of T.split("\n")){const m=l.match(/^(\d+)\|(\d+)\|(.+)$/);if(m){const s=+m[1];(D[s]=D[s]||[])[+m[2]]=m[3].trim()}}
-  if(D.length!==115||D.slice(1).some((a,i)=>a.length-1!==QCN[i]))throw new Error("bad");
-  return QD=D;
+  const r=await fetch("quran-mushaf.json");if(!r.ok)throw new Error("fetch");
+  const J=await r.json(),W=J.words,E=J.ends,PG=J.pages,N=W.length;
+  if(N!==83668||E.length!==6236||PG.length!==604)throw new Error("bad");
+  const so=new Uint8Array(N+2),ao=new Uint16Array(N+2),ie=new Uint8Array(N+2),fw=[],fe=[];
+  let k=0,cur=1;
+  for(let s=1;s<=114;s++){fw[s]=[0];fe[s]=[0];for(let a=1;a<=QCN[s-1];a++){const e=E[k++];if(!(e>=cur))throw new Error("bad ends");for(let id=cur;id<=e;id++){so[id]=s;ao[id]=a}ie[e]=1;fw[s][a]=cur;fe[s][a]=e;cur=e+1}}
+  if(cur!==N+1)throw new Error("bad count");
+  const pw=new Uint16Array(N+2),ps=[];
+  PG.forEach((P,i)=>{let f0=0;P.forEach(x=>{if(x[0]==="t"){if(!f0)f0=x[2];for(let id=x[2];id<=x[3];id++)pw[id]=i+1}});ps.push([so[f0],ao[f0]])});
+  const po=[];for(let s=1;s<=114;s++){po[s]=[0];for(let a=1;a<=QCN[s-1];a++)po[s][a]=pw[fw[s][a]]}
+  try{await document.fonts.load('30px "QPC Hafs"')}catch(e){}
+  QW=W;QE=E;QPG=PG;QSO=so;QAO=ao;QIE=ie;QFW=fw;QFE=fe;QPW=pw;QPO=po;QPS=ps;return QD=true;
 }
+/* Ro'yxat */
+const qrow=(n,t,sub,p,x)=>'<button class="qrow" '+x+'><span class="n">'+n+'</span><span class="t"><b>'+t+'</b><span>'+sub+'</span></span><span class="p">'+p+'</span></button>';
 function qList(){
   const q=qnorm($("qsr").value.trim()),h=[];
-  for(let i=0;i<114;i++){
-    if(q&&!(qnorm(QUZ[i]).includes(q)||qnorm(QAR[i]).includes(q)||String(i+1)===q))continue;
-    h.push('<button class="mr" data-s="'+(i+1)+'"><span class="qsn">'+(i+1)+'</span><span class="mt"><b>'+QUZ[i]+'</b><span>'+QCN[i]+' oyat</span></span><span class="qsa">'+QAR[i]+'</span></button>');
+  [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q===QT));
+  if(QT==="s"){
+    const row=s=>qrow(s,QUZ[s-1],(QMD.has(s)?"Madaniy":"Makkiy")+" - "+QCN[s-1]+" oyat",QPO[s][1],'data-p="'+QPO[s][1]+'" data-s="'+s+'" data-a="1"');
+    if(q){for(let s=1;s<=114;s++)if(qnorm(QUZ[s-1]).includes(q)||qnorm(QAR[s-1]).includes(q)||String(s)===q)h.push(row(s));
+      if(!h.length)h.push('<div class="qempty">Topilmadi</div>')}
+    else{let s=1;for(let j=1;j<=30;j++){
+      h.push('<div class="qjh"><span>'+j+'-juz</span><span>'+QPO[QJ[j-1][0]][QJ[j-1][1]]+'</span></div>');
+      while(s<=114&&qjuzOf(s,1)===j){h.push(row(s));s++}}}
+  }else if(QT==="j"){
+    for(let j=1;j<=30;j++){const[s,a]=QJ[j-1],p=QPO[s][a];h.push(qrow(j,j+"-juz",QUZ[s-1]+" surasi, "+a+"-oyat",p,'data-p="'+p+'" data-s="'+s+'" data-a="'+a+'"'))}
+  }else{
+    let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(e){}
+    if(!b.length)h.push('<div class="qempty">Hozircha xatcho‘p yo‘q.<br>O‘qiyotganda oyat ustiga bosib, “Xatcho‘p” ni tanlang.</div>');
+    b.forEach((x,i)=>{const p=QPO[x.s][x.a];h.push('<div style="position:relative">'+qrow(p,QUZ[x.s-1]+" surasi",x.a+"-oyat","",'data-p="'+p+'" data-s="'+x.s+'" data-a="'+x.a+'"')+'<button class="qdel" data-del="'+i+'" aria-label="O‘chirish" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--mut);font-size:20px;margin:0;padding:0">✕</button></div>')});
   }
-  $("qrs").innerHTML=h.join("")||'<p class="mut" style="padding:16px;text-align:center">Topilmadi</p>';
-  let last=null;try{last=JSON.parse(qg("qlast"))}catch(e){}
-  const c=$("qcont");
-  if(last&&last.s>=1&&last.s<=114&&!q){c.style.display="block";c.innerHTML="<b>Davom ettirish</b><span>"+QUZ[last.s-1]+" surasi, "+last.a+"-oyat</span>";c.onclick=()=>qOpen(last.s,last.a)}else c.style.display="none";
+  $("qlist").innerHTML=h.join("");
 }
-async function qOpen(s,a){
-  $("qls").style.display="none";$("qrd").style.display="block";
-  $("qtx").innerHTML='<p class="mut" style="text-align:center;direction:ltr">Yuklanmoqda…</p>';
-  let D;try{D=await qLoad()}catch(e){$("qtx").innerHTML='<p class="mut" style="text-align:center;direction:ltr">Matnni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring. Bir marta ochilgach, internetsiz ishlaydi.</p>';return}
-  QS=s;QA=0;$("qac").classList.remove("on");
-  $("qhd").innerHTML='<div class="qha">سورة '+QAR[s-1]+'</div><div class="qhu">'+s+'. '+QUZ[s-1]+' surasi · '+QCN[s-1]+' oyat</div>';
-  $("qbs").textContent=(s!==1&&s!==9)?"بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ":"";
-  const bm=+(qg("qbm"+s)||0),h=[];
-  for(let i=1;i<D[s].length;i++){
-    let t=D[s][i];if(i===1&&s!==1&&s!==9)t=t.split(" ").slice(4).join(" ");
-    h.push('<span class="ay'+(bm===i?" bm":"")+'" data-a="'+i+'">'+t+' <span class="an">'+qdig(i)+'</span></span> ');
-  }
-  $("qtx").innerHTML=h.join("");
-  $("qpv").disabled=s===1;$("qnx").disabled=s===114;
-  qs("qlast",JSON.stringify({s:s,a:a||1}));
-  const el=a&&$("qtx").querySelector('[data-a="'+a+'"]');
-  scrollTo(0,0);if(el)setTimeout(()=>el.scrollIntoView({block:"center"}),50);
+async function qEnter(){
+  QT="s";$("qsr").value="";$("qsw").classList.remove("on");
+  [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q==="s"));
+  $("qlist").innerHTML='<div class="qempty">Yuklanmoqda…</div>';
+  try{await qLoad();qList()}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
 }
-function qClose(){$("qrd").style.display="none";$("qls").style.display="block";$("qac").classList.remove("on");qList();scrollTo(0,0)}
-function qFs(d){let f=+(qg("qfs")||28);f=Math.max(20,Math.min(48,f+d));qs("qfs",f);document.documentElement.style.setProperty("--qfs",f+"px")}
-{const f=+(qg("qfs")||28);document.documentElement.style.setProperty("--qfs",f+"px")}
-$("qsr").oninput=qList;
-$("qrs").onclick=e=>{const b=e.target.closest("[data-s]");if(b)qOpen(+b.dataset.s)};
-$("qbk").onclick=qClose;
-$("qfm").onclick=()=>qFs(-3);$("qfp").onclick=()=>qFs(3);
-$("qpv").onclick=()=>qOpen(QS-1);$("qnx").onclick=()=>qOpen(QS+1);
-$("qtx").onclick=e=>{
-  const a=e.target.closest(".ay");if(!a)return;
-  $("qtx").querySelectorAll(".sel").forEach(x=>x.classList.remove("sel"));
-  QA=+a.dataset.a;a.classList.add("sel");$("qac").classList.add("on");
-  qs("qlast",JSON.stringify({s:QS,a:QA}));
-};
-const qTxt=()=>{let t=QD[QS][QA];if(QA===1&&QS!==1&&QS!==9)t=t.split(" ").slice(4).join(" ");return t+" "+qdig(QA)+"\n("+QUZ[QS-1]+" surasi, "+QA+"-oyat)\nManba: Tanzil Project (tanzil.net)"};
-$("qcp").onclick=async()=>{try{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
-$("qsh").onclick=async()=>{try{if(navigator.share)await navigator.share({text:qTxt()});else{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}}catch(e){}};
+/* Sahifa tuzilmasi: Madina mushafi, har sahifada 15 qator (QUL / KFGQPC) */
+const qc=document.createElement("canvas").getContext("2d"),QLAY=new Map();let QWD=null;
+function qMeasure(){
+  if(QWD)return;qc.font='100px "QPC Hafs"';QWD=new Float32Array(QW.length+1);
+  for(let i=0;i<QW.length;i++)QWD[i+1]=qc.measureText(QW[i]).width;
+}
+function qLineUnit(x){let s=0;for(let id=x[2];id<=x[3];id++)s+=QWD[id];return s+(x[3]-x[2])*26}
+let QFG=0,QFGW=0;
+function qFontG(W){
+  if(QFGW===W)return QFG;qMeasure();let m=0;
+  for(const P of QPG)for(const x of P)if(x[0]==="t"){const u=qLineUnit(x);if(u>m)m=u}
+  QFGW=W;return QFG=100*W/m;
+}
+function qLayout(p,W,H){
+  const key=p+"|"+W+"|"+H;if(QLAY.has(key))return QLAY.get(key);
+  qMeasure();const U=H/15;let m=0;
+  for(const x of QPG[p-1])if(x[0]==="t"){const u=qLineUnit(x);if(u>m)m=u}
+  const fg=qFontG(W),f=Math.min(100*W/m,fg*1.25,U/1.7,46);
+  const r={f:f,U:U};QLAY.set(key,r);return r;
+}
+function qPageHtml(p,W,H){
+  const L=qLayout(p,W,H),h=[];
+  QPG[p-1].forEach(x=>{
+    if(x[0]==="h")h.push('<div class="ql qsh"><i></i><b>سورة '+QAR[x[2]-1]+'</b><i></i></div>');
+    else if(x[0]==="b")h.push('<div class="ql c">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>');
+    else{let s="";for(let id=x[2];id<=x[3];id++)s+='<span class="w'+(QIE[id]?" an":"")+'" data-s="'+QSO[id]+'" data-a="'+QAO[id]+'">'+QW[id-1]+'</span>';
+      h.push('<div class="ql'+(x[1]?" c":"")+'">'+s+'</div>')}
+  });
+  return '<div class="qpp'+(p<3?" mid":"")+'" style="--qU:'+L.U.toFixed(2)+'px;--qf:'+L.f.toFixed(2)+'px;height:'+(L.U*15).toFixed(1)+'px">'+h.join("")+'</div><div class="qpn">'+p+'</div>';
+}
+/* O'qish */
+const qsz=()=>{const sc=$("qsc");return{W:Math.min(sc.clientWidth,540)-20,H:Math.max(sc.clientHeight-40,300)}};
+function qBuild(){
+  const sc=$("qsc"),z=sc.clientWidth+"x"+sc.clientHeight;
+  if(QBUILT&&z===QSZ)return;
+  QSZ=z;QBUILT=1;QLAY.clear();
+  let h="";for(let p=1;p<=604;p++)h+='<div class="qsl" data-p="'+p+'"></div>';
+  sc.innerHTML=h;
+}
+function qFill(p){
+  if(p<1||p>604)return;const sl=$("qsc").children[p-1];if(!sl||sl.dataset.f)return;
+  const z=qsz();sl.innerHTML=qPageHtml(p,z.W,z.H);sl.dataset.f=1;
+}
+function qHead(){
+  const[s,a]=QPS[QP-1];$("qhs").textContent=QUZ[s-1]+" surasi";$("qhj").textContent=qjuzOf(s,a)+"-juz";
+}
+function qNear(){for(let i=-2;i<=2;i++)qFill(QP+i)}
+const qIdx=()=>{const sc=$("qsc");return Math.min(604,Math.max(1,Math.round(Math.abs(sc.scrollLeft)/sc.clientWidth)+1))};
+let qTm=0;
+function qSettle(){const p=qIdx();if(p!==QP){QP=p;qNear();qHead();$("qac").classList.remove("on");QSEL=null;qs("qlast",JSON.stringify({p:QP}))}}
+function qHl(s,a){
+  document.querySelectorAll("#qsc .w.hl").forEach(e=>e.classList.remove("hl"));
+  if(s)document.querySelectorAll('#qsc .qsl[data-p="'+QP+'"] .w[data-s="'+s+'"][data-a="'+a+'"]').forEach(e=>e.classList.add("hl"));
+}
+async function qGo(p,s,a){
+  try{await qLoad()}catch(e){toast("Qur’on ma’lumoti yuklanmadi");return}
+  $("qpg").classList.add("on");
+  if(!(history.state&&history.state.qr))history.pushState({qr:1},"");
+  qBuild();const sc=$("qsc");
+  QP=p;QSEL=null;$("qac").classList.remove("on");
+  sc.scrollLeft=-(p-1)*sc.clientWidth;
+  qNear();qHead();qHl(s,a);
+  qs("qlast",JSON.stringify({p:p}));
+}
+function qClose(){
+  if(!$("qpg").classList.contains("on"))return;
+  $("qpg").classList.remove("on");$("qac").classList.remove("on");QSEL=null;
+  if(history.state&&history.state.qr)history.back();
+  if(QD)qList();
+}
+const qAyahTxt=(s,a)=>QW.slice(QFW[s][a]-1,QFE[s][a]-1).join(" ");
+$("qsc").addEventListener("scroll",()=>{clearTimeout(qTm);qTm=setTimeout(qSettle,80)},{passive:true});
+$("qsc").addEventListener("click",e=>{
+  const w=e.target.closest(".w");
+  if(!w){QSEL=null;qHl();$("qac").classList.remove("on");return}
+  QSEL={s:+w.dataset.s,a:+w.dataset.a};qHl(QSEL.s,QSEL.a);$("qac").classList.add("on");
+});
+$("qcl").onclick=qClose;
+addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){$("qpg").classList.remove("on");$("qac").classList.remove("on");QSEL=null;if(QD)qList()}});
+addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear()}});
+const qTxt=()=>qAyahTxt(QSEL.s,QSEL.a)+" ﴿"+qdig(QSEL.a)+"﴾\n("+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat)";
+$("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
+$("qsh").onclick=async()=>{if(!QSEL)return;try{if(navigator.share)await navigator.share({text:qTxt()});else{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}}catch(e){}};
 $("qmk").onclick=()=>{
-  qs("qbm"+QS,QA);$("qtx").querySelectorAll(".bm").forEach(x=>x.classList.remove("bm"));
-  const a=$("qtx").querySelector('[data-a="'+QA+'"]');if(a)a.classList.add("bm");
-  qs("qlast",JSON.stringify({s:QS,a:QA}));toast("Saqlandi");
+  if(!QSEL)return;let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(e){}
+  if(b.some(x=>x.s===QSEL.s&&x.a===QSEL.a)){toast("Bu oyat allaqachon xatcho‘pda")}else{b.unshift({s:QSEL.s,a:QSEL.a});qs("qbl",JSON.stringify(b.slice(0,200)));toast("Xatcho‘pga qo‘shildi")}
+  $("qac").classList.remove("on");QSEL=null;qHl();
 };
+/* Ro'yxat boshqaruvi */
+$("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QD)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
+$("qsb").onclick=()=>{if(!QD)return;QT="s";$("qsw").classList.toggle("on");if($("qsw").classList.contains("on"))$("qsr").focus();else{$("qsr").value=""}qList()};
+$("qsr").oninput=qList;
+$("qlist").onclick=e=>{
+  const d=e.target.closest("[data-del]");
+  if(d){let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(x){}b.splice(+d.dataset.del,1);qs("qbl",JSON.stringify(b));qList();return}
+  const r=e.target.closest("[data-p]");if(r)qGo(+r.dataset.p,+r.dataset.s,+r.dataset.a);
+};
+$("qlast").onclick=()=>{let l=null;try{l=JSON.parse(qg("qlast"))}catch(e){}qGo(l&&l.p>=1&&l.p<=604?l.p:1)};
+$("qbk0").onclick=()=>history.back();
 
 addEventListener("focusin",e=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)&&e.target.type!=="checkbox")document.body.classList.add("kb")});
 addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;if(!a||!/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))document.body.classList.remove("kb")},150));
@@ -1723,7 +1829,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.16";
+const APPV="3.17";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
