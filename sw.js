@@ -5,10 +5,14 @@ self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(SHELL)));
   self.skipWaiting();
 });
-self.addEventListener("activate", e => e.waitUntil(clients.claim()));
+self.addEventListener("activate", e => e.waitUntil(
+  caches.open(C).then(c => c.keys().then(ks => Promise.all(ks.filter(k => /qm5-\d+\.bin|mushaf-\d+\.bin/.test(k.url)).map(k => c.delete(k)))))
+    .catch(() => {}).then(() => clients.claim())
+));
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
-  if (/qm5-\d+\.bin|quran-(meta|text|audio)\.json|UthmanicHafs/.test(e.request.url)) {
+  if (e.request.headers.has("range")) return;
+  if (/qp-(\d+\.bin|idx\.json)|quran-(meta|text|audio)\.json|UthmanicHafs/.test(e.request.url)) {
     e.respondWith(caches.match(e.request.url).then(r => r || fetch(e.request.url).then(n => { const k = n.clone(); if (n.ok) caches.open(C).then(c => c.put(e.request.url, k)); return n; })));
     return;
   }
