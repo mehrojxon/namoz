@@ -498,7 +498,7 @@ body[data-scr="t7"] #sbar{display:none}
 #qph .qhs{width:auto;height:42px;padding:0 8px;border-radius:12px;font:600 17px system-ui;color:var(--ink2)}
 #qph .sp{flex:1}
 #qhj{font:600 14px system-ui;margin-right:8px}
-#qsc{flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;direction:rtl;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+#qsc{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none;flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;direction:rtl;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
 #qsc::-webkit-scrollbar{display:none}
 .qsl{flex:none;width:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-y:auto;overflow-x:hidden;direction:ltr;background:linear-gradient(90deg,rgba(120,92,40,.1),transparent 5%,transparent 95%,rgba(120,92,40,.1))}
 #qsc.ls .qsl{justify-content:flex-start;padding-top:8px}
@@ -1678,10 +1678,10 @@ function qPick(sl,ev){
   const m=svg.getScreenCTM();if(!m)return null;
   const pt=svg.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;const q=pt.matrixTransform(m.inverse()),B=qBoxes(sl);
   let li=-1,bd=1e9;B.ly.forEach((y,i)=>{const d=Math.abs(q.y-y);if(d<bd){bd=d;li=i}});
-  if(li<0||bd>13)return null;
+  if(li<0||bd>20)return null;
   let best=null,dx=1e9;
   for(const w of B){if(w.li!==li)continue;const d=q.x<w.x?w.x-q.x:(q.x>w.x+w.w?q.x-w.x-w.w:0);if(d<dx){dx=d;best=w}}
-  return best&&dx<9?best:null;
+  return best&&dx<34?best:null;
 }
 function qBand(sl,kind,s,a){
   const svg=sl.querySelector("svg");if(!svg)return;
@@ -1829,11 +1829,25 @@ $("qsc").addEventListener("scroll",()=>{clearTimeout(qTm);qTm=setTimeout(qSettle
 $("qsc").addEventListener("click",e=>{
   if(e.target.closest("[data-jump]")){qJumpOpen();return}
   const re=e.target.closest("[data-re]");if(re){const sl=re.parentNode;delete sl.dataset.f;qFill(+re.dataset.re);return}
-  const sl=e.target.closest(".qsl");if(!sl)return;
-  const w=qPick(sl,e);
-  if(!w){if($("qas").classList.contains("on")||QSEL)qShut();return}
-  qOpen(w,sl);
+  if(Date.now()-QLP<700)return;
+  if($("qas").classList.contains("on")||QSEL)qShut();
 });
+/* Oyatni bosib turib tanlash (oddiy bosish o‘qishga xalaqit bermaydi) */
+let QLP=0,QLT=0,QLX=0,QLY=0;
+const qLc=()=>{clearTimeout(QLT);QLT=0};
+$("qsc").addEventListener("pointerdown",e=>{
+  qLc();if(e.target.closest("[data-jump],[data-re]"))return;
+  const sl=e.target.closest(".qsl");if(!sl)return;
+  QLX=e.clientX;QLY=e.clientY;
+  QLT=setTimeout(()=>{
+    QLT=0;const w=qPick(sl,{clientX:QLX,clientY:QLY});if(!w)return;
+    QLP=Date.now();try{navigator.vibrate&&navigator.vibrate(18)}catch(_){}
+    qOpen(w,sl);
+  },420);
+});
+$("qsc").addEventListener("pointermove",e=>{if(QLT&&Math.hypot(e.clientX-QLX,e.clientY-QLY)>9)qLc()});
+["pointerup","pointercancel","pointerleave"].forEach(t=>$("qsc").addEventListener(t,qLc));
+$("qsc").addEventListener("contextmenu",e=>e.preventDefault());
 $("qcl").onclick=qClose;
 $("qhs").onclick=qJumpOpen;
 $("qnt").onclick=()=>{const n=$("qpg").classList.toggle("night");qs("qnight",n?"1":"0")};
@@ -2103,7 +2117,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.17";
+const APPV="3.18";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
