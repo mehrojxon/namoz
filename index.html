@@ -507,6 +507,7 @@ body[data-scr="t7"] #sbar{display:none}
 .pgw svg path{fill:var(--ink2)}
 .pgw svg path.o,.pgw svg path.n{fill:var(--ring)}
 .pgw svg path.q{fill:var(--q)}
+.pgw svg .qfr path{fill:none}
 .hb rect{fill:var(--hl)}.hb.pl rect{fill:var(--hp)}
 .bn rect{fill:rgba(27,122,100,.09);stroke:var(--ring);stroke-width:.5}.bn rect+rect{fill:none;stroke-width:.25;opacity:.7}
 .qpn{flex:none;margin:2px 0 6px;padding:6px 14px;border:0;background:none;color:var(--chrome);font:600 15px system-ui;letter-spacing:.04em;border-radius:14px}
@@ -514,16 +515,19 @@ body[data-scr="t7"] #sbar{display:none}
 .qld{width:34px;height:34px;border-radius:50%;border:3px solid var(--line2);border-top-color:var(--ring);animation:qsp .8s linear infinite;margin:auto}
 @keyframes qsp{to{transform:rotate(360deg)}}
 .qre{margin:auto;padding:14px 22px;border:1px solid var(--line2);background:var(--pg2);color:var(--ink2);border-radius:14px;font:500 15px/1.4 system-ui}
-.rb{position:absolute;top:0;right:26px;width:18px;height:32px;background:var(--ring);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%)}
+.qrib{position:absolute;top:0;right:26px;width:18px;height:32px;background:var(--ring);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%)}
 #qas{position:fixed;left:0;right:0;margin:0 auto;bottom:0;max-width:600px;z-index:12;background:var(--pg2);color:var(--ink2);border-radius:22px 22px 0 0;box-shadow:0 -10px 34px rgba(0,0,0,.28);padding:12px 18px calc(14px + env(safe-area-inset-bottom));max-height:56dvh;overflow-y:auto;visibility:hidden;transform:translateY(104%);transition:transform .22s ease,visibility 0s .22s}
 #qas.on{visibility:visible;transform:none;transition:transform .22s ease}
 #qas.qtop{bottom:auto;top:calc(56px + env(safe-area-inset-top));border-radius:0 0 22px 22px;transform:translateY(-112%);padding:12px 18px 14px;box-shadow:0 10px 34px rgba(0,0,0,.28)}
 #qas.qtop.on{transform:none}
 #qpg.mp #qas:not(.qtop){bottom:calc(72px + env(safe-area-inset-bottom));left:10px;right:10px;border-radius:20px;padding-bottom:14px;max-height:48dvh}
 .qah{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.qah b{font:700 16px system-ui}
+.qah b{font:700 16px system-ui;flex:1;min-width:0}
+.qan{display:flex;align-items:center;gap:2px}
+.qan button svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.qan button:disabled{opacity:.28}
+.qan #qpv,.qan #qnx{background:var(--line2)}
 .qah button{width:36px;height:36px;border:0;background:none;color:var(--chrome);font-size:26px;line-height:1;margin:0;padding:0;border-radius:50%}
-#qar{font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:25px;line-height:2.1;margin:4px 0 2px;text-align:right}
 .qtl{font:600 11.5px system-ui;letter-spacing:.06em;color:var(--chrome);text-transform:uppercase;margin-top:6px}
 #qtr{font:16px/1.6 system-ui;margin:4px 0 6px}
 #qfn{font:14px/1.55 system-ui;color:var(--chrome);margin:4px 0;padding:10px 12px;background:var(--line2);border-radius:12px}
@@ -550,6 +554,16 @@ body[data-scr="t7"] #sbar{display:none}
 .qjb select,.qjb input{padding:12px 14px;border-radius:12px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);font:17px system-ui;width:100%;box-sizing:border-box;margin:0}
 .qjr{display:flex;gap:8px}.qjr button{flex:none;padding:0 20px;border:0;border-radius:12px;background:var(--ring);color:#fff;font:600 16px system-ui;margin:0}
 #qoff{margin:0}
+#qdm{position:fixed;inset:0;z-index:60;background:rgba(10,14,12,.55);display:none;align-items:center;justify-content:center;padding:20px}
+#qdm.on{display:flex}
+.qdc{width:100%;max-width:380px;background:var(--card);color:var(--tx,inherit);border:1px solid var(--line);border-radius:22px;padding:20px 18px 16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.qdc b{display:block;font:700 18px system-ui;margin-bottom:8px}
+.qdc p{margin:0 0 14px;font:14.5px/1.5 system-ui;color:var(--mut)}
+#qdp{height:8px;border-radius:4px;background:var(--line);overflow:hidden;margin:0 0 14px;display:none}
+#qdp i{display:block;height:100%;width:0;border-radius:4px;background:var(--ac);transition:width .25s}
+.qdbt{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.qdbt button{margin:0;padding:11px 16px;border-radius:13px;border:1px solid var(--line);background:none;color:inherit;font:600 14.5px system-ui}
+.qdbt #qdo{background:var(--ac);border-color:var(--ac);color:#fff}
 .qoffc{display:flex;align-items:center;gap:12px;margin:12px 0 4px;padding:12px 14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
 .qoffc>div{flex:1;min-width:0}.qoffc b{display:block;font-size:15px}.qoffc span{font-size:13px;color:var(--mut)}
 .qoffc button{margin:0;padding:10px 14px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:600 14px system-ui}
@@ -687,8 +701,7 @@ body[data-scr="t7"] #sbar{display:none}
   </div>
   <div id="qsc"></div>
   <div id="qas">
-   <div class="qah"><b id="qat"></b><button id="qax" aria-label="Yopish">×</button></div>
-   <div id="qar" dir="rtl" lang="ar"></div>
+   <div class="qah"><b id="qat"></b><span class="qan"><button id="qpv" type="button" aria-label="Oldingi oyat"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><button id="qnx" type="button" aria-label="Keyingi oyat"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button id="qax" aria-label="Yopish">×</button></span></div>
    <div class="qtl">Tarjima · Muhammad Sodiq Muhammad Yusuf</div>
    <p id="qtr"></p>
    <button id="qfb" type="button" style="display:none">Izohni ko‘rsatish</button>
@@ -719,6 +732,7 @@ body[data-scr="t7"] #sbar{display:none}
 </section>
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
+<div id="qdm"><div class="qdc"><b id="qdt"></b><p id="qdb"></p><div id="qdp"><i></i></div><div class="qdbt"><button id="qdn" type="button"></button><button id="qdo" type="button"></button></div></div></div>
 <div id="toast"></div>
 <div class="sheet" id="uas"><div class="box rgb">
   <h2>Vaqtlarni sozlash</h2>
@@ -1546,7 +1560,7 @@ const qg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},qs=(k,v)=
 const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[ً-ٰٟۖ-ۭـ]/g,"").replace(/[أإآٱ]/g,"ا");
 const qdig=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const qjuzOf=(s,a)=>{let j=0;for(let i=0;i<30;i++){if(QJ[i][0]<s||(QJ[i][0]===s&&QJ[i][1]<=a))j=i+1;else break}return j};
-const QV="6",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
+const QV="7",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
 const qgi=(s,a)=>QB[s-1]+a-1,pad3=n=>String(n).padStart(3,"0");
 const qSA=i=>{let k=0;while(QB[k+1]<=i)k++;return[k+1,i-QB[k]+1]};
 let QM=null,QPG=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="",QTX=null,QTXP=null,QDM=null;
@@ -1559,23 +1573,32 @@ async function qLoad(){
 }
 const qpo=(s,a)=>QPG[qgi(s,a)];
 function qText(){return QTXP||(QTXP=fetch("quran-text.json?v="+QV).then(r=>{if(!r.ok)throw new Error("quran-text.json topilmadi ("+r.status+")");return r.json()}).then(j=>QTX=j).catch(e=>{QTXP=null;throw e}))}
-/* Sahifalar: har 10 sahifa bitta siqilgan fayl */
-const QCH=new Map();
-function qChunk(c){
-  let p=QCH.get(c);
-  if(p){QCH.delete(c);QCH.set(c,p);return p}
-  p=(async()=>{
-    const fn="qm5-"+String(c).padStart(2,"0")+".bin",r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");
-    const ab=await r.arrayBuffer();
-    const t=await new Response(new Blob([ab]).stream().pipeThrough(new DecompressionStream("gzip"))).text(),L=t.split("\n");
-    if(L.length!==Math.min(61,604-c*61)||L.some(x=>x.slice(0,4)!=="<svg"))throw new Error("qm5-"+String(c).padStart(2,"0")+".bin eskirgan yoki buzuq");
-    return L;
-  })();
-  p.catch(()=>QCH.delete(c));QCH.set(c,p);
-  while(QCH.size>2)QCH.delete(QCH.keys().next().value);
-  return p;
+/* Sahifalar: har sahifa alohida siqilgan; katta faylning kerakli bo'lagi (taxminan 70 KB) so'raladi */
+let QIX=null;const QFB=new Map(),QSV=new Map();
+const qPIdx=()=>QIX||(QIX=fetch("qp-idx.json?v="+QV).then(r=>{if(!r.ok)throw new Error("qp-idx.json topilmadi ("+r.status+")");return r.json()}).then(j=>{if(!j.o||j.o.length!==3)throw new Error("qp-idx.json eskirgan");return j}).catch(e=>{QIX=null;throw e}));
+async function qFull(k){
+  if(QFB.has(k))return QFB.get(k);
+  try{const r=await caches.match("qp-"+k+".bin?v="+QV);if(r){const b=await r.arrayBuffer();QFB.set(k,b);while(QFB.size>2)QFB.delete(QFB.keys().next().value);return b}}catch(e){}
+  return null;
 }
-const qSvg=async p=>(await qChunk(Math.floor((p-1)/61)))[(p-1)%61];
+async function qSvg(p){
+  if(QSV.has(p)){const v=QSV.get(p);QSV.delete(p);QSV.set(p,v);return v}
+  const ix=await qPIdx(),k=Math.floor((p-1)/ix.per),o=ix.o[k],i=(p-1)-k*ix.per,a=o[i],b=o[i+1],fn="qp-"+k+".bin";
+  let buf=null;const full=await qFull(k);
+  if(full)buf=full.slice(a,b);
+  else{
+    const r=await fetch(fn+"?v="+QV,{headers:{Range:"bytes="+a+"-"+(b-1)}});
+    if(r.status===206)buf=await r.arrayBuffer();
+    else if(r.ok){const all=await r.arrayBuffer();QFB.set(k,all);while(QFB.size>2)QFB.delete(QFB.keys().next().value);buf=all.slice(a,b)}
+    else throw new Error(fn+" topilmadi ("+r.status+")");
+  }
+  if(buf.byteLength!==b-a)throw new Error(fn+" eskirgan yoki buzuq");
+  let t;
+  try{t=await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).text()}catch(e){throw new Error(fn+" eskirgan yoki buzuq")}
+  if(t.slice(0,4)!=="<svg")throw new Error(fn+" eskirgan yoki buzuq");
+  QSV.set(p,t);while(QSV.size>12)QSV.delete(QSV.keys().next().value);
+  return t;
+}
 /* Ro'yxat */
 const qrow=(n,t,sub,p,x)=>'<button class="qrow" '+x+'><span class="n">'+n+'</span><span class="t"><b>'+t+'</b><span>'+sub+'</span></span><span class="p">'+p+'</span></button>';
 function qList(){
@@ -1608,25 +1631,65 @@ async function qEnter(){
   QT="s";$("qsr").value="";$("qsw").classList.remove("on");
   [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q==="s"));
   $("qlist").innerHTML='<div class="qempty"><div class="qspin"></div>Yuklanmoqda…</div>';
-  try{await qLoad();qList()}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
+  try{await qLoad();qList();if(qg("qoff3")!=="2"&&!QASK){QASK=true;setTimeout(qOffAsk,400)}}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
 }
 /* Oflayn yuklash */
 function qOffDraw(){
   const e=$("qoff");if(!e)return;
-  if(qg("qoff")==="2"){e.innerHTML="";return}
+  if(qg("qoff3")==="2"){e.innerHTML="";return}
   if(e.dataset.busy)return;
-  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalarni telefonga saqlash, taxminan 42 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
+  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalar va tarjima, taxminan 47 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
 }
-async function qOffGo(){
-  const e=$("qoff");e.dataset.busy="1";let ok=true,bad="";
-  for(let c=0;c<10;c++){
-    e.innerHTML='<div class="qoffc"><div><b>Yuklanmoqda… '+Math.round(c/10*100)+'%</b><span>Ilovani yopmang</span></div></div>';
-    const fn="qm5-"+String(c).padStart(2,"0")+".bin";try{const r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");await r.arrayBuffer()}catch(x){ok=false;bad=x.message&&x.message.indexOf("mushaf")===0?x.message:fn+" yuklanmadi";break}
+const QCACHE="namoz-v1",QACACHE="namoz-aud1";
+let QDRES=null,QDLB=false,QASK=false;
+function qDm(o){
+  $("qdt").textContent=o.t;$("qdb").textContent=o.b;
+  $("qdp").style.display=o.bar==null?"none":"block";$("qdp").firstChild.style.width=(o.bar||0)+"%";
+  $("qdo").style.display=o.ok?"":"none";$("qdn").style.display=o.no?"":"none";$("qdo").textContent=o.ok||"";$("qdn").textContent=o.no||"";
+  $("qdm").classList.add("on");
+  return new Promise(res=>{QDRES=res});
+}
+const qDmSet=(b,bar)=>{$("qdb").textContent=b;$("qdp").firstChild.style.width=bar+"%"};
+const qDmClose=()=>{$("qdm").classList.remove("on");QDRES=null};
+$("qdo").onclick=()=>{const f=QDRES;QDRES=null;if(f)f("ok")};
+$("qdn").onclick=()=>{const f=QDRES;QDRES=null;if(f)f("no")};
+const qAbs=u=>new URL(u,location.href).href;
+async function qCached(u,cn){try{const c=await caches.open(cn||QCACHE);return await c.match(qAbs(u))}catch(e){return null}}
+async function qFetchTo(u,cn,onB,sig,expect){
+  const r=await fetch(u,{signal:sig});if(!r.ok)throw new Error(u+" topilmadi ("+r.status+")");
+  const ch=[];let n=0;
+  if(r.body&&r.body.getReader){const rd=r.body.getReader();for(;;){const x=await rd.read();if(x.done)break;ch.push(x.value);n+=x.value.length;onB(x.value.length)}}
+  else{const ab=await r.arrayBuffer();ch.push(new Uint8Array(ab));n=ab.byteLength;onB(n)}
+  if(expect&&!r.headers.get("content-encoding")&&n!==expect)throw new Error(u+" to‘liq yuklanmadi");
+  const c=await caches.open(cn);
+  await c.put(qAbs(u),new Response(new Blob(ch),{headers:{"Content-Type":r.headers.get("content-type")||"application/octet-stream"}}));
+}
+async function qDownAll(){
+  if(QDLB)return;QDLB=true;const ac=new AbortController();let again=false;
+  try{
+    const ix=await qPIdx();
+    const fl=[["qp-idx.json?v="+QV,5008,0],["quran-meta.json?v="+QV,29e3,0],["quran-audio.json?v="+QV,88e3,0],["quran-text.json?v="+QV,2.84e6,0]];
+    ix.o.forEach((o,k)=>fl.push(["qp-"+k+".bin?v="+QV,o[o.length-1],o[o.length-1]]));
+    const tot=fl.reduce((a,x)=>a+x[1],0);let done=0;
+    const upd=()=>{const pc=Math.min(99,Math.round(done/tot*100));qDmSet(pc+"%  ·  "+(done/1048576).toFixed(1)+" / "+(tot/1048576).toFixed(0)+" MB. Ilovani yopmang.",pc)};
+    qDm({t:"Qur’on yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(x=>{if(x==="no")ac.abort()});
+    for(const f of fl){
+      if(await qCached(f[0])){done+=f[1];upd();continue}
+      await qFetchTo(f[0],QCACHE,n=>{done+=n;upd()},ac.signal,f[2]);
+    }
+    try{if(navigator.storage&&navigator.storage.persist)await navigator.storage.persist()}catch(e){}
+    qs("qoff3","2");qDmClose();toast("Qur’on telefonga saqlandi");
+  }catch(e){
+    if(ac.signal.aborted){qDmClose();toast("Yuklash bekor qilindi")}
+    else{const x=await qDm({t:"Yuklash to‘xtadi",b:"Internetni tekshiring. Qayta urinsangiz, saqlangan fayllar qayta yuklanmaydi.",ok:"Qayta urinish",no:"Yopish"});qDmClose();if(x==="ok")again=true}
   }
-  if(ok){try{await qText();await qAudioData()}catch(x){ok=false;bad="quran-text.json yoki quran-audio.json yuklanmadi"}}
-  delete e.dataset.busy;
-  if(ok){qs("qoff","2");toast("Qur’on telefonga saqlandi")}else toast("Yuklash to‘xtadi: "+bad);
-  qOffDraw();
+  QDLB=false;qOffDraw();
+  if(again)return qDownAll();
+}
+async function qOffAsk(){
+  if(qg("qoff3")==="2"||$("qdm").classList.contains("on"))return;
+  const x=await qDm({t:"Qur’onni telefonga yuklab olish",b:"Taxminan 47 MB, Wi-Fi bilan yuklash yaxshi. Bir marta yuklab olsangiz, internet kerak bo‘lmaydi va har sahifada qayta so‘ralmaydi. Tilovat (audio) alohida: tinglashni bosganda sura bo‘yicha taklif qilinadi.",ok:"Yuklab olish",no:"Keyinroq"});
+  qDmClose();if(x==="ok")qDownAll();
 }
 /* O'qish */
 function qDimsCalc(){
@@ -1644,21 +1707,41 @@ function qBuild(){
   sc.innerHTML=h;
 }
 const SVGNS="http://www.w3.org/2000/svg";
+/* 1-2 sahifalar: mushafdagi kabi naqshli hoshiya */
+function qFramed(t,p){
+  const m=t.match(/viewBox="(-?[\d.]+) (-?[\d.]+) (-?[\d.]+) (-?[\d.]+)"/);if(!m)return t;
+  const x=+m[1],y=+m[2],w=+m[3],h=+m[4],px=19,W=w+2*px,k=W/w,H=h*k,X=x-px,Y=y-(H-h)/2,f=n=>n.toFixed(2),G="var(--q)",T="var(--ring)",P="var(--pg)";
+  const R=(n,sw,st)=>'<rect x="'+f(X+n)+'" y="'+f(Y+n)+'" width="'+f(W-2*n)+'" height="'+f(H-2*n)+'" fill="none" stroke="'+st+'" stroke-width="'+sw+'"/>';
+  const star=(cx,cy,r,st,sw)=>{let d="";for(let i=0;i<16;i++){const a=i*Math.PI/8-Math.PI/2,rr=i%2?r*.55:r;d+=(i?"L":"M")+f(cx+rr*Math.cos(a))+" "+f(cy+rr*Math.sin(a))}return'<path d="'+d+'Z" fill="none" stroke="'+st+'" stroke-width="'+sw+'"/>'};
+  const ros=(cx,cy,r)=>{let o='<circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r)+'" fill="'+P+'" stroke="'+G+'" stroke-width="1.1"/><circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r-3)+'" fill="none" stroke="'+T+'" stroke-width=".6"/>';
+    for(let i=0;i<16;i++)o+='<ellipse cx="'+f(cx)+'" cy="'+f(cy-r*.55)+'" rx="'+f(r*.13)+'" ry="'+f(r*.34)+'" transform="rotate('+(i*22.5)+' '+f(cx)+' '+f(cy)+')" fill="'+G+'" fill-opacity=".16" stroke="'+T+'" stroke-width=".5"/>';
+    return o+star(cx,cy,r*.5,G,.7)+'<circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r*.2)+'" fill="'+G+'" fill-opacity=".6"/><circle cx="'+f(cx)+'" cy="'+f(cy)+'" r="'+f(r*.1)+'" fill="'+P+'"/>'};
+  const a="qa"+p,b="qb"+p,cx=X+W/2;let o='<g class="qfr"><defs>'
+    +'<pattern id="'+a+'" width="14" height="14" patternUnits="userSpaceOnUse"><path d="M7 1.4l1.7 3.9 3.9 1.7-3.9 1.7L7 12.6 5.3 8.7 1.4 7l3.9-1.7z" fill="none" stroke="'+T+'" stroke-width=".45"/><circle cx="0" cy="0" r=".7" fill="'+G+'"/><circle cx="14" cy="0" r=".7" fill="'+G+'"/><circle cx="0" cy="14" r=".7" fill="'+G+'"/><circle cx="14" cy="14" r=".7" fill="'+G+'"/></pattern>'
+    +'<pattern id="'+b+'" width="6" height="6" patternUnits="userSpaceOnUse"><polygon points="3,.5 5.5,3 3,5.5 .5,3" fill="'+G+'" fill-opacity=".85"/><circle cx="3" cy="3" r=".7" fill="'+P+'"/></pattern></defs>'
+    +'<rect x="'+f(X+13.6)+'" y="'+f(Y+13.6)+'" width="'+f(W-27.2)+'" height="'+f(H-27.2)+'" fill="url(#'+a+')" opacity=".2"/>'
+    +'<rect x="'+f(X+8.6)+'" y="'+f(Y+8.6)+'" width="'+f(W-17.2)+'" height="'+f(H-17.2)+'" fill="none" stroke="url(#'+b+')" stroke-width="6"/>'
+    +R(2.2,1.4,G)+R(4.1,.55,T)+R(12.1,.6,T)+R(13.7,1.2,G);
+  [[8.4,8.4],[W-8.4,8.4],[8.4,H-8.4],[W-8.4,H-8.4],[8.4,H/2],[W-8.4,H/2],[W/2,8.4],[W/2,H-8.4]].forEach(c=>{o+='<circle cx="'+f(X+c[0])+'" cy="'+f(Y+c[1])+'" r="6" fill="'+P+'" stroke="'+G+'" stroke-width="1"/>'+star(X+c[0],Y+c[1],4.6,T,.55)+'<circle cx="'+f(X+c[0])+'" cy="'+f(Y+c[1])+'" r="1.2" fill="'+G+'"/>'});
+  o+=ros(cx,Y+14.5+58,40)+ros(cx,Y+H-14.5-58,40)+'</g>';
+  return t.replace(m[0],'viewBox="'+f(X)+' '+f(Y)+' '+f(W)+' '+f(H)+'" data-vb="'+m[1]+' '+m[2]+' '+m[3]+' '+m[4]+'"').replace(/>/,">"+o);
+}
 async function qFill(p){
   if(p<1||p>604)return;const sl=$("qsc").children[p-1];if(!sl||sl.dataset.f)return;
   sl.dataset.f="1";sl.innerHTML='<div class="qld"></div>';
   let t;
   try{t=await qSvg(p)}catch(e){if(sl.isConnected){delete sl.dataset.f;sl.innerHTML='<button class="qre" data-re="'+p+'">Sahifa yuklanmadi.<br><small>'+(e&&e.message?e.message:"")+'</small><br>Qayta urinish</button>'}return}
   if(!sl.isConnected||!sl.dataset.f)return;
+  if(p<=2)t=qFramed(t,p);
   const d=QDM;
-  sl.innerHTML='<div class="pgw" style="width:'+d.W.toFixed(1)+'px;height:'+d.H.toFixed(1)+'px">'+t+'</div><button class="qpn" data-jump="1">'+p+'</button>'+(qHasBm(p)?'<i class="rb"></i>':'');
+  sl.innerHTML='<div class="pgw" style="width:'+d.W.toFixed(1)+'px;height:'+d.H.toFixed(1)+'px">'+t+'</div><button class="qpn" data-jump="1">'+p+'</button>'+(qHasBm(p)?'<i class="qrib"></i>':'');
   sl._b=null;qBanner(sl);qMarkPage(sl);
 }
 function qDrop(sl){if(sl&&sl.dataset.f){delete sl.dataset.f;sl._b=null;sl.innerHTML=""}}
 function qBanner(sl){
   const svg=sl.querySelector("svg");if(!svg)return;const vb=svg.viewBox.baseVal;
   svg.querySelectorAll("g.h").forEach(g=>{
-    const b=g.getBBox(),cy=b.y+b.height/2,h=19.5,x=vb.x+2.2,w=vb.width-4.4,n=document.createElementNS(SVGNS,"g");
+    const o=svg.dataset.vb?svg.dataset.vb.split(" ").map(Number):[vb.x,vb.y,vb.width],b=g.getBBox(),cy=b.y+b.height/2,h=19.5,x=o[0]+2.2,w=o[2]-4.4,n=document.createElementNS(SVGNS,"g");
     n.setAttribute("class","bn");
     n.innerHTML='<rect x="'+x.toFixed(2)+'" y="'+(cy-h/2).toFixed(2)+'" width="'+w.toFixed(2)+'" height="'+h+'" rx="2.6"/><rect x="'+(x+1.7).toFixed(2)+'" y="'+(cy-h/2+1.7).toFixed(2)+'" width="'+(w-3.4).toFixed(2)+'" height="'+(h-3.4)+'" rx="1.6"/>';
     g.parentNode.insertBefore(n,g);
@@ -1735,21 +1818,42 @@ function qShut(keep){
   $("qas").classList.remove("on");
   if(!keep&&QSEL){QSEL=null;qMarkAll()}
 }
+function qFlip(r){$("qas").classList.toggle("qtop",r.top+r.height/2>innerHeight*.52)}
 async function qOpen(w,sl){
-  QSEL={s:w.s,a:w.a};qMarkAll();
-  const r=w.g.getBoundingClientRect(),el=$("qas");
-  el.classList.toggle("qtop",r.top+r.height/2>innerHeight*.52);
-  $("qat").textContent=QUZ[w.s-1]+" surasi, "+w.a+"-oyat";
-  $("qar").textContent="";$("qtr").textContent="";$("qfn").style.display="none";$("qfb").style.display="none";$("qfb").textContent="Izohni ko‘rsatish";
+  QSEL={s:w.s,a:w.a};qMarkAll();qFlip(w.g.getBoundingClientRect());qShow();
+}
+async function qShow(){
+  const s=QSEL.s,a=QSEL.a,el=$("qas"),g=qgi(s,a);
+  $("qat").textContent=QUZ[s-1]+" surasi, "+a+"-oyat";
+  $("qtr").textContent="Yuklanmoqda…";$("qfn").style.display="none";$("qfb").style.display="none";$("qfb").textContent="Izohni ko‘rsatish";
+  $("qpv").disabled=g===0;$("qnx").disabled=g===6235;
   qBmBtn();el.classList.add("on");
   const my=++qAt;
   try{
     const T=await qText();if(my!==qAt||!QSEL)return;
-    const i=qgi(w.s,w.a);
-    $("qar").textContent=T.ar[i]+" ﴿"+qdig(w.a)+"﴾";
-    $("qtr").textContent=T.uz[i]||"";
-    if(T.fn[i]){$("qfn").textContent=T.fn[i];$("qfb").style.display="inline-block"}
-  }catch(e){$("qtr").textContent="Tarjima yuklanmadi: "+(e&&e.message?e.message:"internetni tekshiring")}
+    $("qtr").textContent=T.uz[g]||"";
+    if(T.fn[g]){$("qfn").textContent=T.fn[g];$("qfb").style.display="inline-block"}
+  }catch(e){if(my===qAt)$("qtr").textContent="Tarjima yuklanmadi: "+(e&&e.message?e.message:"internetni tekshiring")}
+}
+async function qReady(p){
+  for(let k=0;k<100;k++){const sl=$("qsc").children[p-1];if(sl&&sl.querySelector("svg"))return sl;await new Promise(r=>setTimeout(r,60))}
+  return null;
+}
+let QNV=0;
+async function qNav(d){
+  if(!QSEL)return;const g=qgi(QSEL.s,QSEL.a)+d;if(g<0||g>=6236)return;
+  const[s,a]=qSA(g),p=qpo(s,a),my=++QNV;
+  QSEL={s:s,a:a};qAt++;
+  $("qat").textContent=QUZ[s-1]+" surasi, "+a+"-oyat";$("qpv").disabled=g===0;$("qnx").disabled=g===6235;
+  if(p!==QP)await qGo(p,s,a,false);
+  const sl=await qReady(p);if(my!==QNV||!sl||!QSEL)return;
+  QSEL={s:s,a:a};qMarkAll();
+  const w=qBoxes(sl).find(x=>x.s===s&&x.a===a);
+  if(w){
+    if(QDM.land){const r=w.g.getBoundingClientRect(),sr=sl.getBoundingClientRect();sl.scrollTop+=r.top-sr.top-sr.height*.3}
+    qFlip(w.g.getBoundingClientRect());
+  }
+  qShow();
 }
 function qBmBtn(){
   if(!QSEL)return;const on=qbm().some(x=>x.s===QSEL.s&&x.a===QSEL.a);
@@ -1762,24 +1866,68 @@ async function qTxt(){
 /* Tilovat */
 let QAU=null,QAP=null,QRC=+(qg("qrc")||0),QPI=-1,QEL=null,QPLAY=false;
 function qAudioData(){return QAP||(QAP=fetch("quran-audio.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>QAU=j).catch(e=>{QAP=null;throw e}))}
-async function qPlayFrom(i){
+const qaud=()=>{try{const o=JSON.parse(qg("qaud")||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
+const qAudHas=(rc,s)=>(qaud()[rc.id]||[]).includes(s);
+function qAudMark(rc,s){const o=qaud(),a=o[rc.id]=o[rc.id]||[];if(!a.includes(s))a.push(s);qs("qaud",JSON.stringify(o))}
+function qAudUrls(rc,s){
+  if(rc.k==="s")return[rc.u+pad3(s)+".mp3"];
+  const u=[];for(let a=1;a<=QCN[s-1];a++)u.push(rc.u+pad3(s)+pad3(a)+".mp3");return u;
+}
+function qDur(s){
+  const d=QAU.r.find(x=>x.k==="s");if(!d||!d.t)return 20*QCN[s-1];
+  return Math.max(10,(d.t[QB[s]-1]-d.f[QB[s-1]])/1000);
+}
+async function qAudSize(rc,s){
+  if(rc.k==="s"){try{const r=await fetch(qAudUrls(rc,s)[0],{method:"HEAD"});const n=+r.headers.get("content-length");if(n>0)return n}catch(e){}}
+  return Math.round(qDur(s)*16000*(rc.k==="a"?1.15:1));
+}
+async function qAudDown(rc,s,sig,onB){
+  const urls=qAudUrls(rc,s),c=await caches.open(QACACHE);let i=0;
+  const wk=async()=>{for(;;){
+    const k=i++;if(k>=urls.length)return;const u=urls[k];
+    const ex=await c.match(u);if(ex){onB(+(ex.headers.get("content-length")||0)||0);continue}
+    const r=await fetch(u,{signal:sig});if(!r.ok)throw new Error("HTTP "+r.status);
+    const b=await r.blob();if(!b.size)throw new Error("bo‘sh fayl");onB(b.size);
+    await c.put(u,new Response(b,{headers:{"Content-Type":"audio/mpeg"}}));
+  }};
+  await Promise.all([wk(),wk(),wk()]);
+  qAudMark(rc,s);
+}
+const QASKIP=new Set();
+async function qAudAsk(rc,s){
+  const sz=await qAudSize(rc,s),mb=(sz/1048576).toFixed(sz<10485760?1:0);
+  const x=await qDm({t:"Tilovatni yuklab olish",b:QUZ[s-1]+" surasi, "+rc.n+": taxminan "+mb+" MB. Yuklab olsangiz, internetsiz ham tinglaysiz va bu sura uchun qayta so‘ralmaydi.",ok:"Yuklab olish",no:"Internet orqali"});
+  if(x!=="ok"){qDmClose();QASKIP.add(rc.id+":"+s);return false}
+  const ac=new AbortController();let done=0;
+  qDm({t:"Tilovat yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(y=>{if(y==="no")ac.abort()});
+  try{
+    await qAudDown(rc,s,ac.signal,n=>{done+=n;const pc=Math.min(99,Math.round(done/sz*100));qDmSet(pc+"%  ·  "+(done/1048576).toFixed(1)+" / "+mb+" MB",pc)});
+    qDmClose();toast("Tilovat saqlandi");return true;
+  }catch(e){qDmClose();QASKIP.add(rc.id+":"+s);toast(ac.signal.aborted?"Yuklash bekor qilindi":"Saqlab bo‘lmadi, internet orqali eshitiladi");return false}
+}
+let QBU=null,QPT=0;
+async function qAudSrc(url){
+  try{const c=await caches.open(QACACHE),r=await c.match(url);if(r){const o=URL.createObjectURL(await r.blob());if(QBU)URL.revokeObjectURL(QBU);QBU=o;return o}}catch(e){}
+  return url;
+}
+async function qPlayFrom(i,ask){
   try{await qAudioData()}catch(e){toast("Tilovat ma’lumoti yuklanmadi");return}
   if(QRC>=QAU.r.length)QRC=0;
-  const rc=QAU.r[QRC];
+  const rc=QAU.r[QRC],my=++QPT,[s,a]=qSA(i);
+  if(ask&&!qAudHas(rc,s)&&!QASKIP.has(rc.id+":"+s)){await qAudAsk(rc,s);if(my!==QPT)return}
   if(!QEL){
     QEL=new Audio();QEL.preload="auto";
     QEL.onended=qEnded;QEL.ontimeupdate=qTime;
     QEL.onerror=()=>{if(QPLAY){toast("Tilovat yuklanmadi. Internetni tekshiring");qAStop()}};
     QEL.onplay=()=>$("qmpp").classList.add("pl");QEL.onpause=()=>$("qmpp").classList.remove("pl");
   }
-  QPI=i;QPLAY=true;const[s,a]=qSA(i);
-  if(rc.k==="a"){QEL.src=rc.u+pad3(s)+pad3(a)+".mp3"}
+  QPI=i;QPLAY=true;const has=qAudHas(rc,s);
+  if(rc.k==="a"){const u=rc.u+pad3(s)+pad3(a)+".mp3",src=has?await qAudSrc(u):u;if(my!==QPT)return;QEL.src=src;QEL.dataset.u=""}
   else{
     const url=rc.u+pad3(s)+".mp3",t=rc.f[i]/1000;
     if(QEL.dataset.u===url&&QEL.readyState>0){QEL.currentTime=t}
-    else{QEL.dataset.u=url;QEL.addEventListener("loadedmetadata",()=>{QEL.currentTime=t},{once:true});QEL.src=url}
+    else{const src=has?await qAudSrc(url):url;if(my!==QPT)return;QEL.dataset.u=url;QEL.addEventListener("loadedmetadata",()=>{QEL.currentTime=t},{once:true});QEL.src=src}
   }
-  if(rc.k==="a")QEL.dataset.u="";
   QEL.play().catch(()=>{});
   qMini();qFollow();qMarkAll();
   if("mediaSession" in navigator){
@@ -1807,7 +1955,7 @@ function qMini(){
   $("qpg").classList.add("mp");
 }
 function qAStop(){
-  QPLAY=false;QPI=-1;
+  QPLAY=false;QPI=-1;QPT++;
   if(QEL){QEL.pause();QEL.removeAttribute("src");QEL.dataset.u="";try{QEL.load()}catch(e){}}
   $("qpg").classList.remove("mp");qMarkAll();
 }
@@ -1853,7 +2001,7 @@ $("qhs").onclick=qJumpOpen;
 $("qnt").onclick=()=>{const n=$("qpg").classList.toggle("night");qs("qnight",n?"1":"0")};
 $("qplay").onclick=()=>{
   if(QPLAY&&QEL){QEL.paused?QEL.play():QEL.pause();return}
-  const[s,a]=QPS[QP-1];qPlayFrom(qgi(s,a));
+  const[s,a]=QPS[QP-1];qPlayFrom(qgi(s,a),true);
 };
 $("qjx").onclick=()=>$("qjs").classList.remove("on");
 $("qjs").addEventListener("click",e=>{if(e.target===$("qjs"))$("qjs").classList.remove("on")});
@@ -1862,6 +2010,7 @@ $("qjp").onkeydown=e=>{if(e.key==="Enter")qJumpTo($("qjp").value)};
 $("qjs1").onchange=e=>{const s=+e.target.value;qJumpTo(qpo(s,1),s,1)};
 $("qjz").onchange=e=>{const j=+e.target.value,[s,a]=QJ[j-1];qJumpTo(qpo(s,a),s,a)};
 $("qax").onclick=()=>qShut();
+$("qpv").onclick=()=>qNav(-1);$("qnx").onclick=()=>qNav(1);
 $("qfb").onclick=()=>{const f=$("qfn"),o=f.style.display==="none";f.style.display=o?"block":"none";$("qfb").textContent=o?"Izohni yashirish":"Izohni ko‘rsatish"};
 $("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(await qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
 $("qsh").onclick=async()=>{if(!QSEL)return;try{const t=await qTxt();if(navigator.share)await navigator.share({text:t});else{await navigator.clipboard.writeText(t);toast("Nusxalandi")}}catch(e){}};
@@ -1869,16 +2018,16 @@ $("qmk").onclick=()=>{
   if(!QSEL)return;let b=qbm();const k=b.findIndex(x=>x.s===QSEL.s&&x.a===QSEL.a);
   if(k>=0){b.splice(k,1);toast("Xatcho‘pdan olindi")}else{b.unshift({s:QSEL.s,a:QSEL.a});toast("Xatcho‘pga qo‘shildi")}
   qs("qbl",JSON.stringify(b.slice(0,200)));qBmBtn();
-  const sl=$("qsc").children[QP-1];if(sl&&sl.dataset.f){const r=sl.querySelector(".rb");if(qHasBm(QP)&&!r)sl.insertAdjacentHTML("beforeend",'<i class="rb"></i>');else if(!qHasBm(QP)&&r)r.remove()}
+  const sl=$("qsc").children[QP-1];if(sl&&sl.dataset.f){const r=sl.querySelector(".qrib");if(qHasBm(QP)&&!r)sl.insertAdjacentHTML("beforeend",'<i class="qrib"></i>');else if(!qHasBm(QP)&&r)r.remove()}
 };
 $("qlis").onclick=()=>{
-  if(!QSEL)return;const i=qgi(QSEL.s,QSEL.a);qShut(true);qPlayFrom(i);
+  if(!QSEL)return;const i=qgi(QSEL.s,QSEL.a);qShut(true);qPlayFrom(i,true);
 };
 $("qmpp").onclick=()=>{if(QEL)QEL.paused?QEL.play():QEL.pause()};
 $("qmnx").onclick=()=>qStep(1);$("qmpv").onclick=()=>qStep(-1);$("qmx").onclick=qAStop;
 $("qmr").onclick=async()=>{
   if(!QAU)return;QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));toast(QAU.r[QRC].n+" · "+QAU.r[QRC].s);
-  if(QPLAY&&QPI>=0)qPlayFrom(QPI);
+  if(QPLAY&&QPI>=0)qPlayFrom(QPI,true);
 };
 addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){qAStop();qShut();$("qjs").classList.remove("on");$("qpg").classList.remove("on");if(QM)qList();qHomeSub()}});
 addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear();qMarkAll()}});
@@ -1888,7 +2037,7 @@ qHomeSub();
 $("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QM)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
 $("qsb").onclick=()=>{if(!QM)return;QT="s";$("qsw").classList.toggle("on");if($("qsw").classList.contains("on"))$("qsr").focus();else{$("qsr").value=""}qList()};
 $("qsr").oninput=qList;
-$("qoff").onclick=e=>{if(e.target.closest("#qoffb"))qOffGo()};
+$("qoff").onclick=e=>{if(e.target.closest("#qoffb"))qDownAll()};
 $("qlist").onclick=e=>{
   const d=e.target.closest("[data-del]");
   if(d){const b=qbm();b.splice(+d.dataset.del,1);qs("qbl",JSON.stringify(b));qList();return}
@@ -2117,7 +2266,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.21";
+const APPV="3.23";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
