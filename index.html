@@ -524,10 +524,6 @@ body[data-scr="t7"] #sbar{display:none}
 .qah b{font:700 16px system-ui}
 .qah button{width:36px;height:36px;border:0;background:none;color:var(--chrome);font-size:26px;line-height:1;margin:0;padding:0;border-radius:50%}
 #qar{font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:25px;line-height:2.1;margin:4px 0 2px;text-align:right}
-.qtl{font:600 11.5px system-ui;letter-spacing:.06em;color:var(--chrome);text-transform:uppercase;margin-top:6px}
-#qtr{font:16px/1.6 system-ui;margin:4px 0 6px}
-#qfn{font:14px/1.55 system-ui;color:var(--chrome);margin:4px 0;padding:10px 12px;background:var(--line2);border-radius:12px}
-#qfb{border:0;background:none;color:var(--ring);font:600 14px system-ui;padding:6px 0;margin:0}
 .qab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
 .qab button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 2px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);border-radius:14px;font:600 12.5px system-ui;margin:0}
 .qab button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
@@ -689,10 +685,6 @@ body[data-scr="t7"] #sbar{display:none}
   <div id="qas">
    <div class="qah"><b id="qat"></b><button id="qax" aria-label="Yopish">×</button></div>
    <div id="qar" dir="rtl" lang="ar"></div>
-   <div class="qtl">Tarjima · Muhammad Sodiq Muhammad Yusuf</div>
-   <p id="qtr"></p>
-   <button id="qfb" type="button" style="display:none">Izohni ko‘rsatish</button>
-   <p id="qfn" style="display:none"></p>
    <div class="qab">
     <button id="qlis" type="button"><svg viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg>Tinglash</button>
     <button id="qcp" type="button"><svg viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>Nusxalash</button>
@@ -752,7 +744,7 @@ body[data-scr="t7"] #sbar{display:none}
   <h2>Jannat sari</h2>
   <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.17</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
-  <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina mushafi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
+  <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina mushafi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -1538,7 +1530,7 @@ $("mabout").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
 
-/* Qur'on bo'limi. Sahifalar: Madina mushafi (KFGQPC / QUL), tarjima: M. Sodiq Muhammad Yusuf */
+/* Qur'on bo'limi. Sahifalar: Madina mushafi (KFGQPC / QUL) */
 const QAR=["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"],QUZ=["Fotiha", "Baqara", "Oli Imron", "Niso", "Moida", "An’om", "A’rof", "Anfol", "Tavba", "Yunus", "Hud", "Yusuf", "Ra’d", "Ibrohim", "Hijr", "Nahl", "Isro", "Kahf", "Maryam", "Toha", "Anbiyo", "Haj", "Mu’minun", "Nur", "Furqon", "Shuaro", "Naml", "Qasas", "Ankabut", "Rum", "Luqmon", "Sajda", "Ahzob", "Saba", "Fotir", "Yosin", "Soffot", "Sod", "Zumar", "G‘ofir", "Fussilat", "Shuro", "Zuxruf", "Duxon", "Josiya", "Ahqof", "Muhammad", "Fath", "Hujurot", "Qof", "Zoriyot", "Tur", "Najm", "Qamar", "Rahmon", "Voqe’a", "Hadid", "Mujodala", "Hashr", "Mumtahana", "Saff", "Jum’a", "Munofiqun", "Tag‘obun", "Taloq", "Tahrim", "Mulk", "Qalam", "Hoqqa", "Ma’orij", "Nuh", "Jin", "Muzzammil", "Muddassir", "Qiyomat", "Inson", "Mursalot", "Naba", "Noziot", "Abasa", "Takvir", "Infitor", "Mutaffifin", "Inshiqoq", "Buruj", "Toriq", "A’lo", "G‘oshiya", "Fajr", "Balad", "Shams", "Layl", "Zuho", "Sharh", "Tin", "Alaq", "Qadr", "Bayyina", "Zalzala", "Odiyot", "Qori’a", "Takosur", "Asr", "Humaza", "Fil", "Quraysh", "Mo‘un", "Kavsar", "Kofirun", "Nasr", "Masad", "Ixlos", "Falaq", "Nos"],QCN=[7, 286, 200, 176, 120, 165, 206, 75, 129, 109, 123, 111, 43, 52, 99, 128, 111, 110, 98, 135, 112, 78, 118, 64, 77, 227, 93, 88, 69, 60, 34, 30, 73, 54, 45, 83, 182, 88, 75, 85, 54, 53, 89, 59, 37, 35, 38, 29, 18, 45, 60, 49, 62, 55, 78, 96, 29, 22, 24, 13, 14, 11, 11, 18, 12, 12, 30, 52, 52, 44, 28, 28, 20, 56, 40, 31, 50, 40, 46, 42, 29, 19, 36, 25, 22, 17, 19, 26, 30, 20, 15, 21, 11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6];
 const QJ=[[1,1],[2,142],[2,253],[3,93],[4,24],[4,148],[5,82],[6,111],[7,88],[8,41],[9,93],[11,6],[12,53],[15,1],[17,1],[18,75],[21,1],[23,1],[25,21],[27,56],[29,46],[33,31],[36,28],[39,32],[41,47],[46,1],[51,31],[58,1],[67,1],[78,1]];
 const QMD=new Set([2,3,4,5,8,9,13,22,24,33,47,48,49,55,57,58,59,60,61,62,63,64,65,66,76,98,99,110]);
@@ -1602,7 +1594,7 @@ const qbm=()=>{try{const b=JSON.parse(qg("qbl")||"[]");return Array.isArray(b)?b
 const qHasBm=p=>qbm().some(x=>qpo(x.s,x.a)===p);
 function qHomeSub(){
   const e=$("qa-q");if(!e)return;let l=null;try{l=JSON.parse(qg("qlast"))}catch(x){}
-  e.textContent=l&&l.p>1?"Davom etish: "+l.p+"-sahifa":"Mushaf, tarjima, tilovat";
+  e.textContent=l&&l.p>1?"Davom etish: "+l.p+"-sahifa":"Mushaf va tilovat";
 }
 async function qEnter(){
   QT="s";$("qsr").value="";$("qsw").classList.remove("on");
@@ -1740,16 +1732,14 @@ async function qOpen(w,sl){
   const r=w.g.getBoundingClientRect(),el=$("qas");
   el.classList.toggle("top",r.top+r.height/2>innerHeight*.52);
   $("qat").textContent=QUZ[w.s-1]+" surasi, "+w.a+"-oyat";
-  $("qar").textContent="";$("qtr").textContent="";$("qfn").style.display="none";$("qfb").style.display="none";$("qfb").textContent="Izohni ko‘rsatish";
+  $("qar").textContent="";
   qBmBtn();el.classList.add("on");
   const my=++qAt;
   try{
     const T=await qText();if(my!==qAt||!QSEL)return;
     const i=qgi(w.s,w.a);
     $("qar").textContent=T.ar[i]+" ﴿"+qdig(w.a)+"﴾";
-    $("qtr").textContent=T.uz[i]||"";
-    if(T.fn[i]){$("qfn").textContent=T.fn[i];$("qfb").style.display="inline-block"}
-  }catch(e){$("qtr").textContent="Tarjima yuklanmadi: "+(e&&e.message?e.message:"internetni tekshiring")}
+  }catch(e){$("qar").textContent="Oyat yuklanmadi, internetni tekshiring"}
 }
 function qBmBtn(){
   if(!QSEL)return;const on=qbm().some(x=>x.s===QSEL.s&&x.a===QSEL.a);
@@ -1757,7 +1747,7 @@ function qBmBtn(){
 }
 async function qTxt(){
   const T=await qText(),i=qgi(QSEL.s,QSEL.a);
-  return T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾\n\n"+(T.uz[i]||"")+"\n\n— "+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat";
+  return T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾\n\n— "+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat";
 }
 /* Tilovat */
 let QAU=null,QAP=null,QRC=+(qg("qrc")||0),QPI=-1,QEL=null,QPLAY=false;
@@ -1862,7 +1852,6 @@ $("qjp").onkeydown=e=>{if(e.key==="Enter")qJumpTo($("qjp").value)};
 $("qjs1").onchange=e=>{const s=+e.target.value;qJumpTo(qpo(s,1),s,1)};
 $("qjz").onchange=e=>{const j=+e.target.value,[s,a]=QJ[j-1];qJumpTo(qpo(s,a),s,a)};
 $("qax").onclick=()=>qShut();
-$("qfb").onclick=()=>{const f=$("qfn"),o=f.style.display==="none";f.style.display=o?"block":"none";$("qfb").textContent=o?"Izohni yashirish":"Izohni ko‘rsatish"};
 $("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(await qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
 $("qsh").onclick=async()=>{if(!QSEL)return;try{const t=await qTxt();if(navigator.share)await navigator.share({text:t});else{await navigator.clipboard.writeText(t);toast("Nusxalandi")}}catch(e){}};
 $("qmk").onclick=()=>{
@@ -2117,7 +2106,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.18";
+const APPV="3.19";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
