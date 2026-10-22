@@ -43,7 +43,7 @@ button.nx{display:block;width:100%;text-align:left;font:inherit;border:0;margin-
 .nx-row{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:20px}
 .nx-l{display:flex;flex-direction:column;min-width:0}
 .nx-lbl{font-size:12px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
-.nx-l b{font:700 27px/1.15 Georgia,serif;color:#ffe3a1;margin-top:4px}
+.nx-l b{font:700 clamp(21px,5.6vw,27px)/1.15 Georgia,serif;color:#ffe3a1;margin-top:4px}
 #htm{font-size:15px;opacity:.9;margin-top:2px;font-variant-numeric:tabular-nums}
 .nx-r{text-align:right;display:flex;flex-direction:column;flex:none}
 #hcd{font:700 32px/1.1 Georgia,serif;font-variant-numeric:tabular-nums}
@@ -470,8 +470,6 @@ button:focus-visible{outline:3px solid var(--gold)}
 /* Qur'on */
 @font-face{font-family:"QPC Hafs";src:url("UthmanicHafs_V22.ttf") format("truetype");font-display:swap}
 body[data-scr="t7"] #sbar{display:none}
-#t7{--qpb:#fbf9f3;--qpt:#1b1a17;--qpm:#1e7f6a;--qph:rgba(240,200,105,.5);--qpg:#6b665b}
-@media(prefers-color-scheme:dark){#t7{--qpb:#16130e;--qpt:#ebe2cd;--qpm:#5fc2a7;--qph:rgba(224,178,79,.35);--qpg:#9a937f}}
 .qbar{display:flex;align-items:center;gap:2px;margin:0 -6px 4px}
 .qbar h1{font:700 25px Georgia,serif;margin:0 0 0 4px;color:var(--ink)}
 .qbar .sp{flex:1}
@@ -490,30 +488,74 @@ body[data-scr="t7"] #sbar{display:none}
 .qrow .t{flex:1;min-width:0}.qrow .t b{display:block;font-size:19px;font-weight:500}.qrow .t span{font-size:14.5px;color:var(--mut)}
 .qrow .p{color:var(--mut);font-size:16px}
 .qempty{padding:40px 24px;text-align:center;color:var(--mut);line-height:1.5}
-#qpg{display:none;position:fixed;inset:0;z-index:10;background:var(--qpb);color:var(--qpt);flex-direction:column}
+#qpg{--pg:#f8f1dd;--pg2:#f0e6c8;--ink2:#1b150c;--ring:#1b7a64;--q:#9a6a22;--hl:rgba(226,178,72,.45);--hp:rgba(27,122,100,.26);--chrome:#6a5d41;--line2:rgba(110,86,36,.22);display:none;position:fixed;inset:0;z-index:10;background:var(--pg);color:var(--ink2);flex-direction:column}
+#qpg.night{--pg:#16130d;--pg2:#201c13;--ink2:#e9dfc5;--ring:#6fc9ae;--q:#d2aa55;--hl:rgba(226,178,72,.3);--hp:rgba(111,201,174,.24);--chrome:#a89e85;--line2:rgba(255,235,190,.14)}
 #qpg.on{display:flex}
-#qph{display:flex;align-items:center;gap:6px;padding:calc(10px + env(safe-area-inset-top)) 12px 6px 6px;color:var(--qpg);font-size:15px;flex:none}
-#qph button{width:36px;height:36px;border:0;background:none;color:var(--qpg);margin:0;padding:0;display:flex;align-items:center;justify-content:center}
-#qph button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#qph{display:flex;align-items:center;gap:2px;padding:calc(6px + env(safe-area-inset-top)) 6px 6px 2px;background:var(--pg2);border-bottom:1px solid var(--line2);color:var(--chrome);flex:none}
+#qph button{width:42px;height:42px;border:0;background:none;color:var(--chrome);margin:0;padding:0;display:flex;align-items:center;justify-content:center;border-radius:50%}
+#qph button:active{background:var(--line2)}
+#qph button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#qph .qhs{width:auto;height:42px;padding:0 8px;border-radius:12px;font:600 17px system-ui;color:var(--ink2)}
 #qph .sp{flex:1}
-#qsc{flex:1;display:flex;overflow-x:auto;overflow-y:hidden;direction:rtl;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
+#qhj{font:600 14px system-ui;margin-right:8px}
+#qsc{flex:1;min-height:0;display:flex;overflow-x:auto;overflow-y:hidden;direction:rtl;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain}
 #qsc::-webkit-scrollbar{display:none}
-.qsl{flex:none;width:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;justify-content:center;background:linear-gradient(90deg,rgba(120,100,60,.12),transparent 7%,transparent 93%,rgba(120,100,60,.12))}
-.qpp{width:min(100%,540px);padding:0 10px;direction:rtl;display:flex;flex-direction:column;justify-content:flex-start}
-.qpp.mid{justify-content:center}
-.ql{display:flex;gap:.26em;justify-content:space-between;align-items:center;white-space:nowrap;height:var(--qU);font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:var(--qf);line-height:1.2;flex:none}
-.ql.c{justify-content:center;gap:.26em}.ql.r{justify-content:flex-start;gap:.26em}
-.ql .w{cursor:pointer;-webkit-tap-highlight-color:transparent;border-radius:6px}
-.ql .w.hl{background:var(--qph)}
-.ql .an{color:var(--qpm)}
-.qsh{justify-content:center;gap:0;margin:2px 0;border:1.5px solid var(--qpm);border-radius:4px;background:linear-gradient(90deg,transparent,rgba(30,127,106,.08),transparent);position:relative;height:calc(var(--qU) - 6px);align-self:stretch}
-.qsh i{position:absolute;top:3px;bottom:3px;width:26%;background:repeating-linear-gradient(135deg,var(--qpm) 0 1.5px,transparent 1.5px 7px),repeating-linear-gradient(45deg,var(--qpm) 0 1.5px,transparent 1.5px 7px);opacity:.3;border-radius:3px}
-.qsh i:first-child{right:6px}.qsh i:last-child{left:6px}
-.qsh b{position:relative;font-weight:400;font-size:1.15em;color:var(--qpt);padding:0 10px;background:var(--qpb)}
-.qpn{position:absolute;bottom:calc(10px + env(safe-area-inset-bottom));right:18px;color:var(--qpg);font:15px system-ui;direction:ltr}
-#qac{display:none;position:fixed;left:50%;transform:translateX(-50%);bottom:calc(26px + env(safe-area-inset-bottom));gap:6px;background:var(--ink);border-radius:26px;padding:6px;z-index:11;box-shadow:0 8px 24px rgba(0,0,0,.3)}
-#qac.on{display:flex}
-#qac button{margin:0;border:0;background:none;color:var(--bg);padding:10px 16px;font:600 14px system-ui;border-radius:20px;white-space:nowrap}
+.qsl{flex:none;width:100%;height:100%;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow-y:auto;overflow-x:hidden;direction:ltr;background:linear-gradient(90deg,rgba(120,92,40,.1),transparent 5%,transparent 95%,rgba(120,92,40,.1))}
+#qsc.ls .qsl{justify-content:flex-start;padding-top:8px}
+.pgw{flex:none;position:relative}
+.pgw svg{display:block;width:100%;height:100%;-webkit-tap-highlight-color:transparent}
+.pgw svg path{fill:var(--ink2)}
+.pgw svg path.o,.pgw svg path.n{fill:var(--ring)}
+.pgw svg path.q{fill:var(--q)}
+.hb rect{fill:var(--hl)}.hb.pl rect{fill:var(--hp)}
+.bn rect{fill:rgba(27,122,100,.09);stroke:var(--ring);stroke-width:.5}.bn rect+rect{fill:none;stroke-width:.25;opacity:.7}
+.qpn{flex:none;margin:2px 0 6px;padding:6px 14px;border:0;background:none;color:var(--chrome);font:600 15px system-ui;letter-spacing:.04em;border-radius:14px}
+.qpn::before,.qpn::after{content:"";display:inline-block;width:22px;height:1px;background:var(--line2);vertical-align:middle;margin:0 10px}
+.qld{width:34px;height:34px;border-radius:50%;border:3px solid var(--line2);border-top-color:var(--ring);animation:qsp .8s linear infinite;margin:auto}
+@keyframes qsp{to{transform:rotate(360deg)}}
+.qre{margin:auto;padding:14px 22px;border:1px solid var(--line2);background:var(--pg2);color:var(--ink2);border-radius:14px;font:500 15px/1.4 system-ui}
+.rb{position:absolute;top:0;right:26px;width:18px;height:32px;background:var(--ring);clip-path:polygon(0 0,100% 0,100% 100%,50% 76%,0 100%)}
+#qas{position:fixed;left:0;right:0;margin:0 auto;bottom:0;max-width:600px;z-index:12;background:var(--pg2);color:var(--ink2);border-radius:22px 22px 0 0;box-shadow:0 -10px 34px rgba(0,0,0,.28);padding:12px 18px calc(14px + env(safe-area-inset-bottom));max-height:56dvh;overflow-y:auto;visibility:hidden;transform:translateY(104%);transition:transform .22s ease,visibility 0s .22s}
+#qas.on{visibility:visible;transform:none;transition:transform .22s ease}
+#qas.top{bottom:auto;top:calc(56px + env(safe-area-inset-top));border-radius:0 0 22px 22px;transform:translateY(-112%);padding:12px 18px 14px;box-shadow:0 10px 34px rgba(0,0,0,.28)}
+#qas.top.on{transform:none}
+#qpg.mp #qas:not(.top){bottom:calc(72px + env(safe-area-inset-bottom));left:10px;right:10px;border-radius:20px;padding-bottom:14px;max-height:48dvh}
+.qah{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.qah b{font:700 16px system-ui}
+.qah button{width:36px;height:36px;border:0;background:none;color:var(--chrome);font-size:26px;line-height:1;margin:0;padding:0;border-radius:50%}
+#qar{font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:25px;line-height:2.1;margin:4px 0 2px;text-align:right}
+.qtl{font:600 11.5px system-ui;letter-spacing:.06em;color:var(--chrome);text-transform:uppercase;margin-top:6px}
+#qtr{font:16px/1.6 system-ui;margin:4px 0 6px}
+#qfn{font:14px/1.55 system-ui;color:var(--chrome);margin:4px 0;padding:10px 12px;background:var(--line2);border-radius:12px}
+#qfb{border:0;background:none;color:var(--ring);font:600 14px system-ui;padding:6px 0;margin:0}
+.qab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.qab button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 2px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);border-radius:14px;font:600 12.5px system-ui;margin:0}
+.qab button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.qab #qmk.on{background:var(--ring);color:#fff;border-color:var(--ring)}
+.qab #qmk.on svg{fill:currentColor}
+#qmp{display:none;position:fixed;left:10px;right:10px;margin:0 auto;max-width:560px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:13;align-items:center;gap:2px;padding:6px 8px 6px 16px;border-radius:24px;background:#12302b;color:#f1ead4;box-shadow:0 10px 28px rgba(0,0,0,.35)}
+#qpg.mp #qmp{display:flex}
+#qmr{flex:1;min-width:0;text-align:left;border:0;background:none;color:inherit;margin:0;padding:0}
+#qmr b{display:block;font:600 14px system-ui;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#qmr small{display:block;font:12px system-ui;opacity:.78;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#qmp button:not(#qmr){width:40px;height:40px;border:0;background:none;color:inherit;margin:0;padding:0;display:flex;align-items:center;justify-content:center;border-radius:50%;flex:none}
+#qmp button svg{width:22px;height:22px;fill:currentColor;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
+#qmpv svg,#qmnx svg,#qmx svg{fill:none}
+#qmpp{background:#e8c26a!important;color:#12302b!important}
+#qmpp .is{display:none}#qmpp.pl .ip{display:none}#qmpp.pl .is{display:block}
+#qjs{display:none;position:fixed;inset:0;z-index:14;background:rgba(0,0,0,.45);align-items:flex-end;justify-content:center}
+#qjs.on{display:flex}
+.qjb{width:100%;max-width:520px;background:var(--pg2);color:var(--ink2);border-radius:22px 22px 0 0;padding:14px 18px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:12px}
+.qjb label{display:flex;flex-direction:column;gap:6px;font:600 12px system-ui;color:var(--chrome);letter-spacing:.05em;text-transform:uppercase}
+.qjb select,.qjb input{padding:12px 14px;border-radius:12px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);font:17px system-ui;width:100%;box-sizing:border-box;margin:0}
+.qjr{display:flex;gap:8px}.qjr button{flex:none;padding:0 20px;border:0;border-radius:12px;background:var(--ring);color:#fff;font:600 16px system-ui;margin:0}
+#qoff{margin:0}
+.qoffc{display:flex;align-items:center;gap:12px;margin:12px 0 4px;padding:12px 14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.qoffc>div{flex:1;min-width:0}.qoffc b{display:block;font-size:15px}.qoffc span{font-size:13px;color:var(--mut)}
+.qoffc button{margin:0;padding:10px 14px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:600 14px system-ui}
+.qspin{width:30px;height:30px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--ac);animation:qsp .8s linear infinite;margin:0 auto 12px}
+.qi.qq{background:rgba(224,178,79,.22)}
+.qi.qq svg{width:32px;height:32px;stroke:none}
 </style>
 </head>
 <body data-scr="t0">
@@ -531,11 +573,13 @@ body[data-scr="t7"] #sbar{display:none}
   </button>
   <div class="sec-l">Bo‘limlar</div>
   <div class="qgrid">
-    <button class="qa" data-go="t7" style="grid-column:1/-1;min-height:0"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.4 5 8 4.5 3.5 4.5V18c4.5 0 6.9.5 8.5 2 1.6-1.5 4-2 8.5-2V4.5c-4.5 0-6.9.5-8.5 2z"/><path d="M12 6.5V20"/></svg></span><b>Qur'on</b><span>Arabcha matn, suralar, xatcho‘p</span></button>
+    <button class="qa" data-go="t7"><span class="qi qq"><svg viewBox="3 1.2 18 22.4" aria-hidden="true"><rect x="5.2" y="2.4" width="13.6" height="16.4" rx="2.1" fill="#1a7a64"/><path d="M5.2 4.6v12" fill="none" stroke="#0f5a49" stroke-width="1.3"/><rect x="7.2" y="4.2" width="9.8" height="12.8" rx="1.1" fill="none" stroke="#e8c26a" stroke-width=".7"/><rect x="9.1" y="6.5" width="5.8" height="5.8" fill="none" stroke="#e8c26a" stroke-width=".9"/><rect x="9.1" y="6.5" width="5.8" height="5.8" fill="none" stroke="#e8c26a" stroke-width=".9" transform="rotate(45 12 9.4)"/><circle cx="12" cy="9.4" r="1" fill="#e8c26a"/><path d="M7.4 21.6l4.6-2.7 4.6 2.7" fill="none" stroke="#c99a3c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span><b>Qur'on</b><span id="qa-q">Mushaf, tarjima, tilovat</span></button>
+
     <button class="qa" data-go="t3"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg></span><b>Qibla</b><span>Makka yo‘nalishi</span></button>
     <button class="qa" data-go="t2"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="4.00" r="1.7"/><circle cx="17.66" cy="6.34" r="1.7"/><circle cx="20.00" cy="12.00" r="1.7"/><circle cx="17.66" cy="17.66" r="1.7"/><circle cx="12.00" cy="20.00" r="1.7"/><circle cx="6.34" cy="17.66" r="1.7"/><circle cx="4.00" cy="12.00" r="1.7"/><circle cx="6.34" cy="6.34" r="1.7"/></svg></span><b>Tasbeh</b><span id="qa-t">Elektron zikr</span></button>
     <button class="qa" data-go="t5"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14V9"/><path d="M12 11c0-3 2-5 5.5-5 0 3-2 5-5.5 5z"/><path d="M12 12.5c0-2.2-1.6-3.7-4.2-3.7 0 2.2 1.6 3.7 4.2 3.7z"/><path d="M4 15c0 3 3.6 5.5 8 5.5s8-2.5 8-5.5z"/></svg></span><b>Tazkiya</b><span>Zakot, ushr, fitr, fidya</span></button>
     <button class="qa" data-go="t4"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><b>Islomiy taqvim</b><span id="qa-c">Hijriy sanalar</span></button>
+    <button class="qa" id="qa-sh" type="button"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="17.5" cy="18" r="2.4"/><path d="M8.6 10.8l6.8-3.6M8.6 13.2l6.8 3.6"/></svg></span><b>Ulashish</b><span>Do‘stlarga yuboring</span></button>
   </div>
   <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><div id="hks"></div></div>
 </section>
@@ -629,12 +673,48 @@ body[data-scr="t7"] #sbar{display:none}
   </div>
   <div id="qsw"><input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off"></div>
   <div class="qtabs" id="qtabs"><button data-q="s" class="on">SURA</button><button data-q="j">JUZ</button><button data-q="b">XATCHO‘PLAR</button></div>
+  <div id="qoff"></div>
   <div id="qlist"></div>
  </div>
  <div id="qpg">
-  <div id="qph"><button id="qcl" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><span id="qhs"></span><span class="sp"></span><span id="qhj"></span></div>
+  <div id="qph">
+   <button id="qcl" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+   <button id="qhs" class="qhs" type="button" aria-label="Sahifaga o‘tish"></button>
+   <span class="sp"></span>
+   <span id="qhj"></span>
+   <button id="qplay" aria-label="Tilovat"><svg viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg></button>
+   <button id="qnt" aria-label="Tun rejimi"><svg viewBox="0 0 24 24"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></svg></button>
+  </div>
   <div id="qsc"></div>
-  <div id="qac"><button id="qcp">Nusxalash</button><button id="qsh">Ulashish</button><button id="qmk">Xatcho‘p</button></div>
+  <div id="qas">
+   <div class="qah"><b id="qat"></b><button id="qax" aria-label="Yopish">×</button></div>
+   <div id="qar" dir="rtl" lang="ar"></div>
+   <div class="qtl">Tarjima · Muhammad Sodiq Muhammad Yusuf</div>
+   <p id="qtr"></p>
+   <button id="qfb" type="button" style="display:none">Izohni ko‘rsatish</button>
+   <p id="qfn" style="display:none"></p>
+   <div class="qab">
+    <button id="qlis" type="button"><svg viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg>Tinglash</button>
+    <button id="qcp" type="button"><svg viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>Nusxalash</button>
+    <button id="qsh" type="button"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="2.3"/><circle cx="17.5" cy="6" r="2.3"/><circle cx="17.5" cy="18" r="2.3"/><path d="M8.6 10.9l6.8-3.7M8.6 13.1l6.8 3.7"/></svg>Ulashish</button>
+    <button id="qmk" type="button"><svg viewBox="0 0 24 24"><path d="M7 4.5h10v15l-5-3.6-5 3.6z"/></svg>Xatcho‘p</button>
+   </div>
+  </div>
+  <div id="qmp">
+   <button id="qmr" type="button" aria-label="Qorini almashtirish"><b id="qmn"></b><small id="qma"></small></button>
+   <button id="qmpv" type="button" aria-label="Oldingi oyat"><svg viewBox="0 0 24 24"><path d="M7 5.5v13M18 6v12l-8.5-6z"/></svg></button>
+   <button id="qmpp" type="button" aria-label="To‘xtatish yoki davom ettirish"><svg class="ip" viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg><svg class="is" viewBox="0 0 24 24"><path d="M8 5.5h2.8v13H8zM13.2 5.5H16v13h-2.8z"/></svg></button>
+   <button id="qmnx" type="button" aria-label="Keyingi oyat"><svg viewBox="0 0 24 24"><path d="M17 5.5v13M6 6v12l8.5-6z"/></svg></button>
+   <button id="qmx" type="button" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg></button>
+  </div>
+  <div id="qjs">
+   <div class="qjb">
+    <div class="qah"><b>Sahifaga o‘tish</b><button id="qjx" aria-label="Yopish">×</button></div>
+    <label>Sahifa raqami<div class="qjr"><input id="qjp" type="number" min="1" max="604" inputmode="numeric"><button id="qjg" type="button">O‘tish</button></div></label>
+    <label>Sura<select id="qjs1"></select></label>
+    <label>Juz<select id="qjz"></select></label>
+   </div>
+  </div>
  </div>
 </section>
 </main>
@@ -672,7 +752,7 @@ body[data-scr="t7"] #sbar{display:none}
   <h2>Jannat sari</h2>
   <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.17</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
-  <p class="mut" style="font-size:12.5px">Qur’on matni va sahifalar joylashuvi: Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali. O‘zgartirilmagan.</p>
+  <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina mushafi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -1458,7 +1538,7 @@ $("mabout").onclick=()=>$("ab").classList.add("on");
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
 
-/* Qur'on bo'limi. Matn va sahifalar: KFGQPC Hafs (QUL), o'zgartirilmagan */
+/* Qur'on bo'limi. Sahifalar: Madina mushafi (KFGQPC / QUL), tarjima: M. Sodiq Muhammad Yusuf */
 const QAR=["الفاتحة", "البقرة", "آل عمران", "النساء", "المائدة", "الأنعام", "الأعراف", "الأنفال", "التوبة", "يونس", "هود", "يوسف", "الرعد", "إبراهيم", "الحجر", "النحل", "الإسراء", "الكهف", "مريم", "طه", "الأنبياء", "الحج", "المؤمنون", "النور", "الفرقان", "الشعراء", "النمل", "القصص", "العنكبوت", "الروم", "لقمان", "السجدة", "الأحزاب", "سبأ", "فاطر", "يس", "الصافات", "ص", "الزمر", "غافر", "فصلت", "الشورى", "الزخرف", "الدخان", "الجاثية", "الأحقاف", "محمد", "الفتح", "الحجرات", "ق", "الذاريات", "الطور", "النجم", "القمر", "الرحمن", "الواقعة", "الحديد", "المجادلة", "الحشر", "الممتحنة", "الصف", "الجمعة", "المنافقون", "التغابن", "الطلاق", "التحريم", "الملك", "القلم", "الحاقة", "المعارج", "نوح", "الجن", "المزمل", "المدثر", "القيامة", "الإنسان", "المرسلات", "النبأ", "النازعات", "عبس", "التكوير", "الانفطار", "المطففين", "الانشقاق", "البروج", "الطارق", "الأعلى", "الغاشية", "الفجر", "البلد", "الشمس", "الليل", "الضحى", "الشرح", "التين", "العلق", "القدر", "البينة", "الزلزلة", "العاديات", "القارعة", "التكاثر", "العصر", "الهمزة", "الفيل", "قريش", "الماعون", "الكوثر", "الكافرون", "النصر", "المسد", "الإخلاص", "الفلق", "الناس"],QUZ=["Fotiha", "Baqara", "Oli Imron", "Niso", "Moida", "An’om", "A’rof", "Anfol", "Tavba", "Yunus", "Hud", "Yusuf", "Ra’d", "Ibrohim", "Hijr", "Nahl", "Isro", "Kahf", "Maryam", "Toha", "Anbiyo", "Haj", "Mu’minun", "Nur", "Furqon", "Shuaro", "Naml", "Qasas", "Ankabut", "Rum", "Luqmon", "Sajda", "Ahzob", "Saba", "Fotir", "Yosin", "Soffot", "Sod", "Zumar", "G‘ofir", "Fussilat", "Shuro", "Zuxruf", "Duxon", "Josiya", "Ahqof", "Muhammad", "Fath", "Hujurot", "Qof", "Zoriyot", "Tur", "Najm", "Qamar", "Rahmon", "Voqe’a", "Hadid", "Mujodala", "Hashr", "Mumtahana", "Saff", "Jum’a", "Munofiqun", "Tag‘obun", "Taloq", "Tahrim", "Mulk", "Qalam", "Hoqqa", "Ma’orij", "Nuh", "Jin", "Muzzammil", "Muddassir", "Qiyomat", "Inson", "Mursalot", "Naba", "Noziot", "Abasa", "Takvir", "Infitor", "Mutaffifin", "Inshiqoq", "Buruj", "Toriq", "A’lo", "G‘oshiya", "Fajr", "Balad", "Shams", "Layl", "Zuho", "Sharh", "Tin", "Alaq", "Qadr", "Bayyina", "Zalzala", "Odiyot", "Qori’a", "Takosur", "Asr", "Humaza", "Fil", "Quraysh", "Mo‘un", "Kavsar", "Kofirun", "Nasr", "Masad", "Ixlos", "Falaq", "Nos"],QCN=[7, 286, 200, 176, 120, 165, 206, 75, 129, 109, 123, 111, 43, 52, 99, 128, 111, 110, 98, 135, 112, 78, 118, 64, 77, 227, 93, 88, 69, 60, 34, 30, 73, 54, 45, 83, 182, 88, 75, 85, 54, 53, 89, 59, 37, 35, 38, 29, 18, 45, 60, 49, 62, 55, 78, 96, 29, 22, 24, 13, 14, 11, 11, 18, 12, 12, 30, 52, 52, 44, 28, 28, 20, 56, 40, 31, 50, 40, 46, 42, 29, 19, 36, 25, 22, 17, 19, 26, 30, 20, 15, 21, 11, 8, 8, 19, 5, 8, 8, 11, 11, 8, 3, 9, 5, 4, 7, 3, 6, 3, 5, 4, 5, 6];
 const QJ=[[1,1],[2,142],[2,253],[3,93],[4,24],[4,148],[5,82],[6,111],[7,88],[8,41],[9,93],[11,6],[12,53],[15,1],[17,1],[18,75],[21,1],[23,1],[25,21],[27,56],[29,46],[33,31],[36,28],[39,32],[41,47],[46,1],[51,31],[58,1],[67,1],[78,1]];
 const QMD=new Set([2,3,4,5,8,9,13,22,24,33,47,48,49,55,57,58,59,60,61,62,63,64,65,66,76,98,99,110]);
@@ -1466,155 +1546,342 @@ const qg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},qs=(k,v)=
 const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[ً-ٰٟۖ-ۭـ]/g,"").replace(/[أإآٱ]/g,"ا");
 const qdig=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const qjuzOf=(s,a)=>{let j=0;for(let i=0;i<30;i++){if(QJ[i][0]<s||(QJ[i][0]===s&&QJ[i][1]<=a))j=i+1;else break}return j};
-let QD=null,QW=null,QPG=null,QE=null,QSO=null,QAO=null,QIE=null,QFW=null,QFE=null,QPW=null,QPO=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="";
+const QV="3",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
+const qgi=(s,a)=>QB[s-1]+a-1,pad3=n=>String(n).padStart(3,"0");
+const qSA=i=>{let k=0;while(QB[k+1]<=i)k++;return[k+1,i-QB[k]+1]};
+let QM=null,QPG=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="",QTX=null,QTXP=null,QDM=null;
+const QVB=[252,409.5];
 async function qLoad(){
-  if(QD)return QD;
-  const r=await fetch("quran-mushaf.json");if(!r.ok)throw new Error("fetch");
-  const J=await r.json(),W=J.words,E=J.ends,PG=J.pages,N=W.length;
-  if(N!==83668||E.length!==6236||PG.length!==604)throw new Error("bad");
-  const so=new Uint8Array(N+2),ao=new Uint16Array(N+2),ie=new Uint8Array(N+2),fw=[],fe=[];
-  let k=0,cur=1;
-  for(let s=1;s<=114;s++){fw[s]=[0];fe[s]=[0];for(let a=1;a<=QCN[s-1];a++){const e=E[k++];if(!(e>=cur))throw new Error("bad ends");for(let id=cur;id<=e;id++){so[id]=s;ao[id]=a}ie[e]=1;fw[s][a]=cur;fe[s][a]=e;cur=e+1}}
-  if(cur!==N+1)throw new Error("bad count");
-  const pw=new Uint16Array(N+2),ps=[];
-  PG.forEach((P,i)=>{let f0=0;P.forEach(x=>{if(x[0]==="t"){if(!f0)f0=x[2];for(let id=x[2];id<=x[3];id++)pw[id]=i+1}});ps.push([so[f0],ao[f0]])});
-  const po=[];for(let s=1;s<=114;s++){po[s]=[0];for(let a=1;a<=QCN[s-1];a++)po[s][a]=pw[fw[s][a]]}
-  try{await document.fonts.load('30px "QPC Hafs"')}catch(e){}
-  QW=W;QE=E;QPG=PG;QSO=so;QAO=ao;QIE=ie;QFW=fw;QFE=fe;QPW=pw;QPO=po;QPS=ps;return QD=true;
+  if(QM)return QM;
+  const r=await fetch("quran-meta.json?v="+QV);if(!r.ok)throw new Error("fetch");
+  const j=await r.json();if(!j.ps||j.ps.length!==604||j.pg.length!==6236)throw new Error("bad");
+  QPS=j.ps;QPG=j.pg;return QM=j;
 }
+const qpo=(s,a)=>QPG[qgi(s,a)];
+function qText(){return QTXP||(QTXP=fetch("quran-text.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>QTX=j).catch(e=>{QTXP=null;throw e}))}
+/* Sahifalar: har 10 sahifa bitta siqilgan fayl */
+const QCH=new Map();
+function qChunk(c){
+  let p=QCH.get(c);
+  if(p){QCH.delete(c);QCH.set(c,p);return p}
+  p=(async()=>{
+    const r=await fetch("mushaf-"+String(c).padStart(2,"0")+".bin?v="+QV);if(!r.ok)throw new Error("fetch");
+    const ab=await r.arrayBuffer();
+    const t=await new Response(new Blob([ab]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
+    return t.split("\n");
+  })();
+  p.catch(()=>QCH.delete(c));QCH.set(c,p);
+  while(QCH.size>4)QCH.delete(QCH.keys().next().value);
+  return p;
+}
+const qSvg=async p=>(await qChunk(Math.floor((p-1)/10)))[(p-1)%10];
 /* Ro'yxat */
 const qrow=(n,t,sub,p,x)=>'<button class="qrow" '+x+'><span class="n">'+n+'</span><span class="t"><b>'+t+'</b><span>'+sub+'</span></span><span class="p">'+p+'</span></button>';
 function qList(){
   const q=qnorm($("qsr").value.trim()),h=[];
   [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q===QT));
   if(QT==="s"){
-    const row=s=>qrow(s,QUZ[s-1],(QMD.has(s)?"Madaniy":"Makkiy")+" - "+QCN[s-1]+" oyat",QPO[s][1],'data-p="'+QPO[s][1]+'" data-s="'+s+'" data-a="1"');
+    const row=s=>qrow(s,QUZ[s-1],(QMD.has(s)?"Madaniy":"Makkiy")+" - "+QCN[s-1]+" oyat",qpo(s,1),'data-p="'+qpo(s,1)+'" data-s="'+s+'" data-a="1"');
     if(q){for(let s=1;s<=114;s++)if(qnorm(QUZ[s-1]).includes(q)||qnorm(QAR[s-1]).includes(q)||String(s)===q)h.push(row(s));
       if(!h.length)h.push('<div class="qempty">Topilmadi</div>')}
     else{let s=1;for(let j=1;j<=30;j++){
-      h.push('<div class="qjh"><span>'+j+'-juz</span><span>'+QPO[QJ[j-1][0]][QJ[j-1][1]]+'</span></div>');
+      h.push('<div class="qjh"><span>'+j+'-juz</span><span>'+qpo(QJ[j-1][0],QJ[j-1][1])+'</span></div>');
       while(s<=114&&qjuzOf(s,1)===j){h.push(row(s));s++}}}
   }else if(QT==="j"){
-    for(let j=1;j<=30;j++){const[s,a]=QJ[j-1],p=QPO[s][a];h.push(qrow(j,j+"-juz",QUZ[s-1]+" surasi, "+a+"-oyat",p,'data-p="'+p+'" data-s="'+s+'" data-a="'+a+'"'))}
+    for(let j=1;j<=30;j++){const[s,a]=QJ[j-1],p=qpo(s,a);h.push(qrow(j,j+"-juz",QUZ[s-1]+" surasi, "+a+"-oyat",p,'data-p="'+p+'" data-s="'+s+'" data-a="'+a+'"'))}
   }else{
-    let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(e){}
+    const b=qbm();
     if(!b.length)h.push('<div class="qempty">Hozircha xatcho‘p yo‘q.<br>O‘qiyotganda oyat ustiga bosib, “Xatcho‘p” ni tanlang.</div>');
-    b.forEach((x,i)=>{const p=QPO[x.s][x.a];h.push('<div style="position:relative">'+qrow(p,QUZ[x.s-1]+" surasi",x.a+"-oyat","",'data-p="'+p+'" data-s="'+x.s+'" data-a="'+x.a+'"')+'<button class="qdel" data-del="'+i+'" aria-label="O‘chirish" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--mut);font-size:20px;margin:0;padding:0">✕</button></div>')});
+    b.forEach((x,i)=>{const p=qpo(x.s,x.a);h.push('<div style="position:relative">'+qrow(p,QUZ[x.s-1]+" surasi",x.a+"-oyat","",'data-p="'+p+'" data-s="'+x.s+'" data-a="'+x.a+'"')+'<button class="qdel" data-del="'+i+'" aria-label="O‘chirish" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--mut);font-size:22px;margin:0;padding:0">×</button></div>')});
   }
   $("qlist").innerHTML=h.join("");
+  qOffDraw();
+}
+const qbm=()=>{try{const b=JSON.parse(qg("qbl")||"[]");return Array.isArray(b)?b:[]}catch(e){return[]}};
+const qHasBm=p=>qbm().some(x=>qpo(x.s,x.a)===p);
+function qHomeSub(){
+  const e=$("qa-q");if(!e)return;let l=null;try{l=JSON.parse(qg("qlast"))}catch(x){}
+  e.textContent=l&&l.p>1?"Davom etish: "+l.p+"-sahifa":"Mushaf, tarjima, tilovat";
 }
 async function qEnter(){
   QT="s";$("qsr").value="";$("qsw").classList.remove("on");
   [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q==="s"));
-  $("qlist").innerHTML='<div class="qempty">Yuklanmoqda…</div>';
+  $("qlist").innerHTML='<div class="qempty"><div class="qspin"></div>Yuklanmoqda…</div>';
   try{await qLoad();qList()}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
 }
-/* Sahifa tuzilmasi: Madina mushafi, har sahifada 15 qator (QUL / KFGQPC) */
-const qc=document.createElement("canvas").getContext("2d"),QLAY=new Map();let QWD=null;
-function qMeasure(){
-  if(QWD)return;qc.font='100px "QPC Hafs"';QWD=new Float32Array(QW.length+1);
-  for(let i=0;i<QW.length;i++)QWD[i+1]=qc.measureText(QW[i]).width;
+/* Oflayn yuklash */
+function qOffDraw(){
+  const e=$("qoff");if(!e)return;
+  if(qg("qoff")==="2"){e.innerHTML="";return}
+  if(e.dataset.busy)return;
+  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalarni telefonga saqlash, taxminan 42 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
 }
-function qLineUnit(x){let s=0;for(let id=x[2];id<=x[3];id++)s+=QWD[id];return s+(x[3]-x[2])*26}
-let QFG=0,QFGW=0;
-function qFontG(W){
-  if(QFGW===W)return QFG;qMeasure();let m=0;
-  for(const P of QPG)for(const x of P)if(x[0]==="t"){const u=qLineUnit(x);if(u>m)m=u}
-  QFGW=W;return QFG=100*W/m;
-}
-function qLayout(p,W,H){
-  const key=p+"|"+W+"|"+H;if(QLAY.has(key))return QLAY.get(key);
-  qMeasure();const U=H/15;let m=0;
-  for(const x of QPG[p-1])if(x[0]==="t"){const u=qLineUnit(x);if(u>m)m=u}
-  const fg=qFontG(W),f=Math.min(100*W/m,fg*1.25,U/1.7,46);
-  const r={f:f,U:U};QLAY.set(key,r);return r;
-}
-function qPageHtml(p,W,H){
-  const L=qLayout(p,W,H),h=[];
-  QPG[p-1].forEach(x=>{
-    if(x[0]==="h")h.push('<div class="ql qsh"><i></i><b>سورة '+QAR[x[2]-1]+'</b><i></i></div>');
-    else if(x[0]==="b")h.push('<div class="ql c">بِسْمِ ٱللَّهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>');
-    else{let s="";for(let id=x[2];id<=x[3];id++)s+='<span class="w'+(QIE[id]?" an":"")+'" data-s="'+QSO[id]+'" data-a="'+QAO[id]+'">'+QW[id-1]+'</span>';
-      h.push('<div class="ql'+(x[1]?" c":"")+'">'+s+'</div>')}
-  });
-  return '<div class="qpp'+(p<3?" mid":"")+'" style="--qU:'+L.U.toFixed(2)+'px;--qf:'+L.f.toFixed(2)+'px;height:'+(L.U*15).toFixed(1)+'px">'+h.join("")+'</div><div class="qpn">'+p+'</div>';
+async function qOffGo(){
+  const e=$("qoff");e.dataset.busy="1";let ok=true;
+  for(let c=0;c<61;c++){
+    e.innerHTML='<div class="qoffc"><div><b>Yuklanmoqda… '+Math.round(c/61*100)+'%</b><span>Ilovani yopmang</span></div></div>';
+    try{const r=await fetch("mushaf-"+String(c).padStart(2,"0")+".bin?v="+QV);if(!r.ok)throw 0;await r.arrayBuffer()}catch(x){ok=false;break}
+  }
+  try{await qText();await qAudioData()}catch(x){}
+  delete e.dataset.busy;
+  if(ok){qs("qoff","2");toast("Qur’on telefonga saqlandi")}else toast("Yuklash to‘xtadi. Internetni tekshiring");
+  qOffDraw();
 }
 /* O'qish */
-const qsz=()=>{const sc=$("qsc");return{W:Math.min(sc.clientWidth,540)-20,H:Math.max(sc.clientHeight-40,300)}};
+function qDimsCalc(){
+  const sc=$("qsc"),aw=sc.clientWidth,ah=sc.clientHeight,land=aw>ah*1.08;
+  let W,H;
+  if(land){W=Math.min(aw-12,900);H=W*QVB[1]/QVB[0]}
+  else{W=Math.min(aw-4,660);H=W*QVB[1]/QVB[0];const mh=ah-40;if(H>mh){H=mh;W=H*QVB[0]/QVB[1]}}
+  return{W:W,H:H,land:land};
+}
 function qBuild(){
   const sc=$("qsc"),z=sc.clientWidth+"x"+sc.clientHeight;
   if(QBUILT&&z===QSZ)return;
-  QSZ=z;QBUILT=1;QLAY.clear();
+  QSZ=z;QBUILT=1;QDM=qDimsCalc();sc.classList.toggle("ls",QDM.land);
   let h="";for(let p=1;p<=604;p++)h+='<div class="qsl" data-p="'+p+'"></div>';
   sc.innerHTML=h;
 }
-function qFill(p){
+const SVGNS="http://www.w3.org/2000/svg";
+async function qFill(p){
   if(p<1||p>604)return;const sl=$("qsc").children[p-1];if(!sl||sl.dataset.f)return;
-  const z=qsz();sl.innerHTML=qPageHtml(p,z.W,z.H);sl.dataset.f=1;
+  sl.dataset.f="1";sl.innerHTML='<div class="qld"></div>';
+  let t;
+  try{t=await qSvg(p)}catch(e){if(sl.isConnected){delete sl.dataset.f;sl.innerHTML='<button class="qre" data-re="'+p+'">Sahifa yuklanmadi.<br>Qayta urinish</button>'}return}
+  if(!sl.isConnected||!sl.dataset.f)return;
+  const d=QDM;
+  sl.innerHTML='<div class="pgw" style="width:'+d.W.toFixed(1)+'px;height:'+d.H.toFixed(1)+'px">'+t+'</div><button class="qpn" data-jump="1">'+p+'</button>'+(qHasBm(p)?'<i class="rb"></i>':'');
+  sl._b=null;qBanner(sl);qMarkPage(sl);
 }
+function qDrop(sl){if(sl&&sl.dataset.f){delete sl.dataset.f;sl._b=null;sl.innerHTML=""}}
+function qBanner(sl){
+  const svg=sl.querySelector("svg");if(!svg)return;const vb=svg.viewBox.baseVal;
+  svg.querySelectorAll("g.h").forEach(g=>{
+    const b=g.getBBox(),cy=b.y+b.height/2,h=19.5,x=vb.x+2.2,w=vb.width-4.4,n=document.createElementNS(SVGNS,"g");
+    n.setAttribute("class","bn");
+    n.innerHTML='<rect x="'+x.toFixed(2)+'" y="'+(cy-h/2).toFixed(2)+'" width="'+w.toFixed(2)+'" height="'+h+'" rx="2.6"/><rect x="'+(x+1.7).toFixed(2)+'" y="'+(cy-h/2+1.7).toFixed(2)+'" width="'+(w-3.4).toFixed(2)+'" height="'+(h-3.4)+'" rx="1.6"/>';
+    g.parentNode.insertBefore(n,g);
+  });
+}
+function qBoxes(sl){
+  if(sl._b)return sl._b;const B=[],Ly=[];
+  sl.querySelectorAll("svg>g.t").forEach((ln,li)=>{
+    let sy=0,n=0;
+    ln.querySelectorAll(":scope>g").forEach(g=>{const b=g.getBBox();B.push({g:g,li:li,x:b.x,y:b.y,w:b.width,h:b.height,s:+g.dataset.s,a:+g.dataset.a});sy+=b.y+b.height/2;n++});
+    Ly[li]=n?sy/n:0;
+  });
+  B.ly=Ly;return sl._b=B;
+}
+function qPick(sl,ev){
+  const svg=sl.querySelector("svg");if(!svg)return null;
+  const m=svg.getScreenCTM();if(!m)return null;
+  const pt=svg.createSVGPoint();pt.x=ev.clientX;pt.y=ev.clientY;const q=pt.matrixTransform(m.inverse()),B=qBoxes(sl);
+  let li=-1,bd=1e9;B.ly.forEach((y,i)=>{const d=Math.abs(q.y-y);if(d<bd){bd=d;li=i}});
+  if(li<0||bd>13)return null;
+  let best=null,dx=1e9;
+  for(const w of B){if(w.li!==li)continue;const d=q.x<w.x?w.x-q.x:(q.x>w.x+w.w?q.x-w.x-w.w:0);if(d<dx){dx=d;best=w}}
+  return best&&dx<9?best:null;
+}
+function qBand(sl,kind,s,a){
+  const svg=sl.querySelector("svg");if(!svg)return;
+  svg.querySelectorAll("g.hb."+kind).forEach(e=>e.remove());
+  if(!s)return;
+  const B=qBoxes(sl),L={};
+  B.forEach(w=>{if(w.s!==s||w.a!==a)return;const l=L[w.li]=L[w.li]||{x0:1e9,x1:-1e9};l.x0=Math.min(l.x0,w.x);l.x1=Math.max(l.x1,w.x+w.w)});
+  const ks=Object.keys(L);if(!ks.length)return;
+  const g=document.createElementNS(SVGNS,"g");g.setAttribute("class","hb "+kind);let h="";
+  ks.forEach(k=>{const l=L[k],y=B.ly[k];h+='<rect x="'+(l.x0-1.2).toFixed(2)+'" y="'+(y-12.6).toFixed(2)+'" width="'+(l.x1-l.x0+2.4).toFixed(2)+'" height="25.2" rx="3"/>'});
+  g.innerHTML=h;svg.insertBefore(g,svg.firstChild);
+}
+function qMarkPage(sl){
+  qBand(sl,"sel",QSEL&&QSEL.s,QSEL&&QSEL.a);
+  const pa=QPI>=0&&QPLAY?qSA(QPI):null;qBand(sl,"pl",pa&&pa[0],pa&&pa[1]);
+}
+function qMarkAll(){document.querySelectorAll("#qsc .qsl[data-f]").forEach(qMarkPage)}
 function qHead(){
   const[s,a]=QPS[QP-1];$("qhs").textContent=QUZ[s-1]+" surasi";$("qhj").textContent=qjuzOf(s,a)+"-juz";
 }
-function qNear(){for(let i=-2;i<=2;i++)qFill(QP+i)}
+function qNear(){
+  const k=$("qsc").children;
+  for(let i=0;i<604;i++){if(Math.abs(i+1-QP)>3)qDrop(k[i])}
+  for(let i=-2;i<=2;i++)qFill(QP+i);
+}
 const qIdx=()=>{const sc=$("qsc");return Math.min(604,Math.max(1,Math.round(Math.abs(sc.scrollLeft)/sc.clientWidth)+1))};
 let qTm=0;
-function qSettle(){const p=qIdx();if(p!==QP){QP=p;qNear();qHead();$("qac").classList.remove("on");QSEL=null;qs("qlast",JSON.stringify({p:QP}))}}
-function qHl(s,a){
-  document.querySelectorAll("#qsc .w.hl").forEach(e=>e.classList.remove("hl"));
-  if(s)document.querySelectorAll('#qsc .qsl[data-p="'+QP+'"] .w[data-s="'+s+'"][data-a="'+a+'"]').forEach(e=>e.classList.add("hl"));
-}
-async function qGo(p,s,a){
+function qSettle(){const p=qIdx();if(p!==QP){QP=p;qNear();qHead();qShut();qs("qlast",JSON.stringify({p:QP}))}}
+async function qGo(p,s,a,smooth){
   try{await qLoad()}catch(e){toast("Qur’on ma’lumoti yuklanmadi");return}
-  $("qpg").classList.add("on");
-  if(!(history.state&&history.state.qr))history.pushState({qr:1},"");
+  if(!$("qpg").classList.contains("on")){
+    $("qpg").classList.add("on");
+    if(!(history.state&&history.state.qr))history.pushState({qr:1},"");
+  }
   qBuild();const sc=$("qsc");
-  QP=p;QSEL=null;$("qac").classList.remove("on");
-  sc.scrollLeft=-(p-1)*sc.clientWidth;
-  qNear();qHead();qHl(s,a);
+  QP=p;QSEL=s?{s:s,a:a}:null;qShut(true);
+  if(smooth)sc.scrollTo({left:-(p-1)*sc.clientWidth,behavior:"smooth"});else sc.scrollLeft=-(p-1)*sc.clientWidth;
+  qNear();qHead();qMarkAll();
   qs("qlast",JSON.stringify({p:p}));
 }
 function qClose(){
   if(!$("qpg").classList.contains("on"))return;
-  $("qpg").classList.remove("on");$("qac").classList.remove("on");QSEL=null;
+  qAStop();qShut();$("qjs").classList.remove("on");
+  $("qpg").classList.remove("on");
   if(history.state&&history.state.qr)history.back();
-  if(QD)qList();
+  if(QM)qList();qHomeSub();
 }
-const qAyahTxt=(s,a)=>QW.slice(QFW[s][a]-1,QFE[s][a]-1).join(" ");
+/* Oyat oynasi */
+let qAt=0;
+function qShut(keep){
+  $("qas").classList.remove("on");
+  if(!keep&&QSEL){QSEL=null;qMarkAll()}
+}
+async function qOpen(w,sl){
+  QSEL={s:w.s,a:w.a};qMarkAll();
+  const r=w.g.getBoundingClientRect(),el=$("qas");
+  el.classList.toggle("top",r.top+r.height/2>innerHeight*.52);
+  $("qat").textContent=QUZ[w.s-1]+" surasi, "+w.a+"-oyat";
+  $("qar").textContent="";$("qtr").textContent="";$("qfn").style.display="none";$("qfb").style.display="none";$("qfb").textContent="Izohni ko‘rsatish";
+  qBmBtn();el.classList.add("on");
+  const my=++qAt;
+  try{
+    const T=await qText();if(my!==qAt||!QSEL)return;
+    const i=qgi(w.s,w.a);
+    $("qar").textContent=T.ar[i]+" ﴿"+qdig(w.a)+"﴾";
+    $("qtr").textContent=T.uz[i]||"";
+    if(T.fn[i]){$("qfn").textContent=T.fn[i];$("qfb").style.display="inline-block"}
+  }catch(e){$("qtr").textContent="Tarjima yuklanmadi. Internetni tekshiring."}
+}
+function qBmBtn(){
+  if(!QSEL)return;const on=qbm().some(x=>x.s===QSEL.s&&x.a===QSEL.a);
+  $("qmk").classList.toggle("on",on);$("qmk").lastChild.textContent=on?"Xatcho‘pda":"Xatcho‘p";
+}
+async function qTxt(){
+  const T=await qText(),i=qgi(QSEL.s,QSEL.a);
+  return T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾\n\n"+(T.uz[i]||"")+"\n\n— "+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat";
+}
+/* Tilovat */
+let QAU=null,QAP=null,QRC=+(qg("qrc")||0),QPI=-1,QEL=null,QPLAY=false;
+function qAudioData(){return QAP||(QAP=fetch("quran-audio.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>QAU=j).catch(e=>{QAP=null;throw e}))}
+async function qPlayFrom(i){
+  try{await qAudioData()}catch(e){toast("Tilovat ma’lumoti yuklanmadi");return}
+  if(QRC>=QAU.r.length)QRC=0;
+  const rc=QAU.r[QRC];
+  if(!QEL){
+    QEL=new Audio();QEL.preload="auto";
+    QEL.onended=qEnded;QEL.ontimeupdate=qTime;
+    QEL.onerror=()=>{if(QPLAY){toast("Tilovat yuklanmadi. Internetni tekshiring");qAStop()}};
+    QEL.onplay=()=>$("qmpp").classList.add("pl");QEL.onpause=()=>$("qmpp").classList.remove("pl");
+  }
+  QPI=i;QPLAY=true;const[s,a]=qSA(i);
+  if(rc.k==="a"){QEL.src=rc.u+pad3(s)+pad3(a)+".mp3"}
+  else{
+    const url=rc.u+pad3(s)+".mp3",t=rc.f[i]/1000;
+    if(QEL.dataset.u===url&&QEL.readyState>0){QEL.currentTime=t}
+    else{QEL.dataset.u=url;QEL.addEventListener("loadedmetadata",()=>{QEL.currentTime=t},{once:true});QEL.src=url}
+  }
+  if(rc.k==="a")QEL.dataset.u="";
+  QEL.play().catch(()=>{});
+  qMini();qFollow();qMarkAll();
+  if("mediaSession" in navigator){
+    try{navigator.mediaSession.metadata=new MediaMetadata({title:QUZ[s-1]+" surasi, "+a+"-oyat",artist:rc.n,album:"Jannat sari"});
+      navigator.mediaSession.setActionHandler("play",()=>QEL.play());navigator.mediaSession.setActionHandler("pause",()=>QEL.pause());
+      navigator.mediaSession.setActionHandler("nexttrack",()=>qStep(1));navigator.mediaSession.setActionHandler("previoustrack",()=>qStep(-1))}catch(e){}
+  }
+}
+function qTime(){
+  if(!QPLAY||QPI<0||!QAU)return;const rc=QAU.r[QRC];if(rc.k!=="s")return;
+  const s=qSA(QPI)[0],end=QB[s]-1,t=QEL.currentTime*1000;let i=QPI;
+  while(i<end&&t>=rc.f[i+1]-20)i++;
+  if(i!==QPI){QPI=i;qMini();qFollow();qMarkAll()}
+}
+function qEnded(){
+  if(!QPLAY)return;const rc=QAU.r[QRC];
+  if(rc.k==="a"){if(QPI<6235)qPlayFrom(QPI+1);else qAStop()}
+  else{const s=qSA(QPI)[0];if(s<114)qPlayFrom(QB[s]);else qAStop()}
+}
+function qStep(d){const i=QPI+d;if(i>=0&&i<6236)qPlayFrom(i)}
+function qFollow(){const p=QPG[QPI];if(p&&p!==QP&&$("qpg").classList.contains("on"))qGo(p,0,0,true).then(()=>{})}
+function qMini(){
+  const[s,a]=qSA(QPI),rc=QAU.r[QRC];
+  $("qmn").textContent=rc.n;$("qma").textContent=QUZ[s-1]+" · "+a+"-oyat · "+rc.s;
+  $("qpg").classList.add("mp");
+}
+function qAStop(){
+  QPLAY=false;QPI=-1;
+  if(QEL){QEL.pause();QEL.removeAttribute("src");QEL.dataset.u="";try{QEL.load()}catch(e){}}
+  $("qpg").classList.remove("mp");qMarkAll();
+}
+/* Sahifaga o'tish */
+function qJumpOpen(){
+  const s1=$("qjs1"),z=$("qjz");
+  if(!s1.options.length){
+    for(let s=1;s<=114;s++)s1.add(new Option(s+". "+QUZ[s-1],s));
+    for(let j=1;j<=30;j++)z.add(new Option(j+"-juz",j));
+  }
+  const[s,a]=QPS[QP-1];s1.value=s;z.value=qjuzOf(s,a);$("qjp").value=QP;
+  $("qjs").classList.add("on");
+}
+function qJumpTo(p,s,a){
+  p=Math.min(604,Math.max(1,Math.round(+p)||1));$("qjs").classList.remove("on");qGo(p,s||0,a||0);
+}
+/* Hodisalar */
 $("qsc").addEventListener("scroll",()=>{clearTimeout(qTm);qTm=setTimeout(qSettle,80)},{passive:true});
 $("qsc").addEventListener("click",e=>{
-  const w=e.target.closest(".w");
-  if(!w){QSEL=null;qHl();$("qac").classList.remove("on");return}
-  QSEL={s:+w.dataset.s,a:+w.dataset.a};qHl(QSEL.s,QSEL.a);$("qac").classList.add("on");
+  if(e.target.closest("[data-jump]")){qJumpOpen();return}
+  const re=e.target.closest("[data-re]");if(re){const sl=re.parentNode;delete sl.dataset.f;qFill(+re.dataset.re);return}
+  const sl=e.target.closest(".qsl");if(!sl)return;
+  const w=qPick(sl,e);
+  if(!w){if($("qas").classList.contains("on")||QSEL)qShut();return}
+  qOpen(w,sl);
 });
 $("qcl").onclick=qClose;
-addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){$("qpg").classList.remove("on");$("qac").classList.remove("on");QSEL=null;if(QD)qList()}});
-addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear()}});
-const qTxt=()=>qAyahTxt(QSEL.s,QSEL.a)+" ﴿"+qdig(QSEL.a)+"﴾\n("+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat)";
-$("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
-$("qsh").onclick=async()=>{if(!QSEL)return;try{if(navigator.share)await navigator.share({text:qTxt()});else{await navigator.clipboard.writeText(qTxt());toast("Nusxalandi")}}catch(e){}};
-$("qmk").onclick=()=>{
-  if(!QSEL)return;let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(e){}
-  if(b.some(x=>x.s===QSEL.s&&x.a===QSEL.a)){toast("Bu oyat allaqachon xatcho‘pda")}else{b.unshift({s:QSEL.s,a:QSEL.a});qs("qbl",JSON.stringify(b.slice(0,200)));toast("Xatcho‘pga qo‘shildi")}
-  $("qac").classList.remove("on");QSEL=null;qHl();
+$("qhs").onclick=qJumpOpen;
+$("qnt").onclick=()=>{const n=$("qpg").classList.toggle("night");qs("qnight",n?"1":"0")};
+$("qplay").onclick=()=>{
+  if(QPLAY&&QEL){QEL.paused?QEL.play():QEL.pause();return}
+  const[s,a]=QPS[QP-1];qPlayFrom(qgi(s,a));
 };
+$("qjx").onclick=()=>$("qjs").classList.remove("on");
+$("qjs").addEventListener("click",e=>{if(e.target===$("qjs"))$("qjs").classList.remove("on")});
+$("qjg").onclick=()=>qJumpTo($("qjp").value);
+$("qjp").onkeydown=e=>{if(e.key==="Enter")qJumpTo($("qjp").value)};
+$("qjs1").onchange=e=>{const s=+e.target.value;qJumpTo(qpo(s,1),s,1)};
+$("qjz").onchange=e=>{const j=+e.target.value,[s,a]=QJ[j-1];qJumpTo(qpo(s,a),s,a)};
+$("qax").onclick=()=>qShut();
+$("qfb").onclick=()=>{const f=$("qfn"),o=f.style.display==="none";f.style.display=o?"block":"none";$("qfb").textContent=o?"Izohni yashirish":"Izohni ko‘rsatish"};
+$("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(await qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
+$("qsh").onclick=async()=>{if(!QSEL)return;try{const t=await qTxt();if(navigator.share)await navigator.share({text:t});else{await navigator.clipboard.writeText(t);toast("Nusxalandi")}}catch(e){}};
+$("qmk").onclick=()=>{
+  if(!QSEL)return;let b=qbm();const k=b.findIndex(x=>x.s===QSEL.s&&x.a===QSEL.a);
+  if(k>=0){b.splice(k,1);toast("Xatcho‘pdan olindi")}else{b.unshift({s:QSEL.s,a:QSEL.a});toast("Xatcho‘pga qo‘shildi")}
+  qs("qbl",JSON.stringify(b.slice(0,200)));qBmBtn();
+  const sl=$("qsc").children[QP-1];if(sl&&sl.dataset.f){const r=sl.querySelector(".rb");if(qHasBm(QP)&&!r)sl.insertAdjacentHTML("beforeend",'<i class="rb"></i>');else if(!qHasBm(QP)&&r)r.remove()}
+};
+$("qlis").onclick=()=>{
+  if(!QSEL)return;const i=qgi(QSEL.s,QSEL.a);qShut(true);qPlayFrom(i);
+};
+$("qmpp").onclick=()=>{if(QEL)QEL.paused?QEL.play():QEL.pause()};
+$("qmnx").onclick=()=>qStep(1);$("qmpv").onclick=()=>qStep(-1);$("qmx").onclick=qAStop;
+$("qmr").onclick=async()=>{
+  if(!QAU)return;QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));toast(QAU.r[QRC].n+" · "+QAU.r[QRC].s);
+  if(QPLAY&&QPI>=0)qPlayFrom(QPI);
+};
+addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){qAStop();qShut();$("qjs").classList.remove("on");$("qpg").classList.remove("on");if(QM)qList();qHomeSub()}});
+addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear();qMarkAll()}});
+if(qg("qnight")==="1")$("qpg").classList.add("night");
+qHomeSub();
 /* Ro'yxat boshqaruvi */
-$("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QD)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
-$("qsb").onclick=()=>{if(!QD)return;QT="s";$("qsw").classList.toggle("on");if($("qsw").classList.contains("on"))$("qsr").focus();else{$("qsr").value=""}qList()};
+$("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QM)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
+$("qsb").onclick=()=>{if(!QM)return;QT="s";$("qsw").classList.toggle("on");if($("qsw").classList.contains("on"))$("qsr").focus();else{$("qsr").value=""}qList()};
 $("qsr").oninput=qList;
+$("qoff").onclick=e=>{if(e.target.closest("#qoffb"))qOffGo()};
 $("qlist").onclick=e=>{
   const d=e.target.closest("[data-del]");
-  if(d){let b=[];try{b=JSON.parse(qg("qbl")||"[]")}catch(x){}b.splice(+d.dataset.del,1);qs("qbl",JSON.stringify(b));qList();return}
+  if(d){const b=qbm();b.splice(+d.dataset.del,1);qs("qbl",JSON.stringify(b));qList();return}
   const r=e.target.closest("[data-p]");if(r)qGo(+r.dataset.p,+r.dataset.s,+r.dataset.a);
 };
 $("qlast").onclick=()=>{let l=null;try{l=JSON.parse(qg("qlast"))}catch(e){}qGo(l&&l.p>=1&&l.p<=604?l.p:1)};
 $("qbk0").onclick=()=>history.back();
-
-addEventListener("focusin",e=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)&&e.target.type!=="checkbox")document.body.classList.add("kb")});
-addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;if(!a||!/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))document.body.classList.remove("kb")},150));
-$("mbell").onclick=()=>$("bell").click();
-$("mshare").onclick=async()=>{const d={title:"Jannat sari",text:"Namoz vaqtlari, qibla, tasbeh va zakot hisoblagichi",url:location.origin+location.pathname};
-  try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.url);toast("Havola nusxalandi")}}catch(e){}};
-$("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)))}catch(e){}setTimeout(()=>location.reload(),500)};
+$("qa-sh").onclick=()=>$("mshare").click();
 /* Admin (sarlavhani 5 marta bosing) */
 let ses=get("ses",null);
 const say=t=>{$("amsg").textContent=t;$("msg2").textContent=t;if(t)setTimeout(()=>{if($("amsg").textContent===t)$("amsg").textContent=""},3500)};
