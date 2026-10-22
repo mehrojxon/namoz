@@ -1546,7 +1546,7 @@ const qg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},qs=(k,v)=
 const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[ً-ٰٟۖ-ۭـ]/g,"").replace(/[أإآٱ]/g,"ا");
 const qdig=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const qjuzOf=(s,a)=>{let j=0;for(let i=0;i<30;i++){if(QJ[i][0]<s||(QJ[i][0]===s&&QJ[i][1]<=a))j=i+1;else break}return j};
-const QV="3",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
+const QV="5",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
 const qgi=(s,a)=>QB[s-1]+a-1,pad3=n=>String(n).padStart(3,"0");
 const qSA=i=>{let k=0;while(QB[k+1]<=i)k++;return[k+1,i-QB[k]+1]};
 let QM=null,QPG=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="",QTX=null,QTXP=null,QDM=null;
@@ -1558,7 +1558,7 @@ async function qLoad(){
   QPS=j.ps;QPG=j.pg;return QM=j;
 }
 const qpo=(s,a)=>QPG[qgi(s,a)];
-function qText(){return QTXP||(QTXP=fetch("quran-text.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>QTX=j).catch(e=>{QTXP=null;throw e}))}
+function qText(){return QTXP||(QTXP=fetch("quran-text.json?v="+QV).then(r=>{if(!r.ok)throw new Error("quran-text.json topilmadi ("+r.status+")");return r.json()}).then(j=>QTX=j).catch(e=>{QTXP=null;throw e}))}
 /* Sahifalar: har 10 sahifa bitta siqilgan fayl */
 const QCH=new Map();
 function qChunk(c){
@@ -1571,10 +1571,10 @@ function qChunk(c){
     return t.split("\n");
   })();
   p.catch(()=>QCH.delete(c));QCH.set(c,p);
-  while(QCH.size>4)QCH.delete(QCH.keys().next().value);
+  while(QCH.size>2)QCH.delete(QCH.keys().next().value);
   return p;
 }
-const qSvg=async p=>(await qChunk(Math.floor((p-1)/10)))[(p-1)%10];
+const qSvg=async p=>(await qChunk(Math.floor((p-1)/61)))[(p-1)%61];
 /* Ro'yxat */
 const qrow=(n,t,sub,p,x)=>'<button class="qrow" '+x+'><span class="n">'+n+'</span><span class="t"><b>'+t+'</b><span>'+sub+'</span></span><span class="p">'+p+'</span></button>';
 function qList(){
@@ -1617,14 +1617,14 @@ function qOffDraw(){
   e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalarni telefonga saqlash, taxminan 42 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
 }
 async function qOffGo(){
-  const e=$("qoff");e.dataset.busy="1";let ok=true;
-  for(let c=0;c<61;c++){
-    e.innerHTML='<div class="qoffc"><div><b>Yuklanmoqda… '+Math.round(c/61*100)+'%</b><span>Ilovani yopmang</span></div></div>';
-    try{const r=await fetch("mushaf-"+String(c).padStart(2,"0")+".bin?v="+QV);if(!r.ok)throw 0;await r.arrayBuffer()}catch(x){ok=false;break}
+  const e=$("qoff");e.dataset.busy="1";let ok=true,bad="";
+  for(let c=0;c<10;c++){
+    e.innerHTML='<div class="qoffc"><div><b>Yuklanmoqda… '+Math.round(c/10*100)+'%</b><span>Ilovani yopmang</span></div></div>';
+    const fn="mushaf-"+String(c).padStart(2,"0")+".bin";try{const r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");await r.arrayBuffer()}catch(x){ok=false;bad=x.message&&x.message.indexOf("mushaf")===0?x.message:fn+" yuklanmadi";break}
   }
-  try{await qText();await qAudioData()}catch(x){}
+  if(ok){try{await qText();await qAudioData()}catch(x){ok=false;bad="quran-text.json yoki quran-audio.json yuklanmadi"}}
   delete e.dataset.busy;
-  if(ok){qs("qoff","2");toast("Qur’on telefonga saqlandi")}else toast("Yuklash to‘xtadi. Internetni tekshiring");
+  if(ok){qs("qoff","2");toast("Qur’on telefonga saqlandi")}else toast("Yuklash to‘xtadi: "+bad);
   qOffDraw();
 }
 /* O'qish */
@@ -1748,7 +1748,7 @@ async function qOpen(w,sl){
     $("qar").textContent=T.ar[i]+" ﴿"+qdig(w.a)+"﴾";
     $("qtr").textContent=T.uz[i]||"";
     if(T.fn[i]){$("qfn").textContent=T.fn[i];$("qfb").style.display="inline-block"}
-  }catch(e){$("qtr").textContent="Tarjima yuklanmadi. Internetni tekshiring."}
+  }catch(e){$("qtr").textContent="Tarjima yuklanmadi: "+(e&&e.message?e.message:"internetni tekshiring")}
 }
 function qBmBtn(){
   if(!QSEL)return;const on=qbm().some(x=>x.s===QSEL.s&&x.a===QSEL.a);
