@@ -8,7 +8,7 @@ self.addEventListener("install", e => {
 self.addEventListener("activate", e => e.waitUntil(clients.claim()));
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
-  if (/mushaf-\d+\.bin|quran-(meta|text|audio)\.json|UthmanicHafs/.test(e.request.url)) {
+  if (/qm5-\d+\.bin|quran-(meta|text|audio)\.json|UthmanicHafs/.test(e.request.url)) {
     e.respondWith(caches.match(e.request.url).then(r => r || fetch(e.request.url).then(n => { const k = n.clone(); if (n.ok) caches.open(C).then(c => c.put(e.request.url, k)); return n; })));
     return;
   }
