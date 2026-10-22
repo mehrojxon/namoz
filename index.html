@@ -1546,7 +1546,7 @@ const qg=k=>{try{return localStorage.getItem(k)}catch(e){return null}},qs=(k,v)=
 const qnorm=t=>t.toLowerCase().replace(/[’‘ʻʼ'`]/g,"").replace(/[ً-ٰٟۖ-ۭـ]/g,"").replace(/[أإآٱ]/g,"ا");
 const qdig=n=>String(n).replace(/\d/g,d=>"٠١٢٣٤٥٦٧٨٩"[d]);
 const qjuzOf=(s,a)=>{let j=0;for(let i=0;i<30;i++){if(QJ[i][0]<s||(QJ[i][0]===s&&QJ[i][1]<=a))j=i+1;else break}return j};
-const QV="5",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
+const QV="6",QB=[0];for(let i=0;i<114;i++)QB.push(QB[i]+QCN[i]);
 const qgi=(s,a)=>QB[s-1]+a-1,pad3=n=>String(n).padStart(3,"0");
 const qSA=i=>{let k=0;while(QB[k+1]<=i)k++;return[k+1,i-QB[k]+1]};
 let QM=null,QPG=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="",QTX=null,QTXP=null,QDM=null;
@@ -1565,10 +1565,11 @@ function qChunk(c){
   let p=QCH.get(c);
   if(p){QCH.delete(c);QCH.set(c,p);return p}
   p=(async()=>{
-    const r=await fetch("mushaf-"+String(c).padStart(2,"0")+".bin?v="+QV);if(!r.ok)throw new Error("fetch");
+    const fn="qm5-"+String(c).padStart(2,"0")+".bin",r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");
     const ab=await r.arrayBuffer();
-    const t=await new Response(new Blob([ab]).stream().pipeThrough(new DecompressionStream("gzip"))).text();
-    return t.split("\n");
+    const t=await new Response(new Blob([ab]).stream().pipeThrough(new DecompressionStream("gzip"))).text(),L=t.split("\n");
+    if(L.length!==Math.min(61,604-c*61)||L.some(x=>x.slice(0,4)!=="<svg"))throw new Error("qm5-"+String(c).padStart(2,"0")+".bin eskirgan yoki buzuq");
+    return L;
   })();
   p.catch(()=>QCH.delete(c));QCH.set(c,p);
   while(QCH.size>2)QCH.delete(QCH.keys().next().value);
@@ -1620,7 +1621,7 @@ async function qOffGo(){
   const e=$("qoff");e.dataset.busy="1";let ok=true,bad="";
   for(let c=0;c<10;c++){
     e.innerHTML='<div class="qoffc"><div><b>Yuklanmoqda… '+Math.round(c/10*100)+'%</b><span>Ilovani yopmang</span></div></div>';
-    const fn="mushaf-"+String(c).padStart(2,"0")+".bin";try{const r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");await r.arrayBuffer()}catch(x){ok=false;bad=x.message&&x.message.indexOf("mushaf")===0?x.message:fn+" yuklanmadi";break}
+    const fn="qm5-"+String(c).padStart(2,"0")+".bin";try{const r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");await r.arrayBuffer()}catch(x){ok=false;bad=x.message&&x.message.indexOf("mushaf")===0?x.message:fn+" yuklanmadi";break}
   }
   if(ok){try{await qText();await qAudioData()}catch(x){ok=false;bad="quran-text.json yoki quran-audio.json yuklanmadi"}}
   delete e.dataset.busy;
@@ -1647,7 +1648,7 @@ async function qFill(p){
   if(p<1||p>604)return;const sl=$("qsc").children[p-1];if(!sl||sl.dataset.f)return;
   sl.dataset.f="1";sl.innerHTML='<div class="qld"></div>';
   let t;
-  try{t=await qSvg(p)}catch(e){if(sl.isConnected){delete sl.dataset.f;sl.innerHTML='<button class="qre" data-re="'+p+'">Sahifa yuklanmadi.<br>Qayta urinish</button>'}return}
+  try{t=await qSvg(p)}catch(e){if(sl.isConnected){delete sl.dataset.f;sl.innerHTML='<button class="qre" data-re="'+p+'">Sahifa yuklanmadi.<br><small>'+(e&&e.message?e.message:"")+'</small><br>Qayta urinish</button>'}return}
   if(!sl.isConnected||!sl.dataset.f)return;
   const d=QDM;
   sl.innerHTML='<div class="pgw" style="width:'+d.W.toFixed(1)+'px;height:'+d.H.toFixed(1)+'px">'+t+'</div><button class="qpn" data-jump="1">'+p+'</button>'+(qHasBm(p)?'<i class="rb"></i>':'');
@@ -1882,6 +1883,12 @@ $("qlist").onclick=e=>{
 $("qlast").onclick=()=>{let l=null;try{l=JSON.parse(qg("qlast"))}catch(e){}qGo(l&&l.p>=1&&l.p<=604?l.p:1)};
 $("qbk0").onclick=()=>history.back();
 $("qa-sh").onclick=()=>$("mshare").click();
+addEventListener("focusin",e=>{if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)&&e.target.type!=="checkbox")document.body.classList.add("kb")});
+addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;if(!a||!/^(INPUT|TEXTAREA|SELECT)$/.test(a.tagName))document.body.classList.remove("kb")},150));
+$("mbell").onclick=()=>$("bell").click();
+$("mshare").onclick=async()=>{const d={title:"Jannat sari",text:"Namoz vaqtlari, qibla, tasbeh va zakot hisoblagichi",url:location.origin+location.pathname};
+  try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.url);toast("Havola nusxalandi")}}catch(e){}};
+$("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)))}catch(e){}setTimeout(()=>location.reload(),500)};
 /* Admin (sarlavhani 5 marta bosing) */
 let ses=get("ses",null);
 const say=t=>{$("amsg").textContent=t;$("msg2").textContent=t;if(t)setTimeout(()=>{if($("amsg").textContent===t)$("amsg").textContent=""},3500)};
