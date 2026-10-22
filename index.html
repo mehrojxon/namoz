@@ -1581,21 +1581,41 @@ async function qFull(k){
   try{const r=await caches.match("qp-"+k+".bin?v="+QV);if(r){const b=await r.arrayBuffer();QFB.set(k,b);while(QFB.size>2)QFB.delete(QFB.keys().next().value);return b}}catch(e){}
   return null;
 }
+async function qDecode(buf){
+  try{const t=await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).text();return t.slice(0,4)==="<svg"?t:null}catch(e){return null}
+}
+let QNR=false;
 async function qSvg(p){
   if(QSV.has(p)){const v=QSV.get(p);QSV.delete(p);QSV.set(p,v);return v}
-  const ix=await qPIdx(),k=Math.floor((p-1)/ix.per),o=ix.o[k],i=(p-1)-k*ix.per,a=o[i],b=o[i+1],fn="qp-"+k+".bin";
-  let buf=null;const full=await qFull(k);
-  if(full)buf=full.slice(a,b);
-  else{
-    const r=await fetch(fn+"?v="+QV,{headers:{Range:"bytes="+a+"-"+(b-1)}});
-    if(r.status===206)buf=await r.arrayBuffer();
-    else if(r.ok){const all=await r.arrayBuffer();QFB.set(k,all);while(QFB.size>2)QFB.delete(QFB.keys().next().value);buf=all.slice(a,b)}
-    else throw new Error(fn+" topilmadi ("+r.status+")");
+  const ix=await qPIdx(),k=Math.floor((p-1)/ix.per),o=ix.o[k],i=(p-1)-k*ix.per,a=o[i],b=o[i+1],fn="qp-"+k+".bin",tot=o[o.length-1];
+  let t=null;
+  /* 1) telefonga saqlangan to'liq nusxa */
+  const full=await qFull(k);
+  if(full){
+    if(full.byteLength===tot)t=await qDecode(full.slice(a,b));
+    if(!t){QFB.delete(k);try{const c=await caches.open(QCACHE);await c.delete(qAbs(fn+"?v="+QV))}catch(e){}}
   }
-  if(buf.byteLength!==b-a)throw new Error(fn+" eskirgan yoki buzuq");
-  let t;
-  try{t=await new Response(new Blob([buf]).stream().pipeThrough(new DecompressionStream("gzip"))).text()}catch(e){throw new Error(fn+" eskirgan yoki buzuq")}
-  if(t.slice(0,4)!=="<svg")throw new Error(fn+" eskirgan yoki buzuq");
+  /* 2) faqat kerakli bo'lakni so'rash */
+  if(!t&&!QFB.has(k)&&!QNR){
+    try{
+      const r=await fetch(fn+"?v="+QV,{headers:{Range:"bytes="+a+"-"+(b-1)}});
+      if(r.status===206){const buf=await r.arrayBuffer();if(buf.byteLength===b-a)t=await qDecode(buf)}
+      else if(r.ok){const all=await r.arrayBuffer();if(all.byteLength===tot){QFB.set(k,all);while(QFB.size>2)QFB.delete(QFB.keys().next().value);t=await qDecode(all.slice(a,b))}}
+    }catch(e){}
+    if(!t)QNR=true;
+  }
+  /* 3) to'liq faylni olish va hajmini tekshirish */
+  if(!t){
+    let all=QFB.get(k);
+    if(!all||all.byteLength!==tot){
+      const r=await fetch(fn+"?v="+QV);if(!r.ok)throw new Error(fn+" topilmadi ("+r.status+")");
+      all=await r.arrayBuffer();
+      if(all.byteLength!==tot){try{const c=await caches.open(QCACHE);await c.delete(qAbs(fn+"?v="+QV))}catch(e){}throw new Error(fn+" GitHub’da noto‘liq: kutilgan "+tot+" bayt, kelgan "+all.byteLength+". Faylni qayta yuklang")}
+      QFB.set(k,all);while(QFB.size>2)QFB.delete(QFB.keys().next().value);
+    }
+    t=await qDecode(all.slice(a,b));
+    if(!t)throw new Error(fn+" buzuq (hajmi to‘g‘ri, ichi noto‘g‘ri). Faylni qayta yuklang");
+  }
   QSV.set(p,t);while(QSV.size>12)QSV.delete(QSV.keys().next().value);
   return t;
 }
@@ -2266,7 +2286,7 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.23";
+const APPV="3.24";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
