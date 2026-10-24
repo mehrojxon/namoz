@@ -1,8 +1,10 @@
 // Internet bor bo'lsa har doim yangisini oladi, yo'q bo'lsa saqlangan nusxani ko'rsatadi.
 const C = "namoz-v1";
 const SHELL = ["./", "index.html", "vaqtlar.json", "manifest.json", "icon.svg"];
+// Qur'on bo'limi internetsiz ochilishi uchun kerakli asosiy fayllar
+const CORE = ["quran-meta.json", "quran-text.json", "qp-idx.json", "quran-audio.json", "UthmanicHafs_V22.ttf", "hijriy-taqvim.json"];
 self.addEventListener("install", e => {
-  e.waitUntil(caches.open(C).then(c => c.addAll(SHELL)));
+  e.waitUntil(caches.open(C).then(c => c.addAll(SHELL).then(() => Promise.all(CORE.map(u => c.add(u).catch(() => {}))))));
   self.skipWaiting();
 });
 self.addEventListener("activate", e => e.waitUntil(
@@ -13,7 +15,7 @@ self.addEventListener("fetch", e => {
   if (e.request.method !== "GET" || new URL(e.request.url).origin !== location.origin) return;
   if (e.request.headers.has("range")) return;
   if (/qp-(\d+\.bin|idx\.json)|quran-(meta|text|audio)\.json|UthmanicHafs/.test(e.request.url)) {
-    e.respondWith(caches.match(e.request.url).then(r => r || fetch(e.request.url).then(n => { const k = n.clone(); if (n.ok) caches.open(C).then(c => c.put(e.request.url, k)); return n; })));
+    e.respondWith(caches.match(e.request.url).then(r => r || fetch(e.request.url).then(n => { const k = n.clone(); if (n.ok) caches.open(C).then(c => c.put(e.request.url, k)); return n; }).catch(() => caches.match(e.request.url, { ignoreSearch: true }).then(x => x || Response.error()))));
     return;
   }
   e.respondWith(

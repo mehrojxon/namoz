@@ -925,7 +925,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #nxcard[data-per="5"] .hq{background-image:linear-gradient(90deg,rgba(3,26,23,.9) 0,rgba(3,26,23,.62) 42%,rgba(3,26,23,.05) 78%),var(--b5)}
 #nxcard #hcd{background:rgba(4,28,25,.82)}
 .qa[data-go=t7]{--qi:var(--i-qcard)}
-.qa[data-go=t7]:before{background-size:auto 135%;background-position:100% 35%;-webkit-mask:linear-gradient(90deg,transparent 62%,#000 90%);mask:linear-gradient(90deg,transparent 62%,#000 90%)}
+.qa[data-go=t7]:before{background-size:auto 100%;background-position:right 4px center;-webkit-mask:linear-gradient(90deg,transparent 54%,#000 74%);mask:linear-gradient(90deg,transparent 54%,#000 74%)}
 /* Qur'on bobi */
 #t7{background:transparent}
 #qls .qbar{margin:2px 0 10px;gap:8px}
@@ -1168,7 +1168,8 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · <span class="appv"></span></div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina nusxasi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
-  <p class="mut" style="font-size:12.5px">Islomiy taqvim ma’lumotlari <a href="https://muslim.uz" target="_blank" rel="noopener" style="color:var(--ac)">muslim.uz</a> va <a href="https://islom.uz" target="_blank" rel="noopener" style="color:var(--ac)">islom.uz</a> maqolalari asosida tayyorlangan; har bir yozuvning manbasi o‘z o‘rnida ko‘rsatilgan.</p>
+  <p class="mut" style="font-size:12.5px">Islomiy taqvim ma’lumotlari va fiqhiy mavzular <a href="https://muslim.uz" target="_blank" rel="noopener" style="color:var(--ac)">muslim.uz</a>, <a href="https://islom.uz" target="_blank" rel="noopener" style="color:var(--ac)">islom.uz</a> va <a href="https://fatvo.uz" target="_blank" rel="noopener" style="color:var(--ac)">fatvo.uz</a> saytlari maqolalari asosida tayyorlangan; har bir yozuvning manbasi o‘z o‘rnida ko‘rsatilgan.</p>
+  <p class="mut" style="font-size:12.5px">Zakot, ushr, fitr va fidya hisobi hanafiy mazhabi ulamolarining qarashlari asosida tuzilgan. Fiqhiy kitoblar: «Kifoya», «Hidoya» (1-juz), «Fatvolar to‘plami» (1-kitob).</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -1881,8 +1882,8 @@ function zAdmHtml(){
   const gs=(p,o,ed)=>G.map(([c])=>`<div class="af">${ed?`<input type="text" class="znm" id="z_nom_${c}" value="${esc(gname(c))}" aria-label="Tur nomi">`:`<div class="al">${esc(gname(c))} <span class="ah" style="display:inline">· ≈ ${kgs(c)}</span></div>`}${ed?`<div class="ai"><input type="text" inputmode="decimal" id="z_kg_${c}" value="${fk(zkg(c))}" aria-label="Miqdori"><span>kg</span></div>`:""}<div class="ai"><input type="text" inputmode="decimal" id="${p+c}" class="zm" value="${v(o[c],"")===""?"":fm(o[c])}" placeholder="narxi"><span>so‘m</span></div></div>`).join("");
   return `<div class="atabs" id="ztabs">${[["u","Umumiy"],["m","Mol"],["f","Fitr"],["d","Fidya"],["h","Ushr"],["c","Chorva"]].map(([k,t],i)=>`<button type="button" data-z="${k}" class="${i?"":"on"}">${t}</button>`).join("")}</div>`+
   `<div class="apane on" data-z="u"><div class="ac"><div class="ag">Holat</div><div id="zst"></div></div>
-    <div class="ac"><div class="ag">Rasmiy qiymatlar</div><div class="ah">O‘zbekiston musulmonlari idorasi Fatvo markazining 2026-yil Ramazon qarori: nisob, fitr va fidya miqdorlari. Tugma maydonlarni to‘ldiradi, siz tekshirib “Saqlash”ni bosasiz.</div><button type="button" class="alink" id="zpre">2026-yil qiymatlarini kiritish</button></div>
-    <div class="ac"><div class="ag">Manba</div><div class="af"><div class="ah">Foydalanuvchilarga ko‘rinadi. Masalan: “Muftiylik qarori, 2026-yil”.</div><input type="text" id="z_man" value="${esc(z.manba||"")}"></div></div></div>`+
+    <div class="ac"><div class="ag">Rasmiy qiymatlar</div><div class="ah">2026-yil uchun nisob, fitr va fidya miqdorlari. Tugma maydonlarni to‘ldiradi, siz tekshirib “Saqlash”ni bosasiz.</div><button type="button" class="alink" id="zpre">2026-yil qiymatlarini kiritish</button></div>
+    <div class="ac"><div class="ag">Manba</div><div class="af"><div class="ah">Foydalanuvchilarga ko‘rinadi. Masalan: “fatvo.uz, 2026-yil”.</div><input type="text" id="z_man" value="${esc(z.manba||"")}"></div></div></div>`+
   `<div class="apane" data-z="m"><div class="ac"><div class="ag">Mol zakoti</div>`+
     f("z_nis","Nisob","Zakot farz bo‘ladigan eng kam mol miqdori (so‘mda).",v(z.nisob,""),"so‘m",1)+
     f("z_fz","Zakot ulushi","Sof moldan chiqariladigan ulush. Odatda 2,5.",v(z.foiz,2.5),"%")+`</div></div>`+
@@ -2034,6 +2035,7 @@ const qgi=(s,a)=>QB[s-1]+a-1,pad3=n=>String(n).padStart(3,"0");
 const qSA=i=>{let k=0;while(QB[k+1]<=i)k++;return[k+1,i-QB[k]+1]};
 let QM=null,QPG=null,QPS=null,QT="s",QP=1,QSEL=null,QBUILT=0,QSZ="",QTX=null,QTXP=null,QDM=null;
 const QVB=[252,409.5];
+setTimeout(()=>{try{if(navigator.onLine)["quran-meta.json?v="+QV,"quran-text.json?v="+QV,"qp-idx.json?v="+QV].forEach(u=>fetch(u).catch(()=>{}))}catch(e){}},5000);
 async function qLoad(){
   if(QM)return QM;
   const r=await fetch("quran-meta.json?v="+QV);if(!r.ok)throw new Error("fetch");
@@ -2710,7 +2712,7 @@ $("abody").addEventListener("click",e=>{
   if(e.target.id==="hdel"){hikmatDel();return}
   if(e.target.id==="zpre"){
     const P={b:10000,b2:12000,a:20000,m:110000,x:200000},fz=x=>fm(x);
-    $("z_nis").value=fz(100000000);$("z_man").value="O‘zbekiston musulmonlari idorasi Fatvo markazi, 2026-yil";
+    $("z_nis").value=fz(100000000);$("z_man").value="fatvo.uz, 2026-yil";
     G.forEach(([c])=>{$("z_fit_"+c).value=fz(P[c]);$("z_fid_"+c).value=fz(P[c]);$("z_kg_"+c).value=String(GK[c])});
     zSt();say("Qiymatlar kiritildi. Tekshirib “Saqlash”ni bosing");return}
   if(e.target.id==="out"){ses=null;AS=null;localStorage.removeItem("ses");showAdm()}
@@ -2790,7 +2792,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="3.33";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="3.35";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
