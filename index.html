@@ -279,6 +279,63 @@ button:disabled{opacity:.45}
 #pkres{font:700 20px/1.3 Georgia,serif;color:var(--gold);margin:8px 0 2px;min-height:28px}
 #csum em.cu{color:var(--gold)}
 @media(max-height:700px){.cg b{height:26px;line-height:26px}.cg i{height:20px;line-height:20px}.cal{margin-bottom:8px}}
+/* Islomiy taqvim: voqealar va nafl ibodatlar */
+:root{--kv:#b8851f;--kr:#1f8f5f;--ki:#3a73c4;--kh:#bf4f78}
+@media(prefers-color-scheme:dark){:root{--kv:#e0b24f;--kr:#49c58f;--ki:#6ea4ee;--kh:#e37ba0}}
+.cg.hk b{height:38px;line-height:31px;position:relative}
+.cg.hk b s{position:absolute;left:0;right:0;bottom:4px;display:flex;justify-content:center;gap:3px;height:5px;text-decoration:none}
+.cg.hk b s u{display:block;width:5px;height:5px;border-radius:50%;text-decoration:none;box-shadow:0 0 0 1px var(--card)}
+.cg.hk b.s s u{box-shadow:0 0 0 1.5px #fff}
+.cg.hk u[data-k=voqea],.tqleg u[data-k=voqea]{background:var(--kv)}
+.cg.hk u[data-k=royza],.tqleg u[data-k=royza]{background:var(--kr)}
+.cg.hk u[data-k=ibodat],.tqleg u[data-k=ibodat]{background:var(--ki)}
+.cg.hk u[data-k=hayit],.tqleg u[data-k=hayit]{background:var(--kh)}
+.tqleg{display:flex;flex-wrap:wrap;justify-content:center;gap:4px 14px;padding:4px 4px 8px;font-size:11.5px;color:var(--mut)}
+.tqleg span{display:inline-flex;align-items:center;gap:5px}
+.tqleg u{width:7px;height:7px;border-radius:50%;display:inline-block;text-decoration:none}
+.tqsec{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin:16px 4px 8px}
+.tqsec b{font:700 16px Georgia,serif;color:var(--ink)}
+.tqsec span{font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);font-weight:700;white-space:nowrap}
+.tqc{--tk:var(--kv);position:relative;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 13px 20px;margin-bottom:10px;overflow:hidden}
+.tqc::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tk)}
+.tqc[data-k=royza]{--tk:var(--kr)}.tqc[data-k=ibodat]{--tk:var(--ki)}.tqc[data-k=hayit]{--tk:var(--kh)}
+.tqc[data-w]{background:transparent;border-style:dashed}
+.tqk{display:block;font-size:10.5px;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--tk);margin-bottom:3px}
+.tqc h3{margin:0 0 7px;font:700 17px/1.3 Georgia,serif;color:var(--ink)}
+.tqb{margin:0;font-size:14.5px;line-height:1.62;color:var(--ink)}
+.tqb.cl{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+.tqm{display:block;margin:4px 0 0;padding:6px 0;border:0;background:none;color:var(--ac);font:600 14px system-ui}
+.tqar{direction:rtl;font-family:"QPC Hafs","Amiri Quran","Noto Naskh Arabic",serif;font-size:25px;line-height:2.05;text-align:center;margin:10px 0 2px;color:var(--ink)}
+.tqlt{margin:2px 0;text-align:center;font-style:italic;font-size:13.5px;color:var(--mut);line-height:1.5}
+.tqmn{margin:2px 0 0;text-align:center;font-size:14px;line-height:1.5}
+.tqnote{margin:10px 0 0;padding-left:10px;border-left:2px solid var(--line);font-size:12.5px;line-height:1.5;color:var(--mut)}
+.tqsrc{margin:11px 0 0;font-size:12px;line-height:1.55;color:var(--mut)}
+.tqsrc a,.tqmo ol a{color:var(--mut);text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:2px}
+.tqemp{text-align:center;margin:6px 0 10px;padding:18px 14px;border:1px dashed var(--line);border-radius:16px;font-size:14px;color:var(--mut)}
+.tqemp button{margin:8px 0 0;padding:8px 16px;border:0;border-radius:18px;background:var(--ac);color:#fff;font:600 14px system-ui}
+.tqmo{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px 10px;margin:14px 0 10px}
+.tqmo header{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:9px}
+.tqmo header span{font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.tqmo header b{font:700 19px Georgia,serif;color:var(--ac)}
+.tqmo p{margin:0 0 10px;font-size:14.5px;line-height:1.62}
+.tqmo p strong{display:block;margin-bottom:2px;font:700 13.5px system-ui;color:var(--gold)}
+.tqmo sup{margin-left:2px;font-size:10px;color:var(--mut)}
+.tqmo ol{margin:4px 0 2px;padding-left:19px;font-size:12px;line-height:1.6;color:var(--mut)}
+.tqmo ol li{display:list-item;padding:0 0 2px;border:0;font-size:12px;line-height:1.6}.tqmo ol li:last-child{padding-bottom:0}.tqmo ol span{opacity:.8}
+.tqmt{display:block;margin:0 auto;padding:8px 14px;border:0;background:none;color:var(--ac);font:600 14px system-ui}
+.tqft{margin:2px 6px 14px;text-align:center;font-size:11.5px;line-height:1.5;color:var(--mut)}
+#tqs .tqrb{text-align:left;padding:22px 20px calc(18px + env(safe-area-inset-bottom))}
+#tqs .tqrh{display:flex;align-items:center;gap:10px;margin:0 0 12px;color:var(--ac);font:700 18px Georgia,serif}
+#tqs .tqrh svg{width:26px;height:26px;fill:none;stroke:var(--gold);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tqri{--tk:var(--kv);position:relative;margin-bottom:8px;padding:10px 12px 10px 17px;border-radius:12px;background:var(--bg);overflow:hidden}
+.tqri::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--tk)}
+.tqri[data-k=royza]{--tk:var(--kr)}.tqri[data-k=ibodat]{--tk:var(--ki)}.tqri[data-k=hayit]{--tk:var(--kh)}
+.tqri small{display:block;font-size:12px;letter-spacing:.03em;color:var(--mut)}
+.tqri b{display:block;margin:1px 0 2px;font:700 16px/1.3 Georgia,serif;color:var(--ink)}
+.tqri span{font-size:13.5px;line-height:1.5;color:var(--mut)}
+#tqs .box button{display:block;width:100%;margin-top:8px}
+#tqs .box button.tqrg{background:none;color:var(--mut)}
+@media(max-height:700px){.cg.hk b{height:34px;line-height:27px}}
 .kh-t{font:700 24px Georgia,serif;color:var(--ac);margin:4px 2px 2px}
 .kh-s{color:var(--mut);font-size:14px;margin:0 2px 14px;line-height:1.45}
 .kcard{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px;margin-bottom:10px;color:var(--ink);font:inherit}
@@ -645,7 +702,9 @@ body[data-scr="t7"] #sbar{display:none}
 <section class="tab" id="t4">
   <div id="ctitle">Hijriy / Milodiy konvertor</div>
   <div id="csum"></div>
-  <div class="cal"><div class="ch"><button class="cn" id="chp" aria-label="Oldingi hijriy oy">‹</button><span class="cm" id="chm"></span><span class="cy" id="chy"></span><button class="cn" id="chn" aria-label="Keyingi hijriy oy">›</button></div><div class="cg" id="chg"></div></div>
+  <div class="cal"><div class="ch"><button class="cn" id="chp" aria-label="Oldingi hijriy oy">‹</button><span class="cm" id="chm"></span><span class="cy" id="chy"></span><button class="cn" id="chn" aria-label="Keyingi hijriy oy">›</button></div><div class="cg hk" id="chg"></div><div class="tqleg" aria-hidden="true"><span><u data-k="royza"></u>Ro‘za</span><span><u data-k="ibodat"></u>Ibodat</span><span><u data-k="voqea"></u>Voqea</span><span><u data-k="hayit"></u>Hayit</span></div></div>
+  <div id="hday"></div>
+  <div id="hmon"></div>
   <div class="cal"><div class="ch"><button class="cn" id="cgp" aria-label="Oldingi oy">‹</button><span class="cm" id="cgm"></span><span class="cy" id="cgy"></span><button class="cn" id="cgn" aria-label="Keyingi oy">›</button></div><div class="cg" id="cgg"></div></div>
 </section>
 <section class="tab" id="t5">
@@ -733,6 +792,7 @@ body[data-scr="t7"] #sbar{display:none}
 </main>
 <nav id="nv" aria-label="Asosiy menyu"><button data-t="t0" class="on"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 11.2L12 4l8.5 7.2"/><path d="M5.5 9.8V20h13V9.8"/><path d="M10 20v-5.5h4V20"/></svg><span>Asosiy</span></button><button data-t="t1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>Vaqtlar</span></button><button data-t="t6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg><span>Menyu</span></button></nav>
 <div id="qdm"><div class="qdc"><b id="qdt"></b><p id="qdb"></p><div id="qdp"><i></i></div><div class="qdbt"><button id="qdn" type="button"></button><button id="qdo" type="button"></button></div></div></div>
+<div class="sheet" id="tqs"><div class="box tqrb"><div class="tqrh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg><span>Taqvim eslatmasi</span></div><div id="tqrl"></div><button id="tqro" type="button">Taqvimda ko‘rish</button><button id="tqrx" class="tqrg" type="button">Yopish</button></div></div>
 <div id="toast"></div>
 <div class="sheet" id="uas"><div class="box rgb">
   <h2>Vaqtlarni sozlash</h2>
@@ -767,6 +827,7 @@ body[data-scr="t7"] #sbar{display:none}
   <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · 3.17</div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina mushafi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
+  <p class="mut" style="font-size:12.5px">Islomiy taqvim ma’lumotlari <a href="https://muslim.uz" target="_blank" rel="noopener" style="color:var(--ac)">muslim.uz</a> va <a href="https://islom.uz" target="_blank" rel="noopener" style="color:var(--ac)">islom.uz</a> maqolalari asosida tayyorlangan; har bir yozuvning manbasi o‘z o‘rnida ko‘rsatilgan.</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -1079,23 +1140,70 @@ function hj(d,o){if(o===undefined)o=cust?0:(+((D.vaqtlar||{}).hijri)||0);const p
 const hStart=d=>addD(d,-(hj(d).d-1));
 function hLen(f){let n=1;const m=hj(f).m;while(n<31&&hj(addD(f,n)).m===m)n++;return n}
 let sel=day0(new Date()),cust=false,pkHist=false;
-function drawGrid(el,first,len,cmp){
+/* Islomiy taqvim: voqealar va nafl ibodatlar (hijriy-taqvim.json) */
+const TQK={voqea:"Voqea",royza:"Ro‘za",ibodat:"Ibodat",hayit:"Hayit"},TQO=["royza","ibodat","hayit","voqea"];
+let TQ=null,TQP=null,TQERR=false;const TQX={};
+function tqLoad(){return TQP||(TQP=fetch("hijriy-taqvim.json?v="+APPV).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(j=>{if(!j||!Array.isArray(j.e)||!Array.isArray(j.a))throw new Error("format");TQ=j;TQERR=false;return j}).catch(e=>{TQP=null;TQERR=true;throw e}))}
+const tqAt=(m,d)=>TQ?TQ.e.filter(x=>x.m===m&&x.d===d):[];
+const tqKinds=l=>TQO.filter(k=>l.some(x=>x.k===k));
+const tqSrc=ids=>(ids||[]).map(i=>TQ.src[i]).filter(Boolean);
+function drawGrid(el,first,len,mk){
   el._f=first;const tod=day0(new Date()).getTime(),off=(first.getDay()+6)%7;
   let h=WD.map((w,i)=>`<i${i==4?' class="fr"':''}>${w}</i>`).join("")+"<b></b>".repeat(off).replace(/<b><\/b>/g,'<u></u>');
-  for(let n=1;n<=len;n++){const t=addD(first,n-1).getTime();h+=`<b data-n="${n}" class="${t===sel.getTime()?"s":""} ${t===tod?"t":""}">${n}</b>`}
+  for(let n=1;n<=len;n++){const t=addD(first,n-1).getTime();h+=`<b data-n="${n}" class="${t===sel.getTime()?"s":""} ${t===tod?"t":""}">${n}${mk?mk(n):""}</b>`}
   el.innerHTML=h;
 }
 function renderCal(){
   const h=hj(sel),hf=hStart(sel),hl=hLen(hf),gf=new Date(sel.getFullYear(),sel.getMonth(),1,12),gl=new Date(sel.getFullYear(),sel.getMonth()+1,0).getDate();
   $("chm").textContent=HM[h.m-1].toUpperCase();$("chy").textContent=h.y;
   $("cgm").textContent=GM[sel.getMonth()].toUpperCase();$("cgy").textContent=sel.getFullYear();
-  drawGrid($("chg"),hf,hl);drawGrid($("cgg"),gf,gl);
+  drawGrid($("chg"),hf,hl,TQ?(n=>{const ks=tqKinds(tqAt(h.m,n));return ks.length?"<s>"+ks.slice(0,3).map(k=>`<u data-k="${k}"></u>`).join("")+"</s>":""}):null);drawGrid($("cgg"),gf,gl);
   $("csum").innerHTML=`<b>${h.d}-${HM[h.m-1]}, ${h.y}</b><span>⇄</span><b>${sel.getDate()}-${GM[sel.getMonth()].toLowerCase()}, ${sel.getFullYear()}</b><button id="cpk">Sana tanlash</button>${cust?'<button id="ctd">Bugun</button>':''}<em class="${cust?"cu":""}" style="flex-basis:100%;text-align:center">${WDF[sel.getDay()]}${cust?" · tanlangan sana":""}</em>`;
   $("cpk").onclick=openPick;
   if(cust)$("ctd").onclick=calReset;
+  tqRender(h);
+  if(!TQ&&!TQERR)tqLoad().then(()=>{if($("t4").classList.contains("on"))renderCal()}).catch(()=>{if($("t4").classList.contains("on"))tqRender(hj(sel))});
 }
-$("chg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("chg")._f,n-1);renderCal()}};
-$("cgg").onclick=e=>{const n=+e.target.dataset.n;if(n){sel=addD($("cgg")._f,n-1);renderCal()}};
+const tqCap=t=>t.charAt(0).toUpperCase()+t.slice(1);
+function tqCard(x,wk){
+  const long=x.b.length>230;
+  let s=`<section class="tqc" data-k="${x.k}"${wk?" data-w":""}><span class="tqk">${TQK[x.k]||""}${x.kech?" · kecha":""}</span><h3>${esc(x.t)}</h3><p class="tqb${long?" cl":""}">${esc(x.b)}</p>`;
+  if(x.ar)s+=`<div class="tqar" dir="rtl" lang="ar">${esc(x.ar)}</div><p class="tqlt">${esc(x.lt||"")}</p><p class="tqmn">${esc(x.mn||"")}</p>`;
+  if(long)s+='<button class="tqm" type="button" data-tg="1">Davomini o‘qish</button>';
+  if(x.n)s+=`<p class="tqnote">${esc(x.n)}</p>`;
+  const sr=tqSrc(x.s);
+  if(sr.length)s+='<div class="tqsrc">Manba: '+sr.map(o=>`<a href="${esc(o.u)}" target="_blank" rel="noopener">${esc(o.t)}</a>`).join("; ")+"</div>";
+  return s+"</section>";
+}
+function tqRender(h){
+  const dE=$("hday"),mE=$("hmon");if(!dE||!mE)return;
+  if(!TQ){dE.innerHTML=TQERR?'<div class="tqemp">Ma’lumot yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.<br><button id="tqre" type="button">Qayta urinish</button></div>':'<div class="tqemp">Yuklanmoqda…</div>';mE.innerHTML="";return}
+  const wd=sel.getDay(),mn=HM[h.m-1],es=tqAt(h.m,h.d),wk=TQ.w.filter(x=>x.wd===wd);
+  let s=`<div class="tqsec"><b>${tqCap(WDF[wd])} · ${h.d}-${mn}</b><span>${es.length?es.length+" ta belgi":"belgi yo‘q"}</span></div>`;
+  s+=es.map(x=>tqCard(x,false)).join("")+wk.map(x=>tqCard(x,true)).join("");
+  if(!es.length&&!wk.length)s+='<div class="tqemp">Bu kunga alohida voqea yoki ibodat belgilanmagan.</div>';
+  dE.innerHTML=s;
+  const ab=TQ.a.filter(x=>x.m===h.m),open=!!TQX[h.m],vis=open?ab:ab.slice(0,3),ord=[];
+  const sup=ids=>(ids||[]).filter(i=>TQ.src[i]).map(i=>{let k=ord.indexOf(i);if(k<0){ord.push(i);k=ord.length-1}return k+1}).sort((a,b)=>a-b).join(",");
+  let m=`<section class="tqmo"><header><span>Oy haqida</span><b>${esc(mn)}</b></header>`;
+  m+=vis.map(x=>`<p>${x.h?`<strong>${esc(x.h)}</strong>`:""}${esc(x.b)}<sup>${sup(x.s)}</sup>${x.n?`<br><em style="font-size:12.5px;color:var(--mut)">${esc(x.n)}</em>`:""}</p>`).join("");
+  if(ab.length>3)m+=`<button class="tqmt" type="button" data-more="1">${open?"Qisqartirish":"Hammasini ko‘rish ("+(ab.length-3)+")"}</button>`;
+  m+="<ol>"+ord.map(i=>`<li><a href="${esc(TQ.src[i].u)}" target="_blank" rel="noopener">${esc(TQ.src[i].t)}</a> <span>· ${esc(TQ.src[i].w)}</span></li>`).join("")+"</ol></section>";
+  m+='<p class="tqft">Hijriy sana hisob bo‘yicha beriladi; hilol ko‘rinishiga qarab 1 kun farq bo‘lishi mumkin.</p>';
+  mE.innerHTML=m;
+}
+$("hday").addEventListener("click",e=>{
+  if(e.target.closest("#tqre")){TQERR=false;TQP=null;renderCal();return}
+  const b=e.target.closest("[data-tg]");if(!b)return;
+  const c=b.closest(".tqc"),p=c&&c.querySelector(".tqb");if(!p)return;
+  const cl=p.classList.toggle("cl");b.textContent=cl?"Davomini o‘qish":"Qisqartirish";
+});
+$("hmon").addEventListener("click",e=>{
+  if(!e.target.closest("[data-more]"))return;
+  const h=hj(sel);TQX[h.m]=!TQX[h.m];tqRender(h);
+});
+$("chg").onclick=e=>{const b=e.target.closest("b[data-n]"),n=b?+b.dataset.n:0;if(n){sel=addD($("chg")._f,n-1);renderCal()}};
+$("cgg").onclick=e=>{const b=e.target.closest("b[data-n]"),n=b?+b.dataset.n:0;if(n){sel=addD($("cgg")._f,n-1);renderCal()}};
 function hMove(k){
   const h=hj(sel),hf=hStart(sel),f=k>0?addD(hf,hLen(hf)):hStart(addD(hf,-1));
   sel=addD(f,Math.min(h.d,hLen(f))-1);renderCal();
@@ -2286,7 +2394,42 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
-const APPV="3.24";
+/* Taqvim eslatmasi: ilova ichida bir martalik */
+const tqSeen=()=>{try{const o=JSON.parse(localStorage.getItem("tqs")||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
+const tqIso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+function tqDue(){
+  if(!TQ)return[];
+  const t0=day0(new Date()),t1=addD(t0,1),h0=hj(t0),h1=hj(t1),seen=tqSeen(),out=[];
+  TQ.e.forEach((x,i)=>{
+    if(!x.r)return;
+    if(x.m===h1.m&&x.d===h1.d){const k=tqIso(t1)+"|"+i;if(!seen[k])out.push({k,x,when:x.kech?"Bugun shomdan keyin":"Ertaga",h:h1,date:t1})}
+    else if(!x.kech&&x.m===h0.m&&x.d===h0.d){const k=tqIso(t0)+"|"+i;if(!seen[k])out.push({k,x,when:"Bugun",h:h0,date:t0})}
+  });
+  return out;
+}
+let TQR=[],TQLAST=0;
+function tqShow(list){
+  TQR=list;
+  $("tqrl").innerHTML=list.slice(0,4).map(o=>`<div class="tqri" data-k="${o.x.k}"><small>${o.when} · ${o.h.d}-${HM[o.h.m-1]}</small><b>${esc(o.x.t)}</b><span>${esc(o.x.p||"")}</span></div>`).join("");
+  $("tqs").classList.add("on");
+  const s=tqSeen();list.forEach(o=>{s[o.k]=1});
+  const ks=Object.keys(s);if(ks.length>60)ks.sort().slice(0,ks.length-60).forEach(k=>delete s[k]);
+  try{localStorage.setItem("tqs",JSON.stringify(s))}catch(e){}
+}
+async function tqBoot(){
+  try{
+    if(localStorage.getItem("rgset")!=="1")return;
+    if(document.querySelector(".sheet.on")||$("qpg").classList.contains("on"))return;
+    if(Date.now()-TQLAST<18e5)return;TQLAST=Date.now();
+    await tqLoad();const due=tqDue();if(due.length)tqShow(due);
+  }catch(e){}
+}
+$("tqrx").onclick=()=>$("tqs").classList.remove("on");
+$("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.remove("on")});
+$("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
+setTimeout(tqBoot,2200);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
+const APPV="3.25";
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
