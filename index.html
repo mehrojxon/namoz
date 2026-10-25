@@ -145,6 +145,8 @@ li.past .chip{color:var(--mut)}
 #zjami{text-align:center;color:var(--mut);font-size:13px;margin:12px 0 4px}
 .rgb{text-align:left}.rgb h2{text-align:center}.rgb>.mut{text-align:center;margin:0 0 12px}
 #rgl button{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0 0 6px;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:15px;font-weight:600;text-align:left}
+#rgq{width:100%;box-sizing:border-box;margin:0 0 10px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:15px}
+#rgl .nf{text-align:center;color:var(--mut);padding:14px 0}
 #rgl button.on{border-color:var(--ac);background:rgba(14,107,99,.08);color:var(--ac)}
 #rgl button small{font-weight:400;color:var(--mut);font-size:12.5px}
 #rgl h4{text-align:left;margin:12px 2px 6px;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
@@ -654,6 +656,17 @@ body[data-scr="t7"] #sbar{display:none}
 .qjb select,.qjb input{padding:12px 14px;border-radius:12px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);font:17px system-ui;width:100%;box-sizing:border-box;margin:0}
 .qjr{display:flex;gap:8px}.qjr button{flex:none;padding:0 20px;border:0;border-radius:12px;background:var(--ring);color:#fff;font:600 16px system-ui;margin:0}
 #qoff{margin:0}
+#qam .box{text-align:left}#qam h2{text-align:center}#qam .mut{text-align:center;margin:2px 0 10px}
+#qam #qamr{display:block;width:100%;margin:0 0 8px;padding:12px 14px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font:600 15px system-ui;text-align:left}
+#qam #qama{display:block;width:100%;margin:0 0 6px;padding:13px;border:0;border-radius:14px;background:var(--ac);color:#fff;font:600 15px system-ui}
+#qam #qama:disabled{opacity:.6}
+#qaml{margin:8px 0 4px}
+#qam .qamr{display:flex;align-items:center;gap:12px;padding:10px 2px;border-bottom:1px solid var(--line)}
+#qam .qamr .n{width:34px;text-align:center;color:var(--mut);flex:none}
+#qam .qamr .t{flex:1;min-width:0}#qam .qamr .t b{display:block;font-size:15px}#qam .qamr .t small{color:var(--mut);font-size:12.5px}
+#qam .qamr button{margin:0;padding:9px 13px;border:0;border-radius:12px;background:var(--ac);color:#fff;font:600 13px system-ui;flex:none}
+#qam .qamr button.d{background:none;border:1.5px solid var(--line);color:var(--mut)}
+#qam #qamx{display:block;margin:12px auto 0}
 #qdm{position:fixed;inset:0;z-index:60;background:rgba(10,14,12,.55);display:none;align-items:center;justify-content:center;padding:20px}
 #qdm.on{display:flex}
 .qdc{width:100%;max-width:380px;background:var(--card);color:var(--tx,inherit);border:1px solid var(--line);border-radius:22px;padding:20px 18px 16px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
@@ -1301,6 +1314,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Muallif va dastur ma’lumotlari</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqoff"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Qur’onni yuklab olish</b><span>Yuklab olish · taxminan 47 MB, Wi-Fi bilan</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mqaud"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Tilovatni yuklab olish</b><span>Butun Qur’on yoki alohida sura · internetsiz tinglash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
   <p class="mut mfoot">Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
@@ -1388,8 +1402,16 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 <div class="sheet" id="rgs"><div class="box rgb">
   <button id="rgb" type="button" class="rgbk">‹ Viloyatlar</button><h2 id="rgt">Mintaqa</h2>
   <p class="mut">Namoz vaqtlari tanlangan joy uchun hisoblanadi.</p>
+  <input id="rgq" type="search" placeholder="Tuman yoki shahar qidirish…" autocomplete="off" autocapitalize="off" spellcheck="false" style="display:none">
   <div id="rgl"></div>
   <button id="rgx" type="button">Yopish</button>
+</div></div>
+<div class="sheet" id="qam"><div class="box">
+  <h2>Tilovat (audio)</h2><p class="mut" id="qamn"></p>
+  <button id="qamr" type="button"></button>
+  <button id="qama" type="button"></button>
+  <div id="qaml"></div>
+  <button id="qamx" type="button">Yopish</button>
 </div></div>
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
@@ -1442,9 +1464,12 @@ const SB="https://pxwrvdmegjrspvzcjvcs.supabase.co",KEY="sb_publishable_VIboAehe
 const H=tok=>({apikey:KEY,Authorization:"Bearer "+(tok||KEY),"Content-Type":"application/json"});
 async function sync(){
   let ok=false;
-  try{const r=await fetch(SB+"/rest/v1/settings?select=vaqtlar,yangilangan&id=eq.1",{headers:H(),cache:"no-store"});
+  /* Internet sust yoki "osilib" qolsa ilova kutib o‘tirmasin: 7 soniyadan keyin saqlangan vaqtlar bilan davom etadi */
+  const ft=(u,o,ms)=>{const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);return fetch(u,{...o,signal:c.signal}).finally(()=>clearTimeout(t))};
+  try{const r=await ft(SB+"/rest/v1/settings?select=vaqtlar,yangilangan&id=eq.1",{headers:H(),cache:"no-store"},7000);
     if(r.ok){const a=await r.json();if(a[0]&&a[0].vaqtlar){D=a[0];ok=true}}}catch(e){}
-  if(!ok)try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;D=await r.json();ok=true}catch(e){}
+  /* vaqtlar.json faqat telefonda hech narsa saqlanmagan bo‘lsa (birinchi ochilish) ishlatiladi: eski nusxa admin tuzatishlarini bosib ketmasin */
+  if(!ok&&!localStorage.getItem("vaqt"))try{const r=await fetch("vaqtlar.json",{cache:"no-store"});if(!r.ok)throw 0;D=await r.json();ok=true}catch(e){}
   if(ok)localStorage.setItem("vaqt",JSON.stringify(D));
   draw();reg();hikmatSync();
 }
@@ -1478,20 +1503,20 @@ function hijri(){
 const PI={"bomdod": "<path d=\"M3 19h18\"/><path d=\"M8 19a4 4 0 0 1 8 0\"/><path d=\"M12 7v3M6.2 9.2L8 11M17.8 9.2L16 11\"/>", "quyosh": "<path d=\"M3 19h18\"/><path d=\"M6.5 19a5.5 5.5 0 0 1 11 0\"/><path d=\"M12 4v5M9.5 6.5L12 4l2.5 2.5\"/>", "peshin": "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4\"/>", "asr": "<circle cx=\"12\" cy=\"13\" r=\"3.5\"/><path d=\"M12 5v1.5M4.5 13H6M18 13h1.5M6.7 7.7l1 1M17.3 7.7l-1 1\"/>", "shom": "<path d=\"M3 19h18\"/><path d=\"M6.5 19a5.5 5.5 0 0 1 11 0\"/><path d=\"M12 4v5M9.5 6.5L12 9l2.5-2.5\"/>", "xufton": "<path d=\"M20 14.5A8 8 0 1 1 9.5 4 6.5 6.5 0 0 0 20 14.5z\"/><path d=\"M17 3.5v3M15.5 5h3\"/>"};
 /* Mintaqaviy vaqtlar: asosiy mintaqa vaqti + quyosh geometriyasi farqi + admin tuzatishi */
 const VIL=[
-["qashqadaryo","Qashqadaryo viloyati",[["qarshi","Qarshi",38.861,65.789],["shahrisabz","Shahrisabz",39.058,66.832],["kitob","Kitob",39.118,66.886],["guzor","G‘uzor",38.622,66.248],["koson","Koson",39.037,65.585],["muborak","Muborak",39.255,65.153],["dehqonobod","Dehqonobod",38.357,66.510],["chiroqchi","Chiroqchi",39.033,66.573],["yakkabogh","Yakkabog‘",38.972,66.683],["qamashi","Qamashi",38.822,66.457]]],
-["andijon_v","Andijon viloyati",[["andijon","Andijon",40.783,72.344],["asaka","Asaka",40.641,72.239],["shahrixon","Shahrixon",40.712,72.056],["xonobod","Xonobod",40.800,73.000]]],
-["buxoro_v","Buxoro viloyati",[["buxoro","Buxoro",39.775,64.423],["kogon","Kogon",39.720,64.550],["gijduvon","G‘ijduvon",40.100,64.680],["vobkent","Vobkent",40.020,64.520],["olot","Olot",39.420,63.800]]],
-["fargona_v","Farg‘ona viloyati",[["fargona","Farg‘ona",40.384,71.784],["margilon","Marg‘ilon",40.470,71.720],["qoqon","Qo‘qon",40.530,70.940],["quvasoy","Quvasoy",40.300,71.980],["rishton","Rishton",40.360,71.280]]],
-["jizzax_v","Jizzax viloyati",[["jizzax","Jizzax",40.116,67.842],["zomin","Zomin",39.960,68.400],["gallaorol","G‘allaorol",40.030,67.600],["dostlik","Do‘stlik",40.520,68.030]]],
-["xorazm_v","Xorazm viloyati",[["urganch","Urganch",41.550,60.633],["xiva","Xiva",41.380,60.360],["xonqa","Xonqa",41.470,60.770],["shovot","Shovot",41.650,60.300]]],
-["namangan_v","Namangan viloyati",[["namangan","Namangan",41.000,71.673],["chust","Chust",41.000,71.240],["pop","Pop",40.870,71.110],["uchqorgon","Uchqo‘rg‘on",41.110,72.080],["chortoq","Chortoq",41.070,71.820],["kosonsoy","Kosonsoy",41.248,71.551]]],
-["navoiy_v","Navoiy viloyati",[["navoiy","Navoiy",40.103,65.374],["zarafshon","Zarafshon",41.570,64.200],["uchquduq","Uchquduq",42.160,63.560],["xatirchi","Xatirchi",40.030,65.970]]],
-["samarqand_v","Samarqand viloyati",[["samarqand","Samarqand",39.654,66.960],["kattaqorgon","Kattaqo‘rg‘on",39.900,66.260],["urgut","Urgut",39.400,67.250],["ishtixon","Ishtixon",39.970,66.490],["jomboy","Jomboy",39.700,67.100]]],
-["sirdaryo_v","Sirdaryo viloyati",[["guliston","Guliston",40.489,68.784],["yangiyer","Yangiyer",40.270,68.820],["shirin","Shirin",40.220,69.130],["sirdaryo","Sirdaryo",40.840,68.660]]],
-["surxondaryo_v","Surxondaryo viloyati",[["termiz","Termiz",37.224,67.278],["denov","Denov",38.270,67.900],["sherobod","Sherobod",37.670,67.010],["boysun","Boysun",38.210,67.200],["qumqorgon","Qumqo‘rg‘on",37.840,67.580]]],
-["toshkent_v","Toshkent viloyati",[["nurafshon","Nurafshon",41.040,69.360],["angren","Angren",41.020,70.140],["olmaliq","Olmaliq",40.850,69.600],["chirchiq","Chirchiq",41.470,69.580],["bekobod","Bekobod",40.220,69.270],["yangiyol","Yangiyo‘l",41.110,69.050]]],
-["toshkent_s","Toshkent shahri",[["toshkent","Toshkent shahri",41.311,69.240]]],
-["qoraqalpoq","Qoraqalpog‘iston Respublikasi",[["nukus","Nukus",42.460,59.603],["xojayli","Xo‘jayli",42.400,59.450],["qongirot","Qo‘ng‘irot",43.070,58.900],["moynoq","Mo‘ynoq",43.770,59.020],["beruniy","Beruniy",41.690,60.750],["tortkol","To‘rtko‘l",41.550,61.000]]]
+["qashqadaryo","Qashqadaryo viloyati",[["qarshi","Qarshi",38.861,65.789],["shahrisabz","Shahrisabz",39.058,66.832],["kitob","Kitob",39.118,66.886],["guzor","G‘uzor",38.622,66.248],["koson","Koson",39.037,65.585],["muborak","Muborak",39.255,65.153],["dehqonobod","Dehqonobod",38.357,66.51],["chiroqchi","Chiroqchi",39.033,66.573],["yakkabogh","Yakkabog‘",38.972,66.683],["qamashi","Qamashi",38.822,66.457],["beshkent","Beshkent",38.82,65.66],["kasbi","Kasbi",38.94,65.4],["mirishkor","Mirishkor",38.75,65.95],["nishon","Nishon",38.62,65.67],["kokdala","Ko‘kdala",38.62,65.5]]],
+["andijon_v","Andijon viloyati",[["andijon","Andijon",40.783,72.344],["asaka","Asaka",40.641,72.239],["shahrixon","Shahrixon",40.712,72.056],["xonobod","Xonobod",40.8,73],["baliqchi","Baliqchi",40.87,71.78],["boz","Bo‘z",40.67,72.08],["buloqboshi","Buloqboshi",40.62,72.42],["izboskan","Izboskan",40.88,72.2],["jalaquduq","Jalaquduq",40.72,72.68],["marhamat","Marhamat",40.5,72.32],["oltinkol","Oltinko‘l",40.81,72.17],["paxtaobod","Paxtaobod",40.93,72.5],["qorgontepa","Qo‘rg‘ontepa",40.73,72.77],["ulugnor","Ulug‘nor",40.58,72.3],["xojaobod","Xo‘jaobod",40.68,72.55]]],
+["buxoro_v","Buxoro viloyati",[["buxoro","Buxoro",39.775,64.423],["kogon","Kogon",39.72,64.55],["gijduvon","G‘ijduvon",40.1,64.68],["vobkent","Vobkent",40.02,64.52],["olot","Olot",39.42,63.8],["jondor","Jondor",39.72,64.17],["peshku","Peshku",40.17,64.3],["qorakol","Qorako‘l",39.5,63.85],["qorovulbozor","Qorovulbozor",39.5,64.8],["romitan","Romitan",39.93,64.38],["shofirkon","Shofirkon",40.12,64.5]]],
+["fargona_v","Farg‘ona viloyati",[["fargona","Farg‘ona",40.384,71.784],["margilon","Marg‘ilon",40.47,71.72],["qoqon","Qo‘qon",40.53,70.94],["quvasoy","Quvasoy",40.3,71.98],["rishton","Rishton",40.36,71.28],["beshariq","Beshariq",40.43,70.6],["bogdod","Bog‘dod",40.53,71.22],["buvayda","Buvayda",40.62,71.62],["dangara","Dang‘ara",40.58,70.82],["furqat","Furqat",40.45,70.7],["ozbekiston_t","O‘zbekiston tumani",40.58,71.38],["oltiariq","Oltiariq",40.4,71.47],["qoshtepa","Qo‘shtepa",40.52,71.85],["toshloq","Toshloq",40.5,71.7],["uchkoprik","Uchko‘prik",40.52,71.07],["sox","So‘x",39.97,71.13],["yozyovon","Yozyovon",40.62,71.72],["quva","Quva",40.52,72.07]]],
+["jizzax_v","Jizzax viloyati",[["jizzax","Jizzax",40.116,67.842],["zomin","Zomin",39.96,68.4],["gallaorol","G‘allaorol",40.03,67.6],["dostlik","Do‘stlik",40.52,68.03],["arnasoy","Arnasoy",40.6,67.2],["baxmal","Baxmal",39.75,68.05],["forish","Forish",40.48,66.85],["mirzachol","Mirzacho‘l",40.5,68.15],["paxtakor","Paxtakor",40.3,67.95],["yangiobod","Yangiobod",40.05,68.15],["zafarobod","Zafarobod",40.25,68],["zarbdor","Zarbdor",40,68.25],["sharofrashidov","Sharof Rashidov",39.95,67.55]]],
+["xorazm_v","Xorazm viloyati",[["urganch","Urganch",41.55,60.633],["xiva","Xiva",41.38,60.36],["xonqa","Xonqa",41.47,60.77],["shovot","Shovot",41.65,60.3],["bogot","Bog‘ot",41.35,60.82],["gurlan","Gurlan",41.85,60.4],["hazorasp","Hazorasp",41.32,61.07],["qoshkopir","Qo‘shko‘pir",41.53,60.35],["yangiariq","Yangiariq",41.38,60.6],["yangibozor","Yangibozor",41.77,60.6],["tuproqqala","Tuproqqal‘a",41.48,60.9]]],
+["namangan_v","Namangan viloyati",[["namangan","Namangan",41,71.673],["chust","Chust",41,71.24],["pop","Pop",40.87,71.11],["uchqorgon","Uchqo‘rg‘on",41.11,72.08],["chortoq","Chortoq",41.07,71.82],["kosonsoy","Kosonsoy",41.248,71.551],["mingbuloq","Mingbuloq",40.85,71.55],["norin","Norin",40.95,72],["toraqorgon","To‘raqo‘rg‘on",41,71.5],["uychi","Uychi",41.08,71.93],["yangiqorgon","Yangiqo‘rg‘on",40.88,71.72]]],
+["navoiy_v","Navoiy viloyati",[["navoiy","Navoiy",40.103,65.374],["zarafshon","Zarafshon",41.57,64.2],["uchquduq","Uchquduq",42.16,63.56],["xatirchi","Xatirchi",40.03,65.97],["konimex","Konimex",40.27,65.15],["karmana","Karmana",40.13,65.37],["nurota","Nurota",40.56,65.69],["qiziltepa","Qiziltepa",40.03,64.85],["tomdi","Tomdi",41.74,64.6],["navbahor","Navbahor",40.2,65]]],
+["samarqand_v","Samarqand viloyati",[["samarqand","Samarqand",39.654,66.96],["kattaqorgon","Kattaqo‘rg‘on",39.9,66.26],["urgut","Urgut",39.4,67.25],["ishtixon","Ishtixon",39.97,66.49],["jomboy","Jomboy",39.7,67.1],["bulungur","Bulung‘ur",39.76,67.26],["narpay","Narpay",39.97,65.9],["nurobod","Nurobod",39.65,66.55],["oqdaryo","Oqdaryo",39.8,66.6],["pastdargom","Pastdarg‘om",39.7,66.97],["payariq","Payariq",39.9,66.9],["paxtachi","Paxtachi",39.85,65.95],["qoshrabot","Qo‘shrabot",39.92,66.8],["toyloq","Toyloq",39.65,67.17]]],
+["sirdaryo_v","Sirdaryo viloyati",[["guliston","Guliston",40.489,68.784],["yangiyer","Yangiyer",40.27,68.82],["shirin","Shirin",40.22,69.13],["sirdaryo","Sirdaryo",40.84,68.66],["boyovut","Boyovut",40.43,68.47],["mirzaobod","Mirzaobod",40.72,68.88],["oqoltin","Oqoltin",40.58,68],["sardoba","Sardoba",40.15,68.7],["sayxunobod","Sayxunobod",40.77,68.6],["xovos","Xovos",40.22,68.95]]],
+["surxondaryo_v","Surxondaryo viloyati",[["termiz","Termiz",37.224,67.278],["denov","Denov",38.27,67.9],["sherobod","Sherobod",37.67,67.01],["boysun","Boysun",38.21,67.2],["qumqorgon","Qumqo‘rg‘on",37.84,67.58],["angor","Angor",37.43,67.02],["jarqorgon","Jarqo‘rg‘on",37.5,67.42],["muzrabot","Muzrabot",37.62,67.12],["qiziriq","Qiziriq",37.72,67.58],["sariosiyo","Sariosiyo",38.4,67.9],["shorchi","Sho‘rchi",38,67.78],["uzun","Uzun",38.35,67.75],["oltinsoy","Oltinsoy",38.23,67.68]]],
+["toshkent_v","Toshkent viloyati",[["nurafshon","Nurafshon",41.04,69.36],["angren","Angren",41.02,70.14],["olmaliq","Olmaliq",40.85,69.6],["chirchiq","Chirchiq",41.47,69.58],["bekobod","Bekobod",40.22,69.27],["yangiyol","Yangiyo‘l",41.11,69.05],["boka","Bo‘ka",40.82,69.2],["bostonliq","Bo‘stonliq (G‘azalkent)",41.55,69.77],["chinoz","Chinoz",40.93,68.77],["ohangaron","Ohangaron",40.9,69.64],["oqqorgon","Oqqo‘rg‘on",40.88,69.04],["parkent","Parkent",41.3,69.68],["piskent","Piskent",40.9,69.35],["qibray","Qibray",41.4,69.45],["zangiota","Zangiota",41.2,69.1],["yuqorichirchiq","Yuqorichirchiq",41,69.4],["quyichirchiq","Quyichirchiq",40.98,69.3],["ortachirchiq","O‘rtachirchiq",41.3,69.3]]],
+["toshkent_s","Toshkent shahri",[["toshkent","Toshkent shahri",41.311,69.24]]],
+["qoraqalpoq","Qoraqalpog‘iston Respublikasi",[["nukus","Nukus",42.46,59.603],["xojayli","Xo‘jayli",42.4,59.45],["qongirot","Qo‘ng‘irot",43.07,58.9],["moynoq","Mo‘ynoq",43.77,59.02],["beruniy","Beruniy",41.69,60.75],["tortkol","To‘rtko‘l",41.55,61],["amudaryo","Amudaryo (Mang‘it)",42.1,60],["bozatov","Bo‘zatov",43.2,58.9],["chimboy","Chimboy",42.93,59.77],["ellikqala","Ellikqal‘a",41.75,61],["kegeyli","Kegeyli",42.78,59.6],["qanlikol","Qanliko‘l",42.5,60],["qoraozak","Qorao‘zak",43,60.1],["shumanay","Shumanay",42.65,58.9],["taxiatosh","Taxiatosh",42.33,59.62],["taxtakopir","Taxtako‘pir",43,60.3]]]
 ];
 const REG=VIL.flatMap(v=>v[2].map(r=>[...r,v[0]]));
 const RG=Object.fromEntries(REG.map(r=>[r[0],r]));
@@ -1549,7 +1574,7 @@ function draw(){
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
   $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("mhm").textContent=hijri().replace(/, .*$/,"").replace(/^\d+-/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
-  {const t=new Date();$("yang").textContent="Vaqtlar yangilangan: "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()+" · "+EL.name}
+  {const t=new Date();$("yang").textContent="Vaqtlar yangilangan: "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()+" · "+EL.name+(()=>{const aj=((D.vaqtlar||{}).mint||{})[EL.id]||{},x=N.filter(([k])=>+aj[k]).map(([k,n])=>(k==="quyosh"?"Quyosh":n)+" "+(aj[k]>0?"+":"−")+Math.abs(aj[k]));return x.length?" · tuzatish: "+x.join(", "):""})()}
   tick();
 }
 const sec=t=>{const[a,b]=t.split(":");return(+a*60+ +b)*60};
@@ -2194,12 +2219,21 @@ function rgDraw(){
     $("rgt").textContent=v[1];$("rgb").style.display="block";$("rgb").textContent="‹ Viloyatlar";
   }
   $("rgl").innerHTML=b.join("");
+  {const q=$("rgq");q.style.display=(RGL===1||RGV)?"block":"none";if(q.style.display==="block")rgFind()}
   const L=myLoc();$("mrs").textContent=(sel==="auto"?"Avtomatik · ":"")+L.name;
 }
-function rgOpen(){RGV=null;RGL=0;rgDraw();$("rgs").classList.add("on");$("rgs").querySelector(".box").scrollTop=0}
+const rgNorm=s=>String(s).toLowerCase().replace(/[‘’ʻʼ'`]/g,"");
+function rgFind(){
+  const q=rgNorm($("rgq").value.trim());if(!q)return false;
+  const sel=MINT.m,m=REG.filter(r=>rgNorm(r[1]).includes(q)),vn=id=>(VIL.find(v=>v[0]===id)||[0,""])[1];
+  $("rgl").innerHTML=m.length?m.map(r=>`<button type="button" data-r="${r[0]}" class="${sel===r[0]?"on":""}"><span>${r[1]}<br><small>${vn(r[4])}</small></span>${sel===r[0]?"✓":""}</button>`).join(""):'<p class="nf">Topilmadi. Boshqacha yozib ko‘ring yoki eng yaqin shaharni tanlang</p>';
+  return true;
+}
+function rgOpen(){$("rgq").value="";RGV=null;RGL=0;rgDraw();$("rgs").classList.add("on");$("rgs").querySelector(".box").scrollTop=0}
 $("mreg").onclick=rgOpen;
 document.querySelectorAll(".hr-loc").forEach(e=>{e.setAttribute("role","button");e.setAttribute("tabindex","0");e.setAttribute("aria-label","Mintaqani o‘zgartirish");e.onclick=ev=>{ev.stopPropagation();rgOpen()};e.onkeydown=ev=>{if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();ev.stopPropagation();rgOpen()}}});
 $("rgx").onclick=()=>rgClose();
+$("rgq").oninput=()=>{if(!rgFind())rgDraw()};
 $("rgb").onclick=()=>{if(RGV)RGV=null;else RGL=0;rgDraw()};
 $("rgs").onclick=e=>{
   if(e.target.id==="rgs"){rgClose();return}
@@ -2364,11 +2398,12 @@ async function qHave(){
 async function qOffDraw(){
   const e=$("qoff");if(!e)return;
   const have=await qHave();
-  if(have){qs("qoff3","2");e.innerHTML="";qMenuOff(true);return}
+  const aud='<div class="qoffc"><div><b>Tilovat (audio)</b><span>Butun Qur’on yoki alohida sura, internetsiz tinglash</span></div><button id="qaob" type="button">Yuklash</button></div>';
+  if(have){qs("qoff3","2");e.innerHTML=aud;qMenuOff(true);return}
   try{localStorage.removeItem("qoff3")}catch(x){}
   qMenuOff(false);
   if(e.dataset.busy||QDLB)return;
-  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalar va tarjima, taxminan 47 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
+  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalar va tarjima, taxminan 47 MB</span></div><button id="qoffb">Yuklab olish</button></div>'+aud;
 }
 function qMenuOff(on){const s=document.querySelector("#mqoff .mt span");if(s)s.textContent=on?"Telefonda saqlangan · internet kerak emas":"Yuklab olish · taxminan 47 MB, Wi-Fi bilan"}
 const QCACHE="namoz-v1",QACACHE="namoz-aud1";
@@ -2643,6 +2678,80 @@ async function qAudAsk(rc,s){
     qDmClose();toast("Tilovat saqlandi");return true;
   }catch(e){qDmClose();QASKIP.add(rc.id+":"+s);toast(ac.signal.aborted?"Yuklash bekor qilindi":"Saqlab bo‘lmadi, internet orqali eshitiladi");return false}
 }
+/* Tilovat menejeri: butun Qur’on yoki alohida sura */
+let QAMB=false,QTGT=null;
+const QAMR={};
+const qamEst=(rc,s)=>Math.round(qDur(s)*(QAMR[rc.id]||16000)*(rc.k==="a"?1.15:1));
+/* Haqiqiy hajmga yaqinroq bo‘lishi uchun bitta suraning real hajmini so‘rab, soniyadagi baytni aniqlaydi */
+async function qamRatio(rc){
+  if(QAMR[rc.id]||rc.k!=="s")return;
+  try{const r=await fetch(qAudUrls(rc,67)[0],{method:"HEAD"}),n=+r.headers.get("content-length");if(n>2e5)QAMR[rc.id]=Math.max(4000,Math.min(40000,n/qDur(67)))}catch(e){}
+}
+const qamMB=n=>n<1048576?"1 MB dan kam":(n/1048576).toFixed(n<10485760?1:0)+" MB";
+async function qAudDel(rc,s){
+  const c=await caches.open(QACACHE);await Promise.all(qAudUrls(rc,s).map(u=>c.delete(u)));
+  const o=qaud();o[rc.id]=(o[rc.id]||[]).filter(x=>x!==s);qs("qaud",JSON.stringify(o));
+}
+async function qamVerify(rc){
+  try{const c=await caches.open(QACACHE),a=(qaud()[rc.id]||[]).slice(),bad=[];
+    for(const s of a){const u=qAudUrls(rc,s),ch=u.length>3?[u[0],u[u.length>>1],u[u.length-1]]:u;
+      for(const x of ch){if(!(await c.match(x))){bad.push(s);break}}}
+    if(bad.length){const o=qaud();o[rc.id]=(o[rc.id]||[]).filter(x=>!bad.includes(x));qs("qaud",JSON.stringify(o))}
+  }catch(e){}
+}
+function qamDraw(){
+  if(!QAU)return;const rc=QAU.r[QRC],have=qaud()[rc.id]||[],rows=[];let rest=0,hv=0;
+  for(let s=1;s<=114;s++){const h=have.includes(s),e=qamEst(rc,s);if(h)hv++;else rest+=e;
+    rows.push('<div class="qamr"><span class="n">'+s+'</span><span class="t"><b>'+QUZ[s-1]+'</b><small>'+(h?"Telefonda saqlangan":"taxminan "+qamMB(e))+'</small></span>'+(h?'<button type="button" class="d" data-qx="'+s+'">O‘chirish</button>':'<button type="button" data-qd="'+s+'">Yuklab olish</button>')+'</div>')}
+  $("qamr").textContent="Qori: "+rc.n+" · "+rc.s+"  ›";
+  $("qamn").textContent=hv+" / 114 sura telefonda saqlangan";
+  $("qama").textContent=rest?"Hammasini yuklab olish (≈ "+qamMB(rest)+")":"Hammasi telefonda saqlangan ✓";
+  $("qama").disabled=!rest;$("qama").dataset.rest=rest;
+  $("qaml").innerHTML=rows.join("");
+}
+async function qamOpen(){
+  try{await qAudioData()}catch(e){toast("Tilovat ma’lumoti yuklanmadi. Internetni tekshiring");return}
+  if(QRC>=QAU.r.length)QRC=0;
+  $("qam").classList.add("on");qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();await qamRatio(QAU.r[QRC]);qamDraw();
+}
+async function qamRun(list){
+  if(QAMB||QDLB||$("qdm").classList.contains("on")){toast("Boshqa yuklash davom etmoqda");return}
+  const rc=QAU.r[QRC],ac=new AbortController(),one=list.length===1;let done=0,n=0,fail=false;
+  const tot=list.reduce((a,s)=>a+qamEst(rc,s),0);
+  const set=()=>{const pc=Math.min(99,Math.round(done/Math.max(tot,1)*100));qDmSet((one?"":n+" / "+list.length+" sura  ·  ")+pc+"%  ·  "+(done/1048576).toFixed(0)+" / "+(tot/1048576).toFixed(0)+" MB. Ilovani yopmang.",pc)};
+  QAMB=true;
+  qDm({t:one?QUZ[list[0]-1]+" surasi yuklanmoqda":"Tilovat yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(x=>{if(x==="no")ac.abort()});
+  try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
+  try{
+    for(const s of list){
+      const b0=done;
+      if(!qAudHas(rc,s))await qAudDown(rc,s,ac.signal,x=>{done+=x;set()});
+      n++;done=b0+qamEst(rc,s);set();qamDraw();
+    }
+  }catch(e){fail=!ac.signal.aborted}
+  qDmClose();QAMB=false;qamDraw();
+  toast(ac.signal.aborted?"Yuklash bekor qilindi":fail?"Yuklash to‘xtadi. Internetni tekshirib qayta urinib ko‘ring, saqlanganlari qoladi":one?"Sura telefonga saqlandi":"Tilovat telefonga saqlandi");
+}
+$("qamx").onclick=()=>$("qam").classList.remove("on");
+$("qam").onclick=async e=>{
+  if(e.target.id==="qam"){$("qam").classList.remove("on");return}
+  if(!QAU)return;const rc=QAU.r[QRC];
+  if(e.target.closest("#qamr")){
+    if(QPLAY||QAMB){toast(QAMB?"Yuklash tugashini kuting":"Avval tilovatni to‘xtating");return}
+    QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();await qamRatio(QAU.r[QRC]);qamDraw();return}
+  const d=e.target.closest("[data-qd]");if(d){qamRun([+d.dataset.qd]);return}
+  const x=e.target.closest("[data-qx]");
+  if(x){const s=+x.dataset.qx;
+    const r=await qDm({t:QUZ[s-1]+" surasini o‘chirasizmi?",b:"Telefondan o‘chadi. Keyin yana yuklab olishingiz mumkin.",ok:"O‘chirish",no:"Bekor qilish"});
+    qDmClose();if(r==="ok"){await qAudDel(rc,s);qamDraw()}return}
+  if(e.target.closest("#qama")){
+    const rest=+$("qama").dataset.rest||0;if(!rest)return;
+    const have=qaud()[rc.id]||[],list=[];for(let s=1;s<=114;s++)if(!have.includes(s))list.push(s);
+    let w="";try{const st=await navigator.storage.estimate();if(st&&st.quota&&st.quota-st.usage<rest*1.05)w=" Diqqat: telefonda bo‘sh joy yetmasligi mumkin."}catch(e2){}
+    const r=await qDm({t:"Tilovatni to‘liq yuklab olish",b:rc.n+" ("+rc.s+"): "+list.length+" ta sura, taxminan "+qamMB(rest)+". Wi-Fi bilan yuklash yaxshi."+w+" Yuklangach internetsiz tinglaysiz. Bekor qilsangiz, saqlanganlari qoladi.",ok:"Yuklab olish",no:"Bekor qilish"});
+    qDmClose();if(r==="ok")qamRun(list);return}
+};
+$("mqaud").onclick=()=>qamOpen();
 let QBU=null,QPT=0;
 async function qAudSrc(url){
   try{const c=await caches.open(QACACHE),r=await c.match(url);if(r){const o=URL.createObjectURL(await r.blob());if(QBU)URL.revokeObjectURL(QBU);QBU=o;return o}}catch(e){}
@@ -2739,7 +2848,7 @@ $("qhs").onclick=qJumpOpen;
 $("qnt").onclick=()=>{const n=$("qpg").classList.toggle("night");qs("qnight",n?"1":"0")};
 $("qplay").onclick=()=>{
   if(QPLAY&&QEL){QEL.paused?QEL.play():QEL.pause();return}
-  const[s,a]=QPS[QP-1];qPlayFrom(qgi(s,a),true);
+  const[s,a]=(QTGT&&QTGT.p===QP)?[QTGT.s,QTGT.a]:QPS[QP-1];qPlayFrom(qgi(s,a),true);
 };
 $("qjx").onclick=()=>$("qjs").classList.remove("on");
 $("qjs").addEventListener("click",e=>{if(e.target===$("qjs"))$("qjs").classList.remove("on")});
@@ -2775,11 +2884,11 @@ qHomeSub();
 $("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QM)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
 $("qsb").onclick=()=>{if(!QM)return;QT="s";$("qsw").classList.toggle("on");if($("qsw").classList.contains("on"))$("qsr").focus();else{$("qsr").value=""}qList()};
 $("qsr").oninput=qList;
-$("qoff").onclick=e=>{if(e.target.closest("#qoffb"))qDownAll()};
+$("qoff").onclick=e=>{if(e.target.closest("#qoffb"))qDownAll();else if(e.target.closest("#qaob"))qamOpen()};
 $("qlist").onclick=e=>{
   const d=e.target.closest("[data-del]");
   if(d){const b=qbm();b.splice(+d.dataset.del,1);qs("qbl",JSON.stringify(b));qList();return}
-  const r=e.target.closest("[data-p]");if(r)qGo(+r.dataset.p,+r.dataset.s,+r.dataset.a);
+  const r=e.target.closest("[data-p]");if(r){QTGT={p:+r.dataset.p,s:+r.dataset.s,a:+r.dataset.a};qGo(+r.dataset.p,+r.dataset.s,+r.dataset.a)}
 };
 $("qlast").onclick=()=>{let l=null;try{l=JSON.parse(qg("qlast"))}catch(e){}qGo(l&&l.p>=1&&l.p<=604?l.p:1)};
 $("qbk0").onclick=()=>history.back();
@@ -2864,7 +2973,7 @@ const ASEC={
    return `<div class="ac"><div class="ag">Asosiy mintaqa</div><div class="ah">Quyidagi olti vaqt qaysi shahar uchun kiritiladi. Boshqa mintaqalar shu vaqtdan quyosh holatiga qarab o‘zi hisoblanadi.</div><select id="a_baza">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</optgroup>`).join("")}</select></div>
    <div class="ac"><div class="ag">Bugungi vaqtlar</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div>${N.map(([k,n])=>`<div class="at"><span>${n}</span><input type="time" id="a_${k}" value="${cur[k]}"></div>`).join("")}</div>
    <div class="ac"><div class="ag">Mintaqa bo‘yicha tuzatish</div><div class="ah">Mintaqani tanlang va kerakli vaqtga ± daqiqa qo‘shing. O‘zgarish faqat shu mintaqa uchun amal qiladi. Tuzatishsiz holatda hammasi avtomatik hisoblanadi.</div>
-    <select id="a_rg">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}">${r[1]}</option>`).join("")}</optgroup>`).join("")}</select>
+    <div class="ah" id="a_me" style="margin:0 0 8px"></div><select id="a_rg">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}">${r[1]}</option>`).join("")}</optgroup>`).join("")}</select>
     <div class="at"><span>Hammasiga</span><div class="stp"><button type="button" data-all="-1">−</button><b id="m_all">·</b><button type="button" data-all="1">+</button></div></div>
     ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="stp"><button type="button" data-m="${k}" data-d="-1">−</button><b id="m_${k}">0</b><button type="button" data-m="${k}" data-d="1">+</button><em id="r_${k}"></em></div></div>`).join("")}
     <div class="ah" style="margin:10px 0 0" id="a_prev"></div><div id="a_used"></div></div>
@@ -2890,7 +2999,7 @@ const ASEC={
      const g=e.target.closest("[data-g]");if(g&&g.classList.contains("chp")){$("a_rg").value=g.dataset.g;show(g.dataset.g);return}
    };
    $("a_baza").onchange=()=>{};
-   AS_SV=sv;show("qarshi");
+   AS_SV=sv;{const me=(EL&&RG[EL.id])?EL.id:"qarshi";$("a_rg").value=me;show(me);$("a_me").textContent="Sizning mintaqangiz: "+RG[me][1]+". Tuzatish faqat tanlangan mintaqadagi foydalanuvchilar vaqtiga qo‘shiladi."}
   },
   save:()=>patchV(v=>{
    AS_SV&&AS_SV();
@@ -3029,7 +3138,7 @@ $("bell").onclick=async()=>{
 };
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
-showT();sync();bellInit();
+showT();setTimeout(()=>{try{draw()}catch(e){}},0);sync();bellInit();
 /* ===== Duo va zikrlar: foydalanuvchi qismi ===== */
 let DU=get("duo",{g:[],t:[],d:[]}),DGS=0,DTS=0,DQ="",DOP={};
 const DIC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.500c0 4.200 3.600 7.500 9 7.500s9-3.300 9-7.500"/><path d="M3 12.500l4 .8M21 12.500l-4 .8"/><path d="M12 2.800l1.100 2.400 2.600.3-1.900 1.800.5 2.600L12 8.600 9.700 9.900l.5-2.600-1.900-1.800 2.600-.3z"/></svg>';
@@ -3482,7 +3591,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="4.6";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.7";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);

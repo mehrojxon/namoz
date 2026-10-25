@@ -18,11 +18,16 @@ self.addEventListener("fetch", e => {
     e.respondWith(caches.match(e.request.url).then(r => r || fetch(e.request.url).then(n => { const k = n.clone(); if (n.ok) caches.open(C).then(c => c.put(e.request.url, k)); return n; }).catch(() => caches.match(e.request.url, { ignoreSearch: true }).then(x => x || Response.error()))));
     return;
   }
-  e.respondWith(
+  // Internet bor bo'lsa yangisini oladi. Internet yo'q yoki juda sust bo'lsa (4 soniyadan ko'p) saqlangan nusxa darrov ochiladi.
+  e.respondWith(new Promise(res => {
+    let done = false;
+    const give = r => { if (!done) { done = true; res(r); } };
+    const cached = () => caches.match(e.request.url, { ignoreSearch: true }).then(r => r || caches.match("index.html"));
+    const tm = setTimeout(() => { caches.match(e.request.url, { ignoreSearch: true }).then(r => { if (r) give(r); }); }, 4000);
     fetch(e.request.url, { cache: "no-store" })
-      .then(r => { const k = r.clone(); caches.open(C).then(c => c.put(e.request.url, k)); return r; })
-      .catch(() => caches.match(e.request.url, { ignoreSearch: true }).then(r => r || caches.match("index.html")))
-  );
+      .then(r => { const k = r.clone(); caches.open(C).then(c => c.put(e.request.url, k)); clearTimeout(tm); give(r); })
+      .catch(() => { clearTimeout(tm); cached().then(r => give(r || Response.error())); });
+  }));
 });
 
 self.addEventListener("push", e => {
