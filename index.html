@@ -1044,6 +1044,10 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .apv{margin-top:6px}
 #abody .agh{display:flex;align-items:center;gap:8px;padding:12px 0 6px}
 #abody .agh b{flex:1;font:700 15px var(--fd);color:#f0c969}
+#abody .agh2{align-items:center;padding:14px 0 8px}
+#abody .agt{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+#abody .agt b{flex:none;font:700 16px var(--fd);color:#f0c969;overflow-wrap:anywhere}
+#abody .at input{width:164px!important;min-width:164px;padding-left:8px;padding-right:8px;font-size:17px}
 #abody .agb{margin:0 0 12px;padding-bottom:4px}
 #abody .aed{padding:10px 0}
 #abody .aed .ain{margin-bottom:8px}
@@ -1105,8 +1109,9 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #adm #lg button#kir{width:100%;background:linear-gradient(135deg,#12a79c,#154a92);border:1px solid rgba(240,201,105,.45);box-shadow:0 6px 16px rgba(0,0,0,.4);border-radius:16px;padding:14px}
 
 /* ===== Admin: boshqaruv paneli (4.4) ===== */
-#abody .adh{position:relative;overflow:hidden;display:flex;align-items:stretch;justify-content:space-between;gap:14px;padding:20px 20px 18px;border-radius:26px;border:1px solid rgba(240,201,105,.45);background:radial-gradient(120% 140% at 0% 0%,#14736a 0%,#0b3f3a 55%,#062624 100%);box-shadow:var(--s3d),inset 0 1px 0 rgba(255,255,255,.14);margin-bottom:14px}
-#abody .adh:before{content:"";position:absolute;top:0;right:0;width:96px;height:72px;background:var(--o-moon) no-repeat top right/96px;opacity:.9;pointer-events:none}
+#abody .adst{position:relative;overflow:hidden;border-radius:26px;border:1px solid rgba(240,201,105,.45);background:radial-gradient(120% 90% at 0% 0%,#14736a 0%,#0b3f3a 45%,#062624 100%);box-shadow:var(--s3d),inset 0 1px 0 rgba(255,255,255,.14);margin-bottom:14px}
+#abody .adh{position:relative;display:flex;align-items:stretch;justify-content:space-between;gap:14px;padding:20px 20px 16px}
+#abody .adst:before{content:"";position:absolute;top:0;right:0;width:96px;height:72px;background:var(--o-moon) no-repeat top right/96px;opacity:.9;pointer-events:none}
 #abody .adh>*{position:relative}
 #abody .adh1{display:flex;flex-direction:column;justify-content:center}
 #abody .adh1 span{font:600 12px system-ui;letter-spacing:.12em;text-transform:uppercase;color:#9fd8cf}
@@ -1115,6 +1120,28 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .adh2 div{padding:8px 12px;border-radius:14px;background:rgba(3,24,22,.5);border:1px solid rgba(90,205,185,.28)}
 #abody .adh2 b{display:block;font:700 19px var(--fd);color:#fff}
 #abody .adh2 span{font-size:11.5px;color:#8fc9c0}
+
+#abody .adrg{padding:4px 18px 16px;border-top:1px solid rgba(90,205,185,.2);position:relative}
+#abody .adrh{display:flex;justify-content:space-between;align-items:center;margin:14px 0 10px}
+#abody .adrh b{font:600 12px system-ui;letter-spacing:.12em;text-transform:uppercase;color:#9fd8cf}
+#abody .adrh span{font-size:12px;color:#8fc9c0}
+#abody .adrn{font-size:13.5px;line-height:1.5;color:#a9d3cc;padding:4px 0 2px}
+#abody .adsb{display:flex;gap:3px;height:12px;border-radius:7px;overflow:hidden;margin-bottom:12px}
+#abody .adsb i{display:block;min-width:4px;border-radius:3px}
+#abody .adrr.mo{display:none}#abody .adrg.all .adrr.mo{display:block}
+#abody .adrb{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;padding:11px 2px;cursor:pointer;border-bottom:1px solid rgba(90,205,185,.14);-webkit-tap-highlight-color:transparent}
+#abody .adrr.un .adrb{cursor:default;opacity:.8}
+#abody .adrk{width:10px;height:10px;border-radius:50%;flex:none}
+#abody .adrb b{flex:1;min-width:0;font:600 15px system-ui;color:#eaf6f3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#abody .adrb em{font-style:normal;font-size:13px;color:#8fc9c0}
+#abody .adrb strong{min-width:44px;text-align:right;font:700 15px var(--fd);color:#f6dc92}
+#abody .adrb u{width:8px;height:8px;border-right:2px solid #8fc9c0;border-bottom:2px solid #8fc9c0;transform:rotate(45deg);margin:0 4px 3px 2px;transition:transform .2s;flex:none}
+#abody .adrr.op .adrb u{transform:rotate(-135deg);margin-bottom:-3px}
+#abody .adrx{display:none;flex-wrap:wrap;gap:6px;padding:10px 0 4px}
+#abody .adrr.op .adrx{display:flex}
+#abody .adrx span{display:inline-flex;flex-direction:column;padding:6px 11px;border-radius:12px;background:rgba(3,24,22,.5);border:1px solid rgba(90,205,185,.25);font-size:13px;color:#eaf6f3}
+#abody .adrx small{font-size:11px;color:#8fc9c0}
+#abody .adrm{all:unset;box-sizing:border-box;display:block;width:100%;text-align:center;padding:12px;margin-top:6px;border-radius:12px;color:#f6dc92;font:600 14px system-ui;cursor:pointer;border:1px solid rgba(240,201,105,.35)}
 #abody .ada{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;border-radius:18px;border:1px solid rgba(240,170,60,.5);background:linear-gradient(135deg,rgba(120,80,10,.5),rgba(60,40,6,.5));margin-bottom:14px;color:#ffe3a6}
 #abody .ada i{flex:none;width:10px;height:10px;border-radius:50%;background:#f0b13c;box-shadow:0 0 0 5px rgba(240,177,60,.2)}
 #abody .ada span{flex:1;min-width:0}
@@ -1273,6 +1300,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <div class="sec-l">Dastur</div><div class="mg">
     <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Muallif va dastur ma’lumotlari</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mqoff"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Qur’onni yuklab olish</b><span>Yuklab olish · taxminan 47 MB, Wi-Fi bilan</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
   <p class="mut mfoot">Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
@@ -2327,15 +2355,22 @@ async function qEnter(){
   QT="s";$("qsr").value="";$("qsw").classList.remove("on");
   [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q==="s"));
   if(!QM)$("qlist").innerHTML='<div class="qempty"><div class="qspin"></div>Yuklanmoqda…</div>';
-  try{await qLoad();qList();if(qg("qoff3")!=="2"&&!QASK){QASK=true;setTimeout(qOffAsk,400)}}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
+  try{await qLoad();qList();if(!QASK){QASK=true;setTimeout(qOffAsk,400)}}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
 }
 /* Oflayn yuklash */
-function qOffDraw(){
+async function qHave(){
+  try{for(let k=0;k<3;k++)if(!(await qCached("qp-"+k+".bin?v="+QV)))return false;return true}catch(e){return false}
+}
+async function qOffDraw(){
   const e=$("qoff");if(!e)return;
-  if(qg("qoff3")==="2"){e.innerHTML="";return}
-  if(e.dataset.busy)return;
+  const have=await qHave();
+  if(have){qs("qoff3","2");e.innerHTML="";qMenuOff(true);return}
+  try{localStorage.removeItem("qoff3")}catch(x){}
+  qMenuOff(false);
+  if(e.dataset.busy||QDLB)return;
   e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalar va tarjima, taxminan 47 MB</span></div><button id="qoffb">Yuklab olish</button></div>';
 }
+function qMenuOff(on){const s=document.querySelector("#mqoff .mt span");if(s)s.textContent=on?"Telefonda saqlangan · internet kerak emas":"Yuklab olish · taxminan 47 MB, Wi-Fi bilan"}
 const QCACHE="namoz-v1",QACACHE="namoz-aud1";
 let QDRES=null,QDLB=false,QASK=false;
 function qDm(o){
@@ -2383,7 +2418,7 @@ async function qDownAll(){
   if(again)return qDownAll();
 }
 async function qOffAsk(){
-  if(qg("qoff3")==="2"||$("qdm").classList.contains("on"))return;
+  if($("qdm").classList.contains("on")||await qHave())return;
   const x=await qDm({t:"Qur’onni telefonga yuklab olish",b:"Taxminan 47 MB, Wi-Fi bilan yuklash yaxshi. Bir marta yuklab olsangiz, internet kerak bo‘lmaydi va har sahifada qayta so‘ralmaydi. Tilovat (audio) alohida: tinglashni bosganda sura bo‘yicha taklif qilinadi.",ok:"Yuklab olish",no:"Keyinroq"});
   qDmClose();if(x==="ok")qDownAll();
 }
@@ -2754,7 +2789,12 @@ addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;i
 $("mbell").onclick=()=>$("bell").click();
 $("mshare").onclick=async()=>{const d={title:"Jannat sari",text:"Namoz vaqtlari, qibla, tasbeh va zakot hisoblagichi",url:location.origin+location.pathname};
   try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.url);toast("Havola nusxalandi")}}catch(e){}};
-$("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.keys();await Promise.all(k.map(x=>caches.delete(x)))}catch(e){}setTimeout(()=>location.reload(),500)};
+setTimeout(async()=>{try{qMenuOff(await qHave())}catch(e){}},2500);
+$("mqoff").onclick=async()=>{if(await qHave()){toast("Qur’on telefonda saqlangan");return}qDownAll()};
+$("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.keys();await Promise.all(k.map(async x=>{
+  if(x===QACACHE)return;
+  if(x===QCACHE){const c=await caches.open(x);const ks=await c.keys();await Promise.all(ks.filter(r=>!/qp-\d+\.bin|qp-idx\.json|quran-(meta|text|audio)\.json|UthmanicHafs/.test(r.url)).map(r=>c.delete(r)));return}
+  return caches.delete(x)}))}catch(e){}setTimeout(()=>location.reload(),500)};
 /* Admin (sarlavhani 5 marta bosing) */
 let ses=get("ses",null);
 const say=t=>{$("amsg").textContent=t;$("msg2").textContent=t;if(t)setTimeout(()=>{if($("amsg").textContent===t)$("amsg").textContent=""},3500)};
@@ -2877,16 +2917,15 @@ function aHome(){
   const row=(k,sub,badge,warn)=>`<button class="adr" type="button" data-a="${k}"><span class="adi"><svg viewBox="0 0 24 24" aria-hidden="true">${AI[k]}</svg></span><span class="adt"><b>${ASEC[k].t}</b><span>${sub}</span></span>${badge?`<em class="adbg${warn?" w":""}">${badge}</em>`:""}<i class="adch"></i></button>`;
   const qk=(k,ic,lb)=>`<button class="adq" type="button" data-qk="${k}"><span><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><b>${lb}</b></button>`;
   $("abody").innerHTML=`
-  <div class="adh"><div class="adh1"><span>Foydalanuvchilar</span><b id="st1">–</b></div>
+  <section class="adst"><div class="adh"><div class="adh1"><span>Foydalanuvchilar</span><b id="st1">–</b></div>
    <div class="adh2"><div><b id="st2">–</b><span>bugun</span></div><div><b id="st3">–</b><span>7 kunda</span></div></div></div>
+   <div id="rgst" class="adrg"><div class="adrh"><b>Mintaqalar bo‘yicha</b></div><div class="adrn">Yuklanmoqda…</div></div></section>
   ${miss?`<button class="ada" type="button" data-a="zakot"><i></i><span><b>Zakot bo‘limi to‘liq emas</b><small>${miss} ta bo‘lim to‘ldirilmagan. Tuzatish uchun bosing</small></span><s></s></button>`:""}
   <div class="adql">${qk("duo-new",AI.pl||'<path d="M12 5v14M5 12h14"/>',"Yangi duo")}${qk("hikmat",AI.hikmat,"Hikmat")}${qk("hijri-new",AI.hijri,"Taqvim")}${qk("vaqt",AI.vaqt,"Vaqtlar")}</div>
   <div class="adg">Kontent</div>
   <div class="adc2">${row("duo",nd?`${na} ta ko‘rinadi, ${nd-na} ta yashirin`:"Hali duo qo‘shilmagan",nd||"")}${row("turkum",`${DU.g.length} guruh · ${DU.t.length} turkum`,"")}${row("hikmat","Bosh sahifadagi kun hikmati","")}${row("hijri","Kunlik yozuvlar va o‘zgartirishlar",nh||"")}</div>
   <div class="adg">Sozlamalar</div>
   <div class="adc2">${row("vaqt","Vaqtlar, mintaqa tuzatishi, hijriy sana","")}${row("zakot","Nisob, fitr, fidya, ushr, chorva",miss?miss+" ta":"",!!miss)}</div>
-  <div class="adg">Statistika</div>
-  <div class="ac" id="rgst"><div class="ag">Mintaqalar bo‘yicha foydalanuvchilar</div><div class="ah">Yuklanmoqda…</div></div>
   <button class="aout" id="out" type="button">Tizimdan chiqish</button>`;
   tok().then(async t=>{if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
     if($("st1")){const n=v=>v==null?"–":v;$("st1").textContent=n(x.jami);$("st2").textContent=x.bugun==null?"–":"+"+x.bugun;$("st3").textContent=n(x.hafta)}
@@ -2894,20 +2933,28 @@ function aHome(){
 }
 async function regStats(t,total){
   const box=$("rgst");if(!box)return;
+  const hd='<div class="adrh"><b>Mintaqalar bo‘yicha</b>';
   try{
     const r=await fetch(SB+"/rest/v1/rpc/region_stats",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;
-    const a=await r.json(),tot=+total||0,vm={},rm=[];let known=0;
-    a.forEach(o=>{const g=RG[o.r];if(!g)return;known+=+o.n;const v=VIL.find(x=>x[0]===g[4]);vm[v[0]]=(vm[v[0]]||{n:0,t:v[1],c:[]});vm[v[0]].n+=+o.n;vm[v[0]].c.push([g[1],+o.n])});
-    const base=Math.max(tot,known)||1,pc=n=>(n/base*100).toFixed(n/base*100<10?1:0).replace(".",",")+"%";
-    const vs=Object.values(vm).sort((x,y)=>y.n-x.n);
-    let h='<div class="ag">Mintaqalar bo‘yicha foydalanuvchilar</div>';
-    if(!vs.length)h+='<div class="ah">Hozircha mintaqasi aniqlangan foydalanuvchi yo‘q. Foydalanuvchilar ilovani yangilab, mintaqani tanlagach (yoki GPS yoqilgach) bu yerda ko‘rinadi.</div>';
-    else{
-      h+=vs.map(v=>`<div class="rs"><div class="rt"><b>${v.t}</b><span>${v.n} ta · ${pc(v.n)}</span></div><div class="rb"><i style="width:${Math.max(2,v.n/base*100)}%"></i></div><div class="rc">${v.c.sort((x,y)=>y[1]-x[1]).map(c=>`<em>${c[0]} ${c[1]} (${pc(c[1])})</em>`).join("")}</div></div>`).join("");
-      if(tot>known)h+=`<div class="rs"><div class="rt"><b>Aniqlanmagan</b><span>${tot-known} ta · ${pc(tot-known)}</span></div><div class="rb"><i class="gr" style="width:${Math.max(2,(tot-known)/base*100)}%"></i></div></div>`;
-    }
+    const a=await r.json(),tot=+total||0,vm={};let known=0;
+    a.forEach(o=>{const g=RG[o.r];if(!g)return;known+=+o.n;const v=VIL.find(x=>x[0]===g[4]);vm[v[0]]=(vm[v[0]]||{n:0,t:v[1].replace(/ viloyati$/,""),c:[]});vm[v[0]].n+=+o.n;vm[v[0]].c.push([g[1],+o.n])});
+    const base=Math.max(tot,known)||1,pct=n=>{const p=n/base*100;return (p<10?p.toFixed(1):Math.round(p)).toString().replace(".",",")+"%"};
+    const vs=Object.values(vm).sort((x,y)=>y.n-x.n),unk=Math.max(0,tot-known);
+    const COL=["#f0c969","#3fd0b8","#5aa9e6","#e58f6b","#a78bdb","#7cc576","#e07aa8"];
+    if(!vs.length){box.innerHTML=hd+'</div><div class="adrn">Hozircha mintaqasi aniqlangan foydalanuvchi yo‘q. Foydalanuvchilar ilovani yangilab, mintaqani tanlagach (yoki GPS yoqilgach) bu yerda ko‘rinadi.</div>';return}
+    const col=i=>i<COL.length?COL[i]:"#5d7f79";
+    let h=hd+'<span>'+vs.length+' ta viloyat</span></div>';
+    h+='<div class="adsb">'+vs.map((v,i)=>`<i style="flex:${v.n};background:${col(i)}" title="${v.t}"></i>`).join("")+(unk?`<i style="flex:${unk};background:#2f4b47"></i>`:"")+'</div>';
+    const row=(v,i)=>`<div class="adrr" data-i="${i}"><button type="button" class="adrb"><span class="adrk" style="background:${col(i)}"></span><b>${v.t}</b><em>${v.n}</em><strong>${pct(v.n)}</strong><u></u></button><div class="adrx">${v.c.sort((x,y)=>y[1]-x[1]).map(c=>`<span>${c[0]}<small>${c[1]} · ${pct(c[1])}</small></span>`).join("")}</div></div>`;
+    h+='<div class="adrl">'+vs.map((v,i)=>i<5?row(v,i):row(v,i).replace('class="adrr"','class="adrr mo"')).join("");
+    if(unk)h+=`<div class="adrr un"><div class="adrb"><span class="adrk" style="background:#2f4b47"></span><b>Aniqlanmagan</b><em>${unk}</em><strong>${pct(unk)}</strong></div></div>`;
+    h+='</div>'+(vs.length>5?`<button type="button" class="adrm" id="rgmore">Hammasini ko‘rsatish (${vs.length})</button>`:"");
     box.innerHTML=h;
-  }catch(e){box.innerHTML='<div class="ag">Mintaqalar bo‘yicha foydalanuvchilar</div><div class="ah">Statistika hali yoqilmagan. Supabase\'da <b>mintaqa-statistika.sql</b> faylini bir marta ishga tushiring.</div>'}
+    box.onclick=e=>{
+      const m=e.target.closest("#rgmore");if(m){box.classList.toggle("all");m.textContent=box.classList.contains("all")?"Yig‘ish":"Hammasini ko‘rsatish ("+vs.length+")";return}
+      const b=e.target.closest(".adrb");if(b&&b.parentNode.classList.contains("adrr")&&!b.parentNode.classList.contains("un"))b.parentNode.classList.toggle("op");
+    };
+  }catch(e){box.innerHTML=hd+'</div><div class="adrn">Statistika hali yoqilmagan. Supabase\'da <b>mintaqa-statistika.sql</b> faylini bir marta ishga tushiring.</div>'}
 }
 function aOpen(k){
   AS=k;const s=ASEC[k];$("att").textContent=s.t;$("aback").style.visibility="visible";
@@ -3207,7 +3254,7 @@ function atkDraw(){
     const ts=DU.t.filter(t=>t.guruh_id===g.id).sort(dsort),tids=ts.map(t=>t.id);
     h+=`<div class="ac agb">`;
     if(ATE&&ATE.k==="eg"&&ATE.id===g.id)h+=atkEditor("eg",g);
-    else h+=`<div class="agh"><b>${esc(g.nom)}</b><small class="ah" style="margin:0">${ts.length} ta turkum</small></div><div class="aia" style="padding-bottom:6px">${atg("gtog",g.id,g.faol)}<span class="sp" style="flex:1"></span>${aib("gup","up",g.id,"",gi===0,"Yuqoriga")}${aib("gdn","dn",g.id,"",gi===G.length-1,"Pastga")}${aib("ged","ed",g.id,"",0,"Nomini o‘zgartirish")}${aib("gdel","tr",g.id,"dn",0,"O‘chirish")}</div>`;
+    else h+=`<div class="agh agh2"><span class="agt"><b>${esc(g.nom)}</b><small class="ah" style="margin:0">${ts.length} ta turkum</small></span><div class="aia">${atg("gtog",g.id,g.faol)}<span class="sp" style="flex:1"></span>${aib("gup","up",g.id,"",gi===0,"Yuqoriga")}${aib("gdn","dn",g.id,"",gi===G.length-1,"Pastga")}${aib("ged","ed",g.id,"",0,"Nomini o‘zgartirish")}${aib("gdel","tr",g.id,"dn",0,"O‘chirish")}</div></div>`;
     ts.forEach((t,ti)=>{
       const n=DU.d.filter(d=>d.turkum_id===t.id).length;
       if(ATE&&ATE.k==="et"&&ATE.id===t.id)h+=`<div class="air">${atkEditor("et",t)}</div>`;
@@ -3435,7 +3482,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="4.4";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.5";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
