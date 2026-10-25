@@ -1398,7 +1398,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
   <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina nusxasi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
   <p class="mut" style="font-size:12.5px">Islomiy taqvim ma’lumotlari va fiqhiy mavzular <a href="https://muslim.uz" target="_blank" rel="noopener" style="color:var(--ac)">muslim.uz</a>, <a href="https://islom.uz" target="_blank" rel="noopener" style="color:var(--ac)">islom.uz</a> va <a href="https://fatvo.uz" target="_blank" rel="noopener" style="color:var(--ac)">fatvo.uz</a> saytlari maqolalari asosida tayyorlangan; har bir yozuvning manbasi o‘z o‘rnida ko‘rsatilgan.</p>
-  <p class="mut" style="font-size:12.5px">Zakot, ushr, fitr va fidya hisobi hanafiy mazhabi ulamolarining qarashlari asosida tuzilgan. Fiqhiy kitoblar: «Kifoya», «Hidoya» (1-juz), «Fatvolar to‘plami» (1-kitob).</p>
+  <p class="mut" style="font-size:12.5px">Zakot, ushr, fitr va fidya hisobi hanafiy mazhabi ulamolarining qarashlari asosida tuzilgan. Fiqhiy kitoblar: «Kifoya» (2-juz), «Hidoya» (1-juz), «Fatvolar to‘plami» (1-kitob).</p>
   <hr>
   <div class="mut">Muallif</div>
   <p>Qashqadaryo viloyati Xoja Buxoriy nomidagi o‘rta maxsus islom ta’lim muassasasi bitiruvchisi<br><b>Iskandarov Mehrojxon Akbar o‘g‘li</b></p>
@@ -3482,7 +3482,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="4.5";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.6";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
