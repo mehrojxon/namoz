@@ -1020,8 +1020,8 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .air:first-child{border-top:0}
 #abody .air.off .aim{opacity:.5}
 #abody .aim{flex:1;min-width:0}
-#abody .aim b{display:block;font:600 15px/1.25 system-ui;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#abody .aim small{display:block;margin-top:2px;font-size:12px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#abody .aim b{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;font:600 15px/1.25 system-ui;color:var(--ink);overflow:hidden}
+#abody .aim small{display:block;margin-top:3px;font-size:12px;line-height:1.35;color:var(--mut)}
 #abody .aia{display:flex;align-items:center;gap:5px;flex:none}
 #abody .aib{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;padding:0}
 #abody .aib:disabled{opacity:.3}
@@ -1055,6 +1055,106 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .asr{border:1px dashed var(--line);border-radius:14px;padding:10px 12px;margin-top:8px}
 #abody .adb{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(240,201,105,.14);border:1px solid rgba(240,201,105,.5);color:#f6dc92;font:700 15px var(--fd)}
 .tqsrc a:not([href]){pointer-events:none}.tqsrc a:not([href]) svg{display:none}
+
+/* ===== Qur'on o'qish sahifasi va admin ekrani (koshin uslubi) ===== */
+#qpg{background:radial-gradient(130% 70% at 50% -8%,#0f5a51 0%,#08332f 46%,#041a19 100%)}
+#qph{background:linear-gradient(180deg,#11574f,#0a3a35 70%,#082e2b);border-bottom:1px solid rgba(240,201,105,.38);box-shadow:0 10px 26px rgba(0,0,0,.45);color:#e8d9a8;z-index:2}
+#qph:after{content:"";position:absolute;left:12%;right:12%;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#f0c969,transparent)}
+#qph button{color:#e8d9a8}
+#qph button:active{background:rgba(240,201,105,.16)}
+#qph .qhs{font:600 19px var(--fd);color:#fff;letter-spacing:.005em}
+#qhj{color:#f0c969;font:600 13px system-ui;padding:5px 11px;border:1px solid rgba(240,201,105,.42);border-radius:999px;background:rgba(4,30,27,.45)}
+#qsc{background:none}
+.qsl{background:none}
+.pgw{background:var(--pg);border-radius:8px;box-shadow:0 0 0 1px rgba(240,201,105,.55),0 0 0 6px rgba(7,38,34,.78)}
+.qpn{color:#f0c969;background:rgba(4,30,27,.55);border:1px solid rgba(240,201,105,.38);padding:5px 16px;margin:12px 0 4px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
+.qpn::before,.qpn::after{background:linear-gradient(90deg,transparent,rgba(240,201,105,.7));width:16px}
+.qpn::after{background:linear-gradient(270deg,transparent,rgba(240,201,105,.7))}
+.qrib{background:linear-gradient(180deg,#f3d98a,#c9a24f)}
+#qas{--ink2:#e6f1ee;--chrome:#9fc3bc;--ring:#7ff3dc;--line2:rgba(90,205,185,.25);background:linear-gradient(180deg,#0f4a43,#082d2a);border:1px solid rgba(240,201,105,.35);border-bottom:0;color:#e6f1ee}
+#qas.qtop{border-bottom:1px solid rgba(240,201,105,.35);border-top:0}
+#qfn{background:rgba(4,30,27,.55);border:1px solid rgba(90,205,185,.22)}
+#qmp{background:linear-gradient(180deg,#11574f,#0a3631);border:1px solid rgba(240,201,105,.42);box-shadow:0 14px 30px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.12)}
+#qmpp{background:linear-gradient(135deg,#f3d98a,#c9a24f)!important}
+/* admin */
+#adm{background:rgba(2,14,13,.72)}
+#adm .box{background:linear-gradient(180deg,#0f4a43,#082d2a);border:1px solid rgba(240,201,105,.38);box-shadow:var(--s3d)}
+#adm .box.full{background:radial-gradient(130% 60% at 50% -6%,#0f5a51 0%,#08332f 40%,#051f1d 100%);border:0}
+#adm .box.full:before{content:"";position:absolute;inset:0;background:var(--o-t1);background-size:120px 120px;opacity:.5;pointer-events:none}
+#pn{position:relative}
+#ahd{background:linear-gradient(180deg,#11574f,#0a3a35);border-bottom:1px solid rgba(240,201,105,.38);box-shadow:0 10px 24px rgba(0,0,0,.4);position:relative}
+#ahd:after{content:"";position:absolute;left:12%;right:12%;bottom:-1px;height:1px;background:linear-gradient(90deg,transparent,#f0c969,transparent)}
+#att{color:#fff;font:600 21px var(--fd)}
+#aback,#adc2{background:rgba(4,30,27,.6)!important;border:1px solid rgba(240,201,105,.38)!important;color:#e8d9a8!important}
+#abody{position:relative}
+.ac{background:var(--g3d);border:1px solid var(--b3d);border-radius:20px;box-shadow:var(--s3d);padding:16px}
+.ag{font:600 17px var(--fd);color:#f6dc92}
+#pn input,#pn select,#pn textarea,.box input{background:rgba(3,24,22,.7);border:1px solid rgba(90,205,185,.3);color:#fff;box-shadow:inset 0 2px 7px rgba(0,0,0,.45)}
+#pn input:focus,#pn select:focus,#pn textarea:focus{border-color:#7ff3dc;box-shadow:inset 0 2px 7px rgba(0,0,0,.45),0 0 0 3px rgba(127,243,220,.16)}
+.ast div{background:var(--g3d);border:1px solid var(--b3d);box-shadow:var(--s3d);border-radius:18px}
+.ast b{color:#f6dc92}
+#afoot{background:linear-gradient(180deg,#0d413c,#082d2a);border-top:1px solid rgba(240,201,105,.38);position:relative}
+#pn #asav{background:linear-gradient(135deg,#12a79c,#154a92);border:1px solid rgba(240,201,105,.45);box-shadow:0 6px 16px rgba(0,0,0,.4)}
+#pn .stp button{background:rgba(3,24,22,.7);border-color:rgba(90,205,185,.35);color:#fff}
+#pn .atabs button{background:rgba(4,30,27,.55);border-color:var(--b3d)}
+#pn .atabs button.on{background:linear-gradient(135deg,#12a79c,#154a92);border-color:rgba(240,201,105,.5)}
+#pn .chp{border-color:rgba(240,201,105,.5);color:#f6dc92}
+#pn .aout{background:rgba(4,30,27,.5);border-color:var(--b3d)}
+#adm #lg{position:relative}
+#adm .box h2{color:#f6dc92;font:600 24px var(--fd)}
+#adm #lg button#kir{width:100%;background:linear-gradient(135deg,#12a79c,#154a92);border:1px solid rgba(240,201,105,.45);box-shadow:0 6px 16px rgba(0,0,0,.4);border-radius:16px;padding:14px}
+
+/* ===== Admin: boshqaruv paneli (4.4) ===== */
+#abody .adh{position:relative;overflow:hidden;display:flex;align-items:stretch;justify-content:space-between;gap:14px;padding:20px 20px 18px;border-radius:26px;border:1px solid rgba(240,201,105,.45);background:radial-gradient(120% 140% at 0% 0%,#14736a 0%,#0b3f3a 55%,#062624 100%);box-shadow:var(--s3d),inset 0 1px 0 rgba(255,255,255,.14);margin-bottom:14px}
+#abody .adh:before{content:"";position:absolute;top:0;right:0;width:96px;height:72px;background:var(--o-moon) no-repeat top right/96px;opacity:.9;pointer-events:none}
+#abody .adh>*{position:relative}
+#abody .adh1{display:flex;flex-direction:column;justify-content:center}
+#abody .adh1 span{font:600 12px system-ui;letter-spacing:.12em;text-transform:uppercase;color:#9fd8cf}
+#abody .adh1 b{font:600 52px/1.05 var(--fd);color:#f6dc92;text-shadow:0 2px 14px rgba(240,201,105,.3);margin-top:4px}
+#abody .adh2{display:flex;flex-direction:column;gap:8px;justify-content:flex-end;min-width:96px;margin-top:30px}
+#abody .adh2 div{padding:8px 12px;border-radius:14px;background:rgba(3,24,22,.5);border:1px solid rgba(90,205,185,.28)}
+#abody .adh2 b{display:block;font:700 19px var(--fd);color:#fff}
+#abody .adh2 span{font-size:11.5px;color:#8fc9c0}
+#abody .ada{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 14px;border-radius:18px;border:1px solid rgba(240,170,60,.5);background:linear-gradient(135deg,rgba(120,80,10,.5),rgba(60,40,6,.5));margin-bottom:14px;color:#ffe3a6}
+#abody .ada i{flex:none;width:10px;height:10px;border-radius:50%;background:#f0b13c;box-shadow:0 0 0 5px rgba(240,177,60,.2)}
+#abody .ada span{flex:1;min-width:0}
+#abody .ada b{display:block;font:700 15px system-ui;color:#ffe9b8}
+#abody .ada small{display:block;font-size:12.5px;opacity:.85;margin-top:2px}
+#abody .ada s{width:8px;height:8px;border:solid #ffe3a6;border-width:0 2px 2px 0;transform:rotate(-45deg)}
+#abody .adql{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:6px}
+#abody .adq{display:flex;flex-direction:column;align-items:center;gap:8px;padding:0;background:none;color:#cfe9e3}
+#abody .adq span{width:100%;aspect-ratio:1;max-width:72px;border-radius:22px;display:grid;place-items:center;background:var(--g3d);border:1px solid var(--b3d);box-shadow:var(--s3d);color:#f0c969}
+#abody .adq svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#abody .adq b{font:600 12.5px system-ui}
+#abody .adq:active span{transform:scale(.94)}
+#abody .adg{font:600 13px system-ui;letter-spacing:.14em;text-transform:uppercase;color:#8fc9c0;margin:22px 4px 10px}
+#abody .adc2{border-radius:22px;border:1px solid var(--b3d);background:var(--g3d);box-shadow:var(--s3d);overflow:hidden}
+#abody .adr{display:flex;align-items:center;gap:13px;width:100%;text-align:left;padding:13px 14px;background:none;color:#fff;border-top:1px solid rgba(90,205,185,.16)}
+#abody .adr:first-child{border-top:0}
+#abody .adr:active{background:rgba(127,243,220,.08)}
+#abody .adi{flex:none;width:42px;height:46px;background:var(--ogee) center/contain no-repeat;display:grid;place-items:center;color:#f0c969}
+#abody .adi svg{width:21px;height:21px;margin-top:3px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#abody .adt{flex:1;min-width:0}
+#abody .adt b{display:block;font:600 16.5px/1.2 var(--fd);color:#fff}
+#abody .adt span{display:block;margin-top:3px;font-size:12.5px;color:#9bbdb6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#abody .adbg{flex:none;font:700 12px system-ui;font-style:normal;padding:4px 10px;border-radius:999px;color:#f6dc92;border:1px solid rgba(240,201,105,.45);background:rgba(240,201,105,.1)}
+#abody .adbg.w{color:#ffd78a;border-color:rgba(240,177,60,.7);background:rgba(240,177,60,.18)}
+#abody .adch{flex:none;width:8px;height:8px;border:solid #8fc9c0;border-width:0 2px 2px 0;transform:rotate(-45deg);margin:0 4px 0 2px}
+#abody .aout{margin-top:18px;border-radius:16px;color:#ffb4b4;border-color:rgba(255,120,120,.3);background:rgba(120,30,30,.18)}
+#atoast{position:absolute;left:50%;bottom:calc(24px + env(safe-area-inset-bottom));transform:translate(-50%,24px);max-width:88%;padding:11px 18px;border-radius:999px;background:rgba(3,24,22,.94);border:1px solid rgba(240,201,105,.5);color:#fff;font:600 14px system-ui;box-shadow:0 12px 30px rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .22s,transform .22s;z-index:30;text-align:center}
+#atoast.on{opacity:1;transform:translate(-50%,0)}
+#acf{position:absolute;inset:0;z-index:40;display:none;align-items:flex-end;justify-content:center;background:rgba(2,12,11,.7)}
+#acf.on{display:flex}
+#acf .acb{width:100%;max-width:460px;padding:24px 22px calc(22px + env(safe-area-inset-bottom));border-radius:26px 26px 0 0;border:1px solid rgba(240,201,105,.4);border-bottom:0;background:linear-gradient(180deg,#0f4a43,#06282a);text-align:center;box-shadow:0 -16px 40px rgba(0,0,0,.5);animation:acu .26s ease both}
+@keyframes acu{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+#acf .aci{width:54px;height:54px;margin:0 auto 12px;border-radius:50%;display:grid;place-items:center;background:rgba(255,100,100,.14);border:1px solid rgba(255,140,140,.45);color:#ffb4b4}
+#acf .aci svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+#acf b{display:block;font:600 21px var(--fd);color:#fff}
+#acf p{margin:8px 0 18px;color:#bcd9d3;font-size:14.5px;line-height:1.5}
+#acf .arow2{display:flex;gap:10px}
+#acf .arow2 button{flex:1;margin:0;height:48px;border-radius:15px;font:700 15px system-ui;padding:0}
+#acf #acfn{background:rgba(4,30,27,.7);border:1px solid var(--b3d);color:#cfe9e3}
+#acf #acfy{background:linear-gradient(135deg,#d6453d,#8e1f2a);border:1px solid rgba(255,160,160,.45);color:#fff}
 </style>
 </head>
 <body data-scr="t0">
@@ -1287,13 +1387,16 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 </div></div>
 <div class="sheet" id="adm"><div class="box" id="abox">
   <div id="lg">
-    <h2>Admin</h2>
+    <img src="icon-192.png" alt="" width="84" height="84" style="border-radius:22px;box-shadow:0 10px 24px rgba(0,0,0,.5)">
+    <h2>Boshqaruv paneli</h2><p class="mut" style="margin:0 0 10px;font-size:13px">Faqat administrator uchun</p>
     <input id="em" type="email" placeholder="Elektron pochta" autocomplete="username">
     <input id="pw" type="password" placeholder="Parol" autocomplete="current-password">
     <button id="kir">Kirish</button>
     <p class="mut" id="msg2"></p>
     <button id="adc" style="background:none;color:var(--mut)">Yopish</button>
   </div>
+  <div id="atoast" role="status"></div>
+  <div id="acf"><div class="acb"><div class="aci"><svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"/></svg></div><b>Tasdiqlang</b><p id="acfm"></p><div class="arow2"><button type="button" id="acfn">Bekor qilish</button><button type="button" id="acfy">O‘chirish</button></div></div></div>
   <div id="pn" style="display:none">
     <div id="ahd"><button id="aback" aria-label="Orqaga">‹</button><span id="att">Boshqaruv</span><button id="adc2" aria-label="Yopish">✕</button></div>
     <div id="abody"></div>
@@ -2289,7 +2392,7 @@ function qDimsCalc(){
   const sc=$("qsc"),aw=sc.clientWidth,ah=sc.clientHeight,land=aw>ah*1.08;
   let W,H;
   if(land){W=Math.min(aw-12,900);H=W*QVB[1]/QVB[0]}
-  else{W=Math.min(aw-4,660);H=W*QVB[1]/QVB[0];const mh=ah-40;if(H>mh){H=mh;W=H*QVB[0]/QVB[1]}}
+  else{W=Math.min(aw-18,660);H=W*QVB[1]/QVB[0];const mh=ah-40;if(H>mh){H=mh;W=H*QVB[0]/QVB[1]}}
   return{W:W,H:H,land:land};
 }
 function qBuild(){
@@ -2378,10 +2481,17 @@ function qMarkAll(){document.querySelectorAll("#qsc .qsl[data-f]").forEach(qMark
 function qHead(){
   const[s,a]=QPS[QP-1];$("qhs").textContent=QUZ[s-1]+" surasi";$("qhj").textContent=qjuzOf(s,a)+"-juz";
 }
-function qNear(){
+let QNT=0;
+async function qNear(){
   const k=$("qsc").children;
   for(let i=0;i<604;i++){if(Math.abs(i+1-QP)>3)qDrop(k[i])}
-  for(let i=-2;i<=2;i++)qFill(QP+i);
+  const cur=QP,my=++QNT,ok=()=>QP===cur&&QNT===my;
+  await qFill(cur);if(!ok())return;
+  await qFill(cur+1);if(!ok())return;
+  await qFill(cur-1);if(!ok())return;
+  await new Promise(r=>setTimeout(r,350));if(!ok())return;
+  await qFill(cur+2);if(!ok())return;
+  await qFill(cur-2);
 }
 const qIdx=()=>{const sc=$("qsc");return Math.min(604,Math.max(1,Math.round(Math.abs(sc.scrollLeft)/sc.clientWidth)+1))};
 let qTm=0;
@@ -2686,7 +2796,7 @@ async function patchV(fn){
 }
 async function hikmatDel(){
   const t=await tok();if(!t){showAdm();return}
-  if(!confirm("Kun hikmati hamma foydalanuvchida yashirilsinmi?"))return;
+  if(!await aconfirm("Kun hikmati hamma foydalanuvchida yashirilsinmi?"))return;
   try{
     const r=await fetch(SB+"/rest/v1/hikmat?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({matn:"",manba:"",yangilangan:new Date().toLocaleDateString("sv")})});
     const a=await r.json();if(!r.ok||!a.length)throw 0;
@@ -2763,11 +2873,23 @@ let AS=null,AD={},AS_SV=null;
 function aHome(){
   AS=null;$("att").textContent="Boshqaruv";$("aback").style.visibility="hidden";$("afoot").classList.remove("on");
   const z=zs(),miss=(isN(z.nisob)?0:1)+(G.filter(([c])=>!isN(zg(z,"fitr")[c])).length?1:0)+(G.filter(([c])=>!isN(zg(z,"fidya")[c])).length?1:0);
-  $("abody").innerHTML=`<div class="ast"><div><b id="st1">–</b><span>Jami</span></div><div><b id="st2">–</b><span>Bugun</span></div><div><b id="st3">–</b><span>7 kunda</span></div></div><div class="ah" style="margin:-4px 2px 14px">Ilovadan foydalanuvchilar soni</div>`+
-   Object.entries(ASEC).map(([k,s])=>`<button class="kcard" data-a="${k}"><span class="kic"><svg viewBox="0 0 24 24">${AI[k]}</svg></span><span class="kct"><b>${s.t}</b><span>${s.d}</span>${k==="zakot"&&miss?`<em>${miss} ta bo‘lim to‘ldirilmagan</em>`:""}</span><span class="kch">›</span></button>`).join("")+
-   `<div class="ac" id="rgst"><div class="ag">Mintaqalar bo‘yicha foydalanuvchilar</div><div class="ah">Yuklanmoqda…</div></div><button class="aout" id="out">Tizimdan chiqish</button>`;
+  const nd=DU.d.length,na=DU.d.filter(d=>d.faol).length,nh=(TO||[]).length;
+  const row=(k,sub,badge,warn)=>`<button class="adr" type="button" data-a="${k}"><span class="adi"><svg viewBox="0 0 24 24" aria-hidden="true">${AI[k]}</svg></span><span class="adt"><b>${ASEC[k].t}</b><span>${sub}</span></span>${badge?`<em class="adbg${warn?" w":""}">${badge}</em>`:""}<i class="adch"></i></button>`;
+  const qk=(k,ic,lb)=>`<button class="adq" type="button" data-qk="${k}"><span><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><b>${lb}</b></button>`;
+  $("abody").innerHTML=`
+  <div class="adh"><div class="adh1"><span>Foydalanuvchilar</span><b id="st1">–</b></div>
+   <div class="adh2"><div><b id="st2">–</b><span>bugun</span></div><div><b id="st3">–</b><span>7 kunda</span></div></div></div>
+  ${miss?`<button class="ada" type="button" data-a="zakot"><i></i><span><b>Zakot bo‘limi to‘liq emas</b><small>${miss} ta bo‘lim to‘ldirilmagan. Tuzatish uchun bosing</small></span><s></s></button>`:""}
+  <div class="adql">${qk("duo-new",AI.pl||'<path d="M12 5v14M5 12h14"/>',"Yangi duo")}${qk("hikmat",AI.hikmat,"Hikmat")}${qk("hijri-new",AI.hijri,"Taqvim")}${qk("vaqt",AI.vaqt,"Vaqtlar")}</div>
+  <div class="adg">Kontent</div>
+  <div class="adc2">${row("duo",nd?`${na} ta ko‘rinadi, ${nd-na} ta yashirin`:"Hali duo qo‘shilmagan",nd||"")}${row("turkum",`${DU.g.length} guruh · ${DU.t.length} turkum`,"")}${row("hikmat","Bosh sahifadagi kun hikmati","")}${row("hijri","Kunlik yozuvlar va o‘zgartirishlar",nh||"")}</div>
+  <div class="adg">Sozlamalar</div>
+  <div class="adc2">${row("vaqt","Vaqtlar, mintaqa tuzatishi, hijriy sana","")}${row("zakot","Nisob, fitr, fidya, ushr, chorva",miss?miss+" ta":"",!!miss)}</div>
+  <div class="adg">Statistika</div>
+  <div class="ac" id="rgst"><div class="ag">Mintaqalar bo‘yicha foydalanuvchilar</div><div class="ah">Yuklanmoqda…</div></div>
+  <button class="aout" id="out" type="button">Tizimdan chiqish</button>`;
   tok().then(async t=>{if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
-    if($("st1")){$("st1").textContent=x.jami;$("st2").textContent=x.bugun;$("st3").textContent=x.hafta}
+    if($("st1")){const n=v=>v==null?"–":v;$("st1").textContent=n(x.jami);$("st2").textContent=x.bugun==null?"–":"+"+x.bugun;$("st3").textContent=n(x.hafta)}
     regStats(t,x.jami)}catch(e){}});
 }
 async function regStats(t,total){
@@ -2807,6 +2929,8 @@ $("kir").onclick=async()=>{
   catch(e){say("Pochta yoki parol noto‘g‘ri")}
 };
 $("abody").addEventListener("click",e=>{
+  const qk=e.target.closest("[data-qk]");
+  if(qk){const k=qk.dataset.qk;if(k==="duo-new"){aOpen("duo");aduEdit(0)}else if(k==="hijri-new"){aOpen("hijri");const w=setInterval(()=>{if($("ah1")){clearInterval(w);ahEdit("")}},60);setTimeout(()=>clearInterval(w),4000)}else aOpen(k);return}
   const a=e.target.closest("[data-a]");if(a){aOpen(a.dataset.a);return}
   const z=e.target.closest("#ztabs [data-z]");
   if(z){document.querySelectorAll("#ztabs button").forEach(b=>b.classList.toggle("on",b===z));document.querySelectorAll(".apane").forEach(p=>p.classList.toggle("on",p.dataset.z===z.dataset.z));return}
@@ -2958,9 +3082,17 @@ async function sbw(method,path,body){
   return r.status===204?[]:r.json();
 }
 let AT=null;
+let ATT=null;
 function asay(t){
-  $("afoot").classList.add("on");$("asav").style.display="none";say(t);
-  clearTimeout(AT);AT=setTimeout(()=>{if(AS&&ASEC[AS]&&ASEC[AS].ns)$("afoot").classList.remove("on")},3700);
+  const e=$("atoast");if(!e)return;e.textContent=t;e.classList.toggle("on",!!t);
+  clearTimeout(ATT);if(t)ATT=setTimeout(()=>e.classList.remove("on"),2600);
+}
+function aconfirm(msg,ok){
+  return new Promise(res=>{
+    $("acfm").textContent=msg;$("acfy").textContent=ok||"O‘chirish";$("acf").classList.add("on");
+    const d=v=>{$("acf").classList.remove("on");$("acfy").onclick=$("acfn").onclick=null;res(v)};
+    $("acfy").onclick=()=>d(true);$("acfn").onclick=()=>d(false);
+  });
 }
 const aerr=e=>asay(/HTTP 404/.test(String(e&&e.message))?"Jadval topilmadi. duolar.sql ni Supabase’da bir marta ishga tushiring":"Saqlanmadi. Qaytadan urinib ko‘ring");
 const aib=(a,ic,id,cls,dis,lb)=>`<button type="button" class="aib ${cls||""}" data-a2="${a}" data-id="${id===undefined?"":id}" ${dis?"disabled":""} aria-label="${lb||a}">${ADI[ic]}</button>`;
@@ -3043,7 +3175,7 @@ async function aduClick(e){
       await aReord("duo",all,id,a==="up"?-1:1,L.map(x=>x.id));DU.d=all;aduRows();duoSync();return}
     if(a==="del"||a==="del2"){
       const d=DU.d.find(x=>x.id===id);if(!d)return;
-      if(!confirm("“"+d.sarlavha+"” butunlay o‘chiriladi va qaytarib bo‘lmaydi. Davom etasizmi?"))return;
+      if(!await aconfirm("“"+d.sarlavha+"” butunlay o‘chiriladi va qaytarib bo‘lmaydi. Davom etasizmi?"))return;
       await sbw("DELETE","duo?id=eq."+id);DU.d=DU.d.filter(x=>x.id!==id);aduList();asay("O‘chirildi ✓");duoSync();return}
     if(a==="save"){
       const o=aduRead(),id0=+$("adv2").dataset.id||0;
@@ -3119,12 +3251,12 @@ async function atkClick(e){
     if(a==="gdel"){
       const g=DU.g.find(x=>x.id===id);if(!g)return;
       const ts=DU.t.filter(t=>t.guruh_id===id),n=DU.d.filter(d=>ts.some(t=>t.id===d.turkum_id)).length;
-      if(!confirm("“"+g.nom+"” guruhi va ichidagi "+ts.length+" ta turkum o‘chiriladi."+(n?" Ulardagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
+      if(!await aconfirm("“"+g.nom+"” guruhi va ichidagi "+ts.length+" ta turkum o‘chiriladi."+(n?" Ulardagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
       await sbw("DELETE","duo_guruh?id=eq."+id);await duoSync();atkDraw();asay("O‘chirildi ✓");return}
     if(a==="tdel"){
       const t=DU.t.find(x=>x.id===id);if(!t)return;
       const n=DU.d.filter(d=>d.turkum_id===id).length;
-      if(!confirm("“"+t.nom+"” turkumi o‘chiriladi."+(n?" Ichidagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
+      if(!await aconfirm("“"+t.nom+"” turkumi o‘chiriladi."+(n?" Ichidagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
       await sbw("DELETE","duo_turkum?id=eq."+id);await duoSync();atkDraw();asay("O‘chirildi ✓");return}
   }catch(er){if(!er||er.message!=="auth")aerr(er)}
 }
@@ -3238,11 +3370,11 @@ async function ahClick(e){
       await tqoSync();ahDraw();asay(n?"Ko‘rsatiladi ✓":"Yashirildi ✓");return}
     if(a==="hdel"){
       const x=ahFind(ref);if(!x)return;
-      if(!confirm("“"+x.cur.t+"” yozuvi butunlay o‘chiriladi. Davom etasizmi?"))return;
+      if(!await aconfirm("“"+x.cur.t+"” yozuvi butunlay o‘chiriladi. Davom etasizmi?"))return;
       await sbw("DELETE","taqvim_ozgarish?id=eq."+x.o.id);await tqoSync();ahDraw();asay("O‘chirildi ✓");return}
     if(a==="hrev"){
       const x=ahFind(ref);if(!x||!x.o)return;
-      if(!confirm("“"+x.base.t+"” asl holiga qaytariladi, o‘zgartirishlaringiz o‘chadi. Davom etasizmi?"))return;
+      if(!await aconfirm("“"+x.base.t+"” asl holiga qaytariladi, o‘zgartirishlaringiz o‘chadi. Davom etasizmi?"))return;
       await sbw("DELETE","taqvim_ozgarish?id=eq."+x.o.id);await tqoSync();ahDraw();asay("Asli qaytarildi ✓");return}
     if(a==="hsave"){
       const o=ahRow();
@@ -3303,7 +3435,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="4.3";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.4";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
