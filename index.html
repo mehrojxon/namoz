@@ -987,7 +987,8 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 .dcard .dcv{position:absolute;right:16px;bottom:16px;width:9px;height:9px;border:solid #e8d9a8;border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .25s}
 .dcard.open .dcv{transform:rotate(-135deg);bottom:12px}
 .dbody{display:none;padding:0 16px 14px}
-.dcard.open .dbody{display:block;animation:dopen .28s ease both}
+.dcard.open .dbody{display:block}
+.dcard.open.an .dbody{animation:dopen .28s ease both}
 @keyframes dopen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 .dsep{display:flex;align-items:center;gap:10px;margin:2px 0 6px;color:#f0c969}
 .dsep:before,.dsep:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(240,201,105,.6))}
@@ -2222,7 +2223,7 @@ function qHomeSub(){
 async function qEnter(){
   QT="s";$("qsr").value="";$("qsw").classList.remove("on");
   [...$("qtabs").children].forEach(b=>b.classList.toggle("on",b.dataset.q==="s"));
-  $("qlist").innerHTML='<div class="qempty"><div class="qspin"></div>Yuklanmoqda…</div>';
+  if(!QM)$("qlist").innerHTML='<div class="qempty"><div class="qspin"></div>Yuklanmoqda…</div>';
   try{await qLoad();qList();if(qg("qoff3")!=="2"&&!QASK){QASK=true;setTimeout(qOffAsk,400)}}catch(e){$("qlist").innerHTML='<div class="qempty">Qur’on ma’lumotini yuklab bo‘lmadi.<br>Internetni tekshirib, qayta urinib ko‘ring.</div>'}
 }
 /* Oflayn yuklash */
@@ -2867,7 +2868,8 @@ async function duoSync(){
   try{
     const q=n=>fetch(SB+"/rest/v1/"+n+"?select=*&order=tartib.asc,id.asc",{headers:H(),cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()});
     const [g,t,d]=await Promise.all([q("duo_guruh"),q("duo_turkum"),q("duo")]);
-    DU={g,t,d};try{localStorage.setItem("duo",JSON.stringify(DU))}catch(e){}
+    const nw={g,t,d};if(JSON.stringify(nw)===JSON.stringify(DU))return true;
+    DU=nw;try{localStorage.setItem("duo",JSON.stringify(DU))}catch(e){}
     if(CUR==="td")duoDraw();
     return true;
   }catch(e){return false}
@@ -2927,7 +2929,7 @@ $("dls").addEventListener("click",async e=>{
     toast(await duoCopy(tx)?"Nusxalandi":"Nusxalab bo‘lmadi");return;
   }
   const h=e.target.closest("[data-dt]");if(!h)return;
-  const a=h.closest(".dcard"),o=a.classList.toggle("open");DOP[a.dataset.did]=o;vib(6);
+  const a=h.closest(".dcard"),o=a.classList.toggle("open");a.classList.add("an");DOP[a.dataset.did]=o;vib(6);
 });
 $("dgr").addEventListener("click",e=>{const b=e.target.closest("[data-g]");if(!b)return;DGS=+b.dataset.g;DTS=0;duoDraw();vib(6)});
 $("dtr").addEventListener("click",e=>{const b=e.target.closest("[data-t]");if(!b)return;DTS=+b.dataset.t;duoDraw();vib(6)});
@@ -3301,7 +3303,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="4.2";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.3";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
