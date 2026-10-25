@@ -961,6 +961,99 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 .lrow .hr-loc:before,.lrow .dch:before{left:-5px}
 .lrow .dch:after,.lrow .hr-loc .dm{right:-5px}
 #nxcard .hq{transform:translateZ(0)}
+
+/* ===== Duo va zikrlar (4.0) ===== */
+#td .dsr{position:relative;margin:2px 0 12px}
+#td .dsr input{width:100%;height:46px;border-radius:16px;border:1px solid var(--b3d);background:rgba(4,30,27,.55);color:#fff;font:500 16px system-ui;padding:0 16px 0 44px;box-shadow:inset 0 2px 6px rgba(0,0,0,.35)}
+#td .dsr input::placeholder{color:#7fa39c}
+#td .dsr svg{position:absolute;left:14px;top:13px;width:20px;height:20px;fill:none;stroke:#7fa39c;stroke-width:2;stroke-linecap:round}
+.dch2{display:flex;gap:8px;overflow-x:auto;margin:0 -16px 12px;padding:2px 16px 6px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.dch2::-webkit-scrollbar{display:none}
+.dch2:empty{display:none}
+.dch2 button{flex:none;padding:9px 15px;border-radius:999px;background:var(--g3d);border:1px solid var(--b3d);color:#cfe9e3;font:600 13px system-ui;box-shadow:0 4px 10px rgba(0,0,0,.3);white-space:nowrap}
+.dch2 button em{font-style:normal;opacity:.6;margin-left:5px;font-weight:500}
+.dch2 button.on{background:linear-gradient(135deg,#12a79c,#154a92);color:#fff;border-color:rgba(240,201,105,.5)}
+.dch2.sm button{padding:7px 13px;font-size:12.5px;background:rgba(4,30,27,.55);box-shadow:none}
+.dch2.sm button.on{background:rgba(240,201,105,.16);color:#f6dc92;border-color:rgba(240,201,105,.55)}
+.dcard{position:relative;overflow:hidden;border:1px solid var(--b3d);border-radius:22px;background:var(--g3d);box-shadow:var(--s3d);margin:0 0 12px}
+.dcard:before{content:"";position:absolute;top:0;right:0;width:72px;height:53px;background:var(--o-moon) no-repeat top right/72px;pointer-events:none}
+.dcard>*{position:relative}
+.dcard .dhd{display:flex;align-items:center;gap:13px;padding:16px;width:100%;text-align:left;color:inherit;background:none;border:0;font:inherit}
+.dcard .dic{flex:none;width:44px;height:50px;background:var(--ogee) center/contain no-repeat;display:grid;place-items:center;color:#f0c969}
+.dcard .dic svg{width:22px;height:22px;margin-top:4px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.dcard .dhd>span:nth-child(2){min-width:0;flex:1}
+.dcard .dhd b{display:block;font:600 19px/1.22 var(--fd);color:#fff;padding-right:40px}
+.dcard .dtag{display:inline-block;margin-top:5px;padding:3px 10px;border-radius:999px;border:1px solid rgba(240,201,105,.45);color:#f0c969;font:600 11px system-ui;letter-spacing:.04em}
+.dcard .dcv{position:absolute;right:16px;bottom:16px;width:9px;height:9px;border:solid #e8d9a8;border-width:0 2px 2px 0;transform:rotate(45deg);transition:transform .25s}
+.dcard.open .dcv{transform:rotate(-135deg);bottom:12px}
+.dbody{display:none;padding:0 16px 14px}
+.dcard.open .dbody{display:block;animation:dopen .28s ease both}
+@keyframes dopen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.dsep{display:flex;align-items:center;gap:10px;margin:2px 0 6px;color:#f0c969}
+.dsep:before,.dsep:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(240,201,105,.6))}
+.dsep:after{background:linear-gradient(270deg,transparent,rgba(240,201,105,.6))}
+.dsep s{width:10px;height:10px;background:linear-gradient(135deg,#7ff3dc,#d9ab4a);transform:rotate(45deg)}
+.dar{direction:rtl;text-align:center;font:400 30px/2.15 "QPC Hafs","Noto Naskh Arabic",serif;color:#fff3cf;text-shadow:0 2px 10px rgba(240,201,105,.25);white-space:pre-line}
+.dlb{font:700 10.5px system-ui;letter-spacing:.14em;margin:14px 0 4px}
+.dlb.g{color:#f0c969}.dlb.t{color:#7ff3dc}
+.drd{font:italic 500 17px/1.6 var(--fd);color:#f6dc92;white-space:pre-line}
+.dtr{font:400 16px/1.65 system-ui;color:#e6f1ee;white-space:pre-line}
+.dft{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;padding-top:12px;border-top:1px solid rgba(90,205,185,.25)}
+.dft small{color:#8aa8a2;font-size:12px;min-width:0}
+.dft span{display:flex;gap:8px;flex:none}
+.dft button{height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--b3d);background:rgba(4,30,27,.6);color:#cfe9e3;font:600 12.5px system-ui;box-shadow:inset 0 1px 0 rgba(255,255,255,.1)}
+.dft button:active{transform:scale(.96)}
+.demp{text-align:center;color:#9bbdb6;font:500 15px/1.5 system-ui;padding:36px 20px;border:1px dashed var(--b3d);border-radius:20px}
+.qa[data-go=td]{--qi:none;grid-column:1/-1;display:grid;grid-template-columns:auto 1fr auto;grid-template-areas:"i b a" "i s a";align-items:center;column-gap:16px;min-height:0;padding:16px 20px}
+.qa[data-go=td] .qi{grid-area:i;margin:0}
+.qa[data-go=td] b{grid-area:b;margin:0;align-self:end;font-size:19px}
+.qa[data-go=td]>span:last-child{grid-area:s;align-self:start}
+.qa[data-go=td]:after{content:"الدعاء"!important;grid-area:a;position:static!important;border:0!important;transform:none!important;width:auto!important;height:auto!important;font:400 30px/1 "QPC Hafs","Noto Naskh Arabic",serif;color:var(--gold);direction:rtl;padding-left:6px}
+/* admin: duo, turkum, taqvim */
+#abody .abt{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:46px;border-radius:14px;border:1px solid var(--b3d);background:linear-gradient(135deg,#12a79c,#154a92);color:#fff;font:700 15px system-ui;margin-bottom:12px}
+#abody .abt.sm{width:auto;height:38px;padding:0 14px;font-size:13px;margin:0}
+#abody .abt.gh{background:rgba(4,30,27,.55);color:#cfe9e3}
+#abody .abt.dn{background:rgba(120,30,30,.35);border-color:rgba(255,120,120,.4);color:#ffb4b4}
+#abody .abt svg,#abody .aib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#abody .air{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
+#abody .air:first-child{border-top:0}
+#abody .air.off .aim{opacity:.5}
+#abody .aim{flex:1;min-width:0}
+#abody .aim b{display:block;font:600 15px/1.25 system-ui;color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#abody .aim small{display:block;margin-top:2px;font-size:12px;color:var(--mut);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#abody .aia{display:flex;align-items:center;gap:5px;flex:none}
+#abody .aib{width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);display:grid;place-items:center;padding:0}
+#abody .aib:disabled{opacity:.3}
+#abody .aib.dn{color:#ff9d9d}
+#abody .tg{position:relative;flex:none;width:44px;height:26px;border-radius:999px;background:rgba(255,255,255,.14);border:1px solid var(--line);padding:0;transition:background .2s}
+#abody .tg:after{content:"";position:absolute;top:2px;left:2px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)}
+#abody .tg.on{background:#12a79c}.tg.on:after{transform:translateX(18px)}
+#abody .abg{display:inline-block;font:700 10px system-ui;letter-spacing:.06em;padding:2px 7px;border-radius:999px;margin-right:5px;border:1px solid var(--line);color:var(--mut);vertical-align:1px}
+#abody .abg.m{color:#f0c969;border-color:rgba(240,201,105,.5)}.abg.o{color:#7ff3dc;border-color:rgba(127,243,220,.45)}
+#abody .afl{display:block;font:600 12.5px system-ui;color:var(--mut);margin:12px 0 5px}
+#abody .afl em{font-style:normal;font-weight:500;opacity:.7}
+#abody .ain,#abody .asel,#abody .ata{width:100%;border-radius:12px;border:1px solid var(--line);background:rgba(4,30,27,.45);color:var(--ink);font:500 16px system-ui;padding:11px 12px}
+#abody .ata{min-height:92px;resize:vertical;line-height:1.5}
+#abody .ata.ar{direction:rtl;text-align:right;font:400 26px/1.9 "QPC Hafs","Noto Naskh Arabic",serif}
+#abody .ata.rd{font-style:italic}
+#abody .arw{display:flex;gap:10px;align-items:center;justify-content:space-between;margin:14px 0 4px}
+#abody .arw b{font:600 14px system-ui}
+#abody .abk{display:inline-flex;align-items:center;gap:6px;width:auto;white-space:nowrap;margin:0 0 8px;padding:6px 0;border-radius:0;background:none;color:#7ff3dc;font:600 14px system-ui}
+#abody .abk svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#abody .apv{margin-top:6px}
+#abody .agh{display:flex;align-items:center;gap:8px;padding:12px 0 6px}
+#abody .agh b{flex:1;font:700 15px var(--fd);color:#f0c969}
+#abody .agb{margin:0 0 12px;padding-bottom:4px}
+#abody .aed{padding:10px 0}
+#abody .aed .ain{margin-bottom:8px}
+#abody .arow2{display:flex;gap:8px}
+#abody .arow2>*{flex:1}
+#abody .ach{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+#abody .ach button{padding:6px 11px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);font:600 12px system-ui}
+#abody .ach button.on{background:rgba(18,167,156,.3);border-color:#12a79c}
+#abody .asr{border:1px dashed var(--line);border-radius:14px;padding:10px 12px;margin-top:8px}
+#abody .adb{width:38px;height:38px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(240,201,105,.14);border:1px solid rgba(240,201,105,.5);color:#f6dc92;font:700 15px var(--fd)}
+.tqsrc a:not([href]){pointer-events:none}.tqsrc a:not([href]) svg{display:none}
 </style>
 </head>
 <body data-scr="t0">
@@ -989,6 +1082,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <button class="qa" data-go="t2"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12.00" cy="4.00" r="1.7"/><circle cx="17.66" cy="6.34" r="1.7"/><circle cx="20.00" cy="12.00" r="1.7"/><circle cx="17.66" cy="17.66" r="1.7"/><circle cx="12.00" cy="20.00" r="1.7"/><circle cx="6.34" cy="17.66" r="1.7"/><circle cx="4.00" cy="12.00" r="1.7"/><circle cx="6.34" cy="6.34" r="1.7"/></svg></span><b>Tasbeh</b><span id="qa-t">Elektron zikr</span></button>
     <button class="qa" data-go="t5"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14V9"/><path d="M12 11c0-3 2-5 5.5-5 0 3-2 5-5.5 5z"/><path d="M12 12.5c0-2.2-1.6-3.7-4.2-3.7 0 2.2 1.6 3.7 4.2 3.7z"/><path d="M4 15c0 3 3.6 5.5 8 5.5s8-2.5 8-5.5z"/></svg></span><b>Tazkiya</b><span>Zakot, ushr, fitr, fidya</span></button>
     <button class="qa" data-go="t4"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><b>Islomiy taqvim</b><span id="qa-c">Hijriy sanalar</span></button>
+    <button class="qa" data-go="td"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.5c0 4.2 3.6 7.5 9 7.5s9-3.3 9-7.5"/><path d="M3 12.5l4 .8M21 12.5l-4 .8"/><path d="M12 2.8l1.1 2.4 2.6.3-1.9 1.8.5 2.6L12 8.6 9.7 9.9l.5-2.6-1.9-1.8 2.6-.3z"/></svg></span><b>Duo va zikrlar</b><span>Kundalik duolar</span></button>
     <button class="qa" id="qa-sh" type="button"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="17.5" cy="18" r="2.4"/><path d="M8.6 10.8l6.8-3.6M8.6 13.2l6.8 3.6"/></svg></span><b>Ulashish</b><span>Do‘stlarga yuboring</span></button>
   </div>
   <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><div id="hks"></div></div>
@@ -1044,6 +1138,12 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <div class="cal"><div class="ch"><button class="cn" id="chp" aria-label="Oldingi hijriy oy">‹</button><span class="cm" id="chm"></span><span class="cy" id="chy"></span><button class="cn" id="chn" aria-label="Keyingi hijriy oy">›</button></div><div class="cg hk" id="chg"></div><div class="tqleg" aria-hidden="true"><span><u data-k="royza"></u>Ro‘za</span><span><u data-k="ibodat"></u>Ibodat</span><span><u data-k="voqea"></u>Voqea</span><span><u data-k="hayit"></u>Hayit</span></div></div>
   <div id="hmon"></div>
   <div id="hday"></div>
+</section>
+<section class="tab" id="td">
+  <div class="dsr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="dq" type="search" placeholder="Duo qidirish" autocomplete="off" aria-label="Duo qidirish"></div>
+  <div class="dch2" id="dgr"></div>
+  <div class="dch2 sm" id="dtr"></div>
+  <div id="dls"></div>
 </section>
 <section class="tab" id="t5">
  <div id="kh">
@@ -1502,8 +1602,8 @@ function hLen(f){let n=1;const m=hj(f).m;while(n<31&&hj(addD(f,n)).m===m)n++;ret
 let sel=day0(new Date()),cust=false,pkHist=false;
 /* Islomiy taqvim: voqealar va nafl ibodatlar (hijriy-taqvim.json) */
 const TQK={voqea:"Voqea",royza:"Ro‘za",ibodat:"Ibodat",hayit:"Hayit"},TQO=["royza","ibodat","hayit","voqea"];
-let TQ=null,TQP=null,TQERR=false;const TQX={};
-function tqLoad(){return TQP||(TQP=fetch("hijriy-taqvim.json?v="+APPV).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(j=>{if(!j||!Array.isArray(j.e)||!Array.isArray(j.a))throw new Error("format");TQ=j;TQERR=false;return j}).catch(e=>{TQP=null;TQERR=true;throw e}))}
+let TQ=null,TQP=null,TQERR=false,TQ0=null,TO=get("tqo",[]);const TQX={};
+function tqLoad(){return TQP||(TQP=fetch("hijriy-taqvim.json?v="+APPV).then(r=>{if(!r.ok)throw new Error("HTTP "+r.status);return r.json()}).then(j=>{if(!j||!Array.isArray(j.e)||!Array.isArray(j.a))throw new Error("format");TQ0=j;TQ=tqApply(j);TQERR=false;return TQ}).catch(e=>{TQP=null;TQERR=true;throw e}))}
 const tqAt=(m,d)=>TQ?TQ.e.filter(x=>x.m===m&&x.d===d):[];
 const tqKinds=l=>TQO.filter(k=>l.some(x=>x.k===k));
 const tqSrc=ids=>(ids||[]).map(i=>TQ.src[i]).filter(Boolean);
@@ -1540,7 +1640,7 @@ function tqCard(x,wk){
   if(long)s+='<button class="tqm" type="button" data-tg="1">Davomini o‘qish</button>';
   if(x.n)s+=`<p class="tqnote">${esc(x.n)}</p>`;
   const sr=tqSrc(x.s);
-  if(sr.length)s+='<div class="tqsrc">'+sr.map(o=>`<a href="${esc(o.u)}" target="_blank" rel="noopener"><i>${esc(o.w)}</i><span>${esc(o.t)}</span>${TQX_ICON}</a>`).join("")+"</div>";
+  if(sr.length)s+='<div class="tqsrc">'+sr.map(o=>`<a${o.u?` href="${esc(o.u)}" target="_blank" rel="noopener"`:""}><i>${esc(o.w)}</i><span>${esc(o.t)}</span>${TQX_ICON}</a>`).join("")+"</div>";
   return s+"</article>";
 }
 function tqRender(h){
@@ -1906,7 +2006,7 @@ function readZ(){
 }
 
 /* Bo'limlar va "Dastur haqida" */
-const MAINT=["t0","t1","t6"],SUBT=["t2","t3","t4","t5","t7"],STT={t2:"Tasbeh",t3:"Qibla",t4:"Islomiy taqvim",t5:"Tazkiya",t7:"Qur'on"};
+const MAINT=["t0","t1","t6"],SUBT=["t2","t3","t4","t5","t7","td"],STT={t2:"Tasbeh",t3:"Qibla",t4:"Islomiy taqvim",t5:"Tazkiya",t7:"Qur'on",td:"Duo va zikrlar"};
 let CUR="t0",LASTM="t0";
 function show(t,fromPop){
   if(t===CUR&&!fromPop)return;
@@ -1921,6 +2021,7 @@ function show(t,fromPop){
   if(t==="t4"){sel=day0(new Date());renderCal()}
   if(t==="t3")qStart();else qStop();
   if(t==="t7")qEnter();
+  if(t==="td")duoEnter();
   if(t==="t5"){KT=[];kShowHub();kInfo()}
   if(t==="t0"||t==="t1")tick();
   if(t==="t0")drawH();
@@ -2687,7 +2788,7 @@ async function regStats(t,total){
 }
 function aOpen(k){
   AS=k;const s=ASEC[k];$("att").textContent=s.t;$("aback").style.visibility="visible";
-  $("abody").onclick=null;$("abody").innerHTML=s.html();s.init();$("afoot").classList.add("on");$("amsg").textContent="";$("abody").scrollTop=0;
+  $("abody").onclick=null;$("abody").oninput=null;$("abody").innerHTML=s.html();s.init();$("afoot").classList.toggle("on",!s.ns);$("asav").style.display="";$("amsg").textContent="";$("abody").scrollTop=0;
 }
 async function showAdm(){
   $("adm").classList.add("on");say("");
@@ -2757,6 +2858,412 @@ $("bell").onclick=async()=>{
 
 if("serviceWorker" in navigator)navigator.serviceWorker.register("sw.js");
 showT();sync();bellInit();
+/* ===== Duo va zikrlar: foydalanuvchi qismi ===== */
+let DU=get("duo",{g:[],t:[],d:[]}),DGS=0,DTS=0,DQ="",DOP={};
+const DIC='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.500c0 4.200 3.600 7.500 9 7.500s9-3.300 9-7.500"/><path d="M3 12.500l4 .8M21 12.500l-4 .8"/><path d="M12 2.800l1.100 2.400 2.600.3-1.900 1.800.5 2.600L12 8.600 9.700 9.900l.5-2.600-1.900-1.800 2.600-.3z"/></svg>';
+const dsort=(a,b)=>(a.tartib-b.tartib)||(a.id-b.id);
+async function duoSync(){
+  try{
+    const q=n=>fetch(SB+"/rest/v1/"+n+"?select=*&order=tartib.asc,id.asc",{headers:H(),cache:"no-store"}).then(r=>{if(!r.ok)throw 0;return r.json()});
+    const [g,t,d]=await Promise.all([q("duo_guruh"),q("duo_turkum"),q("duo")]);
+    DU={g,t,d};try{localStorage.setItem("duo",JSON.stringify(DU))}catch(e){}
+    if(CUR==="td")duoDraw();
+    return true;
+  }catch(e){return false}
+}
+function duoVis(){
+  const tm=new Map(DU.t.map(t=>[t.id,t])),gm=new Map(DU.g.map(g=>[g.id,g]));
+  const out=[];
+  DU.d.forEach(d=>{
+    if(!d.faol||!(d.arab||d.oqilishi||d.manosi))return;
+    let t=null,g=null;
+    if(d.turkum_id!=null){t=tm.get(d.turkum_id);if(!t||!t.faol)return;g=gm.get(t.guruh_id);if(g&&!g.faol)return}
+    out.push({d,t,g});
+  });
+  const go=x=>x.g?x.g.tartib:9e6,to=x=>x.t?x.t.tartib:9e6;
+  out.sort((a,b)=>(go(a)-go(b))||((a.g?a.g.id:0)-(b.g?b.g.id:0))||(to(a)-to(b))||((a.t?a.t.id:0)-(b.t?b.t.id:0))||dsort(a.d,b.d));
+  return out;
+}
+function duoCard(d,tag,open,pv){
+  const p=[];
+  if(d.arab)p.push(`<div class="dsep"><s></s></div><div class="dar" dir="rtl" lang="ar">${esc(d.arab)}</div>`);
+  if(d.oqilishi)p.push(`<div class="dlb g">O‘QILISHI</div><div class="drd">${esc(d.oqilishi)}</div>`);
+  if(d.manosi)p.push(`<div class="dlb t">MA’NOSI</div><div class="dtr">${esc(d.manosi)}</div>`);
+  const ft=`<div class="dft"><small>${d.manba?esc(d.manba):""}</small>${pv?"":`<span><button type="button" data-dc="${d.id}">Nusxa</button><button type="button" data-ds="${d.id}">Ulashish</button></span>`}</div>`;
+  return `<article class="dcard${open?" open":""}" data-did="${d.id}"><button class="dhd" type="button" data-dt="1"><span class="dic">${DIC}</span><span><b>${esc(d.sarlavha||"Sarlavha")}</b>${tag?`<span class="dtag">${esc(tag)}</span>`:""}</span><i class="dcv"></i></button><div class="dbody">${p.join("")}${ft}</div></article>`;
+}
+function duoDraw(){
+  const all=duoVis(),q=DQ.trim().toLowerCase();
+  const gs=[...new Map(all.filter(x=>x.g).map(x=>[x.g.id,x.g])).values()];
+  if(DGS&&!gs.some(g=>g.id===DGS)){DGS=0;DTS=0}
+  const gc=id=>all.filter(x=>x.g&&x.g.id===id).length;
+  $("dgr").innerHTML=q?"":(gs.length?`<button type="button" data-g="0" class="${DGS?"":"on"}">Hammasi<em>${all.length}</em></button>`+gs.map(g=>`<button type="button" data-g="${g.id}" class="${DGS===g.id?"on":""}">${esc(g.nom)}<em>${gc(g.id)}</em></button>`).join(""):"");
+  let ts=[];
+  if(DGS&&!q){ts=[...new Map(all.filter(x=>x.t&&x.g.id===DGS).map(x=>[x.t.id,x.t])).values()];
+    if(DTS&&!ts.some(t=>t.id===DTS))DTS=0}
+  $("dtr").className="dch2 sm";
+  $("dtr").innerHTML=ts.length>1?`<button type="button" data-t="0" class="${DTS?"":"on"}">Barchasi</button>`+ts.map(t=>`<button type="button" data-t="${t.id}" class="${DTS===t.id?"on":""}">${esc(t.nom)}</button>`).join(""):"";
+  let L=all;
+  if(q)L=all.filter(x=>[x.d.sarlavha,x.d.arab,x.d.oqilishi,x.d.manosi,x.t&&x.t.nom].some(s=>s&&String(s).toLowerCase().includes(q)));
+  else{if(DGS)L=L.filter(x=>x.g&&x.g.id===DGS);if(DTS)L=L.filter(x=>x.t&&x.t.id===DTS)}
+  if(!L.length){$("dls").innerHTML=`<div class="demp">${all.length?"Hech narsa topilmadi.":"Hozircha duolar qo‘shilmagan. Yaqinda bu yerda duo va zikrlar paydo bo‘ladi."}</div>`;return}
+  const auto=L.length<=2;
+  $("dls").innerHTML=L.map(x=>duoCard(x.d,x.t?x.t.nom:"",auto||DOP[x.d.id])).join("");
+}
+function duoEnter(){duoDraw();duoSync()}
+function duoText(d){return [d.sarlavha,d.arab,d.oqilishi&&("O‘qilishi: "+d.oqilishi),d.manosi&&("Ma’nosi: "+d.manosi),d.manba&&("Manba: "+d.manba)].filter(Boolean).join("\n\n")+"\n\nJannat sari ilovasi"}
+async function duoCopy(t){
+  try{await navigator.clipboard.writeText(t);return true}catch(e){}
+  try{const a=document.createElement("textarea");a.value=t;a.style.cssText="position:fixed;opacity:0";document.body.appendChild(a);a.select();const ok=document.execCommand("copy");a.remove();return ok}catch(e){return false}
+}
+$("dls").addEventListener("click",async e=>{
+  const c=e.target.closest("[data-dc]"),s=e.target.closest("[data-ds]");
+  if(c||s){
+    const id=+(c||s).dataset[c?"dc":"ds"],d=DU.d.find(x=>x.id===id);if(!d)return;
+    const tx=duoText(d);
+    if(s&&navigator.share){try{await navigator.share({text:tx});return}catch(er){if(er&&er.name==="AbortError")return}}
+    toast(await duoCopy(tx)?"Nusxalandi":"Nusxalab bo‘lmadi");return;
+  }
+  const h=e.target.closest("[data-dt]");if(!h)return;
+  const a=h.closest(".dcard"),o=a.classList.toggle("open");DOP[a.dataset.did]=o;vib(6);
+});
+$("dgr").addEventListener("click",e=>{const b=e.target.closest("[data-g]");if(!b)return;DGS=+b.dataset.g;DTS=0;duoDraw();vib(6)});
+$("dtr").addEventListener("click",e=>{const b=e.target.closest("[data-t]");if(!b)return;DTS=+b.dataset.t;duoDraw();vib(6)});
+$("dq").addEventListener("input",e=>{DQ=e.target.value;duoDraw()});
+setTimeout(duoSync,2600);
+
+/* ===== Duo, turkum va hijriy taqvim: admin ===== */
+const ADI={
+ up:'<svg viewBox="0 0 24 24"><path d="M12 19V6M6 12l6-6 6 6"/></svg>',
+ dn:'<svg viewBox="0 0 24 24"><path d="M12 5v13M6 12l6 6 6-6"/></svg>',
+ ed:'<svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg>',
+ tr:'<svg viewBox="0 0 24 24"><path d="M5 7h14M10 7V4h4v3M7 7l1 13h8l1-13"/></svg>',
+ pl:'<svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>',
+ bk:'<svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>',
+ rv:'<svg viewBox="0 0 24 24"><path d="M4 9h11a5 5 0 0 1 0 10H8M4 9l4-4M4 9l4 4"/></svg>'
+};
+Object.assign(AI,{
+ duo:'<path d="M3 12.5c0 4.2 3.6 7.5 9 7.5s9-3.3 9-7.5"/><path d="M3 12.5l4 .8M21 12.5l-4 .8"/><path d="M12 2.8l1.1 2.4 2.6.3-1.9 1.8.5 2.6L12 8.6 9.7 9.9l.5-2.6-1.9-1.8 2.6-.3z"/>',
+ turkum:'<rect x="3.500" y="4" width="7" height="7" rx="1.500"/><rect x="13.500" y="4" width="7" height="7" rx="1.500"/><rect x="3.500" y="14" width="7" height="7" rx="1.500"/><rect x="13.500" y="14" width="7" height="7" rx="1.500"/>',
+ hijri:'<rect x="3.500" y="5" width="17" height="15.500" rx="3"/><path d="M3.500 10h17M8 3v4M16 3v4"/>'
+});
+async function sbw(method,path,body){
+  const t=await tok();if(!t){showAdm();throw new Error("auth")}
+  const r=await fetch(SB+"/rest/v1/"+path,{method,headers:{...H(t),Prefer:"return=representation"},body:body===undefined?undefined:JSON.stringify(body)});
+  if(!r.ok)throw new Error("HTTP "+r.status);
+  return r.status===204?[]:r.json();
+}
+let AT=null;
+function asay(t){
+  $("afoot").classList.add("on");$("asav").style.display="none";say(t);
+  clearTimeout(AT);AT=setTimeout(()=>{if(AS&&ASEC[AS]&&ASEC[AS].ns)$("afoot").classList.remove("on")},3700);
+}
+const aerr=e=>asay(/HTTP 404/.test(String(e&&e.message))?"Jadval topilmadi. duolar.sql ni Supabase’da bir marta ishga tushiring":"Saqlanmadi. Qaytadan urinib ko‘ring");
+const aib=(a,ic,id,cls,dis,lb)=>`<button type="button" class="aib ${cls||""}" data-a2="${a}" data-id="${id===undefined?"":id}" ${dis?"disabled":""} aria-label="${lb||a}">${ADI[ic]}</button>`;
+const atg=(a,id,on)=>`<button type="button" class="tg${on?" on":""}" data-a2="${a}" data-id="${id}" aria-label="Ko‘rsatish" role="switch" aria-checked="${on?"true":"false"}"></button>`;
+async function aReord(table,all,id,dir,vis){
+  const vi=vis.indexOf(id),nj=vi+dir;if(vi<0||nj<0||nj>=vis.length)return;
+  const a=all.findIndex(x=>x.id===id),b=all.findIndex(x=>x.id===vis[nj]);
+  [all[a],all[b]]=[all[b],all[a]];
+  const ch=[];all.forEach((x,i)=>{if(x.tartib!==i+1){x.tartib=i+1;ch.push(x)}});
+  await Promise.all(ch.map(x=>sbw("PATCH",table+"?id=eq."+x.id,{tartib:x.tartib})));
+}
+const tNom=id=>{const t=DU.t.find(x=>x.id===id);return t?t.nom:"Turkumsiz"};
+
+/* --- Duolar --- */
+let ADF="",ADQ="";
+function aduInit(){
+  $("abody").onclick=aduClick;$("abody").oninput=aduInput;
+  ADF="";ADQ="";aduList();duoSync().then(ok=>{if(AS==="duo"&&$("adv1")&&$("adv1").style.display!=="none")aduList()});
+}
+function aduHtml(){return `<div id="adu"><div id="adv1"><button class="abt" type="button" data-a2="new">${ADI.pl} Yangi duo</button><div class="ac"><div id="adfw"></div><input class="ain" id="adq" placeholder="Sarlavha yoki matn bo‘yicha qidirish" style="margin-top:8px" autocomplete="off"></div><div class="ac" id="adl"></div></div><div id="adv2" style="display:none"></div></div>`}
+function aduList(){
+  if(!$("adu"))return;
+  $("adv1").style.display="";$("adv2").style.display="none";
+  const og=DU.g.slice().sort(dsort);
+  $("adfw").innerHTML=`<select class="asel" id="adf"><option value="">Hamma turkumlar (${DU.d.length})</option><option value="0">Turkumsiz (${DU.d.filter(d=>d.turkum_id==null).length})</option>${og.map(g=>`<optgroup label="${esc(g.nom)}">${DU.t.filter(t=>t.guruh_id===g.id).sort(dsort).map(t=>`<option value="${t.id}">${esc(t.nom)} (${DU.d.filter(d=>d.turkum_id===t.id).length})</option>`).join("")}</optgroup>`).join("")}</select>`;
+  $("adf").value=ADF;
+  aduRows();
+}
+function aduRows(){
+  let L=DU.d.slice().sort(dsort);
+  if(ADF==="0")L=L.filter(d=>d.turkum_id==null);else if(ADF)L=L.filter(d=>d.turkum_id===+ADF);
+  const q=ADQ.trim().toLowerCase();
+  if(q)L=L.filter(d=>[d.sarlavha,d.arab,d.oqilishi,d.manosi].some(s=>s&&String(s).toLowerCase().includes(q)));
+  $("adl").innerHTML=L.length?L.map((d,i)=>{
+    const fl=[d.arab?"Arabcha":"",d.oqilishi?"O‘qilishi":"",d.manosi?"Ma’nosi":""].filter(Boolean).join(" · ")||"Matn yo‘q";
+    return `<div class="air${d.faol?"":" off"}"><div class="aim"><b>${esc(d.sarlavha)}</b><small>${esc(tNom(d.turkum_id))} · ${fl}${d.faol?"":" · yashirin"}</small></div><div class="aia">${atg("tog",d.id,d.faol)}<span class="sp" style="flex:1"></span>${aib("up","up",d.id,"",i===0,"Yuqoriga")}${aib("dn","dn",d.id,"",i===L.length-1,"Pastga")}${aib("ed","ed",d.id,"",0,"Tahrirlash")}${aib("del","tr",d.id,"dn",0,"O‘chirish")}</div></div>`}).join(""):`<div class="ah" style="margin:0">${DU.d.length?"Hech narsa topilmadi.":"Hozircha duo yo‘q. “Yangi duo” tugmasini bosing."}</div>`;
+}
+function aduInput(e){
+  if(e.target.id==="adq"){ADQ=e.target.value;aduRows();return}
+  if(e.target.closest&&e.target.closest("#adv2"))aduPv();
+}
+function aduRead(){
+  const v=id=>($(id).value||"").trim(),tv=$("e_t").value;
+  return{sarlavha:v("e_s"),turkum_id:tv?+tv:null,arab:v("e_a"),oqilishi:v("e_r"),manosi:v("e_m"),manba:v("e_b"),faol:$("e_f").classList.contains("on")};
+}
+function aduPv(){
+  const o=aduRead();$("e_pv").innerHTML=duoCard({id:0,...o},o.turkum_id?tNom(o.turkum_id):"",true,true);
+}
+function aduEdit(id){
+  const d=id?DU.d.find(x=>x.id===id):{sarlavha:"",arab:"",oqilishi:"",manosi:"",manba:"",turkum_id:ADF&&ADF!=="0"?+ADF:null,faol:true};
+  if(!d)return;
+  $("adv1").style.display="none";const v=$("adv2");v.style.display="";v.dataset.id=id||"";
+  const og=DU.g.slice().sort(dsort);
+  v.innerHTML=`<button class="abk" type="button" data-a2="back">${ADI.bk} Ro‘yxatga qaytish</button>
+  <div class="ac"><label class="afl" for="e_s">Sarlavha <em>(majburiy)</em></label><input class="ain" id="e_s" value="${esc(d.sarlavha||"")}" placeholder="Masalan: Ertalabki duo">
+  <label class="afl" for="e_t">Turkum</label><select class="asel" id="e_t"><option value="">Turkumsiz</option>${og.map(g=>`<optgroup label="${esc(g.nom)}">${DU.t.filter(t=>t.guruh_id===g.id).sort(dsort).map(t=>`<option value="${t.id}"${t.id===d.turkum_id?" selected":""}>${esc(t.nom)}</option>`).join("")}</optgroup>`).join("")}</select>
+  <label class="afl" for="e_a">Arabcha matn <em>(ixtiyoriy)</em></label><textarea class="ata ar" id="e_a" dir="rtl" lang="ar" rows="3">${esc(d.arab||"")}</textarea>
+  <label class="afl" for="e_r">O‘qilishi, lotincha <em>(ixtiyoriy)</em></label><textarea class="ata rd" id="e_r" rows="3">${esc(d.oqilishi||"")}</textarea>
+  <label class="afl" for="e_m">Ma’nosi, tarjima <em>(ixtiyoriy)</em></label><textarea class="ata" id="e_m" rows="3">${esc(d.manosi||"")}</textarea>
+  <label class="afl" for="e_b">Manba <em>(ixtiyoriy)</em></label><input class="ain" id="e_b" value="${esc(d.manba||"")}" placeholder="Masalan: Buxoriy, Muslim">
+  <div class="arw"><b>Foydalanuvchilarga ko‘rsatish</b><button type="button" class="tg${d.faol?" on":""}" id="e_f" data-a2="ef" role="switch" aria-label="Ko‘rsatish"></button></div>
+  <div class="ah">Bo‘sh qoldirilgan maydon foydalanuvchida ko‘rinmaydi. Kamida bittasi (arabcha, o‘qilishi yoki ma’nosi) to‘ldirilishi kerak.</div></div>
+  <div class="ag">Foydalanuvchida shunday ko‘rinadi</div><div class="apv" id="e_pv"></div>
+  <button class="abt" type="button" data-a2="save">Saqlash</button>${id?`<button class="abt dn" type="button" data-a2="del2" data-id="${id}">${ADI.tr} Butunlay o‘chirish</button>`:""}`;
+  aduPv();$("abody").scrollTop=0;
+}
+async function aduClick(e){
+  const b=e.target.closest("[data-a2]");if(!b||b.disabled)return;
+  const a=b.dataset.a2,id=+b.dataset.id||0;
+  try{
+    if(a==="new"){aduEdit(0);return}
+    if(a==="back"){aduList();return}
+    if(a==="ef"){b.classList.toggle("on");b.setAttribute("aria-checked",b.classList.contains("on"));aduPv();return}
+    if(a==="ed"){aduEdit(id);return}
+    if(a==="tog"){const d=DU.d.find(x=>x.id===id);if(!d)return;const n=!d.faol;await sbw("PATCH","duo?id=eq."+id,{faol:n});d.faol=n;aduRows();asay(n?"Foydalanuvchilarga ko‘rsatiladi ✓":"Yashirildi ✓");duoSync();return}
+    if(a==="up"||a==="dn"){
+      let L=DU.d.slice().sort(dsort);const all=L;
+      if(ADF==="0")L=L.filter(d=>d.turkum_id==null);else if(ADF)L=L.filter(d=>d.turkum_id===+ADF);
+      const q=ADQ.trim().toLowerCase();if(q)L=L.filter(d=>[d.sarlavha,d.arab,d.oqilishi,d.manosi].some(s=>s&&String(s).toLowerCase().includes(q)));
+      await aReord("duo",all,id,a==="up"?-1:1,L.map(x=>x.id));DU.d=all;aduRows();duoSync();return}
+    if(a==="del"||a==="del2"){
+      const d=DU.d.find(x=>x.id===id);if(!d)return;
+      if(!confirm("“"+d.sarlavha+"” butunlay o‘chiriladi va qaytarib bo‘lmaydi. Davom etasizmi?"))return;
+      await sbw("DELETE","duo?id=eq."+id);DU.d=DU.d.filter(x=>x.id!==id);aduList();asay("O‘chirildi ✓");duoSync();return}
+    if(a==="save"){
+      const o=aduRead(),id0=+$("adv2").dataset.id||0;
+      if(!o.sarlavha){asay("Sarlavhani yozing");return}
+      if(!o.arab&&!o.oqilishi&&!o.manosi){asay("Arabcha, o‘qilishi yoki ma’nosidan kamida bittasini yozing");return}
+      const body={...o,arab:o.arab||null,oqilishi:o.oqilishi||null,manosi:o.manosi||null,manba:o.manba||null,yangilangan:new Date().toISOString()};
+      b.disabled=true;
+      try{
+        if(id0){await sbw("PATCH","duo?id=eq."+id0,body)}
+        else{body.tartib=Math.max(0,...DU.d.map(x=>x.tartib))+1;await sbw("POST","duo",body)}
+      }finally{b.disabled=false}
+      await duoSync();aduList();asay("Saqlandi ✓");return}
+  }catch(er){if(!er||er.message!=="auth")aerr(er)}
+}
+
+/* --- Turkumlar --- */
+let ATE=null;
+function atkInit(){$("abody").onclick=atkClick;$("abody").oninput=null;ATE=null;atkDraw();duoSync().then(()=>{if(AS==="turkum"&&!ATE)atkDraw()})}
+function atkEditor(k,o){
+  const g=DU.g.slice().sort(dsort);
+  return `<div class="aed" data-k="${k}" data-id="${o.id||""}"><input class="ain" id="at_n" value="${esc(o.nom||"")}" placeholder="${k[1]==="g"?"Guruh nomi":"Turkum nomi"}" maxlength="60">${k[1]==="t"?`<select class="asel" id="at_g" style="margin-bottom:8px">${g.map(x=>`<option value="${x.id}"${x.id===o.guruh_id?" selected":""}>${esc(x.nom)}</option>`).join("")}</select>`:""}<div class="arow2"><button class="abt sm" type="button" data-a2="asave">Saqlash</button><button class="abt sm gh" type="button" data-a2="acancel">Bekor qilish</button></div></div>`;
+}
+function atkDraw(){
+  if(!$("atk"))return;
+  const G=DU.g.slice().sort(dsort),gids=G.map(g=>g.id);
+  let h=`<button class="abt" type="button" data-a2="ng">${ADI.pl} Yangi guruh</button><div class="ah" style="margin:-4px 2px 12px">Turkumlar guruhlarga bo‘lingan. Foydalanuvchi faqat ichida faol duo bor turkumlarni ko‘radi, bo‘sh turkumlar ko‘rinmaydi.</div>`;
+  if(ATE&&ATE.k==="ng")h+=`<div class="ac">${atkEditor("ng",{})}</div>`;
+  G.forEach((g,gi)=>{
+    const ts=DU.t.filter(t=>t.guruh_id===g.id).sort(dsort),tids=ts.map(t=>t.id);
+    h+=`<div class="ac agb">`;
+    if(ATE&&ATE.k==="eg"&&ATE.id===g.id)h+=atkEditor("eg",g);
+    else h+=`<div class="agh"><b>${esc(g.nom)}</b><small class="ah" style="margin:0">${ts.length} ta turkum</small></div><div class="aia" style="padding-bottom:6px">${atg("gtog",g.id,g.faol)}<span class="sp" style="flex:1"></span>${aib("gup","up",g.id,"",gi===0,"Yuqoriga")}${aib("gdn","dn",g.id,"",gi===G.length-1,"Pastga")}${aib("ged","ed",g.id,"",0,"Nomini o‘zgartirish")}${aib("gdel","tr",g.id,"dn",0,"O‘chirish")}</div>`;
+    ts.forEach((t,ti)=>{
+      const n=DU.d.filter(d=>d.turkum_id===t.id).length;
+      if(ATE&&ATE.k==="et"&&ATE.id===t.id)h+=`<div class="air">${atkEditor("et",t)}</div>`;
+      else h+=`<div class="air${t.faol?"":" off"}"><div class="aim"><b>${esc(t.nom)}</b><small>${n} ta duo${t.faol?"":" · yashirin"}</small></div><div class="aia">${atg("ttog",t.id,t.faol)}<span class="sp" style="flex:1"></span>${aib("tup","up",t.id,"",ti===0,"Yuqoriga")}${aib("tdn","dn",t.id,"",ti===ts.length-1,"Pastga")}${aib("ted","ed",t.id,"",0,"Tahrirlash")}${aib("tdel","tr",t.id,"dn",0,"O‘chirish")}</div></div>`;
+    });
+    if(ATE&&ATE.k==="nt"&&ATE.gid===g.id)h+=`<div class="air">${atkEditor("nt",{guruh_id:g.id})}</div>`;
+    else h+=`<div class="air"><button class="abt sm gh" type="button" data-a2="nt" data-id="${g.id}">${ADI.pl} Turkum qo‘shish</button></div>`;
+    h+=`</div>`;
+  });
+  if(!G.length)h+=`<div class="ah">Hozircha guruh yo‘q. Supabase’da duolar.sql ni ishga tushiring yoki yangi guruh qo‘shing.</div>`;
+  $("atk").innerHTML=h;
+}
+async function atkClick(e){
+  const b=e.target.closest("[data-a2]");if(!b||b.disabled)return;
+  const a=b.dataset.a2,id=+b.dataset.id||0;
+  try{
+    if(a==="ng"){ATE={k:"ng"};atkDraw();return}
+    if(a==="nt"){ATE={k:"nt",gid:id};atkDraw();return}
+    if(a==="ged"){ATE={k:"eg",id};atkDraw();return}
+    if(a==="ted"){ATE={k:"et",id};atkDraw();return}
+    if(a==="acancel"){ATE=null;atkDraw();return}
+    if(a==="asave"){
+      const w=b.closest(".aed"),k=w.dataset.k,nom=($("at_n").value||"").trim();
+      if(!nom){asay("Nomini yozing");return}
+      b.disabled=true;
+      try{
+        if(k==="ng"){await sbw("POST","duo_guruh",{nom,tartib:Math.max(0,...DU.g.map(x=>x.tartib))+1})}
+        else if(k==="eg"){await sbw("PATCH","duo_guruh?id=eq."+w.dataset.id,{nom})}
+        else if(k==="nt"){await sbw("POST","duo_turkum",{nom,guruh_id:ATE.gid,tartib:Math.max(0,...DU.t.map(x=>x.tartib))+1})}
+        else if(k==="et"){await sbw("PATCH","duo_turkum?id=eq."+w.dataset.id,{nom,guruh_id:+$("at_g").value})}
+      }finally{b.disabled=false}
+      ATE=null;await duoSync();atkDraw();asay("Saqlandi ✓");return}
+    if(a==="gtog"||a==="ttog"){
+      const arr=a==="gtog"?DU.g:DU.t,o=arr.find(x=>x.id===id);if(!o)return;const n=!o.faol;
+      await sbw("PATCH",(a==="gtog"?"duo_guruh":"duo_turkum")+"?id=eq."+id,{faol:n});o.faol=n;atkDraw();asay(n?"Ko‘rsatiladi ✓":"Yashirildi ✓");duoSync();return}
+    if(a==="gup"||a==="gdn"){const all=DU.g.slice().sort(dsort);await aReord("duo_guruh",all,id,a==="gup"?-1:1,all.map(x=>x.id));DU.g=all;atkDraw();duoSync();return}
+    if(a==="tup"||a==="tdn"){
+      const t=DU.t.find(x=>x.id===id);if(!t)return;
+      const all=DU.t.slice().sort(dsort),vis=all.filter(x=>x.guruh_id===t.guruh_id).map(x=>x.id);
+      await aReord("duo_turkum",all,id,a==="tup"?-1:1,vis);DU.t=all;atkDraw();duoSync();return}
+    if(a==="gdel"){
+      const g=DU.g.find(x=>x.id===id);if(!g)return;
+      const ts=DU.t.filter(t=>t.guruh_id===id),n=DU.d.filter(d=>ts.some(t=>t.id===d.turkum_id)).length;
+      if(!confirm("“"+g.nom+"” guruhi va ichidagi "+ts.length+" ta turkum o‘chiriladi."+(n?" Ulardagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
+      await sbw("DELETE","duo_guruh?id=eq."+id);await duoSync();atkDraw();asay("O‘chirildi ✓");return}
+    if(a==="tdel"){
+      const t=DU.t.find(x=>x.id===id);if(!t)return;
+      const n=DU.d.filter(d=>d.turkum_id===id).length;
+      if(!confirm("“"+t.nom+"” turkumi o‘chiriladi."+(n?" Ichidagi "+n+" ta duo o‘chmaydi, “Turkumsiz” bo‘lib qoladi.":"")+" Davom etasizmi?"))return;
+      await sbw("DELETE","duo_turkum?id=eq."+id);await duoSync();atkDraw();asay("O‘chirildi ✓");return}
+  }catch(er){if(!er||er.message!=="auth")aerr(er)}
+}
+
+/* --- Hijriy taqvim: o‘zgarishlar --- */
+const tqKey=e=>e.m+"-"+e.d+"-"+e.t;
+function tqApply(j){
+  const ov=new Map(),own=[];
+  (TO||[]).forEach(o=>{if(o.asos)ov.set(o.asos,o);else own.push(o)});
+  const src=Object.assign({},j.src),e=[];
+  const conv=o=>{const s=[];(o.manbalar||[]).forEach((m,i)=>{if(!(m.w||m.t||m.u))return;const id="o"+o.id+"_"+i;src[id]={w:m.w||m.t||"",t:m.t||m.w||"",u:m.u||""};s.push(id)});
+    const x={m:o.m,d:o.d,k:o.k,t:o.t,b:o.b||"",s,r:o.r?1:0};if(o.kech)x.kech=1;if(o.p)x.p=o.p;return x};
+  j.e.forEach(x=>{const o=ov.get(tqKey(x));if(!o){e.push(x);return}if(!o.faol)return;const c=conv(o),y=Object.assign({},x,c);if(!c.kech)delete y.kech;e.push(y)});
+  own.forEach(o=>{if(o.faol)e.push(conv(o))});
+  return Object.assign({},j,{e,src});
+}
+function tqRefresh(){if(TQ0){TQ=tqApply(TQ0);if(CUR==="t4")renderCal()}}
+async function tqoSync(){
+  try{const r=await fetch(SB+"/rest/v1/taqvim_ozgarish?select=*",{headers:H(),cache:"no-store"});if(!r.ok)throw 0;
+    TO=await r.json();try{localStorage.setItem("tqo",JSON.stringify(TO))}catch(e){}tqRefresh();return true}catch(e){return false}
+}
+setTimeout(tqoSync,2900);
+let AHM=0,AHS=[],AHK=null;
+const AHSITES=["muslim.uz","islom.uz","fatvo.uz"];
+function ahInit(){
+  $("abody").onclick=ahClick;$("abody").oninput=ahInput;AHM=hj(day0(new Date()),0).m;AHK=null;
+  $("abody").innerHTML='<div class="ah">Yuklanmoqda…</div>';
+  Promise.all([tqLoad().catch(()=>null),tqoSync()]).then(([j,ok])=>{
+    if(AS!=="hijri")return;
+    if(!j){$("abody").innerHTML='<div class="ah">Taqvim ma’lumoti yuklanmadi. Internetni tekshiring.</div>';return}
+    ahDraw();
+  });
+}
+function ahItems(m){
+  const it=[],ov=new Map();(TO||[]).forEach(o=>{if(o.asos)ov.set(o.asos,o)});
+  TQ0.e.forEach(x=>{if(x.m!==m)return;const key=tqKey(x),o=ov.get(key);it.push({base:x,key,o,own:false,cur:o?{m:o.m,d:o.d,k:o.k,t:o.t,b:o.b,kech:o.kech,r:o.r,p:o.p,mn:o.manbalar||[]}:{m:x.m,d:x.d,k:x.k,t:x.t,b:x.b,kech:!!x.kech,r:!!x.r,p:x.p||"",mn:(x.s||[]).map(i=>TQ0.src[i]).filter(Boolean).map(s=>({w:s.w,t:s.t,u:s.u}))},faol:o?o.faol:true})});
+  (TO||[]).forEach(o=>{if(!o.asos&&o.m===m)it.push({own:true,o,cur:{m:o.m,d:o.d,k:o.k,t:o.t,b:o.b,kech:o.kech,r:o.r,p:o.p,mn:o.manbalar||[]},faol:o.faol})});
+  return it.sort((a,b)=>a.cur.d-b.cur.d);
+}
+function ahDraw(){
+  AHK=null;
+  const it=ahItems(AHM);
+  $("abody").innerHTML=`<div id="ah1"><select class="asel" id="ahm" style="margin-bottom:10px">${HM.map((n,i)=>`<option value="${i+1}"${i+1===AHM?" selected":""}>${i+1}. ${esc(n)}</option>`).join("")}</select><button class="abt" type="button" data-a2="hnew">${ADI.pl} Yangi yozuv qo‘shish</button><div class="ac">${it.length?it.map(x=>{
+    const k=x.base?x.base:null,ch=x.base&&x.o;
+    return `<div class="air${x.faol?"":" off"}"><span class="adb">${x.cur.d}</span><div class="aim"><b>${esc(x.cur.t)}</b><small><span class="abg ${x.own?"o":"m"}">${x.own?"MENIKI":"ASOSIY"}</span>${ch?'<span class="abg o">O‘ZGARTIRILGAN</span>':""}${esc(TQK[x.cur.k]||"")}${x.cur.kech?" · shomdan keyin":""}${x.faol?"":" · yashirin"}</small></div><div class="aia">${atg("htog",x.own?"o"+x.o.id:x.key,x.faol)}<span class="sp" style="flex:1"></span>${aib("hed","ed",x.own?"o"+x.o.id:x.key,"",0,"Tahrirlash")}${x.own?aib("hdel","tr","o"+x.o.id,"dn",0,"O‘chirish"):(ch?aib("hrev","rv",x.key,"",0,"Asliga qaytarish"):"")}</div></div>`}).join(""):'<div class="ah" style="margin:0">Bu oyda kunlik yozuv yo‘q. Yangisini qo‘shishingiz mumkin.</div>'}</div><div class="ah">Bu yerda faqat aniq kunga bog‘langan yozuvlar. “Asosiy” – ilova bilan kelgan, “Meniki” – sizning yozuvlaringiz. Asosiy yozuvni tahrirlasangiz asli saqlanib qoladi va “asliga qaytarish” mumkin.</div></div><div id="ah2" style="display:none"></div>`;
+  $("ahm").onchange=ev=>{AHM=+ev.target.value;ahDraw()};
+}
+function ahFind(ref){
+  if(ref&&ref[0]==="o"&&/^o\d+$/.test(ref)){const o=(TO||[]).find(x=>x.id===+ref.slice(1));return o?{own:true,o,cur:{m:o.m,d:o.d,k:o.k,t:o.t,b:o.b,kech:o.kech,r:o.r,p:o.p,mn:o.manbalar||[]},faol:o.faol}:null}
+  return ahItems(AHM).find(x=>!x.own&&x.key===ref)||null;
+}
+function ahEdit(ref){
+  let x=ref?ahFind(ref):null;
+  if(ref&&!x)return;
+  const c=x?x.cur:{m:AHM,d:1,k:"royza",t:"",b:"",kech:false,r:false,p:"",mn:[]};
+  AHK={ref:ref||"",own:x?x.own:true,base:x&&!x.own?x:null,faol:x?x.faol:true,kech:!!c.kech,r:!!c.r};
+  AHS=(c.mn||[]).map(m=>({w:m.w||"",t:m.t||"",u:m.u||""}));
+  if(!AHS.length)AHS=[{w:"",t:"",u:""}];
+  $("ah1").style.display="none";const v=$("ah2");v.style.display="";
+  v.innerHTML=`<button class="abk" type="button" data-a2="hback">${ADI.bk} Ro‘yxatga qaytish</button><div class="ac">
+  <div class="ah" style="margin:0 0 4px">${esc(HM[c.m-1])}${AHK.own?"":", "+c.d+"-kun"}</div>
+  ${AHK.own?`<label class="afl" for="h_d">Kun (1–30)</label><input class="ain" id="h_d" type="number" inputmode="numeric" min="1" max="30" value="${c.d}">`:""}
+  <label class="afl" for="h_k">Turi</label><select class="asel" id="h_k">${Object.entries(TQK).map(([k,n])=>`<option value="${k}"${k===c.k?" selected":""}>${n}</option>`).join("")}</select>
+  <label class="afl" for="h_t">Sarlavha</label><input class="ain" id="h_t" value="${esc(c.t)}" maxlength="120">
+  <label class="afl" for="h_b">Matn</label><textarea class="ata" id="h_b" rows="6">${esc(c.b)}</textarea>
+  <div class="arw"><b>Shomdan keyin boshlanadi</b><button type="button" class="tg${AHK.kech?" on":""}" data-a2="hkech" role="switch" aria-label="Shomdan keyin"></button></div>
+  <div class="arw"><b>Ilova ichida eslatma</b><button type="button" class="tg${AHK.r?" on":""}" data-a2="hr" role="switch" aria-label="Eslatma"></button></div>
+  <div id="h_pw" style="display:${AHK.r?"":"none"}"><label class="afl" for="h_p">Eslatma matni <em>(qisqa)</em></label><input class="ain" id="h_p" value="${esc(c.p||"")}" maxlength="160"></div>
+  <div class="arw"><b>Foydalanuvchilarga ko‘rsatish</b><button type="button" class="tg${AHK.faol?" on":""}" data-a2="hf" role="switch" aria-label="Ko‘rsatish"></button></div></div>
+  <div class="ag">Manbalar</div><div id="h_src"></div>
+  <button class="abt gh" type="button" data-a2="hsadd">${ADI.pl} Manba qo‘shish</button>
+  <button class="abt" type="button" data-a2="hsave">Saqlash</button>`;
+  ahSrc();$("abody").scrollTop=0;
+}
+function ahSrc(){
+  $("h_src").innerHTML=AHS.map((s,i)=>`<div class="asr" data-i="${i}"><div class="ach">${AHSITES.map(w=>`<button type="button" data-a2="hsw" data-i="${i}" data-w="${w}" class="${s.w===w?"on":""}">${w}</button>`).join("")}</div>
+   <label class="afl">Sayt yoki kitob nomi</label><input class="ain" data-sf="w" value="${esc(s.w)}" placeholder="Masalan: muslim.uz" maxlength="80">
+   <label class="afl">Maqola nomi <em>(ixtiyoriy)</em></label><input class="ain" data-sf="t" value="${esc(s.t)}" maxlength="200">
+   <label class="afl">Havola <em>(ixtiyoriy)</em></label><input class="ain" data-sf="u" value="${esc(s.u)}" placeholder="https://" inputmode="url" maxlength="400">
+   ${AHS.length>1?`<button class="abt sm dn" type="button" data-a2="hsdel" data-i="${i}" style="margin-top:10px">${ADI.tr} Olib tashlash</button>`:""}</div>`).join("");
+}
+function ahInput(e){
+  const f=e.target.dataset&&e.target.dataset.sf;if(!f)return;
+  const w=e.target.closest(".asr");if(!w)return;AHS[+w.dataset.i][f]=e.target.value;
+  if(f==="w")w.querySelectorAll("[data-w]").forEach(b=>b.classList.toggle("on",b.dataset.w===e.target.value));
+}
+function ahRow(){
+  const k=AHK,v=id=>($(id).value||"").trim();
+  const mn=AHS.map(s=>({w:s.w.trim(),t:s.t.trim(),u:s.u.trim()})).filter(s=>s.w||s.t||s.u);
+  const b=k.base,m=b?b.cur.m:AHM,d=k.own?+v("h_d"):(b?b.cur.d:1);
+  return{m,d,k:$("h_k").value,t:v("h_t"),b:v("h_b"),manbalar:mn,kech:k.kech,r:k.r,p:k.r?(v("h_p")||null):null,faol:k.faol,yangilangan:new Date().toISOString()};
+}
+async function ahClick(e){
+  const b=e.target.closest("[data-a2]");if(!b||b.disabled)return;
+  const a=b.dataset.a2,ref=b.dataset.id||"";
+  try{
+    if(a==="hnew"){ahEdit("");return}
+    if(a==="hback"){ahDraw();return}
+    if(a==="hed"){ahEdit(ref);return}
+    if(a==="hkech"||a==="hr"||a==="hf"){
+      const key=a==="hkech"?"kech":a==="hr"?"r":"faol";AHK[key]=!AHK[key];b.classList.toggle("on",AHK[key]);b.setAttribute("aria-checked",AHK[key]);
+      if(a==="hr")$("h_pw").style.display=AHK.r?"":"none";return}
+    if(a==="hsadd"){AHS.push({w:"",t:"",u:""});ahSrc();return}
+    if(a==="hsdel"){AHS.splice(+b.dataset.i,1);ahSrc();return}
+    if(a==="hsw"){const s=AHS[+b.dataset.i];s.w=b.dataset.w;ahSrc();return}
+    if(a==="htog"){
+      const x=ahFind(ref);if(!x)return;const n=!x.faol;
+      if(x.own)await sbw("PATCH","taqvim_ozgarish?id=eq."+x.o.id,{faol:n,yangilangan:new Date().toISOString()});
+      else if(x.o)await sbw("PATCH","taqvim_ozgarish?id=eq."+x.o.id,{faol:n,yangilangan:new Date().toISOString()});
+      else await sbw("POST","taqvim_ozgarish",{asos:x.key,m:x.cur.m,d:x.cur.d,k:x.cur.k,t:x.cur.t,b:x.cur.b,manbalar:x.cur.mn,kech:!!x.cur.kech,r:!!x.cur.r,p:x.cur.p||null,faol:n});
+      await tqoSync();ahDraw();asay(n?"Ko‘rsatiladi ✓":"Yashirildi ✓");return}
+    if(a==="hdel"){
+      const x=ahFind(ref);if(!x)return;
+      if(!confirm("“"+x.cur.t+"” yozuvi butunlay o‘chiriladi. Davom etasizmi?"))return;
+      await sbw("DELETE","taqvim_ozgarish?id=eq."+x.o.id);await tqoSync();ahDraw();asay("O‘chirildi ✓");return}
+    if(a==="hrev"){
+      const x=ahFind(ref);if(!x||!x.o)return;
+      if(!confirm("“"+x.base.t+"” asl holiga qaytariladi, o‘zgartirishlaringiz o‘chadi. Davom etasizmi?"))return;
+      await sbw("DELETE","taqvim_ozgarish?id=eq."+x.o.id);await tqoSync();ahDraw();asay("Asli qaytarildi ✓");return}
+    if(a==="hsave"){
+      const o=ahRow();
+      if(!o.t){asay("Sarlavhani yozing");return}
+      if(!o.b){asay("Matnni yozing");return}
+      if(!(o.d>=1&&o.d<=30)){asay("Kun 1 dan 30 gacha bo‘lsin");return}
+      if(!o.manbalar.length){asay("Kamida bitta manba kiriting");return}
+      if(o.manbalar.some(s=>s.u&&!/^https?:\/\//i.test(s.u))){asay("Havola https:// bilan boshlansin");return}
+      b.disabled=true;
+      try{
+        const k=AHK;
+        if(k.ref&&k.own)await sbw("PATCH","taqvim_ozgarish?id=eq."+k.ref.slice(1),o);
+        else if(k.ref&&k.base&&k.base.o)await sbw("PATCH","taqvim_ozgarish?id=eq."+k.base.o.id,o);
+        else if(k.ref&&k.base)await sbw("POST","taqvim_ozgarish",{...o,asos:k.base.key});
+        else await sbw("POST","taqvim_ozgarish",o);
+      }finally{b.disabled=false}
+      await tqoSync();ahDraw();asay("Saqlandi ✓");return}
+  }catch(er){if(!er||er.message!=="auth")aerr(er)}
+}
+Object.assign(ASEC,{
+ duo:{t:"Duo va zikrlar",d:"Duolarni qo‘shish, tartiblash, yoqish va o‘chirish",ns:1,html:aduHtml,init:aduInit,save:()=>{}},
+ turkum:{t:"Duo turkumlari",d:"Guruhlar va turkumlarni boshqarish",ns:1,html:()=>'<div id="atk"></div>',init:atkInit,save:()=>{}},
+ hijri:{t:"Hijriy taqvim yozuvlari",d:"Kunlik yozuvlarni qo‘shish, o‘zgartirish, yoqish va o‘chirish",ns:1,html:()=>"",init:ahInit,save:()=>{}}
+});
+
 /* Taqvim eslatmasi: ilova ichida bir martalik */
 const tqSeen=()=>{try{const o=JSON.parse(localStorage.getItem("tqs")||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
 const tqIso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -2792,7 +3299,7 @@ $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.
 $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
-const APPV="3.35";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="4.0";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
