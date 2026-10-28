@@ -378,6 +378,50 @@ button:disabled{opacity:.45}
 #t4 .ch{display:none}
 #t4 .th .alt{position:relative;display:flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid rgba(255,255,255,.18);font:600 14.5px system-ui;color:#f3d489}
 #t4 .th .alt svg{flex:none;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+/* Taqvim v5.1 */
+#t4 .kbar{display:flex;gap:10px;align-items:stretch;margin:0 0 12px}
+#t4 .ktabs{flex:1;min-width:0;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+#t4 .ktabs button{position:relative;padding:12px 4px;border:0;background:none;color:var(--mut);font:700 15px system-ui}
+#t4 .ktabs button.on{color:var(--ink)}
+#t4 .ktabs button.on::after{content:"";position:absolute;left:20%;right:20%;bottom:-1px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--hg1),var(--gold))}
+#t4 .ctd{flex:none;align-self:center;padding:7px 13px;border:1px solid var(--gold);border-radius:99px;background:none;color:var(--gold);font:700 12.5px system-ui}
+#t4 .cjump{align-self:center;width:44px;height:40px;border-radius:14px}
+#t4 .kc{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:10px 8px 6px;margin-bottom:10px}
+#t4 .kh{display:flex;align-items:center;justify-content:space-between;padding:0 2px 2px}
+#t4 .kt{display:flex;align-items:baseline;justify-content:center;gap:9px;min-width:0;flex:1}
+#t4 .kt b{font:700 20px/1.2 var(--fd);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#t4 .kt i{font-style:normal;font-weight:700;font-size:12px;letter-spacing:.1em;color:var(--gold)}
+#t4 .kc .cg.hk{gap:0}
+#t4 .kc .cg.hk b{height:36px;width:36px;line-height:31px;font-size:15px}
+#t4 .kc .cg.hk b.p{color:var(--mut)}
+#t4 .kc .cg.hk b.s{color:#fff}
+#t4 .kc .cg.hk b s{bottom:3px}
+#t4 .kc .cg i{height:22px;line-height:22px}
+#t4 .mlab{display:flex;justify-content:space-between;margin:6px 4px 8px;color:var(--mut);font:700 11px system-ui;letter-spacing:.12em;text-transform:uppercase}
+#t4 .mrow{display:flex;gap:12px;align-items:center;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin:0 0 8px;color:var(--ink)}
+#t4 .mrow:active{background:var(--line)}
+#t4 .mrow.pa{opacity:.55}
+#t4 .mrow.on{border-color:var(--gold)}
+#t4 .mrow .d{flex:none;width:56px;text-align:center;font:800 17px/1.05 var(--fd)}
+#t4 .mrow .d small{display:block;margin-top:3px;font:600 9.5px/1.15 system-ui;color:var(--mut)}
+#t4 .mrow .tx{flex:1;min-width:0}
+#t4 .mrow .tx b{display:block;font:600 14.5px/1.3 system-ui}
+#t4 .mrow .tx span{display:block;margin-top:2px;color:var(--mut);font-size:12.5px}
+#t4 .mrow .kd{flex:none;width:9px;height:9px;border-radius:50%}
+#t4 .kd[data-k=voqea]{background:var(--kv)}#t4 .kd[data-k=royza]{background:var(--kr)}#t4 .kd[data-k=ibodat]{background:var(--ki)}#t4 .kd[data-k=hayit]{background:var(--kh)}
+#t4 .vh{display:block;width:100%;text-align:left;border:0;margin:0 0 14px;padding:16px 18px;border-radius:24px;color:#fff;background:linear-gradient(135deg,var(--hg1),#1a4f8a 90%);box-shadow:0 14px 30px -14px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.1)}
+#t4 .vh small{display:block;font:700 11px system-ui;letter-spacing:.15em;color:#f3d489}
+#t4 .vh .n{display:flex;align-items:baseline;gap:10px;margin:4px 0 2px}
+#t4 .vh .n b{font:700 46px/1 var(--fd)}
+#t4 .vh .n span{font-weight:600;color:#dff}
+#t4 .vh p{margin:0;font-weight:700;font-size:16px}
+#t4 .vh em{display:block;margin-top:2px;font-style:normal;font-size:13px;color:#cfe9e5}
+#t4 .vmo{display:flex;justify-content:space-between;align-items:baseline;margin:12px 4px 8px}
+#t4 .vmo b{font:700 18px var(--fd)}
+#t4 .vmo s{text-decoration:none;margin-left:8px;padding:3px 9px;border-radius:99px;background:rgba(23,168,155,.2);color:var(--ac);font:700 11px system-ui}
+#t4 .vmo i{font-style:normal;color:var(--gold);font-weight:700;font-size:11px;letter-spacing:.1em}
+#t4 #pk_v .tmc{margin-bottom:6px}
+#t4 .vemp{margin:24px 8px;text-align:center;color:var(--mut)}
 @media(max-width:350px){#t4 .thr .mh{font-size:56px}#t4 .thr .thm{font-size:18px}#t4 .two b{font-size:13.5px}#t4 .cg.hk b{width:38px;height:40px;line-height:34px;font-size:14.5px}}
 
 .tqmb{display:flex;align-items:center;gap:14px;width:100%;margin:0 0 6px;padding:14px 16px;border:1px solid rgba(232,194,106,.3);border-radius:20px;background:linear-gradient(135deg,rgba(232,194,106,.1),var(--card));color:var(--ink);text-align:left;font:inherit;cursor:pointer}
@@ -1347,12 +1391,16 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <p class="mut qs" style="margin-top:14px">Aniq natija uchun telefonni tekis ushlang, metall va magnitdan uzoqroq turing. Kerak bo‘lsa telefonni havoda 8 raqami shaklida aylantirib kalibrlang.</p>
 </section>
 <section class="tab" id="t4">
-  <div class="cmrow"><div class="cmod" id="cmod" data-m="h" role="tablist" aria-label="Taqvim turi"><i aria-hidden="true"></i><button type="button" data-m="h" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>Hijriy</button><button type="button" data-m="m" role="tab"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>Milodiy</button></div><button class="cjump" id="cjump" type="button" aria-label="Sanaga o‘tish"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="15.2" cy="15.2" r="2.1"/><path d="M16.8 16.8l1.8 1.8"/></svg></button></div>
-  <div id="csum"></div>
-  <div class="tmc" id="cmc" role="tablist" aria-label="Oylar"></div>
-  <div class="cal"><div class="ch"><button class="cn" id="chp" aria-label="Oldingi oy">‹</button><span class="chx"><span class="cm" id="chm"></span><span class="cy" id="chy"></span></span><button class="cn" id="chn" aria-label="Keyingi oy">›</button></div><div class="rng" id="crng"></div><div class="cg hk" id="chg"></div><div class="tqleg" id="cleg" aria-hidden="true"></div></div>
-  <div id="hmon"></div>
-  <div id="hday"></div>
+  <div class="kbar"><div class="ktabs" id="ktabs" role="tablist" aria-label="Taqvim bo‘limlari"><button type="button" role="tab" data-p="k" class="on" aria-selected="true">Kunlar</button><button type="button" role="tab" data-p="v" aria-selected="false">Muhim sanalar</button></div><button class="ctd" id="ctd" type="button" style="display:none">Bugun</button><button class="cjump" id="cjump" type="button" aria-label="Sanaga o‘tish"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/><circle cx="15.2" cy="15.2" r="2.1"/><path d="M16.8 16.8l1.8 1.8"/></svg></button></div>
+  <div id="pk_k">
+    <div class="kc"><div class="kh"><button class="cn" id="hp" type="button" aria-label="Oldingi hijriy oy">‹</button><span class="kt"><b id="hm"></b><i id="hy"></i></span><button class="cn" id="hn" type="button" aria-label="Keyingi hijriy oy">›</button></div><div class="cg hk" id="chg"></div></div>
+    <div class="kc"><div class="kh"><button class="cn" id="mp" type="button" aria-label="Oldingi milodiy oy">‹</button><span class="kt"><b id="mm"></b><i id="my"></i></span><button class="cn" id="mn" type="button" aria-label="Keyingi milodiy oy">›</button></div><div class="cg hk" id="mgg"></div></div>
+    <div class="tqleg" id="cleg" aria-hidden="true"></div>
+    <div id="hmo"></div>
+    <div id="hday"></div>
+    <div id="hmon"></div>
+  </div>
+  <div id="pk_v" hidden></div>
 </section>
 <section class="tab" id="td">
   <div class="dsr"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg><input id="dq" type="search" placeholder="Duo qidirish" autocomplete="off" aria-label="Duo qidirish"></div>
@@ -1844,7 +1892,7 @@ const tqSrc=ids=>(ids||[]).map(i=>TQ.src[i]).filter(Boolean);
 function drawGrid(el,first,len,mk){
   el._f=first;const tod=day0(new Date()).getTime(),off=(first.getDay()+6)%7;
   let h=WD.map((w,i)=>`<i${i==4?' class="fr"':''}>${w}</i>`).join("")+"<b></b>".repeat(off).replace(/<b><\/b>/g,'<u></u>');
-  for(let n=1;n<=len;n++){const t=addD(first,n-1).getTime();h+=`<b data-n="${n}" class="${t===sel.getTime()?"s":""} ${t===tod?"t":""}">${n}${mk?mk(n):""}</b>`}
+  for(let n=1;n<=len;n++){const t=addD(first,n-1).getTime();h+=`<b data-n="${n}" class="${t===sel.getTime()?"s":""} ${t===tod?"t":""} ${t<tod?"p":""}">${n}${mk?mk(n):""}</b>`}
   el.innerHTML=h;
 }
 const TQI={
@@ -1856,64 +1904,75 @@ const TQI={
 };
 const tqEm=(k,g)=>`<span class="tqe${g?" g":""}" data-k="${k}"><svg viewBox="0 0 24 24" aria-hidden="true">${TQI[k]||TQI.voqea}</svg></span>`;
 const TQX_ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>';
-let cmode=get("cmode","h")==="m"?"m":"h";
+let tqPane="k",tqF="all";
 const tqAtB=(m,d)=>TQ0?TQ0.e.filter(x=>x.m===m&&x.d===d):[];
 const ICO_M='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg>';
 const ICO_S='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.6 1.6M17.1 17.1l1.6 1.6M18.7 5.3l-1.6 1.6M6.9 17.1l-1.6 1.6"/></svg>';
 const gml=t=>GM[t.getMonth()].toLowerCase();
+const kDots=ks=>ks.length?"<s>"+ks.slice(0,3).map(k=>`<u data-k="${k}"></u>`).join("")+"</s>":"";
+const HMS={"Rabiul avval":"Rab. avval","Rabiul oxir":"Rab. oxir","Jumodul avval":"Jum. avval","Jumodul oxir":"Jum. oxir"};
+const hms=m=>HMS[HM[m-1]]||HM[m-1];
+const gM=t=>GM[t.getMonth()];
+const gfmt=(a,b)=>a.getTime()===b.getTime()?`${a.getDate()} ${gM(a)}`:a.getMonth()===b.getMonth()?`${a.getDate()}–${b.getDate()} ${gM(a)}`:`${a.getDate()} ${gM(a)} – ${b.getDate()} ${gM(b)}`;
+/* hijriy oy (first = oyning 1-kuni, len = kunlari) uchun voqealar: ketma-ket kunlardagi bir xil yozuv bitta qatorga */
+function tqGroup(m,first,len){
+  if(!TQ)return[];
+  const mp=new Map();
+  TQ.e.filter(x=>x.m===m).sort((p,q)=>p.d-q.d).forEach(x=>{
+    const key=x.k+"|"+x.t,L=mp.get(key);
+    if(L&&L[L.length-1].d2+1===x.d)L[L.length-1].d2=x.d;
+    else if(L)L.push({x,d1:x.d,d2:x.d});else mp.set(key,[{x,d1:x.d,d2:x.d}]);
+  });
+  const r=[];mp.forEach(L=>L.forEach(g=>{const c1=Math.min(g.d1,len),c2=Math.min(g.d2,len);r.push({x:g.x,d1:g.d1,d2:g.d2,a:addD(first,c1-1),z:addD(first,c2-1)})}));
+  return r.sort((p,q)=>p.a-q.a||p.d1-q.d1);
+}
+function tqRow(g,m,td,selT){
+  const x=g.x,dd=g.d1===g.d2?g.d1:g.d1+"–"+g.d2,past=g.z.getTime()<td;
+  return `<button type="button" class="mrow${past?" pa":""}${selT!==undefined&&selT>=g.a.getTime()&&selT<=g.z.getTime()?" on":""}" data-ts="${g.a.getTime()}"><div class="d">${dd}<small>${esc(hms(m))}</small></div><div class="tx"><b>${esc(x.t)}</b><span>${esc(gfmt(g.a,g.z))} · ${TQK[x.k]||""}${x.kech?" · kecha":""}</span></div><i class="kd" data-k="${x.k}"></i></button>`;
+}
 function renderCal(){
-  const M=cmode==="m",td=day0(new Date()).getTime(),off=day0(sel).getTime()!==td;
-  const sw=$("cmod");sw.dataset.m=cmode;sw.querySelectorAll("button").forEach(b=>{const on=b.dataset.m===cmode;b.classList.toggle("on",on);b.setAttribute("aria-selected",on?"true":"false")});
-  const hS=hj(sel),hB=hj(sel,0),dots=ks=>ks.length?"<s>"+ks.slice(0,3).map(k=>`<u data-k="${k}"></u>`).join("")+"</s>":"";
-  let h,first,len,mk,rng;
-  if(!M){
-    h=hS;first=hStart(sel);len=hLen(first);
-    $("chm").textContent=HM[h.m-1].toUpperCase();$("chy").textContent="Hijriy · "+h.y;
-    mk=TQ?(n=>dots(tqKinds(tqAt(h.m,n)))):null;
-    const le=addD(first,len-1);
-    rng=`<b>${first.getDate()}-${gml(first)}</b><s>→</s><b>${le.getDate()}-${gml(le)}</b>`;
-  }else{
-    h=hB;first=day0(new Date(sel.getFullYear(),sel.getMonth(),1));len=new Date(sel.getFullYear(),sel.getMonth()+1,0).getDate();
-    $("chm").textContent=GM[sel.getMonth()].toUpperCase();$("chy").textContent="Milodiy · "+sel.getFullYear();
-    /* belgilar Hijriy rejimdagi bilan bir xil kunga tushadi (admin tuzatishi bilan); faqat ko‘rsatiladigan hijriy raqam asosiy hisobda */
-    mk=TQ?(n=>{const x=hj(addD(first,n-1));return dots(tqKinds(tqAt(x.m,x.d)))}):null;
-    const a=hj(first,0),z=hj(addD(first,len-1),0);
-    rng=`<b>${a.d}-${esc(HM[a.m-1])}</b><s>→</s><b>${z.d}-${esc(HM[z.m-1])}</b>`;
-  }
-  $("crng").innerHTML=rng;
-  drawGrid($("chg"),first,len,mk);
-  const used=TQO.filter(k=>$("chg").querySelector(`u[data-k="${k}"]`));
+  const td=day0(new Date()).getTime(),off=day0(sel).getTime()!==td;
+  $("ktabs").querySelectorAll("button").forEach(b=>{const on=b.dataset.p===tqPane;b.classList.toggle("on",on);b.setAttribute("aria-selected",on?"true":"false")});
+  $("pk_k").hidden=tqPane!=="k";$("pk_v").hidden=tqPane!=="v";
+  $("ctd").style.display=off&&tqPane==="k"?"":"none";
+  const kick=()=>{if(!TQ&&!TQERR)tqLoad().then(()=>{if($("t4").classList.contains("on"))renderCal()}).catch(()=>{if($("t4").classList.contains("on"))renderCal()})};
+  if(tqPane==="v"){tqVRender();kick();return}
+  const h=hj(sel),first=hStart(sel),len=hLen(first),mf=day0(new Date(sel.getFullYear(),sel.getMonth(),1)),ml=new Date(sel.getFullYear(),sel.getMonth()+1,0).getDate();
+  $("hm").textContent=HM[h.m-1];$("hy").textContent=h.y;
+  $("mm").textContent=GM[sel.getMonth()];$("my").textContent=sel.getFullYear();
+  /* belgilar ikkala setkada bir xil kunga tushadi (admin tuzatishi bilan) */
+  drawGrid($("chg"),first,len,TQ?(n=>kDots(tqKinds(tqAt(h.m,n)))):null);
+  drawGrid($("mgg"),mf,ml,TQ?(n=>{const x=hj(addD(mf,n-1));return kDots(tqKinds(tqAt(x.m,x.d)))}):null);
+  const used=TQO.filter(k=>$("pk_k").querySelector(`.cg u[data-k="${k}"]`));
   $("cleg").innerHTML=used.map(k=>`<span><u data-k="${k}"></u>${TQK[k]}</span>`).join("");$("cleg").style.display=used.length?"":"none";
-  const wd=esc(tqCap(WDF[sel.getDay()])),gl=`${sel.getDate()}-${gml(sel)}, ${sel.getFullYear()}`,hl=`${hB.d}-${esc(HM[hB.m-1])}, ${hB.y}`;
-  const big=M?sel.getDate():hS.d;
-  const l2=M?`${esc(GM[sel.getMonth()])} ${sel.getFullYear()}`:`${esc(HM[hS.m-1])} ${hS.y}`;
-  
-  $("csum").innerHTML=`<div class="th"><div class="thk"><span>${off?"":"Bugun · "}${wd}</span>${off?'<button id="ctd" type="button">Bugun</button>':""}</div><div class="thr"><span class="mh"><b>${big}</b></span><span class="thm">${l2}</span></div><div class="alt">${M?ICO_M+hl+" (hijriy)":ICO_S+gl+" (milodiy)"}</div></div>`;
-  if(off)$("ctd").onclick=()=>{cust=false;sel=day0(new Date());renderCal()};
-  tqChips(M,hS);
-  tqRender(h,M,hS);
-  if(!TQ&&!TQERR)tqLoad().then(()=>{if($("t4").classList.contains("on"))renderCal()}).catch(()=>{if($("t4").classList.contains("on"))tqRender(h,M,hS)});
+  tqRender(h,first,len);
+  kick();
 }
-/* Oylar lentasi: tez o‘tish */
-function tqChips(M,hS){
-  const el=$("cmc");let L=[];
-  if(M){const y=sel.getFullYear();for(let m=0;m<12;m++)L.push({k:m-sel.getMonth(),t:GM[m],on:m===sel.getMonth()})}
-  else{
-    let f=hStart(sel);const fw=[],bw=[];let g=f;
-    for(let i=0;i<7;i++){g=addD(g,hLen(g));const x=hj(g);fw.push({k:i+1,t:HM[x.m-1],y:x.y})}
-    g=f;for(let i=0;i<5;i++){g=hStart(addD(g,-1));const x=hj(g);bw.push({k:-(i+1),t:HM[x.m-1],y:x.y})}
-    L=bw.reverse().concat([{k:0,t:HM[hS.m-1],y:hS.y,on:true}],fw);
-    L.forEach(c=>{if(c.y===hS.y)delete c.y});
+/* Muhim sanalar: bugundan boshlab 13 ta hijriy oy */
+function tqVData(){
+  const tdy=day0(new Date()),td=tdy.getTime(),out=[];let f=hStart(tdy);
+  for(let i=0;i<13;i++){const x=hj(f),len=hLen(f);out.push({m:x.m,y:x.y,cur:i===0,items:tqGroup(x.m,f,len)});f=addD(f,len)}
+  return out;
+}
+function tqVRender(){
+  const E=$("pk_v");
+  if(!TQ){E.innerHTML=TQERR?'<div class="tqemp">Ma’lumot yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.<button id="tqre" type="button">Qayta urinish</button></div>':'<div class="tqsk" aria-label="Yuklanmoqda"></div><div class="tqsk"></div>';return}
+  const td=day0(new Date()).getTime(),D0=tqVData();let nx=null;
+  outer:for(const mo of D0)for(const g of mo.items)if(g.z.getTime()>=td){nx={g,m:mo.m,y:mo.y};break outer}
+  let s="";
+  if(nx){
+    const g=nx.g,left=Math.round((g.a.getTime()-td)/864e5),ong=g.a.getTime()<=td;
+    s+=`<button type="button" class="vh" data-ts="${g.a.getTime()}"><small>KEYINGI MUHIM SANA</small><div class="n">${ong?`<b>Bugun</b>`:`<b>${left}</b><span>${left===1?"kun qoldi":"kun qoldi"}</span>`}</div><p>${esc(g.x.t)}</p><em>${g.d1===g.d2?g.d1:g.d1+"–"+g.d2} ${esc(HM[nx.m-1])} ${nx.y} · ${esc(gfmt(g.a,g.z))} ${g.z.getFullYear()}</em></button>`;
   }
-  el.innerHTML=L.map(c=>`<button type="button" role="tab" data-k="${c.k}" class="${c.on?"on":""}" aria-selected="${c.on?"true":"false"}">${esc(c.t)}${c.y?`<small>${c.y}</small>`:""}</button>`).join("");
-  const a=el.querySelector(".on");if(a)el.scrollLeft=Math.max(0,a.offsetLeft-(el.clientWidth-a.offsetWidth)/2);
-}
-function tqGo(k){
-  if(!k)return;
-  if(cmode==="m"){const y=sel.getFullYear(),m=sel.getMonth()+k,dim=new Date(y,m+1,0).getDate();sel=day0(new Date(y,m,Math.min(sel.getDate(),dim)));renderCal();return}
-  const h=hj(sel);let f=hStart(sel);
-  for(let i=0;i<Math.abs(k);i++)f=k>0?addD(f,hLen(f)):hStart(addD(f,-1));
-  sel=addD(f,Math.min(h.d,hLen(f))-1);renderCal();
+  const fl=[["all","Hammasi"],["hayit","Hayit"],["royza","Ro‘za"],["ibodat","Ibodat"],["voqea","Voqea"]];
+  s+='<div class="tmc" id="vf" role="tablist" aria-label="Turi">'+fl.map(([k,t])=>`<button type="button" role="tab" data-f="${k}" class="${tqF===k?"on":""}" aria-selected="${tqF===k}">${t}</button>`).join("")+"</div>";
+  let n=0;
+  D0.forEach(mo=>{
+    const it=mo.items.filter(g=>tqF==="all"||g.x.k===tqF);if(!it.length)return;n+=it.length;
+    s+=`<div class="vmo"><div><b>${esc(HM[mo.m-1])}</b>${mo.cur?"<s>Shu oy</s>":""}</div><i>${mo.y}</i></div>`+it.map(g=>tqRow(g,mo.m,td)).join("");
+  });
+  if(!n)s+='<p class="vemp">Bu turdagi sana topilmadi.</p>';
+  E.innerHTML=s;
 }
 const tqCap=t=>t.charAt(0).toUpperCase()+t.slice(1);
 function tqCard(x,wk){
@@ -1926,23 +1985,24 @@ function tqCard(x,wk){
   if(sr.length)s+='<div class="tqsrc">'+sr.map(o=>`<a${o.u?` href="${esc(o.u)}" target="_blank" rel="noopener"`:""}><i>${esc(o.w)}</i><span>${esc(o.t)}</span>${TQX_ICON}</a>`).join("")+"</div>";
   return s+"</article>";
 }
-function tqRender(h,base,hl){
-  const dE=$("hday"),mE=$("hmon");if(!dE||!mE)return;
-  if(!TQ){dE.innerHTML=TQERR?'<div class="tqemp">Ma’lumot yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.<button id="tqre" type="button">Qayta urinish</button></div>':'<div class="tqsk" aria-label="Yuklanmoqda"></div><div class="tqsk"></div>';mE.innerHTML="";return}
-  hl=hl||h;
-  const wd=sel.getDay(),mn=HM[h.m-1],es=tqAt(hl.m,hl.d),wk=TQ.w.filter(x=>x.wd===wd),ab=TQ.a.filter(x=>x.m===h.m);
+function tqRender(h,first,len){
+  const dE=$("hday"),mE=$("hmon"),oE=$("hmo");if(!dE||!mE||!oE)return;
+  if(!TQ){dE.innerHTML=TQERR?'<div class="tqemp">Ma’lumot yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.<button id="tqre" type="button">Qayta urinish</button></div>':'<div class="tqsk" aria-label="Yuklanmoqda"></div><div class="tqsk"></div>';mE.innerHTML="";oE.innerHTML="";return}
+  const wd=sel.getDay(),mn=HM[h.m-1],es=tqAt(h.m,h.d),wk=TQ.w.filter(x=>x.wd===wd),ab=TQ.a.filter(x=>x.m===h.m);
+  const td=day0(new Date()).getTime(),G=tqGroup(h.m,first,len);
+  oE.innerHTML=G.length?`<div class="mlab"><span>Shu oyda · ${esc(mn)}</span><span>${G.length} ta</span></div>`+G.map(g=>tqRow(g,h.m,td,sel.getTime())).join(""):"";
   mE.innerHTML=ab.length?`<button class="tqmb" id="tqmo" type="button">${tqEm("kitob",1)}<span class="tx"><b>${esc(mn)} oyi haqida</b><small>Fazilati, voqealari va amallari</small></span><svg class="ch2" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>`:"";
-  const gt=`${sel.getDate()}-${gml(sel)}, ${sel.getFullYear()}`,ht=`${h.d}-${mn}, ${h.y}`;
+  const gt=`${sel.getDate()}-${gml(sel)}, ${sel.getFullYear()}`;
   let s="";
   if(es.length+wk.length){
-    s=`<div class="tqsec"><div><b>${esc(tqCap(WDF[wd]))} · ${base?`${sel.getDate()}-${gml(sel)}`:`${h.d}-${esc(mn)}`}</b><small>${base?esc(ht)+" (hijriy)":esc(gt)}</small></div><span>${es.length+wk.length} ta yozuv</span></div>`;
+    s=`<div class="tqsec"><div><b>${esc(tqCap(WDF[wd]))} · ${h.d}-${esc(mn)}</b><small>${esc(gt)}</small></div><span>${es.length+wk.length} ta yozuv</span></div>`;
     s+=es.map(x=>tqCard(x,false)).join("")+wk.map(x=>tqCard(x,true)).join("");
   }
   s+='<p class="tqft">Hijriy sana hisob bo‘yicha beriladi; hilol ko‘rinishiga qarab 1 kun farq bo‘lishi mumkin.</p>';
   dE.innerHTML=s;
 }
 function tqMonth(){
-  const h=hj(sel,cmode==="m"?0:undefined),ab=TQ?TQ.a.filter(x=>x.m===h.m):[];if(!ab.length)return;
+  const h=hj(sel),ab=TQ?TQ.a.filter(x=>x.m===h.m):[];if(!ab.length)return;
   const ord=[],sup=ids=>(ids||[]).filter(i=>TQ.src[i]).map(i=>{let k=ord.indexOf(i);if(k<0){ord.push(i);k=ord.length-1}return k+1}).sort((a,b)=>a-b).join(",");
   let m=`<div class="tqmh">${tqEm("kitob",1)}<div><b>${esc(HM[h.m-1])}</b><small>${h.y}-hijriy yil</small></div></div>`;
   m+=ab.map(x=>`<p>${x.h?`<strong>${esc(x.h)}</strong>`:""}${esc(x.b)}<sup>${sup(x.s)}</sup>${x.n?`<em>${esc(x.n)}</em>`:""}</p>`).join("");
@@ -1957,17 +2017,24 @@ $("hday").addEventListener("click",e=>{
 });
 $("hmon").addEventListener("click",e=>{if(e.target.closest("#tqmo"))tqMonth()});
 $("tqm").addEventListener("click",e=>{if(e.target===$("tqm")||e.target.closest("#tqmx"))$("tqm").classList.remove("on")});
-$("chg").onclick=e=>{const b=e.target.closest("b[data-n]"),n=b?+b.dataset.n:0;if(n){sel=addD($("chg")._f,n-1);renderCal()}};
+const gclk=id=>{$(id).onclick=e=>{const b=e.target.closest("b[data-n]"),n=b?+b.dataset.n:0;if(n){sel=addD($(id)._f,n-1);renderCal()}}};gclk("chg");gclk("mgg");
 function hMove(k){
   const h=hj(sel),hf=hStart(sel),f=k>0?addD(hf,hLen(hf)):hStart(addD(hf,-1));
   sel=addD(f,Math.min(h.d,hLen(f))-1);renderCal();
 }
 function mMove(k){const y=sel.getFullYear(),m=sel.getMonth()+k,dim=new Date(y,m+1,0).getDate();sel=day0(new Date(y,m,Math.min(sel.getDate(),dim)));renderCal()}
-$("chp").onclick=()=>cmode==="m"?mMove(-1):hMove(-1);$("chn").onclick=()=>cmode==="m"?mMove(1):hMove(1);
-$("cmod").onclick=e=>{const b=e.target.closest("button[data-m]");if(!b||b.dataset.m===cmode)return;cmode=b.dataset.m;try{localStorage.setItem("cmode",JSON.stringify(cmode))}catch(x){}renderCal()};
+$("hp").onclick=()=>hMove(-1);$("hn").onclick=()=>hMove(1);$("mp").onclick=()=>mMove(-1);$("mn").onclick=()=>mMove(1);
 $("cjump").onclick=()=>openPick();
-$("cmc").onclick=e=>{const b=e.target.closest("button[data-k]");if(b)tqGo(+b.dataset.k)};
-(()=>{let x0=null,y0=0;const g=$("chg");g.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});g.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>56&&Math.abs(dx)>Math.abs(dy)*1.6)tqGo(dx<0?1:-1)},{passive:true})})();
+(()=>{const sw=(g,f)=>{let x0=null,y0=0;g.addEventListener("touchstart",e=>{x0=e.touches[0].clientX;y0=e.touches[0].clientY},{passive:true});g.addEventListener("touchend",e=>{if(x0===null)return;const dx=e.changedTouches[0].clientX-x0,dy=e.changedTouches[0].clientY-y0;x0=null;if(Math.abs(dx)>56&&Math.abs(dx)>Math.abs(dy)*1.6)f(dx<0?1:-1)},{passive:true})};sw($("chg"),hMove);sw($("mgg"),mMove)})();
+$("ktabs").onclick=e=>{const b=e.target.closest("button[data-p]");if(!b||b.dataset.p===tqPane)return;tqPane=b.dataset.p;renderCal()};
+$("ctd").onclick=()=>{cust=false;sel=day0(new Date());renderCal()};
+const tqGoTs=e=>{const r=e.target.closest("[data-ts]");if(!r)return false;cust=false;tqPane="k";sel=day0(new Date(+r.dataset.ts));renderCal();try{$("t4").scrollIntoView({block:"start"})}catch(x){}return true};
+$("hmo").addEventListener("click",tqGoTs);
+$("pk_v").addEventListener("click",e=>{
+  if(e.target.closest("#tqre")){TQERR=false;TQP=null;renderCal();return}
+  const f=e.target.closest("button[data-f]");if(f){tqF=f.dataset.f;tqVRender();return}
+  tqGoTs(e);
+});
 /* Ixtiyoriy sana: faqat vaqtincha, asosiy taqvimga ta'sir qilmaydi */
 $("pkm").innerHTML=GM.map((m,i)=>`<option value="${i}">${m}</option>`).join("");
 function pkDate(){
@@ -1999,7 +2066,7 @@ function calReset(){
   if($("t4").classList.contains("on"))renderCal();
 }
 ["pkd","pkm","pky"].forEach(i=>$(i).oninput=pkShow);
-$("pkgo").onclick=()=>{const t=pkDate();if(!(t instanceof Date))return;sel=day0(t);cust=true;closePick();renderCal()};
+$("pkgo").onclick=()=>{const t=pkDate();if(!(t instanceof Date))return;sel=day0(t);cust=true;tqPane="k";closePick();renderCal()};
 $("pkx").onclick=()=>{closePick();if(!cust&&pkHist){pkHist=false;history.back()}};
 $("pk").onclick=e=>{if(e.target.id==="pk")$("pkx").click()};
 addEventListener("popstate",()=>{pkHist=false;if($("pk").classList.contains("on")||cust){cust=false;sel=day0(new Date());closePick();renderCal()}});
@@ -3723,11 +3790,11 @@ async function tqBoot(){
 }
 $("tqrx").onclick=()=>$("tqs").classList.remove("on");
 $("tqs").addEventListener("click",e=>{if(e.target===$("tqs"))$("tqs").classList.remove("on")});
-$("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){cmode="h";sel=o.date;renderCal()}};
+$("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4");if(o){tqPane="k";sel=o.date;renderCal()}};
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="5.0";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="5.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
