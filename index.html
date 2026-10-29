@@ -202,6 +202,18 @@ li.past .chip{color:var(--mut)}
 #prt .pres .kbar2,#prt .pres .kbl{display:none}
 #prt .pf{margin-top:18px;padding:12px 14px;border:1px solid #b8892b;border-radius:10px;background:#fbf6ea;font-size:12px;color:#3d3a2c;break-inside:avoid}
 #prt .pf2{margin-top:8px;color:#8a8470;font-size:11px;text-align:right}
+#prt .pfz .pft td{padding:7px 6px;border-bottom:1px solid #eef2f0;vertical-align:top;text-align:left;font-weight:400;white-space:normal}
+#prt .pfz .pft th{font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:#5b6b66;text-align:left;padding:6px;border-bottom:2px solid #0e6b63}
+#prt .pfz .pft td:nth-child(n+2),#prt .pfz .pft th:nth-child(n+2){text-align:right;white-space:nowrap;padding-left:16px}
+#prt .pfz .pft td b{font-size:13px}
+#prt .pfz .pft small{display:block;color:#5b6b66;font-size:11px;line-height:1.35;margin-top:1px}
+#prt .pfz .pft .pc{font:700 15px var(--fd);color:#b8892b}
+#prt .pfz .pdt{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:7px;vertical-align:middle}
+#prt .pfz .pgr{display:flex;gap:22px;align-items:center;margin:4px 0 10px}#prt .pfz .pgs b{display:block;font:700 30px var(--fd);color:#0e6b63}#prt .pfz .pgs span{color:#5b6b66;font-size:12.5px;line-height:1.5}
+#prt .pfz .pgr svg{width:112px;height:112px;flex:none}
+#prt .pfz .pgr table td{border:0;padding:3px 0;font-size:12.5px}#prt .pfz .pgr table td:first-child{color:#5b6b66;padding-right:14px}
+#prt .pfz .pno{margin-top:8px;font-size:11.5px;color:#5b6b66}#prt .pfz .pno b{color:#12231f}
+
 #upd{display:none;position:fixed;left:12px;right:12px;top:calc(10px + env(safe-area-inset-top));z-index:30;align-items:center;gap:12px;padding:12px 12px 12px 14px;border-radius:18px;background:linear-gradient(135deg,#12615a,#082f2c);color:#fff;box-shadow:0 10px 28px rgba(0,0,0,.35);border:1px solid rgba(240,200,105,.4)}
 #upd.on{display:flex;animation:fi .35s ease}
 #upd svg{width:26px;height:26px;fill:none;stroke:#f0c869;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -383,42 +395,86 @@ button:disabled{opacity:.45}
 .qa:not([data-go=t7]){min-height:112px!important;padding:14px 4px 12px!important;align-items:center!important;text-align:center!important;border-radius:22px!important;display:flex!important;flex-direction:column!important;justify-content:center!important;grid-column:auto!important;gap:0!important}
 .qa:not([data-go=t7]):before,.qa:not([data-go=t7]):after{display:none!important}
 .qa:not([data-go=t7]) .qi{margin:0 0 10px!important;width:46px!important;height:52px!important}
-.qa:not([data-go=t7]) b{font-size:15.5px!important;margin:0!important;text-align:center!important}
+.qa:not([data-go=t7]) b{font-size:15.5px!important;margin:0!important;text-align:center!important;align-self:center!important;justify-self:center!important;width:100%}
+.qa[data-go=td] .qi{align-self:center!important;justify-self:center!important}
 .qa:not([data-go=t7])>span:last-child:not(.qi){display:none!important}
 #qa-sh{grid-column:1/-1!important;min-height:0!important;flex-direction:row!important;gap:12px!important;padding:12px 16px!important;justify-content:center!important}
 #qa-sh .qi{width:30px!important;height:30px!important;margin:0!important}
+#qa-sh b{width:auto!important;flex:1;text-align:left!important;align-self:center!important}
+#qa-sh>span:last-child{white-space:nowrap}
 #qa-sh>span:last-child{display:inline!important;color:rgba(230,236,226,.7)!important;font-size:13px}
-/* Faroiz v5.2 */
-.fz-h{color:var(--mut);font-size:14px;margin:0 2px 12px;line-height:1.45}
-.fz-g{font-size:12px;letter-spacing:.09em;font-weight:700;color:var(--gold);margin:18px 4px 8px;text-transform:uppercase}
-.fz-r{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:9px 10px 9px 14px;margin-bottom:8px;box-shadow:var(--sh)}
-.fz-r.on{border-color:var(--ac)}
+/* Faroiz v5.4 */
+#tf{padding-bottom:6px}
+.fz-top{display:flex;gap:14px;align-items:center;background:linear-gradient(155deg,#0d3934,#061f1c);border:1px solid rgba(215,170,80,.34);border-radius:22px;padding:16px;margin-bottom:14px;box-shadow:0 8px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06)}
+.fz-top .fz-ic{flex:none;width:52px;height:58px;display:grid;place-items:center;color:#f0c969;background:var(--ogee) center/contain no-repeat}
+.fz-top .fz-ic svg{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-top:6px}
+.fz-top b{display:block;font:600 19px var(--fd);color:#fff}
+.fz-top span{display:block;font-size:13px;color:rgba(230,236,226,.78);line-height:1.4;margin-top:2px}
+.fz-tag{display:inline-block!important;margin-top:7px!important;padding:2px 10px;border-radius:999px;border:1px solid rgba(240,201,105,.5);color:#f0c969!important;font-size:11.5px!important;font-weight:700;letter-spacing:.04em}
+.fz-g{font-size:12px;letter-spacing:.09em;font-weight:700;color:var(--gold);margin:16px 4px 8px;text-transform:uppercase}
+.fz-seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--line);border-radius:16px;padding:4px}
+.fz-seg button{border:0;background:none;color:var(--mut);padding:13px 6px;border-radius:12px;font-size:15px;font-weight:700}
+.fz-seg button.on{background:var(--ac);color:#fff;box-shadow:0 4px 10px rgba(0,0,0,.2)}
+.fz-grp{background:var(--card);border:1px solid var(--line);border-radius:20px;margin-bottom:11px;box-shadow:var(--sh);overflow:hidden}
+.fz-gh{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;color:var(--ink);padding:14px 16px;text-align:left;font:inherit}
+.fz-gh b{flex:1;font-size:15.5px;font-weight:700}
+.fz-gh .fz-bd{min-width:24px;height:24px;border-radius:12px;background:var(--gold);color:#241a05;font-size:13px;font-weight:800;display:none;align-items:center;justify-content:center;padding:0 7px}
+.fz-gh .fz-bd.on{display:flex}
+.fz-gh i{font-style:normal;color:var(--mut);font-size:18px;transition:transform .2s}
+.fz-grp.op .fz-gh i{transform:rotate(180deg)}
+.fz-gb{display:none;padding:0 12px 10px}
+.fz-grp.op .fz-gb{display:block}
+.fz-r{display:flex;align-items:center;justify-content:space-between;gap:10px;border-top:1px solid var(--line);padding:9px 2px 9px 6px}
+.fz-r.on .fz-l b{color:var(--ac)}
 .fz-l{min-width:0}.fz-l b{display:block;font-size:15px;font-weight:600;line-height:1.25}.fz-l span{display:block;color:var(--mut);font-size:12.5px;margin-top:1px}
-.fz-s{display:flex;align-items:center;flex:none;background:rgba(14,107,99,.10);border-radius:12px;overflow:hidden}
-.fz-s button{width:42px;height:40px;border:0;background:none;color:var(--ac);font-size:23px;font-weight:700}
-.fz-s button:disabled{opacity:.3}
-.fz-s u{text-decoration:none;min-width:26px;text-align:center;font-weight:700;font-size:17px}
-.fz-go{width:100%;margin-top:18px;padding:16px;border:0;border-radius:16px;background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff;font:700 16px system-ui,sans-serif}
-.fz-rs{width:100%;margin-top:10px;padding:14px;border-radius:16px;border:1.5px solid var(--line);background:var(--card);color:var(--ac);font:700 15px system-ui,sans-serif}
-.fz-tg{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:12px;width:100%;text-align:left;color:var(--ink);font:inherit}
-.fz-tg i{flex:none;width:24px;height:24px;border-radius:7px;border:2px solid var(--line);display:grid;place-items:center;font-style:normal;color:#fff;font-size:15px}
+.fz-s{display:flex;align-items:center;flex:none;background:rgba(14,107,99,.12);border-radius:13px;overflow:hidden}
+.fz-s button{width:44px;height:42px;border:0;background:none;color:var(--ac);font-size:23px;font-weight:700}
+.fz-s button:disabled{opacity:.28}
+.fz-s u{text-decoration:none;min-width:28px;text-align:center;font-weight:800;font-size:17px}
+.fz-tg{display:flex;align-items:flex-start;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:14px 16px;margin-bottom:11px;width:100%;text-align:left;color:var(--ink);font:inherit;box-shadow:var(--sh)}
+.fz-tg i{flex:none;width:24px;height:24px;border-radius:8px;border:2px solid var(--line);display:grid;place-items:center;font-style:normal;color:#fff;font-size:15px;margin-top:1px}
 .fz-tg.on i{background:var(--ac);border-color:var(--ac)}
-.fz-tg span{font-size:13.5px;line-height:1.4}.fz-tg b{display:block;font-size:15px}
-.fz-hero{background:linear-gradient(180deg,var(--card),var(--card));border:1px solid var(--line);border-radius:20px;padding:16px;margin-bottom:12px;box-shadow:var(--sh)}
-.fz-hero p{margin:0;color:var(--mut);font-size:13.5px}
-.fz-bar{display:flex;height:14px;border-radius:9px;overflow:hidden;margin:12px 0 8px;background:var(--line)}
-.fz-bar i{display:block;height:100%}
-.fz-c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px 14px;margin-bottom:9px;box-shadow:var(--sh)}
+.fz-tg span{font-size:13px;line-height:1.45;color:var(--mut)}.fz-tg b{display:block;font-size:15px;color:var(--ink);margin-bottom:2px}
+.fz-in{display:flex;align-items:center;background:var(--card);border:1.5px solid var(--line);border-radius:16px;overflow:hidden}
+.fz-in:focus-within{border-color:var(--ac)}
+.fz-in input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:600 19px system-ui,sans-serif;padding:13px 14px;outline:0}
+.fz-in span{padding:0 14px;color:var(--mut);font-size:14px}
+.fz-hint{color:var(--mut);font-size:12.5px;line-height:1.45;margin:6px 4px 0}
+.fz-warn{display:flex;gap:10px;background:rgba(224,178,79,.1);border:1px solid rgba(224,178,79,.45);border-radius:16px;padding:11px 13px;margin-top:14px;font-size:13px;line-height:1.45;color:var(--ink)}
+.fz-warn i{font-style:normal;flex:none}
+.fz-tb{width:100%;border-collapse:collapse;font-size:13px}
+.fz-tb td{padding:8px 4px;border-top:1px solid var(--line);vertical-align:top;line-height:1.4}
+.fz-tb td:first-child{font:700 15px Georgia,serif;color:var(--gold);white-space:nowrap;padding-right:12px}
+.fz-bar2{position:sticky;bottom:12px;z-index:5;display:flex;align-items:center;gap:12px;margin-top:16px;padding:10px 10px 10px 16px;border-radius:20px;background:rgba(6,28,26,.94);border:1px solid rgba(215,170,80,.4);box-shadow:0 10px 26px rgba(0,0,0,.45);backdrop-filter:blur(8px)}
+.fz-bar2 div{flex:1;min-width:0;color:#fff}.fz-bar2 b{font-size:15px}.fz-bar2 span{display:block;font-size:12px;color:rgba(230,236,226,.7);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.fz-go{flex:none;border:0;border-radius:14px;padding:14px 22px;background:linear-gradient(135deg,#17a89b,#e0b24f);color:#06201d;font:800 16px system-ui,sans-serif}
+.fz-go:disabled{opacity:.45}
+.fz-rh{display:flex;align-items:center;gap:16px;background:linear-gradient(155deg,#0d3934,#061f1c);border:1px solid rgba(215,170,80,.34);border-radius:22px;padding:16px;margin-bottom:12px;box-shadow:0 8px 20px rgba(0,0,0,.28)}
+.fz-dn{flex:none;position:relative;width:118px;height:118px}.fz-dn svg{width:100%;height:100%}
+.fz-dn b{position:absolute;inset:0;display:grid;place-items:center;font:700 22px Georgia,serif;color:#fff}
+.fz-rh h3{margin:0;font:600 18px var(--fd);color:#fff}.fz-rh p{margin:4px 0 0;font-size:13px;color:rgba(230,236,226,.78);line-height:1.4}
+.fz-c{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:13px 14px 12px;margin-bottom:9px;box-shadow:var(--sh)}
 .fz-ch{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
-.fz-ch b{font-size:16px;display:flex;align-items:center;gap:8px}.fz-ch b i{width:10px;height:10px;border-radius:50%;flex:none}
-.fz-ch strong{font:700 23px Georgia,serif;color:var(--gold);white-space:nowrap}
-.fz-m{display:flex;flex-wrap:wrap;gap:6px;margin-top:5px;font-size:12.5px;color:var(--mut)}
-.fz-m em{font-style:normal;background:rgba(14,107,99,.12);color:var(--ac);border-radius:999px;padding:2px 9px;font-weight:700}
+.fz-ch b{font-size:16px;display:flex;align-items:center;gap:8px}.fz-ch b i{width:11px;height:11px;border-radius:50%;flex:none}
+.fz-ch strong{font:700 24px Georgia,serif;color:var(--gold);white-space:nowrap}
+.fz-pb{height:5px;border-radius:3px;background:var(--line);margin:8px 0 7px;overflow:hidden}.fz-pb i{display:block;height:100%;border-radius:3px}
+.fz-m{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12.5px;color:var(--mut)}
+.fz-m em{font-style:normal;background:rgba(14,107,99,.14);color:var(--ac);border-radius:999px;padding:2px 10px;font-weight:700}
+.fz-m .am{margin-left:auto;color:var(--ink);font-weight:700;font-size:13.5px}
 .fz-w{color:var(--mut);font-size:13px;margin-top:6px;line-height:1.4}
 .fz-n{border-radius:14px;padding:11px 13px;margin-top:10px;font-size:13.5px;line-height:1.45;background:rgba(224,178,79,.12);border:1px solid var(--gold)}
 .fz-n.i{background:var(--card);border-color:var(--line);color:var(--mut)}
-.fz-x{font-size:13px;color:var(--mut);margin:14px 2px 6px;font-weight:600}
-.fz-d{margin:18px 2px 0;color:var(--mut);font-size:12.5px;line-height:1.5}
+.fz-x{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:none;color:var(--mut);font:700 13px system-ui,sans-serif;letter-spacing:.04em;margin:14px 2px 6px;padding:6px 2px}
+.fz-x i{font-style:normal;font-size:17px;transition:transform .2s}.fz-x.op i{transform:rotate(180deg)}
+.fz-xb{display:none}.fz-xb.op{display:block}
+.fz-c2{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 13px;margin-bottom:7px;font-size:13px;line-height:1.4;color:var(--mut)}.fz-c2 b{display:block;color:var(--ink);font-size:14px;margin-bottom:2px}
+.fz-act{display:grid;gap:10px;margin-top:16px}
+.fz-act button{border:0;border-radius:16px;padding:15px;font:700 15.5px system-ui,sans-serif}
+.fz-act .p{background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff;box-shadow:0 6px 16px rgba(14,107,99,.28);display:flex;align-items:center;justify-content:center;gap:10px}
+.fz-act .p svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.fz-act .s{background:var(--card);border:1.5px solid var(--line);color:var(--ac)}
+.fz-act .g{background:none;color:var(--mut);font-weight:600;font-size:14px;text-decoration:underline}
+.fz-d{margin:16px 2px 0;color:var(--mut);font-size:12.5px;line-height:1.5}
 /* Taqvim v5.1 */
 #t4 .kbar{display:flex;gap:10px;align-items:stretch;margin:0 0 12px}
 #t4 .ktabs{flex:1;min-width:0;display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
@@ -1451,12 +1507,21 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <div id="dls"></div>
 </section>
 <section class="tab" id="tf">
-  <p class="fz-h">Meros ulushlarini foizda hisoblang (hanafiy mazhab). Avval marhum kimligini, so‘ng merosxo‘rlarni belgilang.</p>
-  <div class="fz-g" style="margin-top:4px">Marhum</div>
-  <div class="seg" id="fzj"><button type="button" data-j="e" class="on">Erkak</button><button type="button" data-j="a">Ayol</button></div>
-  <div id="fzf"></div>
-  <button class="fz-go" id="fzgo" type="button">Hisoblash</button>
-  <div id="fzres"></div>
+  <div id="fzform">
+    <div class="fz-top"><span class="fz-ic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4v16M5 20h14"/><path d="M12 6.5L5 9l-2.5 6a3.5 3.5 0 0 0 7 0L7 9"/><path d="M12 6.5L19 9l2.5 6a3.5 3.5 0 0 1-7 0L17 9"/></svg></span><div><b>Meros taqsimoti</b><span>Merosxo‘rlarni belgilang, ilova har birining ulushini foizda hisoblaydi.</span><span class="fz-tag">Hanafiy mazhab</span></div></div>
+    <div class="fz-g" style="margin-top:2px">Marhum</div>
+    <div class="fz-seg" id="fzj"><button type="button" data-j="e" class="on">Erkak</button><button type="button" data-j="a">Ayol</button></div>
+    <div class="fz-g">Merosxo‘rlar</div>
+    <div id="fzf"></div>
+    <div class="fz-g">Qo‘shimcha</div>
+    <div class="fz-in"><input id="fza" type="text" inputmode="numeric" placeholder="Qoldirilgan mol (ixtiyoriy)" autocomplete="off" aria-label="Qoldirilgan mol miqdori"><span>so‘m</span></div>
+    <p class="fz-hint">Kiritsangiz, har bir merosxo‘rning ulushi so‘mda ham ko‘rsatiladi. Qarz, dafn xarajati va vasiyat (1/3 gacha) ajratilgandan keyingi qoldiqni kiriting.</p>
+    <div class="fz-warn"><i>⚠</i><span>Qotil va dini boshqa (musulmon bo‘lmagan) kishi meros olmaydi — ularni belgilamang.</span></div>
+    <div class="fz-g">Ma’lumot</div>
+    <div class="fz-grp" id="fzinfo"><button type="button" class="fz-gh" data-gt="info"><b>Ulushlar jadvali</b><i>⌄</i></button><div class="fz-gb"><table class="fz-tb"><tr><td>1/2</td><td>Er (farzand yo‘q); yolg‘iz qiz; o‘g‘ilning yolg‘iz qizi; yolg‘iz opa-singil</td></tr><tr><td>1/4</td><td>Er (farzand bor); xotin(lar) (farzand yo‘q)</td></tr><tr><td>1/8</td><td>Xotin(lar) (farzand bor)</td></tr><tr><td>2/3</td><td>Ikki va undan ko‘p qiz; o‘g‘ilning qizlari; ota-onabir yoki otabir opa-singillar</td></tr><tr><td>1/3</td><td>Ona (farzand ham, ikki va undan ko‘p aka-uka/opa-singil ham yo‘q); onabir ikki va undan ko‘p aka-uka/opa-singil</td></tr><tr><td>1/6</td><td>Ota va bobo (o‘g‘il bo‘lsa); ona (farzand yoki ko‘p aka-uka bo‘lsa); buvi; onabir yolg‘iz aka/opa; o‘g‘ilning qizi (bir qiz bilan)</td></tr></table></div></div>
+    <div class="fz-bar2"><div><b id="fzn">0 merosxo‘r</b><span id="fzns">Hech kim tanlanmadi</span></div><button class="fz-go" id="fzgo" type="button" disabled>Hisoblash</button></div>
+  </div>
+  <div id="fzres" style="display:none"></div>
 </section>
 <section class="tab" id="t5">
  <div id="kh">
@@ -2604,56 +2669,113 @@ function fs(f){return f[1]===1?String(f[0]):f[0]+"/"+f[1]}
 return{hisobla:hisobla,fs:fs,F:F,NOM:NOM};
 })();
 
-/* Faroiz ekrani */
+/* Faroiz ekrani (v5.4) */
 const FZG=[
- ["Er-xotin",[["er","Er","Marhuma ayol bo‘lsa",1,"a"],["xotin","Xotin","Bir nechta bo‘lishi mumkin",4,"e"]]],
- ["Ota-ona",[["ota","Ota","",1],["ona","Ona","",1]]],
- ["Bobo va buvilar",[["bobo","Bobo","Otaning otasi",1],["onaOna","Buvi","Onaning onasi",1],["otaOna","Buvi","Otaning onasi",1]]],
- ["Farzandlar",[["ogil","O‘g‘il","",30],["qiz","Qiz","",30],["nevOgil","O‘g‘ilning o‘g‘li","Nevara",30],["nevQiz","O‘g‘ilning qizi","Nevara",30]]],
- ["Aka-uka va opa-singillar",[["akaT","Aka-uka","Ota-onasi bir",30],["opaT","Opa-singil","Ota-onasi bir",30],["akaO","Aka-uka","Otasi bir (onasi boshqa)",30],["opaO","Opa-singil","Otasi bir (onasi boshqa)",30],["akaE","Aka-uka","Onasi bir (otasi boshqa)",30],["opaE","Opa-singil","Onasi bir (otasi boshqa)",30]]]
+ ["er","Er-xotin",[["er","Er","Marhuma ayol bo‘lsa",1,"a"],["xotin","Xotin","Bir nechta bo‘lishi mumkin",4,"e"]]],
+ ["ota","Ota-ona",[["ota","Ota","",1],["ona","Ona","",1]]],
+ ["far","Farzandlar",[["ogil","O‘g‘il","",30],["qiz","Qiz","",30],["nevOgil","O‘g‘ilning o‘g‘li","Nevara (o‘g‘il vafot etgan bo‘lsa)",30],["nevQiz","O‘g‘ilning qizi","Nevara (o‘g‘il vafot etgan bo‘lsa)",30]]],
+ ["bob","Bobo va buvilar",[["bobo","Bobo","Otaning otasi",1],["onaOna","Buvi","Onaning onasi",1],["otaOna","Buvi","Otaning onasi",1]]],
+ ["aka","Aka-uka va opa-singillar",[["akaT","Aka-uka","Ota-onasi bir",30],["opaT","Opa-singil","Ota-onasi bir",30],["akaO","Aka-uka","Otasi bir, onasi boshqa",30],["opaO","Opa-singil","Otasi bir, onasi boshqa",30],["akaE","Aka-uka","Onasi bir, otasi boshqa",30],["opaE","Opa-singil","Onasi bir, otasi boshqa",30]]]
 ];
 const FZC=["#17a89b","#e0b24f","#6ea4ee","#e8667a","#8f7ae0","#49c58f","#e3894f","#5fb6d6","#c46bb0","#9aa84a","#d6a0a0","#7aa0a0"];
-const FZT={farz:"Farz","farz+asaba":"Farz + asaba",asaba:"Asaba","farz (awl)":"Farz (awl bilan kamaytirilgan)","farz + radd":"Farz + radd",arham:"Zaviy-arham"};
-const FZS={j:"e",n:{},b:false};
+const FZT={farz:"Farz","farz+asaba":"Farz + asaba",asaba:"Asaba","farz (awl)":"Farz (awl)","farz + radd":"Farz + radd",arham:"Zaviy-arham"};
+const FZS={j:"e",n:{},b:false,op:{er:1,ota:1,far:1},view:"f",pushed:false,res:null};
 const fzP=p=>{const r=Math.round(p*100)/100;return String(r).replace(".",",")+"%"};
-function fzEnter(){FZS.j="e";FZS.n={};FZS.b=false;fzDraw();$("fzres").innerHTML="";document.querySelectorAll("#fzj button").forEach(b=>b.classList.toggle("on",b.dataset.j===FZS.j))}
+const fzAmt=()=>{const v=parseFloat(String($("fza").value||"").replace(/\s/g,"").replace(",","."));return isNaN(v)||v<=0?0:v};
+const fzSo=x=>fm(x)+" so‘m";
+function fzEnter(){FZS.j="e";FZS.n={};FZS.b=false;FZS.op={er:1,ota:1,far:1};FZS.res=null;FZS.pushed=false;$("fza").value="";fzView("f");fzDraw();
+  document.querySelectorAll("#fzj button").forEach(b=>b.classList.toggle("on",b.dataset.j===FZS.j));$("fzinfo").classList.remove("op")}
+function fzView(v){FZS.view=v;$("fzform").style.display=v==="f"?"block":"none";$("fzres").style.display=v==="r"?"block":"none"}
 function fzDraw(){
-  let h="";
-  FZG.forEach(([g,rows])=>{
+  let h="",tot=0,nm=[];
+  FZG.forEach(([g,t,rows])=>{
     const vis=rows.filter(r=>!r[4]||r[4]===FZS.j);
-    h+=`<div class="fz-g">${g}</div>`;
-    vis.forEach(([k,t,hint,mx])=>{const v=FZS.n[k]||0;
-      h+=`<div class="fz-r${v?" on":""}"><div class="fz-l"><b>${t}</b>${hint?`<span>${hint}</span>`:""}</div><div class="fz-s"><button type="button" data-k="${k}" data-d="-1" aria-label="Kamaytirish"${v?"":" disabled"}>−</button><u>${v}</u><button type="button" data-k="${k}" data-d="1" aria-label="Ko‘paytirish"${v>=mx?" disabled":""}>＋</button></div></div>`});
+    let c=0;vis.forEach(r=>{const v=FZS.n[r[0]]||0;c+=v;if(v)nm.push(r[1]+(v>1?" ×"+v:""))});tot+=c;
+    h+=`<div class="fz-grp${FZS.op[g]?" op":""}"><button type="button" class="fz-gh" data-gt="${g}"><b>${t}</b><span class="fz-bd${c?" on":""}">${c}</span><i>⌄</i></button><div class="fz-gb">`;
+    vis.forEach(([k,tt,hint,mx])=>{const v=FZS.n[k]||0;
+      h+=`<div class="fz-r${v?" on":""}"><div class="fz-l"><b>${tt}</b>${hint?`<span>${hint}</span>`:""}</div><div class="fz-s"><button type="button" data-k="${k}" data-d="-1" aria-label="${tt}: kamaytirish"${v?"":" disabled"}>−</button><u>${v}</u><button type="button" data-k="${k}" data-d="1" aria-label="${tt}: ko‘paytirish"${v>=mx?" disabled":""}>＋</button></div></div>`});
+    h+="</div></div>";
   });
-  h+=`<button type="button" class="fz-tg${FZS.b?" on":""}" id="fzb"><i>${FZS.b?"✓":""}</i><span><b>Boshqa asaba qarindoshlar bor</b>Aka-uka o‘g‘illari, amakilar va ularning o‘g‘illari</span></button>`;
+  h+=`<button type="button" class="fz-tg${FZS.b?" on":""}" id="fzb"><i>${FZS.b?"✓":""}</i><span><b>Boshqa asaba qarindoshlar bor</b>Aka-uka o‘g‘illari, amakilar va ularning o‘g‘illari. Faqat yuqoridagi asabalar bo‘lmasa va ular bor bo‘lsa belgilang.</span></button>`;
   $("fzf").innerHTML=h;
+  $("fzn").textContent=tot?tot+" merosxo‘r":"0 merosxo‘r";
+  $("fzns").textContent=nm.length?nm.join(", "):"Hech kim tanlanmadi";
+  $("fzgo").disabled=!(tot||FZS.b);
 }
 $("fzj").onclick=e=>{const b=e.target.closest("[data-j]");if(!b)return;FZS.j=b.dataset.j;if(FZS.j==="a")FZS.n.xotin=0;else FZS.n.er=0;
-  document.querySelectorAll("#fzj button").forEach(x=>x.classList.toggle("on",x===b));fzDraw();$("fzres").innerHTML=""};
-$("fzf").onclick=e=>{
+  document.querySelectorAll("#fzj button").forEach(x=>x.classList.toggle("on",x===b));fzDraw()};
+$("fzform").onclick=e=>{
   if(e.target.closest("#fzb")){FZS.b=!FZS.b;fzDraw();return}
+  const g=e.target.closest("[data-gt]");
+  if(g){const k=g.dataset.gt;if(k==="info"){$("fzinfo").classList.toggle("op");return}FZS.op[k]=FZS.op[k]?0:1;fzDraw();return}
   const b=e.target.closest("[data-k]");if(!b||b.disabled)return;
   const k=b.dataset.k,v=(FZS.n[k]||0)+parseInt(b.dataset.d);
   FZS.n[k]=Math.max(0,v);fzDraw();vib(6);
 };
-$("fzgo").onclick=()=>{
+$("fza").oninput=()=>{const d=$("fza").value.replace(/\D/g,"");$("fza").value=d?ksp(d):""};
+function fzDonut(rows,sz){
+  const R=40,C=2*Math.PI*R;let off=0;
+  const seg=rows.map((x,i)=>{const len=C*x.pct/100;const o=`<circle r="${R}" cx="50" cy="50" fill="none" stroke="${FZC[i%FZC.length]}" stroke-width="17" stroke-dasharray="${len.toFixed(3)} ${(C-len).toFixed(3)}" stroke-dashoffset="${(-off).toFixed(3)}" transform="rotate(-90 50 50)"/>`;off+=len;return o}).join("");
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><circle r="${R}" cx="50" cy="50" fill="none" stroke="rgba(120,140,135,.28)" stroke-width="17"/>${seg}</svg>`;
+}
+function fzNoGroups(no){
+  const g={},ord=[];no.forEach(x=>{if(!g[x.sabab]){g[x.sabab]=[];ord.push(x.sabab)}g[x.sabab].push(x.label+(x.n>1?" × "+x.n:""))});
+  return ord.map(sb=>({names:g[sb].join(", "),sabab:sb}));
+}
+function fzCompute(){
   const inp=Object.assign({jins:FZS.j,boshqaAsaba:FZS.b},FZS.n);
-  const r=Faroiz.hisobla(inp);
-  const out=$("fzres");
-  if(r.stop){out.innerHTML=`<div class="fz-n">Hech bo‘lmaganda bitta merosxo‘rni belgilang.</div>`;return}
-  const get=r.rows.filter(x=>x.frac[0]>0),no=r.rows.filter(x=>x.frac[0]===0);
-  let h=`<div class="fz-g">Natija</div><div class="fz-hero"><p>Marhum: ${FZS.j==="e"?"erkak":"ayol"} · ${get.length} guruh meros oladi</p><div class="fz-bar">${get.map((x,i)=>`<i style="width:${x.pct}%;background:${FZC[i%FZC.length]}"></i>`).join("")}</div><p style="font-size:12.5px">Jami ${fzP(get.reduce((a,x)=>a+x.pct,0))} · avval qarz, dafn va vasiyat (1/3 gacha) ajratiladi</p></div>`;
-  get.forEach((x,i)=>{
+  const r=Faroiz.hisobla(inp);if(r.stop)return null;
+  r.get=r.rows.filter(x=>x.frac[0]>0);r.no=r.rows.filter(x=>x.frac[0]===0);r.amt=fzAmt();
+  return r;
+}
+function fzShow(){
+  const r=fzCompute(),out=$("fzres");
+  if(!r){toast("Hech bo‘lmaganda bitta merosxo‘rni belgilang");return}
+  FZS.res=r;
+  const A=r.amt;
+  let h=`<div class="fz-rh"><div class="fz-dn">${fzDonut(r.get)}<b>100%</b></div><div><h3>Meros taqsimoti</h3><p>Marhum: ${FZS.j==="e"?"erkak":"ayol"}<br>${r.get.length} ta guruh meros oladi${A?`<br>Mol: ${fzSo(A)}`:""}</p></div></div>`;
+  r.get.forEach((x,i)=>{
+    const col=FZC[i%FZC.length],am=A?A*x.frac[0]/x.frac[1]:0;
     const each=x.n>1?`<em>har biriga ${fzP(x.each[0]/x.each[1]*100)}</em>`:"";
-    h+=`<div class="fz-c"><div class="fz-ch"><b><i style="background:${FZC[i%FZC.length]}"></i>${x.label}${x.n>1?" × "+x.n:""}</b><strong>${fzP(x.pct)}</strong></div><div class="fz-m"><em>${Faroiz.fs(x.frac)}</em><span>${FZT[x.tur]||x.tur}</span>${each}</div>${x.sabab?`<div class="fz-w">${x.sabab}</div>`:""}</div>`});
-  if(no.length){h+=`<div class="fz-x">Meros olmaydiganlar</div>`+no.map(x=>`<div class="fz-c"><div class="fz-ch"><b>${x.label}${x.n>1?" × "+x.n:""}</b><strong style="color:var(--mut)">0%</strong></div><div class="fz-w">${x.sabab}</div></div>`).join("")}
+    h+=`<div class="fz-c"><div class="fz-ch"><b><i style="background:${col}"></i>${x.label}${x.n>1?" × "+x.n:""}</b><strong>${fzP(x.pct)}</strong></div><div class="fz-pb"><i style="width:${Math.min(100,x.pct)}%;background:${col}"></i></div><div class="fz-m"><em>${Faroiz.fs(x.frac)}</em><span>${FZT[x.tur]||x.tur}</span>${each}${A?`<span class="am">${fzSo(am)}${x.n>1?" · har biriga "+fzSo(am/x.n):""}</span>`:""}</div>${x.sabab?`<div class="fz-w">${x.sabab}</div>`:""}</div>`});
+  if(r.no.length){const gr=fzNoGroups(r.no);h+=`<button type="button" class="fz-x" id="fzx">MEROS OLMAYDIGANLAR (${r.no.length})<i>⌄</i></button><div class="fz-xb" id="fzxb">${gr.map(x=>`<div class="fz-c2"><b>${x.names}</b>${x.sabab}</div>`).join("")}</div>`}
   r.notes.forEach(t=>h+=`<div class="fz-n i">${t}</div>`);
-  r.warn.forEach((t,i)=>h+=`<div class="fz-n${i===r.warn.length-1?" i":""}">${i===r.warn.length-1?"":"⚠ "}${t}</div>`);
-  h+=`<button type="button" class="fz-rs" id="fzrs">Boshidan boshlash</button><p class="fz-d">Manba: Sirojiyya (hanafiy mazhab) va Abu Isom Nuriddin Muslihiddin Buxoriyning “Meros ilmi” kitobi. Bu hisob-kitob yordamchi vosita; yakuniy hukm uchun ishonchli ulamo yoki muftiylikka murojaat qiling.</p>`;
-  out.innerHTML=h;
-  $("fzrs").onclick=()=>{fzEnter();scrollTo(0,0)};
-  out.scrollIntoView({behavior:"smooth",block:"start"});
+  r.warn.slice(0,-1).forEach(t=>h+=`<div class="fz-n">⚠ ${t}</div>`);
+  h+=`<div class="fz-act"><button type="button" class="p" id="fzpdf"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg>PDF sifatida saqlash</button><button type="button" class="s" id="fzed">Tahrirlash</button><button type="button" class="g" id="fzrs">Boshidan boshlash</button></div><p class="fz-d">Hisob-kitob yordamchi vosita. Qarz, dafn xarajati va vasiyat (1/3 gacha) avval ajratiladi. Yakuniy hukm uchun ishonchli ulamo yoki muftiylikka murojaat qiling.</p>`;
+  out.innerHTML=h;fzView("r");
+  if(!FZS.pushed){FZS.pushed=true;history.pushState({r:"tf",v:1},"")}
+  scrollTo(0,0);
+}
+function fzBack(){if(FZS.pushed){history.back()}else{fzView("f");scrollTo(0,0)}}
+$("fzgo").onclick=fzShow;
+$("fzres").onclick=e=>{
+  if(e.target.closest("#fzx")){$("fzx").classList.toggle("op");$("fzxb").classList.toggle("op");return}
+  if(e.target.closest("#fzed")){fzBack();return}
+  if(e.target.closest("#fzrs")){if(FZS.pushed){FZS.pushed=false;history.back()}fzEnter();scrollTo(0,0);return}
+  if(e.target.closest("#fzpdf")){fzPdf();return}
 };
+addEventListener("popstate",()=>{if(CUR==="tf"&&FZS.view==="r"){FZS.pushed=false;fzView("f");scrollTo(0,0)}});
+function fzPdf(){
+  const r=FZS.res;if(!r)return;
+  const t=new Date(),M=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"],
+   ds=t.getDate()+"-"+M[t.getMonth()]+" "+t.getFullYear()+", "+p2(t.getHours())+":"+p2(t.getMinutes()),
+   no="FR-"+t.getFullYear()+p2(t.getMonth()+1)+p2(t.getDate())+"-"+p2(t.getHours())+p2(t.getMinutes()),A=r.amt;
+  const lst=Object.keys(FZS.n).map(k=>{const v=FZS.n[k];if(!v)return"";const row=FZG.reduce((a,g)=>a||g[2].find(x=>x[0]===k),null);return row?row[1]+(row[2]&&row[0]!=="er"&&row[0]!=="xotin"?" ("+row[2].toLowerCase()+")":"")+" — "+v:""}).filter(Boolean);
+  const gm=r.get.map((x,i)=>{const am=A?A*x.frac[0]/x.frac[1]:0;
+    return `<tr><td><span class="pdt" style="background:${FZC[i%FZC.length]}"></span><b>${x.label}${x.n>1?" × "+x.n:""}</b><small>${FZT[x.tur]||x.tur}${x.n>1?" · har biriga "+fzP(x.each[0]/x.each[1]*100):""}${x.sabab?" · "+x.sabab:""}</small></td><td class="pc">${Faroiz.fs(x.frac)}</td><td class="pc">${fzP(x.pct)}</td>${A?`<td>${fzSo(am)}</td>`:""}</tr>`}).join("");
+  const nog=r.no.length?fzNoGroups(r.no).map(x=>`<tr><td><b>${x.names}</b><small>${x.sabab}</small></td></tr>`).join(""):"";
+  $("prt").className="";
+  $("prt").innerHTML=`<div class="pz pfz"><header class="pt"><div><div class="pb">Jannat sari</div><div class="psb">Faroiz — meros taqsimoti (hanafiy mazhab)</div></div><div class="pm"><b>${no}</b><br>${ds}</div></header>
+  <section class="ps"><div class="ph"><span class="pnn">1</span><h2>Kiritilgan ma’lumotlar</h2></div><table><tr><td>Marhum</td><td>${FZS.j==="e"?"Erkak":"Ayol"}</td></tr><tr><td>Merosxo‘rlar</td><td style="font-weight:400;white-space:normal;line-height:1.7">${lst.join(" · ")}${FZS.b?" · Boshqa asaba qarindoshlar bor":""}</td></tr>${A?`<tr><td>Qoldirilgan mol</td><td>${fzSo(A)}</td></tr>`:""}</table></section>
+  <section class="ps"><div class="ph"><span class="pnn">2</span><h2>Natija</h2></div><div class="pgr">${fzDonut(r.get)}<div class="pgs"><b>100%</b><span>${r.get.length} ta guruh meros oladi${A?"<br>Mol: "+fzSo(A):""}</span></div></div><table class="pft"><thead><tr><th>Merosxo‘r</th><th>Ulush</th><th>Foiz</th>${A?"<th>Summa</th>":""}</tr></thead><tbody>${gm}</tbody></table></section>
+  ${nog?`<section class="ps"><div class="ph"><span class="pnn">3</span><h2>Meros olmaydiganlar</h2></div><table class="pft"><tbody>${nog}</tbody></table></section>`:""}
+  ${r.notes.length?`<div class="pno">${r.notes.map(x=>"• "+x).join("<br>")}</div>`:""}
+  <footer class="pf"><b>Muhim eslatma.</b> Hisob-kitob yordamchi vosita sifatida taqdim etilgan. Qarz, dafn xarajati va vasiyat (1/3 gacha) mol-mulkdan avval ajratiladi. Yakuniy hukm uchun albatta ishonchli ulamo yoki muftiylikka murojaat qiling: ilova natijasi ularning fatvosi o‘rnini bosa olmaydi.<div class="pf2">Jannat sari · ${no}</div></footer></div>`;
+  {const e=$("prt");e.style.cssText="display:block;position:absolute;left:-10000px;top:0;width:186mm;visibility:hidden";const pz=e.querySelector(".pz");let z=1;for(;z>.5;z-=.025){pz.style.zoom=z;if(pz.getBoundingClientRect().height<=860)break}pz.style.zoom="";e.style.cssText="";e.style.setProperty("--pz",Math.max(z,.5).toFixed(3))}
+  const old=document.title;document.title="Faroiz-hisobot-"+dStr(t);
+  document.body.classList.add("printing");
+  setTimeout(()=>{try{window.print()}catch(e){toast("Chop etish bu qurilmada mavjud emas")}setTimeout(()=>{document.title=old},800)},200);
+}
 /* Bo'limlar va "Dastur haqida" */
 const MAINT=["t0","t1","t6"],SUBT=["t2","t3","t4","t5","t7","td","tf"],STT={t2:"Tasbeh",t3:"Qibla",t4:"Taqvim",t5:"Tazkiya",t7:"Qur'on",td:"Duo va zikrlar",tf:"Faroiz"};
 let CUR="t0",LASTM="t0";
@@ -4085,7 +4207,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="5.3";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="5.4";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
