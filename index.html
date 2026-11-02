@@ -154,7 +154,7 @@ li.past .chip{color:var(--mut)}
 .mch{color:var(--mut);font-size:22px}
 #ual .ur{display:flex;align-items:center;justify-content:space-between;padding:10px 2px;border-bottom:1px solid var(--line)}
 #ual .ur:last-child{border-bottom:0}
-#ual .un{font-weight:600}#ual .un small{display:block;font-weight:400;color:var(--mut);font-size:12.5px}
+#ual .un{font-weight:600;text-align:left}#ual .un small{display:block;font-weight:400;color:var(--mut);font-size:12.5px;text-align:left;font-variant-numeric:tabular-nums;margin-top:2px}
 #ual .us{display:flex;align-items:center;gap:6px}
 #ual .us button{margin:0;width:40px;height:40px;padding:0;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:20px;font-weight:600}
 #ual .us b{min-width:46px;text-align:center;font-size:16px;font-variant-numeric:tabular-nums}
@@ -472,8 +472,9 @@ button:disabled{opacity:.45}
 .fz-act button{border:0;border-radius:16px;padding:15px;font:700 15.5px system-ui,sans-serif}
 .fz-act .p{background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff;box-shadow:0 6px 16px rgba(14,107,99,.28);display:flex;align-items:center;justify-content:center;gap:10px}
 .fz-act .p svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.fz-act .s{background:var(--card);border:1.5px solid var(--line);color:var(--ac)}
-.fz-act .g{background:none;color:var(--mut);font-weight:600;font-size:14px;text-decoration:underline}
+.fz-two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fz-act .s{background:var(--card);border:1.5px solid var(--ac);color:var(--ac);display:flex;align-items:center;justify-content:center;gap:8px;padding:14px 8px;font-size:14.5px}
+.fz-act .s svg{width:18px;height:18px;flex:none;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .fz-d{margin:16px 2px 0;color:var(--mut);font-size:12.5px;line-height:1.5}
 /* Taqvim v5.1 */
 #t4 .kbar{display:flex;gap:10px;align-items:stretch;margin:0 0 12px}
@@ -804,6 +805,20 @@ body[data-scr="t7"] #sbar{display:none}
 .qrow .p{color:var(--mut);font-size:16px}
 .qempty{padding:40px 24px;text-align:center;color:var(--mut);line-height:1.5}
 #qpg{--pg:#f8f1dd;--pg2:#f0e6c8;--ink2:#1b150c;--ring:#1b7a64;--q:#9a6a22;--hl:rgba(226,178,72,.45);--hp:rgba(27,122,100,.26);--chrome:#6a5d41;--line2:rgba(110,86,36,.22);display:none;position:fixed;inset:0;z-index:10;background:var(--pg);color:var(--ink2);flex-direction:column}
+#qpg.th-sepia{--pg:#eddcb5;--pg2:#e2cf9f;--ink2:#2a1f10;--q:#8a5a1a;--ring:#2c6b58;--hl:rgba(196,140,50,.42);--hp:rgba(44,107,88,.26)}
+#qpg.th-green{--pg:#dfe7d0;--pg2:#d2dcc0;--ink2:#17261c;--q:#7d6320;--ring:#1f6b52;--hl:rgba(190,150,50,.4);--hp:rgba(31,107,82,.24)}
+#qcf{position:fixed;right:10px;top:calc(60px + env(safe-area-inset-top));width:min(330px,calc(100% - 20px));z-index:13;background:linear-gradient(180deg,#0f4a43,#082d2a);border:1px solid rgba(240,201,105,.38);border-radius:18px;box-shadow:0 14px 34px rgba(0,0,0,.5);padding:14px 14px 12px;color:#e6f1ee;display:none}
+#qcf.on{display:block}
+#qcf .qcr{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px 10px;margin-bottom:14px}
+#qcf .qcr>span{font:600 13.5px system-ui;color:#e8d9a8;grid-column:1/-1}
+#qcf .qcr>span small{font-weight:400;color:#9fc3bc;margin-left:6px}
+#qcf #qth{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#qcf #qth button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:9px 2px;margin:0;border:1.5px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#e6f1ee;border-radius:12px;font:600 12px system-ui}
+#qcf #qth button.on{border-color:#f0c969;background:rgba(240,201,105,.14);color:#fff}
+#qcf #qth i{width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.35);display:block}
+#qcf input[type=range]{width:100%;margin:0;accent-color:#f0c969;height:28px}
+#qcf .qcr b{font:600 13px system-ui;min-width:42px;text-align:right;color:#fff;font-variant-numeric:tabular-nums}
+#qcf #qcr0{width:100%;margin:0;padding:10px;border:1px solid rgba(240,201,105,.35);background:none;color:#e8d9a8;border-radius:12px;font:600 13px system-ui}
 #qpg.night{--pg:#16130d;--pg2:#201c13;--ink2:#e9dfc5;--ring:#6fc9ae;--q:#d2aa55;--hl:rgba(226,178,72,.3);--hp:rgba(111,201,174,.24);--chrome:#a89e85;--line2:rgba(255,235,190,.14)}
 #qpg.on{display:flex}
 #qph{display:flex;align-items:center;gap:2px;padding:calc(6px + env(safe-area-inset-top)) 6px 6px 2px;background:var(--pg2);border-bottom:1px solid var(--line2);color:var(--chrome);flex:none}
@@ -851,6 +866,9 @@ body[data-scr="t7"] #sbar{display:none}
 .qab button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 2px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);border-radius:14px;font:600 12.5px system-ui;margin:0}
 .qab button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .qab #qmk.on{background:var(--ring);color:#fff;border-color:var(--ring)}
+#qas .qab button{background:rgba(255,255,255,.08);border:1px solid rgba(240,201,105,.32);color:#eaf4f1}
+#qas .qab button:active{background:rgba(255,255,255,.16)}
+#qas .qab #qmk.on{background:#1b7a64;border-color:#7ff3dc;color:#fff}
 .qab #qmk.on svg{fill:currentColor}
 #qmp{display:none;position:fixed;left:10px;right:10px;margin:0 auto;max-width:560px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:13;align-items:center;gap:2px;padding:6px 8px 6px 16px;border-radius:24px;background:#12302b;color:#f1ead4;box-shadow:0 10px 28px rgba(0,0,0,.35)}
 #qpg.mp #qmp{display:flex}
@@ -932,6 +950,7 @@ button.hero2.nx,.hero2{text-align:center}
 .arc .d{fill:#f9e3a0;filter:drop-shadow(0 0 7px rgba(249,227,160,.95))}
 .arc .d.n{fill:#c9dcd8;filter:none;opacity:.85}
 .arc text{fill:rgba(255,255,255,.72);font:600 10.5px system-ui}
+.arc text.tt{fill:#fff;font:700 11.5px system-ui;font-variant-numeric:tabular-nums}
 /* bo'limlar */
 .sec-l{display:flex;align-items:center;gap:10px;font:600 19px var(--fd);letter-spacing:0;text-transform:none;color:var(--ink);margin:6px 4px 12px}
 .sec-l:after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
@@ -965,10 +984,10 @@ button.hero2.nx,.hero2{text-align:center}
 #list li .rn{order:1;flex:1;min-width:0;font:600 17px system-ui}
 #list li .chip{order:2}
 #list li svg{order:3;width:26px;height:26px;stroke:var(--gold);stroke-width:1.5}
-#list li.mark{padding:11px 20px 11px 18px;background:transparent}
-#list li.mark b{font-size:19px;color:var(--mut);font-weight:500}
-#list li.mark .rn{font:500 14px system-ui;color:var(--mut);font-style:italic}
-#list li.mark svg{width:22px;height:22px;stroke:var(--mut)}
+#list li.mark{padding:13px 20px 13px 18px;background:transparent}
+#list li.mark b{font-size:26px;color:var(--mut);font-weight:500}
+#list li.mark .rn{font:500 16px system-ui;color:var(--mut)}
+#list li.mark svg{width:26px;height:26px;stroke:var(--mut)}
 #list li.cur{background:linear-gradient(90deg,rgba(14,107,99,.16),rgba(14,107,99,.04))}
 #list li.cur:before{left:0;top:0;bottom:0;width:5px;border-radius:0;background:linear-gradient(var(--gold),#f0c869)}
 #list li.cur b{color:var(--ac)}
@@ -1114,7 +1133,7 @@ nav button.on:after{background:var(--fz)}
 .mhd .mpl:before,.mhd .mpl:after{content:"";position:absolute;top:50%;width:9px;height:9px;margin-top:-4.5px;background:linear-gradient(135deg,#7ff3dc,#d9ab4a);transform:rotate(45deg)}
 .mhd .mpl:before{left:-5px}.mhd .mpl:after{right:-5px}
 .mg{position:relative;overflow:hidden;border:1px solid rgba(90,205,185,.34);background:linear-gradient(160deg,rgba(20,92,84,.62),rgba(6,38,34,.78));box-shadow:0 10px 22px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.07)}
-.mg:before{display:block;content:"";position:absolute;top:0;right:0;left:auto;width:72px;height:53px;background:var(--o-moon) no-repeat top right/72px;pointer-events:none;opacity:1;z-index:0;border-radius:0}
+.mg:before{display:none;content:"";position:absolute;top:0;right:0;left:auto;width:72px;height:53px;background:var(--o-moon) no-repeat top right/72px;pointer-events:none;opacity:1;z-index:0;border-radius:0}
 .mg .mr+.mr{border-top:1px solid rgba(90,205,185,.3)}
 .qa{border:1px solid rgba(90,205,185,.32);background:linear-gradient(160deg,rgba(20,92,84,.55),rgba(6,38,34,.8))}
 .tab#t6>.gzr{margin-top:2px}
@@ -1125,7 +1144,8 @@ nav button.on:after{background:var(--fz)}
 body,body[data-scr]{background-color:#04201c;background-image:radial-gradient(130% 55% at 50% -8%,rgba(34,150,132,.34),transparent 62%),radial-gradient(90% 40% at 100% 100%,rgba(24,80,150,.24),transparent 70%),var(--o-t2);background-size:auto,auto,120px 120px}
 #list,.cal,.kcard,.tqc,#hmon>*,#zstat>div,#zact button,#zseg,#kinfo>*{background:var(--g3d);border:1px solid var(--b3d);box-shadow:var(--s3d)}
 #list li{background:transparent;border-color:rgba(90,205,185,.22)}
-.kcard:before{width:64px;height:48px;background:var(--o-moon) no-repeat top right/64px;border-radius:0;opacity:1}
+.tqmb:before{display:none!important}
+.kcard:before{display:none;width:64px;height:48px;background:var(--o-moon) no-repeat top right/64px;border-radius:0;opacity:1}
 .kcard .kic,.kcard:nth-child(2n) .kic{width:48px;height:54px;border-radius:0;clip-path:none;background:var(--ogee) center/contain no-repeat!important;color:#f0c969;display:grid;place-items:center;box-shadow:none}
 .kcard .kic svg{width:24px;height:24px;margin-top:4px;stroke:#f0c969}
 .kcard b,.kcard h3{color:#fff}
@@ -1202,7 +1222,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 .dch2.sm button{padding:7px 13px;font-size:12.5px;background:rgba(4,30,27,.55);box-shadow:none}
 .dch2.sm button.on{background:rgba(240,201,105,.16);color:#f6dc92;border-color:rgba(240,201,105,.55)}
 .dcard{position:relative;overflow:hidden;border:1px solid var(--b3d);border-radius:22px;background:var(--g3d);box-shadow:var(--s3d);margin:0 0 12px}
-.dcard:before{content:"";position:absolute;top:0;right:0;width:72px;height:53px;background:var(--o-moon) no-repeat top right/72px;pointer-events:none}
+.dcard:before{display:none;content:"";position:absolute;top:0;right:0;width:72px;height:53px;background:var(--o-moon) no-repeat top right/72px;pointer-events:none}
 .dcard>*{position:relative}
 .dcard .dhd{display:flex;align-items:center;gap:13px;padding:16px;width:100%;text-align:left;color:inherit;background:none;border:0;font:inherit}
 .dcard .dic{flex:none;width:44px;height:50px;background:var(--ogee) center/contain no-repeat;display:grid;place-items:center;color:#f0c969}
@@ -1576,7 +1596,13 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
    <span class="sp"></span>
    <span id="qhj"></span>
    <button id="qplay" aria-label="Tilovat"><svg viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg></button>
-   <button id="qnt" aria-label="Tun rejimi"><svg viewBox="0 0 24 24"><path d="M20 14.6A8.2 8.2 0 0 1 9.4 4a8.2 8.2 0 1 0 10.6 10.6z"/></svg></button>
+   <button id="qnt" aria-label="Ko‘z uchun sozlamalar" aria-expanded="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.6 5.6L7 7M17 17l1.4 1.4M5.6 18.4L7 17M17 7l1.4-1.4"/></svg></button>
+  </div>
+  <div id="qcf" role="dialog" aria-label="Ko‘z uchun sozlamalar">
+   <div class="qcr"><span>Sahifa foni</span><div id="qth"><button type="button" data-t=""><i style="background:#f8f1dd"></i>Krem</button><button type="button" data-t="sepia"><i style="background:#eddcb5"></i>Sepiya</button><button type="button" data-t="green"><i style="background:#dfe7d0"></i>Yashil</button><button type="button" data-t="night"><i style="background:#16130d"></i>Tun</button></div></div>
+   <div class="qcr"><span>Yorqinlik</span><input type="range" id="qbr" min="45" max="100" step="1" aria-label="Yorqinlik"><b id="qbrv"></b></div>
+   <div class="qcr"><span>Iliqlik <small>ko‘zni charchatmaydi</small></span><input type="range" id="qwm" min="0" max="100" step="1" aria-label="Iliqlik"><b id="qwmv"></b></div>
+   <button type="button" id="qcr0">Asl holatiga qaytarish</button>
   </div>
   <div id="qsc"></div>
   <div id="qas">
@@ -1690,7 +1716,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 </div></div>
 <script>
 const $=id=>document.getElementById(id);
-const N=[["bomdod","Bomdod"],["quyosh","Namoz uyqudan afzal"],["peshin","Peshin"],["asr","Asr"],["shom","Shom"],["xufton","Xufton"]];
+const N=[["bomdod","Bomdod"],["quyosh","Quyosh chiqishi"],["peshin","Peshin"],["asr","Asr"],["shom","Shom"],["xufton","Xufton"]];
 const DEF={yangilangan:"",vaqtlar:{bomdod:"05:30",quyosh:"06:50",peshin:"12:30",asr:"15:45",shom:"18:05",xufton:"19:30"}};
 const get=(k,d)=>{try{return JSON.parse(localStorage.getItem(k))||d}catch(e){return d}};
 let D=get("vaqt",DEF);
@@ -1812,7 +1838,7 @@ function draw(){
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
   $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("mhm").textContent=hijri().replace(/, .*$/,"").replace(/^\d+-/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
-  {const t=new Date();$("yang").textContent="Vaqtlar yangilangan: "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()+" · "+EL.name+(()=>{const aj=((D.vaqtlar||{}).mint||{})[EL.id]||{},x=N.filter(([k])=>+aj[k]).map(([k,n])=>(k==="quyosh"?"Quyosh":n)+" "+(aj[k]>0?"+":"−")+Math.abs(aj[k]));return x.length?" · tuzatish: "+x.join(", "):""})()}
+  {const t=new Date();$("yang").textContent=EL.name+(EL.mode==="g"?" (GPS)":"")+" uchun hisoblangan vaqtlar · "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()}
   tick();
 }
 const sec=t=>{const[a,b]=t.split(":");return(+a*60+ +b)*60};
@@ -1821,9 +1847,10 @@ const AQ=u=>{const a=1-u;return[a*a*12+2*a*u*150+u*u*288,a*a*64+2*a*u*(-14)+u*u*
 let ARK="";
 function arcBuild(T){
   const t0=T[0],sp=Math.max(T[5]-t0,1);
-  let h='<svg viewBox="0 0 300 96"><path class="b" d="M12 64Q150 -14 288 64"/><path class="p" pathLength="1" stroke-dasharray="0 2" d="M12 64Q150 -14 288 64"/>';
+  let h='<svg viewBox="0 0 300 112"><path class="b" d="M12 64Q150 -14 288 64"/><path class="p" pathLength="1" stroke-dasharray="0 2" d="M12 64Q150 -14 288 64"/>';
   T.forEach((t,i)=>{const[x,y]=AQ((t-t0)/sp);h+=`<circle class="k${i===1?" q":""}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${i===1?2.4:3.6}"/>`});
-  {const L=[[0,"Bomdod"],[2,"Peshin"],[3,"Asr"],[4,"Shom"],[5,"Xufton"]],X=L.map(([i])=>Math.max(26,Math.min(274,AQ((T[i]-t0)/sp)[0])));for(let k=1;k<X.length;k++)if(X[k]-X[k-1]<50)X[k]=X[k-1]+50;X[X.length-1]=Math.min(X[X.length-1],268);for(let k=X.length-2;k>=0;k--)if(X[k+1]-X[k]<50)X[k]=X[k+1]-50;L.forEach(([i,n],k)=>{h+=`<text x="${X[k].toFixed(1)}" y="90" text-anchor="middle">${n}</text>`})}
+  [[0,"Bomdod"],[2,"Peshin"],[3,"Asr"],[4,"Shom"],[5,"Xufton"]].forEach(([i,n],k)=>{const x=30+k*60;
+    h+=`<text x="${x}" y="92" text-anchor="middle">${n}</text><text class="tt" x="${x}" y="107" text-anchor="middle">${fT(T[i]/60)}</text>`});
   h+='<circle class="d" r="7" cx="12" cy="64"/></svg>';
   document.querySelectorAll(".arc").forEach(e=>e.innerHTML=h);
 }
@@ -2737,11 +2764,11 @@ function fzShow(){
   r.get.forEach((x,i)=>{
     const col=FZC[i%FZC.length],am=A?A*x.frac[0]/x.frac[1]:0;
     const each=x.n>1?`<em>har biriga ${fzP(x.each[0]/x.each[1]*100)}</em>`:"";
-    h+=`<div class="fz-c"><div class="fz-ch"><b><i style="background:${col}"></i>${x.label}${x.n>1?" × "+x.n:""}</b><strong>${fzP(x.pct)}</strong></div><div class="fz-pb"><i style="width:${Math.min(100,x.pct)}%;background:${col}"></i></div><div class="fz-m"><em>${Faroiz.fs(x.frac)}</em><span>${FZT[x.tur]||x.tur}</span>${each}${A?`<span class="am">${fzSo(am)}${x.n>1?" · har biriga "+fzSo(am/x.n):""}</span>`:""}</div>${x.sabab?`<div class="fz-w">${x.sabab}</div>`:""}</div>`});
+    h+=`<div class="fz-c"><div class="fz-ch"><b><i style="background:${col}"></i>${x.label}${x.n>1?" × "+x.n:""}</b><strong>${fzP(x.pct)}</strong></div><div class="fz-pb"><i style="width:${Math.min(100,x.pct)}%;background:${col}"></i></div><div class="fz-m"><em>${Faroiz.fs(x.frac)}</em><span>${FZT[x.tur]||x.tur}</span>${each}${A?`<span class="am">${fzSo(am)}${x.n>1?" · har biriga "+fzSo(am/x.n):""}</span>`:""}</div>${x.sabab?`<div class="fz-w">${x.tur==="arham"?"Qolgan qismi uzoq qarindoshlarga (qizning bolalari, tog‘a, xola, amma kabi) tegadi. Ilova buni hisoblamaydi — olimga murojaat qiling.":x.sabab}</div>`:""}</div>`});
   if(r.no.length){const gr=fzNoGroups(r.no);h+=`<button type="button" class="fz-x" id="fzx">MEROS OLMAYDIGANLAR (${r.no.length})<i>⌄</i></button><div class="fz-xb" id="fzxb">${gr.map(x=>`<div class="fz-c2"><b>${x.names}</b>${x.sabab}</div>`).join("")}</div>`}
   r.notes.forEach(t=>h+=`<div class="fz-n i">${t}</div>`);
-  r.warn.slice(0,-1).forEach(t=>h+=`<div class="fz-n">⚠ ${t}</div>`);
-  h+=`<div class="fz-act"><button type="button" class="p" id="fzpdf"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg>PDF sifatida saqlash</button><button type="button" class="s" id="fzed">Tahrirlash</button><button type="button" class="g" id="fzrs">Boshidan boshlash</button></div><p class="fz-d">Hisob-kitob yordamchi vosita. Qarz, dafn xarajati va vasiyat (1/3 gacha) avval ajratiladi. Yakuniy hukm uchun ishonchli ulamo yoki muftiylikka murojaat qiling.</p>`;
+  r.warn.slice(0,-1).filter(t=>!(r.get.some(x=>x.tur==="arham")&&t.indexOf("Qolgan ")===0)).forEach(t=>h+=`<div class="fz-n">⚠ ${t}</div>`);
+  h+=`<div class="fz-act"><button type="button" class="p" id="fzpdf"><svg viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 14h6M9 17.5h4"/></svg>PDF sifatida saqlash</button><div class="fz-two"><button type="button" class="s" id="fzed"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Tahrirlash</button><button type="button" class="s" id="fzrs"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v5h-5"/></svg>Boshidan boshlash</button></div></div><p class="fz-d">Hisob-kitob yordamchi vosita. Qarz, dafn xarajati va vasiyat (1/3 gacha) avval ajratiladi. Yakuniy hukm uchun ishonchli ulamo yoki muftiylikka murojaat qiling.</p>`;
   out.innerHTML=h;fzView("r");
   if(!FZS.pushed){FZS.pushed=true;history.pushState({r:"tf",v:1},"")}
   scrollTo(0,0);
@@ -3049,10 +3076,10 @@ async function qDownAll(){
   if(QDLB)return;QDLB=true;const ac=new AbortController();let again=false;
   try{
     const ix=await qPIdx();
-    const fl=[["qp-idx.json?v="+QV,5008,0],["quran-meta.json?v="+QV,29e3,0],["quran-audio.json?v="+QV,88e3,0],["quran-text.json?v="+QV,2.84e6,0]];
+    const fl=[["qp-idx.json?v="+QV,5008,0],["quran-meta.json?v="+QV,28911,0],["quran-audio.json?v="+QV,87945,0],["quran-text.json?v="+QV,2838622,0]];
     ix.o.forEach((o,k)=>fl.push(["qp-"+k+".bin?v="+QV,o[o.length-1],o[o.length-1]]));
     const tot=fl.reduce((a,x)=>a+x[1],0);let done=0;
-    const upd=()=>{const pc=Math.min(99,Math.round(done/tot*100));qDmSet(pc+"%  ·  "+(done/1048576).toFixed(1)+" / "+(tot/1048576).toFixed(0)+" MB. Ilovani yopmang.",pc)};
+    const upd=()=>{const pc=Math.min(99,Math.round(done/tot*100));qDmSet(pc+"%  ·  "+(done/1e6).toFixed(1)+" / "+(tot/1e6).toFixed(1)+" MB. Ilovani yopmang.",pc)};
     qDm({t:"Qur’on yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(x=>{if(x==="no")ac.abort()});
     for(const f of fl){
       if(await qCached(f[0])){done+=f[1];upd();continue}
@@ -3265,44 +3292,77 @@ function qDur(s){
   const d=QAU.r.find(x=>x.k==="s");if(!d||!d.t)return 20*QCN[s-1];
   return Math.max(10,(d.t[QB[s]-1]-d.f[QB[s-1]])/1000);
 }
-async function qAudSize(rc,s){
-  if(rc.k==="s"){try{const r=await fetch(qAudUrls(rc,s)[0],{method:"HEAD"});const n=+r.headers.get("content-length");if(n>0)return n}catch(e){}}
-  return Math.round(qDur(s)*16000*(rc.k==="a"?1.15:1));
+let QASZ={};try{QASZ=JSON.parse(qg("qasz")||"{}")||{}}catch(e){QASZ={}}
+const qSaveSz=()=>qs("qasz",JSON.stringify(QASZ)),qmb=n=>(n/1e6).toFixed(1)+" MB",QAMF={},QAMT={tok:0};
+async function qHeadLen(u){
+  try{const r=await fetch(u,{method:"HEAD"}),n=+r.headers.get("content-length");if(r.ok&&n>0)return n}catch(e){}
+  /* HEAD ruxsat etilmasa: oddiy so‘rov, sarlavha kelishi bilanoq to‘xtatiladi (fayl yuklanmaydi) */
+  try{const ac=new AbortController(),r=await fetch(u,{signal:ac.signal}),n=+r.headers.get("content-length");ac.abort();return r.ok&&n>0?n:0}catch(e){return 0}
 }
-async function qAudDown(rc,s,sig,onB){
-  const urls=qAudUrls(rc,s),c=await caches.open(QACACHE);let i=0;
+/* Sura hajmi: har bir fayl uchun serverdan aniq so‘raladi; bitta ham javob bermasa 0 qaytadi (taxmin qilinmaydi) */
+async function qSizeOf(rc,s){
+  const urls=qAudUrls(rc,s),sz=new Array(urls.length).fill(0);let i=0,bad=0;
+  const wk=async()=>{for(;;){const k=i++;if(k>=urls.length||bad>3)return;const n=await qHeadLen(urls[k]);if(!n)bad++;sz[k]=n}};
+  await Promise.all(Array.from({length:urls.length>1?6:1},wk));
+  return sz.every(x=>x>0)?sz.reduce((a,b)=>a+b,0):0;
+}
+async function qAudSize(rc,s){
+  const key=rc.id+":"+s;if(QASZ[key])return{n:QASZ[key],ex:true};
+  const n=await qSizeOf(rc,s);
+  if(n){QASZ[key]=n;qSaveSz();return{n:n,ex:true}}
+  return{n:qamEst(rc,s),ex:false};
+}
+async function qAudDown(rc,s,sig,onB,onF){
+  const urls=qAudUrls(rc,s),c=await caches.open(QACACHE);let i=0,real=0,unk=false;
   const wk=async()=>{for(;;){
     const k=i++;if(k>=urls.length)return;const u=urls[k];
-    const ex=await c.match(u);if(ex){onB(+(ex.headers.get("content-length")||0)||0);continue}
+    const ex=await c.match(u);if(ex){const z=+(ex.headers.get("content-length")||0)||0;if(!z)unk=true;real+=z;onB(z);onF&&onF();continue}
     const r=await fetch(u,{signal:sig});if(!r.ok)throw new Error("HTTP "+r.status);
-    const b=await r.blob();if(!b.size)throw new Error("bo‘sh fayl");onB(b.size);
-    await c.put(u,new Response(b,{headers:{"Content-Type":"audio/mpeg"}}));
+    const ch=[];let n=0;
+    if(r.body&&r.body.getReader){const rd=r.body.getReader();for(;;){const x=await rd.read();if(x.done)break;ch.push(x.value);n+=x.value.length;onB(x.value.length)}}
+    else{const b=await r.blob();ch.push(b);n=b.size;onB(n)}
+    if(!n)throw new Error("bo‘sh fayl");real+=n;
+    await c.put(u,new Response(new Blob(ch),{headers:{"Content-Type":"audio/mpeg","Content-Length":String(n)}}));onF&&onF();
   }};
   await Promise.all([wk(),wk(),wk()]);
+  if(!unk&&real>0){QASZ[rc.id+":"+s]=real;qSaveSz()}
   qAudMark(rc,s);
 }
 const QASKIP=new Set();
 async function qAudAsk(rc,s){
-  const sz=await qAudSize(rc,s),mb=(sz/1048576).toFixed(sz<10485760?1:0);
-  const x=await qDm({t:"Tilovatni yuklab olish",b:QUZ[s-1]+" surasi, "+rc.n+": taxminan "+mb+" MB. Yuklab olsangiz, internetsiz ham tinglaysiz va bu sura uchun qayta so‘ralmaydi.",ok:"Yuklab olish",no:"Internet orqali"});
+  if(!QASZ[rc.id+":"+s])toast("Hajmi aniqlanmoqda…");
+  const z=await qAudSize(rc,s),sz=z.n,nf=qAudUrls(rc,s).length;
+  const x=await qDm({t:"Tilovatni yuklab olish",b:QUZ[s-1]+" surasi, "+rc.n+": "+(z.ex?"hajmi ":"taxminan ")+qmb(sz)+". Yuklab olsangiz, internetsiz ham tinglaysiz va bu sura uchun qayta so‘ralmaydi.",ok:"Yuklab olish",no:"Internet orqali"});
   if(x!=="ok"){qDmClose();QASKIP.add(rc.id+":"+s);return false}
-  const ac=new AbortController();let done=0;
+  const ac=new AbortController();let done=0,fd=0;
   qDm({t:"Tilovat yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(y=>{if(y==="no")ac.abort()});
+  const set=()=>{const pc=Math.min(99,Math.round((z.ex||nf===1?done/sz:fd/nf)*100));qDmSet(pc+"%  ·  "+(z.ex?qmb(done)+" / "+qmb(sz):qmb(done)+" yuklandi"),pc)};
   try{
-    await qAudDown(rc,s,ac.signal,n=>{done+=n;const pc=Math.min(99,Math.round(done/sz*100));qDmSet(pc+"%  ·  "+(done/1048576).toFixed(1)+" / "+mb+" MB",pc)});
+    await qAudDown(rc,s,ac.signal,n=>{done+=n;set()},()=>{fd++;set()});
     qDmClose();toast("Tilovat saqlandi");return true;
   }catch(e){qDmClose();QASKIP.add(rc.id+":"+s);toast(ac.signal.aborted?"Yuklash bekor qilindi":"Saqlab bo‘lmadi, internet orqali eshitiladi");return false}
 }
 /* Tilovat menejeri: butun Qur’on yoki alohida sura */
 let QAMB=false,QTGT=null;
 const QAMR={};
-const qamEst=(rc,s)=>Math.round(qDur(s)*(QAMR[rc.id]||16000)*(rc.k==="a"?1.15:1));
+function qamCal(rc){let b=0,d=0;for(const k in QASZ){if(k.indexOf(rc.id+":")===0){const x=+k.split(":")[1];b+=QASZ[k];d+=qDur(x)*(rc.k==="a"?1.15:1)}}return d>0?b/d:16000}
+const qamEst=(rc,s)=>QASZ[rc.id+":"+s]||Math.round(qDur(s)*(rc.k==="a"?1.15:1)*qamCal(rc));
 /* Haqiqiy hajmga yaqinroq bo‘lishi uchun bitta suraning real hajmini so‘rab, soniyadagi baytni aniqlaydi */
-async function qamRatio(rc){
-  if(QAMR[rc.id]||rc.k!=="s")return;
-  try{const r=await fetch(qAudUrls(rc,67)[0],{method:"HEAD"}),n=+r.headers.get("content-length");if(n>2e5)QAMR[rc.id]=Math.max(4000,Math.min(40000,n/qDur(67)))}catch(e){}
+/* Hamma suralarning aniq hajmini orqa fonda aniqlaydi va telefonda eslab qoladi */
+async function qamResolve(rc){
+  const tok=++QAMT.tok,todo=[];for(let s=1;s<=114;s++)if(!QASZ[rc.id+":"+s])todo.push(s);
+  if(!todo.length||QAMF[rc.id])return;
+  let i=0,fail=0,okc=0;
+  const wk=async()=>{for(;;){
+    if(QAMT.tok!==tok||QAMF[rc.id])return;
+    const k=i++;if(k>=todo.length)return;const s=todo[k],n=await qSizeOf(rc,s);
+    if(n){QASZ[rc.id+":"+s]=n;okc++;if(okc%5===0)qSaveSz()}else{fail++;if(fail>=4&&okc===0)QAMF[rc.id]=1}
+    if(QAMT.tok===tok)qamDraw();
+  }};
+  await Promise.all(Array.from({length:rc.k==="s"?6:1},wk));
+  qSaveSz();if(QAMT.tok===tok)qamDraw();
 }
-const qamMB=n=>n<1048576?"1 MB dan kam":(n/1048576).toFixed(n<10485760?1:0)+" MB";
+const qamMB=n=>n<1e6?"1 MB dan kam":(n/1e6).toFixed(n<1e7?1:0)+" MB";
 async function qAudDel(rc,s){
   const c=await caches.open(QACACHE);await Promise.all(qAudUrls(rc,s).map(u=>c.delete(u)));
   const o=qaud();o[rc.id]=(o[rc.id]||[]).filter(x=>x!==s);qs("qaud",JSON.stringify(o));
@@ -3315,33 +3375,34 @@ async function qamVerify(rc){
   }catch(e){}
 }
 function qamDraw(){
-  if(!QAU)return;const rc=QAU.r[QRC],have=qaud()[rc.id]||[],rows=[];let rest=0,hv=0;
-  for(let s=1;s<=114;s++){const h=have.includes(s),e=qamEst(rc,s);if(h)hv++;else rest+=e;
-    rows.push('<div class="qamr"><span class="n">'+s+'</span><span class="t"><b>'+QUZ[s-1]+'</b><small>'+(h?"Telefonda saqlangan":"taxminan "+qamMB(e))+'</small></span>'+(h?'<button type="button" class="d" data-qx="'+s+'">O‘chirish</button>':'<button type="button" data-qd="'+s+'">Yuklab olish</button>')+'</div>')}
+  if(!QAU)return;const rc=QAU.r[QRC],have=qaud()[rc.id]||[],rows=[];let rest=0,hv=0,unk=false;
+  for(let s=1;s<=114;s++){const h=have.includes(s),e=qamEst(rc,s);if(h)hv++;else{rest+=e;if(!QASZ[rc.id+":"+s])unk=true}
+    rows.push('<div class="qamr"><span class="n">'+s+'</span><span class="t"><b>'+QUZ[s-1]+'</b><small>'+(h?"Telefonda saqlangan":QASZ[rc.id+":"+s]?qamMB(e):QAMF[rc.id]?"taxminan "+qamMB(e):"hajmi aniqlanmoqda…")+'</small></span>'+(h?'<button type="button" class="d" data-qx="'+s+'">O‘chirish</button>':'<button type="button" data-qd="'+s+'">Yuklab olish</button>')+'</div>')}
   $("qamr").textContent="Qori: "+rc.n+" · "+rc.s+"  ›";
-  $("qamn").textContent=hv+" / 114 sura telefonda saqlangan";
-  $("qama").textContent=rest?"Hammasini yuklab olish (≈ "+qamMB(rest)+")":"Hammasi telefonda saqlangan ✓";
+  const nres=Object.keys(QASZ).filter(k=>k.indexOf(rc.id+":")===0).length,rsv=!QAMF[rc.id]&&nres<114;
+  $("qamn").textContent=hv+" / 114 sura telefonda saqlangan"+(rsv?" · hajmlar aniqlanmoqda "+nres+"/114":"");
+  $("qama").textContent=rest?"Hammasini yuklab olish"+(unk?(QAMF[rc.id]?" (≈ "+qamMB(rest)+")":""):" ("+qamMB(rest)+")"):"Hammasi telefonda saqlangan ✓";
   $("qama").disabled=!rest;$("qama").dataset.rest=rest;
   $("qaml").innerHTML=rows.join("");
 }
 async function qamOpen(){
   try{await qAudioData()}catch(e){toast("Tilovat ma’lumoti yuklanmadi. Internetni tekshiring");return}
   if(QRC>=QAU.r.length)QRC=0;
-  $("qam").classList.add("on");qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();await qamRatio(QAU.r[QRC]);qamDraw();
+  $("qam").classList.add("on");qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();qamResolve(QAU.r[QRC]);
 }
 async function qamRun(list){
   if(QAMB||QDLB||$("qdm").classList.contains("on")){toast("Boshqa yuklash davom etmoqda");return}
   const rc=QAU.r[QRC],ac=new AbortController(),one=list.length===1;let done=0,n=0,fail=false;
-  const tot=list.reduce((a,s)=>a+qamEst(rc,s),0);
-  const set=()=>{const pc=Math.min(99,Math.round(done/Math.max(tot,1)*100));qDmSet((one?"":n+" / "+list.length+" sura  ·  ")+pc+"%  ·  "+(done/1048576).toFixed(0)+" / "+(tot/1048576).toFixed(0)+" MB. Ilovani yopmang.",pc)};
+  const ex=list.every(x=>QASZ[rc.id+":"+x]),tot=list.reduce((a,x)=>a+qamEst(rc,x),0);let fr=0;
+  const set=()=>{const pc=Math.min(99,Math.round((ex?done/Math.max(tot,1):(n+Math.min(.99,fr))/list.length)*100));qDmSet((one?"":n+" / "+list.length+" sura  ·  ")+pc+"%  ·  "+(ex?qmb(done)+" / "+qmb(tot):qmb(done)+" yuklandi")+". Ilovani yopmang.",pc)};
   QAMB=true;
   qDm({t:one?QUZ[list[0]-1]+" surasi yuklanmoqda":"Tilovat yuklanmoqda",b:"0%",bar:0,no:"Bekor qilish"}).then(x=>{if(x==="no")ac.abort()});
   try{if(navigator.storage&&navigator.storage.persist)navigator.storage.persist()}catch(e){}
   try{
     for(const s of list){
-      const b0=done;
-      if(!qAudHas(rc,s))await qAudDown(rc,s,ac.signal,x=>{done+=x;set()});
-      n++;done=b0+qamEst(rc,s);set();qamDraw();
+      fr=0;let fd=0;const nf=qAudUrls(rc,s).length;
+      if(!qAudHas(rc,s))await qAudDown(rc,s,ac.signal,x=>{done+=x;set()},()=>{fd++;fr=fd/nf;set()});
+      n++;fr=0;set();qamDraw();
     }
   }catch(e){fail=!ac.signal.aborted}
   qDmClose();QAMB=false;qamDraw();
@@ -3353,7 +3414,7 @@ $("qam").onclick=async e=>{
   if(!QAU)return;const rc=QAU.r[QRC];
   if(e.target.closest("#qamr")){
     if(QPLAY||QAMB){toast(QAMB?"Yuklash tugashini kuting":"Avval tilovatni to‘xtating");return}
-    QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();await qamRatio(QAU.r[QRC]);qamDraw();return}
+    QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));qamDraw();await qamVerify(QAU.r[QRC]);qamDraw();qamResolve(QAU.r[QRC]);return}
   const d=e.target.closest("[data-qd]");if(d){qamRun([+d.dataset.qd]);return}
   const x=e.target.closest("[data-qx]");
   if(x){const s=+x.dataset.qx;
@@ -3363,7 +3424,7 @@ $("qam").onclick=async e=>{
     const rest=+$("qama").dataset.rest||0;if(!rest)return;
     const have=qaud()[rc.id]||[],list=[];for(let s=1;s<=114;s++)if(!have.includes(s))list.push(s);
     let w="";try{const st=await navigator.storage.estimate();if(st&&st.quota&&st.quota-st.usage<rest*1.05)w=" Diqqat: telefonda bo‘sh joy yetmasligi mumkin."}catch(e2){}
-    const r=await qDm({t:"Tilovatni to‘liq yuklab olish",b:rc.n+" ("+rc.s+"): "+list.length+" ta sura, taxminan "+qamMB(rest)+". Wi-Fi bilan yuklash yaxshi."+w+" Yuklangach internetsiz tinglaysiz. Bekor qilsangiz, saqlanganlari qoladi.",ok:"Yuklab olish",no:"Bekor qilish"});
+    const r=await qDm({t:"Tilovatni to‘liq yuklab olish",b:rc.n+" ("+rc.s+"): "+list.length+" ta sura"+(list.every(x=>QASZ[rc.id+":"+x])?", hajmi "+qamMB(rest):QAMF[rc.id]?", taxminan "+qamMB(rest):", umumiy hajmi hali aniqlanmoqda (yuklash jarayonida haqiqiy MB ko‘rsatiladi)")+". Wi-Fi bilan yuklash yaxshi."+w+" Yuklangach internetsiz tinglaysiz. Bekor qilsangiz, saqlanganlari qoladi.",ok:"Yuklab olish",no:"Bekor qilish"});
     qDmClose();if(r==="ok")qamRun(list);return}
 };
 $("mqaud").onclick=()=>qamOpen();
@@ -3460,7 +3521,22 @@ $("qsc").addEventListener("pointermove",e=>{if(QLT&&Math.hypot(e.clientX-QLX,e.c
 $("qsc").addEventListener("contextmenu",e=>e.preventDefault());
 $("qcl").onclick=qClose;
 $("qhs").onclick=qJumpOpen;
-$("qnt").onclick=()=>{const n=$("qpg").classList.toggle("night");qs("qnight",n?"1":"0")};
+function qCfApply(){
+  let th=qg("qth");if(th===null)th=qg("qnight")==="1"?"night":"";
+  const pg=$("qpg");pg.classList.remove("night","th-sepia","th-green");
+  if(th==="night")pg.classList.add("night");else if(th)pg.classList.add("th-"+th);
+  const br=Math.max(45,Math.min(100,+qg("qbr")||100)),wm=Math.max(0,Math.min(100,+qg("qwm")||0));
+  $("qsc").style.filter=(br<100||wm)?"brightness("+(br/100)+") sepia("+(wm*.0045).toFixed(3)+")":"";
+  $("qbrv").textContent=br+"%";$("qwmv").textContent=wm+"%";$("qbr").value=br;$("qwm").value=wm;
+  [...$("qth").children].forEach(b=>b.classList.toggle("on",b.dataset.t===th));
+}
+const qCfShow=on=>{$("qcf").classList.toggle("on",on);$("qnt").setAttribute("aria-expanded",on?"true":"false")};
+$("qnt").onclick=e=>{e.stopPropagation();qCfShow(!$("qcf").classList.contains("on"))};
+$("qth").onclick=e=>{const b=e.target.closest("button");if(b){qs("qth",b.dataset.t);qCfApply()}};
+$("qbr").oninput=()=>{qs("qbr",$("qbr").value);qCfApply()};
+$("qwm").oninput=()=>{qs("qwm",$("qwm").value);qCfApply()};
+$("qcr0").onclick=()=>{qs("qth","");qs("qbr","100");qs("qwm","0");qCfApply()};
+$("qpg").addEventListener("pointerdown",e=>{if($("qcf").classList.contains("on")&&!e.target.closest("#qcf,#qnt"))qCfShow(false)},true);
 $("qplay").onclick=()=>{
   if(QPLAY&&QEL){QEL.paused?QEL.play():QEL.pause();return}
   const[s,a]=(QTGT&&QTGT.p===QP)?[QTGT.s,QTGT.a]:QPS[QP-1];qPlayFrom(qgi(s,a),true);
@@ -3493,7 +3569,7 @@ $("qmr").onclick=async()=>{
 };
 addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){qAStop();qShut();$("qjs").classList.remove("on");$("qpg").classList.remove("on");if(QM)qList();qHomeSub()}});
 addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear();qMarkAll()}});
-if(qg("qnight")==="1")$("qpg").classList.add("night");
+qCfApply();
 qHomeSub();
 /* Ro'yxat boshqaruvi */
 $("qtabs").onclick=e=>{const b=e.target.closest("[data-q]");if(!b||!QM)return;QT=b.dataset.q;$("qsw").classList.remove("on");$("qsr").value="";qList()};
@@ -3589,19 +3665,20 @@ const ASEC={
    <div class="ac"><div class="ag">Bugungi vaqtlar</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div>${N.map(([k,n])=>`<div class="at"><span>${n}</span><input type="time" id="a_${k}" value="${cur[k]}"></div>`).join("")}</div>
    <div class="ac"><div class="ag">Mintaqa bo‘yicha tuzatish</div><div class="ah">Mintaqani tanlang va kerakli vaqtga ± daqiqa qo‘shing. O‘zgarish faqat shu mintaqa uchun amal qiladi. Tuzatishsiz holatda hammasi avtomatik hisoblanadi.</div>
     <div class="ah" id="a_me" style="margin:0 0 8px"></div><select id="a_rg">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}">${r[1]}</option>`).join("")}</optgroup>`).join("")}</select>
-    <div class="at"><span>Hammasiga</span><div class="stp"><button type="button" data-all="-1">−</button><b id="m_all">·</b><button type="button" data-all="1">+</button></div></div>
+    <div class="ah" id="a_who" style="margin:0 0 8px;color:var(--ac)"></div><div class="at"><span>Hammasiga</span><div class="stp"><button type="button" data-all="-1">−</button><b id="m_all">·</b><button type="button" data-all="1">+</button></div></div>
     ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="stp"><button type="button" data-m="${k}" data-d="-1">−</button><b id="m_${k}">0</b><button type="button" data-m="${k}" data-d="1">+</button><em id="r_${k}"></em></div></div>`).join("")}
     <div class="ah" style="margin:10px 0 0" id="a_prev"></div><div id="a_used"></div></div>
    <div class="ac"><div class="ag">Hijriy sana tuzatish</div><div class="ah">Ilovadagi hijriy sana kuzatuvdan farq qilsa, shu yerdan bir kunga to‘g‘rilang.</div><select id="a_hij"><option value="-1">−1 kun</option><option value="0">Tuzatishsiz</option><option value="1">+1 kun</option></select></div>`},
   init:()=>{
    $("a_hij").value=String(+D.vaqtlar.hijri||0);
    AD=JSON.parse(JSON.stringify(D.vaqtlar.mint||{}));let cr=null;
-   const cl=()=>{const o={};for(const[k]of N)o[k]=+$("m_"+k).textContent||0;return o};
+   const cl=()=>{const o={};for(const[k]of N)o[k]=pn($("m_"+k).textContent);return o};
    const sv=()=>{if(cr)AD[cr]=cl()};
-   const loc=id=>({lat:RG[id][2],lon:RG[id][3],id});
-   const show=id=>{sv();cr=id;const a=AD[id]||{};for(const[k]of N)$("m_"+k).textContent=a[k]||0;rf()};
+   const loc=id=>({lat:RG[id][2],lon:RG[id][3],id}),sg=n=>n>0?"+"+n:n<0?"−"+(-n):"0",pn=t=>+String(t).replace("−","-")||0;
+   const show=id=>{sv();cr=id;const a=AD[id]||{};for(const[k]of N)$("m_"+k).textContent=sg(+a[k]||0);rf()};
    const rf=()=>{
      const id=cr,a=cl(),t=calcT(loc(id),null,a),t0=calcT(loc(id),null,{});
+     $("a_who").textContent="Bu tuzatish faqat «"+RG[id][1]+"» mintaqasidagi foydalanuvchilarga qo‘shiladi. Boshqa mintaqalarga ta’sir qilmaydi.";
      for(const[k]of N){const x=a[k]||0;$("m_"+k).style.color=x?"var(--ac)":"";$("r_"+k).textContent=t[k]}
      $("a_prev").textContent=RG[id][1]+" uchun bugungi vaqtlar: "+N.map(([k])=>t[k]).join(" · ");
      const u=Object.keys(AD).filter(i=>i!==id&&Object.values(AD[i]||{}).some(x=>x)).map(i=>`<button type="button" class="chp" data-g="${i}">${RG[i][1]}</button>`).join("");
@@ -3609,8 +3686,8 @@ const ASEC={
    };
    $("a_rg").onchange=e=>show(e.target.value);
    $("abody").onclick=e=>{
-     const m=e.target.closest("[data-m]");if(m){const el=$("m_"+m.dataset.m);el.textContent=Math.max(-30,Math.min(30,(+el.textContent||0)+ +m.dataset.d));rf();return}
-     const al=e.target.closest("[data-all]");if(al){for(const[k]of N){const el=$("m_"+k);el.textContent=Math.max(-30,Math.min(30,(+el.textContent||0)+ +al.dataset.all))}rf();return}
+     const m=e.target.closest("[data-m]");if(m){const el=$("m_"+m.dataset.m);el.textContent=sg(Math.max(-30,Math.min(30,pn(el.textContent)+ +m.dataset.d)));rf();return}
+     const al=e.target.closest("[data-all]");if(al){for(const[k]of N){const el=$("m_"+k);el.textContent=sg(Math.max(-30,Math.min(30,pn(el.textContent)+ +al.dataset.all)))}rf();return}
      const g=e.target.closest("[data-g]");if(g&&g.classList.contains("chp")){$("a_rg").value=g.dataset.g;show(g.dataset.g);return}
    };
    $("a_baza").onchange=()=>{};
@@ -3732,22 +3809,35 @@ const VK="BBp2PCSQOptsWv3cUxUypRLTfJZBKVgmMDNLzBUBKLJlCBx44nGPZmeUSX2gfx6kJABecl
 const u8=s=>{const b=(s+"=".repeat((4-s.length%4)%4)).replace(/-/g,"+").replace(/_/g,"/");return Uint8Array.from(atob(b),c=>c.charCodeAt(0))};
 let tz;function toast(t){const e=$("toast");e.textContent=t;e.classList.add("on");clearTimeout(tz);tz=setTimeout(()=>e.classList.remove("on"),2500)}
 const bellOn=on=>{const b=$("bell");$("msw").classList.toggle("on",on);$("mbs").textContent=on?"Yoqilgan · namozdan 10 daqiqa oldin (mintaqangiz bo‘yicha)":"O‘chiq · yoqish uchun bosing";b.classList.toggle("on",on);b.dataset.on=on?"1":"";b.title=on?"Bildirishnoma yoqilgan":"Bildirishnomani yoqish"};
+const bellWant=()=>localStorage.getItem("bellwant")==="1";
+async function bellSave(sb){
+  const r=await fetch(SB+"/rest/v1/rpc/save_push",{method:"POST",headers:H(),body:JSON.stringify({s:sb.toJSON()})});
+  if(!r.ok)throw 0;localStorage.removeItem("prrep");pushReg();
+}
+/* Obuna telefon tomonidan yo‘qolsa ham (yangilash, kesh tozalash), foydalanuvchi o‘chirmagan bo‘lsa, o‘zi qayta yoqiladi */
 async function bellInit(){
   if(!("serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window))return;
   const reg=await navigator.serviceWorker.ready;
-  const s=await reg.pushManager.getSubscription();
   $("bell").style.display="";$("msw").style.display="";
-  bellOn(!!s&&Notification.permission==="granted");
+  let sb=await reg.pushManager.getSubscription();
+  const ok=Notification.permission==="granted";
+  if(sb&&localStorage.getItem("bellwant")===null)localStorage.setItem("bellwant","1");
+  if(ok&&bellWant()){
+    try{
+      if(!sb)sb=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VK)});
+      if(localStorage.getItem("bellsv")!==sb.endpoint.slice(-24)){await bellSave(sb);localStorage.setItem("bellsv",sb.endpoint.slice(-24))}
+    }catch(e){}
+  }
+  bellOn(ok&&(!!sb||bellWant()));
 }
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)bellInit().catch(()=>{})});
 $("bell").onclick=async()=>{
   const b=$("bell"),reg=await navigator.serviceWorker.ready;
-  if(b.dataset.on){const s=await reg.pushManager.getSubscription();if(s)await s.unsubscribe();bellOn(false);toast("Bildirishnoma o‘chirildi");return}
+  if(b.dataset.on){localStorage.setItem("bellwant","0");const s=await reg.pushManager.getSubscription();if(s){try{await s.unsubscribe()}catch(e){}}localStorage.removeItem("bellsv");bellOn(false);toast("Bildirishnoma o‘chirildi");return}
   try{
     if(await Notification.requestPermission()!=="granted"){toast("Ruxsat berilmadi. Telefon sozlamalaridan ruxsat bering");return}
     const s=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VK)});
-    const r=await fetch(SB+"/rest/v1/rpc/save_push",{method:"POST",headers:H(),body:JSON.stringify({s:s.toJSON()})});
-    if(!r.ok)throw 0;
-    localStorage.removeItem("prrep");pushReg();
+    await bellSave(s);localStorage.setItem("bellwant","1");localStorage.setItem("bellsv",s.endpoint.slice(-24));
     bellOn(true);toast("Bildirishnoma yoqildi");
   }catch(e){toast("Xato. Qaytadan urinib ko‘ring")}
 };
@@ -4207,7 +4297,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="5.4";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="5.7";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);

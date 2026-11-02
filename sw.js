@@ -46,3 +46,17 @@ self.addEventListener("notificationclick", e => {
     return clients.openWindow("./");
   }));
 });
+
+// Telefon obunani almashtirsa, o'zi yangisini olib serverga yozadi (bildirishnoma o'chib qolmasin)
+const SB = "https://pxwrvdmegjrspvzcjvcs.supabase.co", KEY = "sb_publishable_VIboAeheatxih3ixWmyfgw_k4hz9DY0";
+const VK = "BBp2PCSQOptsWv3cUxUypRLTfJZBKVgmMDNLzBUBKLJlCBx44nGPZmeUSX2gfx6kJABeclWuxbI4H4jGEM4F084";
+const u8 = s => { const b = (s + "=".repeat((4 - s.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/"); return Uint8Array.from(atob(b), c => c.charCodeAt(0)); };
+self.addEventListener("pushsubscriptionchange", e => {
+  e.waitUntil((async () => {
+    try {
+      const o = e.oldSubscription && e.oldSubscription.options;
+      const s = e.newSubscription || await self.registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: (o && o.applicationServerKey) || u8(VK) });
+      await fetch(SB + "/rest/v1/rpc/save_push", { method: "POST", headers: { apikey: KEY, Authorization: "Bearer " + KEY, "Content-Type": "application/json" }, body: JSON.stringify({ s: s.toJSON() }) });
+    } catch (x) {}
+  })());
+});
