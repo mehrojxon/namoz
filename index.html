@@ -1295,6 +1295,9 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .agt b{flex:none;font:700 16px var(--fd);color:#f0c969;overflow-wrap:anywhere}
 #abody .at input{width:164px!important;min-width:164px;padding-left:8px;padding-right:8px;font-size:17px}
 .atr{display:flex;align-items:center;gap:8px}
+#abody .ck{display:flex;align-items:center;gap:12px;text-align:left;font-size:15px;color:var(--ink)}
+#abody .ck input{flex:none;width:24px!important;min-width:24px!important;height:24px;padding:0;margin:0}
+#abody .ck span{flex:1}
 #abody .alk{flex:none;width:42px;height:42px;border-radius:12px;border:1.5px solid rgba(90,205,185,.3);background:rgba(3,24,22,.5);color:var(--mut);display:grid;place-items:center}
 #abody .alk svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 #abody .alk.on{background:rgba(240,201,105,.18);border-color:#f0c969;color:#f0c969}
@@ -1800,6 +1803,7 @@ const VIL=[
 ];
 const REG=VIL.flatMap(v=>v[2].map(r=>[...r,v[0]]));
 const RG=Object.fromEntries(REG.map(r=>[r[0],r]));
+const VOF=Object.fromEntries(REG.map(r=>[r[0],r[4]])),VFIRST=Object.fromEntries(VIL.map(v=>[v[0],v[2][0][0]])),VC=Object.fromEntries(VIL.map(v=>[v[0],[v[2].reduce((a,r)=>a+r[2],0)/v[2].length,v[2].reduce((a,r)=>a+r[3],0)/v[2].length]]));
 const DEGR=Math.PI/180,gpsLoc=()=>{const q=get("qloc",null);return q&&q.gps?q:null};
 let MINT=get("mint",{m:"auto"});
 function sunEv(dt,lat,lon){
@@ -1821,8 +1825,17 @@ function myLoc(){
 }
 const dStr=d=>d.getFullYear()+"-"+p2(d.getMonth()+1)+"-"+p2(d.getDate());
 const fT=m=>{m=((Math.round(m)%1440)+1440)%1440;return p2(m/60|0)+":"+p2(m%60)};
+/* Viloyat jadvali: muftiylik vaqti butun viloyat uchun bitta kiritiladi */
+function calcV(vl,loc,today,ov,v){
+  const vid=VOF[loc.id],c=VC[vid];let bd=new Date(vl.sana||"");
+  if(isNaN(bd)||Math.abs(today-bd)>400*864e5)bd=today;else bd=new Date(bd.getFullYear(),bd.getMonth(),bd.getDate());
+  const A=sunEv(today,vl.tuman?loc.lat:c[0],vl.tuman?loc.lon:c[1]),B=sunEv(bd,c[0],c[1]),adj=ov===null?{}:(ov||(v.mint||{})[loc.id]||{}),qt=vl.qot||{},o={};
+  for(const[k]of N){const[h,m]=String(vl[k]||"00:00").split(":");o[k]=qt[k]&&vl[k]?fT(+h*60+ +m):fT(+h*60+ +m+(A[k]-B[k])+(+adj[k]||0))}
+  return o;
+}
 function calcT(loc,when,ov){
   const v=D.vaqtlar||{},b=baseReg(),today=when||new Date();
+  {const vl=(v.vil||{})[VOF[loc.id]];if(vl&&vl.bomdod)return calcV(vl,loc,today,ov,v)}
   let bd=new Date(v.bazaSana||D.yangilangan||"");if(isNaN(bd)||Math.abs(today-bd)>400*864e5)bd=today;
   else bd=new Date(bd.getFullYear(),bd.getMonth(),bd.getDate());
   const A=sunEv(today,loc.lat,loc.lon),B=sunEv(bd,b[2],b[3]),adj=ov===null?{}:(ov||(v.mint||{})[loc.id]||{}),o={};
@@ -3697,8 +3710,18 @@ function parseKanal(txt){
 const ASEC={
  vaqt:{t:"Namoz vaqtlari",d:"Asosiy vaqtlar, mintaqa tuzatishlari, hijriy sana",
   html:()=>{const b=baseReg(),cur=calcT({lat:b[2],lon:b[3],id:b[0]},null,null);
-   return `<div class="ac"><div class="ag">Asosiy mintaqa</div><div class="ah">Quyidagi olti vaqt qaysi shahar uchun kiritiladi. Boshqa mintaqalar shu vaqtdan quyosh holatiga qarab o‘zi hisoblanadi.</div><select id="a_baza">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</optgroup>`).join("")}</select></div>
-   <div class="ac"><div class="ag">Bugungi vaqtlar</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div><div class="apz"><label for="a_paste">Kanal matnini qo‘yish</label><textarea id="a_paste" rows="3" placeholder="Masalan: Бомдод 06:25; Пешин 13:00; Аср 15:55; Шом 17:40; Хуфтон 19:10."></textarea><button type="button" class="alink" id="a_pb">Vaqtlarni o‘qib kiritish</button><div class="ah" id="a_ps" style="margin:6px 0 0"></div></div>
+   return `<div class="ac"><div class="ag">Viloyat jadvali (masjid vaqtlari)</div><div class="ah">Muftiylik jadvalidagi vaqtni viloyat uchun bir marta kiriting: viloyatning hamma tumanlarida shu vaqt chiqadi. Jadval kiritilmagan viloyatlarda vaqt avtomatik hisoblanadi.</div>
+    <select id="v_vl">${VIL.map(v=>`<option value="${v[0]}">${v[1]}</option>`).join("")}</select>
+    <label class="ck" style="margin:12px 0 4px"><input type="checkbox" id="v_on"><span>Bu viloyat uchun jadval ishlatilsin</span></label>
+    <div id="v_box" style="display:none">
+     <div class="apz"><label for="v_paste">Kanal matnini qo‘yish</label><textarea id="v_paste" rows="3" placeholder="Masalan: Бомдод 06:25; Пешин 13:00; Аср 15:55; Шом 17:40; Хуфтон 19:10."></textarea><button type="button" class="alink" id="v_pb">Vaqtlarni o‘qib kiritish</button><div class="ah" id="v_ps" style="margin:6px 0 0"></div></div>
+     ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="atr"><input type="time" id="v_${k}"><button type="button" class="alk" data-vlk="${k}" aria-label="${n}: qotirish" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button></div></div>`).join("")}
+     <label class="ck" style="margin:12px 0 4px"><input type="checkbox" id="v_tm"><span>Tuman va GPS bo‘yicha 1–2 daqiqa siljitish</span></label>
+     <div class="ah" style="margin:0">O‘chiq bo‘lsa, viloyatning hamma joyida bir xil vaqt chiqadi (masjid jadvali kabi). Yoqilsa, tuman joyiga qarab siljiydi. Qulf belgisi bosilgan vaqt har holda o‘zgarmaydi. Kunlar o‘tishi bilan qulflanmagan vaqtlar quyosh holatiga qarab siljib boradi, shuning uchun jadvalni vaqti-vaqti bilan yangilab turing.</div>
+    </div>
+    <div class="ah" id="v_list" style="margin:10px 0 0"></div></div>
+   <div class="ac"><div class="ag">Avtomatik hisob uchun asosiy mintaqa</div><div class="ah">Jadval kiritilmagan viloyatlar shu shahar vaqtidan quyosh holatiga qarab o‘zi hisoblanadi. Quyidagi olti vaqt shu shahar uchun kiritiladi.</div><select id="a_baza">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</optgroup>`).join("")}</select></div>
+   <div class="ac"><div class="ag">Asosiy mintaqa vaqtlari</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div><div class="apz"><label for="a_paste">Kanal matnini qo‘yish</label><textarea id="a_paste" rows="3" placeholder="Masalan: Бомдод 06:25; Пешин 13:00; Аср 15:55; Шом 17:40; Хуфтон 19:10."></textarea><button type="button" class="alink" id="a_pb">Vaqtlarni o‘qib kiritish</button><div class="ah" id="a_ps" style="margin:6px 0 0"></div></div>
     ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="atr"><input type="time" id="a_${k}" value="${cur[k]}"><button type="button" class="alk" data-lk="${k}" aria-label="${n}: qotirish" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button></div></div>`).join("")}
     <div class="ah" style="margin:10px 0 0">Qulf belgisi bosilgan vaqt hamma mintaqada, GPS va sanadan qat’i nazar aynan shu soatda qoladi (masalan, Peshin 13:00). Qotirilmagan vaqtlar quyosh holatiga qarab o‘zi siljiydi.</div></div>
    <div class="ac"><div class="ag">Mintaqa bo‘yicha tuzatish</div><div class="ah">Mintaqani tanlang va kerakli vaqtga ± daqiqa qo‘shing. O‘zgarish faqat shu mintaqa uchun amal qiladi. Tuzatishsiz holatda hammasi avtomatik hisoblanadi.</div>
@@ -3716,7 +3739,7 @@ const ASEC={
    const show=id=>{sv();cr=id;const a=AD[id]||{};for(const[k]of N)$("m_"+k).textContent=sg(+a[k]||0);rf()};
    const rf=()=>{
      const id=cr,a=cl(),sv0=D.vaqtlar;let t;
-     try{const w=Object.assign({},sv0,{baza:$("a_baza").value,bazaSana:new Date().toLocaleDateString("sv"),qot:Object.assign({},LKS)});for(const[k]of N)if($("a_"+k).value)w[k]=$("a_"+k).value;D.vaqtlar=w;t=calcT(loc(id),null,a)}finally{D.vaqtlar=sv0}
+     try{const w=Object.assign({},sv0,{baza:$("a_baza").value,bazaSana:new Date().toLocaleDateString("sv"),qot:Object.assign({},LKS),vil:(()=>{const o=Object.assign({},AV);const f=vForm();if(vcur){if(f)o[vcur]=f;else delete o[vcur]}return o})()});for(const[k]of N)if($("a_"+k).value)w[k]=$("a_"+k).value;D.vaqtlar=w;t=calcT(loc(id),null,a)}finally{D.vaqtlar=sv0}
      $("a_who").textContent="Bu tuzatish faqat «"+RG[id][1]+"» mintaqasidagi foydalanuvchilarga qo‘shiladi. Boshqa mintaqalarga ta’sir qilmaydi.";
      for(const[k]of N){const x=a[k]||0,q=!!LKS[k];$("m_"+k).style.color=x?"var(--ac)":"";$("r_"+k).textContent=t[k];
        document.querySelectorAll('[data-m="'+k+'"]').forEach(b=>{b.disabled=q});$("m_"+k).style.opacity=q?".4":"";
@@ -3741,11 +3764,37 @@ const ASEC={
      if(e.target.closest("#a_clra")){aconfirm("Hamma mintaqalardagi tuzatishlar o‘chiriladi (saqlagach). Davom etasizmi?","Ha, o‘chirish").then(y=>{if(!y)return;AD={};for(const[k]of N)$("m_"+k).textContent="0";rf()});return}
      const g=e.target.closest("[data-g]");if(g&&g.classList.contains("chp")){$("a_rg").value=g.dataset.g;show(g.dataset.g);return}
    };
+   const VKK=["bomdod","quyosh","peshin","asr","shom","xufton"];let vcur=null,VQ={};
+   AV=JSON.parse(JSON.stringify(D.vaqtlar.vil||{}));
+   const vForm=()=>{if(!vcur||!$("v_on").checked)return null;const e={sana:new Date().toLocaleDateString("sv"),qot:Object.assign({},VQ),tuman:$("v_tm").checked};for(const k of VKK)e[k]=$("v_"+k).value;return e};
+   const vsv=()=>{if(!vcur)return;const e=vForm();if(e)AV[vcur]=e;else delete AV[vcur]};
+   const vlist=()=>{const ids=Object.keys(AV);const f=vForm(),all=new Set(ids);if(vcur){if(f)all.add(vcur);else all.delete(vcur)}
+     $("v_list").textContent=all.size?"Jadval ishlatilayotgan viloyatlar: "+[...all].map(i=>(VIL.find(x=>x[0]===i)||[0,i])[1]).join(", ")+".":"Hozircha hech bir viloyatda jadval ishlatilmayapti, hammasi avtomatik hisoblanadi."};
+   const vshow=id=>{vcur=id;const e=AV[id];$("v_on").checked=!!e;$("v_box").style.display=e?"block":"none";
+     let t;if(e){t=e;VQ=Object.assign({},e.qot||{});$("v_tm").checked=!!e.tuman}else{const r=RG[VFIRST[id]];t=calcT({lat:r[2],lon:r[3],id:r[0]},null,null);VQ={};$("v_tm").checked=false}
+     for(const k of VKK)$("v_"+k).value=t[k]||"";$("v_ps").textContent="";vrf()};
+   const vrf=()=>{for(const k of VKK){const b=document.querySelector('[data-vlk="'+k+'"]');b.classList.toggle("on",!!VQ[k]);b.setAttribute("aria-pressed",VQ[k]?"true":"false")}vlist();rf()};
+   $("v_vl").onchange=e=>{vsv();vshow(e.target.value)};
+   $("v_on").onchange=()=>{$("v_box").style.display=$("v_on").checked?"block":"none";vrf()};
+   $("v_tm").onchange=()=>vrf();
+   VKK.forEach(k=>$("v_"+k).addEventListener("input",()=>rf()));
+   $("v_pb").onclick=()=>{const r=parseKanal($("v_paste").value);if(r.err){$("v_ps").textContent=r.err;$("v_ps").style.color="#e58b7a";return}
+     for(const k in r.t)$("v_"+k).value=r.t[k];$("v_ps").style.color="var(--ac)";$("v_ps").textContent="O‘qildi: "+N.filter(([k])=>r.t[k]).map(([k,n])=>n.replace(" chiqishi","")+" "+r.t[k]).join(" · ")+". «Saqlash» ni bosing.";rf()};
+   document.querySelectorAll("[data-vlk]").forEach(b=>b.onclick=()=>{const k=b.dataset.vlk;VQ[k]=!VQ[k];if(!VQ[k])delete VQ[k];vrf()});
+   VS=vsv;
+   VINIT=()=>{const me0=(EL&&RG[EL.id])?VOF[EL.id]:"qashqadaryo";$("v_vl").value=VIL.some(x=>x[0]===me0)?me0:VIL[0][0];vshow($("v_vl").value)};
    $("a_baza").onchange=()=>rf();["bomdod","quyosh","peshin","asr","shom","xufton"].forEach(k=>$("a_"+k).addEventListener("input",()=>rf()));
-   AS_SV=sv;{const me=(EL&&RG[EL.id])?EL.id:"qarshi";$("a_rg").value=me;show(me);$("a_me").textContent="Sizning mintaqangiz: "+RG[me][1]+". Tuzatish faqat tanlangan mintaqadagi foydalanuvchilar vaqtiga qo‘shiladi."}
+   AS_SV=sv;{const me=(EL&&RG[EL.id])?EL.id:"qarshi";$("a_rg").value=me;show(me);$("a_me").textContent="Sizning mintaqangiz: "+RG[me][1]+". Tuzatish faqat tanlangan mintaqadagi foydalanuvchilar vaqtiga qo‘shiladi."};VINIT()
   },
   save:()=>patchV(v=>{
-   AS_SV&&AS_SV();
+   AS_SV&&AS_SV();VS&&VS();
+   {const nv={},today=new Date().toLocaleDateString("sv");
+    for(const id in AV){const e=AV[id];if(!e)continue;for(const k of ["bomdod","quyosh","peshin","asr","shom","xufton"])if(!e[k])return"Viloyat jadvalida hamma vaqtni kiriting";
+     const old=(v.vil||{})[id];let chg=!old;
+     if(old){const c=VC[id],cur=calcV(old,{lat:c[0],lon:c[1],id:VFIRST[id]},new Date(),null,v);for(const k in cur)if(e[k]!==cur[k])chg=true}
+     const ent=chg?{sana:today}:{sana:old.sana};for(const k of ["bomdod","quyosh","peshin","asr","shom","xufton"])ent[k]=chg?e[k]:old[k];
+     ent.qot=e.qot||{};ent.tuman=!!e.tuman;nv[id]=ent}
+    v.vil=nv}
    const b=baseReg(),nb=$("a_baza").value,cur=calcT({lat:b[2],lon:b[3],id:b[0]},null,null);
    let ch=nb!==b[0];for(const[k]of N){if(!$("a_"+k).value)return"Hamma vaqtni kiriting";if($("a_"+k).value!==cur[k])ch=true}
    {const q={};for(const k in LKS)if(LKS[k])q[k]=true;v.qot=q}
@@ -3762,7 +3811,7 @@ const ASEC={
   init:()=>{$("hm").value=HK.matn;$("hs").value=HK.manba},
   save:hikmatSave}
 };
-let AS=null,AD={},AS_SV=null,LKS={};
+let AS=null,AD={},AS_SV=null,LKS={},AV={},VS=null,VINIT=null;
 function aHome(){
   AS=null;$("att").textContent="Boshqaruv";$("aback").style.visibility="hidden";$("afoot").classList.remove("on");
   const z=zs(),miss=(isN(z.nisob)?0:1)+(G.filter(([c])=>!isN(zg(z,"fitr")[c])).length?1:0)+(G.filter(([c])=>!isN(zg(z,"fidya")[c])).length?1:0);
@@ -4349,7 +4398,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="5.9";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.0";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
