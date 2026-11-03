@@ -3315,9 +3315,10 @@ function qDur(s){
 let QASZ={};try{QASZ=JSON.parse(qg("qasz")||"{}")||{}}catch(e){QASZ={}}
 const qSaveSz=()=>qs("qasz",JSON.stringify(QASZ)),qmb=n=>(n/1e6).toFixed(1)+" MB",QAMF={},QAMT={tok:0};
 async function qHeadLen(u){
-  try{const r=await fetch(u,{method:"HEAD"}),n=+r.headers.get("content-length");if(r.ok&&n>0)return n}catch(e){}
+  const to=()=>{const ac=new AbortController();setTimeout(()=>ac.abort(),12000);return ac};
+  try{const r=await fetch(u,{method:"HEAD",signal:to().signal}),n=+r.headers.get("content-length");if(r.ok&&n>0)return n}catch(e){}
   /* HEAD ruxsat etilmasa: oddiy so‘rov, sarlavha kelishi bilanoq to‘xtatiladi (fayl yuklanmaydi) */
-  try{const ac=new AbortController(),r=await fetch(u,{signal:ac.signal}),n=+r.headers.get("content-length");ac.abort();return r.ok&&n>0?n:0}catch(e){return 0}
+  try{const ac=to(),r=await fetch(u,{signal:ac.signal}),n=+r.headers.get("content-length");ac.abort();return r.ok&&n>0?n:0}catch(e){return 0}
 }
 /* Sura hajmi: har bir fayl uchun serverdan aniq so‘raladi; bitta ham javob bermasa 0 qaytadi (taxmin qilinmaydi) */
 async function qSizeOf(rc,s){
@@ -3372,10 +3373,13 @@ const qamEst=(rc,s)=>QASZ[rc.id+":"+s]||Math.round(qDur(s)*(rc.k==="a"?1.15:1)*q
 async function qamResolve(rc){
   const tok=++QAMT.tok,todo=[];for(let s=1;s<=114;s++)if(!QASZ[rc.id+":"+s])todo.push(s);
   if(!todo.length||QAMF[rc.id])return;
-  let i=0,fail=0,okc=0;
+  let fail=0,okc=0;const left=new Set(todo);
+  /* Foydalanuvchi hozir ko‘rib turgan suradan boshlab aniqlanadi (ro‘yxatning pastiga o‘tgan bo‘lsa, kutib qolmasin) */
+  const nextS=()=>{if(!left.size)return 0;let v=1;try{const r=$("qaml").children;for(let j=0;j<r.length;j++){const b=r[j].getBoundingClientRect();if(b.bottom>140){v=j+1;break}}}catch(e){}
+    let best=0,bd=1e9;for(const x of left){const d=x>=v?x-v:(v-x)*3+500;if(d<bd){bd=d;best=x}}left.delete(best);return best};
   const wk=async()=>{for(;;){
     if(QAMT.tok!==tok||QAMF[rc.id])return;
-    const k=i++;if(k>=todo.length)return;const s=todo[k],n=await qSizeOf(rc,s);
+    const s=nextS();if(!s)return;const n=await qSizeOf(rc,s);
     if(n){QASZ[rc.id+":"+s]=n;okc++;if(okc%5===0)qSaveSz()}else{fail++;if(fail>=4&&okc===0)QAMF[rc.id]=1}
     if(QAMT.tok===tok)qamDraw();
   }};
@@ -4345,7 +4349,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="5.8";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="5.9";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
