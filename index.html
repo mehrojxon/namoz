@@ -234,36 +234,39 @@ nav button:active svg{transform:scale(.9)}
 body.kb nav{display:none}
 .sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;z-index:9}
 .sheet.on{display:flex}
-#fb .box{text-align:left;padding:18px 20px calc(20px + env(safe-area-inset-bottom));min-height:60dvh}
-#fb .fbt{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-#fb .fbt h2{margin:0;font-size:22px}
-#fb .fbt button{margin:0;width:40px;height:40px;padding:0;border-radius:50%;background:rgba(127,160,150,.18);color:var(--ink);font-size:24px;line-height:1}
-#fb .fbtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border-radius:16px;background:rgba(127,160,150,.14);margin-bottom:14px}
-#fb .fbtabs button{margin:0;padding:11px 8px;border-radius:12px;background:none;color:var(--mut);font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
-#fb .fbtabs button.on{background:var(--ac);color:#fff}
-#fb .fbtabs i{font-style:normal;font-size:12px;min-width:20px;height:20px;border-radius:10px;padding:0 6px;display:inline-grid;place-items:center;background:#e0b24f;color:#2b1c00}
-#fb .fbn{font-size:13.5px;line-height:1.5;color:var(--mut);margin:0 0 12px}
-#fb .fbch{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-#fb .fbch button{margin:0;padding:9px 14px;border-radius:14px;border:1.5px solid var(--line);background:none;color:var(--ink);font-size:14px;font-weight:600}
-#fb .fbch button.on{border-color:var(--ac);background:rgba(14,107,99,.18);color:var(--ac)}
-#fb textarea{width:100%;box-sizing:border-box;min-height:140px;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif;resize:vertical}
+#fb .box{text-align:left;padding:16px 18px calc(18px + env(safe-area-inset-bottom));border:1px solid rgba(215,170,80,.28);border-bottom:0}
+#fb .fbt{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+#fb .fbt h2{margin:0;font-size:21px}
+#fb .fbt button{margin:0;width:36px;height:36px;padding:0;border-radius:11px;background:rgba(127,160,150,.14);color:var(--ink);display:grid;place-items:center}
+#fb .fbt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+#fb .fbtabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px}
+#fb .fbtabs button{margin:0;padding:11px 2px;border:0;border-radius:0;background:none;color:var(--mut);font-size:15px;font-weight:600;display:flex;align-items:center;gap:7px;position:relative}
+#fb .fbtabs button.on{color:var(--ink)}
+#fb .fbtabs button.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);border-radius:2px}
+#fb .fbtabs i{font-style:normal;font-size:11.5px;min-width:18px;height:18px;border-radius:9px;padding:0 5px;display:inline-grid;place-items:center;background:var(--gold);color:#2b1c00;font-weight:700}
+#fb .fbn{font-size:13px;line-height:1.45;color:var(--mut);margin:0 0 12px}
+#fb .fbch{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+#fb .fbch button{margin:0;padding:9px 2px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--mut);font-size:13px;font-weight:600;white-space:nowrap}
+#fb .fbch button.on{border-color:var(--gold);background:rgba(215,170,80,.12);color:var(--ink)}
+#fb textarea{width:100%;box-sizing:border-box;min-height:104px;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:15.5px/1.5 system-ui,sans-serif;resize:none;display:block}
 #fb textarea:focus{outline:0;border-color:var(--ac)}
-#fb .fbm{display:flex;justify-content:space-between;gap:10px;margin:6px 2px 12px;font-size:12.5px;color:var(--mut)}
+#fb .fbm{display:flex;justify-content:space-between;gap:10px;margin:6px 2px 12px;font-size:12px;color:var(--mut);min-height:16px}
 #fb .fbm #fbmsg{text-align:right;font-weight:600}
 #fb .fbm #fbmsg.e{color:#e5675a}#fb .fbm #fbmsg.o{color:#2fb58a}
-#fb .fbgo{display:block;width:100%;margin:0;padding:15px;border-radius:16px;font-size:16.5px;font-weight:700;background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff}
-#fb .fbgo:disabled{opacity:.5}
-#fb .fbi{border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:10px;background:rgba(127,160,150,.07)}
-#fb .fbi.nw{border-color:#e0b24f}
-#fb .fbh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
-#fb .fbh b{font-size:14.5px}
-#fb .fbh span{font-size:12.5px;color:var(--mut)}
-#fb .fbh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
-#fb .fbh em.h{color:#2fb58a;border-color:rgba(47,181,138,.5)}
-#fb .fbi p{margin:0;font-size:15px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
-#fb .fbr{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(14,107,99,.16);border-left:3px solid var(--ac)}
-#fb .fbr small{display:block;font-size:12px;color:var(--ac);font-weight:700;margin-bottom:3px}
-#fb .fbe{text-align:center;color:var(--mut);padding:28px 8px;font-size:14.5px;line-height:1.5}
+#fb .fbgo{display:block;width:100%;margin:0;padding:13px;border-radius:12px;font-size:15.5px;font-weight:700;background:var(--ac);color:#fff;letter-spacing:.01em}
+#fb .fbgo:disabled{opacity:.45}
+#fb .fbi{border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;background:rgba(127,160,150,.06)}
+#fb .fbi.nw{border-color:var(--gold)}
+#fb .fbh{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
+#fb .fbh b{font-size:14px}
+#fb .fbh span{font-size:12px;color:var(--mut)}
+#fb .fbh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:600;color:var(--mut)}
+#fb .fbh em.h{color:#2fb58a}
+#fb .fbi p{margin:0;font-size:14.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+#fb .fbr{margin-top:9px;padding:9px 11px;border-radius:9px;background:rgba(14,107,99,.16);border-left:3px solid var(--ac)}
+#fb .fbr small{display:block;font-size:11.5px;color:var(--ac);font-weight:700;margin-bottom:2px}
+#fb .fbe{text-align:center;color:var(--mut);padding:24px 8px;font-size:14px;line-height:1.5}
+#fbj{max-height:56dvh;overflow-y:auto}
 .mfbn{flex:none;font-style:normal;font-size:12px;font-weight:700;min-width:22px;height:22px;border-radius:11px;padding:0 7px;display:grid;place-items:center;background:#e0b24f;color:#2b1c00;margin-right:6px}
 .box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center;max-height:92dvh;overflow-y:auto}
 .box img{width:72px;border-radius:18px}
@@ -1758,12 +1761,12 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <button id="qamx" type="button">Yopish</button>
 </div></div>
 <div class="sheet" id="fb"><div class="box fbx" role="dialog" aria-label="Fikr bildirish">
-  <div class="fbt"><h2>Fikr bildirish</h2><button type="button" id="fbcl" aria-label="Yopish">×</button></div>
-  <div class="fbtabs"><button type="button" class="on" data-ft="w">Yozish</button><button type="button" data-ft="j">Javoblarim<i id="fbtn" style="display:none"></i></button></div>
+  <div class="fbt"><h2>Fikr bildirish</h2><button type="button" id="fbcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="fbtabs" role="tablist"><button type="button" class="on" data-ft="w" role="tab">Yozish</button><button type="button" data-ft="j" role="tab">Javoblarim<i id="fbtn" style="display:none"></i></button></div>
   <div id="fbw">
-   <p class="fbn">Taklif, xato yoki savolingizni yozing. Fikringizni faqat admin o‘qiydi. Ism, telefon raqami kabi shaxsiy ma’lumot yozmang. Javob shu yerda, «Javoblarim» bo‘limida ko‘rinadi.</p>
+   <p class="fbn">Faqat admin o‘qiydi. Ism va telefon raqami kabi shaxsiy ma’lumot yozmang.</p>
    <div class="fbch" id="fbch" role="radiogroup" aria-label="Fikr turi"></div>
-   <textarea id="fbtx" maxlength="1000" rows="6" placeholder="Fikringizni yozing…"></textarea>
+   <textarea id="fbtx" maxlength="1000" rows="4" placeholder="Fikringizni yozing…"></textarea>
    <div class="fbm"><span id="fbc">0 / 1000</span><span id="fbmsg" role="status"></span></div>
    <button type="button" id="fbsd" class="fbgo">Yuborish</button>
   </div>
@@ -3033,11 +3036,11 @@ $("uas").onclick=e=>{
 };
 $("mabout").onclick=()=>$("ab").classList.add("on");
 /* ===== Fikr bildirish ===== */
-const FBT=[["taklif","Taklif"],["xato","Xato"],["savol","Savol"],["rahmat","Minnatdorchilik"]],FBM=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+const FBT=[["taklif","Taklif"],["xato","Xato"],["savol","Savol"],["rahmat","Tashakkur"]],FBM=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
 const FBS={t:"taklif",tab:"w",list:null,busy:false,chk:0};
 const fbDev=()=>{let id=localStorage.getItem("did");if(!id){id=crypto.randomUUID();localStorage.setItem("did",id)}return id};
 const fbLs=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return""}};
-const fbRpc=async(f,b)=>{const r=await fetch(SB+"/rest/v1/rpc/"+f,{method:"POST",headers:H(),body:JSON.stringify(b)});if(!r.ok)throw new Error("HTTP "+r.status);return r.json()};
+const fbRpc=async(f,b)=>{const r=await fetch(SB+"/rest/v1/rpc/"+f,{method:"POST",headers:H(),body:JSON.stringify(b)});if(!r.ok)throw new Error("HTTP "+r.status);const tx=await r.text();return tx?JSON.parse(tx):null};
 const fbDate=x=>{const d=new Date(x);return isNaN(d)?"":d.getDate()+"-"+FBM[d.getMonth()]+" "+p2(d.getHours())+":"+p2(d.getMinutes())};
 function fbBadge(n){
   const b=$("mfbn");b.style.display=n?"grid":"none";b.textContent=n||"";
@@ -3054,7 +3057,7 @@ function fbDraw(){
   const L=FBS.list,box=$("fbj");
   if(L===null){box.innerHTML='<div class="fbe">Yuklanmoqda…</div>';return}
   if(L===false){box.innerHTML='<div class="fbe">Javoblarni yuklab bo‘lmadi. Internetni tekshirib, qayta oching.</div>';return}
-  if(!L.length){box.innerHTML='<div class="fbe">Hali fikr yubormagansiz.<br>Yozganingizdan keyin shu yerda ko‘rinadi, admin javob bersa ham.</div>';return}
+  if(!L.length){box.innerHTML='<div class="fbe">Hali fikr yubormagansiz.<br>Yuborgan fikrlaringiz va admin javoblari shu yerda ko‘rinadi.</div>';return}
   const T=Object.fromEntries(FBT),HS={yangi:"Yuborildi",oqildi:"Ko‘rib chiqildi",hal:"Hal qilindi"};
   box.innerHTML=L.map(x=>`<div class="fbi${x.yangi?" nw":""}"><div class="fbh"><b>${esc(T[x.tur]||x.tur)}</b><span>${fbDate(x.sana)}</span><em class="${x.holat==="hal"?"h":""}">${HS[x.holat]||""}</em></div><p>${esc(x.matn)}</p>${x.javob?`<div class="fbr"><small>Admin javobi · ${fbDate(x.javob_sana)}</small><p>${esc(x.javob)}</p></div>`:""}</div>`).join("");
 }
@@ -3065,7 +3068,7 @@ async function fbLoad(){
 }
 async function fbSeen(){
   if(!FBS.list||!FBS.list.some(x=>x.yangi))return;
-  try{await fbRpc("feedback_seen",{p_d:fbDev()});setTimeout(()=>{FBS.list.forEach(x=>x.yangi=false);fbBadge(0)},2500)}catch(e){}
+  try{await fbRpc("feedback_seen",{p_d:fbDev()});FBS.seen=1;setTimeout(()=>{if(FBS.list)FBS.list.forEach(x=>x.yangi=false);fbBadge(0);if($("fb").classList.contains("on")&&FBS.tab==="j")fbDraw()},1800)}catch(e){}
 }
 async function fbCheck(force){
   if(!fbLs("fbsent"))return;const t=Date.now();if(!force&&t-FBS.chk<180000)return;FBS.chk=t;
@@ -4502,7 +4505,7 @@ Object.assign(ASEC,{
 
 /* ===== Admin: Fikrlar ===== */
 const AFK={rows:null,v:"",t:"",h:"yangi",op:null,err:""};
-const AFT={taklif:"Taklif",xato:"Xato",savol:"Savol",rahmat:"Minnatdorchilik"},AFH={yangi:"Yangi",oqildi:"O‘qildi",hal:"Hal qilindi"};
+const AFT={taklif:"Taklif",xato:"Xato",savol:"Savol",rahmat:"Tashakkur"},AFH={yangi:"Yangi",oqildi:"O‘qildi",hal:"Hal qilindi"};
 async function afkLoad(){
   const t=await tok();if(!t){showAdm();return}
   try{const r=await fetch(SB+"/rest/v1/fikrlar?select=*&order=yaratilgan.desc&limit=500",{headers:H(t)});
@@ -4582,7 +4585,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.2";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
