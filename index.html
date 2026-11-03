@@ -234,38 +234,52 @@ nav button:active svg{transform:scale(.9)}
 body.kb nav{display:none}
 .sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;z-index:9}
 .sheet.on{display:flex}
-#fb .box{text-align:left;padding:16px 18px calc(18px + env(safe-area-inset-bottom));border:1px solid rgba(215,170,80,.28);border-bottom:0}
-#fb .fbt{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
-#fb .fbt h2{margin:0;font-size:21px}
-#fb .fbt button{margin:0;width:36px;height:36px;padding:0;border-radius:11px;background:rgba(127,160,150,.14);color:var(--ink);display:grid;place-items:center}
-#fb .fbt svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
-#fb .fbtabs{display:flex;gap:22px;border-bottom:1px solid var(--line);margin-bottom:14px}
-#fb .fbtabs button{margin:0;padding:11px 2px;border:0;border-radius:0;background:none;color:var(--mut);font-size:15px;font-weight:600;display:flex;align-items:center;gap:7px;position:relative}
-#fb .fbtabs button.on{color:var(--ink)}
-#fb .fbtabs button.on:after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:var(--gold);border-radius:2px}
+#fb .box{text-align:left;padding:8px 18px calc(20px + env(safe-area-inset-bottom));border:1px solid rgba(224,178,79,.32);border-bottom:0;background:linear-gradient(180deg,var(--card),var(--bg));box-shadow:0 -12px 40px rgba(0,0,0,.35)}
+#fb .fbgr{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:2px auto 12px}
+#fb svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#fb .fbt{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+#fb .fbic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--gold);background:rgba(224,178,79,.12);border:1px solid rgba(224,178,79,.35)}
+#fb .fbic svg{width:22px;height:22px}
+#fb .fbtt{flex:1;min-width:0}
+#fb .fbtt h2{margin:0;font-size:20px;line-height:1.2;text-align:left}
+#fb .fbtt small{display:block;margin-top:2px;font-size:12.5px;color:var(--mut)}
+#fb .fbt>button{flex:none;margin:0;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(127,160,150,.14);color:var(--mut);display:grid;place-items:center}
+#fb .fbt>button svg{width:17px;height:17px;stroke-width:2.2}
+#fb .fbtabs{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:4px;border-radius:13px;background:rgba(127,160,150,.12);margin-bottom:16px}
+#fb .fbtabs button{margin:0;padding:10px 6px;border:0;border-radius:10px;background:none;color:var(--mut);font-size:14.5px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:7px;transition:background .15s,color .15s}
+#fb .fbtabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.25)}
 #fb .fbtabs i{font-style:normal;font-size:11.5px;min-width:18px;height:18px;border-radius:9px;padding:0 5px;display:inline-grid;place-items:center;background:var(--gold);color:#2b1c00;font-weight:700}
-#fb .fbn{font-size:13px;line-height:1.45;color:var(--mut);margin:0 0 12px}
-#fb .fbch{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
-#fb .fbch button{margin:0;padding:9px 2px;border-radius:10px;border:1px solid var(--line);background:none;color:var(--mut);font-size:13px;font-weight:600;white-space:nowrap}
-#fb .fbch button.on{border-color:var(--gold);background:rgba(215,170,80,.12);color:var(--ink)}
-#fb textarea{width:100%;box-sizing:border-box;min-height:104px;padding:12px 13px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:15.5px/1.5 system-ui,sans-serif;resize:none;display:block}
-#fb textarea:focus{outline:0;border-color:var(--ac)}
-#fb .fbm{display:flex;justify-content:space-between;gap:10px;margin:6px 2px 12px;font-size:12px;color:var(--mut);min-height:16px}
-#fb .fbm #fbmsg{text-align:right;font-weight:600}
-#fb .fbm #fbmsg.e{color:#e5675a}#fb .fbm #fbmsg.o{color:#2fb58a}
-#fb .fbgo{display:block;width:100%;margin:0;padding:13px;border-radius:12px;font-size:15.5px;font-weight:700;background:var(--ac);color:#fff;letter-spacing:.01em}
-#fb .fbgo:disabled{opacity:.45}
-#fb .fbi{border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin-bottom:8px;background:rgba(127,160,150,.06)}
-#fb .fbi.nw{border-color:var(--gold)}
-#fb .fbh{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
+#fb .fbl{font-size:11.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 2px 8px}
+#fb .fbch{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px}
+#fb .fbch button{margin:0;padding:11px 2px 9px;border-radius:13px;border:1px solid var(--line);background:rgba(127,160,150,.05);color:var(--mut);font-size:12.5px;font-weight:600;display:flex;flex-direction:column;align-items:center;gap:6px;transition:border-color .15s,background .15s,color .15s}
+#fb .fbch svg{width:21px;height:21px}
+#fb .fbch button.on{border-color:var(--gold);background:rgba(224,178,79,.13);color:var(--gold);box-shadow:0 0 0 1px rgba(224,178,79,.35) inset}
+#fb .fbch button.on span{color:var(--ink)}
+#fb .fbta{position:relative;margin-bottom:8px}
+#fb textarea{width:100%;box-sizing:border-box;min-height:120px;padding:13px 14px 28px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:15.5px/1.55 system-ui,sans-serif;resize:none;display:block;transition:border-color .15s,box-shadow .15s}
+#fb textarea:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 3px rgba(76,181,169,.18)}
+#fb .fbta #fbc{position:absolute;right:13px;bottom:9px;font-size:11.5px;color:var(--mut);pointer-events:none}
+#fb #fbmsg{min-height:20px;margin:0 2px 10px;font-size:13px;font-weight:600;color:var(--mut)}
+#fb #fbmsg.e{color:#e5675a}#fb #fbmsg.o{color:#2fb58a}
+#fb .fbgo{display:flex;align-items:center;justify-content:center;gap:9px;width:100%;margin:0;padding:15px;border-radius:14px;font-size:16px;font-weight:700;letter-spacing:.02em;color:#fff;background:linear-gradient(180deg,#2a9a8e,#0e6b63);border:1px solid rgba(224,178,79,.45);box-shadow:0 6px 16px -6px rgba(14,107,99,.7)}
+#fb .fbgo svg{width:19px;height:19px}
+#fb .fbgo:disabled{opacity:.4;box-shadow:none}
+#fb .fbi{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:rgba(127,160,150,.06);position:relative;overflow:hidden}
+#fb .fbi:before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--line)}
+#fb .fbi.nw{border-color:rgba(224,178,79,.5)}#fb .fbi.nw:before{background:var(--gold)}
+#fb .fbi.hl:before{background:#2fb58a}
+#fb .fbh{display:flex;align-items:center;gap:9px;margin-bottom:7px}
+#fb .fbh .ti{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;background:rgba(224,178,79,.12);color:var(--gold)}
+#fb .fbh .ti svg{width:16px;height:16px}
 #fb .fbh b{font-size:14px}
 #fb .fbh span{font-size:12px;color:var(--mut)}
-#fb .fbh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:600;color:var(--mut)}
-#fb .fbh em.h{color:#2fb58a}
-#fb .fbi p{margin:0;font-size:14.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
-#fb .fbr{margin-top:9px;padding:9px 11px;border-radius:9px;background:rgba(14,107,99,.16);border-left:3px solid var(--ac)}
-#fb .fbr small{display:block;font-size:11.5px;color:var(--ac);font-weight:700;margin-bottom:2px}
-#fb .fbe{text-align:center;color:var(--mut);padding:24px 8px;font-size:14px;line-height:1.5}
+#fb .fbh em{margin-left:auto;font-style:normal;font-size:11.5px;font-weight:700;padding:3px 9px;border-radius:20px;background:rgba(127,160,150,.16);color:var(--mut);white-space:nowrap}
+#fb .fbh em.h{background:rgba(47,181,138,.16);color:#2fb58a}
+#fb .fbi p{margin:0;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+#fb .fbr{margin-top:10px;padding:10px 12px;border-radius:11px;background:rgba(76,181,169,.12);border:1px solid rgba(76,181,169,.28)}
+#fb .fbr small{display:block;font-size:11.5px;color:var(--ac);font-weight:700;margin-bottom:3px}
+#fb .fbe{text-align:center;color:var(--mut);padding:30px 12px 22px;font-size:14px;line-height:1.55}
+#fb .fbe svg{display:block;width:42px;height:42px;margin:0 auto 12px;color:var(--gold);opacity:.8;stroke-width:1.4}
 #fbj{max-height:56dvh;overflow-y:auto}
 .mfbn{flex:none;font-style:normal;font-size:12px;font-weight:700;min-width:22px;height:22px;border-radius:11px;padding:0 7px;display:grid;place-items:center;background:#e0b24f;color:#2b1c00;margin-right:6px}
 .box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center;max-height:92dvh;overflow-y:auto}
@@ -1761,14 +1775,16 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <button id="qamx" type="button">Yopish</button>
 </div></div>
 <div class="sheet" id="fb"><div class="box fbx" role="dialog" aria-label="Fikr bildirish">
-  <div class="fbt"><h2>Fikr bildirish</h2><button type="button" id="fbcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <i class="fbgr" aria-hidden="true"></i>
+  <div class="fbt"><span class="fbic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><div class="fbtt"><h2>Fikr bildirish</h2><small>Ilovani birgalikda yaxshilaymiz</small></div><button type="button" id="fbcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="fbtabs" role="tablist"><button type="button" class="on" data-ft="w" role="tab">Yozish</button><button type="button" data-ft="j" role="tab">Javoblarim<i id="fbtn" style="display:none"></i></button></div>
   <div id="fbw">
-   <p class="fbn">Faqat admin o‘qiydi. Ism va telefon raqami kabi shaxsiy ma’lumot yozmang.</p>
+   <div class="fbl">Fikr turi</div>
    <div class="fbch" id="fbch" role="radiogroup" aria-label="Fikr turi"></div>
-   <textarea id="fbtx" maxlength="1000" rows="4" placeholder="Fikringizni yozing…"></textarea>
-   <div class="fbm"><span id="fbc">0 / 1000</span><span id="fbmsg" role="status"></span></div>
-   <button type="button" id="fbsd" class="fbgo">Yuborish</button>
+   <div class="fbl">Xabaringiz</div>
+   <div class="fbta"><textarea id="fbtx" maxlength="1000" rows="4" placeholder="Fikringizni batafsil yozing…"></textarea><span id="fbc">0 / 1000</span></div>
+   <div id="fbmsg" role="status"></div>
+   <button type="button" id="fbsd" class="fbgo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l16-8-6 16-3-7-7-1z"/></svg>Yuborish</button>
   </div>
   <div id="fbj" style="display:none"></div>
 </div></div>
@@ -3047,7 +3063,9 @@ function fbBadge(n){
   const t=$("fbtn");t.style.display=n?"inline-grid":"none";t.textContent=n||"";
   $("mfbs").textContent=n?"Sizga admin javob yozdi":"Taklif, xato yoki savol yuboring";
 }
-function fbChips(){$("fbch").innerHTML=FBT.map(([k,n])=>`<button type="button" role="radio" aria-checked="${FBS.t===k}" class="${FBS.t===k?"on":""}" data-ft2="${k}">${n}</button>`).join("")}
+const FBI={taklif:'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/>',xato:'<path d="M12 4l9 16H3L12 4zM12 10v4M12 17.4v.1"/>',savol:'<path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18zM9.6 9.2a2.5 2.5 0 1 1 3.5 2.3c-.7.4-1.1 1-1.1 1.7M12 16.8v.1"/>',rahmat:'<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'};
+const fbSvg=k=>`<svg viewBox="0 0 24 24" aria-hidden="true">${FBI[k]||FBI.taklif}</svg>`;
+function fbChips(){$("fbch").innerHTML=FBT.map(([k,n])=>`<button type="button" role="radio" aria-checked="${FBS.t===k}" class="${FBS.t===k?"on":""}" data-ft2="${k}">${fbSvg(k)}<span>${n}</span></button>`).join("")}
 function fbCount(){const n=$("fbtx").value.length;$("fbc").textContent=n+" / 1000";$("fbsd").disabled=FBS.busy||$("fbtx").value.trim().length<5}
 function fbMsg(t,c){const m=$("fbmsg");m.textContent=t||"";m.className=c||""}
 function fbTab(t){FBS.tab=t;document.querySelectorAll("#fb [data-ft]").forEach(b=>b.classList.toggle("on",b.dataset.ft===t));
@@ -3057,9 +3075,9 @@ function fbDraw(){
   const L=FBS.list,box=$("fbj");
   if(L===null){box.innerHTML='<div class="fbe">Yuklanmoqda…</div>';return}
   if(L===false){box.innerHTML='<div class="fbe">Javoblarni yuklab bo‘lmadi. Internetni tekshirib, qayta oching.</div>';return}
-  if(!L.length){box.innerHTML='<div class="fbe">Hali fikr yubormagansiz.<br>Yuborgan fikrlaringiz va admin javoblari shu yerda ko‘rinadi.</div>';return}
+  if(!L.length){box.innerHTML='<div class="fbe"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4V5z"/></svg>Hali fikr yubormagansiz.<br>Yuborgan fikrlaringiz va admin javoblari shu yerda ko‘rinadi.</div>';return}
   const T=Object.fromEntries(FBT),HS={yangi:"Yuborildi",oqildi:"Ko‘rib chiqildi",hal:"Hal qilindi"};
-  box.innerHTML=L.map(x=>`<div class="fbi${x.yangi?" nw":""}"><div class="fbh"><b>${esc(T[x.tur]||x.tur)}</b><span>${fbDate(x.sana)}</span><em class="${x.holat==="hal"?"h":""}">${HS[x.holat]||""}</em></div><p>${esc(x.matn)}</p>${x.javob?`<div class="fbr"><small>Admin javobi · ${fbDate(x.javob_sana)}</small><p>${esc(x.javob)}</p></div>`:""}</div>`).join("");
+  box.innerHTML=L.map(x=>`<div class="fbi${x.yangi?" nw":""}${x.holat==="hal"?" hl":""}"><div class="fbh"><span class="ti">${fbSvg(x.tur)}</span><b>${esc(T[x.tur]||x.tur)}</b><span>${fbDate(x.sana)}</span><em class="${x.holat==="hal"?"h":""}">${HS[x.holat]||""}</em></div><p>${esc(x.matn)}</p>${x.javob?`<div class="fbr"><small>Admin javobi · ${fbDate(x.javob_sana)}</small><p>${esc(x.javob)}</p></div>`:""}</div>`).join("");
 }
 async function fbLoad(){
   try{const a=await fbRpc("my_feedback",{p_d:fbDev()});FBS.list=Array.isArray(a)?a:[];fbBadge(FBS.list.filter(x=>x.yangi).length)}
