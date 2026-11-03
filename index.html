@@ -1446,6 +1446,11 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #att{color:#fff;font:600 21px var(--fd)}
 #aback,#adc2{background:rgba(4,30,27,.6)!important;border:1px solid rgba(240,201,105,.38)!important;color:#e8d9a8!important}
 #abody{position:relative}
+#abody details.adv>summary{list-style:none;cursor:pointer;padding:14px 16px;border:1px solid var(--b3d);border-radius:16px;margin-bottom:12px;font-weight:600;color:#f6dc92;display:flex;justify-content:space-between;align-items:center;gap:10px}
+#abody details.adv>summary::-webkit-details-marker{display:none}
+#abody details.adv>summary:after{content:"";width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s;flex:none;margin-right:4px}
+#abody details.adv[open]>summary:after{transform:rotate(-135deg)}
+#abody .jx{flex:none;width:36px;height:36px;margin:0 0 0 8px;padding:0;border-radius:10px;border:1px solid rgba(255,143,130,.5);background:none;color:#ff8f82;font-size:18px;line-height:1}
 .ac{background:var(--g3d);border:1px solid var(--b3d);border-radius:20px;box-shadow:var(--s3d);padding:16px}
 .ag{font:600 17px var(--fd);color:#f6dc92}
 #pn input,#pn select,#pn textarea,.box input{background:rgba(3,24,22,.7);border:1px solid rgba(90,205,185,.3);color:#fff;box-shadow:inset 0 2px 7px rgba(0,0,0,.45)}
@@ -2042,7 +2047,7 @@ function draw(){
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
   $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("mhm").textContent=hijri().replace(/, .*$/,"").replace(/^\d+-/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
-  {const t=new Date();$("yang").textContent=EL.name+(EL.mode==="g"?" (GPS)":"")+" uchun hisoblangan vaqtlar · "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()}
+  {const t=new Date();let vt=null,vn="";try{const vi=VOF[EL.id];vt=D&&D.vaqtlar&&D.vaqtlar.vil&&D.vaqtlar.vil[vi];vn=(VIL.find(x=>x[0]===vi)||[0,""])[1]}catch(e){}$("yang").textContent=(vt&&vn?vn+" masjid vaqtlari jadvali":EL.name+(EL.mode==="g"?" (GPS)":"")+" uchun hisoblangan vaqtlar")+" · "+t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+" "+t.getFullYear()}
   tick();
 }
 const sec=t=>{const[a,b]=t.split(":");return(+a*60+ +b)*60};
@@ -3949,7 +3954,7 @@ function parseKanal(txt){
 const ASEC={
  vaqt:{t:"Namoz vaqtlari",d:"Asosiy vaqtlar, mintaqa tuzatishlari, hijriy sana",
   html:()=>{const b=baseReg(),cur=calcT({lat:b[2],lon:b[3],id:b[0]},null,null);
-   return `<div class="ac"><div class="ag">Viloyat jadvali (masjid vaqtlari)</div><div class="ah">Muftiylik jadvalidagi vaqtni viloyat uchun bir marta kiriting: viloyatning hamma tumanlarida shu vaqt chiqadi. Jadval kiritilmagan viloyatlarda vaqt avtomatik hisoblanadi.</div>
+   return `<div class="ac" id="v_stat"></div><div class="ac"><div class="ag">Viloyat jadvali (masjid vaqtlari)</div><div class="ah">Muftiylik jadvalidagi vaqtni viloyat uchun bir marta kiriting: viloyatning hamma tumanlarida shu vaqt chiqadi. Jadval kiritilmagan viloyatlarda vaqt avtomatik hisoblanadi.</div>
     <select id="v_vl">${VIL.map(v=>`<option value="${v[0]}">${v[1]}</option>`).join("")}</select>
     <label class="ck" style="margin:12px 0 4px"><input type="checkbox" id="v_on"><span>Bu viloyat uchun jadval ishlatilsin</span></label>
     <div id="v_box" style="display:none">
@@ -3959,16 +3964,16 @@ const ASEC={
      <div class="ah" style="margin:0">O‘chiq bo‘lsa, viloyatning hamma joyida bir xil vaqt chiqadi (masjid jadvali kabi). Yoqilsa, tuman joyiga qarab siljiydi. Qulf belgisi bosilgan vaqt har holda o‘zgarmaydi. Kunlar o‘tishi bilan qulflanmagan vaqtlar quyosh holatiga qarab siljib boradi, shuning uchun jadvalni vaqti-vaqti bilan yangilab turing.</div>
     </div>
     <div class="ah" id="v_list" style="margin:10px 0 0"></div></div>
-   <div class="ac"><div class="ag">Avtomatik hisob uchun asosiy mintaqa</div><div class="ah">Jadval kiritilmagan viloyatlar shu shahar vaqtidan quyosh holatiga qarab o‘zi hisoblanadi. Quyidagi olti vaqt shu shahar uchun kiritiladi.</div><select id="a_baza">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</optgroup>`).join("")}</select></div>
-   <div class="ac"><div class="ag">Asosiy mintaqa vaqtlari</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div><div class="apz"><label for="a_paste">Kanal matnini qo‘yish</label><textarea id="a_paste" rows="3" placeholder="Masalan: Бомдод 06:25; Пешин 13:00; Аср 15:55; Шом 17:40; Хуфтон 19:10."></textarea><button type="button" class="alink" id="a_pb">Vaqtlarni o‘qib kiritish</button><div class="ah" id="a_ps" style="margin:6px 0 0"></div></div>
-    ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="atr"><input type="time" id="a_${k}" value="${cur[k]}"><button type="button" class="alk" data-lk="${k}" aria-label="${n}: qotirish" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button></div></div>`).join("")}
-    <div class="ah" style="margin:10px 0 0">Qulf belgisi bosilgan vaqt hamma mintaqada, GPS va sanadan qat’i nazar aynan shu soatda qoladi (masalan, Peshin 13:00). Qotirilmagan vaqtlar quyosh holatiga qarab o‘zi siljiydi.</div></div>
    <div class="ac"><div class="ag">Mintaqa bo‘yicha tuzatish</div><div class="ah">Mintaqani tanlang va kerakli vaqtga ± daqiqa qo‘shing. O‘zgarish faqat shu mintaqa uchun amal qiladi. Tuzatishsiz holatda hammasi avtomatik hisoblanadi.</div>
     <div class="ah" id="a_me" style="margin:0 0 8px"></div><select id="a_rg">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}">${r[1]}</option>`).join("")}</optgroup>`).join("")}</select>
     <div class="ah" id="a_who" style="margin:0 0 8px;color:var(--ac)"></div><div class="at"><span>Hammasiga</span><div class="stp"><button type="button" data-all="-1">−</button><b id="m_all">·</b><button type="button" data-all="1">+</button></div></div>
     ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="stp"><button type="button" data-m="${k}" data-d="-1">−</button><b id="m_${k}">0</b><button type="button" data-m="${k}" data-d="1">+</button><em id="r_${k}"></em></div></div>`).join("")}
     <div id="a_prev" class="apv"></div><div class="ah" id="a_gps" style="margin:8px 0 0">GPS bilan foydalanuvchining aniq joyiga qarab vaqt 1–2 daqiqaga farq qilishi mumkin. Qotirilgan vaqtga bu ta’sir qilmaydi.</div><div class="arw"><button type="button" class="alink" id="a_clr">Shu mintaqa tuzatishini o‘chirish</button></div><div id="a_used"></div></div>
-   <div class="ac"><div class="ag">Hijriy sana tuzatish</div><div class="ah">Ilovadagi hijriy sana kuzatuvdan farq qilsa, shu yerdan bir kunga to‘g‘rilang.</div><select id="a_hij"><option value="-1">−1 kun</option><option value="0">Tuzatishsiz</option><option value="1">+1 kun</option></select></div>`},
+   <div class="ac"><div class="ag">Hijriy sana tuzatish</div><div class="ah">Ilovadagi hijriy sana kuzatuvdan farq qilsa, shu yerdan bir kunga to‘g‘rilang.</div><select id="a_hij"><option value="-1">−1 kun</option><option value="0">Tuzatishsiz</option><option value="1">+1 kun</option></select></div><details class="adv" ${(D.vaqtlar&&D.vaqtlar.vil&&Object.keys(D.vaqtlar.vil).length)?"":"open"}><summary>Qo‘shimcha: avtomatik hisob asosi (${b[1]})</summary><div class="ac"><div class="ag">Avtomatik hisob uchun asosiy mintaqa</div><div class="ah">Jadval kiritilmagan viloyatlar shu shahar vaqtidan quyosh holatiga qarab o‘zi hisoblanadi. Quyidagi olti vaqt shu shahar uchun kiritiladi.</div><select id="a_baza">${VIL.map(v=>`<optgroup label="${v[1]}">${v[2].map(r=>`<option value="${r[0]}"${r[0]===b[0]?" selected":""}>${r[1]}</option>`).join("")}</optgroup>`).join("")}</select></div>
+   <div class="ac"><div class="ag">Asosiy mintaqa vaqtlari</div><div class="ah">Ko‘rsatilgan vaqtlar bugun uchun avtomatik yangilab turiladi. Rasmiy jadval bilan farq bo‘lsa, shu yerda to‘g‘rilab saqlang — ilova shu sanadan boshlab hisoblaydi.</div><div class="apz"><label for="a_paste">Kanal matnini qo‘yish</label><textarea id="a_paste" rows="3" placeholder="Masalan: Бомдод 06:25; Пешин 13:00; Аср 15:55; Шом 17:40; Хуфтон 19:10."></textarea><button type="button" class="alink" id="a_pb">Vaqtlarni o‘qib kiritish</button><div class="ah" id="a_ps" style="margin:6px 0 0"></div></div>
+    ${N.map(([k,n])=>`<div class="at"><span>${n}</span><div class="atr"><input type="time" id="a_${k}" value="${cur[k]}"><button type="button" class="alk" data-lk="${k}" aria-label="${n}: qotirish" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></button></div></div>`).join("")}
+    <div class="ah" style="margin:10px 0 0">Qulf belgisi bosilgan vaqt hamma mintaqada, GPS va sanadan qat’i nazar aynan shu soatda qoladi (masalan, Peshin 13:00). Qotirilmagan vaqtlar quyosh holatiga qarab o‘zi siljiydi.</div></div>
+   </details>`},
   init:()=>{
    $("a_hij").value=String(+D.vaqtlar.hijri||0);
    AD=JSON.parse(JSON.stringify(D.vaqtlar.mint||{}));LKS=Object.assign({},D.vaqtlar.qot||{});let cr=null;
@@ -4008,7 +4013,9 @@ const ASEC={
    const vForm=()=>{if(!vcur||!$("v_on").checked)return null;const e={sana:new Date().toLocaleDateString("sv"),qot:Object.assign({},VQ),tuman:$("v_tm").checked};for(const k of VKK)e[k]=$("v_"+k).value;return e};
    const vsv=()=>{if(!vcur)return;const e=vForm();if(e)AV[vcur]=e;else delete AV[vcur]};
    const vlist=()=>{const ids=Object.keys(AV);const f=vForm(),all=new Set(ids);if(vcur){if(f)all.add(vcur);else all.delete(vcur)}
-     $("v_list").textContent=all.size?"Jadval ishlatilayotgan viloyatlar: "+[...all].map(i=>(VIL.find(x=>x[0]===i)||[0,i])[1]).join(", ")+".":"Hozircha hech bir viloyatda jadval ishlatilmayapti, hammasi avtomatik hisoblanadi."};
+     const nm=[...all].map(i=>(VIL.find(x=>x[0]===i)||[0,i])[1].replace(/ viloyati$/,"")),ab=$("a_baza").selectedOptions[0];
+     $("v_list").textContent=all.size?"Jadval ishlatilayotgan viloyatlar: "+nm.join(", ")+".":"Hozircha hech bir viloyatda jadval ishlatilmayapti, hammasi avtomatik hisoblanadi.";
+     $("v_stat").innerHTML='<div class="ag">Hozirgi vaqt manbasi</div><div class="ah" style="margin:0 0 6px"><b style="color:#f6dc92">Masjid jadvali:</b> '+(all.size?nm.join(", "):"hech bir viloyatda yoqilmagan")+'</div><div class="ah" style="margin:0"><b style="color:#f6dc92">Qolgan viloyatlar:</b> quyosh holatiga qarab avtomatik hisoblanadi (asos: '+(ab?ab.text:"")+'). Pastdagi “Qo‘shimcha” bo‘limida asos vaqtlar tahrirlanadi.</div>'};
    const vshow=id=>{vcur=id;const e=AV[id];$("v_on").checked=!!e;$("v_box").style.display=e?"block":"none";
      let t;if(e){t=e;VQ=Object.assign({},e.qot||{});$("v_tm").checked=!!e.tuman}else{const r=RG[VFIRST[id]];t=calcT({lat:r[2],lon:r[3],id:r[0]},null,null);VQ={};$("v_tm").checked=false}
      for(const k of VKK)$("v_"+k).value=t[k]||"";$("v_ps").textContent="";vrf()};
@@ -4075,14 +4082,18 @@ const ASEC={
  juma:{t:"Juma va Hayit",d:"Juma namozi va hayit namozi vaqti",
   html:()=>`<div class="ac"><div class="ag">Juma namozi vaqti</div><div class="ah">Masjidlarda o‘qiladigan vaqt. Faqat juma kuni bosh sahifada ko‘rinadi. Viloyat uchun alohida vaqt bo‘lmasa, “Hamma viloyat” vaqti chiqadi. Bo‘sh qoldirilsa, karta chiqmaydi.</div>
     <div class="at"><span>Hamma viloyat</span><div class="atr"><input type="time" id="j_all"></div></div>
-    ${VIL.map(v=>`<div class="at"><span>${v[1].replace(/ viloyati$/,"")}</span><div class="atr"><input type="time" id="j_${v[0]}"></div></div>`).join("")}</div>
+    ${VIL.map(v=>`<div class="at" id="jr_${v[0]}" style="display:none"><span>${v[1].replace(/ viloyati$/,"")}</span><div class="atr"><input type="time" id="j_${v[0]}"><button type="button" class="jx" data-jx="${v[0]}" aria-label="${v[1]}: alohida vaqtni olib tashlash">×</button></div></div>`).join("")}
+    <select id="j_add" style="margin-top:12px"></select></div>
    <div class="ac"><div class="ag">Hayit namozi</div><div class="ah">Hayitdan 10 kun oldin bosh sahifada ko‘rinadi va hayit o‘tgach o‘zi yo‘qoladi. Maydonlar bo‘sh bo‘lsa, karta chiqmaydi.</div>
     <input id="h_n" maxlength="40" placeholder="Nomi (masalan: Ramazon hayiti)">
     <div class="at"><span>Sana</span><div class="atr"><input type="date" id="h_s"></div></div>
     <div class="at"><span>Vaqt</span><div class="atr"><input type="time" id="h_v"></div></div>
     <input id="h_j" maxlength="80" placeholder="Izoh yoki joy (ixtiyoriy)"></div>`,
   init:()=>{const j=(D.vaqtlar&&D.vaqtlar.juma)||{},h=(D.vaqtlar&&D.vaqtlar.hayit)||{};
-   $("j_all").value=j["*"]||"";VIL.forEach(v=>{$("j_"+v[0]).value=j[v[0]]||""});
+   $("j_all").value=j["*"]||"";VIL.forEach(v=>{$("j_"+v[0]).value=j[v[0]]||"";$("jr_"+v[0]).style.display=j[v[0]]?"":"none"});
+   const jo=()=>{$("j_add").innerHTML='<option value="">+ Viloyat uchun alohida vaqt</option>'+VIL.filter(v=>$("jr_"+v[0]).style.display==="none").map(v=>`<option value="${v[0]}">${v[1].replace(/ viloyati$/,"")}</option>`).join("")};jo();
+   $("j_add").onchange=e=>{const id=e.target.value;if(!id)return;$("jr_"+id).style.display="";jo();$("j_"+id).focus()};
+   $("abody").onclick=e=>{const x=e.target.closest("[data-jx]");if(x){$("j_"+x.dataset.jx).value="";$("jr_"+x.dataset.jx).style.display="none";jo()}};
    $("h_n").value=h.n||"";$("h_s").value=h.s||"";$("h_v").value=h.v||"";$("h_j").value=h.j||""},
   save:()=>{
    const j={},a=$("j_all").value;if(a)j["*"]=a;VIL.forEach(v=>{const x=$("j_"+v[0]).value;if(x)j[v[0]]=x});
@@ -4119,7 +4130,7 @@ const ASEC={
   init:()=>{$("hm").value=HK.matn;$("hs").value=HK.manba},
   save:hikmatSave}
 };
-let AE=null,AEUP=null,AS=null,AD={},AS_SV=null,LKS={},AV={},VS=null,VINIT=null;
+let AST=0,AE=null,AEUP=null,AS=null,AD={},AS_SV=null,LKS={},AV={},VS=null,VINIT=null;
 function aHome(){
   AS=null;$("att").textContent="Boshqaruv";$("aback").style.visibility="hidden";$("afoot").classList.remove("on");
   const z=zs(),miss=(isN(z.nisob)?0:1)+(G.filter(([c])=>!isN(zg(z,"fitr")[c])).length?1:0)+(G.filter(([c])=>!isN(zg(z,"fidya")[c])).length?1:0);
@@ -4127,21 +4138,20 @@ function aHome(){
   const row=(k,sub,badge,warn)=>`<button class="adr" type="button" data-a="${k}"><span class="adi"><svg viewBox="0 0 24 24" aria-hidden="true">${AI[k]}</svg></span><span class="adt"><b>${ASEC[k].t}</b><span>${sub}</span></span>${badge?`<em class="adbg${warn?" w":""}">${badge}</em>`:""}<i class="adch"></i></button>`;
   const qk=(k,ic,lb)=>`<button class="adq" type="button" data-qk="${k}"><span><svg viewBox="0 0 24 24" aria-hidden="true">${ic}</svg></span><b>${lb}</b></button>`;
   $("abody").innerHTML=`
-  <section class="adst"><div class="adh"><div class="adh1"><span>Foydalanuvchilar</span><b id="st1">–</b></div>
-   <div class="adh2"><div><b id="st2">–</b><span>bugun</span></div><div><b id="st3">–</b><span>7 kunda</span></div></div></div>
+  <section class="adst"><div class="adh"><div class="adh1"><span>Jami foydalanuvchilar</span><b id="st1">–</b></div>
+   <div class="adh2"><div><b id="st2">–</b><span>bugun qo‘shildi</span></div><div><b id="st3">–</b><span>7 kunda qo‘shildi</span></div></div></div>
    <div id="acst" class="adrg" style="display:none"></div><div id="rgst" class="adrg"><div class="adrh"><b>Mintaqalar bo‘yicha</b></div><div class="adrn">Yuklanmoqda…</div></div></section>
   ${miss?`<button class="ada" type="button" data-a="zakot"><i></i><span><b>Zakot bo‘limi to‘liq emas</b><small>${miss} ta bo‘lim to‘ldirilmagan. Tuzatish uchun bosing</small></span><s></s></button>`:""}
-  <div class="adql">${qk("duo-new",AI.pl||'<path d="M12 5v14M5 12h14"/>',"Yangi duo")}${qk("hikmat",AI.hikmat,"Hikmat")}${qk("hijri-new",AI.hijri,"Taqvim")}${qk("vaqt",AI.vaqt,"Vaqtlar")}</div>
   <div class="adg">Kontent</div>
   <div class="adc2">${row("duo",nd?`${na} ta ko‘rinadi, ${nd-na} ta yashirin`:"Hali duo qo‘shilmagan",nd||"")}${row("turkum",`${DU.g.length} guruh · ${DU.t.length} turkum`,"")}${row("hikmat","Bosh sahifadagi kun hikmati","")}${row("hijri","Kunlik yozuvlar va o‘zgartirishlar",nh||"")}${row("elon",(()=>{const t=eToday(),n=eList().filter(e=>eActive(e,t,"")||(e.v&&e.v.length&&(!e.d1||e.d1<=t)&&(!e.d2||e.d2>=t))).length;return n?n+" ta faol e’lon":"Muddatli e’lonlar"})(),"")}${row("fikr","Foydalanuvchi fikrlari va javoblar","")}</div>
   <div class="adg">Sozlamalar</div>
   <div class="adc2">${row("vaqt","Vaqtlar, mintaqa tuzatishi, hijriy sana","")}${row("juma","Juma va hayit namozi vaqti","")}${row("tarix","Oxirgi o‘zgarishlar va qaytarish","")}${row("zakot","Nisob, fitr, fidya, ushr, chorva",miss?miss+" ta":"",!!miss)}</div>
   <button class="aout" id="out" type="button">Tizimdan chiqish</button>`;
-  tok().then(async t=>{if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
+  tok().then(async t=>{if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();AST=x.jami;
     if($("st1")){const n=v=>v==null?"–":v;$("st1").textContent=n(x.jami);$("st2").textContent=x.bugun==null?"–":"+"+x.bugun;$("st3").textContent=n(x.hafta)}
     regStats(t,x.jami)}catch(e){}
     try{const r=await fetch(SB+"/rest/v1/rpc/activity_stats",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const a=await r.json(),b=$("acst");
-      if(b&&a&&a.jami!=null){b.style.display="";b.innerHTML='<div class="adrh"><b>Faollik</b><span>ilovani ochganlar</span></div><div class="acg"><div><b>'+a.k1+'</b><span>24 soatda</span></div><div><b>'+a.k7+'</b><span>7 kunda</span></div><div><b>'+a.k30+'</b><span>30 kunda</span></div></div>'+((a.ver||[]).length?'<div class="acv">'+a.ver.map(o=>'<span>'+esc(String(o.v))+'<b>'+o.n+'</b></span>').join("")+'</div>':"")}}catch(e){}
+      if(b&&a&&a.jami!=null){b.style.display="";b.innerHTML='<div class="adrh"><b>Faollik</b><span>ilovani ochganlar</span></div><div class="acg"><div><b>'+a.k1+'</b><span>24 soatda</span></div><div><b>'+a.k7+'</b><span>7 kunda</span></div><div><b>'+a.k30+'</b><span>30 kunda</span></div></div>'+((a.ver||[]).length?'<div class="acv">'+a.ver.map(o=>'<span>'+esc(String(o.v))+'<b>'+o.n+'</b></span>').join("")+'</div>':"")+(a.jami<(+AST||0)*0.9?'<div class="adrn" style="margin-top:8px">Faollik hisobi v6.4 dan boshlangan: ilovani yangilab ochgan qurilmalar sanaladi, shuning uchun raqamlar bir necha kun ichida to‘ladi.</div>':"")}}catch(e){}
     try{const r=await fetch(SB+"/rest/v1/fikrlar?select=id&holat=eq.yangi&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
       const m=/\/(\d+)$/.exec(r.headers.get("content-range")||""),n=m?+m[1]:0,el=document.querySelector('.adr[data-a="fikr"]');
       if(el&&r.ok){el.querySelector(".adt span").textContent=n?n+" ta yangi fikr":"Yangi fikr yo‘q";if(n){const b=document.createElement("em");b.className="adbg w";b.textContent=n;el.insertBefore(b,el.querySelector(".adch"))}}}catch(e){}});
@@ -4758,7 +4768,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.4";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.5";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
