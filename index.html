@@ -234,6 +234,37 @@ nav button:active svg{transform:scale(.9)}
 body.kb nav{display:none}
 .sheet{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;z-index:9}
 .sheet.on{display:flex}
+#fb .box{text-align:left;padding:18px 20px calc(20px + env(safe-area-inset-bottom));min-height:60dvh}
+#fb .fbt{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+#fb .fbt h2{margin:0;font-size:22px}
+#fb .fbt button{margin:0;width:40px;height:40px;padding:0;border-radius:50%;background:rgba(127,160,150,.18);color:var(--ink);font-size:24px;line-height:1}
+#fb .fbtabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px;border-radius:16px;background:rgba(127,160,150,.14);margin-bottom:14px}
+#fb .fbtabs button{margin:0;padding:11px 8px;border-radius:12px;background:none;color:var(--mut);font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px}
+#fb .fbtabs button.on{background:var(--ac);color:#fff}
+#fb .fbtabs i{font-style:normal;font-size:12px;min-width:20px;height:20px;border-radius:10px;padding:0 6px;display:inline-grid;place-items:center;background:#e0b24f;color:#2b1c00}
+#fb .fbn{font-size:13.5px;line-height:1.5;color:var(--mut);margin:0 0 12px}
+#fb .fbch{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+#fb .fbch button{margin:0;padding:9px 14px;border-radius:14px;border:1.5px solid var(--line);background:none;color:var(--ink);font-size:14px;font-weight:600}
+#fb .fbch button.on{border-color:var(--ac);background:rgba(14,107,99,.18);color:var(--ac)}
+#fb textarea{width:100%;box-sizing:border-box;min-height:140px;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,sans-serif;resize:vertical}
+#fb textarea:focus{outline:0;border-color:var(--ac)}
+#fb .fbm{display:flex;justify-content:space-between;gap:10px;margin:6px 2px 12px;font-size:12.5px;color:var(--mut)}
+#fb .fbm #fbmsg{text-align:right;font-weight:600}
+#fb .fbm #fbmsg.e{color:#e5675a}#fb .fbm #fbmsg.o{color:#2fb58a}
+#fb .fbgo{display:block;width:100%;margin:0;padding:15px;border-radius:16px;font-size:16.5px;font-weight:700;background:linear-gradient(135deg,#0e6b63,#0a4f49);color:#fff}
+#fb .fbgo:disabled{opacity:.5}
+#fb .fbi{border:1px solid var(--line);border-radius:16px;padding:13px 14px;margin-bottom:10px;background:rgba(127,160,150,.07)}
+#fb .fbi.nw{border-color:#e0b24f}
+#fb .fbh{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+#fb .fbh b{font-size:14.5px}
+#fb .fbh span{font-size:12.5px;color:var(--mut)}
+#fb .fbh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid var(--line);color:var(--mut)}
+#fb .fbh em.h{color:#2fb58a;border-color:rgba(47,181,138,.5)}
+#fb .fbi p{margin:0;font-size:15px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+#fb .fbr{margin-top:10px;padding:10px 12px;border-radius:12px;background:rgba(14,107,99,.16);border-left:3px solid var(--ac)}
+#fb .fbr small{display:block;font-size:12px;color:var(--ac);font-weight:700;margin-bottom:3px}
+#fb .fbe{text-align:center;color:var(--mut);padding:28px 8px;font-size:14.5px;line-height:1.5}
+.mfbn{flex:none;font-style:normal;font-size:12px;font-weight:700;min-width:22px;height:22px;border-radius:11px;padding:0 7px;display:grid;place-items:center;background:#e0b24f;color:#2b1c00;margin-right:6px}
 .box{background:var(--card);width:100%;max-width:460px;border-radius:22px 22px 0 0;padding:26px 24px calc(24px + env(safe-area-inset-bottom));text-align:center;max-height:92dvh;overflow-y:auto}
 .box img{width:72px;border-radius:18px}
 .box h2{margin:10px 0 2px;font-family:var(--fd);color:var(--ac)}
@@ -1432,6 +1463,33 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #abody .adt{flex:1;min-width:0}
 #abody .adt b{display:block;font:600 16.5px/1.2 var(--fd);color:#fff}
 #abody .adt span{display:block;margin-top:3px;font-size:12.5px;color:#9bbdb6;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#abody .afs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+#abody .afs div{text-align:center;padding:12px 6px;border-radius:16px;border:1px solid var(--b3d);background:var(--g3d)}
+#abody .afs b{display:block;font:700 24px var(--fd);color:#f0c969}
+#abody .afs span{font-size:12px;color:var(--mut)}
+#abody .afb{position:relative;display:flex;align-items:center;gap:8px;width:100%;text-align:left;padding:10px 12px;margin-top:6px;border-radius:12px;border:1px solid rgba(90,205,185,.2);background:rgba(3,24,22,.4);color:#fff;overflow:hidden;font-size:14.5px}
+#abody .afb span,#abody .afb em{position:relative;z-index:1}
+#abody .afb span{flex:1}
+#abody .afb em{font-style:normal;font-size:12.5px;color:#f6dc92}
+#abody .afb i{position:absolute;left:0;top:0;bottom:0;background:rgba(63,208,184,.17)}
+#abody .afb.on{border-color:#f0c969}
+#abody .afl{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+#abody .afl .asel{flex:1;min-width:130px}
+#abody .afx{padding:8px 12px;border-radius:12px;border:1.5px solid #f0c969;background:none;color:#f6dc92;font-size:13px;font-weight:600}
+#abody .afi{margin-bottom:10px;padding:12px 14px;border-radius:16px;border:1px solid var(--b3d);background:var(--g3d)}
+#abody .afi.nw{border-color:#f0c969}
+#abody .afh{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;width:100%;text-align:left;background:none;color:#fff;padding:0 0 6px}
+#abody .afh b{font-size:14.5px;color:#f0c969}
+#abody .afh span{font-size:13px;color:rgba(230,236,226,.8)}
+#abody .afh small{font-size:12px;color:var(--mut)}
+#abody .afh em{margin-left:auto;font-style:normal;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px;border:1px solid rgba(255,255,255,.25);color:#fff}
+#abody .afh em.yangi{border-color:#f0c969;color:#f0c969}#abody .afh em.hal{border-color:#3fd0b8;color:#3fd0b8}
+#abody .afi p{margin:0;font-size:15px;line-height:1.5;color:#fff;white-space:pre-wrap;overflow-wrap:anywhere}
+#abody .afr{margin-top:10px;padding:9px 12px;border-radius:12px;background:rgba(14,107,99,.3);border-left:3px solid #3fd0b8;font-size:14px;color:#fff;white-space:pre-wrap;overflow-wrap:anywhere}
+#abody .afr small{display:block;font-size:12px;color:#3fd0b8;font-weight:700;margin-bottom:3px}
+#abody .afe{margin-top:12px}
+#abody .afk2{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+#abody .afk2 button{padding:10px 4px;border-radius:12px;border:1.5px solid rgba(90,205,185,.35);background:none;color:#fff;font-size:13.5px;font-weight:600}
 #abody .adbg{flex:none;font:700 12px system-ui;font-style:normal;padding:4px 10px;border-radius:999px;color:#f6dc92;border:1px solid rgba(240,201,105,.45);background:rgba(240,201,105,.1)}
 #abody .adbg.w{color:#ffd78a;border-color:rgba(240,177,60,.7);background:rgba(240,177,60,.18)}
 #abody .adch{flex:none;width:8px;height:8px;border:solid #8fc9c0;border-width:0 2px 2px 0;transform:rotate(-45deg);margin:0 4px 0 2px}
@@ -1591,6 +1649,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   </div>
   <div class="sec-l">Dastur</div><div class="mg">
     <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Dastur va manbalar</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mfb"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span class="mt"><b>Fikr bildirish</b><span id="mfbs">Taklif, xato yoki savol yuboring</span></span><em class="mfbn" id="mfbn" style="display:none"></em><span class="mch">›</span></button>
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqoff"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Qur’onni yuklab olish</b><span>Yuklab olish · taxminan 47 MB, Wi-Fi bilan</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqaud"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Tilovatni yuklab olish</b><span>Butun Qur’on yoki alohida sura · internetsiz tinglash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
@@ -1697,6 +1756,18 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <button id="qama" type="button"></button>
   <div id="qaml"></div>
   <button id="qamx" type="button">Yopish</button>
+</div></div>
+<div class="sheet" id="fb"><div class="box fbx" role="dialog" aria-label="Fikr bildirish">
+  <div class="fbt"><h2>Fikr bildirish</h2><button type="button" id="fbcl" aria-label="Yopish">×</button></div>
+  <div class="fbtabs"><button type="button" class="on" data-ft="w">Yozish</button><button type="button" data-ft="j">Javoblarim<i id="fbtn" style="display:none"></i></button></div>
+  <div id="fbw">
+   <p class="fbn">Taklif, xato yoki savolingizni yozing. Fikringizni faqat admin o‘qiydi. Ism, telefon raqami kabi shaxsiy ma’lumot yozmang. Javob shu yerda, «Javoblarim» bo‘limida ko‘rinadi.</p>
+   <div class="fbch" id="fbch" role="radiogroup" aria-label="Fikr turi"></div>
+   <textarea id="fbtx" maxlength="1000" rows="6" placeholder="Fikringizni yozing…"></textarea>
+   <div class="fbm"><span id="fbc">0 / 1000</span><span id="fbmsg" role="status"></span></div>
+   <button type="button" id="fbsd" class="fbgo">Yuborish</button>
+  </div>
+  <div id="fbj" style="display:none"></div>
 </div></div>
 <div class="sheet" id="ab"><div class="box">
   <img src="icon.svg" alt="">
@@ -2961,6 +3032,68 @@ $("uas").onclick=e=>{
   localStorage.setItem("uadj",JSON.stringify(UA));draw();uaDraw();
 };
 $("mabout").onclick=()=>$("ab").classList.add("on");
+/* ===== Fikr bildirish ===== */
+const FBT=[["taklif","Taklif"],["xato","Xato"],["savol","Savol"],["rahmat","Minnatdorchilik"]],FBM=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+const FBS={t:"taklif",tab:"w",list:null,busy:false,chk:0};
+const fbDev=()=>{let id=localStorage.getItem("did");if(!id){id=crypto.randomUUID();localStorage.setItem("did",id)}return id};
+const fbLs=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return""}};
+const fbRpc=async(f,b)=>{const r=await fetch(SB+"/rest/v1/rpc/"+f,{method:"POST",headers:H(),body:JSON.stringify(b)});if(!r.ok)throw new Error("HTTP "+r.status);return r.json()};
+const fbDate=x=>{const d=new Date(x);return isNaN(d)?"":d.getDate()+"-"+FBM[d.getMonth()]+" "+p2(d.getHours())+":"+p2(d.getMinutes())};
+function fbBadge(n){
+  const b=$("mfbn");b.style.display=n?"grid":"none";b.textContent=n||"";
+  const t=$("fbtn");t.style.display=n?"inline-grid":"none";t.textContent=n||"";
+  $("mfbs").textContent=n?"Sizga admin javob yozdi":"Taklif, xato yoki savol yuboring";
+}
+function fbChips(){$("fbch").innerHTML=FBT.map(([k,n])=>`<button type="button" role="radio" aria-checked="${FBS.t===k}" class="${FBS.t===k?"on":""}" data-ft2="${k}">${n}</button>`).join("")}
+function fbCount(){const n=$("fbtx").value.length;$("fbc").textContent=n+" / 1000";$("fbsd").disabled=FBS.busy||$("fbtx").value.trim().length<5}
+function fbMsg(t,c){const m=$("fbmsg");m.textContent=t||"";m.className=c||""}
+function fbTab(t){FBS.tab=t;document.querySelectorAll("#fb [data-ft]").forEach(b=>b.classList.toggle("on",b.dataset.ft===t));
+  $("fbw").style.display=t==="w"?"block":"none";$("fbj").style.display=t==="j"?"block":"none";
+  if(t==="j"){fbDraw();fbSeen()}}
+function fbDraw(){
+  const L=FBS.list,box=$("fbj");
+  if(L===null){box.innerHTML='<div class="fbe">Yuklanmoqda…</div>';return}
+  if(L===false){box.innerHTML='<div class="fbe">Javoblarni yuklab bo‘lmadi. Internetni tekshirib, qayta oching.</div>';return}
+  if(!L.length){box.innerHTML='<div class="fbe">Hali fikr yubormagansiz.<br>Yozganingizdan keyin shu yerda ko‘rinadi, admin javob bersa ham.</div>';return}
+  const T=Object.fromEntries(FBT),HS={yangi:"Yuborildi",oqildi:"Ko‘rib chiqildi",hal:"Hal qilindi"};
+  box.innerHTML=L.map(x=>`<div class="fbi${x.yangi?" nw":""}"><div class="fbh"><b>${esc(T[x.tur]||x.tur)}</b><span>${fbDate(x.sana)}</span><em class="${x.holat==="hal"?"h":""}">${HS[x.holat]||""}</em></div><p>${esc(x.matn)}</p>${x.javob?`<div class="fbr"><small>Admin javobi · ${fbDate(x.javob_sana)}</small><p>${esc(x.javob)}</p></div>`:""}</div>`).join("");
+}
+async function fbLoad(){
+  try{const a=await fbRpc("my_feedback",{p_d:fbDev()});FBS.list=Array.isArray(a)?a:[];fbBadge(FBS.list.filter(x=>x.yangi).length)}
+  catch(e){if(FBS.list===null)FBS.list=false}
+  if($("fb").classList.contains("on")&&FBS.tab==="j")fbDraw();
+}
+async function fbSeen(){
+  if(!FBS.list||!FBS.list.some(x=>x.yangi))return;
+  try{await fbRpc("feedback_seen",{p_d:fbDev()});setTimeout(()=>{FBS.list.forEach(x=>x.yangi=false);fbBadge(0)},2500)}catch(e){}
+}
+async function fbCheck(force){
+  if(!fbLs("fbsent"))return;const t=Date.now();if(!force&&t-FBS.chk<180000)return;FBS.chk=t;
+  try{const a=await fbRpc("my_feedback",{p_d:fbDev()});if(Array.isArray(a)){FBS.list=a;fbBadge(a.filter(x=>x.yangi).length)}}catch(e){}
+}
+function fbOpen(){
+  $("fb").classList.add("on");FBS.t=FBS.t||"taklif";fbChips();$("fbtx").value=fbLs("fbd");fbCount();fbMsg("");fbTab("w");FBS.list=FBS.list||null;
+  if(fbLs("fbsent"))fbLoad();else FBS.list=[];
+}
+function fbClose(){fbLs("fbd",$("fbtx").value.trim()?$("fbtx").value:null);$("fb").classList.remove("on")}
+async function fbSend(){
+  const tx=$("fbtx").value.trim();if(tx.length<5||FBS.busy)return;
+  FBS.busy=true;fbCount();fbMsg("Yuborilmoqda…");
+  try{
+    const g=(EL&&EL.mode!=="b"&&RG[EL.id])?RG[EL.id]:null;
+    const r=await fbRpc("send_feedback",{p_d:fbDev(),p_tur:FBS.t,p_matn:tx,p_viloyat:g?g[4]:"",p_mintaqa:g?g[0]:"",p_versiya:APPV});
+    const M={limit:"Bugun 3 ta fikr yubordingiz. Ertaga yana yozishingiz mumkin.",qisqa:"Fikr juda qisqa. Kamida 5 ta belgi yozing.",uzun:"Fikr juda uzun. 1000 belgidan oshmasin.",takror:"Bu fikr allaqachon yuborilgan.",xato:"Yuborilmadi. Ilovani yangilab, qayta urinib ko‘ring."};
+    if(r==="ok"){fbLs("fbd",null);fbLs("fbsent","1");$("fbtx").value="";fbCount();fbMsg("Rahmat! Fikringiz yuborildi.","o");FBS.list=null;fbLoad();vib&&vib(12)}
+    else fbMsg(M[r]||M.xato,"e");
+  }catch(e){fbMsg(/HTTP 404/.test(String(e&&e.message))?"Fikr yuborish hozircha ishlamayapti.":"Yuborilmadi. Internetni tekshirib, qaytadan urinib ko‘ring.","e")}
+  FBS.busy=false;fbCount();
+}
+$("mfb").onclick=fbOpen;$("fbcl").onclick=fbClose;
+$("fb").onclick=e=>{if(e.target===$("fb")){fbClose();return}const t=e.target.closest("[data-ft]");if(t){fbTab(t.dataset.ft);return}const c=e.target.closest("[data-ft2]");if(c){FBS.t=c.dataset.ft2;fbChips()}};
+$("fbtx").oninput=()=>{fbCount();fbMsg("");fbLs("fbd",$("fbtx").value.trim()?$("fbtx").value:null)};
+$("fbsd").onclick=fbSend;
+setTimeout(()=>fbCheck(true),5000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)fbCheck()});
 $("cl").onclick=()=>$("ab").classList.remove("on");
 $("ab").onclick=e=>{if(e.target.id==="ab")$("ab").classList.remove("on")};
 
@@ -3659,7 +3792,8 @@ const AI={
  vaqt:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
  zakot:'<path d="M12 14V9"/><path d="M12 11c0-3 2-5 5.5-5 0 3-2 5-5.5 5z"/><path d="M12 12.5c0-2.200-1.600-3.700-4.200-3.700 0 2.200 1.600 3.700 4.200 3.700z"/><path d="M4 15c0 3 3.600 5.500 8 5.500s8-2.500 8-5.500z"/>',
  qibla:'<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
- hikmat:'<path d="M5 5h14v10H9l-4 4z"/>'
+ hikmat:'<path d="M5 5h14v10H9l-4 4z"/>',
+ fikr:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>'
 };
 async function patchV(fn){
   const t=await tok();if(!t){showAdm();return false}
@@ -3825,13 +3959,16 @@ function aHome(){
   ${miss?`<button class="ada" type="button" data-a="zakot"><i></i><span><b>Zakot bo‘limi to‘liq emas</b><small>${miss} ta bo‘lim to‘ldirilmagan. Tuzatish uchun bosing</small></span><s></s></button>`:""}
   <div class="adql">${qk("duo-new",AI.pl||'<path d="M12 5v14M5 12h14"/>',"Yangi duo")}${qk("hikmat",AI.hikmat,"Hikmat")}${qk("hijri-new",AI.hijri,"Taqvim")}${qk("vaqt",AI.vaqt,"Vaqtlar")}</div>
   <div class="adg">Kontent</div>
-  <div class="adc2">${row("duo",nd?`${na} ta ko‘rinadi, ${nd-na} ta yashirin`:"Hali duo qo‘shilmagan",nd||"")}${row("turkum",`${DU.g.length} guruh · ${DU.t.length} turkum`,"")}${row("hikmat","Bosh sahifadagi kun hikmati","")}${row("hijri","Kunlik yozuvlar va o‘zgartirishlar",nh||"")}</div>
+  <div class="adc2">${row("duo",nd?`${na} ta ko‘rinadi, ${nd-na} ta yashirin`:"Hali duo qo‘shilmagan",nd||"")}${row("turkum",`${DU.g.length} guruh · ${DU.t.length} turkum`,"")}${row("hikmat","Bosh sahifadagi kun hikmati","")}${row("hijri","Kunlik yozuvlar va o‘zgartirishlar",nh||"")}${row("fikr","Foydalanuvchi fikrlari va javoblar","")}</div>
   <div class="adg">Sozlamalar</div>
   <div class="adc2">${row("vaqt","Vaqtlar, mintaqa tuzatishi, hijriy sana","")}${row("zakot","Nisob, fitr, fidya, ushr, chorva",miss?miss+" ta":"",!!miss)}</div>
   <button class="aout" id="out" type="button">Tizimdan chiqish</button>`;
   tok().then(async t=>{if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/device_stats",{method:"POST",headers:H(t),body:"{}"});const x=await r.json();
     if($("st1")){const n=v=>v==null?"–":v;$("st1").textContent=n(x.jami);$("st2").textContent=x.bugun==null?"–":"+"+x.bugun;$("st3").textContent=n(x.hafta)}
-    regStats(t,x.jami)}catch(e){}});
+    regStats(t,x.jami)}catch(e){}
+    try{const r=await fetch(SB+"/rest/v1/fikrlar?select=id&holat=eq.yangi&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
+      const m=/\/(\d+)$/.exec(r.headers.get("content-range")||""),n=m?+m[1]:0,el=document.querySelector('.adr[data-a="fikr"]');
+      if(el&&r.ok){el.querySelector(".adt span").textContent=n?n+" ta yangi fikr":"Yangi fikr yo‘q";if(n){const b=document.createElement("em");b.className="adbg w";b.textContent=n;el.insertBefore(b,el.querySelector(".adch"))}}}catch(e){}});
 }
 async function regStats(t,total){
   const box=$("rgst");if(!box)return;
@@ -4359,9 +4496,56 @@ async function ahClick(e){
 Object.assign(ASEC,{
  duo:{t:"Duo va zikrlar",d:"Duolarni qo‘shish, tartiblash, yoqish va o‘chirish",ns:1,html:aduHtml,init:aduInit,save:()=>{}},
  turkum:{t:"Duo turkumlari",d:"Guruhlar va turkumlarni boshqarish",ns:1,html:()=>'<div id="atk"></div>',init:atkInit,save:()=>{}},
+ fikr:{t:"Fikrlar",d:"Foydalanuvchi fikrlari, javob va holat",ns:1,html:()=>'<div id="afk"></div>',init:afkInit,save:()=>{}},
  hijri:{t:"Hijriy taqvim yozuvlari",d:"Kunlik yozuvlarni qo‘shish, o‘zgartirish, yoqish va o‘chirish",ns:1,html:()=>"",init:ahInit,save:()=>{}}
 });
 
+/* ===== Admin: Fikrlar ===== */
+const AFK={rows:null,v:"",t:"",h:"yangi",op:null,err:""};
+const AFT={taklif:"Taklif",xato:"Xato",savol:"Savol",rahmat:"Minnatdorchilik"},AFH={yangi:"Yangi",oqildi:"O‘qildi",hal:"Hal qilindi"};
+async function afkLoad(){
+  const t=await tok();if(!t){showAdm();return}
+  try{const r=await fetch(SB+"/rest/v1/fikrlar?select=*&order=yaratilgan.desc&limit=500",{headers:H(t)});
+    if(r.status===404)throw new Error("HTTP 404");if(!r.ok)throw new Error("HTTP "+r.status);AFK.rows=await r.json();AFK.err=""}
+  catch(e){AFK.rows=null;AFK.err=/HTTP 404/.test(String(e&&e.message))?"Jadval topilmadi. fikrlar.sql ni Supabase’da bir marta ishga tushiring.":"Yuklanmadi. Qaytadan urinib ko‘ring."}
+  if(AS==="fikr")afkDraw();
+}
+function afkInit(){$("abody").onclick=afkClick;$("abody").onchange=afkChange;$("abody").oninput=null;AFK.op=null;AFK.rows=null;AFK.err="";afkDraw();afkLoad()}
+const afkVn=id=>{const v=VIL.find(x=>x[0]===id);return v?v[1].replace(/ viloyati$/,""):"Aniqlanmagan"};
+function afkDraw(){
+  const box=$("afk");if(!box)return;
+  if(AFK.err){box.innerHTML=`<div class="ah" style="color:#e58b7a">${AFK.err}</div>`;return}
+  const R=AFK.rows;if(!R){box.innerHTML='<div class="ah">Yuklanmoqda…</div>';return}
+  const nw=R.filter(x=>x.holat==="yangi").length,vm={};
+  R.forEach(x=>{const k=x.viloyat||"";(vm[k]=vm[k]||{n:0,y:0}).n++;if(x.holat==="yangi")vm[k].y++});
+  const vs=Object.entries(vm).sort((a,b)=>b[1].n-a[1].n),mx=Math.max(1,...vs.map(x=>x[1].n));
+  let h=`<div class="afs"><div><b>${nw}</b><span>yangi</span></div><div><b>${R.length}</b><span>jami</span></div><div><b>${R.filter(x=>x.javob).length}</b><span>javob berilgan</span></div></div>`;
+  h+='<div class="ac afv"><div class="ag">Viloyatlar kesimida</div>'+(vs.length?vs.map(([k,o])=>`<button type="button" class="afb${AFK.v===k&&AFK.v!==""||(AFK.v==="_"&&k==="")?" on":""}" data-fv="${k||"_"}"><span>${afkVn(k)}</span><i style="width:${Math.max(6,o.n/mx*100)}%"></i><em>${o.y?o.y+" yangi · ":""}${o.n}</em></button>`).join(""):'<div class="ah">Hali fikr kelmagan.</div>')+"</div>";
+  h+=`<div class="afl"><select class="asel" id="af_h"><option value="">Hamma holat</option>${Object.entries(AFH).map(([k,n])=>`<option value="${k}"${AFK.h===k?" selected":""}>${n}</option>`).join("")}</select><select class="asel" id="af_t"><option value="">Hamma tur</option>${Object.entries(AFT).map(([k,n])=>`<option value="${k}"${AFK.t===k?" selected":""}>${n}</option>`).join("")}</select>${AFK.v?`<button type="button" class="afx" data-fv="">${AFK.v==="_"?"Aniqlanmagan":afkVn(AFK.v)} ×</button>`:""}</div>`;
+  const F=R.filter(x=>x.id===AFK.op||(!AFK.h||x.holat===AFK.h)&&(!AFK.t||x.tur===AFK.t)&&(!AFK.v||(AFK.v==="_"?!x.viloyat:x.viloyat===AFK.v)));
+  h+=F.length?F.map(x=>{const o=AFK.op===x.id;
+    return `<div class="afi${o?" op":""}${x.holat==="yangi"?" nw":""}" data-id="${x.id}"><button type="button" class="afh" data-fo="${x.id}"><b>${AFT[x.tur]||x.tur}</b><span>${afkVn(x.viloyat)}${x.mintaqa&&RG[x.mintaqa]?" · "+RG[x.mintaqa][1]:""}</span><small>${fbDate(x.yaratilgan)}</small><em class="${x.holat}">${AFH[x.holat]||""}</em></button><p>${esc(x.matn)}</p>${x.javob?`<div class="afr"><small>Sizning javobingiz · ${fbDate(x.javob_sana)}</small>${esc(x.javob)}</div>`:""}${o?`<div class="afe"><textarea class="ain" id="af_j" rows="3" maxlength="600" placeholder="Foydalanuvchiga javob yozing…">${esc(x.javob||"")}</textarea><button type="button" class="abt" data-fa="rep">Javobni yuborish</button><div class="afk2"><button type="button" data-fa="yangi">Yangi</button><button type="button" data-fa="oqildi">O‘qildi</button><button type="button" data-fa="hal">Hal qilindi</button></div><button type="button" class="alink dng" data-fa="del">Fikrni o‘chirish</button></div>`:""}</div>`}).join(""):'<div class="ah" style="margin-top:12px">Bu filtr bo‘yicha fikr yo‘q.</div>';
+  box.innerHTML=h;
+}
+async function afkPatch(id,body){
+  const t=await tok();if(!t){showAdm();return false}
+  try{const r=await fetch(SB+"/rest/v1/fikrlar?id=eq."+id,{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify(body)});
+    const a=await r.json();if(!r.ok||!a.length)throw 0;const i=AFK.rows.findIndex(x=>x.id===id);if(i>=0)AFK.rows[i]=a[0];return true}
+  catch(e){asay("Saqlanmadi. Qaytadan urinib ko‘ring");return false}
+}
+async function afkClick(e){
+  const fv=e.target.closest("[data-fv]");if(fv){const k=fv.dataset.fv;AFK.v=AFK.v===k?"":k;AFK.op=null;afkDraw();return}
+  const fo=e.target.closest("[data-fo]");if(fo){const id=+fo.dataset.fo;AFK.op=AFK.op===id?null:id;afkDraw();
+    const x=AFK.rows.find(y=>y.id===id);if(AFK.op===id&&x&&x.holat==="yangi"){await afkPatch(id,{holat:"oqildi"});if(AS==="fikr")afkDraw()}return}
+  const fa=e.target.closest("[data-fa]");if(!fa||AFK.op==null)return;
+  const id=AFK.op,a=fa.dataset.fa;
+  if(a==="rep"){const j=$("af_j").value.trim();if(j.length<2){asay("Javob matnini yozing");return}
+    if(await afkPatch(id,{javob:j,javob_sana:new Date().toISOString(),javob_oqildi:false,holat:"hal"})){asay("Javob yuborildi ✓");afkDraw()}return}
+  if(a==="del"){if(!await aconfirm("Bu fikr butunlay o‘chiriladi. Davom etasizmi?"))return;
+    const t=await tok();if(!t)return;try{const r=await fetch(SB+"/rest/v1/fikrlar?id=eq."+id,{method:"DELETE",headers:H(t)});if(!r.ok)throw 0;AFK.rows=AFK.rows.filter(x=>x.id!==id);AFK.op=null;afkDraw();asay("O‘chirildi")}catch(e){asay("O‘chirilmadi. Qaytadan urinib ko‘ring")}return}
+  if(await afkPatch(id,{holat:a})){asay("Holat: "+AFH[a]);afkDraw()}
+}
+function afkChange(e){if(e.target.id==="af_h"){AFK.h=e.target.value;AFK.op=null;afkDraw()}else if(e.target.id==="af_t"){AFK.t=e.target.value;AFK.op=null;afkDraw()}}
 /* Taqvim eslatmasi: ilova ichida bir martalik */
 const tqSeen=()=>{try{const o=JSON.parse(localStorage.getItem("tqs")||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
 const tqIso=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
@@ -4398,7 +4582,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.0";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
