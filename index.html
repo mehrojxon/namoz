@@ -1615,6 +1615,33 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 .nzm{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid rgba(90,205,185,.16)}
 .nzm:first-of-type{border-top:0}
 .nzm b{display:block;font-size:14.5px}.nzm small{display:block;color:#8fb8b1;font-size:12.5px;margin-top:2px}
+#xb .box{text-align:left;padding:8px 18px calc(20px + env(safe-area-inset-bottom));border:1px solid rgba(224,178,79,.32);border-bottom:0;background:linear-gradient(180deg,var(--card),var(--bg));box-shadow:0 -12px 40px rgba(0,0,0,.35)}
+#xb .fbgr{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:2px auto 12px}
+#xb svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#xb .fbt{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+#xb .fbtt{flex:1;min-width:0}
+#xb .fbtt h2{margin:0;font-size:20px;line-height:1.2;text-align:left}
+#xb .fbtt small{display:block;margin-top:2px;font-size:12.5px;color:var(--mut)}
+#xb .fbt>button{flex:none;margin:0;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(127,160,150,.14);color:var(--mut);display:grid;place-items:center}
+#xb .fbt>button svg{width:17px;height:17px;stroke-width:2.2}
+#xb .fbe{text-align:center;color:var(--mut);padding:30px 12px 22px;font-size:14px;line-height:1.55}
+#xb .fbe svg{display:block;width:42px;height:42px;margin:0 auto 12px;color:var(--gold);opacity:.8;stroke-width:1.4}
+#xb .xbi{border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:10px;background:rgba(127,160,150,.06)}
+#xb .xbi.nw{border-color:rgba(224,178,79,.55);background:rgba(224,178,79,.08)}
+#xb .xbi b{display:block;font-size:15px;margin-bottom:3px}
+#xb .xbi small{display:block;font-size:12px;color:var(--mut);margin-bottom:6px}
+#xb .xbi p{margin:0;font-size:14.5px;line-height:1.55;white-space:pre-wrap;overflow-wrap:anywhere}
+#xb #xbl{max-height:62vh;overflow:auto}
+#xtoast{position:fixed;left:16px;right:16px;top:86px;z-index:30;padding:12px 14px;border-radius:14px;font-size:14.5px;font-weight:600;line-height:1.4;text-align:left;background:#0c3f3a;border:1px solid rgba(90,205,185,.5);color:#d9f2ee;box-shadow:0 8px 28px rgba(0,0,0,.45);display:none}
+#xtoast.on{display:block}#xtoast.e{background:#4a1f1b;border-color:rgba(229,103,90,.6);color:#ffd5cf}#xtoast.o{border-color:rgba(240,201,105,.6)}
+#abody .xpv{display:flex;gap:11px;align-items:flex-start;margin:12px 0 4px;padding:12px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1)}
+#abody .xpv img{width:36px;height:36px;border-radius:9px;flex:none}
+#abody .xpv b{display:block;font-size:14px;margin-bottom:2px}
+#abody .xpv span{display:block;font-size:13.5px;line-height:1.4;color:#cfe9e4;overflow-wrap:anywhere}
+#abody .xpv small{display:block;font-size:11px;color:#8fb8b1;margin-bottom:3px}
+#abody .xbt button:disabled,#abody .xcl:disabled{opacity:.45}
+#abody .xcl{margin:0;padding:7px 12px;border-radius:10px;border:1px solid rgba(229,103,90,.55);background:none;color:#ff9a8d;font:600 13px system-ui;width:auto}
+#abody .xhd{display:flex;justify-content:space-between;align-items:center;gap:10px}
 </style>
 </head>
 <body data-scr="t0">
@@ -1757,6 +1784,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   </div>
   <div class="sec-l">Dastur</div><div class="mg">
     <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Dastur va manbalar</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mxab"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="mt"><b>Xabarlar</b><span id="mxabs">Ma’muriyat xabarlari</span></span><em class="mfbn" id="mxabn" style="display:none"></em><span class="mch">›</span></button>
     <button class="mr" id="mfb"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span class="mt"><b>Fikr bildirish</b><span id="mfbs">Taklif, xato yoki savol yuboring</span></span><em class="mfbn" id="mfbn" style="display:none"></em><span class="mch">›</span></button>
     <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqoff"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Qur’onni yuklab olish</b><span>Yuklab olish · taxminan 47 MB, Wi-Fi bilan</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
@@ -1865,6 +1893,11 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <div id="qaml"></div>
   <button id="qamx" type="button">Yopish</button>
 </div></div>
+<div class="sheet" id="xb"><div class="box fbx" role="dialog" aria-label="Xabarlar">
+  <i class="fbgr" aria-hidden="true"></i>
+  <div class="fbt"><span class="fbic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><div class="fbtt"><h2>Xabarlar</h2><small>Ma’muriyatdan kelgan xabarlar</small></div><button type="button" id="xbcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div id="xbl"></div>
+</div></div>
 <div class="sheet" id="fb"><div class="box fbx" role="dialog" aria-label="Fikr bildirish">
   <i class="fbgr" aria-hidden="true"></i>
   <div class="fbt"><span class="fbic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4V5z"/></svg></span><div class="fbtt"><h2>Fikr bildirish</h2><small>Ilovani birgalikda yaxshilaymiz</small></div><button type="button" id="fbcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
@@ -1952,7 +1985,7 @@ function nazApply(){
   let st=document.getElementById("nzs");if(!st){st=document.createElement("style");st.id="nzs";document.head.appendChild(st)}
   const css=off.map(k=>NZM[k][2].split(",").map(q=>"body "+q).join(",")+"{display:none!important}").join("\n");
   if(st.textContent!==css)st.textContent=css;
-  if(/^\d+\.\d+$/.test(String(n.minV||""))&&verCmp(APPV,n.minV)<0&&!nzUpdDis){
+  if(/^\d+\.\d+(\.\d+)?$/.test(String(n.minV||""))&&verCmp(APPV,n.minV)<0&&!nzUpdDis){
     $("upd").querySelector("b").textContent="Ilovani yangilang";$("updv").textContent="Hamma imkoniyatlar ishlashi uchun "+n.minV+" versiya kerak";$("upd").classList.add("on")}
 }
 function eActive(e,t,mv){return(!e.d1||e.d1<=t)&&(!e.d2||e.d2>=t)&&(!(e.v&&e.v.length)||(mv&&e.v.includes(mv)))}
@@ -3201,6 +3234,38 @@ const FBT=[["taklif","Taklif"],["xato","Xato"],["savol","Savol"],["rahmat","Tash
 const FBS={t:"taklif",tab:"w",list:null,busy:false,chk:0};
 const fbDev=()=>{let id=localStorage.getItem("did");if(!id){id=crypto.randomUUID();localStorage.setItem("did",id)}return id};
 const fbLs=(k,v)=>{try{if(v===undefined)return localStorage.getItem(k)||"";if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return""}};
+/* Xabarlar (admin yuborgan ommaviy xabarlar arxivi) */
+const XB={list:null,chk:0};
+function xbLs(k,v){try{if(v===undefined)return localStorage.getItem(k);if(v===null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){return null}}
+function xbMine(a){const mv=eVil();return(Array.isArray(a)?a:[]).filter(x=>!(x.v&&x.v.length)||(mv&&x.v.includes(mv)))}
+function xbBadge(n){const b=$("mxabn");if(!b)return;b.style.display=n?"":"none";b.textContent=n||""}
+function xbUnread(){const seen=+xbLs("xbs"),L=XB.list||[];return L.filter(x=>x.id>seen).length}
+function xbDraw(){
+  const box=$("xbl");if(!box)return;const L=XB.list;
+  if(L===null){box.innerHTML='<div class="fbe">Yuklanmoqda…</div>';return}
+  if(!L.length){box.innerHTML='<div class="fbe"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg>Hozircha xabar yo‘q. Ma’muriyat xabar yuborsa, shu yerda saqlanadi.</div>';return}
+  const seen=XB.seen||0,M=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"];
+  box.innerHTML=L.map(x=>{const d=new Date(x.t);return `<div class="xbi${x.id>seen?" nw":""}"><b>${esc(x.s||"Jannat sari")}</b><small>${d.getDate()}-${M[d.getMonth()]}, ${String(d.getHours()).padStart(2,"0")}:${String(d.getMinutes()).padStart(2,"0")}</small><p>${esc(x.m)}</p></div>`}).join("");
+}
+async function xbLoad(force){
+  const t=Date.now();if(!force&&t-XB.chk<180000)return;XB.chk=t;
+  try{const a=await fbRpc("xabarlar_royxat",{});if(!Array.isArray(a))throw 0;
+    xbLs("xbc",JSON.stringify(a));XB.list=xbMine(a);
+    if(xbLs("xbs")===null){const mx=a.reduce((m,x)=>Math.max(m,x.id),0);xbLs("xbs",String(mx))}
+  }catch(e){if(XB.list===null){try{XB.list=xbMine(JSON.parse(xbLs("xbc")||"[]"))}catch(x){XB.list=[]}}}
+  xbBadge(xbUnread());if($("xb").classList.contains("on"))xbDraw();
+}
+function xbOpen(){
+  $("xb").classList.add("on");XB.seen=+xbLs("xbs");
+  if(XB.list===null)try{XB.list=xbMine(JSON.parse(xbLs("xbc")||"null")||null)}catch(e){XB.list=null}
+  xbDraw();
+  xbLoad(true).then(()=>{if(!$("xb").classList.contains("on"))return;XB.seen=+xbLs("xbs");xbDraw();const mx=(XB.list||[]).reduce((m,x)=>Math.max(m,x.id),+xbLs("xbs")||0);xbLs("xbs",String(mx));xbBadge(0)});
+}
+function xbClose(){$("xb").classList.remove("on");xbBadge(xbUnread())}
+$("mxab").onclick=xbOpen;$("xbcl").onclick=xbClose;$("xb").onclick=e=>{if(e.target===$("xb"))xbClose()};
+try{navigator.serviceWorker&&navigator.serviceWorker.addEventListener("message",e=>{if(e.data&&e.data.go==="xabarlar")xbOpen()})}catch(e){}
+if(/[?&]xabarlar=1/.test(location.search))setTimeout(xbOpen,900);
+setTimeout(()=>xbLoad(true),5000);document.addEventListener("visibilitychange",()=>{if(!document.hidden)xbLoad(false)});
 const fbRpc=async(f,b)=>{const r=await fetch(SB+"/rest/v1/rpc/"+f,{method:"POST",headers:H(),body:JSON.stringify(b)});if(!r.ok)throw new Error("HTTP "+r.status);const tx=await r.text();return tx?JSON.parse(tx):null};
 const fbDate=x=>{const d=new Date(x);return isNaN(d)?"":d.getDate()+"-"+FBM[d.getMonth()]+" "+p2(d.getHours())+":"+p2(d.getMinutes())};
 function fbBadge(n){
@@ -4245,41 +4310,52 @@ function aStats(){
       const m=/\/(\d+)$/.exec(r.headers.get("content-range")||""),n=m?+m[1]:0,el=document.querySelector('.adtl[data-a="fikr"]');
       if(el&&r.ok){el.querySelector("small").textContent=n?n+" ta yangi fikr":"Yangi fikr yo‘q";if(n&&!el.querySelector(".adbg")){const b=document.createElement("em");b.className="adbg w";b.textContent=n;el.appendChild(b)}}}catch(e){}});
 }
-let XS={sel:new Set(),when:"now",cnt:null,err:false};
+const XTP=[["Juma","Juma namozi","Bugun Juma. Masjidga barvaqt boring, salovot va duoni ko‘paytiring."],["Hayit","Hayit muborak","Hayitingiz muborak bo‘lsin! Alloh ibodatlaringizni qabul qilsin."],["Texnik ishlar","Texnik ishlar","Texnik ishlar olib borilmoqda. Qisqa vaqtdan keyin ilova to‘liq ishlaydi."],["Yangilanish","Yangilanish","Ilovaning yangi versiyasi chiqdi. Menyu → Ilovani yangilash ni bosing."]];
+let XS={busy:false,sel:new Set(),when:"now",cnt:null,err:false};
+let _xt=null;
+function xsay(m,k){if(typeof m==="string"&&m.indexOf("e|")===0){m=m.slice(2);k="e"}let t=$("xtoast");if(!t){t=document.createElement("div");t.id="xtoast";t.setAttribute("role","status");document.body.appendChild(t)}
+  t.textContent=m;t.className="on"+(k?" "+k:"");clearTimeout(_xt);_xt=setTimeout(()=>{t.className=""},k==="e"?6000:4500)}
 async function xEndpoint(){try{const reg=await navigator.serviceWorker.ready,sb=await reg.pushManager.getSubscription();return sb?sb.endpoint:null}catch(e){return null}}
 const XMSG={qisqa:"Xabar juda qisqa",uzun:"Xabar juda uzun",otgan:"Tanlangan vaqt o‘tib ketgan",uzoq:"30 kundan uzoq vaqtga qo‘yib bo‘lmaydi",limit:"Shu kun uchun 2 ta ommaviy xabar limiti to‘lgan. Boshqa kunni tanlang"};
 async function xSend(test){
+  if(XS.busy)return;XS.busy=true;XS.hold=false;
+  try{await xSend0(test)}finally{if(!XS.hold)XS.busy=false}
+}
+async function xSend0(test){
   const t=await tok();if(!t){showAdm();return}
   const m=$("x_m").value.trim(),sl=$("x_t").value.trim();
-  if(m.length<3){say("Xabar matnini yozing");return}
+  if(m.length<3){xsay("e|Xabar matnini yozing");return}
   let when=new Date(),ep=null,n=null;
-  if(test){ep=await xEndpoint();if(!ep){say("Bu qurilmada bildirishnoma yoqilmagan. Menyudagi qo‘ng‘iroqchani yoqing");return}}
+  if(test){ep=await xEndpoint();if(!ep){xsay("e|Bu qurilmada bildirishnoma yoqilmagan. Menyudagi qo‘ng‘iroqchani yoqing");return}}
   else{
-    if(XS.when==="later"){const d=$("x_d").value,h=$("x_h").value;if(!d||!h){say("Sana va vaqtni kiriting");return}when=new Date(d+"T"+h);if(isNaN(when)||when.getTime()<Date.now()-6e4){say("Tanlangan vaqt o‘tib ketgan");return}}
-    n=XS.count?XS.count():null;if(n===null){say("Qurilmalar soni noma’lum. Yuborib bo‘lmaydi");return}
-    if(n===0){say("Bu tanlovda bildirishnoma yoqilgan qurilma yo‘q");return}
+    if(XS.when==="later"){const d=$("x_d").value,h=$("x_h").value;if(!d||!h){xsay("e|Sana va vaqtni kiriting");return}when=new Date(d+"T"+h);if(isNaN(when)||when.getTime()<Date.now()-6e4){xsay("e|Tanlangan vaqt o‘tib ketgan");return}}
+    n=XS.count?XS.count():null;if(n===null){xsay("e|Qurilmalar soni noma’lum. Yuborib bo‘lmaydi");return}
+    if(n===0){xsay("e|Bu tanlovda bildirishnoma yoqilgan qurilma yo‘q");return}
     const kim=XS.sel.size?[...XS.sel].map(id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"")).join(", "):"hammaga",
           qn=XS.when==="later"?when.getDate()+"-"+EMON[when.getMonth()]+" "+String(when.getHours()).padStart(2,"0")+":"+String(when.getMinutes()).padStart(2,"0")+" da":"hozir";
     if(!await aconfirm("“"+m+"” — "+n+" ta qurilmaga ("+kim+") "+qn+" yuboriladi. Qaytarib bo‘lmaydi. Yuborilsinmi?","Yuborish"))return;
   }
+  XS.hold=true;const bg=$("x_go"),bt=$("x_ts"),lb=[bg.textContent,bt.textContent];bg.disabled=bt.disabled=true;(test?bt:bg).textContent="Yuborilmoqda…";
+  const fin=ms=>setTimeout(()=>{XS.busy=false;if($("x_go")){bg.disabled=bt.disabled=false;bg.textContent=lb[0];bt.textContent=lb[1]}},ms);
   try{
     const r=await fetch(SB+"/rest/v1/rpc/push_navbatga",{method:"POST",headers:H(t),body:JSON.stringify({p_matn:m,p_sarlavha:sl,p_viloyat:(!test&&XS.sel.size)?[...XS.sel]:null,p_vaqt:when.toISOString(),p_endpoint:ep})});
     if(!r.ok)throw 0;const j=String(await r.json());
-    if(j.indexOf("ok:")!==0){say(XMSG[j]||"Yuborilmadi. Qaytadan urinib ko‘ring");return}
-    if(test)say("Sinov xabari yuborildi. 1 daqiqagacha kuting ✓");
-    else{say(XS.when==="later"?"Navbatga qo‘yildi ✓":"Navbatga qo‘yildi. Taxminan 1 daqiqada yuboriladi ✓");$("x_m").value="";$("x_t").value="";$("x_cn").textContent="0/120";aTab(1)}
-    xLoad();
-  }catch(e){say("Yuborilmadi. Internetni tekshirib, qaytadan urinib ko‘ring")}
+    if(j.indexOf("ok:")!==0){xsay("e|"+(XMSG[j]||"Yuborilmadi. Qaytadan urinib ko‘ring"));fin(300);return}
+    if(test)xsay("✓ Sinov navbatga qo‘yildi. 1 daqiqa ichida telefoningizga keladi","o");
+    else{xsay(XS.when==="later"?"✓ Xabar navbatga qo‘yildi. Belgilangan vaqtda yuboriladi":"✓ Xabar navbatga qo‘yildi. Taxminan 1 daqiqada yuboriladi","o");$("x_m").value="";$("x_t").value="";$("x_cn").textContent="0/120";aTab(1)}
+    xLoad();fin(test?5000:1500);
+  }catch(e){xsay("e|Yuborilmadi. Internetni tekshirib, qaytadan urinib ko‘ring");fin(300)}
 }
 async function xLoad(){
   const box=$("x_q");if(!box)return;const t=await tok();if(!t)return;
   try{
-    const r=await fetch(SB+"/rest/v1/push_navbat?select=id,yuborish,sarlavha,matn,viloyat,endpoint,holat,soni&order=yaratilgan.desc&limit=30",{headers:H(t)});
+    const r=await fetch(SB+"/rest/v1/push_navbat?select=id,yuborish,sarlavha,matn,viloyat,endpoint,holat,soni&endpoint=is.null&order=yaratilgan.desc&limit=30",{headers:H(t)});
     if(!r.ok)throw 0;const a=await r.json();if(!$("x_q"))return;
-    const ST={kutmoqda:["Navbatda","k"],yuborilmoqda:["Yuborilmoqda","k"],yuborildi:["Yuborildi",""],bekor:["Bekor qilingan","o"],otkazildi:["O‘tkazib yuborildi","o"]};
+    const ST={kutmoqda:["Navbatda","k"],yuborilmoqda:["Yuborilmoqda","k"],yuborildi:["Topshirildi",""],bekor:["Bekor qilingan","o"],otkazildi:["O‘tkazib yuborildi","o"]};
     const fd=s=>{const d=new Date(s);return d.getDate()+"-"+EMON[d.getMonth()]+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
-    box.innerHTML=a.length?a.map(x=>{const st=ST[x.holat]||[x.holat,"o"],kim=x.endpoint?"sinov":((x.viloyat&&x.viloyat.length)?x.viloyat.map(id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"")).join(", "):"hammaga");
-      return `<div class="elr"><div><b>${esc(x.sarlavha||"Jannat sari")}<em class="${st[1]}">${st[0]}${x.holat==="yuborildi"&&x.soni!=null?" · "+x.soni+" ta":""}</em></b><small>${esc(x.matn)} · ${fd(x.yuborish)} · ${esc(kim)}</small></div>${x.holat==="kutmoqda"?`<button type="button" class="d" data-xc="${x.id}">Bekor</button>`:""}</div>`}).join(""):'<div class="ah">Hali xabar yuborilmagan.</div>';
+    const done=a.filter(x=>x.holat!=="kutmoqda"&&x.holat!=="yuborilmoqda").length;
+    box.innerHTML=(done?`<div class="xhd"><div class="ah" style="margin:0">${a.length} ta yozuv (sinovlar ko‘rsatilmaydi)</div><button type="button" class="xcl" data-xclr="1">Tarixni tozalash</button></div>`:"")+(a.length?a.map(x=>{const st=ST[x.holat]||[x.holat,"o"],kim=x.endpoint?"sinov":((x.viloyat&&x.viloyat.length)?x.viloyat.map(id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"")).join(", "):"hammaga");
+      return `<div class="elr"><div><b>${esc(x.sarlavha||"Jannat sari")}<em class="${st[1]}">${st[0]}${x.holat==="yuborildi"&&x.soni!=null?" · "+x.soni+" ta qurilmaga":""}</em></b><small>${esc(x.matn)} · ${fd(x.yuborish)} · ${esc(kim)}</small></div>${x.holat==="kutmoqda"?`<button type="button" class="d" data-xc="${x.id}">Bekor</button>`:(x.holat==="yuborilmoqda"?"":`<button type="button" data-xdel="${x.id}" aria-label="O‘chirish">O‘chirish</button>`)}</div>`}).join(""):'<div class="ah">Hali xabar yuborilmagan.</div>');
   }catch(e){if($("x_q"))$("x_q").innerHTML='<div class="ah">Ro‘yxatni yuklab bo‘lmadi. Supabase’da v67.sql fayli ishga tushirilganmi?</div>'}
 }
 async function aToday(){
@@ -4841,6 +4917,8 @@ Object.assign(ASEC,{
    <div class="vpane on" data-vp="0"><div class="ac"><div class="ag">Xabar</div>
     <input id="x_t" maxlength="40" placeholder="Sarlavha (ixtiyoriy, 40 belgigacha)">
     <textarea id="x_m" rows="4" maxlength="120" placeholder="Xabar matni (3–120 belgi)"></textarea><div class="xcn" id="x_cn">0/120</div>
+    <div class="xch" id="x_tp">${XTP.map((o,i)=>`<button type="button" data-xtp="${i}">${o[0]}</button>`).join("")}</div>
+    <div class="xpv" id="x_pv" aria-label="Xabarning telefondagi ko‘rinishi"><img src="icon-192.png" alt=""><div><small>Jannat sari · hozir</small><b id="x_pt">Jannat sari</b><span id="x_pm">Xabar matni shu yerda ko‘rinadi</span></div></div>
     <div class="ag" style="margin-top:14px">Kimga</div><div class="xch" id="x_v"></div>
     <div class="ag" style="margin-top:14px">Qachon</div><div class="xch" id="x_w"><button type="button" class="on" data-xw="now">Hozir</button><button type="button" data-xw="later">Vaqtni belgilash</button></div>
     <div class="xdt" id="x_dt" style="display:none"><input type="date" id="x_d"><input type="time" id="x_h"></div>
@@ -4868,18 +4946,23 @@ Object.assign(ASEC,{
     try{const r=await fetch(SB+"/rest/v1/rpc/push_soni",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const a=await r.json();if(!Array.isArray(a))throw 0;XS.cnt=a}catch(e){XS.err=true}
     if(AS==="xabar")draw()});
    const d=new Date();d.setHours(d.getHours()+1,0,0,0);$("x_d").value=d.toLocaleDateString("sv");$("x_h").value=String(d.getHours()).padStart(2,"0")+":00";
-   $("abody").oninput=e=>{if(e.target.id==="x_m")$("x_cn").textContent=e.target.value.length+"/120"};
+   const pv=()=>{$("x_pt").textContent=$("x_t").value.trim()||"Jannat sari";$("x_pm").textContent=$("x_m").value.trim()||"Xabar matni shu yerda ko‘rinadi";$("x_cn").textContent=$("x_m").value.length+"/120"};XS.pv=pv;
+   $("abody").oninput=e=>{if(e.target.id==="x_m"||e.target.id==="x_t")pv()};
    $("abody").onclick=async e=>{
-    const v=e.target.closest("[data-xv]"),w=e.target.closest("[data-xw]"),c=e.target.closest("[data-xc]");
+    const v=e.target.closest("[data-xv]"),w=e.target.closest("[data-xw]"),c=e.target.closest("[data-xc]"),tp=e.target.closest("[data-xtp]"),dl=e.target.closest("[data-xdel]"),cl=e.target.closest("[data-xclr]");
+    if(tp){const o=XTP[+tp.dataset.xtp];if($("x_m").value.trim()&&$("x_m").value.trim()!==o[2]&&!await aconfirm("Yozilgan matn shablon bilan almashtirilsinmi?","Almashtirish"))return;$("x_t").value=o[1];$("x_m").value=o[2];pv();return}
+    if(dl){const t=await tok();if(!t)return;try{const r=await fetch(SB+"/rest/v1/rpc/push_ochir",{method:"POST",headers:H(t),body:JSON.stringify({p_id:+dl.dataset.xdel})});if(!r.ok)throw 0;xsay("✓ O‘chirildi","o")}catch(x){xsay("e|O‘chirilmadi. v67b.sql ishga tushirilganmi?")}xLoad();return}
+    if(cl){if(!await aconfirm("Tugagan xabarlar tarixi o‘chirilsinmi? Navbatdagilar saqlanadi.","Tozalash"))return;const t=await tok();if(!t)return;
+     try{const r=await fetch(SB+"/rest/v1/rpc/push_tozala",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const n=await r.json();xsay("✓ "+n+" ta yozuv o‘chirildi","o")}catch(x){xsay("e|Tozalanmadi. v67b.sql ishga tushirilganmi?")}xLoad();return}
     if(v){const id=v.dataset.xv;if(id==="*")XS.sel.clear();else if(XS.sel.has(id))XS.sel.delete(id);else XS.sel.add(id);draw();return}
     if(w){XS.when=w.dataset.xw;draw();return}
     if(c){if(!await aconfirm("Bu xabar bekor qilinsinmi?","Bekor qilish"))return;const t=await tok();if(!t)return;
-     try{const r=await fetch(SB+"/rest/v1/rpc/push_bekor",{method:"POST",headers:H(t),body:JSON.stringify({p_id:+c.dataset.xc})});const j=await r.json();say(j==="ok"?"Bekor qilindi ✓":"Bekor qilib bo‘lmadi: allaqachon yuborilgan yoki topilmadi")}catch(x){say("Bekor qilinmadi. Qaytadan urinib ko‘ring")}
+     try{const r=await fetch(SB+"/rest/v1/rpc/push_bekor",{method:"POST",headers:H(t),body:JSON.stringify({p_id:+c.dataset.xc})});const j=await r.json();xsay(j==="ok"?"✓ Xabar bekor qilindi":"e|Bekor qilib bo‘lmadi: allaqachon yuborilgan yoki topilmadi",j==="ok"?"o":"")}catch(x){xsay("e|Bekor qilinmadi. Qaytadan urinib ko‘ring")}
      xLoad();return}
     if(e.target.closest("#x_go"))xSend(false);
     if(e.target.closest("#x_ts"))xSend(true);
    };
-   xLoad();
+   pv();xLoad();
   },
   save:()=>{}},
  nazorat:{t:"Nazorat",d:"Eski versiyalar, bo‘limlarni vaqtincha o‘chirish, texnik xabar",
@@ -4895,7 +4978,7 @@ Object.assign(ASEC,{
   init:()=>{},
   save:async()=>{
    const x=$("n_x").value.trim(),mv=$("n_v").value.trim().replace(",","."),off=[...document.querySelectorAll("#abody [data-nz]")].filter(i=>!i.checked).map(i=>i.dataset.nz);
-   if(mv&&!/^\d+\.\d+$/.test(mv)){say("Versiyani 6.7 ko‘rinishida yozing");return}
+   if(mv&&!/^\d+\.\d+(\.\d+)?$/.test(mv)){say("Versiyani 6.7 ko‘rinishida yozing");return}
    if(mv&&verCmp(mv,APPV)>0){say("Hali chiqmagan versiyani yozib bo‘lmaydi (hozirgi: "+APPV+")");return}
    if(await patchV(v=>{const o={};if(mv)o.minV=mv;if(x)o.xabar=x;if(off.length)o.off=off;if(Object.keys(o).length)v.nazorat=o;else delete v.nazorat}))try{nazApply()}catch(e){}}},
  fikr:{t:"Fikrlar",d:"Foydalanuvchi fikrlari, javob va holat",ns:1,html:()=>'<div id="afk"></div>',init:afkInit,save:()=>{}},
@@ -4984,7 +5067,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.7";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.7.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
