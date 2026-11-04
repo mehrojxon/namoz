@@ -1594,6 +1594,27 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #acf .arow2 button{flex:1;margin:0;height:48px;border-radius:15px;font:700 15px system-ui;padding:0}
 #acf #acfn{background:rgba(4,30,27,.7);border:1px solid var(--b3d);color:#cfe9e3}
 #acf #acfy{background:linear-gradient(135deg,#d6453d,#8e1f2a);border:1px solid rgba(255,160,160,.45);color:#fff}
+
+.xch{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 4px}
+#abody .xch button{padding:8px 13px;border-radius:999px;border:1px solid rgba(90,205,185,.3);background:rgba(255,255,255,.04);color:#cfe9e4;font:600 13.5px system-ui;margin:0;min-height:0;width:auto}
+#abody .xch button.on{background:linear-gradient(180deg,#1a8f83,#0e6b63);color:#fff;border-color:rgba(240,201,105,.55)}
+.xcn{text-align:right;font-size:12px;color:#8fb8b1;margin-top:4px}
+.xaud{margin:14px 0 4px;padding:12px 14px;border-radius:14px;background:rgba(76,181,169,.12);font-size:14px;line-height:1.45;color:#d9f2ee}
+.xaud.w{background:rgba(224,178,79,.14);color:#f3dca0}
+.xbt{display:flex;gap:10px;margin-top:12px}#abody .xbt button{flex:1;margin:0;padding:13px 8px;border-radius:14px;border:0;background:linear-gradient(180deg,#1a8f83,#0e6b63);color:#fff;font:700 15px system-ui}
+#abody .xbt button.sec{background:transparent;border:1px solid rgba(90,205,185,.35);color:#cfe9e4}
+.xdt{display:flex;gap:10px;margin-top:8px}.xdt input{flex:1}
+.bgc{margin-bottom:14px;padding:14px;border-radius:20px;border:1px solid rgba(240,201,105,.4);background:var(--g3d);box-shadow:var(--s3d)}
+.bgc h4{margin:0 0 6px;font-size:15px;color:#f0c969}
+#abody .bgr{display:flex;gap:10px;align-items:center;width:100%;text-align:left;padding:10px 0;border:0;border-top:1px solid rgba(90,205,185,.16);background:none;color:#fff;font-size:14px;line-height:1.35;margin:0;min-height:0;border-radius:0}
+#abody .bgc h4+.bgr{border-top:0}
+.bgr i{width:8px;height:8px;border-radius:50%;background:#f0c969;flex:none}
+.bgr span{flex:1}
+.bgr u{text-decoration:none;color:#8fb8b1;font-size:18px}
+.bgo{font-size:14px;color:#a9d3cc;padding:2px 0}
+.nzm{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid rgba(90,205,185,.16)}
+.nzm:first-of-type{border-top:0}
+.nzm b{display:block;font-size:14.5px}.nzm small{display:block;color:#8fb8b1;font-size:12.5px;margin-top:2px}
 </style>
 </head>
 <body data-scr="t0">
@@ -1921,12 +1942,25 @@ function eLs(k,v){try{if(v===undefined)return localStorage.getItem(k)||"";localS
 function eToday(){return new Date().toLocaleDateString("sv")}
 function eVil(){try{return(EL&&EL.mode!=="b"&&RG[EL.id])?RG[EL.id][4]:""}catch(e){return""}}
 function eList(){const a=D&&D.vaqtlar&&D.vaqtlar.elon;return Array.isArray(a)?a.filter(e=>e&&typeof e==="object"&&e.id&&e.t&&e.m):[]}
+function verCmp(a,b){const x=String(a).split(".").map(Number),y=String(b).split(".").map(Number);for(let i=0;i<3;i++){const d=(x[i]||0)-(y[i]||0);if(d)return d<0?-1:1}return 0}
+function nzGet(){const n=D&&D.vaqtlar&&D.vaqtlar.nazorat;return n&&typeof n==="object"&&!Array.isArray(n)?n:{}}
+const NZM={audio:["Qur’on tilovati (audio)","Tilovat tugmalari yashiriladi","#mqaud,#qplay"],fikr:["Fikr bildirish","Menyudagi “Fikr bildirish” yashiriladi","#mfb"],duo:["Duolar","Bosh sahifadagi “Duolar” yashiriladi",".qa[data-go=td]"],faroiz:["Faroiz hisoblagich","Bosh sahifadagi “Faroiz” yashiriladi",".qa[data-go=tf]"],zakot:["Zakot hisoblagich","Bosh sahifadagi “Zakot” yashiriladi",".qa[data-go=t5]"]};
+function nzE(){const m=String(nzGet().xabar||"").trim();if(!m)return[];let h=0;for(let i=0;i<m.length;i++)h=(h*31+m.charCodeAt(i))>>>0;return[{id:"nz"+h.toString(36),t:"Texnik xabar",m,x:1}]}
+let nzUpdDis=false;
+function nazApply(){
+  const n=nzGet(),off=Array.isArray(n.off)?n.off.filter(k=>NZM[k]):[];
+  let st=document.getElementById("nzs");if(!st){st=document.createElement("style");st.id="nzs";document.head.appendChild(st)}
+  const css=off.map(k=>NZM[k][2].split(",").map(q=>"body "+q).join(",")+"{display:none!important}").join("\n");
+  if(st.textContent!==css)st.textContent=css;
+  if(/^\d+\.\d+$/.test(String(n.minV||""))&&verCmp(APPV,n.minV)<0&&!nzUpdDis){
+    $("upd").querySelector("b").textContent="Ilovani yangilang";$("updv").textContent="Hamma imkoniyatlar ishlashi uchun "+n.minV+" versiya kerak";$("upd").classList.add("on")}
+}
 function eActive(e,t,mv){return(!e.d1||e.d1<=t)&&(!e.d2||e.d2>=t)&&(!(e.v&&e.v.length)||(mv&&e.v.includes(mv)))}
 let _elSig=null;
 function drawE(){
   const box=$("el");if(!box)return;
   let dis=[];try{dis=JSON.parse(eLs("eld")||"[]")}catch(e){}
-  const t=eToday(),mv=eVil(),L=eList().filter(e=>eActive(e,t,mv)&&!dis.includes(e.id)).sort((a,b)=>(b.x?1:0)-(a.x?1:0)||String(b.d1||"").localeCompare(String(a.d1||""))).slice(0,2);
+  const t=eToday(),mv=eVil(),L=eList().concat(nzE()).filter(e=>eActive(e,t,mv)&&!dis.includes(e.id)).sort((a,b)=>(b.x?1:0)-(a.x?1:0)||String(b.d1||"").localeCompare(String(a.d1||""))).slice(0,2);
   const sig=L.map(e=>e.id+e.t+e.m+e.x).join("|");if(sig===_elSig)return;_elSig=sig;
   if(!L.length){box.style.display="none";box.innerHTML="";return}
   box.style.display="";
@@ -2068,7 +2102,7 @@ function pushReg(){
   }catch(e){}
 }
 function draw(){
-  drawEJ();refT();try{qSync()}catch(e){}if($("ual"))uaDraw();repReg();pushReg();if($("rgl"))rgDraw();document.querySelectorAll(".rgn").forEach(e=>e.textContent=EL.name+(EL.mode==="g"?" · GPS":""));$("hij").textContent=hijri();drawH();kInfo();
+  drawEJ();try{nazApply()}catch(e){}refT();try{qSync()}catch(e){}if($("ual"))uaDraw();repReg();pushReg();if($("rgl"))rgDraw();document.querySelectorAll(".rgn").forEach(e=>e.textContent=EL.name+(EL.mode==="g"?" · GPS":""));$("hij").textContent=hijri();drawH();kInfo();
   {const t=new Date();$("sana").textContent=t.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()]+", "+["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"][t.getDay()]}
   $("list").innerHTML=N.map(([k,n])=>`<li class="${k==="quyosh"?"mark":""}" data-k="${k}"><svg viewBox="0 0 24 24">${PI[k]}</svg><span class="rn">${n}</span><span class="chip"></span><b>${TM(k)}</b></li>`).join("");
   {const t=new Date(),m=["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][t.getMonth()];$("hdate").textContent=t.getDate()+"-"+m;$("hhij").textContent=hijri().replace(/, .*$/,"");$("qa-c").textContent=hijri().replace(/, .*$/,"");$("mhm").textContent=hijri().replace(/, .*$/,"").replace(/^\d+-/,"");$("qa-t").textContent=Z&&Z.grand?"Jami: "+String(Z.grand).replace(/\B(?=(\d{3})+(?!\d))/g," "):"Elektron zikr"}
@@ -3929,7 +3963,9 @@ const AI={
  stat:'<path d="M5 20V11M12 20V4M19 20v-6"/>',
  tarix:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/><path d="M3 5v4h4"/>',
  juma:'<rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10h16M9 3v4M15 3v4"/>',
- fikr:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>'
+ fikr:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/>',
+ xabar:'<path d="M21 4L10 14"/><path d="M21 4l-6.500 16-4.500-6-6-4.500z"/>',
+ nazorat:'<path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/>'
 };
 async function patchV(fn){
   const t=await tok();if(!t){showAdm();return false}
@@ -4173,13 +4209,15 @@ function aHome(){
   const nd=DU.d.length,na=DU.d.filter(d=>d.faol).length,nh=(TO||[]).length;
   const t0=eToday(),ne=eList().filter(e=>(!e.d1||e.d1<=t0)&&(!e.d2||e.d2>=t0)).length;
   const tl=(k,sub,badge,warn)=>`<button class="adtl${warn?" w":""}" type="button" data-a="${k}"><span class="adi"><svg viewBox="0 0 24 24" aria-hidden="true">${AI[k]}</svg></span><b>${ASEC[k].t}</b><small>${sub}</small>${badge?`<em class="adbg${warn?" w":""}">${badge}</em>`:""}</button>`;
-  const vn=Object.keys((D.vaqtlar&&D.vaqtlar.vil)||{}).length;
+  const vn=Object.keys((D.vaqtlar&&D.vaqtlar.vil)||{}).length,nzo=(Array.isArray(nzGet().off)?nzGet().off:[]).filter(k=>NZM[k]);
   $("abody").innerHTML=`
   <div class="adbar"><div><b id="h1">–</b><span>Jami</span></div><div><b id="h2">–</b><span>bugun qo‘shildi</span></div><div><b id="h3">–</b><span>7 kunda faol</span></div></div>
+  <div class="bgc" id="bug" style="display:none"></div>
   <div class="adgrid">
    ${tl("vaqt",vn?vn+" viloyatda jadval":"Avtomatik hisob","")}
    ${tl("juma","Juma va hayit vaqti","")}
    ${tl("elon",ne?ne+" ta faol":"Muddatli e’lonlar","")}
+   ${tl("xabar","Bildirishnoma yuborish","")}
    ${tl("fikr","Foydalanuvchi fikrlari","")}
    ${tl("duo",nd?na+" ta ko‘rinadi":"Hali yo‘q",nd||"")}
    ${tl("turkum",DU.g.length+" guruh · "+DU.t.length+" turkum","")}
@@ -4188,9 +4226,10 @@ function aHome(){
    ${tl("zakot",miss?miss+" ta bo‘lim to‘liq emas":"Nisob, fitr, fidya","",!!miss)}
    ${tl("stat","Foydalanuvchilar, faollik","")}
    ${tl("tarix","Qaytarish mumkin","")}
+   ${tl("nazorat",nzo.length?nzo.length+" ta bo‘lim o‘chirilgan":"Hammasi yoqilgan","",!!nzo.length)}
    <button class="adtl x" type="button" id="out"><span class="adi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H6a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h4M14 8l4 4-4 4M18 12H9"/></svg></span><b>Chiqish</b><small>Tizimdan chiqish</small></button>
   </div>`;
-  aStats();
+  aStats();aToday();
 }
 function aStats(){
   tok().then(async t=>{if(!t)return;let jami=null;
@@ -4205,6 +4244,65 @@ function aStats(){
     try{const r=await fetch(SB+"/rest/v1/fikrlar?select=id&holat=eq.yangi&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
       const m=/\/(\d+)$/.exec(r.headers.get("content-range")||""),n=m?+m[1]:0,el=document.querySelector('.adtl[data-a="fikr"]');
       if(el&&r.ok){el.querySelector("small").textContent=n?n+" ta yangi fikr":"Yangi fikr yo‘q";if(n&&!el.querySelector(".adbg")){const b=document.createElement("em");b.className="adbg w";b.textContent=n;el.appendChild(b)}}}catch(e){}});
+}
+let XS={sel:new Set(),when:"now",cnt:null,err:false};
+async function xEndpoint(){try{const reg=await navigator.serviceWorker.ready,sb=await reg.pushManager.getSubscription();return sb?sb.endpoint:null}catch(e){return null}}
+const XMSG={qisqa:"Xabar juda qisqa",uzun:"Xabar juda uzun",otgan:"Tanlangan vaqt o‘tib ketgan",uzoq:"30 kundan uzoq vaqtga qo‘yib bo‘lmaydi",limit:"Shu kun uchun 2 ta ommaviy xabar limiti to‘lgan. Boshqa kunni tanlang"};
+async function xSend(test){
+  const t=await tok();if(!t){showAdm();return}
+  const m=$("x_m").value.trim(),sl=$("x_t").value.trim();
+  if(m.length<3){say("Xabar matnini yozing");return}
+  let when=new Date(),ep=null,n=null;
+  if(test){ep=await xEndpoint();if(!ep){say("Bu qurilmada bildirishnoma yoqilmagan. Menyudagi qo‘ng‘iroqchani yoqing");return}}
+  else{
+    if(XS.when==="later"){const d=$("x_d").value,h=$("x_h").value;if(!d||!h){say("Sana va vaqtni kiriting");return}when=new Date(d+"T"+h);if(isNaN(when)||when.getTime()<Date.now()-6e4){say("Tanlangan vaqt o‘tib ketgan");return}}
+    n=XS.count?XS.count():null;if(n===null){say("Qurilmalar soni noma’lum. Yuborib bo‘lmaydi");return}
+    if(n===0){say("Bu tanlovda bildirishnoma yoqilgan qurilma yo‘q");return}
+    const kim=XS.sel.size?[...XS.sel].map(id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"")).join(", "):"hammaga",
+          qn=XS.when==="later"?when.getDate()+"-"+EMON[when.getMonth()]+" "+String(when.getHours()).padStart(2,"0")+":"+String(when.getMinutes()).padStart(2,"0")+" da":"hozir";
+    if(!await aconfirm("“"+m+"” — "+n+" ta qurilmaga ("+kim+") "+qn+" yuboriladi. Qaytarib bo‘lmaydi. Yuborilsinmi?","Yuborish"))return;
+  }
+  try{
+    const r=await fetch(SB+"/rest/v1/rpc/push_navbatga",{method:"POST",headers:H(t),body:JSON.stringify({p_matn:m,p_sarlavha:sl,p_viloyat:(!test&&XS.sel.size)?[...XS.sel]:null,p_vaqt:when.toISOString(),p_endpoint:ep})});
+    if(!r.ok)throw 0;const j=String(await r.json());
+    if(j.indexOf("ok:")!==0){say(XMSG[j]||"Yuborilmadi. Qaytadan urinib ko‘ring");return}
+    if(test)say("Sinov xabari yuborildi. 1 daqiqagacha kuting ✓");
+    else{say(XS.when==="later"?"Navbatga qo‘yildi ✓":"Navbatga qo‘yildi. Taxminan 1 daqiqada yuboriladi ✓");$("x_m").value="";$("x_t").value="";$("x_cn").textContent="0/120";aTab(1)}
+    xLoad();
+  }catch(e){say("Yuborilmadi. Internetni tekshirib, qaytadan urinib ko‘ring")}
+}
+async function xLoad(){
+  const box=$("x_q");if(!box)return;const t=await tok();if(!t)return;
+  try{
+    const r=await fetch(SB+"/rest/v1/push_navbat?select=id,yuborish,sarlavha,matn,viloyat,endpoint,holat,soni&order=yaratilgan.desc&limit=30",{headers:H(t)});
+    if(!r.ok)throw 0;const a=await r.json();if(!$("x_q"))return;
+    const ST={kutmoqda:["Navbatda","k"],yuborilmoqda:["Yuborilmoqda","k"],yuborildi:["Yuborildi",""],bekor:["Bekor qilingan","o"],otkazildi:["O‘tkazib yuborildi","o"]};
+    const fd=s=>{const d=new Date(s);return d.getDate()+"-"+EMON[d.getMonth()]+" "+String(d.getHours()).padStart(2,"0")+":"+String(d.getMinutes()).padStart(2,"0")};
+    box.innerHTML=a.length?a.map(x=>{const st=ST[x.holat]||[x.holat,"o"],kim=x.endpoint?"sinov":((x.viloyat&&x.viloyat.length)?x.viloyat.map(id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"")).join(", "):"hammaga");
+      return `<div class="elr"><div><b>${esc(x.sarlavha||"Jannat sari")}<em class="${st[1]}">${st[0]}${x.holat==="yuborildi"&&x.soni!=null?" · "+x.soni+" ta":""}</em></b><small>${esc(x.matn)} · ${fd(x.yuborish)} · ${esc(kim)}</small></div>${x.holat==="kutmoqda"?`<button type="button" class="d" data-xc="${x.id}">Bekor</button>`:""}</div>`}).join(""):'<div class="ah">Hali xabar yuborilmagan.</div>';
+  }catch(e){if($("x_q"))$("x_q").innerHTML='<div class="ah">Ro‘yxatni yuklab bo‘lmadi. Supabase’da v67.sql fayli ishga tushirilganmi?</div>'}
+}
+async function aToday(){
+  const t=await tok();if(!t||!$("bug"))return;
+  const it=[],today=eToday();let fail=false;const dn=a=>Math.round((new Date(a+"T00:00:00")-new Date(today+"T00:00:00"))/864e5);
+  try{
+    try{const r=await fetch(SB+"/rest/v1/fikrlar?select=id&holat=eq.yangi&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
+      const m=/\/(\d+)$/.exec(r.headers.get("content-range")||"");if(!r.ok)throw 0;const n=m?+m[1]:0;if(n)it.push({a:"fikr",s:n+" ta yangi fikr javob kutmoqda"})}catch(e){fail=true}
+    try{const r=await fetch(SB+"/rest/v1/push_navbat?select=id&holat=eq.kutmoqda&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
+      const m=/\/(\d+)$/.exec(r.headers.get("content-range")||"");if(!r.ok)throw 0;const n=m?+m[1]:0;if(n)it.push({a:"xabar",s:n+" ta xabar yuborilishini kutmoqda"})}catch(e){fail=true}
+    eList().forEach(e=>{if(e.d2&&(!e.d1||e.d1<=today)){const d=dn(e.d2);if(d>=0&&d<=2)it.push({a:"elon",s:"“"+e.t+"” e’loni "+(d===0?"bugun":d+" kundan keyin")+" tugaydi"})}});
+    const vl=(D.vaqtlar&&D.vaqtlar.vil)||{};
+    Object.keys(vl).forEach(id=>{const e=vl[id],v=VIL.find(x=>x[0]===id);if(!e||!v||!/^\d{4}-\d\d-\d\d$/.test(e.sana||""))return;
+      const age=-dn(e.sana);if(age>10&&["bomdod","peshin","asr","shom","xufton"].some(k=>!(e.qot&&e.qot[k])))it.push({a:"vaqt",s:v[1].replace(/ viloyati$/,"")+" jadvali "+age+" kun oldin kiritilgan. Qotirilmagan vaqtlar bor"})});
+    {const z=zs(),miss=(isN(z.nisob)?0:1)+(G.filter(([c])=>!isN(zg(z,"fitr")[c])).length?1:0)+(G.filter(([c])=>!isN(zg(z,"fidya")[c])).length?1:0);
+     if(miss)it.push({a:"zakot",s:"Zakot: "+miss+" ta bo‘lim to‘liq emas"})}
+    {const dw=new Date().getDay(),j=(D.vaqtlar&&D.vaqtlar.juma)||{};
+     if((dw===4||dw===5)&&!eTm(j["*"])&&!VIL.every(v=>eTm(j[v[0]])))it.push({a:"juma",s:"Juma namozi vaqti hamma viloyat uchun kiritilmagan"})}
+  }catch(e){fail=true}
+  const box=$("bug");if(!box)return;
+  box.style.display="";
+  box.innerHTML='<h4>Bugungi ishlar</h4>'+(it.length?it.map(x=>`<button type="button" class="bgr" data-a="${x.a}"><i></i><span>${esc(x.s)}</span><u>›</u></button>`).join(""):'')+
+   (!it.length?'<div class="bgo">'+(fail?"Tekshiruv to‘liq bajarilmadi (internet yo‘q yoki jadval hali yaratilmagan).":"Bugun hech narsa kutmayapti ✓")+'</div>':(fail?'<div class="bgo" style="margin-top:6px">Ba’zi tekshiruvlar bajarilmadi.</div>':''));
 }
 function aTab(i){
   document.querySelectorAll("#abody .vtabs button").forEach(x=>x.classList.toggle("on",x.dataset.vt===String(i)));
@@ -4738,6 +4836,68 @@ async function ahClick(e){
 Object.assign(ASEC,{
  duo:{t:"Duo va zikrlar",d:"Duolarni qo‘shish, tartiblash, yoqish va o‘chirish",ns:1,html:aduHtml,init:aduInit,save:()=>{}},
  turkum:{t:"Duo turkumlari",d:"Guruhlar va turkumlarni boshqarish",ns:1,html:()=>'<div id="atk"></div>',init:atkInit,save:()=>{}},
+ xabar:{t:"Xabar yuborish",d:"Viloyat bo‘yicha yoki hammaga bildirishnoma",ns:1,
+  html:()=>`<div class="vtabs" role="tablist"><button type="button" class="on" data-vt="0" role="tab">Yangi xabar</button><button type="button" data-vt="1" role="tab">Navbat va tarix</button></div>
+   <div class="vpane on" data-vp="0"><div class="ac"><div class="ag">Xabar</div>
+    <input id="x_t" maxlength="40" placeholder="Sarlavha (ixtiyoriy, 40 belgigacha)">
+    <textarea id="x_m" rows="4" maxlength="120" placeholder="Xabar matni (3–120 belgi)"></textarea><div class="xcn" id="x_cn">0/120</div>
+    <div class="ag" style="margin-top:14px">Kimga</div><div class="xch" id="x_v"></div>
+    <div class="ag" style="margin-top:14px">Qachon</div><div class="xch" id="x_w"><button type="button" class="on" data-xw="now">Hozir</button><button type="button" data-xw="later">Vaqtni belgilash</button></div>
+    <div class="xdt" id="x_dt" style="display:none"><input type="date" id="x_d"><input type="time" id="x_h"></div>
+    <div class="xaud" id="x_au">Qurilmalar soni hisoblanmoqda…</div>
+    <div class="ah" style="margin:8px 0 0">Kuniga ko‘pi bilan 2 ta ommaviy xabar yuborish mumkin. “Faqat menga sinov” bu cheklovga kirmaydi. Xabar o‘chirilgan bildirishnomali qurilmalarga bormaydi.</div>
+    <div class="xbt"><button type="button" class="sec" id="x_ts">Faqat menga sinov</button><button type="button" id="x_go">Yuborish</button></div></div></div>
+   <div class="vpane" data-vp="1"><div class="ac"><div class="ag">Navbat va tarix</div><div id="x_q"><div class="ah">Yuklanmoqda…</div></div></div></div>`,
+  init:()=>{
+   XS={sel:new Set(),when:"now",cnt:null,err:false};
+   const VN=id=>(VIL.find(v=>v[0]===id)||[0,id])[1].replace(/ viloyati$/,"");
+   const total=()=>XS.cnt.reduce((a,o)=>a+(+o.n||0),0);
+   const count=()=>{if(!XS.cnt)return null;if(!XS.sel.size)return total();return XS.cnt.reduce((a,o)=>a+((RG[o.r]&&XS.sel.has(RG[o.r][4]))?+o.n:0),0)};
+   XS.count=count;
+   const draw=()=>{
+    $("x_v").innerHTML=`<button type="button" class="${XS.sel.size?"":"on"}" data-xv="*">Hammaga</button>`+VIL.map(v=>`<button type="button" class="${XS.sel.has(v[0])?"on":""}" data-xv="${v[0]}">${VN(v[0])}</button>`).join("");
+    $("x_w").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.xw===XS.when));
+    $("x_dt").style.display=XS.when==="later"?"":"none";
+    const n=count(),au=$("x_au");
+    if(XS.err){au.className="xaud w";au.textContent="Qurilmalar sonini aniqlab bo‘lmadi. Supabase’da v67.sql fayli ishga tushirilganmi? Sinov xabarini yuborish mumkin."}
+    else if(n===null){au.className="xaud";au.textContent="Qurilmalar soni hisoblanmoqda…"}
+    else{au.className="xaud"+(n?"":" w");au.textContent=n?"Xabar "+n+" ta qurilmaga boradi"+(XS.sel.size?" ("+[...XS.sel].map(VN).join(", ")+")":" (hammaga)"):"Bu tanlovda bildirishnoma yoqilgan qurilma yo‘q"}
+   };
+   XS.draw=draw;draw();
+   tok().then(async t=>{if(!t)return;
+    try{const r=await fetch(SB+"/rest/v1/rpc/push_soni",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const a=await r.json();if(!Array.isArray(a))throw 0;XS.cnt=a}catch(e){XS.err=true}
+    if(AS==="xabar")draw()});
+   const d=new Date();d.setHours(d.getHours()+1,0,0,0);$("x_d").value=d.toLocaleDateString("sv");$("x_h").value=String(d.getHours()).padStart(2,"0")+":00";
+   $("abody").oninput=e=>{if(e.target.id==="x_m")$("x_cn").textContent=e.target.value.length+"/120"};
+   $("abody").onclick=async e=>{
+    const v=e.target.closest("[data-xv]"),w=e.target.closest("[data-xw]"),c=e.target.closest("[data-xc]");
+    if(v){const id=v.dataset.xv;if(id==="*")XS.sel.clear();else if(XS.sel.has(id))XS.sel.delete(id);else XS.sel.add(id);draw();return}
+    if(w){XS.when=w.dataset.xw;draw();return}
+    if(c){if(!await aconfirm("Bu xabar bekor qilinsinmi?","Bekor qilish"))return;const t=await tok();if(!t)return;
+     try{const r=await fetch(SB+"/rest/v1/rpc/push_bekor",{method:"POST",headers:H(t),body:JSON.stringify({p_id:+c.dataset.xc})});const j=await r.json();say(j==="ok"?"Bekor qilindi ✓":"Bekor qilib bo‘lmadi: allaqachon yuborilgan yoki topilmadi")}catch(x){say("Bekor qilinmadi. Qaytadan urinib ko‘ring")}
+     xLoad();return}
+    if(e.target.closest("#x_go"))xSend(false);
+    if(e.target.closest("#x_ts"))xSend(true);
+   };
+   xLoad();
+  },
+  save:()=>{}},
+ nazorat:{t:"Nazorat",d:"Eski versiyalar, bo‘limlarni vaqtincha o‘chirish, texnik xabar",
+  html:()=>{const n=nzGet(),off=Array.isArray(n.off)?n.off:[];return `<div class="ac"><div class="ag">Texnik xabar</div>
+    <div class="ah">Yozsangiz, bosh sahifada hamma foydalanuvchiga ogohlantirish chiqadi. Bo‘sh qoldirsangiz, chiqmaydi.</div>
+    <textarea id="n_x" rows="3" maxlength="160" placeholder="Masalan: Bugun kechqurun server ishlari bo‘ladi">${esc(n.xabar||"")}</textarea></div>
+   <div class="ac"><div class="ag">Eng kam versiya</div>
+    <div class="ah">Bundan eski versiyadagilarga “Ilovani yangilang” xabari chiqadi. Ilova to‘xtatilmaydi, “×” bilan yopsa bo‘ladi. Bo‘sh = hech kimga chiqmaydi. Hozirgi versiya: <b>${APPV}</b>.</div>
+    <input id="n_v" inputmode="decimal" maxlength="8" placeholder="Masalan: ${APPV}" value="${esc(n.minV||"")}"></div>
+   <div class="ac"><div class="ag">Bo‘limlar</div>
+    <div class="ah">Belgi olib tashlansa, bo‘lim foydalanuvchilarda yashiriladi. Admin paneli hech qachon o‘chmaydi.</div>
+    ${Object.keys(NZM).map(k=>`<label class="ck nzm"><input type="checkbox" data-nz="${k}" ${off.includes(k)?"":"checked"}><span><b>${NZM[k][0]}</b><small>${NZM[k][1]}</small></span></label>`).join("")}</div>`},
+  init:()=>{},
+  save:async()=>{
+   const x=$("n_x").value.trim(),mv=$("n_v").value.trim().replace(",","."),off=[...document.querySelectorAll("#abody [data-nz]")].filter(i=>!i.checked).map(i=>i.dataset.nz);
+   if(mv&&!/^\d+\.\d+$/.test(mv)){say("Versiyani 6.7 ko‘rinishida yozing");return}
+   if(mv&&verCmp(mv,APPV)>0){say("Hali chiqmagan versiyani yozib bo‘lmaydi (hozirgi: "+APPV+")");return}
+   if(await patchV(v=>{const o={};if(mv)o.minV=mv;if(x)o.xabar=x;if(off.length)o.off=off;if(Object.keys(o).length)v.nazorat=o;else delete v.nazorat}))try{nazApply()}catch(e){}}},
  fikr:{t:"Fikrlar",d:"Foydalanuvchi fikrlari, javob va holat",ns:1,html:()=>'<div id="afk"></div>',init:afkInit,save:()=>{}},
  hijri:{t:"Hijriy taqvim yozuvlari",d:"Kunlik yozuvlarni qo‘shish, o‘zgartirish, yoqish va o‘chirish",ns:1,html:()=>"",init:ahInit,save:()=>{}}
 });
@@ -4824,14 +4984,14 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.6";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.7";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
     if(m&&m[1]!==APPV){$("upd").classList.add("on");$("updv").textContent="Yangi versiya "+m[1]+" tayyor"}}catch(e){}
 }
 $("updb").onclick=()=>$("mupd").click();
-$("updx").onclick=()=>$("upd").classList.remove("on");
+$("updx").onclick=()=>{nzUpdDis=true;$("upd").classList.remove("on")};try{nazApply()}catch(e){}
 let lastChk=0;document.addEventListener("visibilitychange",()=>{if(!document.hidden&&Date.now()-lastChk>6e5){lastChk=Date.now();chkUpd()}});
 setTimeout(()=>{lastChk=Date.now();chkUpd()},4000);
 </script>
