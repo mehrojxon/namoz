@@ -41,9 +41,10 @@ self.addEventListener("push", e => {
 });
 self.addEventListener("notificationclick", e => {
   e.notification.close();
+  const go = String(e.notification.tag || "").indexOf("xabar-") === 0; // admin xabari: ilovadagi "Xabarlar"ni ochadi
   e.waitUntil(clients.matchAll({ type: "window" }).then(l => {
-    for (const c of l) if ("focus" in c) return c.focus();
-    return clients.openWindow("./");
+    for (const c of l) if ("focus" in c) { if (go) { try { c.postMessage({ go: "xabarlar" }); } catch (x) {} } return c.focus(); }
+    return clients.openWindow(go ? "./?xabarlar=1" : "./");
   }));
 });
 
