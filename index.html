@@ -1707,6 +1707,26 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #nd #ndbody{max-height:70vh;overflow:auto}
 #xt #xtbody{max-height:70vh;overflow:auto}
 #ucf .ucb{display:flex;gap:10px}#ucf .ucb button{flex:1;margin:0;padding:13px 8px;border-radius:14px;border:0;background:linear-gradient(180deg,#2a9a8e,#0e6b63);color:#fff;font:700 15px system-ui}#ucf .ucb #ucfn{background:transparent;border:1px solid var(--line);color:var(--ink)}
+#xtc{margin:12px 0 4px}
+#xtc .xtk{padding:14px 16px;border-radius:20px;border:1px solid var(--b3d);background:var(--g3d);box-shadow:var(--s3d);border-left:3px solid #e0b24f}
+#xtc .xtr b{display:block;font-size:16px;margin-bottom:2px}
+#xtc .xtr small{display:block;font-size:13px;color:var(--mut);line-height:1.4}
+#xtc span.xtgo{display:inline-block;padding:9px 16px;font-size:14px}
+#xtc .xtgo{padding:9px 16px;font-size:14px}
+#xtc .xtb{margin:11px 0 8px}
+#qoff{margin-top:12px}
+#ndh{margin:12px 0 12px}
+#ndh .ndh{padding:14px 14px 12px;border-radius:20px;border:1px solid var(--b3d);background:var(--g3d);box-shadow:var(--s3d)}
+#ndh .ndhh{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}
+#ndh .ndhh b{font-size:16px}
+#ndh .ndhh small{font-size:12.5px;color:var(--mut);margin-left:6px;font-weight:600}
+#ndh .ndhh button{margin:0;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:rgba(127,160,150,.1);color:var(--ink);font:600 13px system-ui;min-height:0;width:auto}
+#ndh .ndhr{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+#ndh .ndhr button{margin:0;padding:0;border:0;background:none;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:6px;font:600 12px system-ui;min-height:0;width:auto}
+#ndh .ndhr i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(224,178,79,.65);background:rgba(255,255,255,.03)}
+#ndh .ndhr .on i{background:linear-gradient(180deg,#2a9a8e,#0e6b63);border-color:#e0b24f}
+#ndh .ndhr svg{width:20px;height:20px;stroke-width:2.6;fill:none;stroke:#fff;opacity:0}
+#ndh .ndhr .on svg{opacity:1}
 </style>
 </head>
 <body data-scr="t0">
@@ -1728,6 +1748,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <span id="hnow"></span>
   </button>
   <div id="el" style="display:none"></div><div id="jm" style="display:none"></div>
+  <div id="ndh"></div>
   <div class="sec-l">Bo‘limlar</div>
   <div class="qgrid">
     <button class="qa" data-go="t7"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.8C10.4 5.2 8 4.6 4.5 4.6V18c3.5 0 5.9.6 7.5 2.2 1.6-1.6 4-2.2 7.5-2.2V4.6c-3.5 0-5.900.6-7.500 2.200zM12 6.800V20.200"/></svg></span><b>Qur'on</b><span id="qa-q">O‘qish va tinglash</span></button>
@@ -1873,8 +1894,8 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   </div>
   <div id="qsw"><input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off"></div>
   <div class="qtabs" id="qtabs"><button data-q="s" class="on">SURA</button><button data-q="j">JUZ</button><button data-q="b">XATCHO‘PLAR</button></div>
-  <div id="qoff"></div>
   <div id="xtc"></div>
+  <div id="qoff"></div>
   <div id="qlist"></div>
  </div>
  <div id="qpg">
@@ -3355,7 +3376,7 @@ function xtDraw(){
   const box=$("xtc");const o=xtGet();
   const ms=$("mxts");if(ms)ms.textContent=o?(o.r.split("1").length-1)+"/604 bet · "+xtLine(o):"Reja tuzilmagan";
   if(!box)return;
-  if(!o){box.innerHTML='<button type="button" class="xtk" data-xt="open"><div class="xtr"><b>Xatm rejasi</b><small>Reja tuzish ›</small></div><div class="xts" style="margin-top:4px"><span>Qur’onni 30, 60 yoki 90 kunda xatm qiling</span></div></button>';return}
+  if(!o){box.innerHTML='<button type="button" class="xtk" data-xt="open"><div class="xtr"><div style="flex:1;min-width:0"><b>Xatm rejasi</b><small>Qur’onni 30, 60 yoki 90 kunda xatm qiling</small></div><span class="xtgo">Tuzish</span></div></button>';return}
   const c=xtCalc(o,eToday());
   box.innerHTML=`<div class="xtk" data-xt="open" role="button" tabindex="0"><div class="xtr"><b>Xatm rejasi</b>${c.done?"":'<button type="button" class="xtgo" data-xt="go">Davom etish</button>'}</div><div class="xtb"><i style="width:${c.pct}%"></i></div><div class="xts"><span>${c.read}/604 bet · ${c.pct}%</span><span>${xtLine(o)}</span></div></div>`;
 }
@@ -3418,9 +3439,20 @@ const ndOkQ=q=>!!q&&typeof q==="object"&&NDK.every(k=>Number.isInteger(q[k])&&q[
 const ndOkD=d=>!!d&&typeof d==="object"&&!Array.isArray(d)&&Object.keys(d).every(k=>/^\d{4}-\d\d-\d\d$/.test(k)&&/^[01]{5}$/.test(d[k]));
 function ndGet(){try{const o=JSON.parse(xbLs("ndf")||"null");if(o&&ndOkD(o.d)&&ndOkQ(o.q))return o}catch(e){}return{d:{},q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0}}}
 function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400)delete o.d[ks.shift()];xbLs("ndf",JSON.stringify(o))}
+function ndHome(){
+  const box=$("ndh");if(!box)return;const o=ndGet(),t=o.d[eToday()]||"00000",n=t.split("1").length-1;
+  const tick='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+  box.innerHTML=`<div class="ndh"><div class="ndhh"><div><b>Bugungi namozlar</b><small>${n}/5</small></div><button type="button" data-ndh="open">Daftar ›</button></div><div class="ndhr">${NDK.map((k,i)=>`<button type="button" data-ndh="${i}" class="${t[i]==="1"?"on":""}" aria-pressed="${t[i]==="1"}" aria-label="${NDN[k]}"><i>${tick}</i>${NDN[k]}</button>`).join("")}</div></div>`;
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest&&e.target.closest("#ndh [data-ndh]");if(!b)return;
+  if(b.dataset.ndh==="open"){ndOpen();return}
+  const o=ndGet(),d=eToday(),r=(o.d[d]||"00000").split(""),i=+b.dataset.ndh;r[i]=r[i]==="1"?"0":"1";o.d[d]=r.join("");ndSave(o);ndSum();if($("nd").classList.contains("on"))ndDraw();
+});
 function ndSum(){
   const o=ndGet(),t=o.d[eToday()]||"00000",n=t.split("1").length-1,q=NDK.reduce((a,k)=>a+o.q[k],0),m=$("mnds");
   if(m)m.textContent="Bugun "+n+"/5"+(q?" · qazo: "+q:"");
+  try{ndHome()}catch(e){}
 }
 const NDW=["Ya","Du","Se","Ch","Pa","Ju","Sh"];
 function ndDraw(){
@@ -3469,6 +3501,7 @@ $("nd").onclick=async e=>{
 $("nd").onchange=e=>{const k=e.target.dataset&&e.target.dataset.ndi;if(!k)return;
   const o=ndGet(),v=Math.min(99999,Math.max(0,Math.floor(+e.target.value)||0));o.q[k]=v;ndSave(o);e.target.value=v;$("ndj").textContent=NDK.reduce((a,x)=>a+o.q[x],0);ndSum()};
 $("ndcl").onclick=ndClose;$("mnd").onclick=ndOpen;
+try{ndSum()}catch(e){}
 setTimeout(()=>{try{ndSum();xtDraw()}catch(e){}},1500);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden){try{ndSum();xtDraw()}catch(e){}}});
 /* Xabarlar (admin yuborgan ommaviy xabarlar arxivi) */
@@ -5304,7 +5337,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.8";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.8.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
