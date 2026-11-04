@@ -1738,6 +1738,38 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #qtl #xtc .xtb{position:absolute;left:0;right:0;bottom:0;height:3px;margin:0;border-radius:0}
 #qtl #qoff>.qol{grid-column:1/-1;order:3;display:flex;justify-content:space-between;align-items:center;margin:0;padding:9px 14px;border-radius:12px;border:1px dashed rgba(143,211,198,.4)!important;background:transparent!important;box-shadow:none!important;color:#8fd3c6;font:600 13px system-ui;text-align:left;min-height:0;width:auto}
 #qtl #qoff>.qol span{font-size:17px}
+
+/* v6.9 daftar tahlili */
+#nd .ndlv,#nd .ndwk,#nd .ndan{padding:13px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(127,160,150,.07)}
+#nd .ndlv{border-color:rgba(224,178,79,.4);background:linear-gradient(180deg,rgba(224,178,79,.1),rgba(224,178,79,.03))}
+#nd .ndlh{display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+#nd .ndlh small,#nd .ndlf small{display:block;font-size:12px;color:var(--mut)}
+#nd .ndlh b{font-size:20px;color:#f0c969}
+#nd .ndlf{text-align:right}#nd .ndlf b{font-size:20px;color:#fff}
+#nd .xtb{height:6px;border-radius:3px;background:rgba(127,160,150,.22);margin:10px 0 7px;overflow:hidden}
+#nd .xtb i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,#e0b24f,#f0c969)}
+#nd .ndls{font-size:13px;color:var(--ink)}
+#nd .ndlx{font-size:12px;line-height:1.45;color:var(--mut);margin-top:6px}
+#nd .ndwr{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+#nd .ndwr b{font-size:20px}#nd .ndwr span{font-size:12.5px;color:var(--mut)}
+#nd .ndwk p,#nd .ndan p{margin:6px 0 0;font-size:13.5px;line-height:1.5;color:var(--ink)}
+#nd .ndwc{margin-top:8px;font-size:13px;color:var(--mut)}#nd .ndwc b{color:#fff}
+#nd .ndah{font-size:12.5px;color:var(--mut);margin-bottom:6px}
+.ndar{display:flex;align-items:center;gap:10px;padding:4px 0}
+.ndar span{flex:none;width:62px;font-size:13.5px;font-weight:600}
+.ndar .ndab{flex:1;height:8px;border-radius:4px;background:rgba(127,160,150,.22);overflow:hidden}
+.ndar .ndab i{display:block;height:100%;border-radius:4px;background:linear-gradient(90deg,#2a9a8e,#4fd0bf)}
+.ndar.lo .ndab i{background:linear-gradient(90deg,#c98a2c,#e0b24f)}
+.ndar b{flex:none;width:42px;text-align:right;font-size:13px}
+#nd .ndaw{border-left:3px solid #e0b24f;padding-left:10px}#nd .ndaw.ok{border-color:#2a9a8e}
+#nd .ndsw{display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:12px 14px;border-radius:16px;border:1px solid var(--line);background:rgba(127,160,150,.07);color:var(--ink);text-align:left;font:inherit;min-height:0}
+#nd .ndsw span{flex:1;min-width:0}#nd .ndsw b{display:block;font-size:14.5px}#nd .ndsw small{display:block;margin-top:3px;font-size:12px;line-height:1.45;color:var(--mut)}
+#nd .ndsw i{flex:none;position:relative;width:46px;height:28px;border-radius:14px;background:rgba(127,160,150,.35)}
+#nd .ndsw i:after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .15s}
+#nd .ndsw.on i{background:#2a9a8e}#nd .ndsw.on i:after{left:21px}
+#ndh .ndhw{display:block;width:100%;margin:10px 0 0;padding:9px 12px;border-radius:12px;border:1px solid rgba(224,178,79,.4);background:rgba(224,178,79,.08);color:#f0c969;font:600 13px system-ui;text-align:left;min-height:0}
+#ndh .ndhw.g{border-color:rgba(79,208,191,.45);background:rgba(42,154,142,.12);color:#8fe0d2}
+.adn{margin-top:10px}
 </style>
 </head>
 <body data-scr="t0">
@@ -3444,11 +3476,17 @@ const ndDay=n=>{const d=new Date();d.setDate(d.getDate()-n);return d.toLocaleDat
 const ndOkQ=q=>!!q&&typeof q==="object"&&NDK.every(k=>Number.isInteger(q[k])&&q[k]>=0&&q[k]<=99999);
 const ndOkD=d=>!!d&&typeof d==="object"&&!Array.isArray(d)&&Object.keys(d).every(k=>/^\d{4}-\d\d-\d\d$/.test(k)&&/^[01]{5}$/.test(d[k]));
 function ndGet(){try{const o=JSON.parse(xbLs("ndf")||"null");if(o&&ndOkD(o.d)&&ndOkQ(o.q))return o}catch(e){}return{d:{},q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0}}}
-function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400)delete o.d[ks.shift()];xbLs("ndf",JSON.stringify(o))}
+function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400){const k=ks.shift();if(o.d[k]==="11111")o.z=(o.z||0)+1;delete o.d[k]}xbLs("ndf",JSON.stringify(o))}
+function ndHint(o){
+  try{const w=ndWeek(o);
+    if(w&&xbLs("ndwk")!==w.start)return'<button type="button" class="ndhw g" data-ndh="open">Hafta natijasi tayyor: '+w.tot+'/'+w.max+' ›</button>';
+    const a=ndAn(o);if(a&&a.weak)return'<button type="button" class="ndhw" data-ndh="open">'+NDN[NDK[a.lo]]+' oxirgi kunlarda kam belgilanmoqda ›</button>'}catch(e){}
+  return""
+}
 function ndHome(){
   const box=$("ndh");if(!box)return;const o=ndGet(),t=o.d[eToday()]||"00000",n=t.split("1").length-1;
   const tick='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  box.innerHTML=`<div class="ndh"><div class="ndhh"><div><b>Bugungi namozlar</b><small>${n}/5</small></div><button type="button" data-ndh="open">Daftar ›</button></div><div class="ndhr">${NDK.map((k,i)=>`<button type="button" data-ndh="${i}" class="${t[i]==="1"?"on":""}" aria-pressed="${t[i]==="1"}" aria-label="${NDN[k]}"><i>${tick}</i>${NDN[k]}</button>`).join("")}</div></div>`;
+  box.innerHTML=`<div class="ndh"><div class="ndhh"><div><b>Bugungi namozlar</b><small>${n}/5</small></div><button type="button" data-ndh="open">Daftar ›</button></div><div class="ndhr">${NDK.map((k,i)=>`<button type="button" data-ndh="${i}" class="${t[i]==="1"?"on":""}" aria-pressed="${t[i]==="1"}" aria-label="${NDN[k]}"><i>${tick}</i>${NDN[k]}</button>`).join("")}</div>${ndHint(o)}</div>`;
 }
 document.addEventListener("click",e=>{
   const b=e.target.closest&&e.target.closest("#ndh [data-ndh]");if(!b)return;
@@ -3458,18 +3496,84 @@ document.addEventListener("click",e=>{
 function ndSum(){
   try{ndHome()}catch(e){}
 }
+
+/* v6.9: tahlil, haftalik natija, daraja */
+const NDLV=[["Boshlovchi",0],["Faol",7],["Sobit",30],["Mustahkam",100],["Namunali",300]];
+const ndDate=n=>ndDay(n);
+function ndStartD(o){const k=Object.keys(o.d).filter(x=>o.d[x]!=="00000").sort();return k[0]||null}
+function ndFull(o){return(o.z||0)+Object.keys(o.d).filter(k=>o.d[k]==="11111").length}
+function ndLevel(o){const f=ndFull(o);let i=0;NDLV.forEach((l,x)=>{if(f>=l[1])i=x});const nx=NDLV[i+1];return{f,i,name:NDLV[i][0],next:nx?nx[0]:null,left:nx?nx[1]-f:0,pct:nx?Math.round((f-NDLV[i][1])/(nx[1]-NDLV[i][1])*100):100}}
+/* oxirgi 14 kun (bugundan oldingi), kamida 7 kun ma'lumot bo'lsa */
+function ndAn(o){
+  const st=ndStartD(o);if(!st)return null;const el=dDiff(st,eToday());const w=Math.min(14,el);if(w<7)return null;
+  const c=[0,0,0,0,0];for(let n=1;n<=w;n++){const t=o.d[ndDate(n)]||"00000";for(let i=0;i<5;i++)if(t[i]==="1")c[i]++}
+  const rate=c.map(x=>Math.round(x/w*100));let lo=0;rate.forEach((r,i)=>{if(r<rate[lo])lo=i});
+  return{w,c,rate,lo,weak:rate[lo]<60&&rate[lo]<Math.max(...rate)}
+}
+/* oxirgi yakunlangan hafta: juma → payshanba */
+function ndWeek(o){
+  const dow=new Date().getDay();let n0=(dow-4+7)%7;if(n0===0)n0=7;
+  const st=ndStartD(o);if(!st)return null;
+  const c=[0,0,0,0,0];let k=0;
+  for(let n=n0;n<n0+7;n++){const d=ndDate(n);if(d<st)continue;k++;const t=o.d[d]||"00000";for(let i=0;i<5;i++)if(t[i]==="1")c[i]++}
+  if(!k)return null;const tot=c.reduce((a,b)=>a+b,0);
+  const sd=ndDate(n0+6);
+  return{start:sd,end:ndDate(n0),k,c,tot,max:k*5,pct:Math.round(tot/(k*5)*100)}
+}
+function ndCur(o){
+  const dow=new Date().getDay(),n=(dow-5+7)%7;let tot=0;
+  for(let i=0;i<=n;i++){const t=o.d[ndDate(i)]||"00000";tot+=t.split("1").length-1}
+  return{tot,days:n+1}
+}
+function ndWkText(p){
+  if(p>=95)return"Ma’sha Alloh! Deyarli to‘liq hafta bo‘ldi. Alloh qabul qilsin.";
+  if(p>=80)return"Yaxshi hafta. Shu tartibni davom ettiring.";
+  if(p>=50)return"Hafta yarmidan ko‘pi bajarildi. Keyingi haftada yana bir qadam oldinga.";
+  return"Yangi hafta — yangi imkoniyat. Kichik qadamdan boshlash ham qimmatli."
+}
+const ndFmt=d=>{const x=new Date(d+"T00:00:00");return x.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][x.getMonth()]};
+function ndInsight(o){
+  const lv=ndLevel(o),wk=ndWeek(o),cu=ndCur(o),an=ndAn(o);
+  let h='<div class="ndlv"><div class="ndlh"><div><small>Daraja</small><b>'+lv.name+'</b></div><div class="ndlf"><b>'+lv.f+'</b><small>to‘liq kun</small></div></div>'
+   +'<div class="xtb"><i style="width:'+lv.pct+'%"></i></div><div class="ndls">'+(lv.next?'Keyingi daraja — '+lv.next+': yana '+lv.left+' kun':'Eng yuqori daraja')+'</div>'
+   +'<div class="ndlx">To‘liq kun — besh vaqt namoz ham belgilangan kun.</div></div>';
+  h+='<div class="xtl">Hafta natijasi (juma — payshanba)</div><div class="ndwk">';
+  if(wk)h+='<div class="ndwr"><b>'+wk.tot+'/'+wk.max+'</b><span>'+ndFmt(wk.start)+' — '+ndFmt(wk.end)+' · '+wk.pct+'%</span></div><div class="xtb"><i style="width:'+wk.pct+'%"></i></div><p>'+ndWkText(wk.pct)+'</p>';
+  else h+='<p>O‘tgan hafta natijasi birinchi to‘liq haftadan keyin chiqadi.</p>';
+  h+='<div class="ndwc">Joriy hafta: <b>'+cu.tot+'</b> ta namoz belgilangan</div></div>';
+  h+='<div class="xtl">Oxirgi kunlar tahlili</div><div class="ndan">';
+  if(an){
+    h+='<div class="ndah">Oxirgi '+an.w+' kunda belgilanish ulushi</div>'+NDK.map((k,i)=>'<div class="ndar'+(an.weak&&i===an.lo?" lo":"")+'"><span>'+NDN[k]+'</span><div class="ndab"><i style="width:'+an.rate[i]+'%"></i></div><b>'+an.rate[i]+'%</b></div>').join("");
+    h+=an.weak?'<p class="ndaw">'+NDN[NDK[an.lo]]+' vaqti eng kam belgilangan ('+an.c[an.lo]+'/'+an.w+' kun). Shu vaqt uchun eslatmani yoqib qo‘yish yordam beradi.</p>':'<p class="ndaw ok">Namozlar bir tekisda belgilanmoqda. Shu tartibni saqlang.</p>';
+    h+='<div class="ndlx">Belgilanmagan kun namoz qoldirilgan degani emas: u faqat daftarda belgilanmagan.</div>'
+  }else h+='<p>Tahlil kamida 7 kun belgilab borganingizdan keyin chiqadi.</p>';
+  return h+'</div>'
+}
+
+/* Anonim haftalik statistika (faqat foydalanuvchi yoqsa) */
+async function ndShip(){
+  try{
+    if(xbLs("nds")!=="1")return;const o=ndGet(),w=ndWeek(o);if(!w)return;if(xbLs("ndsw")===w.start)return;
+    const id=xbLs("did");if(!id)return;
+    const r=await fetch(SB+"/rest/v1/rpc/namoz_yubor",{method:"POST",headers:H(),body:JSON.stringify({p_d:id,p_h:w.start,p_k:w.k,p_c:w.c})});
+    if(r.ok)xbLs("ndsw",w.start)
+  }catch(e){}
+}
+setTimeout(ndShip,4000);
 const NDW=["Ya","Du","Se","Ch","Pa","Ju","Sh"];
 function ndDraw(){
   const o=ndGet(),days=[6,5,4,3,2,1,0].map(ndDay),td=eToday();
   const tick='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
   const q=NDK.reduce((a,k)=>a+o.q[k],0);
-  $("ndbody").innerHTML=`<div class="xtl">So‘nggi 7 kun</div>
+  $("ndbody").innerHTML=ndInsight(o)+`<div class="xtl">So‘nggi 7 kun</div>
    <table class="ndt"><thead><tr><th></th>${days.map(d=>{const x=new Date(d+"T00:00:00");return`<th class="${d===td?"t":""}">${NDW[x.getDay()]}<br>${x.getDate()}</th>`}).join("")}</tr></thead>
    <tbody>${NDK.map((k,i)=>`<tr><td class="nm">${NDN[k]}</td>${days.map(d=>{const on=(o.d[d]||"00000")[i]==="1";return`<td class="${d===td?"t":""}"><button type="button" class="ndc${on?" on":""}" data-nd="${d}|${i}" aria-pressed="${on}" aria-label="${NDN[k]}, ${d}">${tick}</button></td>`}).join("")}</tr>`).join("")}</tbody></table>
    <div class="xtl">Qazo hisobi</div>
    ${NDK.map(k=>`<div class="ndq"><b>${NDN[k]}</b><button type="button" data-ndq="${k}|-1" aria-label="${NDN[k]} qazosini o‘qidim (bittaga kamaytirish)">−</button><input type="number" min="0" max="99999" inputmode="numeric" value="${o.q[k]}" data-ndi="${k}" aria-label="${NDN[k]} qazo soni"><button type="button" data-ndq="${k}|1" aria-label="${NDN[k]} qazo qo‘shish">+</button></div>`).join("")}
    <div class="ndj"><span>Jami qazo</span><b id="ndj">${q}</b></div>
    <div class="xtn">“−” bosilsa, o‘qilgan qazo namozi sonidan bittasi ayriladi. Sonni o‘zingiz yozib ham o‘zgartirishingiz mumkin.</div>
+   <div class="xtl">Umumiy statistika</div>
+   <button type="button" class="ndsw${xbLs("nds")==="1"?" on":""}" data-ndb="stat" role="switch" aria-checked="${xbLs("nds")==="1"}"><span><b>Anonim statistikaga qo‘shilish</b><small>Haftada bir marta namozlar bo‘yicha faqat umumiy sonlar yuboriladi. Ism, joylashuv va sanalar yuborilmaydi. Istalgan vaqt o‘chirasiz.</small></span><i></i></button>
    <div class="xtl">Zaxira nusxa</div>
    <div class="xtbt"><button type="button" class="sec" data-ndb="copy">Nusxa olish</button><button type="button" class="sec" data-ndb="paste">Tiklash</button></div>
    <textarea id="ndta" style="display:none" placeholder="Zaxira matnini shu yerga qo‘ying" spellcheck="false"></textarea>
@@ -3477,7 +3581,7 @@ function ndDraw(){
    <div class="ndm" id="ndm" role="status"></div>`;
 }
 function ndMsg(t,k){const m=$("ndm");if(m){m.textContent=t;m.className="ndm"+(k?" "+k:"")}}
-function ndOpen(){$("nd").classList.add("on");ndDraw()}
+function ndOpen(){$("nd").classList.add("on");ndDraw();try{const w=ndWeek(ndGet());if(w)xbLs("ndwk",w.start)}catch(e){}ndHome()}
 function ndClose(){$("nd").classList.remove("on");ndSum()}
 function ndBackup(){return JSON.stringify({app:"jannat-sari",v:1,t:new Date().toISOString(),ndf:ndGet(),xtm:xtGet()})}
 $("nd").onclick=async e=>{
@@ -3490,6 +3594,7 @@ $("nd").onclick=async e=>{
     document.querySelector('#nd [data-ndi="'+k+'"]').value=o.q[k];$("ndj").textContent=NDK.reduce((a,x)=>a+o.q[x],0);ndSum();return}
   const b=e.target.closest("[data-ndb]");if(!b)return;
   const k=b.dataset.ndb;
+  if(k==="stat"){const on=xbLs("nds")!=="1";xbLs("nds",on?"1":null);if(on){xbLs("ndsw",null);ndShip()}b.classList.toggle("on",on);b.setAttribute("aria-checked",on);ndMsg(on?"Anonim statistika yoqildi ✓":"Anonim statistika o‘chirildi. Yangi ma’lumot yuborilmaydi.","o");return}
   if(k==="copy"){const tx=ndBackup();let ok=false;try{await navigator.clipboard.writeText(tx);ok=true}catch(x){}
     if(ok)ndMsg("Zaxira matni nusxalandi. Uni Telegram’dagi “Saqlangan xabarlar”ga yuborib qo‘ying.","o");
     else{const t=$("ndta");t.style.display="block";t.value=tx;t.focus();t.select();ndMsg("Matnni o‘zingiz nusxalang: belgilab, “Copy”ni bosing.","")}return}
@@ -3499,7 +3604,7 @@ $("nd").onclick=async e=>{
     const ok=j&&j.app==="jannat-sari"&&j.v===1&&j.ndf&&ndOkD(j.ndf.d)&&ndOkQ(j.ndf.q)&&(j.xtm===null||xtOk(j.xtm));
     if(!ok){ndMsg("Bu Jannat sari zaxirasi emas yoki buzilgan. Hech narsa o‘zgartirilmadi.","e");return}
     if(!await uConfirm("Hozirgi daftar va xatm rejasi zaxiradagi bilan almashtirilsinmi?","Tiklash"))return;
-    ndSave({d:j.ndf.d,q:j.ndf.q});if(j.xtm){if(!j.xtm.t||typeof j.xtm.t!=="object")j.xtm.t={};xtSave(j.xtm)}else xbLs("xtm",null);
+    ndSave({d:j.ndf.d,q:j.ndf.q,z:Number.isInteger(j.ndf.z)&&j.ndf.z>=0&&j.ndf.z<100000?j.ndf.z:0});if(j.xtm){if(!j.xtm.t||typeof j.xtm.t!=="object")j.xtm.t={};xtSave(j.xtm)}else xbLs("xtm",null);
     ndDraw();ndSum();xtDraw();ndMsg("Zaxira tiklandi ✓","o")}
 };
 $("nd").onchange=e=>{const k=e.target.dataset&&e.target.dataset.ndi;if(!k)return;
@@ -4532,7 +4637,7 @@ const ASEC={
  stat:{t:"Statistika",d:"Foydalanuvchilar va faollik",ns:1,
   html:()=>`<section class="adst"><div class="adh"><div class="adh1"><span>Jami foydalanuvchilar</span><b id="st1">–</b></div>
    <div class="adh2"><div><b id="st2">–</b><span>bugun qo‘shildi</span></div><div><b id="st3">–</b><span>7 kunda qo‘shildi</span></div></div></div>
-   <div id="acst" class="adrg" style="display:none"></div><div id="rgst" class="adrg"><div class="adrh"><b>Mintaqalar bo‘yicha</b></div><div class="adrn">Yuklanmoqda…</div></div></section>`,
+   <div id="acst" class="adrg" style="display:none"></div><div id="nst" class="adrg" style="display:none"></div><div id="rgst" class="adrg"><div class="adrh"><b>Mintaqalar bo‘yicha</b></div><div class="adrn">Yuklanmoqda…</div></div></section>`,
   init:()=>aStats(),save:()=>{}},
  hikmat:{t:"Kun hikmati",d:"Matnni yozish va xabar yuborish",
   html:()=>`<div class="ac"><div class="ag">Matn</div><textarea id="hm" rows="6" placeholder="Hikmatli so‘z yoki hadis matni"></textarea><input id="hs" placeholder="Manba (masalan: Imom Buxoriy, Sahih)"></div>
@@ -4580,6 +4685,14 @@ function aStats(){
     try{const r=await fetch(SB+"/rest/v1/rpc/activity_stats",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const a=await r.json(),b=$("acst");
       if($("h3")&&a&&a.jami!=null)$("h3").textContent=a.k7;
       if(b&&a&&a.jami!=null){b.style.display="";b.innerHTML='<div class="adrh"><b>Faollik</b><span>ilovani ochganlar</span></div><div class="acg"><div><b>'+a.k1+'</b><span>24 soatda</span></div><div><b>'+a.k7+'</b><span>7 kunda</span></div><div><b>'+a.k30+'</b><span>30 kunda</span></div></div>'+((a.ver||[]).length?'<div class="acv">'+a.ver.map(o=>'<span>'+esc(String(o.v))+'<b>'+o.n+'</b></span>').join("")+'</div>':"")+(a.jami<(+AST||0)*0.9?'<div class="adrn" style="margin-top:8px">Faollik hisobi v6.4 dan boshlangan: ilovani yangilab ochgan qurilmalar sanaladi, shuning uchun raqamlar bir necha kun ichida to‘ladi.</div>':"")}}catch(e){}
+    try{const r=await fetch(SB+"/rest/v1/rpc/namoz_stats",{method:"POST",headers:H(t),body:"{}"});if(!r.ok)throw 0;const a=await r.json(),b=$("nst");
+      if(b&&a){b.style.display="";const hs=a.haftalar||[];
+        if(!hs.length)b.innerHTML='<div class="adrh"><b>Namoz daftari</b><span>anonim, ixtiyoriy</span></div><div class="adrn">Hali ma’lumot yo‘q. Foydalanuvchi daftarda “Anonim statistikaga qo‘shilish”ni yoqsa, shu yerda chiqadi.</div>';
+        else{const h=hs[0],NM=["Bomdod","Peshin","Asr","Shom","Xufton"];
+          b.innerHTML='<div class="adrh"><b>Namoz daftari</b><span>anonim · '+esc(String(h.h))+' haftasi</span></div><div class="acg"><div><b>'+h.n+'</b><span>qurilma</span></div><div><b>'+h.pct+'%</b><span>belgilangan</span></div><div><b>'+(a.jami||0)+'</b><span>jami qo‘shilgan</span></div></div>'
+           +'<div class="ndan adn">'+NM.map((x,i)=>'<div class="ndar"><span>'+x+'</span><div class="ndab"><i style="width:'+h.p[i]+'%"></i></div><b>'+h.p[i]+'%</b></div>').join("")+'</div>'
+           +'<div class="acv"><span>80% va yuqori<b>'+h.t[0]+'</b></span><span>50–79%<b>'+h.t[1]+'</b></span><span>50% dan past<b>'+h.t[2]+'</b></span></div>'
+           +(hs.length>1?'<div class="acv">'+hs.slice(1).map(o=>'<span>'+esc(String(o.h))+' haftasi<b>'+o.pct+'%</b></span>').join("")+'</div>':"")}}}catch(e){}
     try{const r=await fetch(SB+"/rest/v1/fikrlar?select=id&holat=eq.yangi&limit=1",{headers:{...H(t),Prefer:"count=exact",Range:"0-0"}});
       const m=/\/(\d+)$/.exec(r.headers.get("content-range")||""),n=m?+m[1]:0,el=document.querySelector('.adtl[data-a="fikr"]');
       if(el&&r.ok){el.querySelector("small").textContent=n?n+" ta yangi fikr":"Yangi fikr yo‘q";if(n&&!el.querySelector(".adbg")){const b=document.createElement("em");b.className="adbg w";b.textContent=n;el.appendChild(b)}}}catch(e){}});
@@ -5341,7 +5454,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.8.2";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.9";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
