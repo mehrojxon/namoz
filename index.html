@@ -1727,6 +1727,17 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #ndh .ndhr .on i{background:linear-gradient(180deg,#2a9a8e,#0e6b63);border-color:#e0b24f}
 #ndh .ndhr svg{width:20px;height:20px;stroke-width:2.6;fill:none;stroke:#fff;opacity:0}
 #ndh .ndhr .on svg{opacity:1}
+
+/* v6.8.2 Qur'on asboblar qatori */
+#qtl{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 12px;align-items:stretch}
+#qtl #xtc,#qtl #qoff{display:contents;margin:0;border:0;background:none;box-shadow:none;padding:0}
+#qtl #xtc .xtk,#qtl #qoff>.qac{position:relative;display:flex;flex-direction:column;justify-content:center;gap:2px;text-align:left;width:auto;min-height:58px;margin:0;padding:10px 14px;border-radius:16px;border:1px solid var(--b3d)!important;border-left:3px solid #e0b24f!important;background:var(--g3d)!important;box-shadow:var(--s3d)!important;color:#fff;font:inherit;overflow:hidden}
+#qtl #qoff>.qac{border-left:3px solid #2a9a8e!important}
+#qtl #xtc .xtk b,#qtl .qac b{display:block;font:700 14.5px system-ui;margin:0;color:#fff}
+#qtl #xtc .xtk small,#qtl .qac small{display:block;font:500 12.5px system-ui;color:var(--mut);margin:0;line-height:1.3}
+#qtl #xtc .xtb{position:absolute;left:0;right:0;bottom:0;height:3px;margin:0;border-radius:0}
+#qtl #qoff>.qol{grid-column:1/-1;order:3;display:flex;justify-content:space-between;align-items:center;margin:0;padding:9px 14px;border-radius:12px;border:1px dashed rgba(143,211,198,.4)!important;background:transparent!important;box-shadow:none!important;color:#8fd3c6;font:600 13px system-ui;text-align:left;min-height:0;width:auto}
+#qtl #qoff>.qol span{font-size:17px}
 </style>
 </head>
 <body data-scr="t0">
@@ -1860,15 +1871,10 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 <section class="tab" id="t6">
   <div class="gzr" aria-hidden="true"><i class="gzi k0"></i><i class="gzi k1"></i><i class="gzi k2"></i><i class="gzi k3"></i><i class="gzi k4"></i><i class="gzi k5"></i><i class="gzi k6"></i><i class="gzi k7"></i><i class="gzi k8"></i><i class="gzi k9"></i><i class="gzi k10"></i></div>
   <div class="mhd"><img src="icon.svg" alt=""><i class="mic" aria-hidden="true"></i><div><b>Jannat sari</b><span>Namoz vaqtlari, Qur’on va taqvim · <span class="appv" style="display:inline"></span></span></div><span class="mpl" id="mhm"></span></div>
-  <div class="sec-l" style="margin-top:6px">Bildirishnomalar</div>
+  <div class="sec-l" style="margin-top:6px">Xabarlar</div>
   <div class="mg">
-    <button class="mr" id="mbell"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="mt"><b>Eslatma va xabarlar</b><span id="mbs">Bu qurilmada mavjud emas</span></span><span class="sw" id="msw" style="display:none"></span></button>
+    <button class="mr" id="mbell" style="display:none"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="mt"><b>Namoz eslatmasi</b><span id="mbs">O‘chiq · yoqish uchun bosing</span></span><span class="sw" id="msw" style="display:none"></span></button>
     <button class="mr" id="mxab"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 8l8 5.500L20 8"/></svg></span><span class="mt"><b>Kelgan xabarlar</b><span id="mxabs">Ma’muriyatdan kelgan xabarlar</span></span><em class="mfbn" id="mxabn" style="display:none"></em><span class="mch">›</span></button>
-  </div>
-  <div class="sec-l">Ibodat</div>
-  <div class="mg">
-    <button class="mr" id="mnd"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="3.5" width="14" height="17" rx="2"/><path d="M9 8h6M9 12h6M9 16h4"/></svg></span><span class="mt"><b>Namoz daftari</b><span id="mnds">Kunlik belgilash va qazo hisobi</span></span><span class="mch">›</span></button>
-    <button class="mr" id="mxt"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.5C10.4 5 8 4.5 4.5 4.5V18c3.5 0 5.9.5 7.5 2 1.6-1.5 4-2 7.5-2V4.5c-3.5 0-5.9.5-7.5 2z"/><path d="M12 6.5V20"/></svg></span><span class="mt"><b>Qur’on xatm rejasi</b><span id="mxts">Reja tuzilmagan</span></span><span class="mch">›</span></button>
   </div>
   <div class="sec-l">Sozlamalar</div><div class="mg">
     <button class="mr" id="mua"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="mt"><b>Vaqtlarni sozlash</b><span id="muas">Tuzatish kiritilmagan</span></span><span class="mch">›</span></button>
@@ -1894,8 +1900,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   </div>
   <div id="qsw"><input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off"></div>
   <div class="qtabs" id="qtabs"><button data-q="s" class="on">SURA</button><button data-q="j">JUZ</button><button data-q="b">XATCHO‘PLAR</button></div>
-  <div id="xtc"></div>
-  <div id="qoff"></div>
+  <div id="qtl"><div id="xtc"></div><div id="qoff"></div></div>
   <div id="qlist"></div>
  </div>
  <div id="qpg">
@@ -3374,11 +3379,10 @@ function xtLine(o){
 }
 function xtDraw(){
   const box=$("xtc");const o=xtGet();
-  const ms=$("mxts");if(ms)ms.textContent=o?(o.r.split("1").length-1)+"/604 bet · "+xtLine(o):"Reja tuzilmagan";
   if(!box)return;
-  if(!o){box.innerHTML='<button type="button" class="xtk" data-xt="open"><div class="xtr"><div style="flex:1;min-width:0"><b>Xatm rejasi</b><small>Qur’onni 30, 60 yoki 90 kunda xatm qiling</small></div><span class="xtgo">Tuzish</span></div></button>';return}
+  if(!o){box.innerHTML='<button type="button" class="xtk" data-xt="open"><b>Xatm rejasi</b><small>Reja tuzish</small></button>';return}
   const c=xtCalc(o,eToday());
-  box.innerHTML=`<div class="xtk" data-xt="open" role="button" tabindex="0"><div class="xtr"><b>Xatm rejasi</b>${c.done?"":'<button type="button" class="xtgo" data-xt="go">Davom etish</button>'}</div><div class="xtb"><i style="width:${c.pct}%"></i></div><div class="xts"><span>${c.read}/604 bet · ${c.pct}%</span><span>${xtLine(o)}</span></div></div>`;
+  box.innerHTML=`<div class="xtk" data-xt="open" role="button" tabindex="0"><b>Xatm · ${c.pct}%</b><small>${c.done?"Yakunlandi":c.over?c.left+" bet qoldi":"Bugun "+c.tr+"/"+c.target+" bet"}</small><div class="xtb"><i style="width:${c.pct}%"></i></div></div>`;
 }
 let XTN=30;
 function xtSheet(){
@@ -3393,6 +3397,7 @@ function xtSheet(){
   }else{
     const c=xtCalc(o,eToday());
     b.innerHTML=`<div class="xtsum"><b>${c.read}</b> bet o‘qilgan · <b>${c.left}</b> bet qoldi (${c.pct}%)<br>${c.done?"Xatm yakunlandi. Alloh qabul qilsin.":(c.over?"Belgilangan muddat tugadi. Xohlasangiz, muddatni uzaytiring.":"Bugungi maqsad: <b>"+c.target+"</b> bet · "+c.tr+" bet o‘qildi<br>Qolgan "+c.dl+" kunda kuniga taxminan <b>"+Math.ceil(c.left/c.dl)+"</b> bet")}</div>
+     ${c.done?"":'<div class="xtbt"><button type="button" data-xtd2="go">Davom etish</button></div>'}
      ${c.done?"":`<div class="xtl">Muddatni o‘zgartirish (${o.n} kun)</div>${chips(o.n)}<div class="xtn">Reja boshlangan sana: ${o.s}. Kuniga bet soni qolgan betlar va qolgan kunlarga qarab o‘zi qayta hisoblanadi.</div>
      <div class="xtbt"><button type="button" class="sec" data-xtd2="reset">Yangi reja</button><button type="button" data-xtd2="save">Muddatni saqlash</button></div>`}
      ${c.done?'<div class="xtbt"><button type="button" data-xtd2="reset">Yangi xatm boshlash</button></div>':""}`;
@@ -3417,6 +3422,7 @@ $("xt").onclick=async e=>{
     cu.style.display=v?"none":"block";if(!v)$("xtn").value=XTN;xtPrev();return}
   const a=e.target.closest("[data-xtd2]");if(!a)return;
   const k=a.dataset.xtd2,o=xtGet();
+  if(k==="go"){if(o){xtClose();qGo(xtNext(o),0,0,false)}return}
   if(k==="start"){if(!(XTN>=7&&XTN<=730)){toast("Kunlar sonini 7 dan 730 gacha kiriting");return}
     xtSave({s:eToday(),n:XTN,r:"0".repeat(XT_TOTAL),t:{}});xtDraw();xtSheet();toast("Reja boshlandi");return}
   if(k==="save"&&o){if(!(XTN>=7&&XTN<=730)){toast("Kunlar sonini 7 dan 730 gacha kiriting");return}
@@ -3425,7 +3431,7 @@ $("xt").onclick=async e=>{
     xbLs("xtm",null);XTN=30;xtDraw();xtSheet()}
 };
 $("xt").oninput=e=>{if(e.target.id==="xtn"){XTN=+e.target.value||0;xtPrev()}};
-$("xtcl").onclick=xtClose;$("mxt").onclick=xtOpen;
+$("xtcl").onclick=xtClose;
 document.addEventListener("click",e=>{
   const t=e.target.closest&&e.target.closest("#xtc [data-xt]");if(!t)return;
   if(t.dataset.xt==="go"){e.stopPropagation();const o=xtGet();if(o)qGo(xtNext(o),0,0,false);return}
@@ -3450,8 +3456,6 @@ document.addEventListener("click",e=>{
   const o=ndGet(),d=eToday(),r=(o.d[d]||"00000").split(""),i=+b.dataset.ndh;r[i]=r[i]==="1"?"0":"1";o.d[d]=r.join("");ndSave(o);ndSum();if($("nd").classList.contains("on"))ndDraw();
 });
 function ndSum(){
-  const o=ndGet(),t=o.d[eToday()]||"00000",n=t.split("1").length-1,q=NDK.reduce((a,k)=>a+o.q[k],0),m=$("mnds");
-  if(m)m.textContent="Bugun "+n+"/5"+(q?" · qazo: "+q:"");
   try{ndHome()}catch(e){}
 }
 const NDW=["Ya","Du","Se","Ch","Pa","Ju","Sh"];
@@ -3500,7 +3504,7 @@ $("nd").onclick=async e=>{
 };
 $("nd").onchange=e=>{const k=e.target.dataset&&e.target.dataset.ndi;if(!k)return;
   const o=ndGet(),v=Math.min(99999,Math.max(0,Math.floor(+e.target.value)||0));o.q[k]=v;ndSave(o);e.target.value=v;$("ndj").textContent=NDK.reduce((a,x)=>a+o.q[x],0);ndSum()};
-$("ndcl").onclick=ndClose;$("mnd").onclick=ndOpen;
+$("ndcl").onclick=ndClose;
 try{ndSum()}catch(e){}
 setTimeout(()=>{try{ndSum();xtDraw()}catch(e){}},1500);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden){try{ndSum();xtDraw()}catch(e){}}});
@@ -3707,12 +3711,12 @@ async function qHave(){
 async function qOffDraw(){
   const e=$("qoff");if(!e)return;
   const have=await qHave();
-  const aud='<div class="qoffc"><div><b>Tilovat (audio)</b><span>Butun Qur’on yoki alohida sura, internetsiz tinglash</span></div><button id="qaob" type="button">Yuklash</button></div>';
+  const aud='<button class="qac" id="qaob" type="button"><b>Audio tilovat</b><small>Yuklash va boshqarish</small></button>';
   if(have){qs("qoff3","2");e.innerHTML=aud;qMenuOff(true);return}
   try{localStorage.removeItem("qoff3")}catch(x){}
   qMenuOff(false);
   if(e.dataset.busy||QDLB)return;
-  e.innerHTML='<div class="qoffc"><div><b>Internetsiz o‘qish</b><span>Barcha sahifalar va tarjima, taxminan 47 MB</span></div><button id="qoffb">Yuklab olish</button></div>'+aud;
+  e.innerHTML=aud+'<button class="qol" id="qoffb" type="button">Internetsiz o‘qish uchun yuklab olish · 47 MB <span>›</span></button>';
 }
 function qMenuOff(on){const s=document.querySelector("#mqoff .mt span");if(s)s.textContent=on?"Telefonda saqlangan · internet kerak emas":"Yuklab olish · taxminan 47 MB, Wi-Fi bilan"}
 const QCACHE="namoz-v1",QACACHE="namoz-aud1";
@@ -4742,7 +4746,7 @@ async function bellSave(sb){
 async function bellInit(){
   if(!("serviceWorker" in navigator&&"PushManager" in window&&"Notification" in window))return;
   const reg=await navigator.serviceWorker.ready;
-  $("bell").style.display="";$("msw").style.display="";
+  $("bell").style.display="";$("msw").style.display="";$("mbell").style.display="";
   let sb=await reg.pushManager.getSubscription();
   const ok=Notification.permission==="granted";
   if(sb&&localStorage.getItem("bellwant")===null)localStorage.setItem("bellwant","1");
@@ -5337,7 +5341,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.8.1";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.8.2";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
