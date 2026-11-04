@@ -1918,6 +1918,20 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #nd .ndbn{margin:12px 0 8px}
 #nd .ndbn p{display:flex;gap:10px;align-items:flex-start;margin:0 0 8px;padding:0;background:none;border:0;font-size:13.5px;line-height:1.5;color:var(--ink)}
 #nd .ndbn p i{flex:none;display:grid;place-items:center;width:20px;height:20px;margin-top:1px;border-radius:50%;background:rgba(47,181,138,.2);color:#2fb58a;font:700 12px system-ui;font-style:normal}
+
+#ndh .ndhf .ndhw.q{background:rgba(127,160,150,.1)}
+#nd .ndhc{margin:12px 0}
+#nd .ndhcn{padding:12px 14px;border-radius:14px;border:1px solid rgba(240,201,105,.5);background:rgba(240,201,105,.1);margin-bottom:10px}
+#nd .ndhcn b{display:block;font:700 16px system-ui;color:#f0c969}
+#nd .ndhcn small{display:block;margin-top:3px;font:500 12.5px system-ui;color:var(--mut)}
+#nd .ndhcl{display:grid;gap:6px}
+#nd .ndhcl span{display:grid;grid-template-columns:26px 1fr auto;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;border:1px solid var(--line);opacity:.6}
+#nd .ndhcl span.on{opacity:1;border-color:rgba(79,208,191,.45);background:rgba(42,154,142,.1)}
+#nd .ndhcl i{display:grid;place-items:center;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line)}
+#nd .ndhcl .on i{background:#2a9a8e;border-color:#e0b24f}
+#nd .ndhcl i svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+#nd .ndhcl b{font:600 13.5px system-ui}
+#nd .ndhcl small{font:500 11.5px system-ui;color:var(--mut)}
 </style>
 </head>
 <body data-scr="t0">
@@ -2056,21 +2070,17 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <button class="mr" id="mbell" style="display:none"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><span class="mt"><b>Namoz eslatmasi</b><span id="mbs">O‘chiq · yoqish uchun bosing</span></span><span class="sw" id="msw" style="display:none"></span></button>
     <button class="mr" id="mxab"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5"/><path d="M4 8l8 5.500L20 8"/></svg></span><span class="mt"><b>Kelgan xabarlar</b><span id="mxabs">Ma’muriyatdan kelgan xabarlar</span></span><em class="mfbn" id="mxabn" style="display:none"></em><span class="mch">›</span></button>
   </div>
-  <div class="sec-l">Ibodat</div>
-  <div class="mg">
-    <button class="mr" id="mqz"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v5l3 2"/></svg></span><span class="mt"><b>Qazo namozlar</b><span id="mqzs">Hisob kiritilmagan</span></span><span class="mch">›</span></button>
-  </div>
   <div class="sec-l">Sozlamalar</div><div class="mg">
     <button class="mr" id="mua"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span class="mt"><b>Vaqtlarni sozlash</b><span id="muas">Tuzatish kiritilmagan</span></span><span class="mch">›</span></button>
     <button class="mr" id="mreg"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 0 0 5 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span><span class="mt"><b>Mintaqa</b><span id="mrs">Avtomatik</span></span><span class="mch">›</span></button>
   </div>
   <div class="sec-l">Dastur</div><div class="mg">
-    <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Dastur va manbalar</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mfb"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span class="mt"><b>Fikr bildirish</b><span id="mfbs">Taklif, xato yoki savol yuboring</span></span><em class="mfbn" id="mfbn" style="display:none"></em><span class="mch">›</span></button>
-    <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqoff"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Qur’onni yuklab olish</b><span>Yuklab olish · taxminan 47 MB, Wi-Fi bilan</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mqaud"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5L12 15l4.500-4.500M5 19h14"/></svg></span><span class="mt"><b>Tilovatni yuklab olish</b><span>Butun Qur’on yoki alohida sura · internetsiz tinglash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
     <button class="mr" id="mupd"><span class="qi c2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11a8 8 0 0 0-14.5-4.2L4 9"/><path d="M4 4v5h5"/><path d="M4 13a8 8 0 0 0 14.5 4.2L20 15"/><path d="M20 20v-5h-5"/></svg></span><span class="mt"><b>Ilovani yangilash</b><span>Oxirgi versiyani yuklash</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mabout"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 7.8v.2"/></svg></span><span class="mt"><b>Dastur haqida</b><span>Dastur va manbalar</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
+    <button class="mr" id="mshare"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="18" cy="5.5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="18.5" r="2.5"/><path d="M8.2 10.8l7.6-4M8.2 13.2l7.6 4"/></svg></span><span class="mt"><b>Do‘stlarga ulashish</b><span>Ilova havolasini yuborish</span></span><span class="mc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></span></button>
   </div>
   <p class="mut mfoot">Namoz vaqtlari tanlangan mintaqa uchun hisoblanadi</p>
 </section>
@@ -2282,7 +2292,7 @@ const NZM={
  zakot:["Zakot hisoblagich","Bosh sahifadagi “Zakot” yashiriladi, bo‘limga kirib bo‘lmaydi.",".qa[data-go=t5]"],
  daftar:["Namoz daftari","Bosh sahifadagi “Bugungi namozlar” kartasi yashiriladi, daftar ochilmaydi.","#ndh"],
  xatm:["Qur’on xatm rejasi","Qur’on sahifasidagi xatm tugmasi yashiriladi, reja oynasi ochilmaydi.","#xtc"],
- qazo:["Qazo namozlar","Menyudagi “Qazo namozlar”, bosh sahifadagi qazo qatori va daftardagi havola yashiriladi.","#mqz,#ndh .ndhw.q,#nd [data-ndb=qazo]"],
+ qazo:["Qazo namozlar","Bosh sahifadagi qazo tugmasi yashiriladi va qazo oynasi ochilmaydi.","#ndh .ndhw.q"],
  nstat:["Anonim namoz statistikasi","Daftardagi “Anonimlik” taklifi yashiriladi va yangi ma’lumot yuborilmaydi.","#nd .ndsw,#ndh .ndhw.a"]
 };
 const NZT={td:"duo",tf:"faroiz",t5:"zakot"};
@@ -3663,13 +3673,14 @@ const ndOkD=d=>!!d&&typeof d==="object"&&!Array.isArray(d)&&Object.keys(d).every
 function ndGet(){try{const o=JSON.parse(xbLs("ndf")||"null");if(o&&ndOkD(o.d)&&ndOkQ(o.q))return o}catch(e){}return{d:{},q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0}}}
 function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400){const k=ks.shift();if(o.d[k]==="11111")o.z=(o.z||0)+1;delete o.d[k]}xbLs("ndf",JSON.stringify(o))}
 function ndHint(o){
-  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon">Anonim statistikaga qo‘shiling ›</button>';
+  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon">Jamoaga hamroh bo‘ling · yutuqlar ›</button>';
     const w=ndWeek(o);
     if(w&&xbLs("ndwk")!==w.start)return'<button type="button" class="ndhw g" data-ndh="week">Hafta natijasi tayyor: '+w.tot+'/'+w.max+' ›</button>';
     const a=ndAn(o);if(a&&a.weak&&xbLs("ndwh")!==eToday())return'<button type="button" class="ndhw" data-ndh="week">'+NDN[NDK[a.lo]]+' oxirgi kunlarda kam belgilanmoqda ›</button>';
-    const z=qzGet(),r=qzRem(z);if(r>0)return'<button type="button" class="ndhw q" data-ndh="qazo">Qazo: '+qzFmt(r)+' ta qoldi ›</button>'}catch(e){}
+    }catch(e){}
   return""
 }
+function qzBtn(){try{const z=qzGet(),r=qzRem(z),t=qzTot(z);return'<button type="button" class="ndhw q" data-ndh="qazo">'+(t?(r?'Qazo: '+qzFmt(r)+' ta qoldi':'Qazo: hammasi o‘qildi'):'Qazo hisobini kiritish')+' ›</button>'}catch(e){return""}}
 function ndHome(){
   const box=$("ndh");if(!box)return;const o=ndGet(),t=o.d[eToday()]||"00000",n=t.split("1").length-1;
   const due=NDK.map((k,i)=>ndDue(i));
@@ -3678,7 +3689,7 @@ function ndHome(){
   const st=n===5?"Bugungi barcha namozlar belgilandi":un.length?"Belgilanmagan: "+un.slice(0,2).join(", ")+(un.length>2?" va yana "+(un.length-2)+" ta":""):nx>=0?"Keyingi: "+NDN[NDK[nx]]+" · "+TM(NDK[nx]):"Bugungi namozlar belgilandi";
   const C=2*Math.PI*16,off=(C*(1-n/5)).toFixed(1);
   const hint=ndHint(o);
-  const h=`<div class="ndh"><div class="ndhh"><div class="ndht"><b>Bugungi namozlar</b><small>${st}</small></div><div class="ndrg" role="img" aria-label="${n} / 5"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16"/><circle class="fg" cx="20" cy="20" r="16" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${n}/5</b></div></div><div class="ndpr">${NDK.map((k,i)=>{const on=t[i]==="1",lk=!on&&!due[i];return`<button type="button" data-ndh="${i}" class="${on?"on":""}${lk?" lock":""}${i===cur?" cur":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b><em>${TM(k)}</em></button>`}).join("")}</div><div class="ndhf">${hint}<button type="button" class="ndhd" data-ndh="open">Daftar ›</button></div></div>`;
+  const h=`<div class="ndh"><div class="ndhh"><div class="ndht"><b>Bugungi namozlar</b><small>${st}</small></div><div class="ndrg" role="img" aria-label="${n} / 5"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16"/><circle class="fg" cx="20" cy="20" r="16" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${n}/5</b></div></div><div class="ndpr">${NDK.map((k,i)=>{const on=t[i]==="1",lk=!on&&!due[i];return`<button type="button" data-ndh="${i}" class="${on?"on":""}${lk?" lock":""}${i===cur?" cur":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b></button>`}).join("")}</div>${hint}<div class="ndhf">${qzBtn()}<button type="button" class="ndhd" data-ndh="open">Daftar ›</button></div></div>`;
   if(box._h!==h){box._h=h;box.innerHTML=h}
 }
 setInterval(()=>{try{ndHome()}catch(e){}},20000);
@@ -3748,12 +3759,22 @@ function ndInsight(o){
 }
 
 /* Anonim haftalik statistika (faqat foydalanuvchi yoqsa) */
+const NDHL=[[0,"Hamroh","Jamoaga qo‘shildingiz"],[1,"Birinchi hissa","Birinchi hafta jamoa hisobiga qo‘shildi"],[4,"Doimiy hissador","4 hafta hissa"],[12,"Chorak yillik hamroh","12 hafta hissa"],[26,"Yarim yillik hamroh","26 hafta hissa"],[52,"Bir yillik hamroh","52 hafta hissa"]];
+function ndHc(){try{const o=JSON.parse(xbLs("ndhc")||"null");if(o&&Number.isInteger(o.w)&&Number.isInteger(o.p)&&o.w>=0&&o.p>=0)return o}catch(e){}return{w:0,p:0}}
+function ndHcDraw(hc,joined){
+  const got=NDHL.filter(x=>x[0]<=hc.w&&(x[0]>0||joined||hc.w>0)),nx=NDHL.find(x=>x[0]>hc.w);
+  const cur=got[got.length-1];
+  let h='<div class="ndhc">';
+  if(joined||hc.w>0)h+='<div class="ndhcn"><b>'+(cur?cur[1]:"Hamroh")+'</b><small>'+(hc.w?hc.w+' hafta · '+hc.p+' ta namoz jamoa hisobida':'Birinchi haftalik hissangiz juma kuni hisoblanadi')+'</small></div>';
+  h+='<div class="ndhcl">'+NDHL.map(x=>{const on=got.includes(x);return'<span class="'+(on?"on":"")+'"><i>'+(on?NDTK:"")+'</i><b>'+x[1]+'</b><small>'+(x[0]?x[0]+" hafta":"Qo‘shilish bilan")+'</small></span>'}).join("")+'</div>';
+  return h+'</div>'
+}
 async function ndShip(){
   try{
     if(xbLs("nds")!=="1"||(Array.isArray(nzGet().off)&&nzGet().off.includes("nstat")))return;const o=ndGet(),w=ndWeek(o);if(!w)return;if(xbLs("ndsw")===w.start)return;
     const id=xbLs("did");if(!id)return;
     const r=await fetch(SB+"/rest/v1/rpc/namoz_yubor",{method:"POST",headers:H(),body:JSON.stringify({p_d:id,p_h:w.start,p_k:w.k,p_c:w.c})});
-    if(r.ok)xbLs("ndsw",w.start)
+    if(r.ok){xbLs("ndsw",w.start);const h=ndHc();h.w++;h.p+=w.tot;xbLs("ndhc",JSON.stringify(h))}
   }catch(e){}
 }
 setTimeout(ndShip,4000);
@@ -3772,9 +3793,7 @@ function qzMig(){if(xbLs("qzmig"))return;const o=ndGet();if(NDK.some(k=>o.q[k]>0
 function qzPace(o){const t=eToday();let sum=0,first=null;Object.keys(o.day).sort().forEach(d=>{const x=dDiff(d,t);if(x>=0&&x<14&&o.day[d]>0){sum+=o.day[d];if(!first)first=d}});if(!sum)return 0;return sum/Math.min(14,dDiff(first,t)+1)}
 function qzEta(o){const r=qzRem(o);if(!r)return null;let p=qzPace(o);const real=p>0;if(!real&&o.g>0)p=o.g;if(!p)return null;const d=Math.ceil(r/p),x=new Date();x.setDate(x.getDate()+d);return{days:d,p:Math.round(p*10)/10,real,date:ndFmt(x.toLocaleDateString("sv"))+", "+x.getFullYear()+"-yil"}}
 function qzSum(){
-  const o=qzGet(),r=qzRem(o),t=qzTot(o),m=$("mqzs");
-  if(m)m.textContent=t?(r?"Qolgan "+qzFmt(r)+" ta":"Hammasi o‘qildi"):"Hisob kiritilmagan";
-  try{ndHome()}catch(e){}
+    try{ndHome()}catch(e){}
 }
 function qzCalc(b,s,fem,hz,nf){
   if(!b||!s)return{e:"Ikkala sanani ham kiriting."};
@@ -3858,7 +3877,7 @@ $("qz").oninput=e=>{if(e.target.closest&&e.target.closest(".qzw"))qzPrev()};
 $("qz").onchange=e=>{
   const k=e.target.dataset&&e.target.dataset.qzi;if(k){const o=qzGet(),v=Math.min(99999,Math.max(0,Math.floor(+e.target.value)||0));o.q[k]=v;o.t[k]=Math.max(o.t[k],v);o.h=[];qzSave(o);qzDraw();qzSum();return}
   if(e.target.closest&&e.target.closest(".qzw"))qzPrev()};
-$("qzcl").onclick=qzClose;$("mqz").onclick=qzOpen;
+$("qzcl").onclick=qzClose;
 try{qzMig()}catch(e){}
 try{qzSum()}catch(e){}
 const NDW=["Ya","Du","Se","Ch","Pa","Ju","Sh"];
@@ -3880,25 +3899,24 @@ function ndDraw(){
   if(!an&&NDTAB==="a")NDTAB="b";
   let h='<div class="ndtb" role="tablist">'+T.map(t=>`<button type="button" role="tab" data-ndt="${t[0]}" aria-selected="${NDTAB===t[0]}" class="${NDTAB===t[0]?"on":""}">${t[1]}</button>`).join("")+'</div>';
   if(NDTAB==="a"){
-    const st=xbLs("nds"),w=ndWeek(o);
-    const pv=w?'Oxirgi to‘liq hafta ('+ndFmt(w.start)+' — '+ndFmt(w.end)+') uchun yuboriladi: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+' (hisoblangan kunlar: '+w.k+')':'Birinchi to‘liq haftadan keyin shu yerda aynan nima yuborilishini ko‘rasiz.';
-    h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Anonim statistika</b><small>Ibodat faolligini birga ko‘ramiz</small></div></div>
-     <div class="ndbn"><p><i>✓</i><span>Faqat umumiy sonlar: hafta davomida har bir namoz necha marta belgilangan.</span></p><p><i>✓</i><span>Ism, telefon raqami, joylashuv va kunlik belgilar yuborilmaydi.</span></p><p><i>✓</i><span>Natijangiz umumiy hisobga qo‘shiladi va ilovani yaxshilashga yordam beradi.</span></p><p><i>✓</i><span>Istalgan vaqtda o‘chirasiz.</span></p></div>
-     <div class="ndpv">${pv}</div>`;
-    if(st==="1")h+=`<div class="ndok">✓ Siz anonim statistikaga qo‘shilgansiz</div><div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button><button type="button" class="sec" data-ndb="leave">O‘chirish</button></div>`;
-    else h+=`<div class="xtbt"><button type="button" data-ndb="join">Qo‘shilaman</button>${st===null?'<button type="button" class="sec" data-ndb="later">Hozir emas</button>':''}</div>`;
+    const st=xbLs("nds"),w=ndWeek(o),hc=ndHc();
+    const pv=w?'<div class="ndpv">Shu haftadagi hissangiz: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+'</div>':'';
+    h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Jamoaga hamroh bo‘ling</b><small>Birga ibodat qilayotganimizni ko‘raylik</small></div></div>
+     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvoni darhol beriladi, keyin hissangiz uchun yutuqlar ochiladi.</span></p><p><i>✓</i><span>Har haftalik natijangiz umumiy ibodat hisobiga qo‘shiladi.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
+    h+=ndHcDraw(hc,st==="1");
+    if(st==="1")h+=`<div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button><button type="button" class="sec" data-ndb="leave">To‘xtatish</button></div>`;
+    else h+=`<div class="xtbt"><button type="button" data-ndb="join">Hamroh bo‘laman</button>${st===null?'<button type="button" class="sec" data-ndb="later">Hozir emas</button>':''}</div>`;
     h+=`<div class="ndm" id="ndm" role="status"></div></div>`;
   }else if(NDTAB==="b"){
     const st=xbLs("nds");
-    if(NDFLOW)h+=`<div class="ndflow"><b>Rahmat, qo‘shildingiz!</b><span>Endi bugungi namozlaringizni belgilab boring. Hafta oxirida natijangiz “Natija” bo‘limida chiqadi.</span></div>`;
-    else if(an&&st==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Anonim statistikaga qo‘shilmagansiz</span><b>Ko‘rish ›</b></button>`;
+    if(NDFLOW)h+=`<div class="ndflow"><b>Hamroh unvoni sizniki!</b><span>Endi bugungi namozlaringizni belgilab boring. Har hafta hissangiz yutuqlarga qo‘shiladi.</span></div>`;
+    else if(an&&st==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Jamoaga hamroh bo‘ling</span><b>Yutuqlar ›</b></button>`;
     const n=tdy.split("1").length-1;
     h+=`<div class="xtl">Bugun · ${n}/5</div><div class="ndtd">${NDK.map((k,i)=>{const on=tdy[i]==="1",due=ndDue(i);return`<button type="button" class="ndtr${on?" on":""}${!on&&!due?" lock":""}" data-ndtd="${i}" aria-pressed="${on}"><span class="ndtc">${on?NDTK:(!due?NDLC:"")}</span><b>${NDN[k]}</b><em>${TM(k)}</em><small>${on?"Belgilangan":(due?"Belgilash":"Vaqti kirmagan")}</small></button>`}).join("")}</div>
    <div class="xtl">So‘nggi 7 kun</div>
    <table class="ndt"><thead><tr><th></th>${days.map(d=>{const x=new Date(d+"T00:00:00");return`<th class="${d===td?"t":""}">${NDW[x.getDay()]}<br>${x.getDate()}</th>`}).join("")}</tr></thead>
    <tbody>${NDK.map((k,i)=>`<tr><td class="nm">${NDN[k]}</td>${days.map(d=>{const on=(o.d[d]||"00000")[i]==="1";return`<td class="${d===td?"t":""}"><button type="button" class="ndc${on?" on":""}" data-nd="${d}|${i}" aria-pressed="${on}" aria-label="${NDN[k]}, ${d}">${tick}</button></td>`}).join("")}</tr>`).join("")}</tbody></table>
-   <div class="xtn">O‘qigan namozingiz katagini bosing. Qayta bossangiz, belgi olinadi. Vaqti kirmagan namozni belgilab bo‘lmaydi.</div>
-   <button type="button" class="ndlk" data-ndb="qazo"><span>Qazo namozlar</span><i>›</i></button>`;
+   <div class="xtn">O‘qigan namozingiz katagini bosing. Qayta bossangiz, belgi olinadi. Vaqti kirmagan namozni belgilab bo‘lmaydi.</div>`;
   }else{
     h+=ndInsight(o);
     try{const w=ndWeek(o);if(w)xbLs("ndwk",w.start);xbLs("ndwh",eToday())}catch(e){}
@@ -3920,7 +3938,7 @@ $("nd").onclick=async e=>{
   if(k==="qazo"){ndClose();qzOpen();return}
   if(k==="join"){if(nzBlock("nstat"))return;xbLs("nds","1");xbLs("ndsw",null);ndShip();NDFLOW=true;NDTAB="b";ndDraw();ndHome();return}
   if(k==="later"){xbLs("nds","0");NDFLOW=false;NDTAB="b";ndDraw();ndHome();return}
-  if(k==="leave"){xbLs("nds","0");ndDraw();ndHome();ndMsg("Anonim statistika o‘chirildi. Yangi ma’lumot yuborilmaydi.","o");return}
+  if(k==="leave"){xbLs("nds","0");ndDraw();ndHome();ndMsg("Hissa qo‘shish to‘xtatildi. Yutuqlaringiz saqlanadi.","o");return}
   if(k==="tob"){NDTAB="b";ndDraw();return}
 };
 $("ndcl").onclick=ndClose;
@@ -4138,7 +4156,7 @@ async function qOffDraw(){
   if(e.dataset.busy||QDLB)return;
   e.innerHTML=aud+'<button class="qol" id="qoffb" type="button">Internetsiz o‘qish uchun yuklab olish · 47 MB <span>›</span></button>';
 }
-function qMenuOff(on){const s=document.querySelector("#mqoff .mt span");if(s)s.textContent=on?"Telefonda saqlangan · internet kerak emas":"Yuklab olish · taxminan 47 MB, Wi-Fi bilan"}
+function qMenuOff(on){const b=$("mqoff");if(b)b.style.display=on?"none":""}
 const QCACHE="namoz-v1",QACACHE="namoz-aud1";
 let QDRES=null,QDLB=false,QASK=false;
 function qDm(o){
@@ -4686,7 +4704,8 @@ addEventListener("focusout",()=>setTimeout(()=>{const a=document.activeElement;i
 $("mbell").onclick=()=>$("bell").click();
 $("mshare").onclick=async()=>{const d={title:"Jannat sari",text:"Namoz vaqtlari, qibla, tasbeh va zakot hisoblagichi",url:location.origin+location.pathname};
   try{if(navigator.share)await navigator.share(d);else{await navigator.clipboard.writeText(d.url);toast("Havola nusxalandi")}}catch(e){}};
-setTimeout(async()=>{try{qMenuOff(await qHave())}catch(e){}},2500);
+try{if(localStorage.getItem("qoff3")==="2")qMenuOff(true)}catch(e){}
+setTimeout(async()=>{try{qMenuOff(await qHave())}catch(e){}},1200);
 $("mqoff").onclick=async()=>{if(await qHave()){toast("Qur’on telefonda saqlangan");return}qDownAll()};
 $("mupd").onclick=async()=>{toast("Yangilanmoqda…");try{const k=await caches.keys();await Promise.all(k.map(async x=>{
   if(x===QACACHE)return;
@@ -5812,7 +5831,7 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.11";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.12";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
