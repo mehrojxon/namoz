@@ -800,7 +800,7 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 .kt2 td:first-child{white-space:nowrap;font-weight:700;width:34%}
 .kt2 tr.hl td{background:rgba(14,107,99,.2);color:var(--ink)}
 .klg .kr{flex-direction:column;gap:2px;align-items:flex-start}.klg .kr b{text-align:left}.klg .kr span{font-size:13.5px}
-#adm .box.full{height:100dvh;max-height:100dvh;border-radius:0;padding:0;text-align:left;overflow:hidden}
+#adm .box.full{height:100vh;height:100dvh;max-height:100vh;max-height:100dvh;border-radius:0;padding:0;text-align:left;overflow:hidden}
 #pn{display:none;flex-direction:column;height:100%}
 #pn button{margin:0;padding:0;border:0;background:none;color:inherit;border-radius:0;font:inherit}
 #pn input,#pn select,#pn textarea{width:100%;margin:0;padding:13px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font-size:17px;font-family:inherit}
@@ -1933,8 +1933,8 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #nd .ndhcl b{font:600 13.5px system-ui}
 #nd .ndhcl small{font:500 11.5px system-ui;color:var(--mut)}
 
-html.shl,html.shl body{overflow:hidden}
-.sheet,.sheet *{overscroll-behavior:contain}
+html.shl body{overflow:hidden}
+.sheet .box,.sheet #abody,.sheet #ndbody{overscroll-behavior:contain}
 /* aclw */
 .aclw{position:relative}
 .aclw input,.aclw textarea{padding-right:46px;box-sizing:border-box}
@@ -2077,6 +2077,20 @@ html.shl,html.shl body{overflow:hidden}
 #nd .dzmd{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}#nd .dzmd>div{padding:12px 4px;border-radius:12px;border:1px solid rgba(200,215,210,.16);text-align:center;opacity:.75}#nd .dzmd>div.on{opacity:1;border-color:rgba(232,196,106,.5);background:rgba(232,196,106,.08)}
 #nd .dzmd i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 6px;border-radius:50%;border:1.5px dashed rgba(200,215,210,.3);color:var(--mut)}#nd .dzmd .on i{border:0;background:linear-gradient(145deg,#f0d27f,#c99a35);color:#4a3300}#nd .dzmd i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 #nd .dzmd b{display:block;font-size:13.5px;color:var(--ink)}#nd .dzmd small{font-size:11.5px;color:var(--mut)}#nd .dzmd .on small{color:var(--gold)}
+
+/* v6.16: kirish qulayligi */
+#ndh .ndhh{cursor:pointer;-webkit-tap-highlight-color:transparent}
+#ndh .ndhh:after{content:"›";flex:none;font:700 24px/1 system-ui;color:#e0b24f;margin-left:-4px}
+#ndh .ndhh .ndrg{margin-left:auto}
+#ndh .ndhf{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+#ndh .ndhf .ndhw{margin:0;padding:12px 10px;text-align:center;font:700 13.5px system-ui;border-radius:12px}
+#ndh .ndhf .ndhd{margin:0;padding:12px 10px;width:100%;border-radius:12px;border:1px solid rgba(224,178,79,.6);background:linear-gradient(180deg,rgba(224,178,79,.22),rgba(224,178,79,.1));color:#f6dc92;font:700 13.5px system-ui;min-height:0}
+#ndh .ndhw.a{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;border:1px solid rgba(224,178,79,.6);background:linear-gradient(135deg,rgba(224,178,79,.2),rgba(42,154,142,.14))}
+#ndh .ndhw.a i{flex:none;width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,#f0d27f,#c99a35)}
+#ndh .ndhw.a span{flex:1;min-width:0}#ndh .ndhw.a b{display:block;font:700 15px system-ui;color:#f6dc92}#ndh .ndhw.a small{display:block;margin-top:2px;font:500 12px/1.35 system-ui;color:#c6d3ce}
+#ndh .ndhw.a em{flex:none;font:700 22px system-ui;font-style:normal;color:#f0c969}
+#nd .dzjn{display:block;width:100%;margin:6px 0 0;padding:15px;border:0;border-radius:12px;background:var(--gold);color:#2a1d00;font:800 16px system-ui;min-height:0}
+#nd .dzbx{margin:0;padding:0}
 </style>
 </head>
 <body data-scr="t0">
@@ -2996,7 +3010,11 @@ let BKH=null;
     const ps=history.pushState.bind(history),rs=history.replaceState.bind(history);
     history.pushState=function(s,t,u){BKH=s;return ps(s,t,u)};
     history.replaceState=function(s,t,u){BKH=s;return rs(s,t,u)};
-    if(!(history.state&&history.state.bk!==undefined)){history.replaceState({bk:0},"");history.pushState({bk:1},"")}
+    if(!(history.state&&history.state.bk!==undefined)){
+      history.replaceState({bk:0},"");
+      let done=false;const inst=()=>{if(done)return;done=true;removeEventListener("click",inst,true);removeEventListener("touchend",inst,true);removeEventListener("keydown",inst,true);try{if(history.state&&history.state.bk===0)history.pushState({bk:1},"")}catch(x){}};
+      addEventListener("click",inst,true);addEventListener("touchend",inst,true);addEventListener("keydown",inst,true);
+    }
     BKH=history.state;
   }catch(e){}
   addEventListener("popstate",e=>{
@@ -3855,7 +3873,7 @@ const ndOkD=d=>!!d&&typeof d==="object"&&!Array.isArray(d)&&Object.keys(d).every
 function ndGet(){try{const o=JSON.parse(xbLs("ndf")||"null");if(o&&ndOkD(o.d)&&ndOkQ(o.q))return o}catch(e){}return{d:{},q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0}}}
 function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400){const k=ks.shift();if(o.d[k]==="11111")o.z=(o.z||0)+1;delete o.d[k]}xbLs("ndf",JSON.stringify(o))}
 function ndHint(o){
-  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon">Hamroh bo‘ling · yutuqlar ochiladi ›</button>';
+  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon"><i aria-hidden="true"></i><span><b>Hamroh bo‘ling</b><small>Natijangizni jamoa bilan solishtiring · yutuqlar ochiladi</small></span><em>›</em></button>';
     const w=ndWeek(o);
     if(w&&xbLs("ndwk")!==w.start)return'<button type="button" class="ndhw g" data-ndh="week">Hafta natijasi tayyor: '+w.tot+'/'+w.max+' ›</button>';
     const a=ndAn(o);if(a&&a.weak&&xbLs("ndwh")!==eToday())return'<button type="button" class="ndhw" data-ndh="week">'+NDN[NDK[a.lo]]+' oxirgi kunlarda kam belgilanmoqda ›</button>';
@@ -3871,13 +3889,13 @@ function ndHome(){
   const st=n===5?"Bugungi barcha namozlar belgilandi":un.length?"Belgilanmagan: "+un.slice(0,2).join(", ")+(un.length>2?" va yana "+(un.length-2)+" ta":""):nx>=0?"Keyingi: "+NDN[NDK[nx]]+" · "+TM(NDK[nx]):"Bugungi namozlar belgilandi";
   const C=2*Math.PI*16,off=(C*(1-n/5)).toFixed(1);
   const hint=ndHint(o);
-  const h=`<div class="ndh"><div class="ndhh"><div class="ndht"><b>Bugungi namozlar</b><small>${st}</small></div><div class="ndrg" role="img" aria-label="${n} / 5"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16"/><circle class="fg" cx="20" cy="20" r="16" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${n}/5</b></div></div><div class="ndpr">${NDK.map((k,i)=>{const on=t[i]==="1",lk=!on&&!due[i];return`<button type="button" data-ndh="${i}" class="${on?"on":""}${lk?" lock":""}${i===cur?" cur":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b></button>`}).join("")}</div>${hint}<div class="ndhf">${qzBtn()}<button type="button" class="ndhd" data-ndh="open">Daftar ›</button></div></div>`;
+  const h=`<div class="ndh"><div class="ndhh" data-ndh="hdr" role="button" tabindex="0" aria-label="Namoz daftarini ochish"><div class="ndht"><b>Bugungi namozlar</b><small>${st}</small></div><div class="ndrg" role="img" aria-label="${n} / 5"><svg viewBox="0 0 40 40" aria-hidden="true"><circle class="bg" cx="20" cy="20" r="16"/><circle class="fg" cx="20" cy="20" r="16" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${n}/5</b></div></div><div class="ndpr">${NDK.map((k,i)=>{const on=t[i]==="1",lk=!on&&!due[i];return`<button type="button" data-ndh="${i}" class="${on?"on":""}${lk?" lock":""}${i===cur?" cur":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b></button>`}).join("")}</div>${hint}<div class="ndhf">${qzBtn()}<button type="button" class="ndhd" data-ndh="open">Namoz daftari ›</button></div></div>`;
   if(box._h!==h){box._h=h;box.innerHTML=h}
 }
 setInterval(()=>{try{ndHome()}catch(e){}},20000);
 document.addEventListener("click",e=>{
   const b=e.target.closest&&e.target.closest("#ndh [data-ndh]");if(!b)return;
-  if(b.dataset.ndh==="open"){ndOpen();return}
+  if(b.dataset.ndh==="open"||b.dataset.ndh==="hdr"){ndOpen();return}
   if(b.dataset.ndh==="week"){ndOpen("n");return}
   if(b.dataset.ndh==="anon"){ndOpen("a");return}
   if(b.dataset.ndh==="qazo"){qzOpen();return}
@@ -4255,13 +4273,12 @@ function ndViewA(o){
   if(!joined){
     const stopped=st==="0"&&hc.w>0;
     h+=`<div class="dzhero"><span class="dzem">${NDIC.mn}</span><h3>Hamrohlar jamoasi</h3><p>Namozxonlar birga: har hafta natijangizni ismsiz qo‘shasiz va jamoa o‘rtachasi bilan solishtirasiz.</p>`
-     +`<div class="dzbn"><div><i>${NDIC.ch}</i><span><b>Jamoa bilan solishtirish</b>Natijangiz hamrohlar o‘rtachasidan qayerda ekanini ko‘rasiz.</span></div><div><i>${NDIC.md}</i><span><b>Yutuqlar</b>Hamroh unvoni darhol, keyin 1 haftadan 1 yilgacha.</span></div><div><i>${NDIC.sh}</i><span><b>Ismsiz</b>Faqat namozlar soni yuboriladi, sizni hech kim tanimaydi.</span></div></div>`
-     +(w?`<div class="dzchips"><small>Bu hafta yuboriladi</small><div>${NDK.map((k,i)=>`<span><b>${w.c[i]}</b>${NDN[k]}</span>`).join("")}</div></div>`:"")+`</div>`;
-    h+=`<div class="dzs"><span>Yutuqlar yo‘li</span></div><div class="dzmd">`+NDHL.map(x=>`<div><i>${NDIC.lk}</i><b>${x[1]}</b><small>${x[0]?x[0]+" hafta natija":"darhol"}</small></div>`).join("")+`</div>`;
+     +`<button type="button" class="dzjn" data-ndb="join">${stopped?"Qayta hamroh bo‘laman":"Hamroh bo‘laman"}</button>`
+     +(st===null?`<button type="button" class="dzlt" data-ndb="later">Hozir emas</button>`:"")+`<div class="dzn2" style="margin-top:8px;text-align:center">Istalgan payt bir bosishda to‘xtatishingiz mumkin.</div></div>`;
     if(stopped)h+=`<div class="dzdn w"><div><b>Jamoadan chiqdingiz</b><span>Olgan yutuqlaringiz saqlangan.</span></div></div>`;
-    h+=`<div class="xtbt"><button type="button" data-ndb="join">${stopped?"Qayta hamroh bo‘laman":"Hamroh bo‘laman"}</button></div>`;
-    if(st===null)h+=`<button type="button" class="dzlt" data-ndb="later">Hozir emas</button>`;
-    h+=`<div class="dzn2">Istalgan payt bir bosishda to‘xtatishingiz mumkin.</div><div class="ndm" id="ndm" role="status"></div>`;
+    h+=`<div class="dzs"><span>Nima olasiz</span></div><div class="dzbn dzbx"><div><i>${NDIC.ch}</i><span><b>Jamoa bilan solishtirish</b>Natijangiz hamrohlar o‘rtachasidan qayerda ekanini ko‘rasiz.</span></div><div><i>${NDIC.md}</i><span><b>Yutuqlar</b>Hamroh unvoni darhol, keyin 1 haftadan 1 yilgacha.</span></div><div><i>${NDIC.sh}</i><span><b>Ismsiz</b>Faqat namozlar soni yuboriladi, sizni hech kim tanimaydi.</span></div></div>`;
+    if(w)h+=`<div class="dzchips"><small>Bu hafta yuboriladi</small><div>${NDK.map((k,i)=>`<span><b>${w.c[i]}</b>${NDN[k]}</span>`).join("")}</div></div>`;
+    h+=`<div class="dzs"><span>Yutuqlar yo‘li</span></div><div class="dzmd">`+NDHL.map(x=>`<div><i>${NDIC.lk}</i><b>${x[1]}</b><small>${x[0]?x[0]+" hafta natija":"darhol"}</small></div>`).join("")+`</div><div class="ndm" id="ndm" role="status"></div>`;
     return h
   }
   const got=NDHL.filter(x=>x[0]<=hc.w),cur=got[got.length-1],nx=NDHL.find(x=>x[0]>hc.w),C=2*Math.PI*30,pr=nx?Math.min(1,hc.w/nx[0]):1;
@@ -6322,7 +6339,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.16";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.17";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
