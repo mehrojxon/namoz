@@ -809,7 +809,7 @@ details p{margin:8px 0 2px;color:var(--mut);line-height:1.6}details p b{color:va
 #ahd{display:flex;align-items:center;gap:8px;padding:calc(10px + env(safe-area-inset-top)) 12px 10px;border-bottom:1px solid var(--line);flex:none}
 #att{flex:1;font:700 20px var(--fd);color:var(--ac)}
 #aback,#adc2{width:42px;height:42px;border-radius:50%!important;background:var(--bg)!important;font-size:24px!important;color:var(--ink)!important;display:flex;align-items:center;justify-content:center}
-#abody{flex:1;overflow-y:auto;padding:16px 16px 28px}
+#abody{flex:1;min-height:0;overflow-y:auto;padding:16px 16px calc(28px + env(safe-area-inset-bottom))}
 #afoot{flex:none;display:none;align-items:center;gap:12px;padding:10px 16px calc(12px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:var(--card)}
 #afoot.on{display:flex}
 #amsg{flex:1;font-size:14px;color:var(--ac);font-weight:600}
@@ -1741,7 +1741,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #qz .ndm{min-height:20px;margin:8px 2px 0;font-size:13px;font-weight:600;color:var(--mut)}
 #nd .ndm.e{color:#e5675a}#nd .ndm.o{color:#2fb58a}
 #qz .ndm.e{color:#e5675a}#qz .ndm.o{color:#2fb58a}
-#nd #ndbody{max-height:70vh;overflow:auto}
+#nd #ndbody{max-height:none;overflow:visible}
 #qz #ndbody{max-height:70vh;overflow:auto}
 #xt #xtbody{max-height:70vh;overflow:auto}
 #ucf .ucb{display:flex;gap:10px}#ucf .ucb button{flex:1;margin:0;padding:13px 8px;border-radius:14px;border:0;background:linear-gradient(180deg,#2a9a8e,#0e6b63);color:#fff;font:700 15px system-ui}#ucf .ucb #ucfn{background:transparent;border:1px solid var(--line);color:var(--ink)}
@@ -2985,6 +2985,32 @@ function pkShow(){
   r.textContent=h.d+"-"+HM[h.m-1]+", "+h.y+"-yil";
   if(h.y<1300||h.y>1600)n.textContent="Bu oraliqda hisob taxminiy bo‘lishi mumkin (±1 kun).";
 }
+/* v6.15: telefonning “orqaga” tugmasi: avval ochiq oynani yopadi */
+const BKI=["ucf","qdm","im","tqs","qam","uas","rgs","xt","nd","qz","xb","fb","ab","tqm","adm"];
+const BKC={nd:()=>ndClose(),qz:()=>qzClose(),xt:()=>xtClose(),xb:()=>xbClose(),fb:()=>fbClose(),im:()=>$("imcl").click(),ab:()=>$("cl").click(),tqm:()=>$("tqm").classList.remove("on"),tqs:()=>$("tqrx").click(),uas:()=>$("uax").click(),rgs:()=>rgClose(),qam:()=>$("qamx").click(),ucf:()=>$("ucfn").click(),
+  qdm:()=>{const n=$("qdn");if(n&&n.style.display!=="none")n.click()},
+  adm:()=>{if($("abox").classList.contains("full")&&AS&&$("aback").style.visibility==="visible")$("aback").click();else $("adm").classList.remove("on")}};
+let BKH=null;
+(function(){
+  try{
+    const ps=history.pushState.bind(history),rs=history.replaceState.bind(history);
+    history.pushState=function(s,t,u){BKH=s;return ps(s,t,u)};
+    history.replaceState=function(s,t,u){BKH=s;return rs(s,t,u)};
+    if(!(history.state&&history.state.bk!==undefined)){history.replaceState({bk:0},"");history.pushState({bk:1},"")}
+    BKH=history.state;
+  }catch(e){}
+  addEventListener("popstate",e=>{
+    const prev=BKH,st=history.state;BKH=st;
+    const id=BKI.find(i=>{const x=$(i);return x&&x.classList.contains("on")});
+    if(id){
+      e.stopImmediatePropagation();
+      try{history.pushState(prev,"")}catch(x){}
+      try{BKC[id]()}catch(x){}
+      return
+    }
+    if(st&&st.bk===0){try{history.back()}catch(x){}}
+  });
+})();
 function openPick(){
   $("pkd").value=sel.getDate();$("pkm").value=sel.getMonth();$("pky").value=sel.getFullYear();
   $("pk").classList.add("on");pkShow();
@@ -3995,6 +4021,7 @@ setTimeout(ndShip,4000);
 
 /* v6.13: oyna ochiqda orqa sahifa qimirlamaydi */
 (function(){const R=document.documentElement,f=()=>{try{R.classList.toggle("shl",!!document.querySelector(".sheet.on"))}catch(e){}},mo=new MutationObserver(f);document.querySelectorAll(".sheet").forEach(e=>mo.observe(e,{attributes:true,attributeFilter:["class"]}));f()})();
+
 /* Qazo namozlar (v6.10) */
 const QZK=["bomdod","peshin","asr","shom","xufton","vitr"],QZN={bomdod:"Bomdod",peshin:"Peshin",asr:"Asr",shom:"Shom",xufton:"Xufton",vitr:"Vitr"};
 const qzZ=()=>({q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0,vitr:0},t:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0,vitr:0},g:0,day:{},h:[]});
@@ -4136,7 +4163,7 @@ function ndBanner(S,o){
   const qb='<button type="button" class="dzql" data-ndb="qazo">Qazo hisobi ›</button>';
   if(S.lv===0)return'<div class="dzst" style="--c:var(--gold)"><div class="dzk">Boshlanish</div><h3>Daftar hali bo‘sh</h3><p>Namozni vaqti kirgach o‘qib, shu yerda belgilab boring. Birinchi belgidan keyin hisob boshlanadi.</p></div>';
   let c,k,h,p,ft="";
-  if(S.lv===3){c="var(--cr)";k="Diqqat";h=S.r+" kundan beri namoz belgilanmagan";p="Oxirgi "+S.r+" kunda hech narsa belgilanmagan. Qoldirilgan namozlar qazo qilinadi, hozir esa navbatdagi vaqtni o‘z vaqtida o‘qing. O‘qigan bo‘lsangiz, kunni tahrirlab belgilang.";ft="Qiyomat kuni bandadan birinchi so‘raladigan amal — namozdir. (Termiziy)"}
+  if(S.lv===3){c="var(--cr)";k="Diqqat";h=S.r+" kundan beri namoz belgilanmagan";p="Oxirgi "+S.r+" kunda hech narsa belgilanmagan. Qoldirilgan namozlar qazo qilinadi, hozir esa navbatdagi namozni o‘z vaqtida o‘qing. O‘qigan bo‘lsangiz, kunni tahrirlab belgilang.";ft="Qiyomat kuni bandadan birinchi so‘raladigan amal — namozdir. (Termiziy)"}
   else if(S.lv===2){c="var(--wn)";k="Ogohlik";h="Oxirgi 7 kunda "+S.miss+" ta namoz qoldi";
     p=(S.miss?"Eng ko‘p qolayotgani — "+NDN[NDK[S.wi]]+" ("+S.wc+" marta). ":"")+(S.ov.length?"Bugun "+S.ov.join(", ")+" ham belgilanmadi. ":"")+"O‘qigan bo‘lsangiz, belgilab qo‘ying."}
   else{c="var(--ok)";k="Intizom";h="Bugun "+t0+"/5, oxirgi 7 kunda "+S.done+"/"+S.pos;
@@ -6295,7 +6322,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.15";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.16";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
