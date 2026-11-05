@@ -1999,6 +1999,84 @@ html.shl,html.shl body{overflow:hidden}
 #nd .ndcmg{margin:10px 0 12px;padding:10px 12px;border-radius:12px;border:1px solid rgba(240,201,105,.4);background:rgba(240,201,105,.08)}
 #nd .ndab2{position:relative;overflow:visible!important}
 #nd .ndab2 u{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1px;border-radius:2px;background:#f0c969;text-decoration:none}
+/* v6.15: Namoz daftari — yangi dizayn */
+#nd{--ok:#4cc79a;--wn:#f2b233;--cr:#ea5a43}
+#nd .box{background:#0f1514;text-align:left;padding:18px 18px calc(24px + env(safe-area-inset-bottom));border:1px solid rgba(200,215,210,.14);border-bottom:0}
+#nd .ndtb{display:flex;gap:0;padding:0;margin:0 0 14px;border:0;border-bottom:1px solid rgba(200,215,210,.14);border-radius:0;background:transparent}
+#nd .ndtb button{flex:1;margin:0 0 -1px;padding:11px 4px;border:0;border-bottom:3px solid transparent;border-radius:0;background:transparent;color:var(--mut);font:700 14px system-ui}
+#nd .ndtb button.on{background:transparent;color:var(--ink);border-bottom-color:var(--c,var(--gold))}
+#nd .dzst{margin:0 0 14px;padding:14px 14px 13px;border-left:5px solid var(--c);background:linear-gradient(90deg,color-mix(in srgb,var(--c) 16%,transparent),transparent 85%);border-radius:0 10px 10px 0}
+#nd .dzk{font:800 11px system-ui;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}
+#nd .dzst h3{font:700 19px/1.25 Georgia,serif;margin:4px 0 5px;color:var(--ink)}
+#nd .dzst p{margin:0;font-size:13.5px;line-height:1.5;color:#c6d3ce}
+#nd .dzft{margin-top:9px;padding-top:8px;border-top:1px dashed rgba(200,215,210,.2);font:italic 12.5px Georgia,serif;color:var(--mut)}
+#nd .dzlv{display:flex;gap:4px;margin-top:10px}#nd .dzlv i{flex:1;height:5px;border-radius:3px;background:rgba(200,215,210,.14)}#nd .dzlv i.a{background:var(--c)}
+#nd .dzql{display:inline-block;margin:10px 0 0;padding:8px 12px;border-radius:9px;border:1.5px solid var(--c);background:transparent;color:var(--c);font:800 13px system-ui}
+#nd .dzs{display:flex;justify-content:space-between;margin:18px 0 6px;font:800 11px system-ui;letter-spacing:.13em;text-transform:uppercase;color:var(--mut)}
+#nd .dzrw{border-top:1px solid rgba(200,215,210,.14)}
+#nd .dzr{display:flex;align-items:center;gap:12px;padding:12px 4px;border-bottom:1px solid rgba(200,215,210,.14)}
+#nd .dzm{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font:800 14px system-ui;flex:none}
+#nd .dzm svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+#nd .dzn{flex:1;min-width:0}#nd .dzn b{display:block;font-size:16px;color:var(--ink)}#nd .dzn small{font-size:12.5px;color:var(--mut)}
+#nd .dzr.ok .dzm{background:var(--ok);color:#06251a}
+#nd .dzr.ms{background:rgba(242,178,51,.08)}#nd .dzr.ms .dzm{border:2px solid var(--wn);color:var(--wn)}#nd .dzr.ms small{color:var(--wn)}
+#nd .dzr.cr{background:rgba(234,90,67,.08)}#nd .dzr.cr .dzm{border:2px solid var(--cr);color:var(--cr)}#nd .dzr.cr small{color:#f19584}
+#nd .dzr.nu .dzm{border:2px solid rgba(200,215,210,.45);color:var(--mut)}#nd .dzr.cu .dzm{background:var(--gold);color:#2a1d00}
+#nd .dzr.lk{opacity:.55}#nd .dzr.lk .dzm{border:2px dashed rgba(200,215,210,.3);color:var(--mut)}
+#nd .dzb{flex:none;margin:0;padding:9px 14px;border-radius:9px;border:0;font:800 13px system-ui;min-height:0;width:auto;background:var(--wn);color:#2a1d00}
+#nd .dzb.g{background:transparent;border:1.5px solid rgba(200,215,210,.3);color:var(--ink)}
+#nd .dzcta{display:block;width:100%;margin:14px 0 0;padding:15px;border-radius:12px;border:0;background:var(--gold);color:#2a1d00;font:800 16px system-ui}
+#nd .dzdn{display:flex;gap:12px;align-items:center;margin:14px 0 0;padding:12px 14px;border:1px solid rgba(200,215,210,.18);border-radius:12px;font-size:13px;color:#c6d3ce}
+#nd .dzdn i{width:26px;height:26px;border-radius:7px;background:var(--ok);color:#06251a;display:grid;place-items:center;flex:none}#nd .dzdn i svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+#nd .dzdn b{display:block;color:var(--ink);font-size:14px}#nd .dzdn span{display:block}
+#nd .dzwk{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+#nd .dzdc{margin:0;padding:6px 2px 4px;border:1.5px solid transparent;border-radius:10px;background:transparent;text-align:center;min-height:0;width:auto;color:var(--ink)}
+#nd .dzdc.sel{border-color:var(--gold);background:rgba(232,196,106,.07)}
+#nd .dzdc .bar{display:flex;flex-direction:column-reverse;gap:3px;height:92px;margin-bottom:6px}
+#nd .dzdc .bar i{flex:1;border-radius:3px;background:var(--ok)}#nd .dzdc .bar i.e{background:transparent;border:1.5px solid var(--cr)}#nd .dzdc .bar i.f{background:transparent;border:1px dashed rgba(200,215,210,.25)}#nd .dzdc .bar i.p{background:transparent;border:1.5px solid var(--wn)}
+#nd .dzdc small{display:block;font:700 11px system-ui;color:var(--mut)}#nd .dzdc.t small{color:var(--gold)}#nd .dzdc em{display:block;font:800 12px system-ui;font-style:normal;margin-top:1px}
+#nd .dzlg{display:flex;gap:14px;padding:8px 0 0;font-size:11.5px;color:var(--mut)}#nd .dzlg span:before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+#nd .dzlg .a:before{background:var(--ok)}#nd .dzlg .b:before{border:1.5px solid var(--cr)}#nd .dzlg .c:before{border:1px dashed var(--mut)}
+#nd .dzed{margin:12px 0 0;padding:12px 12px 4px;border:1px solid rgba(232,196,106,.4);border-radius:12px;background:rgba(232,196,106,.05)}
+#nd .dzeh{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}#nd .dzeh b{font-size:14.5px;color:var(--ink);text-transform:capitalize}
+#nd .dzeh button{margin:0;padding:6px 10px;min-height:0;width:auto;border:1px solid rgba(200,215,210,.25);border-radius:8px;background:transparent;color:var(--mut);font:700 12px system-ui}
+#nd .dzer{display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:11px 2px;min-height:0;border:0;border-top:1px solid rgba(200,215,210,.12);background:transparent;color:var(--ink);text-align:left}
+#nd .dzer b{flex:1;font-size:15px}#nd .dzer small{font-size:12px;color:var(--mut)}
+#nd .dzer .dzm{border:2px solid rgba(200,215,210,.3)}#nd .dzer.on .dzm{background:var(--ok);border-color:var(--ok);color:#06251a}
+#nd .dzn2{margin:14px 0 0;font-size:12px;line-height:1.5;color:var(--mut)}
+#nd .dzsg{display:flex;margin:0 0 14px;background:#161e1c;border-radius:10px;padding:3px}#nd .dzsg button{flex:1;margin:0;min-height:0;padding:8px 0;border:0;border-radius:8px;background:transparent;color:var(--mut);font:700 13px system-ui}#nd .dzsg button.on{background:rgba(255,255,255,.1);color:var(--ink)}
+#nd .dzix{display:flex;gap:16px;align-items:center;margin-top:4px}#nd .dzix>b{font:700 50px/1 Georgia,serif;color:var(--c)}#nd .dzix sup{font-size:22px}#nd .dzix h3{margin:0 0 3px}
+#nd .dzpb{display:block}#nd .dzp{display:grid;grid-template-columns:62px 1fr 48px;gap:10px;align-items:center;padding:7px 0;font-size:14px;color:var(--ink)}
+#nd .dzp .t{height:12px;border-radius:6px;background:#161e1c;overflow:hidden}#nd .dzp .t i{display:block;height:100%;border-radius:6px;background:var(--ok)}
+#nd .dzp b{text-align:right;font:800 13px system-ui}#nd .dzp.w .t i{background:var(--wn)}#nd .dzp.w b,#nd .dzp.w span{color:var(--wn)}#nd .dzp.c .t i{background:var(--cr)}#nd .dzp.c b,#nd .dzp.c span{color:var(--cr)}
+#nd .dzls{list-style:none;margin:8px 0 0;padding:0;font-size:13.5px;color:#c6d3ce}#nd .dzls li{padding:8px 0;border-top:1px solid rgba(200,215,210,.14)}#nd .dzls b{color:var(--wn)}
+#nd .dzhd,#nd .dzhm{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}#nd .dzhd span{text-align:center;font:700 11px system-ui;color:var(--mut);padding-bottom:3px}
+#nd .dzhm i{aspect-ratio:1;border-radius:5px;background:#161e1c}#nd .dzhm i.v5{background:var(--ok)}#nd .dzhm i.v4{background:#2f9c77}#nd .dzhm i.v3{background:#8a7a2e}#nd .dzhm i.v2{background:#b3702a}#nd .dzhm i.v1,#nd .dzhm i.v0{background:#a4412f}#nd .dzhm i.n{background:transparent;border:1px dashed rgba(200,215,210,.2)}#nd .dzhm i.t{outline:2px solid var(--gold);outline-offset:1px}
+#nd .dzkey{margin-top:6px;font-size:11.5px;color:var(--mut)}
+#nd .ndcmw{margin-top:6px}
+#nd .dztl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}#nd .dztl>div{padding:12px 6px;border-radius:12px;border:1px solid rgba(200,215,210,.16);background:#161e1c;text-align:center}#nd .dztl b{display:block;font:700 24px Georgia,serif;color:var(--gold)}#nd .dztl span{font-size:12px;color:var(--mut)}
+#nd .dzlvl{margin-top:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(200,215,210,.16);background:#161e1c}#nd .dzlh{display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink)}#nd .dzlh span{font-size:12.5px;color:var(--mut)}
+#nd .dzbar{height:7px;border-radius:4px;background:rgba(200,215,210,.14);margin:8px 0}#nd .dzbar i{display:block;height:100%;border-radius:4px;background:var(--gold)}#nd .dzlvl small{font-size:12px;line-height:1.5;color:var(--mut)}
+#nd .dzpl{margin:16px 0 0;padding:14px;border-radius:12px;background:#161e1c;border:1px solid rgba(200,215,210,.16)}#nd .dzpl h4{margin:0 0 6px;font:800 11px system-ui;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}#nd .dzpl ul{list-style:none;margin:0;padding:0}#nd .dzpl li{padding:6px 0 6px 16px;position:relative;font-size:14px;color:var(--ink)}#nd .dzpl li:before{content:"";position:absolute;left:2px;top:13px;width:6px;height:6px;border-radius:50%;background:var(--gold)}
+#nd .fbic{flex:none;width:44px;height:44px;border-radius:14px;display:grid;place-items:center;color:var(--gold);background:rgba(224,178,79,.12);border:1px solid rgba(224,178,79,.35)}#nd .fbic svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#nd .dzls,#nd .dzpl ul{background:none;border:0;border-radius:0;margin:8px 0 0;padding:0}
+#nd .dzls li{display:flex;gap:8px;justify-content:flex-start;align-items:flex-start;font-size:13.5px;padding:9px 0;border:0;border-top:1px solid rgba(200,215,210,.14)}
+#nd .dzpl ul{margin:0}#nd .dzpl li{display:block;border:0;font-size:14px}
+#nd .dzhero+.dztl{margin-top:10px}
+/* Hamroh */
+#nd .dzhero{padding:16px;border-radius:16px;border:1px solid rgba(232,196,106,.35);background:linear-gradient(160deg,rgba(232,196,106,.12),rgba(255,255,255,.02) 60%)}
+#nd .dzem{width:52px;height:52px;border-radius:50%;background:linear-gradient(145deg,#f0d27f,#c99a35);display:grid;place-items:center;color:#4a3300}#nd .dzem svg{width:26px;height:26px;fill:currentColor}
+#nd .dzhero h3{margin:12px 0 4px;font:700 22px Georgia,serif;color:var(--ink)}#nd .dzhero>p{margin:0 0 12px;font-size:14px;line-height:1.5;color:#c6d3ce}
+#nd .dzbn>div{display:flex;gap:12px;padding:8px 0}#nd .dzbn i{flex:none;width:36px;height:36px;border-radius:10px;border:1px solid rgba(232,196,106,.4);display:grid;place-items:center;color:var(--gold)}#nd .dzbn i svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#nd .dzbn span{font-size:13px;line-height:1.45;color:#c6d3ce}#nd .dzbn b{display:block;font-size:14.5px;color:var(--ink)}
+#nd .dzchips{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px dashed rgba(200,215,210,.25)}#nd .dzchips small{display:block;font:800 11px system-ui;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}#nd .dzchips>div{display:flex;justify-content:space-between}#nd .dzchips span{text-align:center;font-size:12px;color:var(--mut)}#nd .dzchips b{display:block;font:700 20px Georgia,serif;color:var(--gold)}
+#nd .dzlt{display:block;margin:10px auto 0;padding:8px 14px;min-height:0;width:auto;background:transparent;border:0;color:var(--mut);font:700 14px system-ui}
+#nd .dzrg{position:relative;width:76px;height:76px;flex:none}#nd .dzrg svg{width:100%;height:100%;transform:rotate(-90deg)}#nd .dzrg circle{fill:none;stroke-width:6}#nd .dzrg .bg{stroke:rgba(200,215,210,.16)}#nd .dzrg .fg{stroke:var(--gold);stroke-linecap:round}#nd .dzrg b{position:absolute;inset:0;display:grid;place-items:center;font:700 16px Georgia,serif;color:var(--ink)}
+#nd .dzhero:has(.dzrg){display:flex;gap:16px;align-items:center}#nd .dzcu small{display:block;font:700 12px system-ui;color:var(--gold)}#nd .dzcu b{display:block;font:700 26px Georgia,serif;color:var(--ink);margin:2px 0}#nd .dzcu span{font-size:13px;color:#c6d3ce}
+#nd .dzcmp{margin:10px 0 0;padding:12px 14px;border-radius:12px;border:1px solid rgba(200,215,210,.16);font-size:13.5px;color:#c6d3ce}#nd .dzcmp b{color:var(--ink)}
+#nd .dzmd{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}#nd .dzmd>div{padding:12px 4px;border-radius:12px;border:1px solid rgba(200,215,210,.16);text-align:center;opacity:.75}#nd .dzmd>div.on{opacity:1;border-color:rgba(232,196,106,.5);background:rgba(232,196,106,.08)}
+#nd .dzmd i{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 6px;border-radius:50%;border:1.5px dashed rgba(200,215,210,.3);color:var(--mut)}#nd .dzmd .on i{border:0;background:linear-gradient(145deg,#f0d27f,#c99a35);color:#4a3300}#nd .dzmd i svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#nd .dzmd b{display:block;font-size:13.5px;color:var(--ink)}#nd .dzmd small{font-size:11.5px;color:var(--mut)}#nd .dzmd .on small{color:var(--gold)}
 </style>
 </head>
 <body data-scr="t0">
@@ -3841,7 +3919,7 @@ async function ndCmLoad(){
     if(!r.ok)throw 0;const d=await r.json();if(!d||!Number.isInteger(d.n))throw 0;NDCM=d;xbLs("ndcm",JSON.stringify({k:key,t:Date.now(),d}))}catch(e){NDCM=null}
   ndCmDraw()
 }
-function ndCmDraw(){const e=$("ndcm");if(e&&$("nd").classList.contains("on")&&NDTAB==="n")e.innerHTML=ndCmHtml()}
+function ndCmDraw(){const e=$("ndcm");if(!$("nd").classList.contains("on"))return;if(NDTAB==="n"&&e)e.innerHTML=ndCmHtml();else if(NDTAB==="a")ndDraw()}
 function ndCmHtml(){
   if(nzOffK("nstat"))return"";
   const d=NDCM;
@@ -4029,49 +4107,175 @@ function ndTog(i){
 let NDFLOW=false;
 const NDTK='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
 const NDLC='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.200l2.600 1.600"/></svg>';
-let NDTAB="b";
+let NDTAB="b",NDSEL=null,NDRNG="w",NDCMQ=false;
+const NDWL=["yakshanba","dushanba","seshanba","chorshanba","payshanba","juma","shanba"];
+function ndLast(){let l=-1;NDK.forEach((k,i)=>{if(ndDue(i))l=i});return l}
+/* har namoz: 1 o‘qildi, 0 qoldi, -1 hisobga olinmaydi (boshlanishdan oldin yoki vaqti kirmagan) */
+function ndDS(o,n,st){
+  const d=ndDate(n),t=o.d[d]||"00000",last=n===0?ndLast():-1;
+  return NDK.map((k,i)=>{if(t[i]==="1")return 1;if(!st||d<=st)return -1;if(n===0&&(!ndDue(i)||i===last))return -1;return 0})
+}
+function ndStatus(o){
+  const st=ndStartD(o),last=ndLast();
+  if(!st)return{lv:0,st:null,miss:0,pos:0,done:0,r:0,wi:0,wc:0,ov:[]};
+  let miss=0,pos=0,done=0;const pc=[0,0,0,0,0];
+  for(let n=0;n<7;n++)ndDS(o,n,st).forEach((v,i)=>{if(v>=0)pos++;if(v===1)done++;if(v===0){miss++;pc[i]++}});
+  let wi=0;pc.forEach((v,i)=>{if(v>pc[wi])wi=i});
+  const t0=o.d[eToday()]||"00000",dueN=NDK.filter((k,i)=>ndDue(i)).length,ov=[];
+  if(eToday()>st)NDK.forEach((k,i)=>{if(ndDue(i)&&t0[i]!=="1"&&i<last)ov.push(NDN[k])});
+  let r=0;
+  if(t0==="00000"){
+    if(dueN>=2&&eToday()>st)r++;
+    for(let n=1;n<400;n++){const d=ndDate(n);if(d<=st)break;if((o.d[d]||"00000")==="00000")r++;else break}
+  }
+  const lv=r>=3?3:(miss>=3||r>=1||ov.length>=2)?2:1;
+  return{lv,st,miss,pos,done,r,wi,wc:pc[wi],ov}
+}
+function ndBanner(S,o){
+  const t0=(o.d[eToday()]||"00000").split("1").length-1;
+  const qb='<button type="button" class="dzql" data-ndb="qazo">Qazo hisobi ›</button>';
+  if(S.lv===0)return'<div class="dzst" style="--c:var(--gold)"><div class="dzk">Boshlanish</div><h3>Daftar hali bo‘sh</h3><p>Namozni vaqti kirgach o‘qib, shu yerda belgilab boring. Birinchi belgidan keyin hisob boshlanadi.</p></div>';
+  let c,k,h,p,ft="";
+  if(S.lv===3){c="var(--cr)";k="Diqqat";h=S.r+" kundan beri namoz belgilanmagan";p="Oxirgi "+S.r+" kunda hech narsa belgilanmagan. Qoldirilgan namozlar qazo qilinadi, hozir esa navbatdagi vaqtni o‘z vaqtida o‘qing. O‘qigan bo‘lsangiz, kunni tahrirlab belgilang.";ft="Qiyomat kuni bandadan birinchi so‘raladigan amal — namozdir. (Termiziy)"}
+  else if(S.lv===2){c="var(--wn)";k="Ogohlik";h="Oxirgi 7 kunda "+S.miss+" ta namoz qoldi";
+    p=(S.miss?"Eng ko‘p qolayotgani — "+NDN[NDK[S.wi]]+" ("+S.wc+" marta). ":"")+(S.ov.length?"Bugun "+S.ov.join(", ")+" ham belgilanmadi. ":"")+"O‘qigan bo‘lsangiz, belgilab qo‘ying."}
+  else{c="var(--ok)";k="Intizom";h="Bugun "+t0+"/5, oxirgi 7 kunda "+S.done+"/"+S.pos;
+    p=S.miss?"Lekin "+NDN[NDK[S.wi]]+" "+S.wc+" marta qoldi. Aynan shu vaqtni mustahkamlang.":"Barcha vaqtlar belgilangan. Shu tartibni saqlang."}
+  return'<div class="dzst" style="--c:'+c+'"><div class="dzk">'+k+'</div><h3>'+h+'</h3><p>'+p+'</p><div class="dzlv">'+[1,2,3].map(i=>'<i class="'+(i<=S.lv?"a":"")+'"></i>').join("")+'</div>'+(ft?'<div class="dzft">'+ft+'</div>':"")+(S.lv>=2?qb:"")+'</div>'
+}
+function ndViewB(o,an){
+  const td=eToday(),tdy=o.d[td]||"00000",n=tdy.split("1").length-1,S=ndStatus(o),last=ndLast(),st=S.st;
+  let h="";
+  if(NDFLOW)h+=`<div class="ndflow"><b>Hamroh unvoni sizniki!</b><span>Endi bugungi namozlaringizni belgilab boring. Har hafta natijangiz yuborilgach, yangi yutuq ochiladi.</span></div>`;
+  else if(an&&xbLs("nds")==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Hamroh bo‘ling</span><b>Yutuqlar ›</b></button>`;
+  h+=ndBanner(S,o);
+  h+=`<div class="dzs"><span>Bugun · ${NDWL[new Date().getDay()]}</span><b>${n}/5</b></div><div class="dzrw">`;
+  h+=NDK.map((k,i)=>{
+    const on=tdy[i]==="1",due=ndDue(i);let c,m,sm,btn="",att="";
+    if(on){c="ok";m=NDTK;sm=TM(k)+" · o‘qildi"}
+    else if(!due){c="lk";m=NDLC;sm=TM(k)+" · kutilmoqda";att=` data-ndtd="${i}"`}
+    else if(i<last&&(!S.st||S.st>=td)){c="nu";m="●";sm=TM(k)+" · vaqti kirgan, belgilanmagan";btn=`<button type="button" class="dzb" data-ndtd="${i}">O‘qidim</button>`}
+    else if(i<last){c=S.lv===3?"cr":"ms";m="!";sm=TM(k)+" · vaqti o‘tdi, belgilanmadi";btn=`<button type="button" class="dzb ${S.lv===3?"g":"w"}" data-ndtd="${i}">O‘qidim</button>`}
+    else{c="cu";m="●";sm=TM(k)+" · vaqti kirdi"}
+    return`<div class="dzr ${c}"${att}><span class="dzm">${m}</span><div class="dzn"><b>${NDN[k]}</b><small>${sm}</small></div>${btn}</div>`
+  }).join("")+"</div>";
+  if(last>=0&&tdy[last]!=="1")h+=`<button type="button" class="dzcta" data-ndtd="${last}">${NDN[NDK[last]]} o‘qidim ✓</button>`;
+  else if(n===5)h+=`<div class="dzdn"><i>${NDTK}</i><div><b>Bugungi 5 vaqt belgilandi. Alloh qabul qilsin.</b><span>Ertaga Bomdod taxminan ${TM("bomdod")}.</span></div></div>`;
+  else{const nx=NDK.findIndex((k,i)=>!ndDue(i));if(nx>=0)h+=`<div class="dzdn w"><div><b>Keyingi: ${NDN[NDK[nx]]} · ${TM(NDK[nx])}</b><span>Vaqti kirgach belgilang.</span></div></div>`}
+  h+=`<div class="dzs"><span>Oxirgi 7 kun</span><b>${S.st?S.done+"/"+S.pos:"—"}</b></div><div class="dzwk">`;
+  h+=[6,5,4,3,2,1,0].map(k=>{
+    const d=ndDate(k),ds=ndDS(o,k,st),t=o.d[d]||"00000",x=new Date(d+"T00:00:00"),c=t.split("1").length-1,miss=ds.includes(0),act=ds.some(v=>v>=0);
+    const seg=NDK.map((q,i)=>{const cl=t[i]==="1"?"":(k===0&&i===last&&ndDue(i))?"p":ds[i]===0?"e":"f";return`<i class="${cl}"></i>`}).join("");
+    const col=!act?"var(--mut)":c===5?"var(--ok)":(k===0&&!miss)?"var(--mut)":c>=3?"var(--wn)":"var(--cr)";
+    return`<button type="button" class="dzdc${k===0?" t":""}${NDSEL===d?" sel":""}" data-dz="${d}" aria-label="${NDWL[x.getDay()]}, ${ndFmt(d)}, ${c} / 5"><span class="bar">${seg}</span><small>${NDW[x.getDay()]}</small><em style="color:${col}">${c}/5</em></button>`
+  }).join("")+"</div>";
+  h+=`<div class="dzlg"><span class="a">o‘qildi</span><span class="b">qoldi</span><span class="c">hali kelmagan</span></div>`;
+  if(NDSEL){
+    const x=new Date(NDSEL+"T00:00:00"),t=o.d[NDSEL]||"00000";
+    h+=`<div class="dzed"><div class="dzeh"><b>${NDWL[x.getDay()]}, ${ndFmt(NDSEL)}</b><button type="button" data-dzx="1">Yopish</button></div>`+NDK.map((k,i)=>{const on=t[i]==="1";return`<button type="button" class="dzer${on?" on":""}" data-nd="${NDSEL}|${i}" aria-pressed="${on}" aria-label="${NDN[k]}, ${NDSEL}"><span class="dzm">${on?NDTK:""}</span><b>${NDN[k]}</b><small>${on?"o‘qildi":"belgilanmagan"}</small></button>`}).join("")+`</div>`
+  }
+  h+=`<div class="dzn2">Belgilanmagan namoz “qoldi” deb ko‘rsatiladi. O‘qigan bo‘lsangiz yoki xato belgilagan bo‘lsangiz, kunni bosib tuzating. Vaqti kirmagan namozni belgilab bo‘lmaydi.</div>`;
+  return h
+}
+function ndWin(o,a,b,st){
+  const c=[0,0,0,0,0],p=[0,0,0,0,0];
+  for(let n=a;n<b;n++)ndDS(o,n,st).forEach((v,i)=>{if(v>=0){p[i]++;if(v===1)c[i]++}});
+  const pos=p.reduce((x,y)=>x+y,0),dn=c.reduce((x,y)=>x+y,0);
+  return{c,p,pos,dn,pct:pos?Math.round(dn/pos*100):null}
+}
+function ndViewN(o){
+  const st=ndStartD(o),W=NDRNG==="m"?30:7;
+  let h=`<div class="dzsg"><button type="button" data-dzr="w" class="${W===7?"on":""}">7 kun</button><button type="button" data-dzr="m" class="${W===30?"on":""}">30 kun</button></div>`;
+  const cu=st?ndWin(o,0,W,st):null;
+  if(!cu||!cu.pos){return h+`<div class="dzst" style="--c:var(--gold)"><div class="dzk">Natija</div><h3>Hisoblash uchun ma’lumot yo‘q</h3><p>Belgilash bo‘limida namozlarni belgilab boring: natija, zaif vaqtlar va reja shu yerda chiqadi.</p></div><div class="ndcmw" id="ndcm">${ndCmHtml()}</div>`}
+  const pv=ndDate(2*W-1)>=st?ndWin(o,W,2*W,st):null,dl=pv&&pv.pos?cu.pct-pv.pct:null;
+  const pc=cu.pct;let c,k,tt;
+  if(pc>=90){c="var(--ok)";k="Intizom";tt="A’lo intizom"}else if(pc>=75){c="var(--ok)";k="Natija";tt="Yaxshi natija"}else if(pc>=50){c="var(--wn)";k="Ogohlik";tt="Natija past"}else{c="var(--cr)";k="Diqqat";tt="Natija juda past"}
+  const rate=cu.c.map((v,i)=>cu.p[i]?Math.round(v/cu.p[i]*100):null);
+  let wi=-1;rate.forEach((r,i)=>{if(r!==null&&cu.p[i]>=3&&(wi<0||r<rate[wi]))wi=i});
+  h+=`<div class="dzst" style="--c:${c}"><div class="dzk">${k}</div><div class="dzix"><b>${pc}<sup>%</sup></b><div><h3>${tt}</h3><p>${cu.dn} / ${cu.pos} namoz belgilandi${dl===null?"":(dl===0?". O‘tgan davr bilan teng.":". O‘tgan "+W+" kundan "+(dl>0?"+":"−")+Math.abs(dl)+" punkt.")}</p></div></div></div>`;
+  h+=`<div class="dzs"><span>Namozlar bo‘yicha · ${W} kun</span></div><div class="dzpb">`+NDK.map((q,i)=>{const r=rate[i],cl=r===null?"":r<50?"c":r<75?"w":"";return`<div class="dzp ${cl}"><span>${NDN[q]}</span><div class="t"><i style="width:${r||0}%"></i></div><b>${r===null?"—":cu.c[i]+"/"+cu.p[i]}</b></div>`}).join("")+`</div>`;
+  const ins=[];
+  if(wi>=0&&rate[wi]<100)ins.push(`<b>!</b> ${NDN[NDK[wi]]} eng zaif joy: ${cu.p[wi]} kunda ${cu.c[wi]} marta o‘qilgan.`);
+  if(dDiff(st,eToday())>=14){const wd=[0,0,0,0,0,0,0];for(let n=0;n<28;n++){if(ndDate(n)<=st)break;ndDS(o,n,st).forEach(v=>{if(v===0)wd[new Date(ndDate(n)+"T00:00:00").getDay()]++})}
+    let m=0;wd.forEach((v,i)=>{if(v>wd[m])m=i});if(wd[m]>=3)ins.push(`<b>!</b> Eng ko‘p qoladigan kun: ${NDWL[m]} (oxirgi 4 haftada ${wd[m]} ta).`)}
+  if(ins.length)h+=`<ul class="dzls">${ins.map(x=>"<li>"+x+"</li>").join("")}</ul>`;
+  h+=`<div class="dzs"><span>Oxirgi 5 hafta</span><b>kun bo‘yicha</b></div><div class="dzhd">${[34,33,32,31,30,29,28].map(n=>`<span>${NDW[new Date(ndDate(n)+"T00:00:00").getDay()]}</span>`).join("")}</div><div class="dzhm">`;
+  for(let n=34;n>=0;n--){const ds=ndDS(o,n,st),t=o.d[ndDate(n)]||"00000",c5=t.split("1").length-1,act=ds.some(v=>v>=0);h+=`<i class="${act?"v"+c5:"n"}${n===0?" t":""}" title="${ndFmt(ndDate(n))}: ${c5}/5"></i>`}
+  h+=`</div><div class="dzkey">Yashil — 5/5 · sariq — 3 · qizil — 2 va undan kam</div>`;
+  h+=`<div class="ndcmw" id="ndcm">${ndCmHtml()}</div>`;
+  const lv=ndLevel(o),sk=ndStreak(o),bs=ndBest(o),tt2=ndTotal(o),SM=[3,7,14,30,60,100,200,365].find(x=>x>sk);
+  h+=`<div class="dzs"><span>Yutuqlar</span></div><div class="dztl"><div><b>${sk}</b><span>ketma-ket kun</span></div><div><b>${bs}</b><span>eng uzun</span></div><div><b>${tt2}</b><span>jami namoz</span></div></div>`;
+  h+=`<div class="dzlvl"><div class="dzlh"><b>Daraja: ${lv.name}</b><span>${lv.f} to‘liq kun</span></div><div class="dzbar"><i style="width:${lv.pct}%"></i></div><small>${lv.next?"Keyingi daraja — "+lv.next+": yana "+lv.left+" kun. ":"Eng yuqori daraja. "}To‘liq kun — besh vaqt namoz ham belgilangan kun.${sk>0&&SM?" Ketma-ketlik: yana "+(SM-sk)+" kun — "+SM+" kunlik belgi.":""}</small></div>`;
+  const pl=[];rate.forEach((r,i)=>{if(r!==null&&cu.p[i]>=3&&r<75)pl.push([r,i])});pl.sort((a,b)=>a[0]-b[0]);
+  const li=pl.slice(0,2).map(x=>`<li>${NDN[NDK[x[1]]]}: vaqti kirishi bilan o‘qib, darhol belgilang.</li>`);
+  if(sk===0)li.push("<li>Bugun kamida bitta namozni belgilab, ketma-ketlikni boshlang.</li>");
+  if(!li.length)li.push("<li>Joriy tartibni saqlang: barcha vaqtlar barqaror.</li>");
+  h+=`<div class="dzpl"><h4>Keyingi 7 kun uchun</h4><ul>${li.join("")}</ul></div><div class="dzn2">Belgilanmagan namoz “qoldi” deb hisoblanadi. O‘qigan bo‘lsangiz, Belgilash bo‘limida kunni tuzating.</div>`;
+  return h
+}
+function ndNextFri(o){
+  const w=ndWeek(o),dow=new Date().getDay();let k=(5-dow+7)%7;
+  if(k===0&&w&&xbLs("ndsw")===w.start)k=7;
+  if(k===0)return"bugun";
+  const x=new Date();x.setDate(x.getDate()+k);return"juma, "+ndFmt(x.toLocaleDateString("sv"))
+}
+const NDIC={st:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.500l2.600 5.300 5.800.8-4.200 4.100 1 5.800L12 16.800l-5.200 2.700 1-5.800L3.600 9.600l5.800-.8z"/></svg>',md:'<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="9" r="5"/><path d="M8.500 13.500L7 21l5-2.500 5 2.500-1.500-7.500"/></svg>',lk:'<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 018 0v3"/></svg>',ch:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>',sh:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg>',mn:'<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.500A8 8 0 019.500 4 8 8 0 1020 14.500z"/></svg>'};
+function ndViewA(o){
+  const st=xbLs("nds"),w=ndWeek(o),hc=ndHc(),joined=st==="1";
+  if(NDCM===undefined&&!NDCMQ&&!nzOffK("nstat")){NDCMQ=true;setTimeout(()=>{try{ndCmLoad()}catch(e){}},0)}
+  let h="";
+  if(!joined){
+    const stopped=st==="0"&&hc.w>0;
+    h+=`<div class="dzhero"><span class="dzem">${NDIC.mn}</span><h3>Hamrohlar jamoasi</h3><p>Namozxonlar birga: har hafta natijangizni ismsiz qo‘shasiz va jamoa o‘rtachasi bilan solishtirasiz.</p>`
+     +`<div class="dzbn"><div><i>${NDIC.ch}</i><span><b>Jamoa bilan solishtirish</b>Natijangiz hamrohlar o‘rtachasidan qayerda ekanini ko‘rasiz.</span></div><div><i>${NDIC.md}</i><span><b>Yutuqlar</b>Hamroh unvoni darhol, keyin 1 haftadan 1 yilgacha.</span></div><div><i>${NDIC.sh}</i><span><b>Ismsiz</b>Faqat namozlar soni yuboriladi, sizni hech kim tanimaydi.</span></div></div>`
+     +(w?`<div class="dzchips"><small>Bu hafta yuboriladi</small><div>${NDK.map((k,i)=>`<span><b>${w.c[i]}</b>${NDN[k]}</span>`).join("")}</div></div>`:"")+`</div>`;
+    h+=`<div class="dzs"><span>Yutuqlar yo‘li</span></div><div class="dzmd">`+NDHL.map(x=>`<div><i>${NDIC.lk}</i><b>${x[1]}</b><small>${x[0]?x[0]+" hafta natija":"darhol"}</small></div>`).join("")+`</div>`;
+    if(stopped)h+=`<div class="dzdn w"><div><b>Jamoadan chiqdingiz</b><span>Olgan yutuqlaringiz saqlangan.</span></div></div>`;
+    h+=`<div class="xtbt"><button type="button" data-ndb="join">${stopped?"Qayta hamroh bo‘laman":"Hamroh bo‘laman"}</button></div>`;
+    if(st===null)h+=`<button type="button" class="dzlt" data-ndb="later">Hozir emas</button>`;
+    h+=`<div class="dzn2">Istalgan payt bir bosishda to‘xtatishingiz mumkin.</div><div class="ndm" id="ndm" role="status"></div>`;
+    return h
+  }
+  const got=NDHL.filter(x=>x[0]<=hc.w),cur=got[got.length-1],nx=NDHL.find(x=>x[0]>hc.w),C=2*Math.PI*30,pr=nx?Math.min(1,hc.w/nx[0]):1;
+  h+=`<div class="dzhero"><div class="dzrg"><svg viewBox="0 0 72 72" aria-hidden="true"><circle cx="36" cy="36" r="30" class="bg"/><circle cx="36" cy="36" r="30" class="fg" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${(C*(1-pr)).toFixed(1)}"/></svg><b>${nx?hc.w+"/"+nx[0]:hc.w}</b></div><div class="dzcu"><small>Hozirgi yutuq</small><b>${cur?cur[1]:"Hamroh"}</b><span>${nx?"Keyingi: “"+nx[1]+"” — yana "+(nx[0]-hc.w)+" hafta":"Eng yuqori yutuq ochilgan"}</span></div></div>`;
+  const cm=NDCM&&NDCM.n>=10?NDCM:null;
+  h+=`<div class="dztl"><div><b>${hc.w}</b><span>hafta</span></div><div><b>${hc.p}</b><span>namoz</span></div><div><b>${cm?cm.n:"—"}</b><span>hamroh</span></div></div>`;
+  if(w){const cmp=cm&&cm.h===w.start?` · jamoa o‘rtachasi <b>${cm.avg}%</b>`:"";h+=`<div class="dzcmp">Oxirgi hafta: <b>${w.pct}%</b>${cmp}</div>`}
+  h+=`<div class="dzs"><span>Yutuqlar</span></div><div class="dzmd">`+NDHL.map(x=>{const on=got.includes(x);return`<div class="${on?"on":""}"><i>${on?(x[0]===0?NDIC.st:NDIC.md):NDIC.lk}</i><b>${x[1]}</b><small>${on?"Ochilgan":"yana "+(x[0]-hc.w)+" hafta"}</small></div>`}).join("")+`</div>`;
+  h+=`<div class="dzdn w"><div><b>Keyingi yuborish: ${ndNextFri(o)}</b><span>Natija har hafta juma kuni yuboriladi.</span></div></div>`;
+  h+=`<div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button></div><button type="button" class="dzlt" data-ndb="leave">To‘xtatish</button><div class="ndm" id="ndm" role="status"></div>`;
+  return h
+}
 function ndDraw(){
-  const o=ndGet(),days=[6,5,4,3,2,1,0].map(ndDay),td=eToday(),tdy=o.d[td]||"00000";
-  const tick='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
-  const an=!nzOffK("nstat"),T=(an?[["a","Anonimlik"]]:[]).concat([["b","Belgilash"],["n","Natija"]]);
+  const o=ndGet(),an=!nzOffK("nstat"),T=(an?[["a","Hamroh"]]:[]).concat([["b","Belgilash"],["n","Natija"]]);
   if(!an&&NDTAB==="a")NDTAB="b";
-  let h='<div class="ndtb" role="tablist">'+T.map(t=>`<button type="button" role="tab" data-ndt="${t[0]}" aria-selected="${NDTAB===t[0]}" class="${NDTAB===t[0]?"on":""}">${t[1]}</button>`).join("")+'</div>';
-  if(NDTAB==="a"){
-    const st=xbLs("nds"),w=ndWeek(o),hc=ndHc();
-    const pv=w?'<div class="ndpv">Shu hafta yuboriladigan natija: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+'</div>':'';
-    h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Hamroh bo‘ling</b><small>Umumiy ibodat statistikasiga qo‘shiling</small></div></div>
-     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvonini darhol olasiz, keyin haftalar o‘tgan sari yangi yutuqlar ochiladi.</span></p><p><i>✓</i><span>Natijangizni hamrohlarning o‘rtacha natijasi bilan solishtirib, o‘sishingizni ko‘rasiz.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
-    h+=ndHcDraw(hc,st==="1");
-    if(st==="1")h+=`<div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button><button type="button" class="sec" data-ndb="leave">To‘xtatish</button></div>`;
-    else h+=`<div class="xtbt"><button type="button" data-ndb="join">Hamroh bo‘laman</button>${st===null?'<button type="button" class="sec" data-ndb="later">Hozir emas</button>':''}</div>`;
-    h+=`<div class="ndm" id="ndm" role="status"></div></div>`;
-  }else if(NDTAB==="b"){
-    const st=xbLs("nds");
-    if(NDFLOW)h+=`<div class="ndflow"><b>Hamroh unvoni sizniki!</b><span>Endi bugungi namozlaringizni belgilab boring. Har hafta natijangiz yuborilgach, yangi yutuq ochiladi.</span></div>`;
-    else if(an&&st==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Hamroh bo‘ling</span><b>Yutuqlar ›</b></button>`;
-    const n=tdy.split("1").length-1;
-    h+=`<div class="xtl">Bugun · ${n}/5</div><div class="ndtd">${NDK.map((k,i)=>{const on=tdy[i]==="1",due=ndDue(i);return`<button type="button" class="ndtr${on?" on":""}${!on&&!due?" lock":""}" data-ndtd="${i}" aria-pressed="${on}"><span class="ndtc">${on?NDTK:(!due?NDLC:"")}</span><b>${NDN[k]}</b><em>${TM(k)}</em><small>${on?"Belgilangan":(due?"Belgilash":"Vaqti kirmagan")}</small></button>`}).join("")}</div>
-   <div class="xtl">So‘nggi 7 kun</div>
-   <table class="ndt"><thead><tr><th></th>${days.map(d=>{const x=new Date(d+"T00:00:00");return`<th class="${d===td?"t":""}">${NDW[x.getDay()]}<br>${x.getDate()}</th>`}).join("")}</tr></thead>
-   <tbody>${NDK.map((k,i)=>`<tr><td class="nm">${NDN[k]}</td>${days.map(d=>{const on=(o.d[d]||"00000")[i]==="1";return`<td class="${d===td?"t":""}"><button type="button" class="ndc${on?" on":""}" data-nd="${d}|${i}" aria-pressed="${on}" aria-label="${NDN[k]}, ${d}">${tick}</button></td>`}).join("")}</tr>`).join("")}</tbody></table>
-   <div class="xtn">O‘qigan namozingiz katagini bosing. Qayta bossangiz, belgi olinadi. Vaqti kirmagan namozni belgilab bo‘lmaydi.</div>`;
-  }else{
-    h+=ndInsight(o);
+  const S=ndStatus(o),col=NDTAB==="a"?"var(--gold)":NDTAB==="n"?"var(--gold)":S.lv===3?"var(--cr)":S.lv===2?"var(--wn)":S.lv===1?"var(--ok)":"var(--gold)";
+  let h='<div class="ndtb" role="tablist" style="--c:'+col+'">'+T.map(t=>`<button type="button" role="tab" data-ndt="${t[0]}" aria-selected="${NDTAB===t[0]}" class="${NDTAB===t[0]?"on":""}">${t[1]}</button>`).join("")+'</div>';
+  if(NDTAB==="a")h+=ndViewA(o);
+  else if(NDTAB==="b")h+=ndViewB(o,an);
+  else{
+    h+=ndViewN(o);
     try{const w=ndWeek(o);if(w)xbLs("ndwk",w.start);xbLs("ndwh",eToday())}catch(e){}
     ndCmLoad();
   }
-  $("ndbody").innerHTML=h;
+  const bx=document.querySelector("#nd .box"),sy=bx?bx.scrollTop:0;
+  $("ndbody").innerHTML=h;if(bx)bx.scrollTop=sy
 }
+setInterval(()=>{try{if($("nd").classList.contains("on")&&NDTAB==="b")ndDraw()}catch(e){}},60000);
 function ndMsg(t,k){const m=$("ndm");if(m){m.textContent=t;m.className="ndm"+(k?" "+k:"")}}
-function ndOpen(t){if(nzBlock("daftar"))return;NDFLOW=false;NDTAB=t||(xbLs("nds")===null&&!nzOffK("nstat")?"a":"b");$("nd").classList.add("on");ndDraw();ndHome()}
+function ndOpen(t){if(nzBlock("daftar"))return;NDFLOW=false;NDSEL=null;NDTAB=t||(xbLs("nds")===null&&!nzOffK("nstat")?"a":"b");$("nd").classList.add("on");ndDraw();ndHome()}
 function ndClose(){$("nd").classList.remove("on");ndSum()}
 $("nd").onclick=async e=>{
   if(e.target===$("nd")){ndClose();return}
   const c=e.target.closest("[data-nd]");
   const td0=e.target.closest("[data-ndtd]");if(td0){ndTog(+td0.dataset.ndtd);return}
   if(c){const[d,i]=c.dataset.nd.split("|"),o=ndGet(),r=(o.d[d]||"00000").split("");if(d===eToday()&&r[+i]!=="1"&&!ndDue(+i)){toast(NDN[NDK[+i]]+" vaqti hali kirmagan ("+TM(NDK[+i])+")");return}r[+i]=r[+i]==="1"?"0":"1";o.d[d]=r.join("");ndSave(o);
-    const on=r[+i]==="1";c.classList.toggle("on",on);c.setAttribute("aria-pressed",on);ndSum();return}
-  const tt=e.target.closest("[data-ndt]");if(tt){NDFLOW=false;NDTAB=tt.dataset.ndt;ndDraw();return}
+    ndSum();ndDraw();return}
+  const dz=e.target.closest("[data-dz]");if(dz){NDSEL=NDSEL===dz.dataset.dz?null:dz.dataset.dz;ndDraw();return}
+  if(e.target.closest("[data-dzx]")){NDSEL=null;ndDraw();return}
+  const dr=e.target.closest("[data-dzr]");if(dr){NDRNG=dr.dataset.dzr==="m"?"m":"w";ndDraw();return}
+  const tt=e.target.closest("[data-ndt]");if(tt){NDFLOW=false;NDSEL=null;NDTAB=tt.dataset.ndt;ndDraw();return}
   const b=e.target.closest("[data-ndb]");if(!b)return;
   const k=b.dataset.ndb;
   if(k==="qazo"){ndClose();qzOpen();return}
@@ -6091,7 +6295,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.14";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.15";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
