@@ -1975,6 +1975,30 @@ html.shl,html.shl body{overflow:hidden}
 #im .fbt>button svg{width:17px;height:17px;stroke-width:2.2}
 #im .fbe{text-align:center;color:var(--mut);padding:30px 12px 22px;font-size:14px;line-height:1.55}
 #im .fbe svg{display:block;width:42px;height:42px;margin:0 auto 12px;color:var(--gold);opacity:.8;stroke-width:1.4}
+
+#im{z-index:70}
+#toast{z-index:80}
+#qas .qrg{display:flex;align-items:center;gap:8px;margin:2px 0 8px}
+#qas .qrg span{flex:1;font:600 13px system-ui;color:var(--chrome)}
+#qas .qrg button{margin:0;min-height:0;height:34px;padding:0 14px;border-radius:999px;border:1px solid rgba(240,201,105,.32);background:rgba(255,255,255,.08);color:#eaf4f1;font:600 13px system-ui}
+#qas .qrg button:disabled{opacity:.4}
+#qtr{white-space:pre-line}
+#nd .ndcm{padding:14px;border-radius:16px;border:1px solid var(--line);background:rgba(127,160,150,.07)}
+#nd .ndcm p{margin:0 0 10px;font:500 14px/1.55 system-ui}
+#nd .ndcm .ndcmx{font:500 12.5px/1.5 system-ui;color:var(--mut)}
+#nd .ndcs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+#nd .ndcs div{text-align:center;padding:10px 4px;border-radius:12px;background:rgba(127,160,150,.1)}
+#nd .ndcs b{display:block;font:700 20px system-ui;color:#f0c969}
+#nd .ndcs span{display:block;margin-top:2px;font:500 11.5px system-ui;color:var(--mut)}
+#nd .ndcr{display:flex;align-items:center;gap:10px;padding:4px 0}
+#nd .ndcr span{width:62px;font:600 13px system-ui}
+#nd .ndcr .ndab{flex:1;height:10px;border-radius:5px;background:rgba(127,160,150,.22);overflow:hidden}
+#nd .ndcr .ndab i{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,#2a9a8e,#4fd0bf)}
+#nd .ndcr .ndab i.av{background:linear-gradient(90deg,#8a8f9c,#b5bac6)}
+#nd .ndcr b{width:44px;text-align:right;font:700 13px system-ui}
+#nd .ndcmg{margin:10px 0 12px;padding:10px 12px;border-radius:12px;border:1px solid rgba(240,201,105,.4);background:rgba(240,201,105,.08)}
+#nd .ndab2{position:relative;overflow:visible!important}
+#nd .ndab2 u{position:absolute;top:-4px;bottom:-4px;width:3px;margin-left:-1px;border-radius:2px;background:#f0c969;text-decoration:none}
 </style>
 </head>
 <body data-scr="t0">
@@ -2160,6 +2184,7 @@ html.shl,html.shl body{overflow:hidden}
    <div class="qah"><b id="qat"></b><span class="qan"><button id="qpv" type="button" aria-label="Oldingi oyat"><svg viewBox="0 0 24 24"><path d="M6 15l6-6 6 6"/></svg></button><button id="qnx" type="button" aria-label="Keyingi oyat"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><button id="qax" aria-label="Yopish">×</button></span></div>
    <div class="qtl">Tarjima · Muhammad Sodiq Muhammad Yusuf</div>
    <p id="qtr"></p>
+   <div class="qrg"><span id="qrt">1 ta oyat</span><button id="qrm" type="button" aria-label="Oxirgi oyatni kamaytirish">−</button><button id="qrp" type="button">+ Keyingi oyat</button></div>
    <button id="qfb" type="button" style="display:none">Izohni ko‘rsatish</button>
    <p id="qfn" style="display:none"></p>
    <div class="qab">
@@ -3807,6 +3832,40 @@ function ndWkMsg(wk,o){
   if(wk.pct>=50)return"Hafta yarmidan ko‘pi belgilandi. Eng oson vaqtingizdan boshlab, bir qadam qo‘shing.";
   return"Yangi hafta: yangi imkoniyat. Kichik qadamdan boshlash ham qimmatli."
 }
+let NDCM=undefined;
+async function ndCmLoad(){
+  if(nzOffK("nstat"))return;
+  const wk=ndWeek(ndGet()),key=wk?wk.start:"";
+  try{const c=JSON.parse(xbLs("ndcm")||"null");if(c&&c.k===key&&Date.now()-c.t<216e5&&c.d&&Number.isInteger(c.d.n)){NDCM=c.d;ndCmDraw();return}}catch(e){}
+  try{const r=await fetch(SB+"/rest/v1/rpc/namoz_umumiy",{method:"POST",headers:H(),body:JSON.stringify({p_h:key||null})});
+    if(!r.ok)throw 0;const d=await r.json();if(!d||!Number.isInteger(d.n))throw 0;NDCM=d;xbLs("ndcm",JSON.stringify({k:key,t:Date.now(),d}))}catch(e){NDCM=null}
+  ndCmDraw()
+}
+function ndCmDraw(){const e=$("ndcm");if(e&&$("nd").classList.contains("on")&&NDTAB==="n")e.innerHTML=ndCmHtml()}
+function ndCmHtml(){
+  if(nzOffK("nstat"))return"";
+  const d=NDCM;
+  if(d===undefined)return'<div class="xtl">Hamrohlar bilan solishtirish</div><div class="ndcm"><p>Yuklanmoqda…</p></div>';
+  if(!d)return"";
+  const joined=xbLs("nds")==="1",wk=ndWeek(ndGet());
+  const cta='<button type="button" class="ndinv" data-ndt="a"><span>Natijangizni solishtirish uchun</span><b>Hamroh bo‘ling ›</b></button>';
+  let h='<div class="xtl">Hamrohlar bilan solishtirish</div><div class="ndcm">';
+  if(d.n<10){
+    h+='<p>Hamrohlar jamoasi shakllanmoqda: hozircha '+d.n+' ta. Umumiy natijalar 10 ta hamroh bo‘lgach ko‘rinadi.</p>'+(joined?'<p class="ndcmx">Siz shu jamoaning bir qismisiz. Yaqinlaringizni ham taklif qiling: jamoa qancha katta bo‘lsa, solishtirish shuncha aniq.</p>':cta);
+    return h+'</div>'
+  }
+  h+='<div class="ndcs"><div><b>'+d.n+'</b><span>hamroh</span></div><div><b>'+d.avg+'%</b><span>o‘rtacha natija</span></div><div><b>'+d.tot+'</b><span>jami namoz</span></div></div><p class="ndcmx">'+ndFmt(d.h)+' haftasi bo‘yicha. Hamma narsa ismsiz va yashirin.</p>';
+  if(!joined){return h+cta+'</div>'}
+  if(!wk||wk.start!==d.h){return h+'<p>Sizning shu haftadagi natijangiz hali umumiy hisobda yo‘q. Ilovani ochib turing, u avtomatik yuboriladi.</p></div>'}
+  const pc=wk.pct,i=Math.min(9,Math.floor(pc/10)),b=d.b||[];let bl=0;for(let k=0;k<i;k++)bl+=b[k]||0;
+  const pr=Math.max(1,Math.min(99,Math.round((bl+(b[i]||0)/2)/d.n*100)));
+  let msg;
+  if(pc>=d.avg){msg='Siz hamrohlarning taxminan <b>'+pr+'%</b> idan oldindasiz'+(pr>=90?'. Ajoyib sabot, Alloh qabul qilsin.':pr>=60?'. Shu yo‘lda davom eting.':'. O‘rtachadan yuqorisiz.')}
+  else{const y=Math.max(1,Math.ceil((d.avg-pc)/100*wk.max));msg='O‘rtacha natijadan <b>'+(d.avg-pc)+'%</b> pastdasiz. Keyingi hafta atigi <b>+'+y+' ta</b> namoz sizni o‘rtachaga yetkazadi: bu kuniga bittadan ham kam.'}
+  h+='<div class="ndcy"><div class="ndcr"><span>Siz</span><div class="ndab"><i style="width:'+pc+'%"></i></div><b>'+pc+'%</b></div><div class="ndcr"><span>O‘rtacha</span><div class="ndab"><i class="av" style="width:'+d.avg+'%"></i></div><b>'+d.avg+'%</b></div></div><p class="ndcmg">'+msg+'</p>';
+  h+='<div class="ndah">Namozlar kesimida (chiziq — hamrohlar o‘rtachasi)</div>'+NDK.map((k,j)=>{const my=Math.round(wk.c[j]/wk.k*100),av=(d.p||[])[j];return'<div class="ndar"><span>'+NDN[k]+'</span><div class="ndab ndab2"><i style="width:'+my+'%"></i><u style="left:'+av+'%"></u></div><b>'+my+'%</b></div>'}).join("");
+  return h+'<div class="ndlx">Yaxshilikda birga musobaqa qilamiz. Ismingiz hech kimga ko‘rinmaydi.</div></div>'
+}
 function ndInsight(o){
   const lv=ndLevel(o),wk=ndWeek(o),cu=ndCur(o),an=ndAn(o),st=ndStreak(o),bs=ndBest(o),tt=ndTotal(o);
   let h='<div class="ndlv"><div class="ndlh"><div><small>Daraja</small><b>'+lv.name+'</b></div><div class="ndlf"><b>'+lv.f+'</b><small>to‘liq kun</small></div></div>'
@@ -3824,6 +3883,7 @@ function ndInsight(o){
     if(wk.tot>0)h+='<div class="ndwc">Eng barqaror: <b>'+NDN[NDK[bi]]+'</b> ('+wk.c[bi]+'/'+wk.k+' kun)</div>'
   }else h+='<p>O‘tgan hafta natijasi birinchi to‘liq haftadan keyin chiqadi. Shu paytgacha har bir belgilangan namoz hisobingizda saqlanadi.</p>';
   h+='<div class="ndwc">Joriy hafta: <b>'+cu.tot+'</b> ta namoz belgilangan</div></div>';
+  h+='<div id="ndcm">'+ndCmHtml()+'</div>';
   h+='<div class="xtl">Oxirgi kunlar tahlili</div><div class="ndan">';
   if(an){
     h+='<div class="ndah">Oxirgi '+an.w+' kunda belgilanish ulushi</div>'+NDK.map((k,i)=>'<div class="ndar'+(an.weak&&i===an.lo?" lo":"")+'"><span>'+NDN[k]+'</span><div class="ndab"><i style="width:'+an.rate[i]+'%"></i></div><b>'+an.rate[i]+'%</b></div>').join("");
@@ -3980,7 +4040,7 @@ function ndDraw(){
     const st=xbLs("nds"),w=ndWeek(o),hc=ndHc();
     const pv=w?'<div class="ndpv">Shu hafta yuboriladigan natija: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+'</div>':'';
     h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Hamroh bo‘ling</b><small>Umumiy ibodat statistikasiga qo‘shiling</small></div></div>
-     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvonini darhol olasiz, keyin haftalar o‘tgan sari yangi yutuqlar ochiladi.</span></p><p><i>✓</i><span>Haftalik natijangiz umumiy ibodat statistikasiga qo‘shiladi.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
+     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvonini darhol olasiz, keyin haftalar o‘tgan sari yangi yutuqlar ochiladi.</span></p><p><i>✓</i><span>Natijangizni hamrohlarning o‘rtacha natijasi bilan solishtirib, o‘sishingizni ko‘rasiz.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
     h+=ndHcDraw(hc,st==="1");
     if(st==="1")h+=`<div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button><button type="button" class="sec" data-ndb="leave">To‘xtatish</button></div>`;
     else h+=`<div class="xtbt"><button type="button" data-ndb="join">Hamroh bo‘laman</button>${st===null?'<button type="button" class="sec" data-ndb="later">Hozir emas</button>':''}</div>`;
@@ -3998,6 +4058,7 @@ function ndDraw(){
   }else{
     h+=ndInsight(o);
     try{const w=ndWeek(o);if(w)xbLs("ndwk",w.start);xbLs("ndwh",eToday())}catch(e){}
+    ndCmLoad();
   }
   $("ndbody").innerHTML=h;
 }
@@ -4361,19 +4422,19 @@ function qPick(sl,ev){
   for(const w of B){if(w.li!==li)continue;const d=q.x<w.x?w.x-q.x:(q.x>w.x+w.w?q.x-w.x-w.w:0);if(d<dx){dx=d;best=w}}
   return best&&dx<34?best:null;
 }
-function qBand(sl,kind,s,a){
+function qBand(sl,kind,s,a,e){
   const svg=sl.querySelector("svg");if(!svg)return;
   svg.querySelectorAll("g.hb."+kind).forEach(e=>e.remove());
   if(!s)return;
   const B=qBoxes(sl),L={};
-  B.forEach(w=>{if(w.s!==s||w.a!==a)return;const l=L[w.li]=L[w.li]||{x0:1e9,x1:-1e9};l.x0=Math.min(l.x0,w.x);l.x1=Math.max(l.x1,w.x+w.w)});
+  B.forEach(w=>{if(w.s!==s||w.a<a||w.a>(e||a))return;const l=L[w.li]=L[w.li]||{x0:1e9,x1:-1e9};l.x0=Math.min(l.x0,w.x);l.x1=Math.max(l.x1,w.x+w.w)});
   const ks=Object.keys(L);if(!ks.length)return;
   const g=document.createElementNS(SVGNS,"g");g.setAttribute("class","hb "+kind);let h="";
   ks.forEach(k=>{const l=L[k],y=B.ly[k];h+='<rect x="'+(l.x0-1.2).toFixed(2)+'" y="'+(y-12.6).toFixed(2)+'" width="'+(l.x1-l.x0+2.4).toFixed(2)+'" height="25.2" rx="3"/>'});
   g.innerHTML=h;svg.insertBefore(g,svg.firstChild);
 }
 function qMarkPage(sl){
-  qBand(sl,"sel",QSEL&&QSEL.s,QSEL&&QSEL.a);
+  qBand(sl,"sel",QSEL&&QSEL.s,QSEL&&QSEL.a,QSEL&&QSEL.e);
   const pa=QPI>=0&&QPLAY?qSA(QPI):null;qBand(sl,"pl",pa&&pa[0],pa&&pa[1]);
 }
 function qMarkAll(){document.querySelectorAll("#qsc .qsl[data-f]").forEach(qMarkPage)}
@@ -4425,16 +4486,18 @@ async function qOpen(w,sl){
   QSEL={s:w.s,a:w.a};qMarkAll();qFlip(w.g.getBoundingClientRect());qShow();
 }
 async function qShow(){
-  const s=QSEL.s,a=QSEL.a,el=$("qas"),g=qgi(s,a);
-  $("qat").textContent=QUZ[s-1]+" surasi, "+a+"-oyat";
+  const s=QSEL.s,a=QSEL.a,e=QSEL.e||a,el=$("qas"),g=qgi(s,a);
+  $("qat").textContent=qRef(QSEL);qRgDraw();
   $("qtr").textContent="Yuklanmoqda…";$("qfn").style.display="none";$("qfb").style.display="none";$("qfb").textContent="Izohni ko‘rsatish";
   $("qpv").disabled=g===0;$("qnx").disabled=g===6235;
   qBmBtn();el.classList.add("on");
   const my=++qAt;
   try{
     const T=await qText();if(my!==qAt||!QSEL)return;
-    $("qtr").textContent=T.uz[g]||"";
-    if(T.fn[g]){$("qfn").textContent=T.fn[g];$("qfb").style.display="inline-block"}
+    const ix=qSelIx(QSEL),multi=ix.length>1;
+    $("qtr").textContent=multi?ix.map((i,k)=>(a+k)+". "+(T.uz[i]||"")).join("\n"):(T.uz[g]||"");
+    const fn=ix.map((i,k)=>T.fn[i]?(multi?(a+k)+"-oyat: ":"")+T.fn[i]:"").filter(Boolean).join("\n\n");
+    if(fn){$("qfn").textContent=fn;$("qfb").style.display="inline-block"}
   }catch(e){if(my===qAt)$("qtr").textContent="Tarjima yuklanmadi: "+(e&&e.message?e.message:"internetni tekshiring")}
 }
 async function qReady(p){
@@ -4461,9 +4524,23 @@ function qBmBtn(){
   if(!QSEL)return;const on=qbm().some(x=>x.s===QSEL.s&&x.a===QSEL.a);
   $("qmk").classList.toggle("on",on);$("qmk").lastChild.textContent=on?"Xatcho‘pda":"Xatcho‘p";
 }
+const QMAXR=10;
+const qRef=q=>QUZ[q.s-1]+" surasi, "+(q.e&&q.e>q.a?q.a+"–"+q.e+"-oyatlar":q.a+"-oyat");
+function qSelIx(q){const g=qgi(q.s,q.a),n=(q.e||q.a)-q.a+1,r=[];for(let k=0;k<n;k++)r.push(g+k);return r}
+function qRgDraw(){
+  const q=QSEL;if(!q)return;const n=(q.e||q.a)-q.a+1;
+  $("qrt").textContent=n===1?"1 ta oyat":n+" ta oyat tanlandi";
+  $("qrm").disabled=n<=1;$("qrp").disabled=n>=QMAXR||(q.e||q.a)>=QCN[q.s-1];
+  $("qrp").textContent=(q.e||q.a)>=QCN[q.s-1]?"Sura tugadi":(n>=QMAXR?"Eng ko‘pi "+QMAXR+" ta":"+ Keyingi oyat")
+}
+function qRgStep(d){
+  if(!QSEL)return;const e=(QSEL.e||QSEL.a)+d;
+  if(e<QSEL.a||e>QCN[QSEL.s-1]||e-QSEL.a+1>QMAXR)return;
+  QSEL.e=e>QSEL.a?e:undefined;qAt++;qMarkAll();$("qat").textContent=qRef(QSEL);qRgDraw();qShow();
+}
 async function qTxt(){
-  const T=await qText(),i=qgi(QSEL.s,QSEL.a);
-  return T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾\n\n"+(T.uz[i]||"")+"\n\n— "+QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat";
+  const T=await qText(),ix=qSelIx(QSEL),a=QSEL.a,m=ix.length>1;
+  return ix.map((i,k)=>T.ar[i]+" ﴿"+qdig(a+k)+"﴾").join(" ")+"\n\n"+ix.map((i,k)=>(m?(a+k)+". ":"")+(T.uz[i]||"")).join("\n")+"\n\n— "+qRef(QSEL);
 }
 /* Tilovat */
 let QAU=null,QAP=null,QRC=+(qg("qrc")||0),QPI=-1,QEL=null,QPLAY=false;
@@ -4743,6 +4820,7 @@ $("qjz").onchange=e=>{const j=+e.target.value,[s,a]=QJ[j-1];qJumpTo(qpo(s,a),s,a
 $("qax").onclick=()=>qShut();
 $("qpv").onclick=()=>qNav(-1);$("qnx").onclick=()=>qNav(1);
 $("qfb").onclick=()=>{const f=$("qfn"),o=f.style.display==="none";f.style.display=o?"block":"none";$("qfb").textContent=o?"Izohni yashirish":"Izohni ko‘rsatish"};
+$("qrm").onclick=()=>qRgStep(-1);$("qrp").onclick=()=>qRgStep(1);
 $("qcp").onclick=async()=>{if(!QSEL)return;try{await navigator.clipboard.writeText(await qTxt());toast("Nusxalandi")}catch(e){toast("Nusxalab bo‘lmadi")}};
 $("qsh").onclick=async()=>{if(!QSEL)return;try{const t=await qTxt();if(navigator.share)await navigator.share({text:t});else{await navigator.clipboard.writeText(t);toast("Nusxalandi")}}catch(e){}};
 $("qmk").onclick=()=>{
@@ -6005,7 +6083,7 @@ function imSave(b){const a=document.createElement("a"),u=URL.createObjectURL(b);
 $("imsv").onclick=async()=>{const b=await imGetBlob();if(!b){toast("Rasm tayyor emas");return}imSave(b);toast("Rasm saqlandi")};
 $("qim").onclick=async()=>{
   if(!QSEL)return;
-  try{const T=await qText(),i=qgi(QSEL.s,QSEL.a);await imOpen({kind:"OYAT",ar:T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾",uz:T.uz[i]||"",ref:QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat",src:"Tarjima: Muhammad Sodiq Muhammad Yusuf"})}catch(e){toast("Rasm tayyorlanmadi")}
+  try{const T=await qText(),ix=qSelIx(QSEL),a=QSEL.a,m=ix.length>1;await imOpen({kind:"OYAT",ar:ix.map((i,k)=>T.ar[i]+" ﴿"+qdig(a+k)+"﴾").join(" "),uz:ix.map((i,k)=>(m?(a+k)+". ":"")+(T.uz[i]||"")).join(" "),ref:qRef(QSEL),src:"Tarjima: Muhammad Sodiq Muhammad Yusuf"})}catch(e){toast("Rasm tayyorlanmadi")}
 };
 $("hkim").onclick=()=>{if(HK&&HK.matn)imOpen({kind:"KUN HIKMATI",uz:HK.matn,ref:HK.manba||""})};
 $("dls").addEventListener("click",e=>{
@@ -6013,7 +6091,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.13";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.14";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
