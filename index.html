@@ -949,7 +949,7 @@ body[data-scr="t7"] #sbar{display:none}
 #qtr{font:16px/1.6 system-ui;margin:4px 0 6px}
 #qfn{font:14px/1.55 system-ui;color:var(--chrome);margin:4px 0;padding:10px 12px;background:var(--line2);border-radius:12px}
 #qfb{border:0;background:none;color:var(--ring);font:600 14px system-ui;padding:6px 0;margin:0}
-.qab{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.qab{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:6px;margin-top:10px}
 .qab button{display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 2px;border:1px solid var(--line2);background:var(--pg);color:var(--ink2);border-radius:14px;font:600 12.5px system-ui;margin:0}
 .qab button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .qab #qmk.on{background:var(--ring);color:#fff;border-color:var(--ring)}
@@ -1932,6 +1932,49 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 #nd .ndhcl i svg{width:13px;height:13px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 #nd .ndhcl b{font:600 13.5px system-ui}
 #nd .ndhcl small{font:500 11.5px system-ui;color:var(--mut)}
+
+html.shl,html.shl body{overflow:hidden}
+.sheet,.sheet *{overscroll-behavior:contain}
+/* aclw */
+.aclw{position:relative}
+.aclw input,.aclw textarea{padding-right:46px;box-sizing:border-box}
+.aclx{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;margin:0;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#e8d9a8;font:400 22px/1 system-ui;align-items:center;justify-content:center;min-height:0}
+.aclw.ta .aclx{top:10px;transform:none}
+.aclw.has .aclx{display:flex}
+/* natija */
+#nd .ndtl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 6px}
+#nd .ndtl div{padding:11px 6px;border-radius:14px;border:1px solid var(--line);background:rgba(127,160,150,.07);text-align:center}
+#nd .ndtl b{display:block;font:700 22px system-ui;color:#f0c969}
+#nd .ndtl span{display:block;margin-top:2px;font:500 11.5px system-ui;color:var(--mut)}
+#nd .ndtn{margin:6px 2px 4px;font:500 13px/1.5 system-ui;color:var(--mut)}
+#nd .ndcp{display:inline-block;margin:10px 0 0;padding:5px 11px;border-radius:999px;border:1px solid var(--line);font:600 12.5px system-ui;color:var(--mut)}
+#nd .ndcp.up{border-color:rgba(79,208,191,.5);background:rgba(42,154,142,.14);color:#8fe0d2}
+#nd .ndhcx{margin:0 0 10px;font:500 13px/1.5 system-ui;color:var(--mut)}
+#nd .ndhcn small{display:block}
+#nd .ndhcl small{text-align:right;max-width:52%}
+/* rasm */
+#im .imv{display:grid;place-items:center;margin:2px 0 12px}
+#im canvas{max-width:100%;max-height:46dvh;width:auto;height:auto;border-radius:12px;box-shadow:0 8px 28px rgba(0,0,0,.4)}
+#im .imt{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+#im .imt button{display:flex;align-items:center;justify-content:center;gap:8px;margin:0;padding:10px 6px;min-height:0;border-radius:12px;border:1px solid var(--line);background:rgba(127,160,150,.08);color:var(--ink);font:600 13.5px system-ui}
+#im .imt button.on{border-color:#e0b24f;background:rgba(224,178,79,.14)}
+#im .imt i{width:16px;height:16px;border-radius:50%;border:1.5px solid}
+#im .imb{display:grid;grid-template-columns:1.4fr 1fr;gap:8px;margin-top:12px}
+#im .imb button{margin:0;min-height:48px;border-radius:14px;font:700 15px system-ui}
+#im .imb button.sec{background:rgba(127,160,150,.12);border:1px solid var(--line);color:var(--ink)}
+#im .imb button:disabled{opacity:.45}
+#im .imn{margin:10px 2px 0;font:500 12.5px/1.5 system-ui;color:var(--mut);min-height:18px}
+#hkim{border:0;background:none;color:var(--ac);font-weight:700;font-size:14px;padding:4px 0 4px 14px}
+#im .fbgr{display:block;width:40px;height:4px;border-radius:2px;background:var(--line);margin:2px auto 12px}
+#im svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#im .fbt{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+#im .fbtt{flex:1;min-width:0}
+#im .fbtt h2{margin:0;font-size:20px;line-height:1.2;text-align:left}
+#im .fbtt small{display:block;margin-top:2px;font-size:12.5px;color:var(--mut)}
+#im .fbt>button{flex:none;margin:0;width:36px;height:36px;padding:0;border-radius:50%;background:rgba(127,160,150,.14);color:var(--mut);display:grid;place-items:center}
+#im .fbt>button svg{width:17px;height:17px;stroke-width:2.2}
+#im .fbe{text-align:center;color:var(--mut);padding:30px 12px 22px;font-size:14px;line-height:1.55}
+#im .fbe svg{display:block;width:42px;height:42px;margin:0 auto 12px;color:var(--gold);opacity:.8;stroke-width:1.4}
 </style>
 </head>
 <body data-scr="t0">
@@ -1966,7 +2009,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <button class="qa" data-go="tf"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 20h14"/><path d="M12 6.5L5 9l-2.5 6a3.5 3.5 0 0 0 7 0L7 9"/><path d="M12 6.5L19 9l2.5 6a3.5 3.5 0 0 1-7 0L17 9"/></svg></span><b>Faroiz</b><span>Meros taqsimoti</span></button>
     <button class="qa" id="qa-sh" type="button"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="17.5" cy="18" r="2.4"/><path d="M8.6 10.8l6.8-3.6M8.6 13.2l6.8 3.6"/></svg></span><b>Ulashish</b><span>Do‘stlarga yuboring</span></button>
   </div>
-  <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><div id="hks"></div></div>
+  <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><button id="hkim" type="button">Rasm qilib ulashish</button><div id="hks"></div></div>
 </section>
 <section class="tab" id="t1">
   <div class="sc-t">Namoz vaqtlari</div>
@@ -2123,6 +2166,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
     <button id="qlis" type="button"><svg viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg>Tinglash</button>
     <button id="qcp" type="button"><svg viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.5"/><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2"/></svg>Nusxalash</button>
     <button id="qsh" type="button"><svg viewBox="0 0 24 24"><circle cx="6.5" cy="12" r="2.3"/><circle cx="17.5" cy="6" r="2.3"/><circle cx="17.5" cy="18" r="2.3"/><path d="M8.6 10.9l6.8-3.7M8.6 13.1l6.8 3.7"/></svg>Ulashish</button>
+    <button id="qim" type="button"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="14" rx="2.5"/><circle cx="9" cy="10" r="1.5"/><path d="M5 17l4.500-4 3.500 3 2.500-2L19 16"/></svg>Rasm</button>
     <button id="qmk" type="button"><svg viewBox="0 0 24 24"><path d="M7 4.5h10v15l-5-3.6-5 3.6z"/></svg>Xatcho‘p</button>
    </div>
   </div>
@@ -2189,6 +2233,14 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
   <i class="fbgr" aria-hidden="true"></i>
   <div class="fbt"><span class="fbic" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.4 5 8 4.5 4.5 4.5V18c3.5 0 5.9.5 7.5 2 1.6-1.5 4-2 7.5-2V4.5c-3.5 0-5.9.5-7.5 2z"/><path d="M12 6.5V20"/></svg></span><div class="fbtt"><h2>Xatm rejasi</h2><small>Qur’onni belgilangan muddatda xatm qilish</small></div><button type="button" id="xtcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div id="xtbody"></div>
+</div></div>
+<div class="sheet" id="im"><div class="box fbx" role="dialog" aria-label="Rasm qilib ulashish">
+  <i class="fbgr" aria-hidden="true"></i>
+  <div class="fbt"><span class="fbic" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><circle cx="9" cy="10" r="1.6"/><path d="M4 17l5-4.5 3.500 3 3-2.500L20 17"/></svg></span><div class="fbtt"><h2>Rasm qilib ulashish</h2><small>Chiroyli rasm tayyorlanadi</small></div><button type="button" id="imcl" aria-label="Yopish"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="imv"><canvas id="imc" width="1080" height="1350" role="img" aria-label="Tayyor rasm"></canvas></div>
+  <div class="imt" id="imt" role="tablist" aria-label="Uslub"></div>
+  <div class="imb"><button type="button" id="imsh">Ulashish</button><button type="button" class="sec" id="imsv">Saqlash</button></div>
+  <p class="imn" id="imn" role="status"></p>
 </div></div>
 <div class="sheet" id="nd"><div class="box fbx" role="dialog" aria-label="Namoz daftari">
   <i class="fbgr" aria-hidden="true"></i>
@@ -2293,7 +2345,8 @@ const NZM={
  daftar:["Namoz daftari","Bosh sahifadagi “Bugungi namozlar” kartasi yashiriladi, daftar ochilmaydi.","#ndh"],
  xatm:["Qur’on xatm rejasi","Qur’on sahifasidagi xatm tugmasi yashiriladi, reja oynasi ochilmaydi.","#xtc"],
  qazo:["Qazo namozlar","Bosh sahifadagi qazo tugmasi yashiriladi va qazo oynasi ochilmaydi.","#ndh .ndhw.q"],
- nstat:["Anonim namoz statistikasi","Daftardagi “Anonimlik” taklifi yashiriladi va yangi ma’lumot yuborilmaydi.","#nd .ndsw,#ndh .ndhw.a"]
+ nstat:["Anonim namoz statistikasi","Daftardagi “Anonimlik” taklifi yashiriladi va yangi ma’lumot yuborilmaydi.","#nd .ndsw,#ndh .ndhw.a"],
+ rasm:["Rasm qilib ulashish","Oyat, duo va kun hikmatidagi “Rasm” tugmalari yashiriladi, rasm oynasi ochilmaydi.","#qim,#hkim,[data-di]"]
 };
 const NZT={td:"duo",tf:"faroiz",t5:"zakot"};
 function nzOffK(k){const o=nzGet().off;return Array.isArray(o)&&o.includes(k)&&!!NZM[k]}
@@ -3673,7 +3726,7 @@ const ndOkD=d=>!!d&&typeof d==="object"&&!Array.isArray(d)&&Object.keys(d).every
 function ndGet(){try{const o=JSON.parse(xbLs("ndf")||"null");if(o&&ndOkD(o.d)&&ndOkQ(o.q))return o}catch(e){}return{d:{},q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0}}}
 function ndSave(o){const ks=Object.keys(o.d).sort();while(ks.length>400){const k=ks.shift();if(o.d[k]==="11111")o.z=(o.z||0)+1;delete o.d[k]}xbLs("ndf",JSON.stringify(o))}
 function ndHint(o){
-  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon">Jamoaga hamroh bo‘ling · yutuqlar ›</button>';
+  try{if(xbLs("nds")===null&&!nzOffK("nstat"))return'<button type="button" class="ndhw a" data-ndh="anon">Hamroh bo‘ling · yutuqlar ochiladi ›</button>';
     const w=ndWeek(o);
     if(w&&xbLs("ndwk")!==w.start)return'<button type="button" class="ndhw g" data-ndh="week">Hafta natijasi tayyor: '+w.tot+'/'+w.max+' ›</button>';
     const a=ndAn(o);if(a&&a.weak&&xbLs("ndwh")!==eToday())return'<button type="button" class="ndhw" data-ndh="week">'+NDN[NDK[a.lo]]+' oxirgi kunlarda kam belgilanmoqda ›</button>';
@@ -3740,14 +3793,36 @@ function ndWkText(p){
   return"Yangi hafta — yangi imkoniyat. Kichik qadamdan boshlash ham qimmatli."
 }
 const ndFmt=d=>{const x=new Date(d+"T00:00:00");return x.getDate()+"-"+["yanvar","fevral","mart","aprel","may","iyun","iyul","avgust","sentabr","oktabr","noyabr","dekabr"][x.getMonth()]};
+function ndTotal(o){let t=0;for(const k in o.d)t+=o.d[k].split("1").length-1;return t+(o.z||0)*5}
+function ndStreak(o){const has=d=>(o.d[d]||"00000")!=="00000";let n=0,i=has(ndDate(0))?0:1;for(;i<400;i++){if(has(ndDate(i)))n++;else break}return n}
+function ndBest(o){const ks=Object.keys(o.d).filter(k=>o.d[k]!=="00000").sort();let b=0,c=0,p=null;for(const k of ks){if(p&&new Date(k)-new Date(p)===864e5)c++;else c=1;if(c>b)b=c;p=k}return b}
+function ndWeekAt(o,sh){const dow=new Date().getDay();let n0=(dow-4+7)%7;if(n0===0)n0=7;n0+=7*sh;const st=ndStartD(o);if(!st)return null;const c=[0,0,0,0,0];let k=0;for(let n=n0;n<n0+7;n++){const d=ndDate(n);if(d<st)continue;k++;const t=o.d[d]||"00000";for(let i=0;i<5;i++)if(t[i]==="1")c[i]++}if(!k)return null;return{k,c,tot:c.reduce((a,b)=>a+b,0)}}
+function ndWkMsg(wk,o){
+  const pv=ndWeekAt(o,1),full=!!pv&&pv.k===7&&wk.k===7,d=full?wk.tot-pv.tot:0;
+  if(wk.tot===0)return"Bu hafta belgilanmagan. Bu hukm emas, shunchaki yangi sahifa. Bugun bitta namozni belgilab boshlash yetarli.";
+  if(wk.pct>=95)return"Ajoyib barqarorlik: hafta davomida deyarli hamma namoz belgilandi. Alloh qabul qilsin.";
+  if(full&&d>0)return"O‘tgan haftadan "+d+" ta ko‘p. Siz o‘sib bormoqdasiz, shu yo‘lda davom eting.";
+  if(wk.pct>=80)return"Yaxshi, barqaror hafta. Shu ritmni saqlash eng muhimi.";
+  if(full&&d<0)return"Bu hafta o‘tgandan biroz kam. Bu tabiiy: ritm ba’zan tebranadi. Muhimi, davom etish.";
+  if(wk.pct>=50)return"Hafta yarmidan ko‘pi belgilandi. Eng oson vaqtingizdan boshlab, bir qadam qo‘shing.";
+  return"Yangi hafta: yangi imkoniyat. Kichik qadamdan boshlash ham qimmatli."
+}
 function ndInsight(o){
-  const lv=ndLevel(o),wk=ndWeek(o),cu=ndCur(o),an=ndAn(o);
+  const lv=ndLevel(o),wk=ndWeek(o),cu=ndCur(o),an=ndAn(o),st=ndStreak(o),bs=ndBest(o),tt=ndTotal(o);
   let h='<div class="ndlv"><div class="ndlh"><div><small>Daraja</small><b>'+lv.name+'</b></div><div class="ndlf"><b>'+lv.f+'</b><small>to‘liq kun</small></div></div>'
    +'<div class="xtb"><i style="width:'+lv.pct+'%"></i></div><div class="ndls">'+(lv.next?'Keyingi daraja — '+lv.next+': yana '+lv.left+' kun':'Eng yuqori daraja')+'</div>'
    +'<div class="ndlx">To‘liq kun — besh vaqt namoz ham belgilangan kun.</div></div>';
+  const SM=[3,7,14,30,60,100,200,365].find(x=>x>st),TM2=[50,100,250,500,1000,2500,5000,10000].find(x=>x>tt);
+  h+='<div class="ndtl"><div><b>'+st+'</b><span>ketma-ket kun</span></div><div><b>'+bs+'</b><span>eng uzun</span></div><div><b>'+tt+'</b><span>jami namoz</span></div></div>';
+  h+='<p class="ndtn">'+(st>0?(SM?'Ketma-ketlik: yana '+(SM-st)+' kun — '+SM+' kunlik belgi.':'Bir yildan oshiq ketma-ketlik. Alloh sabot bersin.'):'Bugun bitta namozni belgilab, yangi ketma-ketlikni boshlang.')+(TM2?' Keyingi belgi: '+TM2+' ta namoz (yana '+(TM2-tt)+').':'')+'</p>';
   h+='<div class="xtl">Hafta natijasi (juma — payshanba)</div><div class="ndwk">';
-  if(wk)h+='<div class="ndwr"><b>'+wk.tot+'/'+wk.max+'</b><span>'+ndFmt(wk.start)+' — '+ndFmt(wk.end)+' · '+wk.pct+'%</span></div><div class="xtb"><i style="width:'+wk.pct+'%"></i></div><p>'+ndWkText(wk.pct)+'</p>';
-  else h+='<p>O‘tgan hafta natijasi birinchi to‘liq haftadan keyin chiqadi.</p>';
+  if(wk){
+    const pv=ndWeekAt(o,1),full=!!pv&&pv.k===7&&wk.k===7,d=full?wk.tot-pv.tot:0,bi=wk.c.indexOf(Math.max.apply(null,wk.c));
+    h+='<div class="ndwr"><b>'+wk.tot+'/'+wk.max+'</b><span>'+ndFmt(wk.start)+' — '+ndFmt(wk.end)+' · '+wk.pct+'%</span></div><div class="xtb"><i style="width:'+wk.pct+'%"></i></div>';
+    if(full)h+='<div class="ndcp'+(d>0?" up":"")+'">'+(d>0?'↑ O‘tgan haftadan +'+d:d<0?'O‘tgan haftadan '+d:'O‘tgan hafta bilan teng')+'</div>';
+    h+='<p>'+ndWkMsg(wk,o)+'</p>';
+    if(wk.tot>0)h+='<div class="ndwc">Eng barqaror: <b>'+NDN[NDK[bi]]+'</b> ('+wk.c[bi]+'/'+wk.k+' kun)</div>'
+  }else h+='<p>O‘tgan hafta natijasi birinchi to‘liq haftadan keyin chiqadi. Shu paytgacha har bir belgilangan namoz hisobingizda saqlanadi.</p>';
   h+='<div class="ndwc">Joriy hafta: <b>'+cu.tot+'</b> ta namoz belgilangan</div></div>';
   h+='<div class="xtl">Oxirgi kunlar tahlili</div><div class="ndan">';
   if(an){
@@ -3759,14 +3834,15 @@ function ndInsight(o){
 }
 
 /* Anonim haftalik statistika (faqat foydalanuvchi yoqsa) */
-const NDHL=[[0,"Hamroh","Jamoaga qo‘shildingiz"],[1,"Birinchi hissa","Birinchi hafta jamoa hisobiga qo‘shildi"],[4,"Doimiy hissador","4 hafta hissa"],[12,"Chorak yillik hamroh","12 hafta hissa"],[26,"Yarim yillik hamroh","26 hafta hissa"],[52,"Bir yillik hamroh","52 hafta hissa"]];
+const NDHL=[[0,"Hamroh","Qo‘shilganingizda ochiladi"],[1,"1 hafta","Birinchi haftalik natija yuborilganda"],[4,"1 oy","4 haftalik natija yuborilganda"],[12,"3 oy","12 haftalik natija yuborilganda"],[26,"Yarim yil","26 haftalik natija yuborilganda"],[52,"1 yil","52 haftalik natija yuborilganda"]];
 function ndHc(){try{const o=JSON.parse(xbLs("ndhc")||"null");if(o&&Number.isInteger(o.w)&&Number.isInteger(o.p)&&o.w>=0&&o.p>=0)return o}catch(e){}return{w:0,p:0}}
 function ndHcDraw(hc,joined){
   const got=NDHL.filter(x=>x[0]<=hc.w&&(x[0]>0||joined||hc.w>0)),nx=NDHL.find(x=>x[0]>hc.w);
   const cur=got[got.length-1];
-  let h='<div class="ndhc">';
-  if(joined||hc.w>0)h+='<div class="ndhcn"><b>'+(cur?cur[1]:"Hamroh")+'</b><small>'+(hc.w?hc.w+' hafta · '+hc.p+' ta namoz jamoa hisobida':'Birinchi haftalik hissangiz juma kuni hisoblanadi')+'</small></div>';
-  h+='<div class="ndhcl">'+NDHL.map(x=>{const on=got.includes(x);return'<span class="'+(on?"on":"")+'"><i>'+(on?NDTK:"")+'</i><b>'+x[1]+'</b><small>'+(x[0]?x[0]+" hafta":"Qo‘shilish bilan")+'</small></span>'}).join("")+'</div>';
+  let h='<div class="ndhc"><div class="xtl">Yutuqlar</div>';
+  if(joined||hc.w>0)h+='<div class="ndhcn"><small>Hozirgi yutuq</small><b>'+(cur?cur[1]:"Hamroh")+'</b><small>'+(hc.w?hc.w+' haftalik natijangiz yuborilgan · '+hc.p+' ta namoz':'Birinchi haftalik natija juma kuni yuboriladi')+'</small>'+(nx&&joined?'<small>Keyingi yutuq “'+nx[1]+'”: yana '+(nx[0]-hc.w)+' hafta</small>':'')+'</div>';
+  else h+='<div class="ndhcx">Yutuq har hafta yuborilgan natijangiz soniga qarab ochiladi.</div>';
+  h+='<div class="ndhcl">'+NDHL.map(x=>{const on=got.includes(x);return'<span class="'+(on?"on":"")+'"><i>'+(on?NDTK:"")+'</i><b>'+x[1]+'</b><small>'+x[2]+'</small></span>'}).join("")+'</div>';
   return h+'</div>'
 }
 async function ndShip(){
@@ -3779,6 +3855,8 @@ async function ndShip(){
 }
 setTimeout(ndShip,4000);
 
+/* v6.13: oyna ochiqda orqa sahifa qimirlamaydi */
+(function(){const R=document.documentElement,f=()=>{try{R.classList.toggle("shl",!!document.querySelector(".sheet.on"))}catch(e){}},mo=new MutationObserver(f);document.querySelectorAll(".sheet").forEach(e=>mo.observe(e,{attributes:true,attributeFilter:["class"]}));f()})();
 /* Qazo namozlar (v6.10) */
 const QZK=["bomdod","peshin","asr","shom","xufton","vitr"],QZN={bomdod:"Bomdod",peshin:"Peshin",asr:"Asr",shom:"Shom",xufton:"Xufton",vitr:"Vitr"};
 const qzZ=()=>({q:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0,vitr:0},t:{bomdod:0,peshin:0,asr:0,shom:0,xufton:0,vitr:0},g:0,day:{},h:[]});
@@ -3900,17 +3978,17 @@ function ndDraw(){
   let h='<div class="ndtb" role="tablist">'+T.map(t=>`<button type="button" role="tab" data-ndt="${t[0]}" aria-selected="${NDTAB===t[0]}" class="${NDTAB===t[0]?"on":""}">${t[1]}</button>`).join("")+'</div>';
   if(NDTAB==="a"){
     const st=xbLs("nds"),w=ndWeek(o),hc=ndHc();
-    const pv=w?'<div class="ndpv">Shu haftadagi hissangiz: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+'</div>':'';
-    h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Jamoaga hamroh bo‘ling</b><small>Birga ibodat qilayotganimizni ko‘raylik</small></div></div>
-     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvoni darhol beriladi, keyin hissangiz uchun yutuqlar ochiladi.</span></p><p><i>✓</i><span>Har haftalik natijangiz umumiy ibodat hisobiga qo‘shiladi.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
+    const pv=w?'<div class="ndpv">Shu hafta yuboriladigan natija: '+NDK.map((k,i)=>NDN[k]+" "+w.c[i]).join(" · ")+'</div>':'';
+    h+=`<div class="ndan1"><div class="ndah1"><span class="ndai">${NDTK}</span><div><b>Hamroh bo‘ling</b><small>Umumiy ibodat statistikasiga qo‘shiling</small></div></div>
+     <div class="ndbn"><p><i>✓</i><span>“Hamroh” unvonini darhol olasiz, keyin haftalar o‘tgan sari yangi yutuqlar ochiladi.</span></p><p><i>✓</i><span>Haftalik natijangiz umumiy ibodat statistikasiga qo‘shiladi.</span></p><p><i>✓</i><span>Hisobda faqat namozlar soni bo‘ladi, sizni hech kim tanimaydi.</span></p><p><i>✓</i><span>Xohlagan payt bir bosishda to‘xtatasiz.</span></p></div>${pv}`;
     h+=ndHcDraw(hc,st==="1");
     if(st==="1")h+=`<div class="xtbt"><button type="button" data-ndb="tob">Belgilashga o‘tish</button><button type="button" class="sec" data-ndb="leave">To‘xtatish</button></div>`;
     else h+=`<div class="xtbt"><button type="button" data-ndb="join">Hamroh bo‘laman</button>${st===null?'<button type="button" class="sec" data-ndb="later">Hozir emas</button>':''}</div>`;
     h+=`<div class="ndm" id="ndm" role="status"></div></div>`;
   }else if(NDTAB==="b"){
     const st=xbLs("nds");
-    if(NDFLOW)h+=`<div class="ndflow"><b>Hamroh unvoni sizniki!</b><span>Endi bugungi namozlaringizni belgilab boring. Har hafta hissangiz yutuqlarga qo‘shiladi.</span></div>`;
-    else if(an&&st==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Jamoaga hamroh bo‘ling</span><b>Yutuqlar ›</b></button>`;
+    if(NDFLOW)h+=`<div class="ndflow"><b>Hamroh unvoni sizniki!</b><span>Endi bugungi namozlaringizni belgilab boring. Har hafta natijangiz yuborilgach, yangi yutuq ochiladi.</span></div>`;
+    else if(an&&st==="0")h+=`<button type="button" class="ndinv" data-ndt="a"><span>Hamroh bo‘ling</span><b>Yutuqlar ›</b></button>`;
     const n=tdy.split("1").length-1;
     h+=`<div class="xtl">Bugun · ${n}/5</div><div class="ndtd">${NDK.map((k,i)=>{const on=tdy[i]==="1",due=ndDue(i);return`<button type="button" class="ndtr${on?" on":""}${!on&&!due?" lock":""}" data-ndtd="${i}" aria-pressed="${on}"><span class="ndtc">${on?NDTK:(!due?NDLC:"")}</span><b>${NDN[k]}</b><em>${TM(k)}</em><small>${on?"Belgilangan":(due?"Belgilash":"Vaqti kirmagan")}</small></button>`}).join("")}</div>
    <div class="xtl">So‘nggi 7 kun</div>
@@ -3938,7 +4016,7 @@ $("nd").onclick=async e=>{
   if(k==="qazo"){ndClose();qzOpen();return}
   if(k==="join"){if(nzBlock("nstat"))return;xbLs("nds","1");xbLs("ndsw",null);ndShip();NDFLOW=true;NDTAB="b";ndDraw();ndHome();return}
   if(k==="later"){xbLs("nds","0");NDFLOW=false;NDTAB="b";ndDraw();ndHome();return}
-  if(k==="leave"){xbLs("nds","0");ndDraw();ndHome();ndMsg("Hissa qo‘shish to‘xtatildi. Yutuqlaringiz saqlanadi.","o");return}
+  if(k==="leave"){xbLs("nds","0");ndDraw();ndHome();ndMsg("Yuborish to‘xtatildi. Olgan yutuqlaringiz saqlanadi.","o");return}
   if(k==="tob"){NDTAB="b";ndDraw();return}
 };
 $("ndcl").onclick=ndClose;
@@ -5172,9 +5250,18 @@ async function regStats(t,total){
     };
   }catch(e){box.innerHTML=hd+'</div><div class="adrn">Statistika hali yoqilmagan. Supabase\'da <b>mintaqa-statistika.sql</b> faylini bir marta ishga tushiring.</div>'}
 }
+function aClr(){
+  document.querySelectorAll("#abody textarea,#abody input").forEach(el=>{
+    const t=el.type||"text";if(["checkbox","radio","hidden","button","submit","range","file","password","date","time","number"].includes(t)||el.dataset.noclr||el.readOnly)return;
+    const pr=el.parentNode;if(!pr||!pr.classList||!(pr.classList.contains("ac")||pr.classList.contains("nzr")))return;
+    const w=document.createElement("div");w.className="aclw"+(el.tagName==="TEXTAREA"?" ta":"");pr.insertBefore(w,el);w.appendChild(el);
+    const b=document.createElement("button");b.type="button";b.className="aclx";b.setAttribute("aria-label","Tozalash");b.textContent="×";w.appendChild(b);
+    const u=()=>w.classList.toggle("has",!!el.value);u();["input","focusin","pointerenter"].forEach(ev=>w.addEventListener(ev,u));
+    b.onclick=()=>{el.value="";el.dispatchEvent(new Event("input",{bubbles:true}));u();el.focus()}})
+}
 function aOpen(k){
   $("abody").onchange=null;AS=k;const s=ASEC[k];$("att").textContent=s.t;$("aback").style.visibility="visible";
-  $("abody").onclick=null;$("abody").oninput=null;$("abody").innerHTML=s.html();s.init();$("afoot").classList.toggle("on",!s.ns);$("asav").style.display="";$("amsg").textContent="";$("abody").scrollTop=0;
+  $("abody").onclick=null;$("abody").oninput=null;$("abody").innerHTML=s.html();s.init();try{aClr()}catch(e){}$("afoot").classList.toggle("on",!s.ns);$("asav").style.display="";$("amsg").textContent="";$("abody").scrollTop=0;
 }
 async function showAdm(){
   $("adm").classList.add("on");say("");
@@ -5293,7 +5380,7 @@ function duoCard(d,tag,open,pv){
   if(d.arab)p.push(`<div class="dsep"><s></s></div><div class="dar" dir="rtl" lang="ar">${esc(d.arab)}</div>`);
   if(d.oqilishi)p.push(`<div class="dlb g">O‘QILISHI</div><div class="drd">${esc(d.oqilishi)}</div>`);
   if(d.manosi)p.push(`<div class="dlb t">MA’NOSI</div><div class="dtr">${esc(d.manosi)}</div>`);
-  const ft=`<div class="dft"><small>${d.manba?esc(d.manba):""}</small>${pv?"":`<span><button type="button" data-dc="${d.id}">Nusxa</button><button type="button" data-ds="${d.id}">Ulashish</button></span>`}</div>`;
+  const ft=`<div class="dft"><small>${d.manba?esc(d.manba):""}</small>${pv?"":`<span><button type="button" data-dc="${d.id}">Nusxa</button><button type="button" data-di="${d.id}">Rasm</button><button type="button" data-ds="${d.id}">Ulashish</button></span>`}</div>`;
   return `<article class="dcard${open?" open":""}" data-did="${d.id}"><button class="dhd" type="button" data-dt="1"><span class="dic">${DIC}</span><span><b>${esc(d.sarlavha||"Sarlavha")}</b>${tag?`<span class="dtag">${esc(tag)}</span>`:""}</span><i class="dcv"></i></button><div class="dbody">${p.join("")}${ft}</div></article>`;
 }
 function duoDraw(){
@@ -5831,7 +5918,102 @@ $("tqro").onclick=()=>{$("tqs").classList.remove("on");const o=TQR[0];show("t4")
 setTimeout(tqBoot,2200);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)setTimeout(tqBoot,700)});
 let tdKey=day0(new Date()).getTime();document.addEventListener("visibilitychange",()=>{if(document.hidden)return;const n=day0(new Date()).getTime();if(n===tdKey)return;if(!cust&&sel.getTime()===tdKey)sel=day0(new Date());tdKey=n;if($("t4").classList.contains("on"))renderCal()});
-const APPV="6.12";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+
+/* v6.13: oyat, duo va hikmatni rasm qilib ulashish */
+const IMT=[
+ {id:"z",n:"Zumrad",bg:["#0d4a43","#06211f"],ink:"#f6f1e2",ink2:"#c9dfd8",gold:"#e0b24f",pat:"rgba(224,178,79,.075)"},
+ {id:"t",n:"Tun",bg:["#1a2c66","#080e27"],ink:"#f2f4fc",ink2:"#c2cae8",gold:"#dcc47c",pat:"rgba(220,196,124,.065)"},
+ {id:"n",n:"Nur",bg:["#fcf7e9","#efe4c8"],ink:"#10352f",ink2:"#46635c",gold:"#a8791c",pat:"rgba(16,53,47,.06)"}];
+let IMS=null,IMTI=0,IMBL=null,IMBZ=0;
+const imStar=(c,x,y,r,r2)=>{c.beginPath();for(let i=0;i<16;i++){const a=Math.PI/8*i-Math.PI/2,q=i%2?r2:r;c[i?"lineTo":"moveTo"](x+q*Math.cos(a),y+q*Math.sin(a))}c.closePath()};
+function imWrap(c,txt,mw){
+  const w=String(txt||"").replace(/\s+/g," ").trim().split(" "),L=[];let cur="";
+  w.forEach(x=>{const t=cur?cur+" "+x:x;if(cur&&c.measureText(t).width>mw){L.push(cur);cur=x}else cur=t});
+  if(cur)L.push(cur);return L
+}
+function imLay(c,sp,H,mode){
+  const MW=780,top=350,foot=270,avail=H-top-foot;
+  for(let sc=1;sc>=.68;sc-=.04){
+    const B=[];let tot=0;
+    const A=Math.round((sp.uz&&mode!=="ar"?74:84)*sc),U=Math.round((sp.ar?46:60)*sc),T=Math.round(36*sc),R=Math.round(34*sc);
+    if(sp.ar){c.font=A+'px "QPC Hafs",serif';c.direction="rtl";const l=imWrap(c,sp.ar,MW);B.push({k:"ar",l,fs:A,lh:Math.round(A*1.95),f:A+'px "QPC Hafs",serif',d:"rtl"});tot+=l.length*Math.round(A*1.95)}
+    if(sp.tl&&mode==="full"&&sc>=.8){c.font='italic '+T+'px "Lora Jannat",Georgia,serif';c.direction="ltr";const l=imWrap(c,sp.tl,MW);B.push({k:"tl",l,fs:T,lh:Math.round(T*1.5),f:'italic '+T+'px "Lora Jannat",Georgia,serif',d:"ltr",gap:28});tot+=28+l.length*Math.round(T*1.5)}
+    if(sp.uz&&mode!=="ar"){c.font=U+'px "Lora Jannat",Georgia,serif';c.direction="ltr";const l=imWrap(c,sp.uz,MW);B.push({k:"uz",l,fs:U,lh:Math.round(U*1.5),f:U+'px "Lora Jannat",Georgia,serif',d:"ltr",gap:sp.ar?44:0});tot+=(sp.ar?44:0)+l.length*Math.round(U*1.5)}
+    if(sp.ref){c.font='600 '+R+'px "Lora Jannat",Georgia,serif';c.direction="ltr";const l=imWrap(c,sp.ref,MW);B.push({k:"ref",l,fs:R,lh:Math.round(R*1.45),f:'600 '+R+'px "Lora Jannat",Georgia,serif',d:"ltr",gap:56});tot+=56+l.length*Math.round(R*1.45)}
+    if(tot<=avail)return{B,tot,top,avail}
+  }
+  return null
+}
+function imPaint(c,W,H,t,lay,sp){
+  const g=c.createLinearGradient(0,0,0,H);g.addColorStop(0,t.bg[0]);g.addColorStop(1,t.bg[1]);c.fillStyle=g;c.fillRect(0,0,W,H);
+  c.save();c.strokeStyle=t.pat;c.lineWidth=2;
+  for(let y=70;y<H+140;y+=140)for(let x=70;x<W+140;x+=140){imStar(c,x,y,40,22);c.stroke();imStar(c,x+70,y+70,16,9);c.stroke()}
+  c.restore();
+  const v=c.createRadialGradient(W/2,H/2,H*.25,W/2,H/2,H*.75);v.addColorStop(0,"rgba(0,0,0,0)");v.addColorStop(1,t.id==="n"?"rgba(120,90,30,.14)":"rgba(0,0,0,.28)");c.fillStyle=v;c.fillRect(0,0,W,H);
+  c.strokeStyle=t.gold;c.lineWidth=3;c.strokeRect(46,46,W-92,H-92);
+  c.globalAlpha=.5;c.lineWidth=1.5;c.strokeRect(66,66,W-132,H-132);c.globalAlpha=1;
+  [[66,66],[W-66,66],[66,H-66],[W-66,H-66]].forEach(([x,y])=>{c.fillStyle=t.bg[y<H/2?0:1];c.beginPath();c.arc(x,y,26,0,7);c.fill();c.fillStyle=t.gold;imStar(c,x,y,22,11);c.fill()});
+  const cx=W/2,oy=180,o=document.createElement("canvas");o.width=o.height=120;const k=o.getContext("2d");
+  k.fillStyle=t.gold;k.beginPath();k.arc(60,60,44,0,7);k.fill();k.globalCompositeOperation="destination-out";k.beginPath();k.arc(78,52,38,0,7);k.fill();
+  c.drawImage(o,cx-68,oy-60,120,120);c.fillStyle=t.gold;imStar(c,cx+34,oy-8,18,8);c.fill();
+  c.strokeStyle=t.gold;c.lineWidth=2;[[-1],[1]].forEach(([d])=>{c.beginPath();c.moveTo(cx+d*100,oy);c.lineTo(cx+d*330,oy);c.stroke();c.save();c.translate(cx+d*340,oy);c.rotate(Math.PI/4);c.fillStyle=t.gold;c.fillRect(-6,-6,12,12);c.restore()});
+  c.textAlign="center";c.textBaseline="alphabetic";c.direction="ltr";c.fillStyle=t.gold;c.font='700 28px system-ui,sans-serif';try{c.letterSpacing="8px"}catch(e){}
+  c.fillText(sp.kind,cx+4,292);try{c.letterSpacing="0px"}catch(e){}
+  let y=lay.top+(lay.avail-lay.tot)/2;
+  lay.B.forEach(b=>{
+    if(b.gap){y+=b.gap;if(b.k==="ref"){c.strokeStyle=t.gold;c.globalAlpha=.7;c.lineWidth=2;c.beginPath();c.moveTo(cx-90,y-b.gap/2-6);c.lineTo(cx+90,y-b.gap/2-6);c.stroke();c.globalAlpha=1;c.fillStyle=t.gold;c.save();c.translate(cx,y-b.gap/2-6);c.rotate(Math.PI/4);c.fillRect(-6,-6,12,12);c.restore()}}
+    c.font=b.f;c.direction=b.d;c.textAlign="center";c.fillStyle=b.k==="ref"?t.gold:(b.k==="tl"?t.ink2:t.ink);
+    b.l.forEach(l=>{y+=b.lh;c.fillText(l,cx,y-Math.round(b.lh*(b.k==="ar"?.28:.24)))})
+  });
+  c.direction="ltr";c.textAlign="center";
+  if(sp.src){c.font='500 24px "Lora Jannat",Georgia,serif';c.fillStyle=t.ink2;c.globalAlpha=.85;c.fillText(sp.src,cx,H-226);c.globalAlpha=1}
+  c.strokeStyle=t.gold;c.globalAlpha=.6;c.lineWidth=1.5;c.beginPath();c.moveTo(cx-120,H-196);c.lineTo(cx+120,H-196);c.stroke();c.globalAlpha=1;
+  c.fillStyle=t.gold;c.font='600 44px "Lora Jannat",Georgia,serif';c.fillText("Jannat sari",cx,H-136);
+  c.fillStyle=t.ink2;c.font='500 24px system-ui,sans-serif';c.fillText("Namoz vaqtlari · Qur’on · Duolar",cx,H-92)
+}
+async function imRender(){
+  const c=$("imc"),sp=IMS;if(!sp)return;const x=c.getContext("2d"),t=IMT[IMTI];
+  try{await Promise.all([document.fonts.load('80px "QPC Hafs"',sp.ar||"ب"),document.fonts.load('40px "Lora Jannat"',sp.uz||"a"),document.fonts.load('italic 36px "Lora Jannat"',"a")])}catch(e){}
+  let lay=null,H=1350,mode="full",note="";
+  for(const m of ["full","uz","ar"]){
+    if(m==="ar"&&!(sp.ar&&sp.uz))break;
+    for(const h of [1350,1620,1920]){c.width=1080;c.height=h;x.clearRect(0,0,1080,h);lay=imLay(x,sp,h,m);if(lay){H=h;mode=m;break}}
+    if(lay)break
+  }
+  if(!lay){IMBL=null;$("imn").textContent="Bu matn rasm uchun juda uzun. Uni “Nusxalash” orqali ulashing.";$("imsh").disabled=$("imsv").disabled=true;x.clearRect(0,0,c.width,c.height);return}
+  if(mode==="ar"&&sp.uz)note="Matn uzun bo‘lgani uchun rasmda faqat Arabcha matn bor. Tarjimani alohida ulashing.";
+  else if(mode==="uz"&&sp.tl)note="";
+  c.width=1080;c.height=H;imPaint(x,1080,H,t,lay,mode==="ar"?{...sp,uz:""}:sp);
+  $("imn").textContent=note;$("imsh").disabled=$("imsv").disabled=false;
+  const my=++IMBZ;IMBL=null;c.toBlob(b=>{if(my===IMBZ)IMBL=b},"image/png")
+}
+function imTabs(){$("imt").innerHTML=IMT.map((t,i)=>`<button type="button" role="tab" data-imt="${i}" aria-selected="${i===IMTI}" class="${i===IMTI?"on":""}"><i style="background:linear-gradient(135deg,${t.bg[0]},${t.bg[1]});border-color:${t.gold}"></i>${t.n}</button>`).join("")}
+async function imOpen(sp){
+  if(nzBlock("rasm"))return;
+  IMS=sp;IMTI=Math.max(0,IMT.findIndex(t=>t.id===xbLs("imt")));imTabs();$("im").classList.add("on");$("imn").textContent="Tayyorlanmoqda…";await imRender()
+}
+$("imcl").onclick=()=>$("im").classList.remove("on");
+$("im").addEventListener("click",e=>{if(e.target===$("im")){$("im").classList.remove("on");return}const b=e.target.closest("[data-imt]");if(!b)return;IMTI=+b.dataset.imt;xbLs("imt",IMT[IMTI].id);imTabs();imRender()});
+async function imGetBlob(){if(IMBL)return IMBL;return new Promise(r=>$("imc").toBlob(r,"image/png"))}
+$("imsh").onclick=async()=>{
+  const b=await imGetBlob();if(!b){toast("Rasm tayyor emas");return}
+  const f=new File([b],"jannat-sari.png",{type:"image/png"});
+  try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f]});toast("Ulashganingiz uchun rahmat");return}}catch(e){if(e&&e.name==="AbortError")return}
+  imSave(b);toast("Ulashish bu qurilmada ishlamadi. Rasm saqlandi")
+};
+function imSave(b){const a=document.createElement("a"),u=URL.createObjectURL(b);a.href=u;a.download="jannat-sari.png";document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),4000)}
+$("imsv").onclick=async()=>{const b=await imGetBlob();if(!b){toast("Rasm tayyor emas");return}imSave(b);toast("Rasm saqlandi")};
+$("qim").onclick=async()=>{
+  if(!QSEL)return;
+  try{const T=await qText(),i=qgi(QSEL.s,QSEL.a);await imOpen({kind:"OYAT",ar:T.ar[i]+" ﴿"+qdig(QSEL.a)+"﴾",uz:T.uz[i]||"",ref:QUZ[QSEL.s-1]+" surasi, "+QSEL.a+"-oyat",src:"Tarjima: Muhammad Sodiq Muhammad Yusuf"})}catch(e){toast("Rasm tayyorlanmadi")}
+};
+$("hkim").onclick=()=>{if(HK&&HK.matn)imOpen({kind:"KUN HIKMATI",uz:HK.matn,ref:HK.manba||""})};
+$("dls").addEventListener("click",e=>{
+  const b=e.target.closest("[data-di]");if(!b)return;
+  const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
+  imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
+});
+const APPV="6.13";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
