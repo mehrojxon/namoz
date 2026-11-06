@@ -2518,7 +2518,8 @@ function drawJ(){
   const box=$("jm");if(!box)return;
   const rows=[],now=new Date(),mv=eVil();
   const jt=eJuma(),vn=(VIL.find(v=>v[0]===mv)||[])[1]||"";
-  if(now.getDay()===5&&jt)rows.push(`<div class="jmr"><span class="jmi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M5 21V12a7 7 0 0 1 14 0v9M3 21h18M10 21v-5a2 2 0 0 1 4 0v5"/></svg></span><div class="jmt"><small>Bugun</small><b>Juma namozi</b></div><div class="jmv">${jt}<small>${esc(vn.replace(/ viloyati$/,""))}</small></div></div>`);
+  const jn=/^(\d\d):(\d\d)$/.exec(jt||"");
+  if(now.getDay()===5&&jt&&jn&&now.getHours()*60+now.getMinutes()<+jn[1]*60+ +jn[2])rows.push(`<div class="jmr"><span class="jmi"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2M5 21V12a7 7 0 0 1 14 0v9M3 21h18M10 21v-5a2 2 0 0 1 4 0v5"/></svg></span><div class="jmt"><small>Bugun</small><b>Juma namozi</b></div><div class="jmv">${jt}<small>${esc(vn.replace(/ viloyati$/,""))}</small></div></div>`);
   const h=D&&D.vaqtlar&&D.vaqtlar.hayit;
   if(h&&h.n&&eTm(h.v)&&/^\d{4}-\d\d-\d\d$/.test(h.s||"")){
     const days=Math.round((new Date(h.s+"T00:00:00")-new Date(eToday()+"T00:00:00"))/864e5);
@@ -2528,6 +2529,7 @@ function drawJ(){
   box.style.display=rows.length?"":"none";box.innerHTML=sig;
 }
 function drawEJ(){try{drawE()}catch(e){}try{drawJ()}catch(e){}}
+setInterval(()=>{try{drawJ()}catch(e){}},30000);
 function drawH(){
   const c=$("hk");
   if(!HK.matn){c.style.display="none";return}
@@ -5348,8 +5350,10 @@ const ASEC={
    $("j_add").onchange=e=>{const id=e.target.value;if(!id)return;$("jr_"+id).style.display="";jo();$("j_"+id).focus()};
    $("abody").onclick=e=>{const x=e.target.closest("[data-jx]");if(x){$("j_"+x.dataset.jx).value="";$("jr_"+x.dataset.jx).style.display="none";jo()}};
    $("h_n").value=h.n||"";$("h_s").value=h.s||"";$("h_v").value=h.v||"";$("h_j").value=h.j||""},
-  save:()=>{
+  save:async()=>{
    const j={},a=$("j_all").value;if(a)j["*"]=a;VIL.forEach(v=>{const x=$("j_"+v[0]).value;if(x)j[v[0]]=x});
+   const od=Object.values(j).filter(x=>{const h=+String(x).slice(0,2);return h<10||h>=16});
+   if(od.length&&!await aconfirm("Juma namozi vaqti "+od[0]+" kiritilgan. Odatda u 12:00–15:00 oralig‘ida bo‘ladi. Soat AM/PM bo‘yicha to‘g‘ri tanlanganmi? Shunday saqlansinmi?","Ha, saqlansin"))return;
    const h={n:$("h_n").value.trim(),s:$("h_s").value,v:$("h_v").value,j:$("h_j").value.trim()},any=h.n||h.s||h.v||h.j;
    if(any&&(!h.n||!h.s||!h.v)){say("Hayit uchun nomi, sanasi va vaqtini to‘liq kiriting");return}
    return patchV(v=>{if(Object.keys(j).length)v.juma=j;else delete v.juma;if(any)v.hayit=h;else delete v.hayit})}},
@@ -6381,7 +6385,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.19";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.20";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
