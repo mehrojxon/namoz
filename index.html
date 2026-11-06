@@ -5168,21 +5168,21 @@ async function hikmatDel(){
   try{
     const r=await fetch(SB+"/rest/v1/hikmat?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({matn:"",manba:"",yangilangan:new Date().toLocaleDateString("sv")})});
     const a=await r.json();if(!r.ok||!a.length)throw 0;
-    HK={matn:"",manba:""};localStorage.setItem("hikmat",JSON.stringify(HK));drawH();$("hm").value="";$("hs").value="";say("Hikmat o‘chirildi. Karta yashirildi ✓");
+    HK={matn:"",manba:""};localStorage.setItem("hikmat",JSON.stringify(HK));drawH();$("hkx_m").value="";$("hs").value="";say("Hikmat o‘chirildi. Karta yashirildi ✓");
   }catch(e){say("O‘chirilmadi. Qaytadan urinib ko‘ring")}
 }
 async function hikmatSave(){
   const t=await tok();if(!t){showAdm();return}
-  const m=$("hm").value.trim(),sr=$("hs").value.trim();
+  const m=$("hkx_m").value.trim(),sr=$("hs").value.trim();
   if(!m){say("Matnni yozing");return}
   try{
     const r=await fetch(SB+"/rest/v1/hikmat?id=eq.1",{method:"PATCH",headers:{...H(t),Prefer:"return=representation"},body:JSON.stringify({matn:m,manba:sr,yangilangan:new Date().toLocaleDateString("sv")})});
     const a=await r.json();if(!r.ok||!a.length)throw 0;
     HK={matn:m,manba:sr};localStorage.setItem("hikmat",JSON.stringify(HK));drawH();
-    if($("hp").checked){
+    if($("hkx_p").checked){
       const p=await fetch(SB+"/rest/v1/rpc/hikmat_yubor",{method:"POST",headers:H(t),body:JSON.stringify({m:m.length>180?m.slice(0,177)+"…":m})});
       if(!p.ok)throw 1;
-      $("hp").checked=false;say("Saqlandi va bildirishnoma yuborildi ✓");
+      $("hkx_p").checked=false;say("Saqlandi va bildirishnoma yuborildi ✓");
     }else say("Hikmat saqlandi ✓");
   }catch(e){say("Saqlanmadi. Qaytadan urinib ko‘ring")}
 }
@@ -5384,10 +5384,10 @@ const ASEC={
   html:()=>`<section class="adst"><div class="adrg"><div class="adrh"><b>Anonim namoz statistikasi</b></div><div class="ah" style="margin:6px 0 0">Faqat daftarda “Anonimlik”ni o‘zi yoqqan foydalanuvchilarning haftalik (juma — payshanba) umumiy sonlari. Ism, joylashuv va kunlik belgilar yuborilmaydi.</div></div><div id="nsb"><div class="adrg"><div class="adrn">Yuklanmoqda…</div></div></div></section>`,
   init:()=>nsInit(),save:()=>{}},
  hikmat:{t:"Kun hikmati",d:"Matnni yozish va xabar yuborish",
-  html:()=>`<div class="ac"><div class="ag">Matn</div><textarea id="hm" rows="6" placeholder="Hikmatli so‘z yoki hadis matni"></textarea><input id="hs" placeholder="Manba (masalan: Imom Buxoriy, Sahih)"></div>
-   <div class="ac"><label class="zsw"><input type="checkbox" id="hp"><span>Saqlagach hamma foydalanuvchiga bildirishnoma yuborish</span></label></div>
+  html:()=>`<div class="ac"><div class="ag">Matn</div><textarea id="hkx_m" rows="6" placeholder="Hikmatli so‘z yoki hadis matni"></textarea><input id="hs" placeholder="Manba (masalan: Imom Buxoriy, Sahih)"></div>
+   <div class="ac"><label class="zsw"><input type="checkbox" id="hkx_p"><span>Saqlagach hamma foydalanuvchiga bildirishnoma yuborish</span></label></div>
    <div class="ac"><div class="ag">Hikmatni o‘chirish</div><div class="ah">Bosh sahifadagi “Kun hikmati” kartasi hamma foydalanuvchida yashiriladi. Keyin yangi matn yozib saqlasangiz, u yana ko‘rinadi.</div><button type="button" class="alink dng" id="hdel">Hikmatni o‘chirib qo‘yish</button></div>`,
-  init:()=>{$("hm").value=HK.matn;$("hs").value=HK.manba},
+  init:()=>{$("hkx_m").value=HK.matn;$("hs").value=HK.manba},
   save:hikmatSave}
 };
 let AST=0,AE=null,AEUP=null,AS=null,AD={},AS_SV=null,LKS={},AV={},VS=null,VINIT=null;
@@ -6339,7 +6339,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.17";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.18";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
