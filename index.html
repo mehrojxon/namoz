@@ -1936,6 +1936,7 @@ nav{box-shadow:0 14px 28px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.1)}
 html.shl body{overflow:hidden}
 .sheet .box,.sheet #abody,.sheet #ndbody{overscroll-behavior:contain}
 /* aclw */
+#abody .alat,.alat{display:block;margin:2px 0 12px;padding:9px 16px;border-radius:10px;border:1px solid rgba(240,201,105,.55)!important;background:rgba(240,201,105,.12)!important;color:#f0c969!important;font:600 14px system-ui;cursor:pointer;width:auto}#abody .alat[hidden],.alat[hidden]{display:none}
 .aclw{position:relative}
 .aclw input,.aclw textarea{padding-right:46px;box-sizing:border-box}
 .aclx{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;margin:0;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#e8d9a8;font:400 22px/1 system-ui;align-items:center;justify-content:center;min-height:0}
@@ -5585,6 +5586,47 @@ function aClr(){
     const u=()=>w.classList.toggle("has",!!el.value);u();["input","focusin","pointerenter"].forEach(ev=>w.addEventListener(ev,u));
     b.onclick=()=>{el.value="";el.dispatchEvent(new Event("input",{bubbles:true}));u();el.focus()}})
 }
+/* v6.19: kirilcha → lotincha (admin matn maydonlari) */
+function cyl2lat(s){
+  const M={а:"a",б:"b",в:"v",г:"g",д:"d",ж:"j",з:"z",и:"i",й:"y",к:"k",л:"l",м:"m",н:"n",о:"o",п:"p",р:"r",с:"s",т:"t",у:"u",ф:"f",х:"x",ч:"ch",ш:"sh",ъ:"’",ь:"",ы:"i",э:"e",ю:"yu",я:"ya",ё:"yo",ў:"o‘",қ:"q",ғ:"g‘",ҳ:"h",ҷ:"j",ӣ:"i",ӯ:"o‘"};
+  const VW=/[аеёиоуўэюяэaeiouAEIOU]/i,CY=/[Ѐ-ӿ]/;
+  const str=String(s||"");let o="";
+  for(let i=0;i<str.length;i++){
+    const c=str[i],l=c.toLowerCase(),p=i?str[i-1]:"",n=str[i+1]||"";
+    let r;
+    if(l==="е"){r=(!p||!/[\p{L}’‘ʼʻ']/u.test(p)||VW.test(p))?"ye":"e"}
+    else if(l==="ц"){r=(p&&VW.test(p))?"ts":"s"}
+    else if(Object.prototype.hasOwnProperty.call(M,l))r=M[l];
+    else{o+=c;continue}
+    if(c!==l&&r){
+      const up=ch=>ch&&ch!==ch.toLowerCase()&&CY.test(ch);
+      r=(r.length>1&&(up(n)||up(p)))?r.toUpperCase():r.charAt(0).toUpperCase()+r.slice(1);
+    }
+    o+=r;
+  }
+  return o;
+}
+const LAT_NO=new Set(["v_paste","a_paste","adq","n_v","em","pw"]);
+function latScan(){
+  const ab=$("abody");if(!ab)return;
+  ab.querySelectorAll("textarea,input").forEach(el=>{
+    const t=el.type||"text";
+    if(!["text","search","textarea",""].includes(t)||el.readOnly||el.dataset.nolat||LAT_NO.has(el.id))return;
+    if(!el._lat){
+      const b=document.createElement("button");b.type="button";b.className="alat";b.hidden=true;b.textContent="Lotinchaga o‘tkazish";
+      b.onclick=()=>{const v=el.value,w=cyl2lat(v);if(w===v)return;el.value=w;el.dispatchEvent(new Event("input",{bubbles:true}));b.hidden=true;asay("Lotinchaga o‘tkazildi. Matnni tekshirib chiqing");};
+      (el.closest(".aclw")||el).insertAdjacentElement("afterend",b);el._lat=b;
+    }
+    el._lat.hidden=!/[Ѐ-ӿ]/.test(el.value);
+  });
+}
+(()=>{
+  const ab=$("abody");if(!ab)return;let q=0;
+  const go=()=>{if(q)return;q=requestAnimationFrame(()=>{q=0;try{latScan()}catch(e){}})};
+  ["input","focusin","pointerdown","change"].forEach(ev=>ab.addEventListener(ev,go,true));
+  new MutationObserver(go).observe(ab,{childList:true,subtree:true});
+})();
+
 function aOpen(k){
   $("abody").onchange=null;AS=k;const s=ASEC[k];$("att").textContent=s.t;$("aback").style.visibility="visible";
   $("abody").onclick=null;$("abody").oninput=null;$("abody").innerHTML=s.html();s.init();try{aClr()}catch(e){}$("afoot").classList.toggle("on",!s.ns);$("asav").style.display="";$("amsg").textContent="";$("abody").scrollTop=0;
@@ -6339,7 +6381,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.18";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.19";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
