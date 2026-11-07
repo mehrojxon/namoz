@@ -2213,7 +2213,7 @@ html.shl body{overflow:hidden}
 .ntb .ntc{position:relative;margin:0;padding:0;border:0;background:none;color:#e6f1ee;display:flex;flex-direction:column;align-items:center;gap:7px;font:600 12.5px system-ui}
 .ntb .ntc i{display:grid;place-items:center;width:42px;height:42px;border-radius:50%;border:1.5px solid #3a5a56;background:#0e2423;color:#6f9a94}
 .ntb .ntc.on i{background:linear-gradient(180deg,#f0c969,#d4a23e);border-color:#f0c969;box-shadow:0 0 14px rgba(240,201,105,.35)}
-.ntb .ntc.cur i{border-color:#fff;box-shadow:0 0 0 4px rgba(255,255,255,.12)}
+.ntb .ntc.due i{border-color:#4fd0a0;color:#6fe0a8;background:rgba(79,208,160,.14);box-shadow:0 0 0 4px rgba(79,208,160,.14)}
 .ntb .ntc.lock{opacity:.7}
 .ntb .ntc svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .ntb .ntc.on svg{stroke:#2a1d06}
@@ -2226,7 +2226,11 @@ html.shl body{overflow:hidden}
 .nkp .nkt b{display:block;font:600 15.5px var(--fd)}.nkp .nkt b em{font-style:normal;color:#e0b24f}
 .nkp .nkd{display:flex;gap:4px;margin-top:5px}.nkp .nkd u{width:18px;height:4px;border-radius:2px;background:#27484a}.nkp .nkd u.f{background:#e0b24f}.nkp .nkd u.n{background:#fff}
 .nkp .nkg{flex:none;width:52px;height:52px;margin:0;padding:0;border-radius:50%;border:0;display:grid;place-items:center;background:linear-gradient(180deg,#f0c969,#d4a23e);color:#2a1d06;box-shadow:0 0 0 4px rgba(240,201,105,.15)}
-.nkp .nkg.dim{background:#1d3b39;color:#5d8782;box-shadow:none}
+.nkp .nkg.rdy{background:linear-gradient(180deg,#6fe0a8,#2fae78);color:#04261a;box-shadow:0 0 0 4px rgba(79,208,160,.2),0 0 18px rgba(79,208,160,.35);animation:nkp 2s ease-in-out infinite}
+.nkp .nkg.ok{background:rgba(79,208,160,.14);color:#6fe0a8;border:1.5px solid rgba(79,208,160,.5);box-shadow:none}
+.nkp .nkg.wt{background:#1d3b39;color:#6f9a94;box-shadow:none}
+@keyframes nkp{50%{box-shadow:0 0 0 7px rgba(79,208,160,.08),0 0 22px rgba(79,208,160,.45)}}
+@media(prefers-reduced-motion:reduce){.nkp .nkg.rdy{animation:none}}
 .nkp .nkg svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
 .skhf{display:flex;flex-direction:column;gap:6px;margin-top:10px}
 :is(#sk_ndh,.lopi) .ndhw{display:block;width:100%;margin:10px 0 0;padding:9px 12px;border-radius:12px;border:1px solid rgba(224,178,79,.4);background:rgba(224,178,79,.08);color:#f0c969;font:600 13px system-ui;text-align:left;min-height:0}
@@ -2802,11 +2806,15 @@ const hxArc=(cx,cy,r,a0,a1)=>{const p=a=>[cx+r*Math.cos(a*Math.PI/180),cy+r*Math
 SK.hero={
  osmon:c=>{if(!c.cds)return"";const h=hxT(c),pi=c.pi,tun=pi===5;
   return`<div class="hxo" role="button" tabindex="0" aria-label="Namoz vaqtlarini ochish" style="background:${SKY_G[pi]}"><div class="hxs" style="background:${SKY_S[pi]}"></div>${tun?'<i class="hxst"></i><i class="hxst b"></i><i class="hxst c"></i>':""}<svg class="hxh" viewBox="0 0 384 92" preserveAspectRatio="none" aria-hidden="true"><path d="M0 62C60 40 110 66 170 54s120-26 214 6V92H0z" fill="#0f2a2b"/><path d="M0 78C70 62 130 84 200 72s130-18 184 0V92H0z" fill="#081a1a"/><g fill="#081a1a" transform="translate(190 2)"><rect x="42" y="30" width="5" height="46"/><path d="M40 32l4.5-9 4.5 9z"/><rect x="62" y="52" width="40" height="26"/><path d="M62 52a20 20 0 0 1 40 0z"/><rect x="95" y="38" width="5" height="40"/><path d="M93 40l4.5-9 4.5 9z"/></g></svg><div class="hxt"><small>Keyingi namoz</small><b>${h.nm}</b><span>${h.tm}</span></div><div class="hxc">${h.cd}<small>qoldi</small></div></div>`},
- halqa:c=>{const h=hxT(c),t=hxMarks(),done=t.split("1").length-1;
-  const cur=({0:0,1:1,2:1,3:2,4:3,5:4})[c.nxt>=0?c.nxt:0],after=(()=>{let j=(c.k+1)%6;if(N[j][0]==="quyosh")j=(j+1)%6;return j})();
-  let seg="";for(let i=0;i<5;i++){const a0=-90+i*72+5,a1=-90+(i+1)*72-5,d=t[i]==="1",cu=i===cur&&!d;seg+=`<path d="${hxArc(79,79,70,a0,a1)}" stroke="${d?"#e0b24f":cu?"#fff0bd":"#25423f"}" stroke-width="${cu?10:8}" stroke-linecap="round" fill="none"/>`}
-  let dn="";for(let i=0;i<5;i++)dn+=`<i class="${t[i]==="1"?"":"o"}"></i>`;
-  return`<div class="hxr" role="button" tabindex="0" aria-label="Namoz vaqtlarini ochish"><div class="hxg"><svg viewBox="0 0 158 158" aria-hidden="true">${seg}</svg><div class="hxm"><b>${h.nm.replace(" vaqti tugaydi","")}</b><span>${h.tm}</span></div></div><div class="hx2"><small>${h.until}</small><div class="hxb">${h.cd}</div><div class="hxw"><span>Bugun</span><b>${done} / 5</b></div><div class="hxw"><span>Keyingi</span><b>${N[after][1].replace(" chiqishi","")} ${TM(N[after][0])}</b></div><div class="hxw"><span>Belgilangan</span><span class="hxd">${dn}</span></div></div></div>`},
+ halqa:c=>{const h=hxT(c),id=N[c.k][0];
+  const hm=x=>{const m=/^(\d\d):(\d\d)$/.exec(x||"");return m?+m[1]*60+ +m[2]:0};
+  const now=new Date(),nm=now.getHours()*60+now.getMinutes();
+  let cur=({0:0,1:1,2:1,3:2,4:3,5:4})[c.k],gold=cur;
+  if(c.k===0&&nm>=hm(TM("bomdod"))){gold=5;cur=-1}
+  const nz=j=>{let x=(j+1)%6;if(N[x][0]==="quyosh")x=(x+1)%6;return x},n1=nz(c.k),n2=nz(n1);
+  let seg="";for(let i=0;i<5;i++){const a0=-90+i*72+5,a1=-90+(i+1)*72-5,d=i<gold,cu=i===cur;seg+=`<path d="${hxArc(79,79,70,a0,a1)}" stroke="${d?"#e0b24f":cu?"#fff0bd":"#25423f"}" stroke-width="${cu?10:8}" stroke-linecap="round" fill="none"/>`}
+  const cn=id==="quyosh"?"Quyosh":h.nm.replace(" vaqti tugaydi","");
+  return`<div class="hxr" role="button" tabindex="0" aria-label="Namoz vaqtlarini ochish"><div class="hxg"><svg viewBox="0 0 158 158" aria-hidden="true">${seg}</svg><div class="hxm"><b>${cn}</b><span>${h.tm}</span></div></div><div class="hx2"><small>${h.until}</small><div class="hxb">${h.cd}</div><div class="hxw"><span>Keyingi</span><b>${N[n1][1]} ${TM(N[n1][0])}</b></div><div class="hxw"><span>Undan keyin</span><b>${N[n2][1]} ${TM(N[n2][0])}</b></div></div></div>`},
  yozuv:c=>{const h=hxT(c);
   return`<div class="hxy" role="button" tabindex="0" aria-label="Namoz vaqtlarini ochish"><i class="hxst2"></i><div class="hxa" lang="ar" dir="rtl">${h.ar}</div><div class="hxx"><small>Keyingi namoz</small><b>${h.tm}</b><div class="hxn">${h.full}</div><div class="hxp"><i style="width:${(h.pr*100).toFixed(1)}%"></i></div><div class="hxq"><b>${h.cd}</b> qoldi</div></div></div>`}
 };
@@ -2852,7 +2860,7 @@ function ndCx(c){
 }
 function ndBtn(c,i,cls){
   const k=NDK[i],on=c.t[i]==="1",lk=!on&&!c.due[i];
-  return`<button type="button" data-ndh="${i}" class="${cls} ${on?"on":""}${lk?" lock":""}${i===c.cur?" cur":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b></button>`;
+  return`<button type="button" data-ndh="${i}" class="${cls} ${on?"on":""}${lk?" lock":""}${i===c.cur&&!on?" due":""}" aria-pressed="${on}" aria-label="${NDN[k]}, ${TM(k)}${lk?", vaqti hali kirmagan":""}"><i>${on||i===c.cur?NDTK:(lk?NDLC:"")}</i><b>${NDN[k]}</b></button>`;
 }
 const skFoot=c=>{const h=(c.hint||"").replace('class="ndhw','class="skh ndhw'),q=(c.qz||"").replace('class="ndhw','class="skh ndhw');return(h||q)?`<div class="skhf">${h}${q}</div>`:""};
 SK.ndh={
@@ -2860,9 +2868,13 @@ SK.ndh={
   return`<div class="ntb"><div class="ntt" data-ndh="hdr" role="button" tabindex="0" aria-label="Namoz daftarini ochish"><b>Bugungi namozlar</b><span>${c.n}/5</span></div><div class="ntr"><i class="ntl"></i>${NDK.map((k,i)=>ndBtn(c,i,"ntc")).join("")}</div>${skFoot(c)}</div>`},
  kapsula:c=>{if(!c.t)return"";c=ndCx(c);
   const C=2*Math.PI*18,off=(C*(1-c.n/5)).toFixed(1),idx=c.cur>=0?c.cur:c.nx>=0?c.nx:-1,all=c.n===5;
-  const k=idx>=0?NDK[idx]:null,lbl=all?"Bugungi namozlar belgilandi":c.cur>=0?"Belgilash kutilmoqda":"Keyingi namoz";
+  const k=idx>=0?NDK[idx]:null,lbl=all?"Bugungi namozlar belgilandi":c.cur>=0?"Vaqti kirdi · belgilang":"Keyingi namoz";
   let bars="";for(let i=0;i<5;i++)bars+=`<u class="${c.t[i]==="1"?"f":i===idx&&!all?"n":""}"></u>`;
-  return`<div class="nkp"><div class="nrg" data-ndh="hdr" role="button" tabindex="0" aria-label="Namoz daftarini ochish"><svg viewBox="0 0 46 46" fill="none" aria-hidden="true"><circle cx="23" cy="23" r="18" stroke="#27484a" stroke-width="3.4"/><circle cx="23" cy="23" r="18" stroke="#e0b24f" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${c.n}<br>/5</b></div><div class="nkt" data-ndh="hdr"><small>${lbl}</small>${k&&!all?`<b>${NDN[k]} <em>${TM(k)}</em></b>`:`<b>${all?"Barakalla":"—"}</b>`}<div class="nkd">${bars}</div></div>${c.cur>=0?`<button type="button" class="nkg" data-ndh="${c.cur}" aria-label="${NDN[NDK[c.cur]]} namozini belgilash"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></button>`:`<button type="button" class="nkg ${all?"on":"dim"}" data-ndh="open" aria-label="Namoz daftarini ochish"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></button>`}</div>${skFoot(c)}`}
+  const ck='<svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg>',lk='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v4.500l3 1.800"/></svg>';
+  const btn=c.cur>=0?`<button type="button" class="nkg rdy" data-ndh="${c.cur}" aria-label="${NDN[NDK[c.cur]]} namozini o‘qildi deb belgilash">${ck}</button>`
+   :all?`<button type="button" class="nkg ok" data-ndh="open" aria-label="Namoz daftarini ochish">${ck}</button>`
+   :`<button type="button" class="nkg wt" data-ndh="${c.nx>=0?c.nx:"open"}" aria-label="${k?NDN[k]+" vaqti hali kirmagan":"Namoz daftarini ochish"}">${lk}</button>`;
+  return`<div class="nkp"><div class="nrg" data-ndh="hdr" role="button" tabindex="0" aria-label="Namoz daftarini ochish"><svg viewBox="0 0 46 46" fill="none" aria-hidden="true"><circle cx="23" cy="23" r="18" stroke="#27484a" stroke-width="3.4"/><circle cx="23" cy="23" r="18" stroke="#e0b24f" stroke-width="3.4" stroke-linecap="round" stroke-dasharray="${C.toFixed(1)}" stroke-dashoffset="${off}"/></svg><b>${c.n}<br>/5</b></div><div class="nkt" data-ndh="hdr"><small>${lbl}</small>${k&&!all?`<b>${NDN[k]} <em>${TM(k)}</em></b>`:`<b>${all?"Barakalla":"—"}</b>`}<div class="nkd">${bars}</div></div>${btn}</div>${skFoot(c)}`}
 };
 LO_DEMO.ndh={t:"11000",due:[true,true,true,false,false],cur:2,nx:3,hint:"",qz:""};
 /* bo‘limlar */
@@ -6891,7 +6903,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.22";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.23";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
