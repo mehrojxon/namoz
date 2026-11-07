@@ -2972,7 +2972,7 @@ document.addEventListener("click",e=>{
   if(b.dataset.sh){const x=$("qa-sh");if(x)x.click()}else show(b.dataset.go);
 });
 /* kun hikmati */
-function hkOv(root){root.querySelectorAll(".skq").forEach(q=>{const m=q.parentNode.querySelector(".skmore");if(!m)return;m.style.display=q.scrollHeight>q.clientHeight+2?"":"none"})}
+function hkOv(root){root.querySelectorAll(".skq").forEach(q=>{const m=q.parentNode.querySelector(".skmore");if(!m)return;m.style.display=(q.classList.contains("open")||q.scrollHeight>q.clientHeight+2)?"":"none"})}
 document.addEventListener("click",e=>{
   const m=e.target.closest&&e.target.closest("#sk_hk .skmore");
   if(m){const w=m.closest(".hkw")||m.parentNode,q=w.querySelector(".skq");if(!q)return;const o=q.classList.toggle("open");m.textContent=o?"Yig‘ish":"Davomini o‘qish";return}
@@ -7054,7 +7054,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.27";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.28";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
