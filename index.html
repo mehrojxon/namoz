@@ -6643,7 +6643,7 @@ function duoDraw(){
   const auto=L.length<=2;
   $("dls").innerHTML=L.map(x=>duoCard(x.d,x.t?x.t.nom:"",auto||DOP[x.d.id])).join("");
 }
-function duoEnter(){if(RZQ)RZQ=false;else if(RZF){RZF=false;DQ="";$("dq").value=""}duoDraw();duoSync()}
+function duoEnter(){DOP={};if(RZQ)RZQ=false;else if(RZF){RZF=false;DQ="";$("dq").value=""}duoDraw();duoSync()}
 function duoText(d){return [d.sarlavha,d.arab,d.oqilishi&&("O‘qilishi: "+d.oqilishi),d.manosi&&("Ma’nosi: "+d.manosi),d.manba&&("Manba: "+d.manba)].filter(Boolean).join("\n\n")+"\n\nJannat sari ilovasi"}
 async function duoCopy(t){
   try{await navigator.clipboard.writeText(t);return true}catch(e){}
@@ -7301,7 +7301,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.31";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.32";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
