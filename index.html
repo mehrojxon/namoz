@@ -1967,6 +1967,9 @@ html.shl body{overflow:hidden}
 .aclx{display:none;position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;margin:0;padding:0;border-radius:50%;border:0;background:rgba(255,255,255,.12);color:#e8d9a8;font:400 22px/1 system-ui;align-items:center;justify-content:center;min-height:0}
 .aclw.ta .aclx{top:10px;transform:none}
 .aclw.has .aclx{display:flex}
+#abody .aclw input,#abody .aclw textarea,#pn .aclw input,#pn .aclw textarea{padding-right:50px}
+#abody .aclw .aclx,#pn .aclw .aclx{width:32px;height:32px;min-height:0;padding:0;border-radius:50%;background:rgba(255,255,255,.14);color:#e8d9a8;font:400 22px/1 system-ui;border:0;box-shadow:none}
+#abody .aclw.ta .aclx,#pn .aclw.ta .aclx{top:8px;transform:none}
 /* natija */
 #nd .ndtl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 6px}
 #nd .ndtl div{padding:11px 6px;border-radius:14px;border:1px solid var(--line);background:rgba(127,160,150,.07);text-align:center}
@@ -7301,7 +7304,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.33";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.34";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
