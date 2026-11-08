@@ -2398,6 +2398,16 @@ html.shl body{overflow:hidden}
 #t2[data-z=kiswa]{--zb:rgba(12,10,8,.7);--zl:rgba(217,169,72,.36);--zf:#eadfc0;--za:#d9a948;--zaf:#1a1100;--zn:#e8c46a}
 #t2[data-z=sahar]{--zb:rgba(40,16,62,.55);--zl:rgba(255,205,175,.32);--zf:#fbe6f2;--za:#ffd28a;--zaf:#35194f;--zn:#ffe0b8}
 #t2[data-z=zanjir]{--zb:rgba(48,8,22,.62);--zl:rgba(232,195,106,.36);--zf:#f6e6cc;--za:#e8c36a;--zaf:#2a1200;--zn:#f6dc96}
+body[data-scr=t2][data-zk=zulol] #sback{background:rgba(6,40,48,.55);border-color:rgba(160,240,230,.28);color:#e2fbf7}
+body[data-scr=t2][data-zk=zulol] #stt{color:#e2fbf7}
+body[data-scr=t2][data-zk=zargar] #sback{background:rgba(10,20,15,.62);border-color:rgba(232,195,106,.34);color:#e8efe9}
+body[data-scr=t2][data-zk=zargar] #stt{color:#e8efe9}
+body[data-scr=t2][data-zk=kiswa] #sback{background:rgba(12,10,8,.7);border-color:rgba(217,169,72,.36);color:#eadfc0}
+body[data-scr=t2][data-zk=kiswa] #stt{color:#eadfc0}
+body[data-scr=t2][data-zk=sahar] #sback{background:rgba(40,16,62,.55);border-color:rgba(255,205,175,.32);color:#fbe6f2}
+body[data-scr=t2][data-zk=sahar] #stt{color:#fbe6f2}
+body[data-scr=t2][data-zk=zanjir] #sback{background:rgba(48,8,22,.62);border-color:rgba(232,195,106,.36);color:#f6e6cc}
+body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #zsk{position:relative;min-height:300px;background:none}
 #zsb{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;margin:0;background:none;display:block;-webkit-tap-highlight-color:transparent;touch-action:manipulation;overflow:hidden}
 #zs{position:absolute;left:0;top:0;width:360px;height:520px;transform-origin:0 0;transform:scale(var(--k,1));color:#fff;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;text-align:center;pointer-events:none}
@@ -3534,7 +3544,7 @@ function zskPos(){
   inn.style.transform=`translateY(${(py-((M-1-idx)*76+38)).toFixed(0)}px)`;
 }
 function zskUp(anim){
-  const on=ZV!=="klassik",t2=$("t2");t2.classList.toggle("zsm",on);zskE.hidden=!on;if(on)t2.dataset.z=ZV;else delete t2.dataset.z;
+  const on=ZV!=="klassik",t2=$("t2");t2.classList.toggle("zsm",on);if(on)document.body.dataset.zk=ZV;else delete document.body.dataset.zk;zskE.hidden=!on;if(on)t2.dataset.z=ZV;else delete t2.dataset.z;
   if(!on){zsB="";zsFK="";zsE.innerHTML="";zbgE.innerHTML="";return}
   if(zsB!==ZV){zsE.innerHTML=ZSK[ZV]();zbgE.innerHTML=ZBG[ZV]();zsB=ZV;zsFK="";zsFit="";zsE.dataset.a="";zsE.dataset.jl="";zbgE.dataset.bl=""}
   const k=ZK[Z.sel],d=zd(),m=zmax(),inf=m===Infinity,n=d.n,f=inf?(n%100)/100:Math.min(n/m,1);
@@ -7291,7 +7301,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.30";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.31";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
