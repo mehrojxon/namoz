@@ -991,6 +991,8 @@ body[data-scr="t7"] #sbar{display:none}
 #qmp button svg{width:22px;height:22px;fill:currentColor;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round}
 #qmpv svg,#qmnx svg,#qmx svg{fill:none}
 #qmpp{background:#e8c26a!important;color:#12302b!important}
+#qmrp{font:700 13px system-ui!important;width:auto!important;min-width:40px;padding:0 8px!important;border:1px solid rgba(240,201,105,.4)!important;border-radius:20px!important;margin-right:2px!important}
+#qmrp.on{background:#e8c26a!important;color:#12302b!important}#qmrp.no{opacity:.35}
 #qmpp .is{display:none}#qmpp.pl .ip{display:none}#qmpp.pl .is{display:block}
 #qjs{display:none;position:fixed;inset:0;z-index:14;background:rgba(0,0,0,.45);align-items:flex-end;justify-content:center}
 #qjs.on{display:flex}
@@ -2725,6 +2727,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
   </div>
   <div id="qmp">
    <button id="qmr" type="button" aria-label="Qorini almashtirish"><b id="qmn"></b><small id="qma"></small></button>
+   <button id="qmrp" type="button" aria-label="Takror soni">×1</button>
    <button id="qmpv" type="button" aria-label="Oldingi oyat"><svg viewBox="0 0 24 24"><path d="M7 5.5v13M18 6v12l-8.5-6z"/></svg></button>
    <button id="qmpp" type="button" aria-label="To‘xtatish yoki davom ettirish"><svg class="ip" viewBox="0 0 24 24"><path d="M8.5 5.5v13l10.5-6.5z"/></svg><svg class="is" viewBox="0 0 24 24"><path d="M8 5.5h2.8v13H8zM13.2 5.5H16v13h-2.8z"/></svg></button>
    <button id="qmnx" type="button" aria-label="Keyingi oyat"><svg viewBox="0 0 24 24"><path d="M17 5.5v13M6 6v12l8.5-6z"/></svg></button>
@@ -2841,7 +2844,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
   <h2>Jannat sari</h2>
   <div class="mut">Namoz vaqtlari, tasbeh, qibla, Qur'on, taqvim va zakot · <span class="appv"></span></div>
   <p class="mut">Vaqtlar tanlangan mintaqa bo‘yicha hisoblanadi</p>
-  <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina nusxasi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy.</p>
+  <p class="mut" style="font-size:12.5px">Qur’on sahifalari: Madina nusxasi, Qirol Fahd Qur’on nashriyoti majmuasi (KFGQPC), <a href="https://qul.tarteel.ai" target="_blank" rel="noopener" style="color:var(--ac)">QUL</a> orqali, o‘zgartirilmagan. Tarjima: Muhammad Sodiq Muhammad Yusuf. Tilovat: Abdulbosit Abdussamad, Yosir ad-Dusariy, Mahmud Xalil al-Husariy (Muallim, everyayah.com).</p>
   <p class="mut" style="font-size:12.5px">Islomiy taqvim ma’lumotlari va fiqhiy mavzular <a href="https://muslim.uz" target="_blank" rel="noopener" style="color:var(--ac)">muslim.uz</a>, <a href="https://islom.uz" target="_blank" rel="noopener" style="color:var(--ac)">islom.uz</a> va <a href="https://fatvo.uz" target="_blank" rel="noopener" style="color:var(--ac)">fatvo.uz</a> saytlari maqolalari asosida tayyorlangan; har bir yozuvning manbasi o‘z o‘rnida ko‘rsatilgan.</p>
   <p class="mut" style="font-size:12.5px">Zakot, ushr, fitr va fidya hisobi hanafiy mazhabi ulamolarining qarashlari asosida tuzilgan. Fiqhiy kitoblar: «Kifoya» (2-juz), «Hidoya» (1-juz; Burhoniddin al-Marg‘inoniy), «Fatvolar to‘plami» (1-kitob).</p>
   <p class="mut" style="font-size:12.5px">Faroiz (meros) hisobi hanafiy mazhabi bo‘yicha tuzilgan. Manbalar: «Sirojiyya» (Sirojiddin as-Sajovandiy) va «Meros ilmi» kitobi (muallif: Abu Isom Nuriddin Muslihiddin Buxoriy, tarjimon: Abu Abdulbosit Shokirxo‘ja Andijoniy).</p>
@@ -5623,7 +5626,10 @@ async function qTxt(){
 }
 /* Tilovat */
 let QAU=null,QAP=null,QRC=+(qg("qrc")||0),QPI=-1,QEL=null,QPLAY=false;
-function qAudioData(){return QAP||(QAP=fetch("quran-audio.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>QAU=j).catch(e=>{QAP=null;throw e}))}
+/* Husariy (Muallim): har oyat alohida fayl. Takror sanagichi faqat oyatma-oyat qorilarda ishlaydi */
+const QHS={id:"hsm",n:"Mahmud Xalil al-Husariy",s:"Muallim",k:"a",u:"https://everyayah.com/data/Husary_Muallim_128kbps/"};
+const QRL=[1,3,5,10,20,40];let QRT=+(qg("qrt2")||1);if(QRL.indexOf(QRT)<0)QRT=1;let QRN=0;
+function qAudioData(){return QAP||(QAP=fetch("quran-audio.json?v="+QV).then(r=>{if(!r.ok)throw 0;return r.json()}).then(j=>{if(!j.r.some(x=>x.id==="hsm"))j.r.push(QHS);return j}).then(j=>QAU=j).catch(e=>{QAP=null;throw e}))}
 const qaud=()=>{try{const o=JSON.parse(qg("qaud")||"{}");return o&&typeof o==="object"&&!Array.isArray(o)?o:{}}catch(e){return{}}};
 const qAudHas=(rc,s)=>(qaud()[rc.id]||[]).includes(s);
 function qAudMark(rc,s){const o=qaud(),a=o[rc.id]=o[rc.id]||[];if(!a.includes(s))a.push(s);qs("qaud",JSON.stringify(o))}
@@ -5785,7 +5791,7 @@ async function qPlayFrom(i,ask){
   if(nzBlock("audio"))return;
   try{await qAudioData()}catch(e){toast("Tilovat ma’lumoti yuklanmadi");return}
   if(QRC>=QAU.r.length)QRC=0;
-  const rc=QAU.r[QRC],my=++QPT,[s,a]=qSA(i);
+  const rc=QAU.r[QRC],my=++QPT,[s,a]=qSA(i);QRN=0;
   if(ask&&!qAudHas(rc,s)&&!QASKIP.has(rc.id+":"+s)){await qAudAsk(rc,s);if(my!==QPT)return}
   if(!QEL){
     QEL=new Audio();QEL.preload="auto";
@@ -5816,18 +5822,21 @@ function qTime(){
 }
 function qEnded(){
   if(!QPLAY)return;const rc=QAU.r[QRC];
-  if(rc.k==="a"){if(QPI<6235)qPlayFrom(QPI+1);else qAStop()}
+  if(rc.k==="a"){
+    if(QRT>1&&QRN+1<QRT){QRN++;try{QEL.currentTime=0}catch(e){}QEL.play().catch(()=>{});qMini();return}
+    QRN=0;if(QPI<6235)qPlayFrom(QPI+1);else qAStop()}
   else{const s=qSA(QPI)[0];if(s<114)qPlayFrom(QB[s]);else qAStop()}
 }
 function qStep(d){const i=QPI+d;if(i>=0&&i<6236)qPlayFrom(i)}
 function qFollow(){const p=QPG[QPI];if(p&&p!==QP&&$("qpg").classList.contains("on"))qGo(p,0,0,true).then(()=>{})}
+function qRepDraw(){const b=$("qmrp");if(!b)return;const rc=QAU&&QAU.r[QRC],ok=!rc||rc.k==="a";b.textContent="×"+QRT;b.classList.toggle("on",QRT>1&&ok);b.classList.toggle("no",!ok)}
 function qMini(){
   const[s,a]=qSA(QPI),rc=QAU.r[QRC];
-  $("qmn").textContent=rc.n;$("qma").textContent=QUZ[s-1]+" · "+a+"-oyat · "+rc.s;
+  $("qmn").textContent=rc.n;$("qma").textContent=QUZ[s-1]+" · "+a+"-oyat"+(QRT>1&&rc.k==="a"?" · "+(QRN+1)+"/"+QRT:" · "+rc.s);qRepDraw();
   $("qpg").classList.add("mp");
 }
 function qAStop(){
-  QPLAY=false;QPI=-1;QPT++;
+  QPLAY=false;QPI=-1;QPT++;QRN=0;
   if(QEL){QEL.pause();QEL.removeAttribute("src");QEL.dataset.u="";try{QEL.load()}catch(e){}}
   $("qpg").classList.remove("mp");qMarkAll();
 }
@@ -5913,6 +5922,12 @@ $("qlis").onclick=()=>{
 };
 $("qmpp").onclick=()=>{if(QEL)QEL.paused?QEL.play():QEL.pause()};
 $("qmnx").onclick=()=>qStep(1);$("qmpv").onclick=()=>qStep(-1);$("qmx").onclick=qAStop;
+$("qmrp").onclick=()=>{
+  const rc=QAU&&QAU.r[QRC];
+  if(rc&&rc.k!=="a"){toast("Takror faqat Abdulbosit va Husariy tilovatida ishlaydi. Qorini almashtirish uchun chap tomondagi nomni bosing");return}
+  QRT=QRL[(QRL.indexOf(QRT)+1)%QRL.length];qs("qrt2",String(QRT));QRN=0;qRepDraw();if(QPLAY&&QPI>=0)qMini();
+  toast(QRT>1?"Har oyat "+QRT+" marta takrorlanadi":"Takror o‘chirildi");
+};
 $("qmr").onclick=async()=>{
   if(!QAU)return;QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));toast(QAU.r[QRC].n+" · "+QAU.r[QRC].s);
   if(QPLAY&&QPI>=0)qPlayFrom(QPI,true);
@@ -7304,7 +7319,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.35";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.36";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
