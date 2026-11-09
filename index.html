@@ -2634,6 +2634,11 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #tn .nm-bar button{flex:1;min-height:50px;border-radius:15px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-weight:650;font-size:15.5px;line-height:1;font-family:inherit;box-shadow:var(--sh)}
 #tn .nm-bar button.pri{background:var(--ac);border-color:var(--ac);color:#fff}
 #tn .nm-bar button:disabled{opacity:.4}
+/* Namoz: o‘qishga xalaqit bermaydigan sokin fon */
+body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!important}
+#tn .nm-card{background:color-mix(in srgb,var(--card) 92%,#000);box-shadow:none;padding:20px 18px}
+#tn .nm-ar{font-size:32px;line-height:2.3;margin:8px 0 10px}
+#tn .nm-lt{font-size:17px;line-height:1.65;color:color-mix(in srgb,var(--ink) 88%,transparent)}
 #tn .nm-ln{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 12px}
 #tn .nm-ln button{min-height:38px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ac);font-weight:600;font-size:14px;line-height:1;font-family:inherit}
 #tn ol.nm-l,#tn ul.nm-l{margin:0 0 10px;padding:0 0 0 22px}
@@ -2688,7 +2693,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
     <button class="qa" data-go="t4"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg></span><b>Taqvim</b><span id="qa-c">Hijriy sanalar</span></button>
     <button class="qa" data-go="td"><span class="qi c3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12.5c0 4.2 3.6 7.5 9 7.5s9-3.3 9-7.5"/><path d="M3 12.5l4 .8M21 12.5l-4 .8"/><path d="M12 2.8l1.1 2.4 2.6.3-1.9 1.8.5 2.6L12 8.6 9.7 9.9l.5-2.6-1.9-1.8 2.6-.3z"/></svg></span><b>Duolar</b><span>Kundalik duolar</span></button>
     <button class="qa" data-go="tf"><span class="qi c4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M5 20h14"/><path d="M12 6.5L5 9l-2.5 6a3.5 3.5 0 0 0 7 0L7 9"/><path d="M12 6.5L19 9l2.5 6a3.5 3.5 0 0 1-7 0L17 9"/></svg></span><b>Faroiz</b><span>Meros taqsimoti</span></button>
-    <button class="qa" data-go="tn"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="5.2" r="2.1"/><path d="M12 8v5.2l-3.4 5.3M12 13.2l3.4 5.3M7 11l5-1.4 5 1.4"/></svg></span><b>Namoz</b><span>O‘rganamiz</span></button>
+    <button class="qa" data-go="tn"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2.4M4 21V12.6C4 8.6 7.6 6 12 6s8 2.6 8 6.6V21M2.5 21h19M9.2 21v-4.4a2.8 2.8 0 0 1 5.6 0V21"/></svg></span><b>Namoz</b><span>O‘rganamiz</span></button>
     <button class="qa" id="qa-sh" type="button"><span class="qi c1"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="6.5" cy="12" r="2.4"/><circle cx="17.5" cy="6" r="2.4"/><circle cx="17.5" cy="18" r="2.4"/><path d="M8.6 10.8l6.8-3.6M8.6 13.2l6.8 3.6"/></svg></span><b>Ulashish</b><span>Do‘stlarga yuboring</span></button>
   </div></div><div id="sk_bol" class="lsk" style="display:none"></div>
   <div id="hk" style="display:none"><div class="hk-h">Kun hikmati</div><p id="hkm" class="clamp"></p><button id="hkt" type="button" style="display:none">Davomini o‘qish</button><button id="hkim" type="button">Rasm qilib ulashish</button><div id="hks"></div></div><div id="sk_hk" class="lsk" style="display:none"></div>
@@ -7713,22 +7718,22 @@ k6:{ar:"سُبْحَانَ اللَّهِ وَالْحَمْدُ لِلَّهِ 
 const NMP=(function(){
 const S=(h,o)=>Object.assign({h},o);
 const OPEN=()=>[
- S("Niyat",{txt:"Qalbda qaysi namozni o‘qishni niyat qiling. Tilda aytish shart emas.",pos:"Qiyomda turing"}),
+ S("Niyat",{txt:"Qalbda qaysi namozni o‘qishni niyat qilinadi; tilda aytilsa, afzal. Farz va vojib namozlarda namoz niyat bilan aniq belgilanishi shart.",pos:"Qiyomda turing"}),
  S("Takbiri tahrima",{z:"takbir",pos:"Qiyom",e:"Qo‘llar quloq yumshog‘igacha, kaftlar ochiq holda ko‘tariladi.",w:"Qo‘llar yelka barobarigacha, yeng ichida ko‘tariladi."}),
  S("Qo‘l bog‘lash",{txt:"O‘ng qo‘l chap qo‘l ustiga qo‘yiladi.",e:"O‘ng qo‘lning bosh va jimjilog‘i chap bilakni o‘rab, 3 barmoq uzunasiga qo‘yiladi; kindik ostida ushlanadi.",w:"Qo‘llar bog‘lanib, ko‘krak ustida ushlanadi."}),
  S("Sano",{z:"sano"})];
-const FATIHA=()=>[S("Ta’avvuz",{z:"tavuz"}),S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"})];
-const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan keyin istalgan sura yoki kamida 3 oyat o‘qiladi.",pos:"Qiyom"})];
+const FATIHA=()=>[S("Ta’avvuz",{z:"tavuz"}),S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"}),S("Omin",{txt:"Fotihani o‘qigan kishi ichida «Omin» deydi.",pos:"Qiyom"})];
+const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan so‘ng zam sura o‘qiladi (qiyomda kamida 3 oyat Qur’on o‘qish namozning rukni).",pos:"Qiyom"})];
 const RUKU=()=>[
  S("Ruku’",{z:"ruku",n:3,pos:"Ruku’",e:"Tizzalar bukilmaydi, tik turadi; barmoqlar orasi bir oz ochiq.",w:"Tizzalar ozroq bukiladi; barmoqlar orasi ochilmay, tizza kosasi ushlanadi."}),
- S("Rukudan turish",{z:"tasmi",pos:"Qavma",txt:null}),
- S("Tahmid",{z:"tahmid",pos:"Qavma"})];
+ S("Rukudan turish",{z:"tasmi",pos:"Rukudan turish",txt:"Yolg‘iz o‘qiganda «Sami’alloh…» va «Robbana lakal hamd» ikkalasi aytiladi. Jamoatda imom faqat «Sami’alloh…», muqtadiy faqat «Robbana lakal hamd» deydi."}),
+ S("Tahmid",{z:"tahmid",pos:"Rukudan turish"})];
 const SAJDA=(k)=>[
- S("Takbir bilan sajdaga",{z:"takbir",pos:"Sajda"}),
+ S("Takbir bilan sajdaga",{z:"takbir",pos:"Sajda",txt:"Avval tizzalar, so‘ng qo‘llar, so‘ng burun, oxirida peshona yerga qo‘yiladi. Sajdadan turishda buning aksi: avval bosh, so‘ng qo‘llar, so‘ng tizzalar ko‘tariladi."}),
  S("Sajda "+k+"‑marta",{z:"sajda",n:3,pos:"Sajda",e:"Bilaklar yerdan va qovurg‘adan, qorin son va yerdan uzoq tutiladi.",w:"Bilaklar yerga qo‘yilib, qorin sonlarga yopishtiriladi; yig‘ilibroq sajda qilinadi."})];
 const SAJ2=()=>[
  ...SAJDA(1),
- S("Jalsa (ikki sajda orasi)",{z:"takbir",pos:"Jalsa",txt:"Sajdadan Allohu Akbar bilan boshni ko‘tarib o‘tiriladi.",w:"Oyoqlar o‘ng tomonga chiqarilib, chap dumba ustiga o‘tiriladi."}),
+ S("Ikki sajda orasida o‘tirish",{z:"takbir",pos:"O‘tirish",txt:"Sajdadan «Allohu Akbar» deb bosh ko‘tarib o‘tiriladi."}),
  ...SAJDA(2)];
 const QAADA_ONLY_TASH=()=>[S("Qa’da — Tashahhud",{z:"tashahhud",pos:"Qa’da",w:"Oyoqlar o‘ng tomonga chiqarilib, chap dumba ustiga o‘tiriladi."})];
 const QAADA_END=()=>[
@@ -7745,9 +7750,9 @@ function rakat(i,opt){
  else st.push(S("Takbir bilan turish",{z:"takbir",pos:"Qiyom"}));
  if(i===1){st.push(...FATIHA());}else st.push(S("Tasmiya",{z:"tasmiya"}));
  if(i>1&&i===1){}
- if(i>1)st.splice(st.length-1,1,S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"}));
+ if(i>1)st.splice(st.length-1,1,S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"}),S("Omin",{txt:"Fotihani o‘qigan kishi ichida «Omin» deydi.",pos:"Qiyom"}));
  if(opt.zam)st.push(...ZAM(opt.sura));
- if(opt.qunut){st.push(S("Qunut takbiri",{z:"takbir",pos:"Qiyom",txt:"Qo‘llar quloq barobarigacha ko‘tarib takbir aytiladi, so‘ng qayta bog‘lanadi."}),S("Qunut duosi",{z:"qunut",pos:"Qiyom"}));}
+ if(opt.qunut){st.push(S("Qunut takbiri",{z:"takbir",pos:"Qiyom",txt:"Zam surodan so‘ng qo‘l ko‘tarib «Allohu Akbar» deyiladi, so‘ng Qunut duosi o‘qiladi."}),S("Qunut duosi",{z:"qunut",pos:"Qiyom"}));}
  st.push(...RUKU(),...SAJ2());
  if(opt.qaada==="t")st.push(...QAADA_ONLY_TASH());
  if(opt.qaada==="end")st.push(...QAADA_END());
@@ -7808,7 +7813,7 @@ const NMT=[
   {k:"note",t:"Paypoq yoki etik kiyib yurilgan bo‘lsa, qo‘l panjalari ho‘llanib, to‘rt barmoq barobar ushlanib, ular ustidan masx tortiladi."}]},
  {id:"gusl",t:"G‘usl",b:[
   {k:"p",t:"G‘usl — butun badanni yuvish. Junub bo‘lgan kishiga, hayz va nifosdan chiqqan ayolga g‘usl farz. Har juma, ikki hayit, ehrom kiyilganda va Arafa kunida g‘usl qilish sunnat."},
-  {k:"h",t:"3 farz"},{k:"ol",i:["Og‘izni chayib yuvish.","Burun ichini yumshoq joygacha suv olib tozalash.","Badanning hamma joyiga suv yetkazish."]},
+  {k:"h",t:"3 farz"},{k:"ol",i:["Og‘izni chayib yuvish.","Burun ichini ochishguncha suv olib tozalash.","Badanning hamma joyiga suv yetkazish."]},
   {k:"h",t:"Tartibi"},{k:"ol",i:["Niyat qilinadi.","Qo‘llar yuviladi.","Old va orqa avratlar yuvilib tozalanadi.","Badandagi bor najosat yuvilib tozalanadi.","Namoz uchun qilinadigan tartibda tahorat olinadi (oyoqlar yuvilmaydi).","Bosh ustidan 3 karra suv quyib, badan ishqalab yuviladi; har a’zoga suv tegishi kerak.","G‘usl qilingan yerdan chetroqqa o‘tib, oyoqlar yuviladi."]},
   {k:"note",t:"Tartibda bayon qilingan farzdan boshqa amallar g‘uslning sunnatlari hisoblanadi."}]},
  {id:"tayammum",t:"Tayammum",b:[
@@ -7882,7 +7887,7 @@ const NMT=[
   {k:"note",t:"Azonni eshitgan kishi ish va so‘zdan to‘xtab, azon kalimalarini ichida takrorlashi mustahab. «Hayya ‘alas-solah»da «La havla va la quvvata illa billahil ‘aliyyil ‘aziym», «Hayya ‘alal-falah»da «Ma sha’allohu kana va ma lam yasha’ lam yakun» deyiladi."},
   {k:"p",t:"Muazzin oqil, solih, taqvodor, tahoratli bo‘lishi avlo. Mast, junub, devona, ayol, balog‘atga yetmagan va fosiqning azoni makruh (azon qayta aytiladi, iqomat qayta aytilmaydi). Iqomatni azon aytgan kishi aytadi."}]},
  {id:"iq",t:"Iqomat (takbir)",b:[
-  {k:"p",t:"Iqomat azonga o‘xshash, farqi: azon cho‘zib, iqomat tez aytiladi. «Hayya ‘alal-falah»dan keyin 2 marta «Qod qomatis-solah» qo‘shiladi, bomdodda ham «Assolatu xoyrum minan navm» iqomatda ham aytiladi."},
+  {k:"p",t:"Iqomat azonga o‘xshash, farqi: azon cho‘zib, iqomat tez aytiladi. «Hayya ‘alal-falah»dan keyin 2 marta «Qod qomatis-solah» qo‘shiladi."},
   {k:"az",s:[["4×","az_ak"],["2×","az_sh1"],["2×","az_sh2"],["2×","az_hs"],["2×","az_hf"],["2×","az_qq"],["2×","az_ak"],["1×","az_la"]]}]}
 ]},
 {id:"maxsus",t:"Juma, Hayit, Taroveh, Janoza",s:"Maxsus namozlar",pages:[
@@ -7967,9 +7972,13 @@ function nmSetG(g){try{localStorage.setItem("nmg",g)}catch(e){}}
 function nmGI(s,a){let n=0;for(let i=0;i<s-1;i++)n+=NMAC[i];return n+a-1}
 function nmStop(){try{NM.au.pause()}catch(e){}NM.aq=null;document.querySelectorAll("#tn .nm-pl.on").forEach(b=>{b.classList.remove("on");b.querySelector("span").textContent="Tinglash"})}
 /* --- zikr kartasi --- */
+const PLI='<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+function nmAk(k){return nmG()==="a"?k+"_f":k}
+function nmAudLoad(){if(NM.audL)return;NM.audL=1;try{fetch("audio/nm/list.json",{cache:"no-cache"}).then(r=>r.ok?r.json():{}).then(j=>{NM.aud=j||{};if(Object.keys(NM.aud).length&&CUR==="tn")nmRender()}).catch(()=>{})}catch(e){}}
 function nmZ(k,n,compact){
   const z=NMZ[k];if(!z)return"";
-  return`<div class="nm-zk">${n?`<div style="text-align:center;margin-bottom:6px"><span class="nm-chip g">${n} marta</span></div>`:""}<div class="nm-ar" lang="ar" dir="rtl">${nmE(z.ar)}</div><div class="nm-lt">${nmE(z.lt)}</div>${z.mn?`<details class="nm-mn"><summary>Ma’nosi</summary><p>${nmE(z.mn)}</p></details>`:""}</div>`;
+  const ak=nmAk(k),pl=NM.aud&&NM.aud[ak]?`<button type="button" class="nm-pl" data-a="zplay" data-f="audio/nm/${ak}.mp3">${PLI}<span>Tinglash</span></button>`:"";
+  return`<div class="nm-zk">${pl}${n?`<div style="text-align:center;margin-bottom:6px"><span class="nm-chip g">${n} marta</span></div>`:""}<div class="nm-ar" lang="ar" dir="rtl">${nmE(z.ar)}</div><div class="nm-lt">${nmE(z.lt)}</div>${z.mn?`<details class="nm-mn"><summary>Ma’nosi</summary><p>${nmE(z.mn)}</p></details>`:""}</div>`;
 }
 /* --- Qur’on qismi: qText() dan, Husariy ovozi --- */
 function nmQ(ref){
@@ -7981,7 +7990,8 @@ function nmQFill(root){
     if(box.dataset.done)return;box.dataset.done=1;
     const m=/^(\d+):(\d+)-(\d+)$/.exec(box.dataset.q),s=+m[1],a1=+m[2],a2=+m[3];
     qText().then(T=>{
-      let h=`<button type="button" class="nm-pl" data-a="play" data-q="${box.dataset.q}"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg><span>Tinglash</span></button>`;
+      const fk="q_"+box.dataset.q.replace(/[:-]/g,"_")+"_f";
+      let h=nmG()==="a"?(NM.aud&&NM.aud[fk]?`<button type="button" class="nm-pl" data-a="zplay" data-f="audio/nm/${fk}.mp3">${PLI}<span>Tinglash</span></button>`:""):`<button type="button" class="nm-pl" data-a="play" data-q="${box.dataset.q}">${PLI}<span>Tinglash</span></button>`;
       for(let a=a1;a<=a2;a++){const g=nmGI(s,a);h+=`<div class="nm-qa"><div class="nm-ar q" lang="ar" dir="rtl">${nmE(T.ar[g])}<span class="nm-qn">${a}</span></div><div class="nm-qu">${nmE(T.uz[g])}</div></div>`}
       box.innerHTML=h;
     }).catch(()=>{box.innerHTML='<div class="nm-em">Sura matni yuklanmadi. Internetni tekshirib, qayta oching.</div>'});
@@ -8017,7 +8027,7 @@ function nmBlk(b,g){
 }
 /* --- navigatsiya --- */
 function nmPush(v){NM.st.push(v);history.pushState({r:"tn",nm:NM.st.length-1},"");nmRender();scrollTo(0,0)}
-function nmEnter(){nmStop();NM.st=[{v:"hub"}];nmRender()}
+function nmEnter(){nmStop();nmAudLoad();NM.st=[{v:"hub"}];nmRender()}
 addEventListener("popstate",()=>{
   if(CUR!=="tn")return;
   const n=(history.state&&history.state.nm)||0;
@@ -8111,6 +8121,12 @@ function nmRender(){
     if(a==="sec"){nmPush({v:"sec",id:b.dataset.id});return}
     if(a==="pg"){nmPush({v:"pg",s:b.dataset.s,p:b.dataset.p});return}
     if(a==="play"){nmPlay(b.dataset.q,b);return}
+    if(a==="zplay"){
+      if(b.classList.contains("on")){nmStop();return}
+      nmStop();try{if(typeof QEL!=="undefined"&&QEL)QEL.pause()}catch(e){}
+      const tok={};NM.aq=tok;b.classList.add("on");b.querySelector("span").textContent="To‘xtatish";
+      NM.au.onended=()=>nmStop();NM.au.onerror=()=>{if(NM.aq===tok){nmStop();toast("Ovoz ochilmadi")}};
+      NM.au.src=b.dataset.f;NM.au.play().catch(()=>{nmStop();toast("Ovoz ochilmadi")});return}
     if(a==="u"){v.u=+b.dataset.u;v.r=0;v.s=0;nmRender();return}
     if(a==="r"){v.r=+b.dataset.r;v.s=0;nmRender();return}
     if(a==="m"){v.m=b.dataset.m;v.s=0;nmRender();return}
