@@ -2572,6 +2572,14 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #qtl #xtc .xtk b,#qtl .qac b{font-size:13.5px!important}
 #qtl #xtc .xtk small,#qtl .qac small{font-size:11.5px!important}
 #qoff #qtkb{grid-column:auto;flex:none;width:auto}
+.qrow.qar{padding:12px 16px}.qrow .t b.qaa{font:400 22px/1.9 "QPC Hafs","Noto Naskh Arabic",serif;text-align:right;color:#fff4d6;font-weight:400}
+.qrow.qar .t b:not(.qaa){font-size:16px;line-height:1.4}
+#qrs{z-index:15}
+#qrl{display:flex;flex-direction:column;gap:8px;margin:10px 0}
+#qrl button{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:14px 16px;border-radius:14px;border:1px solid rgba(240,201,105,.3);background:rgba(255,255,255,.05);color:inherit;font:600 16px system-ui}
+#qrl button small{display:block;font:13px system-ui;opacity:.75;font-weight:400;margin-top:2px}
+#qrl button.on{border-color:#e8c26a;background:rgba(232,194,106,.14)}#qrl button.on:after{content:"✓";color:#f0c969;font-size:20px}
+#qmn:after{content:" ⌄";opacity:.8}
 @media (prefers-reduced-motion:reduce){#qtk .tkm i{transition:none!important}}
 </style>
 </head>
@@ -2737,7 +2745,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
    <button id="qlast" aria-label="Oxirgi o‘qilgan joy"><svg viewBox="0 0 24 24"><path d="M12 6.5C10.4 5 8 4.5 3.5 4.5V18c4.5 0 6.9.5 8.5 2 1.6-1.5 4-2 8.5-2V4.5c-4.5 0-6.9.5-8.5 2z"/><path d="M12 6.5V20"/></svg></button>
    <button id="qsb" aria-label="Qidirish"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg></button>
   </div>
-  <div id="qsw"><input id="qsr" type="search" placeholder="Sura nomi yoki raqami" autocomplete="off"></div>
+  <div id="qsw"><input id="qsr" type="search" placeholder="Sura yoki oyat matni (arabcha, o‘zbekcha)" autocomplete="off"></div>
   <div class="qtabs" id="qtabs"><button data-q="s" class="on">SURA</button><button data-q="j">JUZ</button><button data-q="b">XATCHO‘PLAR</button></div>
   <div id="qnz" style="display:none"></div><div id="qtl"><div id="xtc"></div><div id="qoff"></div></div>
   <div id="qlist"></div>
@@ -2841,6 +2849,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
  <div class="tkh"><button id="tkx" type="button" aria-label="Yopish"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button><h1>Tinglab takrorlash</h1></div>
  <div class="tkb" id="tkb"></div>
 </div>
+<div class="sheet" id="qrs"><div class="box"><h2>Qorini tanlang</h2><div id="qrl"></div><button id="qrx" type="button">Yopish</button></div></div>
 <div class="sheet" id="qam"><div class="box">
   <h2>Tilovat (audio)</h2><p class="mut" id="qamn"></p>
   <button id="qamr" type="button"></button>
@@ -3885,8 +3894,8 @@ function pkShow(){
   if(h.y<1300||h.y>1600)n.textContent="Bu oraliqda hisob taxminiy bo‘lishi mumkin (±1 kun).";
 }
 /* v6.15: telefonning “orqaga” tugmasi: avval ochiq oynani yopadi */
-const BKI=["qtk","ucf","qdm","im","tqs","qam","uas","lms","rgs","xt","nd","qz","xb","fb","ab","tqm","adm"];
-const BKC={qtk:()=>qtkClose(),nd:()=>ndClose(),qz:()=>qzClose(),xt:()=>xtClose(),xb:()=>xbClose(),fb:()=>fbClose(),im:()=>$("imcl").click(),ab:()=>$("cl").click(),tqm:()=>$("tqm").classList.remove("on"),tqs:()=>$("tqrx").click(),uas:()=>$("uax").click(),lms:()=>$("lmx").click(),rgs:()=>rgClose(),qam:()=>$("qamx").click(),ucf:()=>$("ucfn").click(),
+const BKI=["qrs","qtk","ucf","qdm","im","tqs","qam","uas","lms","rgs","xt","nd","qz","xb","fb","ab","tqm","adm"];
+const BKC={qrs:()=>$("qrx").click(),qtk:()=>qtkClose(),nd:()=>ndClose(),qz:()=>qzClose(),xt:()=>xtClose(),xb:()=>xbClose(),fb:()=>fbClose(),im:()=>$("imcl").click(),ab:()=>$("cl").click(),tqm:()=>$("tqm").classList.remove("on"),tqs:()=>$("tqrx").click(),uas:()=>$("uax").click(),lms:()=>$("lmx").click(),rgs:()=>rgClose(),qam:()=>$("qamx").click(),ucf:()=>$("ucfn").click(),
   qdm:()=>{const n=$("qdn");if(n&&n.style.display!=="none")n.click()},
   adm:()=>{if($("abox").classList.contains("full")&&AS&&$("aback").style.visibility==="visible")$("aback").click();else $("adm").classList.remove("on")}};
 let BKH=null;
@@ -5389,7 +5398,7 @@ function qList(){
   if(QT==="s"){
     const row=s=>qrow(s,QUZ[s-1],(QMD.has(s)?"Madaniy":"Makkiy")+" - "+QCN[s-1]+" oyat",qpo(s,1),'data-p="'+qpo(s,1)+'" data-s="'+s+'" data-a="1"');
     if(q){for(let s=1;s<=114;s++)if(qnorm(QUZ[s-1]).includes(q)||qnorm(QAR[s-1]).includes(q)||String(s)===q)h.push(row(s));
-      if(!h.length)h.push('<div class="qempty">Topilmadi</div>')}
+      h.push('<div id="qayr" data-ns="'+h.length+'"></div>')}
     else{let s=1;for(let j=1;j<=30;j++){
       h.push('<div class="qjh"><span>'+j+'-juz</span><span>'+qpo(QJ[j-1][0],QJ[j-1][1])+'</span></div>');
       while(s<=114&&qjuzOf(s,1)===j){h.push(row(s));s++}}}
@@ -5401,6 +5410,7 @@ function qList(){
     b.forEach((x,i)=>{const p=qpo(x.s,x.a);h.push('<div style="position:relative">'+qrow(p,QUZ[x.s-1]+" surasi",x.a+"-oyat","",'data-p="'+p+'" data-s="'+x.s+'" data-a="'+x.a+'"')+'<button class="qdel" data-del="'+i+'" aria-label="O‘chirish" style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:40px;height:40px;border:0;background:none;color:var(--mut);font-size:22px;margin:0;padding:0">×</button></div>')});
   }
   $("qlist").innerHTML=h.join("");
+  if(QT==="s"&&q)qAySearch($("qsr").value.trim());
   qOffDraw();try{xtDraw()}catch(e){}
 }
 const qbm=()=>{try{const b=JSON.parse(qg("qbl")||"[]");return Array.isArray(b)?b:[]}catch(e){return[]}};
@@ -5980,10 +5990,16 @@ $("qmrp").onclick=()=>{
   QRT=QRL[(QRL.indexOf(QRT)+1)%QRL.length];qs("qrt2",String(QRT));QRN=0;qRepDraw();if(QPLAY&&QPI>=0)qMini();
   toast(QRT>1?"Har oyat "+QRT+" marta takrorlanadi":"Takror o‘chirildi");
 };
-$("qmr").onclick=async()=>{
-  if(!QAU)return;QRC=(QRC+1)%QAU.r.length;qs("qrc",String(QRC));toast(QAU.r[QRC].n+" · "+QAU.r[QRC].s);
-  if(QPLAY&&QPI>=0)qPlayFrom(QPI,true);
+$("qmr").onclick=()=>{
+  if(!QAU)return;
+  $("qrl").innerHTML=QAU.r.map((x,i)=>'<button type="button" data-i="'+i+'" class="'+(i===QRC?"on":"")+'"><span>'+x.n+'<small>'+x.s+(x.k==="a"?" · takrorlash mumkin":"")+'</small></span></button>').join("");
+  $("qrs").classList.add("on");
 };
+$("qrl").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;const i=+b.dataset.i;$("qrs").classList.remove("on");
+  if(i===QRC)return;QRC=i;qs("qrc",String(QRC));
+  if(QPLAY&&QPI>=0)qPlayFrom(QPI,true)};
+$("qrx").onclick=()=>$("qrs").classList.remove("on");
+$("qrs").onclick=e=>{if(e.target===$("qrs"))$("qrs").classList.remove("on")};
 addEventListener("popstate",()=>{if($("qpg").classList.contains("on")&&!(history.state&&history.state.qr)){qAStop();qShut();$("qjs").classList.remove("on");$("qpg").classList.remove("on");if(QM)qList();qHomeSub()}});
 addEventListener("resize",()=>{if($("qpg").classList.contains("on")){const p=QP;QBUILT=0;qBuild();$("qsc").scrollLeft=-(p-1)*$("qsc").clientWidth;qNear();qMarkAll()}});
 qCfApply();
@@ -7371,7 +7387,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.39";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.40";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -7384,22 +7400,32 @@ setTimeout(()=>{lastChk=Date.now();chkUpd()},4000);
 
 /* Tinglab takrorlash */
 const TKR=[3,5,10,20,40];
-const TK={s:112,from:1,to:1,n:+(qg("qtkn")||10),rep:0,ph:"idle",cur:1,started:false,done:false,err:"",T:null};
+const TK={s:1,from:1,to:1,n:+(qg("qtkn")||10),rep:0,ph:"idle",i:0,started:false,done:false,err:"",T:null,pz:null,ctx:null,rcEnd:0};
 if(TKR.indexOf(TK.n)<0)TK.n=10;
 const TKA=new Audio();TKA.preload="auto";let tkTm=null,tkT2=null,tkTok=0,tkWL=null;
+const TKAUZ="أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ",TKAU="https://everyayah.com/data/Husary_128kbps/audhubillah.mp3";
 const tkNA=s=>QCN[s-1];
+/* Boshlanish: har bir sura Bismillah bilan (Tavba bundan mustasno); Fotihada avval A’uzu */
+function tkSeq(){
+  const q=[],lead=TK.from===1&&TK.s!==9;
+  if(lead&&TK.s===1)q.push({t:"auz"});else if(lead)q.push({t:"bsm"});
+  for(let a=TK.from;a<=TK.to;a++)q.push({t:"a",a});
+  return q;
+}
+function tkUrl(x){return x.t==="auz"?TKAU:x.t==="bsm"?QHS.u+"001001.mp3":QHS.u+pad3(TK.s)+pad3(x.a)+".mp3"}
 async function tkWake(on){try{if(on&&navigator.wakeLock){if(!tkWL)tkWL=await navigator.wakeLock.request("screen")}else if(tkWL){tkWL.release();tkWL=null}}catch(e){tkWL=null}}
-function tkStop(full){tkTok++;clearInterval(tkTm);clearTimeout(tkT2);try{TKA.pause()}catch(e){}if(full){TK.ph="idle";tkWake(false)}}
+function tkClear(){tkTok++;clearInterval(tkTm);clearTimeout(tkT2);try{TKA.pause()}catch(e){}}
+function tkStop(full){tkClear();if(full){TK.ph="idle";TK.pz=null;TK.ctx=null;tkWake(false)}}
 async function qtkOpen(s,a,e){
   try{if(typeof QPLAY!=="undefined"&&QPLAY)qAStop()}catch(x){}
   if(nzBlock&&nzBlock("audio"))return;
   try{TK.T=await qText()}catch(x){toast("Ma’lumot yuklanmadi. Internetni tekshiring");return}
   tkStop(true);
-  if(s){TK.s=s;TK.from=a;TK.to=Math.max(a,e||a)}
+  if(s){TK.s=s;TK.from=a;TK.to=Math.max(a,e||a)}else{TK.s=1;TK.from=1;TK.to=1}
   TK.from=Math.min(TK.from,tkNA(TK.s));TK.to=Math.min(Math.max(TK.to,TK.from),tkNA(TK.s));
   tkReset();$("qtk").classList.add("on");tkDraw();
 }
-function tkReset(){TK.rep=0;TK.done=false;TK.started=false;TK.err="";TK.cur=TK.from}
+function tkReset(){TK.rep=0;TK.done=false;TK.started=false;TK.err="";TK.i=0;TK.pz=null}
 function qtkClose(){tkStop(true);$("qtk").classList.remove("on")}
 const TKI={};
 async function tkInfo(url){
@@ -7416,24 +7442,24 @@ async function tkInfo(url){
 }
 function tkNext(my){
   if(my!==tkTok)return;
-  if(TK.cur<TK.to){TK.cur++;tkPlay()}
-  else{TK.rep++;TK.cur=TK.from;if(TK.rep>=TK.n){TK.ph="idle";TK.done=true;TK.started=false;tkWake(false);tkDraw()}else tkPlay()}
+  const q=tkSeq();
+  if(TK.i<q.length-1){TK.i++;tkPlay()}
+  else{TK.rep++;TK.i=0;if(TK.rep>=TK.n){TK.ph="idle";TK.done=true;TK.started=false;tkWake(false);tkDraw()}else tkPlay()}
 }
-function tkRecite(my,sec){
+function tkBar(from,ms){
+  const t=$("tkbar");if(!t)return;
+  t.style.transition="none";t.style.width=from+"%";void t.offsetWidth;
+  t.style.transition="width "+ms+"ms linear";t.style.width="100%";
+}
+/* "Siz o‘qing" vaqti = qori shu oyatni o‘qigan vaqt */
+function tkRecite(my,sec,from){
   clearInterval(tkTm);TK.ph="recite";tkUpd();
-  const ms=Math.max(1200,sec*1000),t=$("tkbar");
-  if(t){t.style.transition="none";t.style.width="0";void t.offsetWidth;t.style.transition="width "+ms+"ms linear";t.style.width="100%"}
+  const ms=Math.max(1200,sec*1000);TK.rcEnd=Date.now()+ms;TK.ctx.rtot=ms;
+  tkBar(from||0,ms);
   tkT2=setTimeout(()=>{if(my!==tkTok)return;try{TKA.pause()}catch(e){}tkNext(my)},ms);
 }
-async function tkPlay(){
-  const my=++tkTok;clearInterval(tkTm);clearTimeout(tkT2);TK.ph="listen";TK.started=true;TK.err="";tkWake(true);tkUpd();
-  const url=QHS.u+pad3(TK.s)+pad3(TK.cur)+".mp3";let info;
-  try{info=await tkInfo(url)}catch(e){info={b:url,ve:null}}
-  if(my!==tkTok)return;
-  TKA.onerror=()=>{if(my!==tkTok)return;tkStop(true);TK.err="Audio yuklanmadi. Internetni tekshiring.";tkDraw()};
-  TKA.onended=()=>{if(my===tkTok&&TK.ph==="listen")tkRecite(my,TKA.duration||3)};
-  TKA.src=info.b;
-  try{await TKA.play()}catch(e){if(my!==tkTok)return;tkStop(true);TK.err="Audio boshlanmadi. Qayta bosing.";tkDraw();return}
+function tkWatch(my,info){
+  clearInterval(tkTm);
   tkTm=setInterval(()=>{
     if(my!==tkTok){clearInterval(tkTm);return}
     const d=TKA.duration;if(!d||!isFinite(d))return;
@@ -7441,18 +7467,58 @@ async function tkPlay(){
     if(TK.ph==="listen"&&TKA.currentTime>=ve-0.05)tkRecite(my,ve);
   },80);
 }
-/* qori o‘qigan vaqtcha siz o‘qiysiz: tasma uzunligi oyat uzunligiga teng */
+async function tkPlay(){
+  const my=++tkTok;clearInterval(tkTm);clearTimeout(tkT2);TK.ph="listen";TK.started=true;TK.err="";TK.pz=null;TK.ctx={my:my};tkWake(true);tkUpd();
+  const x=tkSeq()[TK.i],url=tkUrl(x);let info;
+  try{info=await tkInfo(url)}catch(e){info={b:url,ve:null}}
+  if(my!==tkTok)return;
+  TK.ctx.info=info;
+  TKA.onerror=()=>{if(my!==tkTok)return;tkStop(true);TK.err="Audio yuklanmadi. Internetni tekshiring.";tkDraw()};
+  TKA.onended=()=>{if(my===tkTok&&TK.ph==="listen")tkRecite(my,TKA.duration||3)};
+  TKA.src=info.b;
+  try{await TKA.play()}catch(e){if(my!==tkTok)return;tkStop(true);TK.err="Audio boshlanmadi. Qayta bosing.";tkDraw();return}
+  tkWatch(my,info);
+}
+/* Aynan shu joyda to‘xtatish va shu joydan davom etish */
+function tkPause(){
+  if(TK.ph==="idle")return;
+  const c=TK.ctx||{};
+  if(TK.ph==="listen"&&c.info){clearInterval(tkTm);TKA.pause();TK.pz={ph:"listen"}}
+  else if(TK.ph==="recite"){
+    clearTimeout(tkT2);try{TKA.pause()}catch(e){}
+    const rem=Math.max(0,TK.rcEnd-Date.now()),t=$("tkbar"),pct=t&&t.parentNode.offsetWidth?t.offsetWidth/t.parentNode.offsetWidth*100:0;
+    if(t){t.style.transition="none";t.style.width=pct+"%"}
+    TK.pz={ph:"recite",rem:rem,pct:pct}
+  }else{tkClear();TK.pz={ph:"load"}}
+  TK.ph="idle";tkWake(false);tkUpd();
+}
+async function tkResume(){
+  const z=TK.pz,c=TK.ctx;if(!z||!c)return tkPlay();
+  const my=c.my;TK.pz=null;tkWake(true);
+  if(z.ph==="listen"){
+    TK.ph="listen";tkUpd();
+    try{await TKA.play()}catch(e){TK.err="Audio boshlanmadi. Qayta bosing.";tkStop(true);tkDraw();return}
+    tkWatch(my,c.info)
+  }else if(z.ph==="recite"){
+    TK.ph="recite";tkUpd();
+    TK.rcEnd=Date.now()+z.rem;tkBar(z.pct,z.rem);
+    tkT2=setTimeout(()=>{if(my!==tkTok)return;tkNext(my)},z.rem);
+  }else tkPlay();
+}
 function tkUpd(){
-  const run=TK.ph!=="idle",T=TK.T,g=qgi(TK.s,TK.cur),ar=T.ar[g]||"";
-  const A=$("tkar");if(!A)return;
+  const run=TK.ph!=="idle",T=TK.T,A=$("tkar");if(!A)return;
+  const q=tkSeq(),x=q[Math.min(TK.i,q.length-1)];
+  let ar,lab,uz;
+  if(x.t==="auz"){ar=TKAUZ;lab="A’uzu";uz=""}
+  else if(x.t==="bsm"){ar=T.ar[0]||"";lab="Bismillah";uz=T.uz[0]||""}
+  else{const g=qgi(TK.s,x.a);ar=T.ar[g]||"";uz=T.uz[g]||"";lab=QUZ[TK.s-1]+" · "+x.a+"-oyat"+(TK.to>TK.from?"  ("+(x.a-TK.from+1)+"/"+(TK.to-TK.from+1)+")":"")}
   A.textContent=ar;A.style.fontSize=ar.length>320?"21px":ar.length>200?"25px":ar.length>110?"29px":"33px";
-  $("tklb").textContent=QUZ[TK.s-1]+" · "+TK.cur+"-oyat"+(TK.to>TK.from?"  ("+(TK.cur-TK.from+1)+"/"+(TK.to-TK.from+1)+")":"");
-  $("tktr").textContent=T.uz[g]||"";
-  const ph=$("tkph");ph.innerHTML=run?(TK.ph==="listen"?'<b class="l">Tinglang</b>':'<b class="r">Siz o‘qing</b>'):(TK.done?'<b>Tayyor</b>':(TK.started?'<b>To‘xtatildi</b>':'<b>Tinglashga tayyor</b>'));
-  if(TK.ph!=="recite"){const t=$("tkbar");if(t){t.style.transition="none";t.style.width="0"}}
+  $("tklb").textContent=lab;$("tktr").textContent=uz;
+  $("tkph").innerHTML=run?(TK.ph==="listen"?'<b class="l">Tinglang</b>':'<b class="r">Siz o‘qing</b>'):(TK.done?'<b>Tayyor</b>':(TK.pz?'<b>To‘xtatildi</b>':'<b>Tinglashga tayyor</b>'));
+  if(TK.ph==="listen"||(!run&&!TK.pz)){const t=$("tkbar");if(t){t.style.transition="none";t.style.width="0"}}
   $("tkrp").textContent=TK.rep;
   $("tkg").innerHTML=run?'<svg viewBox="0 0 24 24"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg>':'<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
-  $("tkg").setAttribute("aria-label",run?"To‘xtatish":(TK.started?"Davom ettirish":"Boshlash"));
+  $("tkg").setAttribute("aria-label",run?"To‘xtatish":(TK.pz?"Davom ettirish":"Boshlash"));
   const m=$("tkmid");if(m&&TK.ph==="listen")m.scrollTop=0;
   const e=$("tkerr");if(e)e.textContent=TK.err||"";
 }
@@ -7470,24 +7536,46 @@ function tkDraw(){
    +'<button class="tkz" id="tkz" type="button" aria-label="Boshidan"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg></button></div>'
    +'<div class="tkl">Necha marta takrorlaysiz</div><div class="tkch" id="tkn">'+TKR.map(x=>'<button type="button" data-n="'+x+'" class="'+(x===TK.n?"on":"")+'">'+x+'</button>').join("")+'</div></div>';
   const rs=()=>{tkStop(true);tkReset()};
-  $("tks").onchange=e=>{rs();TK.s=+e.target.value;TK.from=1;TK.to=1;TK.cur=1;tkDraw()};
-  $("tkf").onchange=e=>{rs();TK.from=+e.target.value;if(TK.to<TK.from)TK.to=TK.from;TK.cur=TK.from;tkDraw()};
-  $("tkt").onchange=e=>{rs();TK.to=+e.target.value;if(TK.from>TK.to)TK.from=TK.to;TK.cur=TK.from;tkDraw()};
+  $("tks").onchange=e=>{rs();TK.s=+e.target.value;TK.from=1;TK.to=1;tkDraw()};
+  $("tkf").onchange=e=>{rs();TK.from=+e.target.value;if(TK.to<TK.from)TK.to=TK.from;tkDraw()};
+  $("tkt").onchange=e=>{rs();TK.to=+e.target.value;if(TK.from>TK.to)TK.from=TK.to;tkDraw()};
   $("tkg").onclick=()=>{
-    if(TK.ph!=="idle"){tkStop(true);tkUpd();return}
+    if(TK.ph!=="idle"){tkPause();return}
+    if(TK.pz){tkResume();return}
     if(TK.done||TK.rep>=TK.n)tkReset();
-    TK.done=false;if(!TK.started)TK.cur=TK.from;
-    if($("tkmid").querySelector(".tkd"))tkDraw();
-    tkPlay();
+    if($("tkmid").querySelector(".tkd")){TK.done=false;tkDraw()}
+    TK.i=0;tkPlay();
   };
   $("tkz").onclick=()=>{tkStop(true);tkReset();tkDraw()};
-  $("tkn").onclick=e=>{const b=e.target.closest("[data-n]");if(!b)return;TK.n=+b.dataset.n;qs("qtkn",String(TK.n));if(TK.ph!=="idle"){document.querySelectorAll("#tkn button").forEach(x=>x.classList.toggle("on",+x.dataset.n===TK.n));document.querySelector("#qtk .tkq small").textContent="/ "+TK.n+" takror";return}if(TK.rep>=TK.n)tkReset();tkDraw()};
+  $("tkn").onclick=e=>{const b=e.target.closest("[data-n]");if(!b)return;TK.n=+b.dataset.n;qs("qtkn",String(TK.n));if(TK.ph!=="idle"||TK.pz){document.querySelectorAll("#tkn button").forEach(x=>x.classList.toggle("on",+x.dataset.n===TK.n));document.querySelector("#qtk .tkq small").textContent="/ "+TK.n+" takror";return}if(TK.rep>=TK.n)tkReset();tkDraw()};
   const ag=$("tkag");if(ag)ag.onclick=()=>{tkReset();tkDraw();tkPlay()};
   const nx=$("tknx");if(nx)nx.onclick=()=>{TK.from=TK.to+1;TK.to=TK.from;tkReset();tkDraw()};
   tkUpd();
 }
-document.addEventListener("visibilitychange",()=>{if(document.hidden&&$("qtk").classList.contains("on")&&TK.ph!=="idle"){tkStop(true);tkUpd()}});
+document.addEventListener("visibilitychange",()=>{if(document.hidden&&$("qtk").classList.contains("on")&&TK.ph!=="idle")tkPause()});
 $("tkx").onclick=()=>qtkClose();
+
+/* Oyat matni bo‘yicha qidirish (arabcha yoki o‘zbekcha tarjima) */
+let QAYT=0,QARN=null,QUZN=null;
+const qan=t=>qnorm(t).replace(/ى/g,"ي").replace(/ة/g,"ه");
+const qesc=t=>String(t).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+async function qAySearch(raw){
+  const my=++QAYT,el=$("qayr");if(!el)return;const ns=+el.dataset.ns||0;
+  const isAr=/[؀-ۿ]/.test(raw),qn=isAr?qan(raw).trim():qnorm(raw).trim();
+  if(qn.length<(isAr?2:3)){el.innerHTML=ns?"":'<div class="qempty">Topilmadi</div>';return}
+  el.innerHTML='<div class="qempty" style="padding:14px">Oyatlar qidirilmoqda…</div>';
+  let T;try{T=await qText()}catch(e){if(my===QAYT)el.innerHTML='<div class="qempty">Oyatlar matni yuklanmadi. Internetni tekshiring.</div>';return}
+  if(my!==QAYT)return;
+  if(isAr){if(!QARN)QARN=T.ar.map(qan)}else if(!QUZN)QUZN=T.uz.map(qnorm);
+  const arr=isAr?QARN:QUZN,hits=[];
+  for(let i=0;i<arr.length&&hits.length<41;i++)if(arr[i].includes(qn))hits.push(i);
+  if(!hits.length){el.innerHTML=ns?"":'<div class="qempty">Topilmadi</div>';return}
+  const more=hits.length>40,cut=(t,n)=>t.length>n?t.slice(0,n).trimEnd()+"…":t;
+  el.innerHTML='<div class="qjh"><span>Oyatlar</span><span>'+(more?"40+":hits.length)+'</span></div>'+hits.slice(0,40).map(i=>{
+    const[s,a]=qSA(i),p=qpo(s,a);
+    return '<button class="qrow qar" data-p="'+p+'" data-s="'+s+'" data-a="'+a+'"><span class="t"><b'+(isAr?' class="qaa" dir="rtl"':'')+'>'+qesc(cut(isAr?T.ar[i]:T.uz[i],isAr?90:100))+'</b><span>'+QUZ[s-1]+" surasi, "+a+"-oyat · "+p+"-bet"+'</span></span></button>'}).join("")
+    +(more?'<div class="qempty" style="padding:10px">Natijalar ko‘p. Aniqroq yozing.</div>':"");
+}
 </script>
 
 </body>
