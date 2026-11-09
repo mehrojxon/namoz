@@ -7723,7 +7723,7 @@ const OPEN=()=>[
  S("Qo‘l bog‘lash",{txt:"O‘ng qo‘l chap qo‘l ustiga qo‘yiladi.",e:"O‘ng qo‘lning bosh va jimjilog‘i chap bilakni o‘rab, 3 barmoq uzunasiga qo‘yiladi; kindik ostida ushlanadi.",w:"Qo‘llar bog‘lanib, ko‘krak ustida ushlanadi."}),
  S("Sano",{z:"sano"})];
 const FATIHA=()=>[S("Ta’avvuz",{z:"tavuz"}),S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"}),S("Omin",{txt:"Fotihani o‘qigan kishi ichida «Omin» deydi.",pos:"Qiyom"})];
-const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan so‘ng zam sura o‘qiladi (qiyomda kamida 3 oyat Qur’on o‘qish namozning rukni).",pos:"Qiyom"})];
+const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan so‘ng zam sura o‘qiladi — bu vojib. Qiyomda Qur’on o‘qishning farz miqdori: bir uzun yoki uch qisqa oyat.",pos:"Qiyom"})];
 const RUKU=()=>[
  S("Ruku’",{z:"ruku",n:3,pos:"Ruku’",e:"Tizzalar bukilmaydi, tik turadi; barmoqlar orasi bir oz ochiq.",w:"Tizzalar ozroq bukiladi; barmoqlar orasi ochilmay, tizza kosasi ushlanadi."}),
  S("Rukudan turish",{z:"tasmi",pos:"Rukudan turish",txt:"Yolg‘iz o‘qiganda «Sami’alloh…» va «Robbana lakal hamd» ikkalasi aytiladi. Jamoatda imom faqat «Sami’alloh…», muqtadiy faqat «Robbana lakal hamd» deydi."}),
@@ -7834,7 +7834,7 @@ const NMT=[
 ]},
 {id:"qoida",t:"Namoz qoidalari",s:"Shart, rukn, vojib, sunnat…",pages:[
  {id:"sh",t:"Namoz shartlari (6)",b:[{k:"ol",i:["Tan pok bo‘lishi (tahoratli).","Badan, kiyim va namoz joyi toza bo‘lishi.","Avrat yopiq bo‘lishi.","Qiblaga qarab o‘qish.","Namozni o‘z vaqtida o‘qish.","Dil bilan niyat qilish."]}]},
- {id:"rk",t:"Namoz ruknlari (6)",b:[{k:"p",t:"Namoz ichidagi farzlar:"},{k:"ol",i:["Takbir bilan kirish.","Qiyom (tik turish).","Qiyomda kamida 3 oyat Qur’on o‘qish.","Ruku (qo‘llarni tizzaga qo‘yib egilish).","Sajda.","Oxirida Tashahhud o‘qiguncha o‘tirish."]}]},
+ {id:"rk",t:"Namoz ruknlari (6)",b:[{k:"p",t:"Namoz ichidagi farzlar:"},{k:"ol",i:["Takbir bilan kirish.","Qiyom (tik turish).","Qiyomda Qur’on o‘qish (farz miqdori: bir uzun yoki uch qisqa oyat).","Ruku (qo‘llarni tizzaga qo‘yib egilish).","Sajda.","Oxirida Tashahhud o‘qiguncha o‘tirish."]}]},
  {id:"vj",t:"Namoz vojiblari",b:[{k:"ul",i:[
   "Takbiri tahrima uchun «Allohu Akbar» lafzi.","Fotihani o‘qish: farzning 1–2-rakatida, vojib, sunnat va naflning har rakatida.","Fotihaga zam sura qo‘shish.","Fotihani zam suradan oldin o‘qish.","Fotihani bir rakatda bir marta o‘qish.",
   "3–4 rakatli namozda 2-rakatdan keyin qa’daga o‘tirish.","Har o‘tirishda Tashahhudni «abduhu va rosuluh»gacha o‘qish.","Salom bilan chiqish.","Vitrning oxirgi rakatida Qunut o‘qish.","Farz va vojiblarni o‘z o‘rnida bajarish.",
@@ -7930,7 +7930,7 @@ const NMT=[
 ]},
 {id:"ozr",t:"Qazo, sahv, musofir, zaif",s:"Maxsus holatlar",pages:[
  {id:"qz",t:"Qazo namozi",b:[{k:"ul",i:[
-  "Uzrli sabab bilan o‘z vaqtida o‘qiy olmagan kishi keyin qazosini o‘qiydi; uzrsiz qazo qilish durust emas.","Qazo bo‘lgan namozning faqat farzi o‘qiladi (bomdod sunnati peshin kirmasdan oldin bo‘lsa, o‘qiladi).","Vitr vojibining ham qazosi o‘qiladi.","Juma va hayit namozlari qazo qilib o‘qilmaydi (Jumani o‘qiy olmagan peshin o‘qiydi).","Qazo namozlari tartib bilan o‘qiladi (5 vaqtdan ortiq qazosi bo‘lsa, tartib shart emas).","Bomdod, shom, xufton qazosini jamoat qilsa, imom qiroatni ovoz chiqarib o‘qiydi; yolg‘iz o‘qisa, ichida."]}]},
+  "Uzrli sabab bilan o‘z vaqtida o‘qiy olmagan kishi keyin qazosini o‘qiydi; uzrsiz qazo qilish durust emas.","Qazo bo‘lgan namozning faqat farzi o‘qiladi (bomdod sunnati peshin kirmasdan oldin bo‘lsa, o‘qiladi).","Vitr vojibining ham qazosi o‘qiladi.","Juma va hayit namozlari qazo qilib o‘qilmaydi (Jumani o‘qiy olmagan peshin o‘qiydi).","Qazo namozlari tartib bilan o‘qiladi. Bu qoida sohibi tartibga, ya’ni umuman qazo qilmagan kishiga tegishli.","Bomdod, shom, xufton qazosini jamoat qilsa, imom qiroatni ovoz chiqarib o‘qiydi; yolg‘iz o‘qisa, ichida."]}]},
  {id:"sj",t:"Sahv sajdasi",b:[
   {k:"p",t:"Vojibdan birini unutib tark etganda xatoni tuzatish uchun qo‘shimcha ikki sajda qilinadi. Namoz oxirida: oxirgi qa’dada Tashahhud o‘qilgach, salavotsiz o‘ng tomonga bir marta salom beriladi, sahv sajdasi qilinadi, so‘ng qa’daga o‘tirib Tashahhud va ikki salavot o‘qiladi. Har sajdada 3 marta «Subhana robbiyal a’lo» aytiladi."},
   {k:"ul",i:["Namozda ikki marta xato qilinsa ham bir marta sahv sajdasi qilinadi.","Imom xatoga yo‘l qo‘ysa, ergashuvchilar ham sahv sajdasini qiladi.","Sunnat yoki mustahab unutilsa, sahv sajdasi vojib bo‘lmaydi."]},
