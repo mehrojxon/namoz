@@ -2563,7 +2563,11 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #qtk .tkd button{flex:1;border:1.5px solid #2a9a8e;background:transparent;color:#7fe0cf;border-radius:12px;padding:12px;font:600 15px system-ui}
 #qtk .tkd button.p{background:#2a9a8e;color:#fff}
 #qtk .tke{margin-top:10px;text-align:center;font-size:14px;color:#ffb48f}
-#qoff #qtkb{grid-column:1/-1;flex:1 1 100%;width:100%;max-width:none}
+#qtl{grid-template-columns:1fr 1fr 1fr!important;gap:8px!important}
+#qtl #xtc .xtk,#qtl #qoff>.qac{padding:9px 10px!important;min-height:64px!important}
+#qtl #xtc .xtk b,#qtl .qac b{font-size:13.5px!important}
+#qtl #xtc .xtk small,#qtl .qac small{font-size:11.5px!important}
+#qoff #qtkb{grid-column:auto;flex:none;width:auto}
 @media (prefers-reduced-motion:reduce){#qtk .tkm i{transition:none!important}}
 </style>
 </head>
@@ -5414,7 +5418,7 @@ async function qHave(){
 async function qOffDraw(){
   const e=$("qoff");if(!e)return;
   const have=await qHave();
-  const aud='<button class="qac" id="qaob" type="button"><b>Audio tilovat</b><small>Yuklash va boshqarish</small></button><button class="qac" id="qtkb" type="button"><b>Tinglab takrorlash</b><small>Oyatni tinglang, o‘zingiz takrorlang</small></button>';
+  const aud='<button class="qac" id="qaob" type="button"><b>Audio tilovat</b><small>Yuklash va boshqarish</small></button><button class="qac" id="qtkb" type="button"><b>Takrorlash</b><small>Tinglab takrorlang</small></button>';
   if(have){qs("qoff3","2");e.innerHTML=aud;qMenuOff(true);return}
   try{localStorage.removeItem("qoff3")}catch(x){}
   qMenuOff(false);
@@ -7363,7 +7367,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.37";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.38";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -7381,12 +7385,11 @@ if(TKR.indexOf(TK.n)<0)TK.n=10;
 const TKA=new Audio();TKA.preload="auto";let tkTm=null,tkTok=0;
 const tkRc=()=>(TK.rcs||[]).find(x=>x.id===TK.rec)||(TK.rcs||[])[0];
 const tkNA=s=>QCN[s-1];
-function tkStop(full){tkTok++;clearTimeout(tkTm);try{TKA.pause()}catch(e){}if(full)TK.ph="idle"}
+function tkStop(full){tkTok++;clearTimeout(tkTm);clearInterval(tkTm);try{TKA.pause()}catch(e){}if(full)TK.ph="idle"}
 async function qtkOpen(s,a,e){
   try{if(typeof QPLAY!=="undefined"&&QPLAY)qAStop()}catch(x){}
   if(nzBlock&&nzBlock("audio"))return;
-  try{const j=await qAudioData();TK.rcs=j.r.filter(x=>x.k==="a");TK.T=await qText()}catch(x){toast("Ma’lumot yuklanmadi. Internetni tekshiring");return}
-  if(!TK.rcs.some(x=>x.id===TK.rec))TK.rec=TK.rcs[0].id;
+  try{TK.T=await qText()}catch(x){toast("Ma’lumot yuklanmadi. Internetni tekshiring");return}
   tkStop(true);
   if(s){TK.s=s;TK.from=a;TK.to=Math.max(a,e||a)}else if(!TK.s||TK.s<1){TK.s=112;TK.from=1;TK.to=1}
   TK.from=Math.min(TK.from,tkNA(TK.s));TK.to=Math.min(Math.max(TK.to,TK.from),tkNA(TK.s));
@@ -7394,24 +7397,46 @@ async function qtkOpen(s,a,e){
   $("qtk").classList.add("on");tkDraw();
 }
 function qtkClose(){tkStop(true);$("qtk").classList.remove("on")}
-function tkPlay(){
-  const my=++tkTok,rc=tkRc();TK.ph="listen";TK.err="";tkDraw(true);
-  TKA.onended=()=>{if(my===tkTok)tkRecite(my)};
-  TKA.onerror=()=>{if(my!==tkTok)return;tkStop(true);TK.err="Audio yuklanmadi. Internetni tekshiring.";tkDraw()};
-  TKA.src=rc.u+pad3(TK.s)+pad3(TK.cur)+".mp3";
-  TKA.play().catch(()=>{if(my!==tkTok)return;tkStop(true);TK.err="Audio boshlanmadi. Qayta bosing.";tkDraw()});
+const TKI={};
+async function tkInfo(url){
+  if(TKI[url])return TKI[url];
+  const r=await fetch(url);if(!r.ok)throw 0;const ab=await r.arrayBuffer(),blob=URL.createObjectURL(new Blob([ab],{type:"audio/mpeg"}));
+  let ve=null;
+  try{
+    const AC=window.AudioContext||window.webkitAudioContext,ac=new AC(),buf=await ac.decodeAudioData(ab.slice(0));
+    const d=buf.getChannelData(0),sr=buf.sampleRate,th=0.012;let last=0;
+    for(let i=d.length-1;i>=0;i--){if(Math.abs(d[i])>th){last=i;break}}
+    ve=Math.min(buf.duration,last/sr+0.15);try{ac.close()}catch(e){}
+  }catch(e){}
+  return TKI[url]={b:blob,ve:ve};
 }
-function tkRecite(my){
-  const ms=Math.max(1500,((TKA.duration&&isFinite(TKA.duration))?TKA.duration:4)*1000);TK.ph="recite";tkDraw(true);
-  const t=document.querySelector("#qtk .tkm i");if(t){t.style.transition="none";t.style.width="0";void t.offsetWidth;t.style.transition="width "+ms+"ms linear";t.style.width="100%"}
-  tkTm=setTimeout(()=>{
-    if(my!==tkTok)return;
-    if(TK.cur<TK.to){TK.cur++;tkPlay()}
-    else{TK.rep++;if(TK.rep>=TK.n){TK.ph="idle";TK.done=true;tkDraw()}else{TK.cur=TK.from;tkPlay()}}
-  },ms);
+function tkNext(my){
+  if(my!==tkTok)return;
+  if(TK.cur<TK.to){TK.cur++;tkPlay()}
+  else{TK.rep++;if(TK.rep>=TK.n){TK.ph="idle";TK.done=true;tkDraw()}else{TK.cur=TK.from;tkPlay()}}
+}
+async function tkPlay(){
+  const my=++tkTok;clearInterval(tkTm);TK.ph="listen";TK.err="";tkDraw();
+  const url=QHS.u+pad3(TK.s)+pad3(TK.cur)+".mp3";let info;
+  try{info=await tkInfo(url)}catch(e){info={b:url,ve:null}}
+  if(my!==tkTok)return;
+  TKA.onerror=()=>{if(my!==tkTok)return;tkStop(true);TK.err="Audio yuklanmadi. Internetni tekshiring.";tkDraw()};
+  TKA.onended=()=>tkNext(my);
+  TKA.src=info.b;
+  try{await TKA.play()}catch(e){if(my!==tkTok)return;tkStop(true);TK.err="Audio boshlanmadi. Qayta bosing.";tkDraw();return}
+  tkTm=setInterval(()=>{
+    if(my!==tkTok){clearInterval(tkTm);return}
+    const d=TKA.duration;if(!d||!isFinite(d))return;
+    const ve=info.ve!=null?info.ve:d*0.55;
+    if(TK.ph==="listen"&&TKA.currentTime>=ve-0.05){
+      TK.ph="recite";tkDraw();
+      const t=document.querySelector("#qtk .tkm i"),ms=Math.max(300,(d-TKA.currentTime)*1000);
+      if(t){t.style.transition="none";t.style.width="0";void t.offsetWidth;t.style.transition="width "+ms+"ms linear";t.style.width="100%"}
+    }
+  },80);
 }
 function tkDraw(){
-  const run=TK.ph!=="idle",T=TK.T,N=tkNA(TK.s),g=qgi(TK.s,TK.cur),rc=tkRc();
+  const run=TK.ph!=="idle",T=TK.T,N=tkNA(TK.s),g=qgi(TK.s,TK.cur);
   const opt=(a,b,sel)=>{let o="";for(let i=a;i<=b;i++)o+='<option value="'+i+'"'+(i===sel?" selected":"")+'>'+i+'</option>';return o};
   let sr="";for(let i=1;i<=114;i++)sr+='<option value="'+i+'"'+(i===TK.s?" selected":"")+'>'+i+". "+QUZ[i-1]+'</option>';
   const many=TK.to>TK.from?'<span class="tkn">'+(TK.cur-TK.from+1)+" / "+(TK.to-TK.from+1)+' oyat</span>':'';
@@ -7427,7 +7452,6 @@ function tkDraw(){
    +'<button class="tkz" id="tkz" type="button" aria-label="Boshidan"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg></button></div>'
    +(TK.err?'<div class="tke">'+TK.err+'</div>':'')
    +'<div class="tkl">Necha marta takrorlaysiz</div><div class="tkch" id="tkn">'+TKR.map(x=>'<button type="button" data-n="'+x+'" class="'+(x===TK.n?"on":"")+'">'+x+'</button>').join("")+'</div>'
-   +'<div class="tkl">Qori</div><div class="tkch" id="tkq">'+TK.rcs.map(x=>'<button type="button" data-r="'+x.id+'" class="'+(x.id===rc.id?"on":"")+'">'+x.n.replace("Mahmud Xalil al-Husariy","Husariy").replace("Abdulbosit Abdussamad","Abdulbosit")+(x.s&&x.id!=="abm"?" · "+x.s:"")+'</button>').join("")+'</div>'
    +(TK.done?'<div class="tkd"><b>'+TK.n+' marta takrorlandi</b><div><button type="button" id="tkag">Yana takrorlash</button>'+(TK.to<N?'<button type="button" class="p" id="tknx">Keyingi oyat</button>':'')+'</div></div>':'');
   const rs=()=>{tkStop(true);TK.rep=0;TK.done=false;TK.cur=TK.from};
   $("tks").onchange=e=>{rs();TK.s=+e.target.value;TK.from=1;TK.to=1;TK.cur=1;tkDraw()};
@@ -7436,7 +7460,6 @@ function tkDraw(){
   $("tkg").onclick=()=>{if(TK.ph!=="idle"){tkStop(true);tkDraw()}else{TK.done=false;if(TK.rep>=TK.n)TK.rep=0;TK.cur=TK.from;tkPlay()}};
   $("tkz").onclick=()=>{rs();tkDraw()};
   $("tkn").onclick=e=>{const b=e.target.closest("[data-n]");if(!b)return;TK.n=+b.dataset.n;qs("qtkn",String(TK.n));TK.done=false;tkDraw()};
-  $("tkq").onclick=e=>{const b=e.target.closest("[data-r]");if(!b)return;const was=TK.ph!=="idle";TK.rec=b.dataset.r;qs("qtkr",TK.rec);if(was){tkStop(true);TK.rep=0;TK.cur=TK.from}tkDraw()};
   const ag=$("tkag");if(ag)ag.onclick=()=>{TK.rep=0;TK.done=false;TK.cur=TK.from;tkPlay()};
   const nx=$("tknx");if(nx)nx.onclick=()=>{TK.from=TK.to+1;TK.to=TK.from;TK.cur=TK.from;TK.rep=0;TK.done=false;tkDraw()};
 }
