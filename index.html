@@ -7483,7 +7483,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.47";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.48";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -8004,6 +8004,16 @@ const NMT=[
   {k:"ol",i:["«Juma namozining 4 rakat sunnatini o‘qimoqqa niyat qildim, yuzimni qiblam bo‘lmish Ka’baga qaratdim, xolis Alloh uchun, Allohu Akbar!».","«Juma namozining 2 rakat farzini o‘qimoqqa niyat qildim, yuzimni qiblam bo‘lmish Ka’baga qaratdim, ushbu hozir bo‘lgan imomga ergashdim, xolis Alloh uchun, Allohu Akbar!»","«Juma namozining 4 rakat sunnatini o‘qimoqqa niyat qildim, yuzimni qiblam bo‘lmish Ka’baga qaratdim, xolis Alloh uchun, Allohu Akbar!»"]},
   {k:"p",t:"Har bir niyatdan so‘ng sano o‘qiladi."},
   {k:"h",t:"Sano"},{k:"z",z:"sano"}]},
+ {id:"ju2",t:"Juma namozi hukmlari",b:[
+  {k:"p",t:"Jum’aning vojib bo‘lishi uchun misrda muqim bo‘lish, sog‘ bo‘lish, hur bo‘lish, erkak bo‘lish, balog‘atga yetgan bo‘lish, ko‘z va oyoqning salomat bo‘lishi shart qilingan. Bu shartlarni o‘zida mujassam qilmagan inson Jum’a namozini o‘qisa, jum’a namozi u tarafdan farz sifatida voqe’ bo‘ladi."},
+  {k:"p",t:"Jum’ani ado qilish uchun jum’a o‘qiladigan joy misr yoki uning chetida bo‘lishi shart qilingan. Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan bo‘lgan aholi turur joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir. Shuningdek sulton yoki uning o‘rinbosari bo‘lishi, Peshin namozining vaqti kirishi, Peshin namozining vaqtida bir tasbeh bo‘lsa ham xutba, imomdan tashqari uch kishilik jamo’at bo‘lishi va (jum’a o‘qilishiga) ommatan izn berilishi jum’aning shartlaridandir."},
+  {k:"p",t:"Jum’aning birinchi azoni aytilganida odamlar savdo (va har qanday kasb)ni tark qiladilar va jum’aga boradilar. Imom minbarga chiqqach, xutba tugagunicha namoz o‘qish va gapirish harom bo‘ladi."},
+  {k:"p",t:"Imom minbarga o‘tirganida oldida ikkinchi azon aytiladi. Odamlar imomning (xutbasini) tinglagan holda unga yuzlanadilar."},
+  {k:"p",t:"Imom qoim va tahoratli holida orasida biroz o‘tirishi bor ikki xutba o‘qiydi. Ikkala xutba tamom bo‘lgach, iqoma aytiladi va imom odamlar bilan ikki rakat namoz o‘qiydi."},
+  {k:"p",t:"Imom birinchi sajdani qilgach jamoat ketib qolsa, uning o‘zi (jum’a) namozini tamomlaydi. Agar o‘sha sajdadan avval ketib qolsalar, imom Peshin namozini boshlaydi."},
+  {k:"p",t:"Jum’aga borishga uzri borning va boshqalarning misrda Peshinni jamoat bo‘lib o‘qishlari makruhdir. Uzri yo‘qning Jum’adan avval Peshin o‘qishi ham makruhdir."},
+  {k:"p",t:"Peshinni o‘qigan odam Jum’aga harakat qilganda imom Jum’a namozida bo‘lsa, Peshini botil bo‘ladi."},
+  {k:"p",t:"Jum’aga imom tashahhudda yoki sahv sajdasida bo‘lganida yetishgan inson, namozni o‘zi mukammal qiladi."}]},
  {id:"hy",t:"Ramazon va Qurbon hayiti namozlari",b:[
   {k:"p",t:"Musulmonlarning bir yilda ikki hayit (ramazon va qurbon) bayrami bor. Ramazon (fitr) hayiti bir oy ro‘za tutilib, shu munosabat bilan qilinadigan shodlik, xursandchilik bayramidir."},
   {k:"p",t:"Fitr yoki Ro‘za hayiti shavvol oyining birinchi kunida bo‘ladi. Qurbon hayiti zulhijja oyining o‘ninchi kuniga to‘g‘ri keladi."},
