@@ -2615,7 +2615,7 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #tn .nm-ct h3{margin:0;font-weight:650;font-size:18px;line-height:1.25;font-family:inherit;flex:1 1 auto}
 #tn .nm-chip{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:rgba(14,107,99,.12);color:var(--ac);font-weight:600;font-size:12.5px;line-height:1;font-family:inherit}
 #tn .nm-chip.g{background:rgba(184,133,31,.15);color:var(--gold)}
-#tn .hk-f{--hk:#ff8a78}#tn .hk-v{--hk:#f2b441}#tn .hk-s{--hk:#4fd1a5}#tn .hk-m{--hk:#78b4ff}#tn .hk-sh{--hk:#c5a8ff}
+#tn .hk-f{--hk:#ff8a78}#tn .hk-v{--hk:#f2b441}#tn .hk-s{--hk:#4fd1a5}#tn .hk-m{--hk:#78b4ff}#tn .nm-hkl{display:flex;flex-direction:column;gap:7px;margin:0 0 14px}#tn .nm-hkl span{color:var(--hk);font-weight:700;font-size:16px;line-height:1.35;display:flex;gap:9px;align-items:baseline}#tn .nm-hkl span:before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--hk);transform:translateY(-1px)}
 #tn h3[class^=hk-]{color:var(--hk)}
 #tn .nm-ct .nm-chip.g{background:rgba(255,255,255,.07);color:var(--mut)}
 #tn .nm-chip[class*=" hk-"]{background:color-mix(in srgb,var(--hk) 16%,transparent);color:var(--hk)}
@@ -7483,7 +7483,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.41";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.42";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -7748,14 +7748,14 @@ const OPEN=()=>[
  S("Qo‘l bog‘lash",{txt:"O‘ng qo‘l chap qo‘l ustiga qo‘yiladi.",e:"O‘ng qo‘lning bosh va jimjilog‘i chap bilakni o‘rab, 3 barmoq uzunasiga qo‘yiladi; kindik ostida ushlanadi.",w:"Qo‘llar bog‘lanib, ko‘krak ustida ushlanadi."}),
  S("Sano",{z:"sano"})];
 const FATIHA=()=>[S("Ta’avvuz",{z:"tavuz"}),S("Tasmiya",{z:"tasmiya"}),S("Fotiha surasi",{q:"1:2-7"}),S("Omin",{txt:"Fotihani o‘qigan kishi ichida «Omin» deydi.",pos:"Qiyom"})];
-const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan so‘ng zam sura o‘qiladi — bu vojib. Qiyomda Qur’on o‘qishning farz miqdori: bir uzun yoki uch qisqa oyat.",pos:"Qiyom"})];
+const ZAM=(sura)=>[S("Zam sura",{q:sura||null,txt:sura?null:"Fotihadan so‘ng zam sura o‘qiladi — bu vojib.",pos:"Qiyom"})];
 const RUKU=()=>[
  S("Ruku’",{z:"ruku",n:3,pos:"Ruku’",e:"Tizzalar bukilmaydi, tik turadi; barmoqlar orasi bir oz ochiq.",w:"Tizzalar ozroq bukiladi; barmoqlar orasi ochilmay, tizza kosasi ushlanadi."}),
  S("Rukudan turish",{z:"tasmi",pos:"Rukudan turish",txt:"Yolg‘iz o‘qiganda «Sami’alloh…» va «Robbana lakal hamd» ikkalasi aytiladi. Jamoatda imom faqat «Sami’alloh…», muqtadiy faqat «Robbana lakal hamd» deydi."}),
  S("Tahmid",{z:"tahmid",pos:"Rukudan turish"})];
 const SAJDA=(k)=>[
  S("Takbir bilan sajdaga",{z:"takbir",pos:"Sajda",txt:"Avval tizzalar, so‘ng qo‘llar, so‘ng burun, oxirida peshona yerga qo‘yiladi. Sajdadan turishda buning aksi: avval bosh, so‘ng qo‘llar, so‘ng tizzalar ko‘tariladi."}),
- S("Sajda "+k+"‑marta",{z:"sajda",n:3,pos:"Sajda",e:"Bilaklar yerdan va qovurg‘adan, qorin son va yerdan uzoq tutiladi.",w:"Bilaklar yerga qo‘yilib, qorin sonlarga yopishtiriladi; yig‘ilibroq sajda qilinadi."})];
+ S(k===1?"Birinchi sajda":"Ikkinchi sajda",{z:"sajda",n:3,pos:"Sajda",e:"Bilaklar yerdan va qovurg‘adan, qorin son va yerdan uzoq tutiladi.",w:"Bilaklar yerga qo‘yilib, qorin sonlarga yopishtiriladi; yig‘ilibroq sajda qilinadi."})];
 const SAJ2=()=>[
  ...SAJDA(1),
  S("Ikki sajda orasida o‘tirish",{z:"takbir",pos:"O‘tirish",txt:"Sajdadan «Allohu Akbar» deb bosh ko‘tarib o‘tiriladi."}),
@@ -7799,16 +7799,22 @@ const NMPD={
  shom:{name:"Shom",units:[U3f("3 rakat farz"),U2("2 rakat sunnat",null,null)]},
  xufton:{name:"Xufton",units:[U4f("4 rakat farz"),U2("2 rakat sunnat",null,null),VITR()]}
 };
-/* Hukm ranglari: f=farz, v=vojib, s=sunnat, m=mustahab, sh=shart.
+/* Hukm ranglari: f=farz (shart va rukn), v=vojib, s=sunnat, m=mustahab.
    r — qadam (amal) hukmi, pr — o‘rin (qiyom, ruku’, sajda…) hukmi. Manba: kitobdagi shart, rukn, vojib, sunnat, mustahab ro‘yxatlari. */
 const POSR={"Qiyom":"f","Qiyomda turing":"f","Ruku’":"f","Sajda":"f","Rukudan turish":"v","O‘tirish":"v","Salom":"v"};
-const TTLR={"Niyat":"sh","Takbiri tahrima":"f","Qo‘l bog‘lash":"s","Sano":"s","Ta’avvuz":"s","Tasmiya":"s","Omin":"s","Zam sura":"v","Qunut takbiri":"s","Qunut duosi":"v","Ruku’":"f","Rukudan turish":"s","Tahmid":"s","Takbir bilan sajdaga":"s","Ikki sajda orasida o‘tirish":"v","Takbir bilan turish":"s","Qa’da — Tashahhud":"v","Duo":"s","O‘ng tomonga salom":"v","Chap tomonga salom":"v"};
+const TTLR={"Niyat":"f","Takbiri tahrima":"f","Qo‘l bog‘lash":"s","Sano":"s","Ta’avvuz":"s","Tasmiya":"s","Omin":"s","Zam sura":"v","Qunut takbiri":"s","Qunut duosi":"v","Ruku’":"f","Rukudan turish":"s","Tahmid":"s","Takbir bilan sajdaga":"s","Ikki sajda orasida o‘tirish":"v","Takbir bilan turish":"s","Qa’da — Tashahhud":"v","Duo":"s","O‘ng tomonga salom":"v","Chap tomonga salom":"v"};
 Object.values(NMPD).forEach(P=>P.units.forEach(u=>{const farz=/farz/.test(u.name);u.rak.forEach((rk,ri)=>{const end=rk.s.some(x=>/^Salavot/.test(x.h));rk.s.forEach(st=>{
  let r=TTLR[st.h]||null;
- if(!r&&/^Sajda/.test(st.h))r="f";
+ if(!r&&/^(Birinchi|Ikkinchi) sajda$/.test(st.h))r="f";
  if(!r&&/^Salavot/.test(st.h))r="s";
  if(st.h==="Fotiha surasi")r=(!farz||ri<2)?"v":"m";
  if(r)st.r=r;
+ const HV=["v","Tashahhudni «‘abduhu va rosuluh»gacha o‘qish"];
+ if(st.h==="Takbiri tahrima")st.hk=[["f","Namozga takbir bilan kirish"],["v","«Allohu Akbar» lafzini aytish"]];
+ else if(st.h==="Fotiha surasi"&&r==="v")st.hk=[["f","Qiyomda 3 oyatdan kam bo‘lmagan miqdorda Qur’on o‘qish"],["v","«Fotiha» surasini o‘qish"]];
+ else if(st.h==="Qa’da — Tashahhud"&&end)st.hk=[["f","Tashahhud o‘qish miqdorida o‘tirish"],HV];
+ else if(/salom$/.test(st.h))st.hk=[["f","Namozdan o‘z amali bilan chiqish"],["v","Salom lafzini aytish"]];
+ if(st.hk){delete st.r;st.pos=st.pos&&!/salom$/.test(st.h)?st.pos:null;if(!st.pos)delete st.pos;return}
  if(st.pos){let p=POSR[st.pos]||null;if(st.pos==="Qa’da")p=end?"f":"v";if(p)st.pr=p}
 })})}));
 return NMPD;})();
@@ -7886,13 +7892,22 @@ const NMT=[
   {k:"note",t:"Vitr — vojib. Taroveh Ramazonda 20 rakat sunnat."}]}
 ]},
 {id:"qoida",t:"Namoz qoidalari",s:"Shart, rukn, vojib, sunnat…",pages:[
- {id:"sh",t:"Namoz shartlari (6)",b:[{k:"ol",i:["Tan pok bo‘lishi (tahoratli).","Badan, kiyim va namoz joyi toza bo‘lishi.","Avrat yopiq bo‘lishi.","Qiblaga qarab o‘qish.","Namozni o‘z vaqtida o‘qish.","Dil bilan niyat qilish."]}]},
- {id:"rk",t:"Namoz ruknlari (6)",b:[{k:"p",t:"Namoz ichidagi farzlar:"},{k:"ol",i:["Takbir bilan kirish.","Qiyom (tik turish).","Qiyomda Qur’on o‘qish (farz miqdori: bir uzun yoki uch qisqa oyat).","Ruku (qo‘llarni tizzaga qo‘yib egilish).","Sajda.","Oxirida Tashahhud o‘qiguncha o‘tirish."]}]},
- {id:"vj",t:"Namoz vojiblari",b:[{k:"ul",i:[
-  "Takbiri tahrima uchun «Allohu Akbar» lafzi.","Fotihani o‘qish: farzning 1–2-rakatida, vojib, sunnat va naflning har rakatida.","Fotihaga zam sura qo‘shish.","Fotihani zam suradan oldin o‘qish.","Fotihani bir rakatda bir marta o‘qish.",
-  "3–4 rakatli namozda 2-rakatdan keyin qa’daga o‘tirish.","Har o‘tirishda Tashahhudni «abduhu va rosuluh»gacha o‘qish.","Salom bilan chiqish.","Vitrning oxirgi rakatida Qunut o‘qish.","Farz va vojiblarni o‘z o‘rnida bajarish.",
-  "Bomdod, shom va xufton farzlarining dastlabki 2 rakatida imom qiroatni baland o‘qishi.","Peshin va asrda imom qiroatni ovoz chiqarmay o‘qishi.","Hayit namozining har rakatida 3 martadan qo‘shimcha takbir aytish.",
-  "Sajda oyati o‘qilganda tilovat sajdasini qilish.","Muqtadiy imom qiroatida quloq solib, jim turishi.","Rukudan bosh ko‘targanda bir tasbeh miqdorida jim turish.","Ikki sajda orasida bir tasbeh miqdorida o‘tirish.","Imom sahv sajdasi qilsa, muqtadiy ham qilishi."]}]},
+ {id:"sh",t:"Namoz shartlari (farzlari)",b:[
+  {k:"p",t:"Namozning xilofsiz farzlari o‘n ikkitadan iborat. Bularning ba’zilari namozdan tashqarida bo‘lib, namozning shartlari hisoblanadi. Ba’zilari namozning ichida bo‘lib, namozning ruknlari deb ataladi."},
+  {k:"h",t:"Namozning shartlari oltitadir"},
+  {k:"ol",i:["Tan pok bo‘lmog‘i, ya’ni tahoratli bo‘lish.","Badan, kiyim va namoz o‘qiladigan joy toza bo‘lishi.","Avrat yopiq bo‘lishi.","Qiblaga qarab o‘qimoq.","Namozni o‘z vaqtida o‘qish.","Dil bilan niyat qilmoq."]},
+  {k:"h",t:"Namoz ichidagi farzlar, ya’ni ruknlar ham oltita"},
+  {k:"ol",i:["Namozga «Allohu Akbar» deb takbir bilan kirmoq.","Qiyom (tik turmoq).","Qiyomda turib, 3 oyatdan kam bo‘lmagan miqdorda Qur’on o‘qimoq.","Ruku qilmoq (qo‘llarni tizzaga qo‘yib egilish).","Sajda qilmoq.","Namoz oxirida «At-tahiyyot»ni o‘qish miqdoricha o‘tirmoq."]},
+  {k:"h",t:"Qiyomda o‘qiladigan Qur’on miqdori"},
+  {k:"p",t:"Imom Abu Hanifa nazdida bir oyat o‘qish bilan farz ado bo‘ladi, lekin shu bilan kifoyalangan namozxon gunohkor bo‘ladi. Imom Abu Yusuf va Imom Muhammad nazdida esa bir uzun oyat yoki uch qisqa oyat o‘qish farz."},
+  {k:"h",t:"Namozdan chiqish"},
+  {k:"p",t:"Tashahhud miqdorida oxirgi o‘tirish va o‘z amali bilan namozdan chiqish ham namoz farzlaridandir. Salom lafzini aytish esa vojib."}]},
+ {id:"vj",t:"Namoz vojiblari",b:[{k:"ol",i:[
+  "Takbiri tahrima uchun «Allohu Akbar!» lafzini aytmoq.","Bomdod, shom va xufton namozlari farzlarining avvalgi ikki rakatini qiroat uchun tayin qilmoq.","Farz namozlarining avvalgi ikki rakatida, vojib, sunnat va nafl namozlarining har rakatida «Fotiha» surasini o‘qimoq.","«Fotiha» surasiga zam sura (o‘qish vojib bo‘lgan rakatlarda) qo‘shib o‘qimoq.","«Fotiha» surasini zam qilingan suralardan ilgari o‘qimoq.",
+  "«Fotiha» surasini bir rakatda bir marta o‘qimoq.","Uch yoki to‘rt rakatli namozlarning ikki rakatini tugatgach, «Qa’da»ga o‘tirmoq.","Har o‘tirishda «Tashahhud» (At-tahiyyot)ni «‘abduhu va rosuluh»gacha o‘qimoq.","Salom ila namozdan chiqmoq.","Vitr namozining oxirgi rakatida «Qunut» duosini o‘qimoq.",
+  "Namozdagi farz va vojiblarni o‘z o‘rnida qilmoq.","Peshin va asr namozlarida imom uchun vojib bo‘lgan qiroatlarni ovoz chiqarmasdan o‘qimoq.","Imom boshqa namozlarning har birida vojib bo‘lgan qiroatlarni ovoz chiqarib o‘qishi.","Hayit namozining har rakatida uch martadan «qo‘shimcha takbir»lar aytmoq.","Sajda oyati o‘qilgan vaqtda tilovat sajdasini qilmoq.",
+  "Imom qiroat qilayotgan vaqtda muqtadiylar, ya’ni imomga iqtido qiluvchilar quloq solib, jim turmog‘i.","Namozga keyin (kechikib) kelganlar imomni qaysi amalda ko‘rsa, tezda shu amalni qila boshlashi lozim.","Rukudan bosh ko‘targanda bir tasbeh «La ilaha illallohu» miqdoricha jim turmoq.","Ikki sajda orasida bir tasbeh miqdorida o‘tirmoq.","Imom yanglishib «sahv sajdasi» qilsa, muqtadiylar ham sahv sajdasi qilishlari lozim."]},
+  {k:"note",t:"Sajda oyatlari ushbulardir: A’rof – 206, Ra’d – 15, Nahl – 50, Al-Isro – 107, Maryam – 58, Haj – 18, Furqon – 60, Naml – 24–25, Sajda – 15, Sod – 24, Fussilat – 37, Van-najm – 62, Inshiqoq – 20 va Alaq – 19-oyatlar."}]},
  {id:"sn",t:"Namoz sunnatlari",b:[{k:"ul",i:[
   "Takbiri tahrimada erkaklar qo‘lini quloq yumshog‘igacha, ayollar yelka to‘g‘risigacha ko‘taradi.","Qo‘l ko‘targanda barmoqlar yoyib turiladi.",
   "Qo‘llarni bog‘lab erkaklar kindik ostiga, ayollar ko‘kraklariga qo‘yadi.","Qo‘l bog‘lagandan so‘ng Sano o‘qiladi.","Sanodan so‘ng Ta’avvuz o‘qiladi.","Har rakatda Fotihadan oldin Tasmiya aytiladi.","Fotihani o‘qigan kishi ichida «Omin» deydi.",
@@ -8115,6 +8130,7 @@ function nmRes(q){
 }
 function nmStepHtml(s,g,i,n){
   let h=`<div class="nm-card"><div class="nm-ct"><h3${s.r?` class="hk-${s.r}"`:""}>${nmE(s.h)}</h3>${s.pos?`<span class="nm-chip${s.pr?" hk-"+s.pr:""}">${nmE(s.pos)}</span>`:""}${i!=null?`<span class="nm-chip g">${i+1}/${n}</span>`:""}</div>`;
+  if(s.hk)h+=`<div class="nm-hkl">${s.hk.map(x=>`<span class="hk-${x[0]}">${nmE(x[1])}</span>`).join("")}</div>`;
   if(s.z)h+=nmZ(s.z,s.n);
   if(s.q)h+=nmQ(s.q);
   if(s.txt)h+=`<p class="nm-tx" style="text-align:center">${nmE(s.txt)}</p>`;
@@ -8126,7 +8142,7 @@ function nmPray(v,g){
   const P=NMP[v.k],U=P.units[v.u],R=U.rak[v.r],S=R.s;
   let h=`<div class="nm-top"><h2>${nmE(P.name)}</h2><span>${nmE(U.name)}</span></div>`+nmSeg(g);
   h+=`<div class="nm-ln"><button type="button" data-a="pg" data-s="jamoat" data-p="az">Azon</button><button type="button" data-a="pg" data-s="jamoat" data-p="iq">Iqomat</button></div>`;
-  h+=`<div class="nm-lg" aria-label="Hukm ranglari"><span class="hk-f">Farz</span><span class="hk-v">Vojib</span><span class="hk-s">Sunnat</span><span class="hk-m">Mustahab</span><span class="hk-sh">Shart</span></div>`;
+  h+=`<div class="nm-lg" aria-label="Hukm ranglari"><span class="hk-f">Farz</span><span class="hk-v">Vojib</span><span class="hk-s">Sunnat</span><span class="hk-m">Mustahab</span></div>`;
   if(P.units.length>1)h+=`<div class="nm-ch">${P.units.map((u,i)=>`<button type="button" data-a="u" data-u="${i}" class="${i===v.u?"on":""}">${nmE(u.name)}</button>`).join("")}</div>`;
   h+=`<div class="nm-ch sm">${U.rak.map((r,i)=>`<button type="button" data-a="r" data-r="${i}" class="${i===v.r?"on":""}">${nmE(r.t)}</button>`).join("")}</div>`;
   h+=`<div class="nm-seg"><button type="button" data-a="m" data-m="s" class="${v.m==="s"?"on":""}">Ketma-ket</button><button type="button" data-a="m" data-m="l" class="${v.m==="l"?"on":""}">Ro‘yxat</button></div>`;
