@@ -2428,6 +2428,20 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #zs .tx .zs-ma{margin-top:6px;height:34px}
 #zs .cb{position:absolute;left:0;right:0;top:128px;bottom:34px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 #zs .zs-h{position:absolute;left:0;right:0;bottom:10px;font-size:11.5px;opacity:.7}
+#t2[data-z=bog]{--zb:rgba(10,20,12,.55);--zl:rgba(205,230,190,.3);--zf:#eef5e6;--za:#e0b24f;--zaf:#1d1500;--zn:#f7efd2}
+body[data-scr=t2][data-zk=bog] #sback{background:rgba(10,20,12,.55);border-color:rgba(205,230,190,.3);color:#eef5e6}
+body[data-scr=t2][data-zk=bog] #stt{color:#eef5e6}
+#zbk .zk-bog{position:absolute;inset:0;background:linear-gradient(#a9bfd0,#d9d2bd 38%,#2c3a22)}
+#zbk .zk-bog .bgl{position:absolute;inset:0}
+#zbk .zk-bog .bgs{position:absolute;inset:0;background:linear-gradient(rgba(8,14,8,.6),rgba(8,14,8,.3) 12%,rgba(8,14,8,0) 22%,rgba(8,14,8,0) 46%,rgba(8,14,8,.55) 74%,rgba(8,14,8,.78))}
+#zbk .zk-bog .bgw{position:absolute;left:0;right:0;top:42%;text-align:center;color:#eef5e6;font:13px system-ui,sans-serif;opacity:.8}
+#zs .zk-bog .zs-ar{opacity:0;height:0!important}
+#zs .zk-bog .zs-ma{color:#f0f4e4;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+#zs .zk-bog .cb{top:auto;bottom:6px;justify-content:flex-end}
+#zs .zk-bog .zs-n{font-size:96px;line-height:1;font-weight:200;color:#fbf6e4;text-shadow:0 2px 16px rgba(0,0,0,.75)}
+#zs .zk-bog .zs-sub{font-size:14px;color:#e8f0d8;margin-top:4px;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+#zs .zk-bog .zs-st{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#e0b24f;margin-top:6px;text-shadow:0 1px 8px rgba(0,0,0,.8)}
+#zs.sm .zk-bog .zs-n{font-size:78px}
 #zvl{display:flex;flex-direction:column;gap:8px;margin-top:6px}
 #zvl button{display:flex;align-items:center;gap:12px;text-align:left;width:100%;margin:0;padding:10px 12px;border-radius:14px;border:1.5px solid var(--line);background:rgba(127,160,150,.06);color:var(--ink)}
 #zvl button.on{border-color:var(--gold);background:rgba(224,178,79,.1)}
@@ -3601,7 +3615,10 @@ const ZK=[
  {sh:"Allohu akbar",ar:"{ا‌للَّهُ} أَكْبَرُ",tr:"Allohu akbar",ma:"Alloh eng ulug‘dir"},
  {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
- {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"}
+ {sh:"Qisqa salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"},
+ {sh:"Sollallohu alayhi va sallam",ar:"صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Sollallohu alayhi va sallam",ma:"Alloh unga salovat va salom yuborsin"},
+ {sh:"Allohumma solli va sallim",ar:"{ا‌للَّهُمَّ} صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",tr:"Allohumma solli va sallim ‘ala nabiyyina Muhammad",ma:"Ey Alloh, Payg‘ambarimiz Muhammadga salovat va salom yubor"},
+ {sh:"Allohumma solli ‘ala sayyidina",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى سَيِّدِنَا مُحَمَّدٍ",tr:"Allohumma solli ‘ala sayyidina Muhammad",ma:"Ey Alloh, sayyidimiz Muhammadga salovat yubor"}
 ];
 let Z=get("zikr",null);
 if(!Z)Z={sel:0,max:33,d:{},grand:0};
@@ -3636,16 +3653,17 @@ function showT(anim){
   try{zskUp(anim)}catch(e){}
 }
 $("zp").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;Z.sel=+b.dataset.i;showT(true)};
-$("zseg").onclick=e=>{const t=e.target.closest("[data-v]");if(!t)return;Z.max=+t.dataset.v;zd().n=0;showT()};
+$("zseg").onclick=e=>{const t=e.target.closest("[data-v]");if(!t)return;Z.max=+t.dataset.v;BOGP=0;BOGH=0;zd().n=0;showT()};
 $("ztap").onclick=()=>{
   if(ZV==="klassik"){const b=$("ztap");b.classList.remove("pulse");void b.offsetWidth;b.classList.add("pulse")}
   const d=zd();d.n++;d.t++;Z.grand++;
   if(d.n>=zmax()){d.n=0;d.r++;vib(200)}else vib(d.n%100===0?120:12);
   showT();
 };
-$("reset").onclick=()=>{const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
+$("reset").onclick=()=>{BOGP=0;BOGH=0;const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
 /* Tasbeh ko‘rinishlari */
 const ZVL=[
+ ["bog","Bog‘","Quruq yer sanoq bilan Jannat bog‘iga aylanadi: suv, daraxt, yashillik","linear-gradient(#9fb6c9 28%,#8a7a62 40%,#4f7a2a 52%,#1d3a14)"],
  ["klassik","Klassik","Hozirgi oddiy ko‘rinish","linear-gradient(150deg,#12615a,#082f2c)"],
  ["zulol","Zulol","Butun ekran sekin tiniq suv bilan to‘ladi","linear-gradient(#0d1417 35%,#2fb7ad 40%,#0a4a5a)"],
  ["zargar","Zargar","Oltin siferblat, zumrad ko‘zlar yorishadi","radial-gradient(circle,#16382d 40%,#e8c36a 42%,#6d4e12)"],
@@ -3655,9 +3673,10 @@ const ZVL=[
 let ZV=localStorage.getItem("zv");if(!ZVL.some(x=>x[0]===ZV))ZV="klassik";
 const zsE=$("zs"),zskE=$("zsk"),zbgE=$("zbk");let zsB="",zsFK="",zsFit="";
 const zsAr=k=>k.ar.replace(/[{}]/g,"");
-const ZSB={zulol:46,zargar:42,kiswa:56,sahar:44,zanjir:40};
+const ZSB={bog:44,zulol:46,zargar:42,kiswa:56,sahar:44,zanjir:40};
 const zwv=()=>{const P=`M0 9 ${Array.from({length:73},(_,i)=>`L${i*10} ${(9+4*Math.sin(i*.52)+1.6*Math.sin(i*1.3)).toFixed(1)}`).join(" ")}`;return `<svg class="zww" viewBox="0 0 720 18" preserveAspectRatio="none"><path d="${P} L720 18 L0 18Z" fill="#35c2b6"/><path d="${P}" fill="none" stroke="#e9fffb" stroke-width="2"/></svg>`};
 const ZBG={
+ bog:()=>`<div class="zk-bog"><div class="bgl"></div><div class="bgs"></div></div>`,
  zulol:()=>`<div class="zk-zulol"><div class="zwb"><div class="zwg"></div>${zwv()}${zwv()}<div class="zwc"></div><div class="zwc2"></div><div class="zwr"></div><div class="zwn"></div></div></div>`,
  zargar:()=>`<div class="zk-zargar"></div>`,
  kiswa:()=>`<div class="zk-kiswa"></div>`,
@@ -3665,6 +3684,7 @@ const ZBG={
  zanjir:()=>`<div class="zk-zanjir"><div class="frm"></div><div class="win"><div class="str"></div><div class="inn"></div></div><div class="rg"></div></div>`
 };
 const ZSK={
+ bog:()=>`<div class="zk-bog"><div class="tx"><div class="zs-ar ar"></div><div class="zs-ma"></div></div><div class="cb"><div class="zs-n"></div><div class="zs-sub"></div><div class="zs-st"></div></div></div>`,
  zulol:()=>`<div class="zk-zulol"><div class="tx"><div class="zs-ar ar"></div><div class="zs-ma"></div></div><div class="cb"><div class="zs-n"></div><div class="zs-sub"></div></div><div class="zs-h">Ekranni bosib sanang</div></div>`,
  zargar:()=>`<div class="zk-zargar"><div class="tx"><div class="zs-ar ar"></div><div class="zs-ma"></div></div><div class="cb"><div class="case"><div class="bez"></div><div class="dial"><div class="guil"></div><div class="rg2"></div><div class="cnt"><small class="zs-t"></small><div class="zs-n"></div><div class="zs-sub"></div></div><div class="glare"></div></div></div></div><div class="zs-h">Doira ichini bosib sanang</div></div>`,
  kiswa:()=>`<div class="zk-kiswa"><div class="zs-t"></div><div class="band"><div class="brd" style="top:0"></div><div class="brd" style="bottom:0"></div><div class="inn"><div class="kt ar"><span class="kw"><span class="kd"></span><span class="kb"></span></span></div><div class="trk"><div class="trf"></div></div></div></div><div class="zs-ma"></div><div class="cb"><div class="zs-n"></div><div class="zs-sub"></div></div></div>`,
@@ -3673,15 +3693,40 @@ const ZSK={
 };
 function zskJewels(M){const dl=zsE.querySelector(".dial");if(!dl||dl.dataset.jm==M)return;dl.dataset.jm=M;dl.classList.toggle("dn",M>40);dl.querySelectorAll(".j").forEach(e=>e.remove());const c=dl.querySelector(".cnt"),R=122;let h="";for(let i=0;i<M;i++){const a=-90+i*360/M;h+=`<i class="j" style="transform:rotate(${a}deg) translate(${R}px) rotate(${-a}deg)"></i>`}c.insertAdjacentHTML("beforebegin",h)}
 function zskMark(list,idx,cls,prev){const lo=Math.min(prev,idx),hi=Math.max(prev,idx);for(let i=Math.max(0,lo-1);i<=hi&&i<list.length;i++)list[i].classList.toggle(cls,cls==="l"?i<idx:i===idx)}
+/* Bog‘ ko‘rinishi: 3D sahna faqat tanlanganda (bog.js + three.min.js) yuklanadi va keyin saqlab qo‘yiladi */
+let BOGS=0;
+function bogLoad(){
+  if(window.BOG)return Promise.resolve();
+  const ld=u=>new Promise((a,b)=>{const e=document.createElement("script");e.src=u+"?v="+APPV;e.onload=a;e.onerror=()=>b(new Error(u));document.head.appendChild(e)});
+  return(window.THREE?Promise.resolve():ld("three.min.js")).then(()=>ld("bog.js"));
+}
+function bogFail(msg){BOGS=0;toast(msg);ZV="klassik";try{localStorage.setItem("zv",ZV)}catch(e){}zskUp(true)}
+let BOGP=0,BOGH=0,BOGT=0,BOGN=0;
+function bogFrac(){const d=zd(),m=zmax(),f=m===Infinity?Math.min(d.n/100,1):Math.min(d.n/m,1);
+  /* aylana tugagach bog bir necha soniya to‘liq ko‘rinib turadi, so‘ng yangi aylana boshlanadi */
+  if(f===0&&BOGP>=.97&&m!==Infinity){if(!BOGH){BOGH=1;clearTimeout(BOGT);BOGT=setTimeout(()=>{BOGH=0;BOGP=0;if(ZV==="bog")zskUp()},3200)}return 1}
+  if(f>0){BOGH=0;clearTimeout(BOGT)}
+  BOGP=BOGH?BOGP:f;return BOGH?1:f}
+function bogEnsure(){
+  if(ZV!=="bog"||!$("t2").classList.contains("on"))return;
+  const host=zbgE.querySelector(".bgl");if(!host)return;
+  if(window.BOG){
+    if(!BOG.mount(host)){bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi");return}
+    const w=zbgE.querySelector(".bgw");if(w)w.remove();BOG.setText(zsAr(ZK[Z.sel]));BOG.set(bogFrac());return}
+  if(BOGS===1)return;BOGS=1;
+  if(!zbgE.querySelector(".bgw"))zbgE.querySelector(".zk-bog").insertAdjacentHTML("beforeend",'<div class="bgw">Bog‘ yuklanmoqda…</div>');
+  bogLoad().then(()=>{BOGS=2;bogEnsure()}).catch(()=>bogFail("Bog‘ ko‘rinishi yuklanmadi. Birinchi marta internet kerak"));
+}
+function bogPause(){if(window.BOG&&BOG.mounted)BOG.unmount()}
 function zskFit(){
-  const t2=$("t2");if(!t2.classList.contains("on"))return;
+  const t2=$("t2");if(!t2.classList.contains("on")){bogPause();return}
   if(ZV!=="klassik"){const top=t2.getBoundingClientRect().top+scrollY,H=Math.max(560,document.documentElement.clientHeight-top-42);t2.style.setProperty("--zh",H+"px");t2.style.setProperty("--bh",innerHeight+"px")}
   const w=zskE.clientWidth,h=zskE.clientHeight;
   if(w&&h){const k=w/360;zsE.style.setProperty("--k",k.toFixed(4));zsE.style.height=(h/k).toFixed(1)+"px";zsE.classList.toggle("sm",h/k<470);
     const r=zskE.getBoundingClientRect();t2.style.setProperty("--py",(r.top+h*.44).toFixed(0)+"px");
     if(ZV==="zargar"){const mid=h/k-128-34;t2.style.setProperty("--dz",Math.max(.5,Math.min(1,mid/340)).toFixed(3))}
     if(ZV==="zanjir")zskPos()}
-  zskTx();
+  zskTx();bogEnsure();
 }
 function zskTx(){
   if(ZV==="klassik"||!zskE.clientWidth)return;
@@ -3701,8 +3746,8 @@ function zskPos(){
 }
 function zskUp(anim){
   const on=ZV!=="klassik",t2=$("t2");t2.classList.toggle("zsm",on);if(on)document.body.dataset.zk=ZV;else delete document.body.dataset.zk;zskE.hidden=!on;if(on)t2.dataset.z=ZV;else delete t2.dataset.z;
-  if(!on){zsB="";zsFK="";zsE.innerHTML="";zbgE.innerHTML="";return}
-  if(zsB!==ZV){zsE.innerHTML=ZSK[ZV]();zbgE.innerHTML=ZBG[ZV]();zsB=ZV;zsFK="";zsFit="";zsE.dataset.a="";zsE.dataset.jl="";zbgE.dataset.bl=""}
+  if(!on){bogPause();zsB="";zsFK="";zsE.innerHTML="";zbgE.innerHTML="";return}
+  if(zsB!==ZV){if(zsB==="bog")bogPause();zsE.innerHTML=ZSK[ZV]();zbgE.innerHTML=ZBG[ZV]();zsB=ZV;zsFK="";zsFit="";zsE.dataset.a="";zsE.dataset.jl="";zbgE.dataset.bl=""}
   const k=ZK[Z.sel],d=zd(),m=zmax(),inf=m===Infinity,n=d.n,f=inf?(n%100)/100:Math.min(n/m,1);
   const fs=f.toFixed(4);zbgE.style.setProperty("--f",fs);if(ZV==="kiswa")zsE.style.setProperty("--f",fs);
   const T=(c,v,h)=>zsE.querySelectorAll(c).forEach(e=>{if(h)e.innerHTML=v;else if(e.textContent!==v)e.textContent=v});
@@ -3711,6 +3756,7 @@ function zskUp(anim){
   T(".zs-ma",k.ma);T(".zs-n",String(n));
   T(".zs-sub",(inf?"Cheksiz":m+" dan")+" · "+(inf?d.r+" aylana":(d.r+1)+"-aylana"));
   T(".zs-t","Zikr "+(Z.sel+1)+" / "+ZK.length);
+  if(ZV==="bog"){const pc=Math.round(bogFrac()*100);T(".zs-st",pc>=100?"Bog‘ to‘liq yashnadi":pc<6?"Quruq yer":pc<22?"Suv tushmoqda":pc<42?"Ko‘lmak to‘lmoqda":pc<62?"Yoriqlarga suv kirdi":pc<82?"Daraxtlar o‘smoqda":"Bog‘ yashnamoqda");if(window.BOG&&BOG.mounted){BOG.setText(A);BOG.set(bogFrac());const nn=zd().n;if(anim===undefined&&nn>BOGN)BOG.pulse();BOGN=nn}}
   const fk=ZV+"|"+Z.sel;if(anim!==undefined||fk!==zsFit){zsFit=fk;zskFit()}
   if(ZV==="zargar"){const M=m===100?100:33,L=inf?n%33:Math.min(n,M);zskJewels(M);const js=zsE.querySelectorAll(".j"),pv=+(zsE.dataset.jl||0);zsE.dataset.jl=L;if(anim!==undefined||js.length!==M||Math.abs(L-pv)>3)js.forEach((e,i)=>e.classList.toggle("l",i<L));else zskMark(js,L,"l",pv)}
   if(ZV==="zanjir"){const M=inf?33:m,rb=zbgE.querySelector(".inn")?.dataset.m!=M;zskBeads(M);const idx=Math.min(inf?n%33:n,M-1),bs=zbgE.querySelectorAll(".bd"),pv=+(zbgE.dataset.bl||0);zbgE.dataset.bl=idx;zskPos();if(anim!==undefined||rb||Math.abs(idx-pv)>3){bs.forEach((e,i)=>{e.classList.toggle("l",i<idx);e.classList.toggle("c",i===idx)})}else{zskMark(bs,idx,"l",pv);zskMark(bs,idx,"c",pv)}}
@@ -7483,7 +7529,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.48";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.49";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
