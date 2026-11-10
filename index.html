@@ -2083,7 +2083,7 @@ html.shl body{overflow:hidden}
 #nd .dzls{list-style:none;margin:8px 0 0;padding:0;font-size:13.5px;color:#c6d3ce}#nd .dzls li{padding:8px 0;border-top:1px solid rgba(200,215,210,.14)}#nd .dzls b{color:var(--wn)}
 #nd .dzhd,#nd .dzhm{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}#nd .dzhd span{text-align:center;font:700 11px system-ui;color:var(--mut);padding-bottom:3px}
 #nd .dzhm i{aspect-ratio:1;border-radius:5px;background:#161e1c}#nd .dzhm i.v5{background:var(--ok)}#nd .dzhm i.v4{background:#2f9c77}#nd .dzhm i.v3{background:#8a7a2e}#nd .dzhm i.v2{background:#b3702a}#nd .dzhm i.v1,#nd .dzhm i.v0{background:#a4412f}#nd .dzhm i.n{background:transparent;border:1px dashed rgba(200,215,210,.2)}#nd .dzhm i.t{outline:2px solid var(--gold);outline-offset:1px}
-#nd .dzkey{margin-top:6px;font-size:11.5px;color:var(--mut)}
+#nd .dzkey{margin-top:8px;font-size:12px;line-height:1.9;color:var(--mut)}#nd .dzkey .kc{display:inline-flex;align-items:center;gap:4px;margin-left:10px;white-space:nowrap}#nd .dzkey .kc i{width:12px;height:12px;border-radius:3px;display:inline-block}#nd .dzkey .k5{background:var(--ok)}#nd .dzkey .k4{background:#2f9c77}#nd .dzkey .k3{background:#8a7a2e}#nd .dzkey .k2{background:#b3702a}#nd .dzkey .k0{background:#a4412f}
 #nd .ndcmw{margin-top:6px}
 #nd .dztl{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}#nd .dztl>div{padding:12px 6px;border-radius:12px;border:1px solid rgba(200,215,210,.16);background:#161e1c;text-align:center}#nd .dztl b{display:block;font:700 24px Georgia,serif;color:var(--gold)}#nd .dztl span{font-size:12px;color:var(--mut)}
 #nd .dzlvl{margin-top:10px;padding:12px 14px;border-radius:12px;border:1px solid rgba(200,215,210,.16);background:#161e1c}#nd .dzlh{display:flex;justify-content:space-between;font-size:14.5px;color:var(--ink)}#nd .dzlh span{font-size:12.5px;color:var(--mut)}
@@ -4942,6 +4942,12 @@ async function ndCmLoad(){
   ndCmDraw()
 }
 function ndCmDraw(){const e=$("ndcm");if(!$("nd").classList.contains("on"))return;if(NDTAB==="n"&&e)e.innerHTML=ndCmHtml();else if(NDTAB==="a")ndDraw()}
+function ndSentLine(wk,d){
+  const sent=wk&&xbLs("ndsw")===wk.start;
+  if(!wk){const k=(5-new Date().getDay()+7)%7||7,x=new Date();x.setDate(x.getDate()+k);return"Siz jamoaga qo‘shilgansiz. Natijangiz, belgilangan namozlar bo‘lgan birinchi hafta tugagach, ilova ochilganda yuboriladi (eng erta juma, "+ndFmt(x.toLocaleDateString("sv"))+")."}
+  if(sent)return"Siz qo‘shilgansiz, "+ndFmt(wk.start)+" haftasi natijangiz yuborilgan.";
+  return"Siz qo‘shilgansiz. "+ndFmt(wk.start)+" haftasi natijangiz hali yuborilmagan: ilovani ochib turing, u avtomatik yuboriladi."
+}
 function ndCmHtml(){
   if(nzOffK("nstat"))return"";
   const d=NDCM;
@@ -4951,7 +4957,7 @@ function ndCmHtml(){
   const cta='<button type="button" class="ndinv" data-ndt="a"><span>Natijangizni solishtirish uchun</span><b>Hamroh bo‘ling ›</b></button>';
   let h='<div class="xtl">Hamrohlar bilan solishtirish</div><div class="ndcm">';
   if(d.n<10){
-    h+='<p>Hamrohlar jamoasi shakllanmoqda: hozircha '+d.n+' ta. Umumiy natijalar 10 ta hamroh bo‘lgach ko‘rinadi.</p>'+(joined?'<p class="ndcmx">Siz shu jamoaning bir qismisiz. Yaqinlaringizni ham taklif qiling: jamoa qancha katta bo‘lsa, solishtirish shuncha aniq.</p>':cta);
+    h+='<p>Hamrohlar jamoasi shakllanmoqda. '+ndFmt(d.h)+' haftasi natijasini yuborgan hamrohlar: '+d.n+' ta. Umumiy natijalar 10 ta hamroh natija yuborgach ko‘rinadi.</p>'+(joined?'<p class="ndcmx">'+ndSentLine(wk,d)+' Yaqinlaringizni ham taklif qiling: jamoa qancha katta bo‘lsa, solishtirish shuncha aniq.</p>':cta);
     return h+'</div>'
   }
   h+='<div class="ndcs"><div><b>'+d.n+'</b><span>hamroh</span></div><div><b>'+d.avg+'%</b><span>o‘rtacha natija</span></div><div><b>'+d.tot+'</b><span>jami namoz</span></div></div><p class="ndcmx">'+ndFmt(d.h)+' haftasi bo‘yicha. Hamma narsa ismsiz va yashirin.</p>';
@@ -4970,7 +4976,7 @@ function ndInsight(o){
   const lv=ndLevel(o),wk=ndWeek(o),cu=ndCur(o),an=ndAn(o),st=ndStreak(o),bs=ndBest(o),tt=ndTotal(o);
   let h='<div class="ndlv"><div class="ndlh"><div><small>Daraja</small><b>'+lv.name+'</b></div><div class="ndlf"><b>'+lv.f+'</b><small>to‘liq kun</small></div></div>'
    +'<div class="xtb"><i style="width:'+lv.pct+'%"></i></div><div class="ndls">'+(lv.next?'Keyingi daraja — '+lv.next+': yana '+lv.left+' kun':'Eng yuqori daraja')+'</div>'
-   +'<div class="ndlx">To‘liq kun — besh vaqt namoz ham belgilangan kun.</div></div>';
+   +'<div class="ndlx">To‘liq kun — besh vaqt namoz ham belgilangan kun. Ketma-ket kun — har kuni kamida bitta namoz belgilangan kunlar.</div></div>';
   const SM=[3,7,14,30,60,100,200,365].find(x=>x>st),TM2=[50,100,250,500,1000,2500,5000,10000].find(x=>x>tt);
   h+='<div class="ndtl"><div><b>'+st+'</b><span>ketma-ket kun</span></div><div><b>'+bs+'</b><span>eng uzun</span></div><div><b>'+tt+'</b><span>jami namoz</span></div></div>';
   h+='<p class="ndtn">'+(st>0?(SM?'Ketma-ketlik: yana '+(SM-st)+' kun — '+SM+' kunlik belgi.':'Bir yildan oshiq ketma-ketlik. Alloh sabot bersin.'):'Bugun bitta namozni belgilab, yangi ketma-ketlikni boshlang.')+(TM2?' Keyingi belgi: '+TM2+' ta namoz (yana '+(TM2-tt)+').':'')+'</p>';
@@ -5225,11 +5231,11 @@ function ndViewN(o){
   if(ins.length)h+=`<ul class="dzls">${ins.map(x=>"<li>"+x+"</li>").join("")}</ul>`;
   h+=`<div class="dzs"><span>Oxirgi 5 hafta</span><b>kun bo‘yicha</b></div><div class="dzhd">${[34,33,32,31,30,29,28].map(n=>`<span>${NDW[new Date(ndDate(n)+"T00:00:00").getDay()]}</span>`).join("")}</div><div class="dzhm">`;
   for(let n=34;n>=0;n--){const ds=ndDS(o,n,st),t=o.d[ndDate(n)]||"00000",c5=t.split("1").length-1,act=ds.some(v=>v>=0);h+=`<i class="${act?"v"+c5:"n"}${n===0?" t":""}" title="${ndFmt(ndDate(n))}: ${c5}/5"></i>`}
-  h+=`</div><div class="dzkey">Yashil — 5/5 · sariq — 3 · qizil — 2 va undan kam</div>`;
+  h+=`</div><div class="dzkey">Kunda o‘qilgan namoz: <span class="kc"><i class="k5"></i>5</span><span class="kc"><i class="k4"></i>4</span><span class="kc"><i class="k3"></i>3</span><span class="kc"><i class="k2"></i>2</span><span class="kc"><i class="k0"></i>0–1</span></div>`;
   h+=`<div class="ndcmw" id="ndcm">${ndCmHtml()}</div>`;
   const lv=ndLevel(o),sk=ndStreak(o),bs=ndBest(o),tt2=ndTotal(o),SM=[3,7,14,30,60,100,200,365].find(x=>x>sk);
   h+=`<div class="dzs"><span>Yutuqlar</span></div><div class="dztl"><div><b>${sk}</b><span>ketma-ket kun</span></div><div><b>${bs}</b><span>eng uzun</span></div><div><b>${tt2}</b><span>jami namoz</span></div></div>`;
-  h+=`<div class="dzlvl"><div class="dzlh"><b>Daraja: ${lv.name}</b><span>${lv.f} to‘liq kun</span></div><div class="dzbar"><i style="width:${lv.pct}%"></i></div><small>${lv.next?"Keyingi daraja — "+lv.next+": yana "+lv.left+" kun. ":"Eng yuqori daraja. "}To‘liq kun — besh vaqt namoz ham belgilangan kun.${sk>0&&SM?" Ketma-ketlik: yana "+(SM-sk)+" kun — "+SM+" kunlik belgi.":""}</small></div>`;
+  h+=`<div class="dzlvl"><div class="dzlh"><b>Daraja: ${lv.name}</b><span>${lv.f} to‘liq kun</span></div><div class="dzbar"><i style="width:${lv.pct}%"></i></div><small>${lv.next?"Keyingi daraja — "+lv.next+": yana "+lv.left+" kun. ":"Eng yuqori daraja. "}To‘liq kun — besh vaqt namoz ham belgilangan kun. Ketma-ket kun — har kuni kamida bitta namoz belgilangan kunlar.${sk>0&&SM?" Ketma-ketlik: yana "+(SM-sk)+" kun — "+SM+" kunlik belgi.":""}</small></div>`;
   const pl=[];rate.forEach((r,i)=>{if(r!==null&&cu.p[i]>=3&&r<75)pl.push([r,i])});pl.sort((a,b)=>a[0]-b[0]);
   const li=pl.slice(0,2).map(x=>`<li>${NDN[NDK[x[1]]]}: vaqti kirishi bilan o‘qib, darhol belgilang.</li>`);
   if(sk===0)li.push("<li>Bugun kamida bitta namozni belgilab, ketma-ketlikni boshlang.</li>");
