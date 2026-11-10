@@ -2615,6 +2615,13 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 #tn .nm-ct h3{margin:0;font-weight:650;font-size:18px;line-height:1.25;font-family:inherit;flex:1 1 auto}
 #tn .nm-chip{display:inline-flex;align-items:center;min-height:26px;padding:0 10px;border-radius:999px;background:rgba(14,107,99,.12);color:var(--ac);font-weight:600;font-size:12.5px;line-height:1;font-family:inherit}
 #tn .nm-chip.g{background:rgba(184,133,31,.15);color:var(--gold)}
+#tn .hk-f{--hk:#ff8a78}#tn .hk-v{--hk:#f2b441}#tn .hk-s{--hk:#4fd1a5}#tn .hk-m{--hk:#78b4ff}#tn .hk-sh{--hk:#c5a8ff}
+#tn h3[class^=hk-]{color:var(--hk)}
+#tn .nm-ct .nm-chip.g{background:rgba(255,255,255,.07);color:var(--mut)}
+#tn .nm-chip[class*=" hk-"]{background:color-mix(in srgb,var(--hk) 16%,transparent);color:var(--hk)}
+#tn .nm-lg{display:flex;flex-wrap:wrap;gap:6px 14px;justify-content:center;margin:0 0 12px;font-size:12.5px;font-weight:700;letter-spacing:.02em}
+#tn .nm-lg span{color:var(--hk);display:inline-flex;align-items:center;gap:5px}
+#tn .nm-lg span:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--hk)}
 #tn .nm-ar{font:400 30px/2.15 "QPC Hafs","Noto Naskh Arabic","Amiri",serif;direction:rtl;text-align:center;color:var(--ink);margin:4px 0 8px;word-spacing:.08em;overflow-wrap:anywhere}
 #tn .nm-ar.q{font-size:28px;text-align:right}
 #tn .nm-lt{font-weight:500;font-size:16px;line-height:1.55;font-family:inherit;color:var(--ink);text-align:center;margin:0 0 6px}
@@ -7785,13 +7792,26 @@ const U4s=(name)=>unit(name,4,[{zam:1},{zam:1,qaada:"t"},{zam:1},{zam:1,qaada:"e
 const U4f=(name)=>unit(name,4,[{zam:1},{zam:1,qaada:"t"},{},{qaada:"end"}]);
 const U3f=(name)=>unit(name,3,[{zam:1},{zam:1,qaada:"t"},{qaada:"end"}]);
 const VITR=()=>unit("Vitr (3 rakat, vojib)",3,[{zam:1},{zam:1,qaada:"t"},{zam:1,qunut:1,qaada:"end"}]);
-return {
+const NMPD={
  bomdod:{name:"Bomdod",units:[U2("2 rakat sunnat","97:1-5","112:1-4"),U2("2 rakat farz","113:1-5","114:1-6")]},
  peshin:{name:"Peshin",units:[U4s("4 rakat sunnat"),U4f("4 rakat farz"),U2("2 rakat sunnat",null,null)]},
  asr:{name:"Asr",units:[U4f("4 rakat farz")]},
  shom:{name:"Shom",units:[U3f("3 rakat farz"),U2("2 rakat sunnat",null,null)]},
  xufton:{name:"Xufton",units:[U4f("4 rakat farz"),U2("2 rakat sunnat",null,null),VITR()]}
-};})();
+};
+/* Hukm ranglari: f=farz, v=vojib, s=sunnat, m=mustahab, sh=shart.
+   r — qadam (amal) hukmi, pr — o‘rin (qiyom, ruku’, sajda…) hukmi. Manba: kitobdagi shart, rukn, vojib, sunnat, mustahab ro‘yxatlari. */
+const POSR={"Qiyom":"f","Qiyomda turing":"f","Ruku’":"f","Sajda":"f","Rukudan turish":"v","O‘tirish":"v","Salom":"v"};
+const TTLR={"Niyat":"sh","Takbiri tahrima":"f","Qo‘l bog‘lash":"s","Sano":"s","Ta’avvuz":"s","Tasmiya":"s","Omin":"s","Zam sura":"v","Qunut takbiri":"s","Qunut duosi":"v","Ruku’":"f","Rukudan turish":"s","Tahmid":"s","Takbir bilan sajdaga":"s","Ikki sajda orasida o‘tirish":"v","Takbir bilan turish":"s","Qa’da — Tashahhud":"v","Duo":"s","O‘ng tomonga salom":"v","Chap tomonga salom":"v"};
+Object.values(NMPD).forEach(P=>P.units.forEach(u=>{const farz=/farz/.test(u.name);u.rak.forEach((rk,ri)=>{const end=rk.s.some(x=>/^Salavot/.test(x.h));rk.s.forEach(st=>{
+ let r=TTLR[st.h]||null;
+ if(!r&&/^Sajda/.test(st.h))r="f";
+ if(!r&&/^Salavot/.test(st.h))r="s";
+ if(st.h==="Fotiha surasi")r=(!farz||ri<2)?"v":"m";
+ if(r)st.r=r;
+ if(st.pos){let p=POSR[st.pos]||null;if(st.pos==="Qa’da")p=end?"f":"v";if(p)st.pr=p}
+})})}));
+return NMPD;})();
 const NMT=[
 {id:"tahorat",t:"Tahorat, g‘usl, tayammum",s:"Poklanish tartibi",pages:[
  {id:"th-intro",t:"Tahorat haqida",b:[
@@ -8094,7 +8114,7 @@ function nmRes(q){
   return`<div class="nm-h">Natijalar (${r.length})</div>`+r.slice(0,30).map(([s,p])=>`<button type="button" class="nm-row" data-a="pg" data-s="${s.id}" data-p="${p.id}"><div><b>${nmE(p.t)}</b><small>${nmE(s.t)}</small></div>${nmArr}</button>`).join("");
 }
 function nmStepHtml(s,g,i,n){
-  let h=`<div class="nm-card"><div class="nm-ct"><h3>${nmE(s.h)}</h3>${s.pos?`<span class="nm-chip">${nmE(s.pos)}</span>`:""}${i!=null?`<span class="nm-chip g">${i+1}/${n}</span>`:""}</div>`;
+  let h=`<div class="nm-card"><div class="nm-ct"><h3${s.r?` class="hk-${s.r}"`:""}>${nmE(s.h)}</h3>${s.pos?`<span class="nm-chip${s.pr?" hk-"+s.pr:""}">${nmE(s.pos)}</span>`:""}${i!=null?`<span class="nm-chip g">${i+1}/${n}</span>`:""}</div>`;
   if(s.z)h+=nmZ(s.z,s.n);
   if(s.q)h+=nmQ(s.q);
   if(s.txt)h+=`<p class="nm-tx" style="text-align:center">${nmE(s.txt)}</p>`;
@@ -8106,6 +8126,7 @@ function nmPray(v,g){
   const P=NMP[v.k],U=P.units[v.u],R=U.rak[v.r],S=R.s;
   let h=`<div class="nm-top"><h2>${nmE(P.name)}</h2><span>${nmE(U.name)}</span></div>`+nmSeg(g);
   h+=`<div class="nm-ln"><button type="button" data-a="pg" data-s="jamoat" data-p="az">Azon</button><button type="button" data-a="pg" data-s="jamoat" data-p="iq">Iqomat</button></div>`;
+  h+=`<div class="nm-lg" aria-label="Hukm ranglari"><span class="hk-f">Farz</span><span class="hk-v">Vojib</span><span class="hk-s">Sunnat</span><span class="hk-m">Mustahab</span><span class="hk-sh">Shart</span></div>`;
   if(P.units.length>1)h+=`<div class="nm-ch">${P.units.map((u,i)=>`<button type="button" data-a="u" data-u="${i}" class="${i===v.u?"on":""}">${nmE(u.name)}</button>`).join("")}</div>`;
   h+=`<div class="nm-ch sm">${U.rak.map((r,i)=>`<button type="button" data-a="r" data-r="${i}" class="${i===v.r?"on":""}">${nmE(r.t)}</button>`).join("")}</div>`;
   h+=`<div class="nm-seg"><button type="button" data-a="m" data-m="s" class="${v.m==="s"?"on":""}">Ketma-ket</button><button type="button" data-a="m" data-m="l" class="${v.m==="l"?"on":""}">Ro‘yxat</button></div>`;
