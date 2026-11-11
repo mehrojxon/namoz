@@ -18,6 +18,10 @@ var POOL=new THREE.Vector3(-1.3,0,-2.4);
 var U={uT:{value:0},uP:{value:0},uFront:{value:0},uPool:{value:POOL},uR:{value:.3},uG:{value:.1},uL:{value:0},uFlow:{value:.1},uSun:{value:new THREE.Vector3()}};
 var scene=new THREE.Scene();scene.fog=new THREE.Fog(0xb8a886,22,120);
 var camera=new THREE.PerspectiveCamera(74,.5,.1,400);
+/* the scene is framed for a phone-portrait view (aspect <= .54); things that can never appear in it are not built */
+var AMAX=.52,vcam=new THREE.PerspectiveCamera(74,.56,.1,400),vv=new THREE.Vector3();
+vcam.position.set(.3,2.1,7.6);vcam.lookAt(.15,1.9,-5.0);vcam.updateMatrixWorld(true);vcam.updateProjectionMatrix();
+function vis(x,y,z,mx,my){vv.set(x,y,z).project(vcam);return vv.z<1&&Math.abs(vv.x)<mx&&vv.y>-my&&vv.y<my}
 
 /* ---------- GLSL noise ---------- */
 var NOISE=[
@@ -279,10 +283,10 @@ var grassGeo=(function(){var g=new THREE.BufferGeometry(),v=[-.03,0,0,.03,0,0,-.
  c=[.05,.09,.025, .05,.09,.025, .16,.3,.08, .16,.3,.08, .42,.56,.2],ix=[0,1,2,1,3,2,2,3,4];
  g.setAttribute('position',new THREE.Float32BufferAttribute(v,3));g.setAttribute('color',new THREE.Float32BufferAttribute(c,3));g.setIndex(ix);g.computeVertexNormals();return g})();
 function growMat(){var m=new THREE.MeshLambertMaterial({vertexColors:true,side:THREE.DoubleSide});patch(m,{key:'grassL',vdecl:GROW_V[0],vbody:GROW_V[1]});return m}
-var NG=42000,grassMesh=new THREE.InstancedMesh(grassGeo,growMat(),NG),gT=new Float32Array(NG);
+var NG=30000,grassMesh=new THREE.InstancedMesh(grassGeo,growMat(),NG),gT=new Float32Array(NG);
 (function(){var r=rng(5),d=new THREE.Object3D(),n=0,col=new THREE.Color(),PER=16;
  while(n<NG){var cx=(r()*2-1)*13,cz=-13+r()*18,dx=cx-POOL.x,dz=cz-POOL.z,dist=Math.sqrt(dx*dx+dz*dz);
-  if(dist<poolRad(Math.atan2(dz,dx))*1.05)continue;if(cz<-12.5&&cx<4.5)continue;
+  if(dist<poolRad(Math.atan2(dz,dx))*1.05)continue;if(!vis(cx,.2,cz,1.12,1.5))continue;if(cz<-12.5&&cx<4.5)continue;
   var cr=.25+r()*.5,ch=.14+r()*.26,hue=.17+r()*.12,lig=.62+r()*.4,ct=.2+(dist/22)*.55+r()*.12;
   for(var k=0;k<PER&&n<NG;k++){var a=r()*6.283,rr=Math.abs(r()+r()-1)*cr*1.6,x=cx+Math.cos(a)*rr,z=cz+Math.sin(a)*rr;
    var h=ch*(.65+.7*r())*(1-.4*rr/(cr*1.6));d.position.set(x,0,z);d.rotation.set((r()-.5)*.35,r()*6.283,(r()-.5)*.35);d.scale.set(1.1+r()*1.0,h,1);d.updateMatrix();grassMesh.setMatrixAt(n,d.matrix);
@@ -377,7 +381,7 @@ function makeTree(seed,pos,sc,ry,aa){
   lm.customDepthMaterial=leafDepth;lm.castShadow=true;lm.receiveShadow=true;lm.frustumCulled=false;grp.add(lm);
   var dd=Math.sqrt(Math.pow(pos.x-POOL.x,2)+Math.pow(pos.z-POOL.z,2));
   grp.position.copy(pos);grp.rotation.y=ry;grp.userData.s=sc;grp.userData.sx=.9+((Math.floor(pos.x*13)%7)/7)*.25;grp.userData.sz=.9+((Math.floor(pos.z*11)%7)/7)*.25;grp.userData.a=aa!=null?aa:.12+Math.min(.5,dd/26);scene.add(grp);treeGroups.push(grp);return grp}
-[[51,-4.2,-3.2,0.62,0.0],[67,-6.4,-2.2,0.55,1.7],[83,-8.6,-4.5,0.7,3.4],[23,-10.0,-2.0,0.6,5.1],[37,-5.6,-5.6,0.66,0.6],[11,-7.6,-6.8,0.78,2.3],[51,1.6,-4.6,0.5,4.0],[67,3.0,-5.4,0.6,5.7],[83,4.8,-3.6,0.6,1.2],[23,6.4,-5.2,0.7,2.9],[37,8.2,-3.0,0.6,4.6],[11,9.6,-6.0,0.74,0.1],[51,5.6,-7.2,0.8,1.8],[67,2.4,-7.4,0.8,3.5],[83,7.4,-8.2,0.85,5.2],[23,-9.4,-8.0,0.85,0.7],[37,-3.2,-7.6,0.8,2.4],[11,0.9,-6.2,0.62,4.1],[51,10.8,-3.8,0.6,5.8],[67,-11.2,-4.6,0.7,1.3]].forEach(function(t){makeTree(t[0],new V3(t[1],0,t[2]),t[3],t[4])});
+[[51,-4.2,-3.2,0.62,0.0],[67,-6.4,-2.2,0.55,1.7],[83,-8.6,-4.5,0.7,3.4],[23,-10.0,-2.0,0.6,5.1],[37,-5.6,-5.6,0.66,0.6],[11,-7.6,-6.8,0.78,2.3],[51,1.6,-4.6,0.5,4.0],[67,3.0,-5.4,0.6,5.7],[83,4.8,-3.6,0.6,1.2],[23,6.4,-5.2,0.7,2.9],[37,8.2,-3.0,0.6,4.6],[11,9.6,-6.0,0.74,0.1],[51,5.6,-7.2,0.8,1.8],[67,2.4,-7.4,0.8,3.5],[83,7.4,-8.2,0.85,5.2],[23,-9.4,-8.0,0.85,0.7],[37,-3.2,-7.6,0.8,2.4],[11,0.9,-6.2,0.62,4.1],[51,10.8,-3.8,0.6,5.8],[67,-11.2,-4.6,0.7,1.3]].filter(function(t){return vis(t[1],2.2,t[2],1.7,1.6)}).forEach(function(t){makeTree(t[0],new V3(t[1],0,t[2]),t[3],t[4])});
 /* a tree standing beside the camera: its leafy branches frame the upper-left corner */
 makeTree(23,new V3(-3.4,0,-.4),.66,2.2,.1);
 
@@ -432,7 +436,7 @@ function skyFx(p,dt){
 yield;
 /* ---------- sizing / camera ---------- */
 var W=0,H=0,mx=0,my=0,tmx=0,tmy=0;
-function resize(){var r=app.getBoundingClientRect();W=Math.max(280,r.width);H=Math.max(360,r.height);
+function resize(){var r=app.getBoundingClientRect();H=Math.max(360,r.height);W=Math.max(280,Math.min(r.width,Math.round(H*AMAX)));cv.style.width=W+'px';cv.style.margin='0 auto';var mk=r.width>W+2?'linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)':'none';cv.style.webkitMaskImage=cv.style.maskImage=mk;
   renderer.setPixelRatio(typeof pr==='number'?pr:1);renderer.setSize(W,H,false);camera.aspect=W/H;
   var off=Math.round(H*.07);camera.setViewOffset(W,H,0,off,W,H);camera.updateProjectionMatrix()}
 var ro=new ResizeObserver(resize);ro.observe(app);resize();
