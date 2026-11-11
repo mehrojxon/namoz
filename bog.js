@@ -374,7 +374,7 @@ function makeTree(seed,pos,sc,ry,aa){
 makeTree(23,new V3(-3.4,0,-.4),.66,2.2,.1);
 
 /* ---------- salovat: tog‘ ortidan nur bilan ko‘tarilgan xat ---------- */
-var SX=.15,SY=9.0,SZ=-26,pulse=0,txtNow='',txtPend='';
+var SX=.15,SY=10.0,SZ=-26,pulse=0,txtNow='',txtPend='';
 var TC=document.createElement('canvas');TC.width=2048;TC.height=768;
 var txtTex=new THREE.CanvasTexture(TC);txtTex.minFilter=THREE.LinearMipmapLinearFilter;txtTex.anisotropy=4;
 var txtMesh=new THREE.Mesh(new THREE.PlaneGeometry(23,8.6),new THREE.MeshBasicMaterial({map:txtTex,transparent:true,depthWrite:false,fog:false,toneMapped:false,opacity:.3}));
@@ -398,9 +398,9 @@ function drawTxt(ar){
   while(true){
     lines=[ws.join(' ')];
     if(meas(lines[0])>mw&&ws.length>1&&fs<=120){var h=Math.ceil(ws.length/2);lines=[ws.slice(0,h).join(' '),ws.slice(h).join(' ')]}
-    var okw=lines.every(function(t){return meas(t)<=mw}),okh=lines.length*fs*1.5<=Hd-60;
+    var okw=lines.every(function(t){return meas(t)<=mw}),okh=lines.length*fs*1.3<=Hd-90;
     if((okw&&okh)||fs<80)break;fs-=10}
-  var lh=fs*1.5,y0=Hd/2-(lines.length-1)*lh/2;x.font=fs+'px '+fam;
+  var lh=fs*1.3,y0=Hd/2-(lines.length-1)*lh/2;x.font=fs+'px '+fam;
   function pass(fn){lines.forEach(function(t,i){fn(t,Wd/2,y0+i*lh)})}
   x.save();x.shadowColor='rgba(8,14,32,.9)';x.shadowBlur=80;x.fillStyle='rgba(8,14,32,.85)';pass(function(t,a,b){x.fillText(t,a,b);x.fillText(t,a,b);x.fillText(t,a,b)});x.restore();
   x.save();x.shadowColor='rgba(255,190,90,.95)';x.shadowBlur=42;x.fillStyle='#ffd07a';pass(function(t,a,b){x.fillText(t,a,b)});x.restore();
@@ -414,7 +414,7 @@ function setTxt(ar){ar=ar||'';if(ar===txtNow)return;txtNow=ar;
 function skyFx(p,dt){
   pulse=Math.max(0,pulse-dt*2.6);
   var e=sm(0,1,p),k=.2+.8*Math.pow(e,.85),fl=.5+.5*Math.sin(T*.7);
-  txtMesh.material.opacity=Math.min(1,.38+.62*sm(0,.45,p)+pulse*.25);
+  txtMesh.material.opacity=Math.min(1,.88+.12*sm(0,.3,p)+pulse*.2);
   var sc=1+.018*pulse;txtMesh.scale.set(sc,sc,1);txtMesh.position.y=SY+.12*Math.sin(T*.35);
   rayU.uT.value=T;rayU.uI.value=1.25*((.16+.84*k)*(.92+.08*fl)+pulse*.4);
   motes.material.opacity=.15+.75*e+pulse*.2;motes.material.size=.13+.07*e;
@@ -424,7 +424,7 @@ function skyFx(p,dt){
 var W=0,H=0,mx=0,my=0,tmx=0,tmy=0;
 function resize(){var r=app.getBoundingClientRect();W=Math.max(280,r.width);H=Math.max(360,r.height);
   renderer.setPixelRatio(typeof pr==='number'?pr:1);renderer.setSize(W,H,false);camera.aspect=W/H;
-  var off=Math.round(H*.12);camera.setViewOffset(W,H,0,off,W,H);camera.updateProjectionMatrix()}
+  var off=Math.round(H*.07);camera.setViewOffset(W,H,0,off,W,H);camera.updateProjectionMatrix()}
 new ResizeObserver(resize).observe(app);resize();
 
 /* ---------- per-frame state ---------- */
@@ -483,7 +483,7 @@ function frame(now){if(!running)return;raf=requestAnimationFrame(frame);
     if(ema>41&&pr>.75){np=Math.max(.75,pr-.15);okRun=0}else if(ema<35.5){okRun++;if(okRun>=4&&pr<cap){np=Math.min(cap,pr+.1);okRun=0}}else okRun=0;
     if(np!==pr){pr=np;resize()}}
   pd+=(tgt-pd)*(1-Math.exp(-dt*(rm?30:2.2)));if(Math.abs(tgt-pd)<.0003)pd=tgt;
-  update(pd,dt);if(fc<4||Math.abs(pd-shP)>.002){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
+  update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||Math.abs(pd-shP)>.002){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
 return{
  run:function(on){if(on&&!running){running=true;lastR=0;resize();raf=requestAnimationFrame(frame)}else if(!on&&running){running=false;cancelAnimationFrame(raf)}},
  set:function(p,snap){tgt=cl(p,0,1);if(snap){pd=tgt;shP=-1}},
@@ -497,7 +497,7 @@ window.BOG={ok:null,mounted:false,
  mount:function(h){
   if(!window.THREE){return false}
   if(this.ok===false)return false;
-  if(!inst){var cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label','Sanoq oshgani sari quruq yer jonlanadi: suv, daraxt va yashillik');cv.style.cssText='display:block;width:100%;height:100%';
+  if(!inst){var cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label','Sanoq oshgani sari quruq yer jonlanadi: suv, daraxt va yashillik');cv.style.cssText='display:block;width:100%;height:100%;opacity:0;transition:opacity 1s ease';
    h.appendChild(cv);try{inst=init(h,cv)}catch(e){inst=null}
    if(!inst){try{cv.remove()}catch(e){}this.ok=false;return false}
    this.ok=true;this.fresh=true}
