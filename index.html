@@ -134,6 +134,8 @@ li.past .chip{color:var(--mut)}
 @keyframes zp{from{opacity:.7;transform:scale(.92)}to{opacity:0;transform:scale(1.06)}}
 #zstat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
 #zstat div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:11px 6px;text-align:center;box-shadow:var(--sh)}
+#zstat b,#cnt,#zs .zs-n{white-space:nowrap}
+#zstat>div{min-width:0;overflow:hidden}
 #zstat b{display:block;font:700 21px var(--fd);font-variant-numeric:tabular-nums;color:var(--ac)}
 #zstat span{font-size:11.5px;color:var(--mut)}
 #zseg{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:var(--line);border-radius:14px;padding:4px}
@@ -3661,12 +3663,22 @@ function zBeads(n,m){
   }
   $("zbd").innerHTML=h;
 }
+/* Katta sonlar sig‘ishi: 10 000 dan boshlab xonalar ajratiladi, sig‘masa shrift o‘zi kichrayadi */
+function zFmt(n){return n>=10000?String(n).replace(/\B(?=(\d{3})+(?!\d))/g,"\u202f"):String(n)}
+function zFit(){
+  const q=(el,min,lim)=>{if(!el||!lim||lim<20)return;el.style.fontSize="";const r=document.createRange();r.selectNodeContents(el);const w=r.getBoundingClientRect().width;
+    if(w>lim){const fs=parseFloat(getComputedStyle(el).fontSize);el.style.fontSize=Math.max(min,fs*lim/w*.97).toFixed(1)+"px"}};
+  ["zr","zt","zg"].forEach(i=>{const e=$(i);if(e&&e.parentElement)q(e,8,e.parentElement.getBoundingClientRect().width-14)});
+  const t=$("ztap");if(t&&t.getBoundingClientRect().width)q($("cnt"),22,t.getBoundingClientRect().width*.5);
+  const sz=zsE.querySelector(".zs-n");if(sz&&zsE.getBoundingClientRect().width)q(sz,26,zsE.getBoundingClientRect().width*.9)}
+try{document.fonts&&document.fonts.ready.then(()=>setTimeout(zFit,50))}catch(e){}
+addEventListener("resize",()=>zFit());
 function showT(anim){
   const k=ZK[Z.sel],d=zd(),m=zmax();
   $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="zal">$1</span>');$("ztr").textContent=k.tr;$("zma").textContent=k.ma;
   $("cnt").textContent=d.n;$("zof").textContent=m===Infinity?"cheksiz":"/ "+m;
   zBeads(d.n,m);
-  $("zr").textContent=d.r;$("zt").textContent=d.t;$("zg").textContent=Z.grand;
+  $("zr").textContent=zFmt(d.r);$("zt").textContent=zFmt(d.t);$("zg").textContent=zFmt(Z.grand);
   $("zjami").textContent=Z.grand===0?"Doira ichini bosib sanang":"Hisob telefon yopilsa ham saqlanadi";
   [...$("zp").children].forEach((b,i)=>b.classList.toggle("on",i===Z.sel));
   $("zpn").textContent=(Z.sel+1)+" / "+ZK.length;$("zpv").disabled=Z.sel<=0;$("znx").disabled=Z.sel>=ZK.length-1;zpCenter(!!anim);
@@ -3674,6 +3686,7 @@ function showT(anim){
   if(anim){const c=$("zc");c.classList.remove("fi");void c.offsetWidth;c.classList.add("fi")}
   try{localStorage.setItem("zikr",JSON.stringify(Z))}catch(e){}
   try{zskUp(anim)}catch(e){}
+  zFit();
 }
 $("zp").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;Z.sel=+b.dataset.i;showT(true)};
 $("zseg").onclick=e=>{const t=e.target.closest("[data-v]");if(!t)return;Z.max=+t.dataset.v;BOGP=0;BOGH=0;zd().n=0;showT()};
@@ -3795,7 +3808,7 @@ function zskFit(){
     const r=zskE.getBoundingClientRect();t2.style.setProperty("--py",(r.top+h*.44).toFixed(0)+"px");
     if(ZV==="zargar"){const mid=h/k-128-34;t2.style.setProperty("--dz",Math.max(.5,Math.min(1,mid/340)).toFixed(3))}
     if(ZV==="zanjir")zskPos()}
-  zskTx();bogEnsure();zpCenter(false);zswHint();
+  zskTx();bogEnsure();zpCenter(false);zswHint();zFit();
 }
 function zskTx(){
   if(ZV==="klassik"||!zskE.clientWidth)return;
@@ -4747,6 +4760,7 @@ function show(t,fromPop){
   document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("on",x.id===t));
   const nv=$("nv");[...nv.children].forEach((b,i)=>{const on=b.dataset.t===t;b.classList.toggle("on",on);if(on)nv.style.setProperty("--i",i)});
   document.body.dataset.scr=t;document.body.classList.toggle("sub",SUBT.includes(t));
+  if(t==="t2")requestAnimationFrame(()=>{try{zFit()}catch(e){}});
   $("stt").textContent=STT[t]||"";
   if(SUBT.includes(t)&&!fromPop)history.pushState({r:t},"");
   scrollTo(0,0);
@@ -7598,7 +7612,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.51";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.52";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
