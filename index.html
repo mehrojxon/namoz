@@ -2514,9 +2514,9 @@ body[data-scr=t2][data-zk=bog] #stt{color:#eef5e6}
 #zs .zk-kiswa .kt{position:absolute;left:16px;right:16px;top:8px;height:112px;display:flex;align-items:center;justify-content:center}
 #zs .zk-kiswa .kw{position:relative;display:block;max-width:100%;line-height:1.5}
 #zs .zk-kiswa .kd{display:block;color:#5e4818;text-shadow:0 1px 0 rgba(255,235,170,.2),0 -1px 1px rgba(0,0,0,.8)}
-#zs .zk-kiswa .kb{position:absolute;left:0;top:0;right:0;display:block;background:linear-gradient(#fff3c4,#e0b84f 60%,#9c6f1a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(232,195,106,.5));clip-path:inset(0 calc(100% * (1 - var(--f))) 0 0);transition:clip-path .7s ease}
+#zs .zk-kiswa .kb{position:absolute;left:0;top:0;right:0;display:block;background:linear-gradient(#fff3c4,#e0b84f 60%,#9c6f1a);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 10px rgba(232,195,106,.5));clip-path:inset(0 0 0 calc(100% * (1 - var(--f))));transition:clip-path .7s ease}
 #zs .zk-kiswa .trk{position:absolute;left:28px;right:28px;bottom:14px;height:16px;border-radius:8px;background:repeating-linear-gradient(55deg,rgba(120,90,30,.55) 0 2px,rgba(30,22,8,.5) 2px 5px);box-shadow:inset 0 1px 3px #000,0 0 0 1px rgba(217,169,72,.35)}
-#zs .zk-kiswa .trf{position:absolute;left:0;top:0;bottom:0;width:100%;transform:scaleX(var(--f));transform-origin:0 50%;will-change:transform;border-radius:8px;background:repeating-linear-gradient(55deg,#b88a2a 0 2px,#f1d58a 2px 3.5px,#8a6416 3.5px 5px);box-shadow:0 0 14px rgba(255,220,130,.7);transition:transform .7s ease}
+#zs .zk-kiswa .trf{position:absolute;left:0;top:0;bottom:0;width:100%;transform:scaleX(var(--f));transform-origin:100% 50%;will-change:transform;border-radius:8px;background:repeating-linear-gradient(55deg,#b88a2a 0 2px,#f1d58a 2px 3.5px,#8a6416 3.5px 5px);box-shadow:0 0 14px rgba(255,220,130,.7);transition:transform .7s ease}
 #zs .zk-kiswa .zs-ma{position:absolute;left:16px;right:16px;top:244px;height:34px;color:#a39366}
 #zs .zk-kiswa .cb{top:284px}
 #zs.sm .zk-kiswa .band{height:152px}#zs.sm .zk-kiswa .kt{height:70px}#zs.sm .zk-kiswa .zs-ma{top:192px}#zs.sm .zk-kiswa .cb{top:232px}#zs.sm .zk-kiswa .zs-n{font-size:86px}#zs.sm .zk-zulol .zs-n,#zs.sm .zk-zanjir .zs-n{font-size:88px}
@@ -7612,7 +7612,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.52";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.53";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -8135,6 +8135,7 @@ const NMT=[
   {k:"h",t:"Sano"},{k:"z",z:"sano"}]},
  {id:"ju2",t:"Juma namozi hukmlari",b:[
   {k:"p",t:"Jum’aning vojib bo‘lishi uchun misrda muqim bo‘lish, sog‘ bo‘lish, hur bo‘lish, erkak bo‘lish, balog‘atga yetgan bo‘lish, ko‘z va oyoqning salomat bo‘lishi shart qilingan. Bu shartlarni o‘zida mujassam qilmagan inson Jum’a namozini o‘qisa, jum’a namozi u tarafdan farz sifatida voqe’ bo‘ladi."},
+  {k:"note",t:"Misr nima? Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan bo‘lgan aholi turar joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir."},
   {k:"p",t:"Jum’ani ado qilish uchun jum’a o‘qiladigan joy misr yoki uning chetida bo‘lishi shart qilingan. Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan bo‘lgan aholi turur joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir. Shuningdek sulton yoki uning o‘rinbosari bo‘lishi, Peshin namozining vaqti kirishi, Peshin namozining vaqtida bir tasbeh bo‘lsa ham xutba, imomdan tashqari uch kishilik jamo’at bo‘lishi va (jum’a o‘qilishiga) ommatan izn berilishi jum’aning shartlaridandir."},
   {k:"p",t:"Jum’aning birinchi azoni aytilganida odamlar savdo (va har qanday kasb)ni tark qiladilar va jum’aga boradilar. Imom minbarga chiqqach, xutba tugagunicha namoz o‘qish va gapirish harom bo‘ladi."},
   {k:"p",t:"Imom minbarga o‘tirganida oldida ikkinchi azon aytiladi. Odamlar imomning (xutbasini) tinglagan holda unga yuzlanadilar."},

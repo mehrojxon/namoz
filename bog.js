@@ -11,7 +11,7 @@ var pd=0,tgt=0;
 var renderer;
 try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:false,powerPreference:'high-performance'})}catch(e){return null}
 renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
-renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.type=THREE.PCFShadowMap;var QI=[],QT=0,MOB=(('ontouchstart' in window)||navigator.maxTouchPoints>0);function qSet(t){QT=t;var f=[1,.7,.45][t];QI.forEach(function(m){m[0].count=Math.max(1,Math.floor(m[1]*f))})}
 
 /* ---------- shared uniforms ---------- */
 var POOL=new THREE.Vector3(-1.3,0,-2.4);
@@ -67,7 +67,7 @@ yield;
 /* ---------- lights ---------- */
 var SUNDIR=new THREE.Vector3(.8,.5,.12).normalize();U.uSun.value.copy(SUNDIR);
 var sun=new THREE.DirectionalLight(0xffd9a0,1);sun.castShadow=true;
-sun.shadow.mapSize.set(1536,1536);var sc2=sun.shadow.camera;sc2.left=-14;sc2.right=14;sc2.top=14;sc2.bottom=-14;sc2.near=1;sc2.far=80;
+sun.shadow.mapSize.set(MOB?1024:1536,MOB?1024:1536);var sc2=sun.shadow.camera;sc2.left=-14;sc2.right=14;sc2.top=14;sc2.bottom=-14;sc2.near=1;sc2.far=80;
 sun.shadow.bias=-.0006;sun.shadow.normalBias=.04;
 sun.position.copy(SUNDIR).multiplyScalar(38).add(new THREE.Vector3(-1,0,-3));sun.target.position.set(-1,0,-3);scene.add(sun,sun.target);
 var hemi=new THREE.HemisphereLight(0xbfd0e6,0x6a5a42,.6);scene.add(hemi);
@@ -287,7 +287,7 @@ var NG=42000,grassMesh=new THREE.InstancedMesh(grassGeo,growMat(),NG),gT=new Flo
   for(var k=0;k<PER&&n<NG;k++){var a=r()*6.283,rr=Math.abs(r()+r()-1)*cr*1.6,x=cx+Math.cos(a)*rr,z=cz+Math.sin(a)*rr;
    var h=ch*(.65+.7*r())*(1-.4*rr/(cr*1.6));d.position.set(x,0,z);d.rotation.set((r()-.5)*.35,r()*6.283,(r()-.5)*.35);d.scale.set(1.1+r()*1.0,h,1);d.updateMatrix();grassMesh.setMatrixAt(n,d.matrix);
    col.setHSL(hue+(r()-.5)*.03,.38+r()*.25,lig*(.8+r()*.4));grassMesh.setColorAt(n,col);gT[n]=cl(ct+r()*.06,0,.96);n++}}
- grassMesh.geometry.setAttribute('iT',new THREE.InstancedBufferAttribute(gT,1));grassMesh.frustumCulled=false;scene.add(grassMesh)})();
+ grassMesh.geometry.setAttribute('iT',new THREE.InstancedBufferAttribute(gT,1));grassMesh.frustumCulled=false;QI.push([grassMesh,NG]);scene.add(grassMesh)})();
 /* reeds along the shore */
 (function(){var NR=1200,rm_=new THREE.InstancedMesh(grassGeo.clone(),growMat(),NR),th=new Float32Array(NR),r=rng(31),d=new THREE.Object3D(),col=new THREE.Color();
  for(var i=0;i<NR;i++){var a=r()*6.283;if(Math.sin(a)>.15){a=-a}var rd=poolRad(a)*(1.03+r()*.3),x=POOL.x+Math.cos(a)*rd,z=POOL.z+Math.sin(a)*rd;
@@ -489,11 +489,11 @@ function frame(now){if(!running)return;raf=requestAnimationFrame(frame);
   if(document.hidden||!app.offsetWidth)return;
   var el=now-lastR;if(el<28)return;lastR=now;
   var dt=Math.min(.1,el/1000);ema=ema*.9+Math.min(el,120)*.1;fc++;
-  if(fc%45===0){var np=pr,cap=Math.min(window.devicePixelRatio||1,1.35);
-    if(ema>41&&pr>.75){np=Math.max(.75,pr-.15);okRun=0}else if(ema<35.5){okRun++;if(okRun>=4&&pr<cap){np=Math.min(cap,pr+.1);okRun=0}}else okRun=0;
+  if(fc%45===0){var np=pr,cap=Math.min(window.devicePixelRatio||1,MOB?1.15:1.35);
+    if(ema>41&&pr>.6){np=Math.max(.6,pr-.15);okRun=0}else if(ema>41&&QT<2){qSet(QT+1);okRun=0}else if(ema<35.5){okRun++;if(okRun>=4&&pr<cap){np=Math.min(cap,pr+.1);okRun=0}}else okRun=0;
     if(np!==pr){pr=np;resize()}}
   pd+=(tgt-pd)*(1-Math.exp(-dt*(rm?30:2.2)));if(Math.abs(tgt-pd)<.0003)pd=tgt;
-  update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||Math.abs(pd-shP)>.002){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
+  update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||(fc%5===0&&Math.abs(pd-shP)>.002)){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
 yield;
 try{renderer.compile(scene,camera)}catch(e){}
 yield;
