@@ -11,7 +11,10 @@ var pd=0,tgt=0;
 var renderer;
 try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:false,powerPreference:'high-performance'})}catch(e){return null}
 renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
-renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.type=THREE.PCFShadowMap;var QI=[],QT=0,MOB=(('ontouchstart' in window)||navigator.maxTouchPoints>0);function qSet(t){QT=t;var f=[1,.7,.45][t];QI.forEach(function(m){m[0].count=Math.max(1,Math.floor(m[1]*f))})}
+renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.type=THREE.PCFShadowMap;var QI=[],QT=0,MOB=(('ontouchstart' in window)||navigator.maxTouchPoints>0);
+function readQ(){var v=null;try{v=localStorage.getItem('bogq')}catch(e){}if(v==='0'||v==='1'||v==='2')return +v;
+ if(!MOB)return 0;var m=navigator.deviceMemory||4,c=navigator.hardwareConcurrency||4;return(m<=3||c<=4)?2:1}
+var QL=readQ(),KG=[1,.75,.55][QL],CAPQ=function(){return Math.min(window.devicePixelRatio||1,[MOB?1.15:1.35,1,.8][QL])};function qSet(t){QT=t;var f=[1,.7,.45][t];QI.forEach(function(m){m[0].count=Math.max(1,Math.floor(m[1]*f))})}
 
 /* ---------- shared uniforms ---------- */
 var POOL=new THREE.Vector3(-1.3,0,-2.4);
@@ -161,7 +164,7 @@ patch(rockMat,{key:'rock',vdecl:'varying vec3 vWp;',vproj:'vWp=(modelMatrix*vec4
 function polyRock(seed,sx,sy,sz){
   var r=rng(seed),pl=[],i;for(i=0;i<8;i++){var a=r()*6.283,b=Math.acos(r()*2-1);pl.push([new THREE.Vector3(Math.sin(b)*Math.cos(a),Math.cos(b),Math.sin(b)*Math.sin(a)),.78+r()*.3])}
   pl.push([new THREE.Vector3(0,1,0),.6+r()*.15],[new THREE.Vector3(0,-1,0),.5]);
-  var g=new THREE.SphereGeometry(1,56,40),p=g.attributes.position,d=new THREE.Vector3();
+  var g=new THREE.SphereGeometry(1,Math.max(20,Math.round(56*KG)),Math.max(14,Math.round(40*KG))),p=g.attributes.position,d=new THREE.Vector3();
   for(i=0;i<p.count;i++){d.set(p.getX(i),p.getY(i),p.getZ(i)).normalize();var sum=0;
     pl.forEach(function(q){var c=d.dot(q[0]),rr=c>.02?Math.min(q[1]/c,6):6;sum+=Math.exp(-9*rr)});
     var rad=-Math.log(sum)/9;rad*=1+(vn3(d.x*2.6+seed,d.y*2.6,d.z*2.6)-.5)*.14+(vn3(d.x*7+seed,d.y*7,d.z*7)-.5)*.05;
@@ -199,7 +202,7 @@ function wallZ(o,X,Y){
   return z}
 function frontZ(x,y){var z=-99;WALLS.forEach(function(o){if(x>o.x0+.3&&x<o.x1-.3&&o.top(x)>y+.2)z=Math.max(z,wallZ(o,x,y))});return z}
 WALLS.forEach(function(o){
-  var W_=o.x1-o.x0,g=new THREE.PlaneGeometry(W_,1,o.res[0],o.res[1]),p=g.attributes.position,col=new Float32Array(p.count*3);
+  var W_=o.x1-o.x0,g=new THREE.PlaneGeometry(W_,1,Math.round(o.res[0]*KG),Math.round(o.res[1]*KG)),p=g.attributes.position,col=new Float32Array(p.count*3);
   for(var i=0;i<p.count;i++){var X=o.x0+(p.getX(i)+W_/2),v=p.getY(i)+.5,Y=-.2+v*(Math.max(.05,o.top(X))+.2);p.setXYZ(i,X,Y,wallZ(o,X,Y));
     var b=blk(X+o.sd,Y),rw=.8+.4*n3(b.row,2.2,1.1),stain=sm(.55,.85,vn3((X+o.sd)*7,Y*.35,5)),t=(.66+.5*b.h2-.1*b.h)*rw*(1-.3*stain),ao=1-b.groove*.7,tint=[1,.95-.1*b.h-.05*rw,.88-.18*b.h];
     col[i*3]=t*ao*tint[0];col[i*3+1]=t*ao*tint[1];col[i*3+2]=t*ao*tint[2]}
@@ -488,12 +491,12 @@ function update(p,dt){
   if(false&&window.__camo){camera.position.set.apply(camera.position,false&&window.__camo[0]);camera.lookAt.apply(camera,false&&window.__camo[1])}else{camera.position.set(.3+mx*.45,2.1-my*.12,z);camera.lookAt(.15,1.9,-5.0)}
   sky.position.copy(camera.position);
 }
-var shP=-1,ema=34,pr=MOB?.9:1,fc=0,lastR=0,okRun=0,running=false,raf=0,visible=false;
+var shP=-1,ema=34,pr=Math.min(1,CAPQ()),fc=0,lastR=0,okRun=0,running=false,raf=0,visible=false;
 function frame(now){if(!running)return;raf=requestAnimationFrame(frame);
   if(document.hidden||!app.offsetWidth)return;
   var el=now-lastR;if(el<28)return;lastR=now;
   var dt=Math.min(.1,el/1000);ema=ema*.9+Math.min(el,120)*.1;fc++;
-  if(fc%30===0){var np=pr,cap=Math.min(window.devicePixelRatio||1,MOB?1.15:1.35);
+  if(fc%30===0){var np=pr,cap=CAPQ();
     if(ema>41&&pr>.6){np=Math.max(.6,pr-.15);okRun=0}else if(ema>41&&QT<2){qSet(QT+1);okRun=0}else if(ema<35.5){okRun++;if(okRun>=4&&pr<cap){np=Math.min(cap,pr+.1);okRun=0}}else okRun=0;
     if(np!==pr){pr=np;resize()}}
   pd+=(tgt-pd)*(1-Math.exp(-dt*(rm?30:2.2)));if(Math.abs(tgt-pd)<.0003)pd=tgt;
@@ -502,7 +505,7 @@ yield;
 try{renderer.compile(scene,camera)}catch(e){}
 yield;
 update(0,.016);renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);
-if(MOB)qSet(1);
+qSet(QL);
 yield;
 return{
  setHost:function(h){app=h;try{ro.disconnect();ro.observe(h)}catch(e){}resize()},
@@ -511,11 +514,15 @@ return{
  resize:resize,
  setText:setTxt,
  pulse:function(){pulse=1},
+ q:function(){return QL},
+ setQ:function(l){QL=l;try{localStorage.setItem('bogq',String(l))}catch(e){}qSet(l);pr=Math.min(pr,CAPQ());resize()},
  canvas:cv
 }
 }
 var building=null;
-window.BOG={ok:null,ready:false,mounted:false,
+function readQo(){var v=null;try{v=localStorage.getItem('bogq')}catch(e){}if(v==='0'||v==='1'||v==='2')return +v;
+ var T=('ontouchstart' in window)||navigator.maxTouchPoints>0;if(!T)return 0;var m=navigator.deviceMemory||4,c=navigator.hardwareConcurrency||4;return(m<=3||c<=4)?2:1}
+window.BOG={getQ:function(){return inst&&inst.q?inst.q():readQo()},setQ:function(l){if(inst&&inst.setQ)inst.setQ(l);else{try{localStorage.setItem('bogq',String(l))}catch(e){}}},ok:null,ready:false,mounted:false,
  build:function(h){
   if(building)return building;
   if(!window.THREE){return Promise.resolve(false)}

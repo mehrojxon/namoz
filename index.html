@@ -2446,9 +2446,10 @@ body[data-scr=t2][data-zk=zanjir] #stt{color:#f6e6cc}
 body[data-scr=t2][data-zk=bog] #sback{background:rgba(10,20,12,.55);border-color:rgba(205,230,190,.3);color:#eef5e6}
 body[data-scr=t2][data-zk=bog] #stt{color:#eef5e6}
 #zbk .zk-bog{position:absolute;inset:0;background:linear-gradient(#a9bfd0,#d9d2bd 38%,#2c3a22)}
-#zbk .zk-bog .bgl{position:absolute;inset:0}
+#zbk .zk-bog .bgl{position:absolute;inset:0;background-position:center;background-size:cover}
+#zq{margin-top:14px}#zq b{display:block;font-size:14px;margin-bottom:4px}#zq span{display:block;font-size:12.5px;opacity:.7;line-height:1.4;margin-bottom:8px}#zq div{display:flex;gap:8px}#zq button{flex:1;padding:10px 4px;border-radius:12px;border:1px solid rgba(127,160,150,.35);background:transparent;color:inherit;font-weight:600;font-size:14px;font-family:inherit}#zq button.on{background:var(--gold,#e0b24f);color:#1a1100;border-color:transparent}
 #zbk .zk-bog .bgs{position:absolute;inset:0;background:linear-gradient(rgba(8,14,8,.6),rgba(8,14,8,.3) 12%,rgba(8,14,8,0) 22%,rgba(8,14,8,0) 46%,rgba(8,14,8,.55) 74%,rgba(8,14,8,.78))}
-#zbk .zk-bog .bgw{position:absolute;left:0;right:0;top:40%;text-align:center;color:#eef5e6;font:14px system-ui,sans-serif;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:14px}
+#zbk .zk-bog .bgw{text-shadow:0 1px 8px rgba(0,0,0,.7);position:absolute;left:0;right:0;top:40%;text-align:center;color:#eef5e6;font:14px system-ui,sans-serif;opacity:.85;display:flex;flex-direction:column;align-items:center;gap:14px}
 #zbk .zk-bog .bgw:before{content:"";width:34px;height:34px;border-radius:50%;border:3px solid rgba(238,245,230,.25);border-top-color:#e0b24f;animation:bgsp .9s linear infinite}
 @keyframes bgsp{to{transform:rotate(360deg)}}
 #zbk .zk-bog .bgl{transition:opacity .9s ease}
@@ -2939,6 +2940,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
   <h2>Tasbeh ko‘rinishi</h2>
   <p class="mut">O‘zingizga yoqqan ko‘rinishni tanlang. Sanash va hisob o‘zgarmaydi, faqat tashqi ko‘rinish almashadi. Faqat shu telefonda saqlanadi.</p>
   <div id="zvl"></div>
+  <div id="zq"></div>
 </div></div>
 <div class="sheet" id="lms"><div class="box rgb" role="dialog" aria-label="Ilovani moslash">
   <h2>Ilovani moslash</h2>
@@ -3791,6 +3793,7 @@ function bogEnsure(){
     if(!BOG.mount(host)){bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi");return}
     const w=zbgE.querySelector(".bgw");if(w&&!w.dataset.o){w.dataset.o=1;w.style.transition="opacity .5s";w.style.opacity="0";setTimeout(()=>w.remove(),1100)}
     BOG.setText(zsAr(ZK[Z.sel]));BOG.set(bogFrac());return}
+  if(!host.dataset.pi){const f=bogFrac(),i=f<.15?0:f<.45?1:f<.8?2:3;host.dataset.pi=i;host.style.backgroundImage=`url(bog-p${i}.jpg)`}
   if(BOGS===1)return;BOGS=1;
   if(!zbgE.querySelector(".bgw"))zbgE.querySelector(".zk-bog").insertAdjacentHTML("beforeend",'<div class="bgw">Bog‘ tayyorlanmoqda…</div>');
   bogLoad().then(()=>BOG.build(bogPre())).then(ok=>{if(ok){BOGS=2;bogEnsure()}else bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi")}).catch(()=>bogFail("Bog‘ ko‘rinishi yuklanmadi. Ilovani yangilab qayta urining"));
@@ -3845,9 +3848,11 @@ function zskUp(anim){
   if(anim===undefined&&zsE.animate)zsE.querySelectorAll(".zs-n").forEach(e=>e.animate([{transform:"scale(.94)"},{transform:"scale(1.04)",offset:.6},{transform:"scale(1)"}],{duration:200}))
 }
 $("zsb").onclick=()=>{$("ztap").click()};
-function zvRender(){$("zvl").innerHTML=ZVL.map(x=>`<button type="button" data-v="${x[0]}" class="${x[0]===ZV?"on":""}"><i style="background:${x[3]}"></i><div><b>${x[1]}</b><span>${x[2]}</span></div></button>`).join("")}
+function zqLvl(){try{return window.BOG?BOG.getQ():(+localStorage.getItem("bogq")||1)}catch(e){return 1}}
+function zqRender(){const q=zqLvl();$("zq").innerHTML=`<b>Bog‘ sifati</b><span>Telefon sekin ishlasa, «Past»ni tanlang. Ko‘rinish biroz soddalashadi, lekin tezroq ishlaydi. Tog‘ tafsiloti keyingi ochilishda yangilanadi.</span><div>${["Yuqori","O‘rta","Past"].map((n,i)=>`<button type="button" data-q="${i}" class="${i===q?"on":""}">${n}</button>`).join("")}</div>`}
+function zvRender(){zqRender();$("zvl").innerHTML=ZVL.map(x=>`<button type="button" data-v="${x[0]}" class="${x[0]===ZV?"on":""}"><i style="background:${x[3]}"></i><div><b>${x[1]}</b><span>${x[2]}</span></div></button>`).join("")}
 $("zvb").onclick=()=>{zvRender();$("zvs").classList.add("on")};
-$("zvs").onclick=e=>{if(e.target===$("zvs")){$("zvs").classList.remove("on");return}const b=e.target.closest("[data-v]");if(!b)return;ZV=b.dataset.v;try{localStorage.setItem("zv",ZV)}catch(x){}$("zvs").classList.remove("on");zskUp(true)};
+$("zvs").onclick=e=>{if(e.target===$("zvs")){$("zvs").classList.remove("on");return}const qb=e.target.closest("[data-q]");if(qb){const l=+qb.dataset.q;if(window.BOG)BOG.setQ(l);else try{localStorage.setItem("bogq",String(l))}catch(x){}zqRender();return}const b=e.target.closest("[data-v]");if(!b)return;ZV=b.dataset.v;try{localStorage.setItem("zv",ZV)}catch(x){}$("zvs").classList.remove("on");zskUp(true)};
 if(window.ResizeObserver)new ResizeObserver(zskFit).observe(zskE);
 addEventListener("resize",zskFit);
 document.addEventListener("visibilitychange",()=>{if(!document.hidden)zskFit()});
@@ -7612,7 +7617,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.56";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.57";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
