@@ -6,7 +6,7 @@ function sm(a,b,x){x=cl((x-a)/(b-a),0,1);return x*x*(3-2*x)}
 function lerp(a,b,t){return a+(b-a)*t}
 function rng(s){return function(){s|=0;s=s+0x6D2B79F5|0;var t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 var inst=null,host=null;
-function init(app,cv){
+function* init(app,cv){
 var pd=0,tgt=0;
 var renderer;
 try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:false,powerPreference:'high-performance'})}catch(e){return null}
@@ -49,6 +49,7 @@ function patch(mat,o){
   mat.customProgramCacheKey=function(){return o.key||'k'};
 }
 
+yield;
 /* ---------- sky ---------- */
 var skyU={uHor:{value:new THREE.Color()},uZen:{value:new THREE.Color()},uSunCol:{value:new THREE.Color()},uCloud:{value:.3},uCL:{value:new THREE.Color()},uCD:{value:new THREE.Color()}};
 var sky=new THREE.Mesh(new THREE.SphereGeometry(200,32,16),new THREE.ShaderMaterial({side:THREE.BackSide,depthWrite:false,fog:false,
@@ -62,6 +63,7 @@ var sky=new THREE.Mesh(new THREE.SphereGeometry(200,32,16),new THREE.ShaderMater
   'col=mix(col,uHor*.92,smoothstep(0.,-.12,d.y));gl_FragColor=vec4(col,1.);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}'}));
 sky.renderOrder=-1;scene.add(sky);
 
+yield;
 /* ---------- lights ---------- */
 var SUNDIR=new THREE.Vector3(.8,.5,.12).normalize();U.uSun.value.copy(SUNDIR);
 var sun=new THREE.DirectionalLight(0xffd9a0,1);sun.castShadow=true;
@@ -71,6 +73,7 @@ sun.position.copy(SUNDIR).multiplyScalar(38).add(new THREE.Vector3(-1,0,-3));sun
 var hemi=new THREE.HemisphereLight(0xbfd0e6,0x6a5a42,.6);scene.add(hemi);
 var fillL=new THREE.DirectionalLight(0xfff0dd,.25);fillL.position.set(2,3,9);scene.add(fillL);
 
+yield;
 /* ---------- ground ---------- */
 function makeCrackTex(){
   var N=512,C=4,r=rng(123),pts=[],i,x,y;for(i=0;i<C*C;i++)pts.push([r(),r()]);
@@ -114,6 +117,7 @@ patch(groundMat,{key:'ground2',vdecl:'varying vec2 vWP;',vproj:'vWP=(modelMatrix
   'vec3 gw=vec3(hx-hc,0.,hz-hc)/.03;vec3 gv=(viewMatrix*vec4(gw,0.)).xyz;gv-=dot(gv,normal)*normal;normal=normalize(normal-.45*(1.-far)*(1.-mud*.6)*gv);'].join('\n')});
 var ground=new THREE.Mesh(new THREE.PlaneGeometry(300,300),groundMat);ground.rotation.x=-Math.PI/2;ground.receiveShadow=true;scene.add(ground);
 
+yield;
 /* ---------- distant hills ---------- */
 var hillU={uFog:{value:new THREE.Color()}};var hills=[];
 [[-85,4,.0,0],[-115,11,.7,1],[-150,22,1.9,2]].forEach(function(h,i){
@@ -124,6 +128,7 @@ var hillU={uFog:{value:new THREE.Color()}};var hills=[];
    fragmentShader:NOISE+'\nuniform vec3 uTop,uFog;uniform float uK;varying vec2 vU;varying vec3 vW;void main(){float n=fbm(vec2(vW.x*.05,vW.y*.12));float g=smoothstep(.1,.98,vU.y);vec3 c=mix(uFog,uTop*(.8+.4*n),g);c=mix(uFog,c,1.-uK*.7);gl_FragColor=vec4(c,1.);\n#include <tonemapping_fragment>\n#include <encodings_fragment>\n}'}));
   m.position.set(0,0,h[0]);scene.add(m);hills.push(m)});
 
+yield;
 /* ---------- rocks & cliff ---------- */
 function n3(x,y,z){var s=Math.sin(x*12.9898+y*78.233+z*37.719)*43758.5453;return s-Math.floor(s)}
 function vn3(x,y,z){var xi=Math.floor(x),yi=Math.floor(y),zi=Math.floor(z),xf=x-xi,yf=y-yi,zf=z-zi;xf=xf*xf*(3-2*xf);yf=yf*yf*(3-2*yf);zf=zf*zf*(3-2*zf);
@@ -207,6 +212,7 @@ var LIPZ=wallZ(WALLS[0],FXc,LIPY-.6);POOL.z=LIPZ+.34;
   for(var i=0;i<70;i++){var s2=.03+br()*.08;d.position.set((br()-.5)*9,s2*.3,2.5-br()*9);d.rotation.set(br()*3,br()*3,br()*3);d.scale.set(s2*(1+br()*.6),s2*.6,s2);d.updateMatrix();pm.setMatrixAt(i,d.matrix);pm.setColorAt(i,new THREE.Color().setHSL(.08,.15,.3+br()*.25))}
   pm.castShadow=pm.receiveShadow=true;scene.add(pm)})();
 
+yield;
 /* ---------- water ---------- */
 var waterMat=new THREE.ShaderMaterial({transparent:true,depthWrite:false,
  uniforms:{uT:U.uT,uPool:U.uPool,uR:U.uR,uFlow:U.uFlow,uP:U.uP,uSun:U.uSun,uHor:skyU.uHor,uZen:skyU.uZen,uHW:{value:.3}},
@@ -264,6 +270,7 @@ var ND=220,dustGeo=new THREE.BufferGeometry(),dustP=new Float32Array(ND*3),dr=rn
 dustGeo.setAttribute('position',new THREE.BufferAttribute(dustP,3));
 var dust=new THREE.Points(dustGeo,new THREE.PointsMaterial({map:ST,size:.09,transparent:true,opacity:.5,depthWrite:false,color:0xffe2b0,sizeAttenuation:true,fog:false}));dust.frustumCulled=false;scene.add(dust);
 
+yield;
 /* ---------- grass & flowers ---------- */
 var GROW_V=['attribute float iT;uniform float uP,uT;','float gk=smoothstep(iT,iT+.14,uP);vec3 transformed=vec3(position);transformed.y*=gk;transformed.x*=mix(.15,1.,gk);transformed.z*=gk;'+
  'float swp=sin(uT*1.5+instanceMatrix[3].x*1.7+instanceMatrix[3].z*1.3)+.5*sin(uT*2.7+instanceMatrix[3].x*3.1);transformed.x+=swp*.07*position.y*position.y;'];
@@ -305,6 +312,7 @@ var NG=42000,grassMesh=new THREE.InstancedMesh(grassGeo,growMat(),NG),gT=new Flo
   /* stems share colors: tint via instance color is multiplied; keep stems greenish by painting head only through instanceColor weight */
  }})();
 
+yield;
 /* ---------- trees ---------- */
 function barkTex(){var c=document.createElement('canvas');c.width=128;c.height=256;var x=c.getContext('2d'),r=rng(3);x.fillStyle='#5b4632';x.fillRect(0,0,128,256);
  for(var i=0;i<260;i++){var px=r()*128,w=1+r()*3,l=30+r()*120,py=r()*256,a=.12+r()*.3;x.fillStyle='rgba('+(r()<.5?'20,14,9,':'120,100,76,')+a+')';x.fillRect(px,py,w,l);x.fillRect(px+128>128?px-128:px,py-256,w,l)}
@@ -373,6 +381,7 @@ function makeTree(seed,pos,sc,ry,aa){
 /* a tree standing beside the camera: its leafy branches frame the upper-left corner */
 makeTree(23,new V3(-3.4,0,-.4),.66,2.2,.1);
 
+yield;
 /* ---------- salovat: tog‘ ortidan nur bilan ko‘tarilgan xat ---------- */
 var SX=.15,SY=10.0,SZ=-26,pulse=0,txtNow='',txtPend='';
 var TC=document.createElement('canvas');TC.width=2048;TC.height=768;
@@ -420,12 +429,13 @@ function skyFx(p,dt){
   motes.material.opacity=.15+.75*e+pulse*.2;motes.material.size=.13+.07*e;
   for(var i=0;i<NMT;i++){var q=motS[i];q.y+=dt*q.s*(.6+e);if(q.y>7)q.y=-3;motP[i*3]=SX+q.x+Math.sin(T*.3+q.ph)*.4;motP[i*3+1]=SY-3+q.y;motP[i*3+2]=SZ+3+q.z}
   motGeo.attributes.position.needsUpdate=true}
+yield;
 /* ---------- sizing / camera ---------- */
 var W=0,H=0,mx=0,my=0,tmx=0,tmy=0;
 function resize(){var r=app.getBoundingClientRect();W=Math.max(280,r.width);H=Math.max(360,r.height);
   renderer.setPixelRatio(typeof pr==='number'?pr:1);renderer.setSize(W,H,false);camera.aspect=W/H;
   var off=Math.round(H*.07);camera.setViewOffset(W,H,0,off,W,H);camera.updateProjectionMatrix()}
-new ResizeObserver(resize).observe(app);resize();
+var ro=new ResizeObserver(resize);ro.observe(app);resize();
 
 /* ---------- per-frame state ---------- */
 var C=THREE.Color,cA=new C(),cB=new C();
@@ -484,7 +494,13 @@ function frame(now){if(!running)return;raf=requestAnimationFrame(frame);
     if(np!==pr){pr=np;resize()}}
   pd+=(tgt-pd)*(1-Math.exp(-dt*(rm?30:2.2)));if(Math.abs(tgt-pd)<.0003)pd=tgt;
   update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||Math.abs(pd-shP)>.002){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
+yield;
+try{renderer.compile(scene,camera)}catch(e){}
+yield;
+update(0,.016);renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);
+yield;
 return{
+ setHost:function(h){app=h;try{ro.disconnect();ro.observe(h)}catch(e){}resize()},
  run:function(on){if(on&&!running){running=true;lastR=0;resize();raf=requestAnimationFrame(frame)}else if(!on&&running){running=false;cancelAnimationFrame(raf)}},
  set:function(p,snap){tgt=cl(p,0,1);if(snap){pd=tgt;shP=-1}},
  resize:resize,
@@ -493,15 +509,27 @@ return{
  canvas:cv
 }
 }
-window.BOG={ok:null,mounted:false,
+var building=null;
+window.BOG={ok:null,ready:false,mounted:false,
+ build:function(h){
+  if(building)return building;
+  if(!window.THREE){return Promise.resolve(false)}
+  var self=this;
+  building=new Promise(function(res){
+   var cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label','Sanoq oshgani sari quruq yer jonlanadi: suv, daraxt va yashillik');
+   cv.style.cssText='display:block;width:100%;height:100%;opacity:0;transition:opacity 1s ease';
+   h.appendChild(cv);var g;
+   function fail(){try{cv.remove()}catch(e){}self.ok=false;building=null;res(false)}
+   try{g=init(h,cv)}catch(e){fail();return}
+   (function step(){var r;try{r=g.next()}catch(e){fail();return}
+    if(!r.done){setTimeout(step,12);return}
+    if(!r.value){fail();return}
+    inst=r.value;self.ok=true;self.ready=true;self.fresh=true;res(true)})()
+  });
+  return building},
  mount:function(h){
-  if(!window.THREE){return false}
-  if(this.ok===false)return false;
-  if(!inst){var cv=document.createElement('canvas');cv.setAttribute('role','img');cv.setAttribute('aria-label','Sanoq oshgani sari quruq yer jonlanadi: suv, daraxt va yashillik');cv.style.cssText='display:block;width:100%;height:100%;opacity:0;transition:opacity 1s ease';
-   h.appendChild(cv);try{inst=init(h,cv)}catch(e){inst=null}
-   if(!inst){try{cv.remove()}catch(e){}this.ok=false;return false}
-   this.ok=true;this.fresh=true}
-  if(inst.canvas.parentNode!==h){h.appendChild(inst.canvas)}
+  if(!inst)return false;
+  if(inst.canvas.parentNode!==h){h.appendChild(inst.canvas);inst.setHost(h)}
   host=h;this.mounted=true;inst.run(true);return true},
  unmount:function(){this.mounted=false;if(inst)inst.run(false)},
  set:function(p){if(inst){inst.set(p,this.fresh);this.fresh=false}},
