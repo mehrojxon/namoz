@@ -7612,7 +7612,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.53";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.55";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
@@ -8135,8 +8135,8 @@ const NMT=[
   {k:"h",t:"Sano"},{k:"z",z:"sano"}]},
  {id:"ju2",t:"Juma namozi hukmlari",b:[
   {k:"p",t:"Jum’aning vojib bo‘lishi uchun misrda muqim bo‘lish, sog‘ bo‘lish, hur bo‘lish, erkak bo‘lish, balog‘atga yetgan bo‘lish, ko‘z va oyoqning salomat bo‘lishi shart qilingan. Bu shartlarni o‘zida mujassam qilmagan inson Jum’a namozini o‘qisa, jum’a namozi u tarafdan farz sifatida voqe’ bo‘ladi."},
-  {k:"note",t:"Misr nima? Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan bo‘lgan aholi turar joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir."},
-  {k:"p",t:"Jum’ani ado qilish uchun jum’a o‘qiladigan joy misr yoki uning chetida bo‘lishi shart qilingan. Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan bo‘lgan aholi turur joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir. Shuningdek sulton yoki uning o‘rinbosari bo‘lishi, Peshin namozining vaqti kirishi, Peshin namozining vaqtida bir tasbeh bo‘lsa ham xutba, imomdan tashqari uch kishilik jamo’at bo‘lishi va (jum’a o‘qilishiga) ommatan izn berilishi jum’aning shartlaridandir."},
+  {k:"note",t:"Misr nima? Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan aholi turar joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir."},
+  {k:"p",t:"Jum’ani ado qilish uchun jum’a o‘qiladigan joy misr yoki uning chetida bo‘lishi shart qilingan. Eng katta masjidi o‘sha shaharning aholisini sig‘dira olmaydigan aholi turar joyi – misrdir. O‘sha shaharga yopishgan va uning hojatlari, foydalari uchun ta’yin qilingan joy – misrning chetidir. Shuningdek sulton yoki uning o‘rinbosari bo‘lishi, Peshin namozining vaqti kirishi, Peshin namozining vaqtida bir tasbeh bo‘lsa ham xutba, imomdan tashqari uch kishilik jamo’at bo‘lishi va (jum’a o‘qilishiga) ommatan izn berilishi jum’aning shartlaridandir."},
   {k:"p",t:"Jum’aning birinchi azoni aytilganida odamlar savdo (va har qanday kasb)ni tark qiladilar va jum’aga boradilar. Imom minbarga chiqqach, xutba tugagunicha namoz o‘qish va gapirish harom bo‘ladi."},
   {k:"p",t:"Imom minbarga o‘tirganida oldida ikkinchi azon aytiladi. Odamlar imomning (xutbasini) tinglagan holda unga yuzlanadilar."},
   {k:"p",t:"Imom qoim va tahoratli holida orasida biroz o‘tirishi bor ikki xutba o‘qiydi. Ikkala xutba tamom bo‘lgach, iqoma aytiladi va imom odamlar bilan ikki rakat namoz o‘qiydi."},

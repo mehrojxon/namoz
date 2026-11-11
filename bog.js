@@ -484,20 +484,21 @@ function update(p,dt){
   if(false&&window.__camo){camera.position.set.apply(camera.position,false&&window.__camo[0]);camera.lookAt.apply(camera,false&&window.__camo[1])}else{camera.position.set(.3+mx*.45,2.1-my*.12,z);camera.lookAt(.15,1.9,-5.0)}
   sky.position.copy(camera.position);
 }
-var shP=-1,ema=34,pr=1,fc=0,lastR=0,okRun=0,running=false,raf=0,visible=false;
+var shP=-1,ema=34,pr=MOB?.9:1,fc=0,lastR=0,okRun=0,running=false,raf=0,visible=false;
 function frame(now){if(!running)return;raf=requestAnimationFrame(frame);
   if(document.hidden||!app.offsetWidth)return;
   var el=now-lastR;if(el<28)return;lastR=now;
   var dt=Math.min(.1,el/1000);ema=ema*.9+Math.min(el,120)*.1;fc++;
-  if(fc%45===0){var np=pr,cap=Math.min(window.devicePixelRatio||1,MOB?1.15:1.35);
+  if(fc%30===0){var np=pr,cap=Math.min(window.devicePixelRatio||1,MOB?1.15:1.35);
     if(ema>41&&pr>.6){np=Math.max(.6,pr-.15);okRun=0}else if(ema>41&&QT<2){qSet(QT+1);okRun=0}else if(ema<35.5){okRun++;if(okRun>=4&&pr<cap){np=Math.min(cap,pr+.1);okRun=0}}else okRun=0;
     if(np!==pr){pr=np;resize()}}
   pd+=(tgt-pd)*(1-Math.exp(-dt*(rm?30:2.2)));if(Math.abs(tgt-pd)<.0003)pd=tgt;
-  update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||(fc%5===0&&Math.abs(pd-shP)>.002)){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
+  update(pd,dt);if(fc===5)cv.style.opacity='1';if(fc<4||(fc%8===0&&Math.abs(pd-shP)>.002)){renderer.shadowMap.needsUpdate=true;shP=pd}renderer.render(scene,camera)}
 yield;
 try{renderer.compile(scene,camera)}catch(e){}
 yield;
 update(0,.016);renderer.shadowMap.needsUpdate=true;renderer.render(scene,camera);
+if(MOB)qSet(1);
 yield;
 return{
  setHost:function(h){app=h;try{ro.disconnect();ro.observe(h)}catch(e){}resize()},
