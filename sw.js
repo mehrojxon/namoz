@@ -2,7 +2,7 @@
 const C = "namoz-v1";
 const SHELL = ["./", "index.html", "vaqtlar.json", "manifest.json", "icon.svg"];
 // Qur'on bo'limi internetsiz ochilishi uchun kerakli asosiy fayllar
-const CORE = ["quran-meta.json", "quran-text.json", "qp-idx.json", "quran-audio.json", "UthmanicHafs_V22.ttf", "hijriy-taqvim.json", "three.min.js", "bog.js"]; // three.min.js + bog.js: Bog‘ ko‘rinishi internetsiz ishlashi uchun
+const CORE = ["quran-meta.json", "quran-text.json", "qp-idx.json", "quran-audio.json", "UthmanicHafs_V22.ttf", "hijriy-taqvim.json", "three.min.js", "bog.js", "jannat.js"]; // three.min.js + bog.js: Bog‘ ko‘rinishi internetsiz ishlashi uchun
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(SHELL).then(() => Promise.all(CORE.map(u => c.add(u).catch(() => {}))))));
   self.skipWaiting();

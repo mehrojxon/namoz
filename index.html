@@ -144,6 +144,29 @@ li.past .chip{color:var(--mut)}
 #zact{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
 #zact button{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;font-weight:600}
 #zact svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#jwb b{background:var(--gold);color:#201a08;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px;min-width:18px}
+#t2.zsm #jwb{position:relative}#t2.zsm #jwb span{display:none}#t2.zsm #jwb b{position:absolute;top:-5px;right:-4px;font-size:11px}
+#jw{display:none;position:fixed;inset:0;z-index:40;background:var(--bg);color:var(--ink);flex-direction:column;align-items:center;overflow-y:auto;gap:10px;padding:max(10px,env(safe-area-inset-top)) 14px max(16px,env(safe-area-inset-bottom))}
+#jw.on{display:flex}
+#jw .jwh{width:100%;max-width:440px;display:flex;align-items:center;gap:10px}
+#jw .jwh h2{flex:1;margin:0;font:600 19px var(--fd)}
+#jw button{font:inherit;cursor:pointer}
+#jwx{padding:9px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:600;font-size:14px}
+#jwv{width:100%;max-width:440px;height:clamp(320px,56vh,600px);border-radius:16px;overflow:hidden;background:#101c18;touch-action:none;position:relative;flex:none}
+#jwv canvas{width:100%;height:100%;display:block}
+#jwl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#f1ead8;font-size:15px;background:#101c18}
+#jwl[hidden]{display:none}
+#jw .jwc{width:100%;max-width:440px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
+#jw .jwc small{color:var(--mut);font-size:12.5px}
+#jw .jwch{display:flex;gap:6px;flex-wrap:wrap}
+#jw .jwch button{padding:8px 12px;border-radius:11px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:13.5px;font-weight:600}
+#jw .jwch button.on{background:var(--gold);color:#201a08;border-color:var(--gold)}
+#jw .jwch b{background:var(--ac);color:#fff;border-radius:9px;padding:0 6px;font-size:11.5px}
+#jw .jwch button.on b{background:#201a08;color:var(--gold)}
+#jw .jwz{color:var(--mut);font-size:13.5px}#jw .jwt{color:var(--mut);font-size:13px}#jw .jwt b{color:var(--ink)}
+#jw .jwbar{height:7px;border-radius:4px;background:var(--line);overflow:hidden}#jw .jwbar i{display:block;height:100%;background:var(--gold);transition:width .25s}
+#jwdo{padding:13px;border-radius:13px;border:0;background:var(--gold);color:#201a08;font-weight:700;font-size:15.5px}
+#jwdo:disabled{opacity:.4}
 #zjami{text-align:center;color:var(--mut);font-size:13px;margin:12px 0 4px}
 .rgb{text-align:left}.rgb h2{text-align:center}.rgb>.mut{text-align:center;margin:0 0 12px}
 #rgl button{display:flex;justify-content:space-between;align-items:center;width:100%;margin:0 0 6px;padding:13px 16px;border:1.5px solid var(--line);border-radius:14px;background:var(--card);color:var(--ink);font-size:15px;font-weight:600;text-align:left}
@@ -2774,7 +2797,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
   </div>
   <div id="zstat"><div><b id="zr">0</b><span>Aylanish</span></div><div><b id="zt">0</b><span>Bu zikr</span></div><div><b id="zg">0</b><span>Jami</span></div></div>
   <div id="zseg"></div>
-  <div id="zact"><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Shu zikrni nolga qaytarish</button></div>
+  <div id="zact"><button id="jwb" type="button" aria-label="Jannat bog‘lari"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-7M12 14c-4 0-6-3-6-6 3 0 6 1.5 6 6zM12 14c4 0 6-3 6-6-3 0-6 1.5-6 6zM12 9c-2-1-3-3-3-5 2 1 3 3 3 5zM12 9c2-1 3-3 3-5-2 1-3 3-3 5z"/></svg><span>Jannat bog‘lari</span><b id="jwn" hidden></b></button><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Shu zikrni nolga qaytarish</button></div>
   <p id="zjami"></p>
 </section>
 <section class="tab" id="t3">
@@ -2935,6 +2958,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
 <div id="qdm"><div class="qdc"><b id="qdt"></b><p id="qdb"></p><div id="qdp"><i></i></div><div class="qdbt"><button id="qdn" type="button"></button><button id="qdo" type="button"></button></div></div></div>
 <div class="sheet" id="tqm"><div class="box"><div class="gr"></div><div id="tqmb"></div></div></div>
 <div class="sheet" id="tqs"><div class="box tqrb"><div class="tqrh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg><span>Taqvim eslatmasi</span></div><div id="tqrl"></div><button id="tqro" type="button">Taqvimda ko‘rish</button><button id="tqrx" class="tqrg" type="button">Yopish</button></div></div>
+<div id="jw" role="dialog" aria-label="Jannat bog‘lari"><div class="jwh"><h2>Jannat bog‘lari</h2><button id="jwx" type="button">Yopish</button></div><div id="jwv"><div id="jwl" hidden></div></div><div class="jwc" id="jwi"></div><div class="jwc"><small>Bog‘lar</small><div id="jwgc" class="jwch"></div><small>Saroylar</small><div id="jwpc" class="jwch"></div></div></div>
 <div id="toast"></div>
 <div class="sheet" id="zvs"><div class="box rgb" role="dialog" aria-label="Tasbeh ko‘rinishi">
   <h2>Tasbeh ko‘rinishi</h2>
@@ -3644,12 +3668,24 @@ const ZK=[
  {sh:"Allohu akbar",ar:"{ا‌للَّهُ} أَكْبَرُ",tr:"Allohu akbar",ma:"Alloh eng ulug‘dir"},
  {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
- {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"}
+ {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"},
+ {sh:"Subhanallohil Azimi va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ وَبِحَمْدِهِ",tr:"Subhanallohil Azimi va bihamdih",ma:"Ulug‘ Alloh pokdir va Unga hamd bo‘lsin"},
+ {sh:"Ixlos surasi",ar:"قُلْ هُوَ {ا‌للَّهُ} أَحَدٌ",tr:"Qul huvallohu ahad",ma:"Bir marta to‘liq Ixlos surasi o‘qiladi"}
 ];
 let Z=get("zikr",null);
 if(!Z)Z={sel:0,max:33,d:{},grand:0};
 if(![33,100,0].includes(Z.max))Z.max=Z.max>=99?100:33;
 Z.sel=Math.min(Math.max(+Z.sel||0,0),ZK.length-1);Z.d=Z.d||{};Z.grand=+Z.grand||0;
+/* Jannat bog‘lari: zikr -> daraxt/saroy jadvali. Moslashni o‘zgartirish uchun faqat shu jadval almashtiriladi. */
+const JG=[{k:"xurmo",zi:6,n:"Xurmo",u:100},{k:"anor",zi:5,n:"Anor",u:100},{k:"chinor",zi:1,n:"Chinor",u:100},{k:"chakan",zi:2,n:"Chakan",u:100},{k:"majnun",zi:3,n:"Majnuntol",u:100},{k:"sarv",zi:0,n:"Sarv",u:100}];
+const JP=[{n:"Kichik saroy",u:100},{n:"O‘rta saroy",u:300},{n:"Jannat qasri",u:1000}],JIX=7;
+let JW=get("jw2",null);if(!JW||typeof JW!=="object")JW={};JW.c=JW.c||{};JW.pl=JW.pl||{};JW.pal=Array.isArray(JW.pal)&&JW.pal.length===3?JW.pal:[0,0,0];
+const jwSave=()=>{try{localStorage.setItem("jw2",JSON.stringify(JW))}catch(e){}};
+const jwCnt=i=>+JW.c[i]||0;
+const jwTick=i=>{JW.c[i]=jwCnt(i)+1;jwSave()};
+const jwReady=g=>Math.max(0,Math.floor(jwCnt(g.zi)/g.u)-(+JW.pl[g.k]||0));
+const jwIxl=()=>jwCnt(JIX)-JW.pal.reduce((a,v,i)=>a+(v?JP[i].u:0),0);
+function jwBadge(){let n=0;JG.forEach(g=>n+=jwReady(g));JP.forEach((p,i)=>{if(!JW.pal[i]&&jwIxl()>=p.u)n++});const b=$("jwn");if(b){b.hidden=!n;b.textContent=n}}
 const zd=()=>Z.d[Z.sel]||(Z.d[Z.sel]={n:0,r:0,t:0});
 const zmax=()=>Z.max||Infinity;
 const vib=ms=>navigator.vibrate&&navigator.vibrate(ms);
@@ -3688,17 +3724,80 @@ function showT(anim){
   if(anim){const c=$("zc");c.classList.remove("fi");void c.offsetWidth;c.classList.add("fi")}
   try{localStorage.setItem("zikr",JSON.stringify(Z))}catch(e){}
   try{zskUp(anim)}catch(e){}
+  try{jwBadge()}catch(e){}
   zFit();
 }
 $("zp").onclick=e=>{const b=e.target.closest("[data-i]");if(!b)return;Z.sel=+b.dataset.i;showT(true)};
 $("zseg").onclick=e=>{const t=e.target.closest("[data-v]");if(!t)return;Z.max=+t.dataset.v;BOGP=0;BOGH=0;zd().n=0;showT()};
 $("ztap").onclick=()=>{
   if(ZV==="klassik"){const b=$("ztap");b.classList.remove("pulse");void b.offsetWidth;b.classList.add("pulse")}
-  const d=zd();d.n++;d.t++;Z.grand++;
+  const d=zd();d.n++;d.t++;Z.grand++;jwTick(Z.sel);
   if(d.n>=zmax()){d.n=0;d.r++;vib(200)}else vib(d.n%100===0?120:12);
   showT();
 };
 $("reset").onclick=()=>{BOGP=0;BOGH=0;const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
+/* Jannat bog‘lari: 360° dunyo (jannat.js faqat ochilganda yuklanadi) */
+let JSEL=["g",0],JLD=0,JOPEN=0;
+function jwLib(){
+  if(window.JNT)return Promise.resolve();
+  const ld=u=>new Promise((a,b)=>{const e=document.createElement("script");e.src=u+"?v="+APPV;e.onload=a;e.onerror=()=>b(new Error(u));document.head.appendChild(e)});
+  return(window.THREE?Promise.resolve():ld("three.min.js")).then(()=>ld("jannat.js"));
+}
+function jwMsg(t){const e=$("jwl");e.hidden=!t;e.textContent=t||""}
+function jwOpen(){
+  $("jw").classList.add("on");JOPEN=1;
+  try{if(typeof bogPause==="function")bogPause()}catch(e){}
+  jwDraw();
+  if(JLD===2){JNT.resume();return}
+  if(JLD===1)return;
+  JLD=1;jwMsg("Dunyo tayyorlanmoqda…");
+  jwLib().then(()=>JNT.init($("jwv"),JW,{onLost:()=>{JLD=3;jwMsg("Telefon xotirasi yetmadi. Ilovani yopib qayta oching.")}})).then(()=>{if(JLD===3)return;JLD=2;jwMsg("");jwDraw();if(!JOPEN)JNT.pause()}).catch(()=>{JLD=0;jwMsg("Dunyoni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.")});
+}
+function jwClose(){
+  $("jw").classList.remove("on");JOPEN=0;
+  try{if(window.JNT)JNT.pause()}catch(e){}
+  try{if(ZV!=="klassik")zskUp(true)}catch(e){}
+  showT();
+}
+function jwDraw(){
+  const g=JSEL[0]==="g",ix=JSEL[1];
+  $("jwgc").innerHTML=JG.map((x,i)=>{const r=jwReady(x);return `<button type="button" data-g="${i}" class="${g&&ix===i?"on":""}">${x.n}${r?` <b>${r}</b>`:""}</button>`}).join("");
+  $("jwpc").innerHTML=JP.map((x,i)=>`<button type="button" data-p="${i}" class="${!g&&ix===i?"on":""}">${x.n}${JW.pal[i]?" ✓":""}</button>`).join("");
+  let h="";
+  if(g){
+    const x=JG[ix],c=jwCnt(x.zi),r=jwReady(x),n=+JW.pl[x.k]||0,cap=window.JNT&&JLD===2?JNT.cap(x.k):0,full=cap>0&&n>=cap,rest=x.u-(c%x.u);
+    h=`<b>${x.n} bog‘i</b><span class="jwz">${ZK[x.zi].sh}</span><div class="jwbar"><i style="width:${c%x.u*100/x.u}%"></i></div>
+    <span class="jwt">Ekishga tayyor: <b>${r}</b> ta · Ekilgan: <b>${n}${cap?" / "+cap:""}</b></span>
+    <button type="button" id="jwdo" ${r<=0||full||JLD!==2?"disabled":""}>${full?"Bog‘ to‘lgan":"Ekish"}</button>
+    <span class="jwt">${r>0?"":"Tasbeh bo‘limida shu zikrni sanang: yana "+rest+" ta kerak."}</span>`;
+  }else{
+    const x=JP[ix],have=jwIxl(),done=!!JW.pal[ix];
+    h=`<b>${x.n}</b><span class="jwz">${ZK[JIX].sh}</span><div class="jwbar"><i style="width:${done?100:Math.min(100,Math.max(0,have)*100/x.u)}%"></i></div>
+    <span class="jwt">${done?"Saroy qurilgan":"Ixlos surasi: <b>"+Math.max(0,have)+"</b> / "+x.u}</span>
+    <button type="button" id="jwdo" ${done||have<x.u||JLD!==2?"disabled":""}>${done?"Qurilgan":"Qurish"}</button>
+    <span class="jwt">${done||have>=x.u?"":"Tasbeh bo‘limida Ixlos surasini sanang: yana "+(x.u-Math.max(0,have))+" ta kerak."}</span>`;
+  }
+  $("jwi").innerHTML=h;
+}
+function jwDo(){
+  if(JLD!==2)return;
+  if(JSEL[0]==="g"){
+    const x=JG[JSEL[1]],n=+JW.pl[x.k]||0;
+    if(jwReady(x)<=0||n>=JNT.cap(x.k))return;
+    JW.pl[x.k]=n+1;jwSave();JNT.plant(x.k,n)
+  }else{
+    const i=JSEL[1];if(JW.pal[i]||jwIxl()<JP[i].u)return;
+    JW.pal[i]=1;jwSave();JNT.buildPalace(i)
+  }
+  jwDraw();jwBadge();vib(30);
+}
+$("jwb").onclick=jwOpen;$("jwx").onclick=()=>{jwClose()};
+$("jw").addEventListener("click",e=>{
+  const b=e.target.closest("button");if(!b)return;
+  if(b.id==="jwdo"){jwDo();return}
+  if(b.dataset.g!==undefined){JSEL=["g",+b.dataset.g];if(JLD===2)JNT.focusGarden(JG[JSEL[1]].k);jwDraw()}
+  else if(b.dataset.p!==undefined){JSEL=["p",+b.dataset.p];if(JLD===2)JNT.focusPalace(JSEL[1]);jwDraw()}
+});
 /* Tasbeh ko‘rinishlari */
 const ZVL=[
  ["bog","Bog‘","Quruq yer sanoq bilan Jannat bog‘iga aylanadi: suv, daraxt, yashillik","linear-gradient(#9fb6c9 28%,#8a7a62 40%,#4f7a2a 52%,#1d3a14)"],
@@ -4117,8 +4216,8 @@ function pkShow(){
   if(h.y<1300||h.y>1600)n.textContent="Bu oraliqda hisob taxminiy bo‘lishi mumkin (±1 kun).";
 }
 /* v6.15: telefonning “orqaga” tugmasi: avval ochiq oynani yopadi */
-const BKI=["qrs","qtk","ucf","qdm","im","tqs","qam","uas","lms","rgs","xt","nd","qz","xb","fb","ab","tqm","adm"];
-const BKC={qrs:()=>$("qrx").click(),qtk:()=>qtkClose(),nd:()=>ndClose(),qz:()=>qzClose(),xt:()=>xtClose(),xb:()=>xbClose(),fb:()=>fbClose(),im:()=>$("imcl").click(),ab:()=>$("cl").click(),tqm:()=>$("tqm").classList.remove("on"),tqs:()=>$("tqrx").click(),uas:()=>$("uax").click(),lms:()=>$("lmx").click(),rgs:()=>rgClose(),qam:()=>$("qamx").click(),ucf:()=>$("ucfn").click(),
+const BKI=["jw","qrs","qtk","ucf","qdm","im","tqs","qam","uas","lms","rgs","xt","nd","qz","xb","fb","ab","tqm","adm"];
+const BKC={jw:()=>jwClose(),qrs:()=>$("qrx").click(),qtk:()=>qtkClose(),nd:()=>ndClose(),qz:()=>qzClose(),xt:()=>xtClose(),xb:()=>xbClose(),fb:()=>fbClose(),im:()=>$("imcl").click(),ab:()=>$("cl").click(),tqm:()=>$("tqm").classList.remove("on"),tqs:()=>$("tqrx").click(),uas:()=>$("uax").click(),lms:()=>$("lmx").click(),rgs:()=>rgClose(),qam:()=>$("qamx").click(),ucf:()=>$("ucfn").click(),
   qdm:()=>{const n=$("qdn");if(n&&n.style.display!=="none")n.click()},
   adm:()=>{if($("abox").classList.contains("full")&&AS&&$("aback").style.visibility==="visible")$("aback").click();else $("adm").classList.remove("on")}};
 let BKH=null;
@@ -7618,7 +7717,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.58";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.59";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
