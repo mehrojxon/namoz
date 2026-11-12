@@ -411,11 +411,14 @@ function drawTxt(ar){
   x.clearRect(0,0,Wd,Hd);x.direction='rtl';x.textAlign='center';x.textBaseline='middle';
   var ws=ar.split(' ').filter(Boolean),fs=300,lines,mw=Wd-220;
   function meas(t){x.font=fs+'px '+fam;return x.measureText(t).width}
+  function split(n){var tot=meas(ws.join(' ')),per=tot/n,out=[],cur=[];ws.forEach(function(w){cur.push(w);if(out.length<n-1&&meas(cur.join(' '))>=per){out.push(cur.join(' '));cur=[]}});if(cur.length)out.push(cur.join(' '));return out}
   while(true){
-    lines=[ws.join(' ')];
-    if(meas(lines[0])>mw&&ws.length>1&&fs<=120){var h=Math.ceil(ws.length/2);lines=[ws.slice(0,h).join(' '),ws.slice(h).join(' ')]}
-    var okw=lines.every(function(t){return meas(t)<=mw}),okh=lines.length*fs*1.3<=Hd-90;
-    if((okw&&okh)||fs<80)break;fs-=10}
+    lines=[ws.join(' ')];var okw=false,okh=false;
+    for(var nn=1;nn<=4;nn++){
+      if(nn>1){if(ws.length<nn||fs>120)break;lines=split(nn)}
+      okw=lines.every(function(t){return meas(t)<=mw});okh=lines.length*fs*1.3<=Hd-90;
+      if(okw&&okh)break}
+    if((okw&&okh)||fs<50)break;fs-=10}
   var lh=fs*1.3,y0=Hd/2-(lines.length-1)*lh/2;x.font=fs+'px '+fam;
   function pass(fn){lines.forEach(function(t,i){fn(t,Wd/2,y0+i*lh)})}
   x.save();x.shadowColor='rgba(8,14,32,.9)';x.shadowBlur=80;x.fillStyle='rgba(8,14,32,.85)';pass(function(t,a,b){x.fillText(t,a,b);x.fillText(t,a,b);x.fillText(t,a,b)});x.restore();

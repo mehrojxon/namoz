@@ -9,8 +9,9 @@ const HC=8;let S=null,host=null,R=null,sc,cam,mat,pm,shm,ovs,sph,pal=[],merged={
 let yaw=-Math.PI/2,pitch=-.04,anim=null,running=false,raf=0,drag=false,lx=0,ly=0,lost=false,onLost=null;
 const THREE_=()=>window.THREE;
 function loadTex(L,url,opt){return new Promise((ok,no)=>{const t=L.load(url,()=>ok(t),undefined,()=>no(new Error("tex")));t.encoding=THREE.sRGBEncoding;if(opt&&opt.nomip){t.generateMipmaps=false;t.minFilter=THREE.LinearFilter}else t.anisotropy=4})}
+function treeH(p,i){return 6*(1+Math.hypot(p[0],p[1])/180)*(0.9+0.2*(((i*2654435761)>>>8)%100)/100)}
 function quad(p,t,i){
- const s=A.s[t],hh=4.8*(0.86+0.28*(((i*2654435761)>>>8)%100)/100),w=hh*s.w/s.h,th=Math.atan2(-p[0],-p[1]),c=Math.cos(th),n=Math.sin(th);
+ const s=A.s[t],hh=treeH(p,i),w=hh*s.w/s.h,th=Math.atan2(-p[0],-p[1]),c=Math.cos(th),n=Math.sin(th);
  let u0=s.x/A.w,u1=(s.x+s.w)/A.w;const v0=1-(s.y+s.h)/A.h,v1=1-s.y/A.h,a=w/2;if((i*7+t.length)%2){const q=u0;u0=u1;u1=q}
  const P=[[-a,0],[a,0],[-a,hh],[a,hh]],uv=[[u0,v0],[u1,v0],[u0,v1],[u1,v1]];
  return{pos:P.map(q=>[p[0]+q[0]*c,q[1],p[1]-q[0]*n]),uv}}
@@ -21,7 +22,7 @@ function rebuildType(t,skip){
  m.geometry.dispose();const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);m.geometry=g}
 const SDX=.79,SDZ=.61;
 function rebuildShadows(skipT,skipI){const pos=[],uv=[],idx=[];let k=0;
- TYPES.forEach(t=>{for(let i=0,n=S.pl[t]||0;i<n;i++){if(t===skipT&&i===skipI)continue;const p=SL[t][i],cx=p[0]+SDX*2.4,cz=p[1]+SDZ*2.4,L=6.2,Wd=2.8,hx=SDX*L/2,hz=SDZ*L/2,wx=-SDZ*Wd/2,wz=SDX*Wd/2,y=.05;
+ TYPES.forEach(t=>{for(let i=0,n=S.pl[t]||0;i<n;i++){if(t===skipT&&i===skipI)continue;const p=SL[t][i],f=treeH(p,i)/4.8,cx=p[0]+SDX*2.4*f,cz=p[1]+SDZ*2.4*f,L=6.2*f,Wd=2.8*f,hx=SDX*L/2,hz=SDZ*L/2,wx=-SDZ*Wd/2,wz=SDX*Wd/2,y=.05;
   pos.push(cx-hx-wx,y,cz-hz-wz,cx+hx-wx,y,cz+hz-wz,cx-hx+wx,y,cz-hz+wz,cx+hx+wx,y,cz+hz+wz);uv.push(0,0,1,0,0,1,1,1);idx.push(k,k+1,k+2,k+1,k+3,k+2);k+=4}});
  const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);shm.geometry.dispose();shm.geometry=g}
 function lookAt(x,z,y){yaw=Math.atan2(-x,-z);pitch=Math.max(-.5,Math.min(.4,Math.atan2((y||2)-HC,Math.hypot(x,z))))}
@@ -29,11 +30,12 @@ const ease=t=>{const k=1.70158;t-=1;return t*t*((k+1)*t+k)+1};
 function refresh(){TYPES.forEach(t=>rebuildType(t,-1));rebuildShadows(-1,-1);pal.forEach((m,j)=>{m.visible=!!S.pal[j];m.scale.set(1,1,1)})}
 function plant(t,i){
  rebuildType(t,i);rebuildShadows(t,i);
- const s=A.s[t],hh=4.8,w=hh*s.w/s.h,g=new THREE.PlaneGeometry(w,hh);g.translate(0,hh/2,0);
- const u0=s.x/A.w,u1=(s.x+s.w)/A.w,v0=1-(s.y+s.h)/A.h,v1=1-s.y/A.h,uv=g.attributes.uv;uv.setXY(0,u0,v1);uv.setXY(1,u1,v1);uv.setXY(2,u0,v0);uv.setXY(3,u1,v0);
+ const s=A.s[t],pp=SL[t][i],hh=treeH(pp,i),w=hh*s.w/s.h,g=new THREE.PlaneGeometry(w,hh);g.translate(0,hh/2,0);
+ let u0=s.x/A.w,u1=(s.x+s.w)/A.w;if((i*7+t.length)%2){const q=u0;u0=u1;u1=q}
+ const v0=1-(s.y+s.h)/A.h,v1=1-s.y/A.h,uv=g.attributes.uv;uv.setXY(0,u0,v1);uv.setXY(1,u1,v1);uv.setXY(2,u0,v0);uv.setXY(3,u1,v0);
  const m=new THREE.Mesh(g,mat),p=SL[t][i];m.position.set(p[0],0,p[1]);m.rotation.y=Math.atan2(-p[0],-p[1]);sc.add(m);
  if(anim)finishAnim();
- anim={m,t0:performance.now(),d:2500,tree:1,done:()=>{sc.remove(m);g.dispose();rebuildType(t,-1);rebuildShadows(-1,-1)}};lookAt(p[0],p[1],2.4)}
+ anim={m,t0:performance.now(),d:2500,tree:1,done:()=>{sc.remove(m);g.dispose();rebuildType(t,-1);rebuildShadows(-1,-1)}};lookAt(p[0],p[1],hh*.4)}
 function buildPalace(i){pal.forEach((m,j)=>m.visible=!!S.pal[j]);const m=pal[i];if(anim)finishAnim();anim={m,t0:performance.now(),d:3200,pal:1,done:()=>m.scale.set(1,1,1)};const u=m.userData;lookAt(u.x,u.z,m.position.y+u.h*.4)}
 function finishAnim(){const a=anim;anim=null;try{a.done()}catch(e){}}
 function focusGarden(t){const c=gc[t];if(!c)return;lookAt(c[0],c[1],1);pitch=Math.max(pitch,-.25)}
@@ -47,7 +49,7 @@ function pause(){running=false;if(raf){cancelAnimationFrame(raf);raf=0}}
 function resume(){if(!R||lost)return;size();if(!running){running=true;raf=requestAnimationFrame(frame)}}
 function init(h,state,cb){
  host=h;S=state;onLost=cb&&cb.onLost;
- R=new THREE.WebGLRenderer({antialias:true});R.outputEncoding=THREE.sRGBEncoding;R.setPixelRatio(Math.min(1.5,devicePixelRatio||1));host.appendChild(R.domElement);
+ R=new THREE.WebGLRenderer({antialias:true});R.outputEncoding=THREE.sRGBEncoding;R.setPixelRatio(Math.min(1.5,devicePixelRatio||1));host.querySelectorAll('canvas').forEach(c=>c.remove());host.appendChild(R.domElement);
  R.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;pause();if(onLost)onLost()});
  sc=new THREE.Scene();cam=new THREE.PerspectiveCamera(75,9/16,.1,2000);cam.position.set(0,HC,0);
  const L=new THREE.TextureLoader();
@@ -68,7 +70,7 @@ function init(h,state,cb){
   TYPES.forEach(t=>{const a=SL[t];let x=0,y=0;a.forEach(p=>{x+=p[0];y+=p[1]});gc[t]=[x/a.length,y/a.length]});
   host.addEventListener('pointerdown',e=>{drag=true;lx=e.clientX;ly=e.clientY;try{host.setPointerCapture(e.pointerId)}catch(x){}});
   const up=()=>{drag=false};host.addEventListener('pointerup',up);host.addEventListener('pointercancel',up);
-  host.addEventListener('pointermove',e=>{if(!drag)return;yaw-=(e.clientX-lx)*.005;pitch=Math.max(-.9,Math.min(.9,pitch+(e.clientY-ly)*.004));lx=e.clientX;ly=e.clientY});
+  host.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-lx)*.005;pitch=Math.max(-.9,Math.min(.9,pitch+(e.clientY-ly)*.004));lx=e.clientX;ly=e.clientY});
   addEventListener('resize',size);
   refresh();size();resume();
  })}

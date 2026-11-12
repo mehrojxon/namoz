@@ -114,6 +114,7 @@ li.past .chip{color:var(--mut)}
 #zc{position:relative;border-radius:24px;padding:20px 16px 16px;text-align:center;overflow:hidden;color:#fff;background:radial-gradient(120% 90% at 100% 0%,rgba(255,255,255,.12),transparent 55%),linear-gradient(150deg,#12615a,#082f2c);box-shadow:0 10px 26px rgba(8,47,44,.28)}
 #zc:before{content:"";position:absolute;inset:7px;border:1px solid rgba(240,200,105,.38);border-radius:18px;pointer-events:none}
 #zar{font:36px/1.6 "QPC Hafs","Noto Naskh Arabic","Amiri","Scheherazade New","Traditional Arabic",serif;direction:rtl;color:#fff4d6}
+#zar.zmd{font-size:29px;line-height:1.75}#zar.zlg{font-size:25px;line-height:1.85}
 #ztr{font:700 17px var(--fd);margin-top:2px;color:#f0c869;letter-spacing:.02em}
 #zma{color:rgba(255,255,255,.72);font-size:13px;margin-top:4px}
 #zc.fi{animation:fi .35s ease}
@@ -143,29 +144,42 @@ li.past .chip{color:var(--mut)}
 #zseg button.on{background:var(--ac);color:#fff}
 #zact{display:grid;grid-template-columns:1fr;gap:8px;margin-top:10px}
 #zact button{display:flex;align-items:center;justify-content:center;gap:8px;padding:13px;border-radius:14px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:14px;font-weight:600}
+#zact{gap:10px;margin-top:12px}
+#zact #jwb{padding:15px 16px;font-size:16px;font-weight:700;border:0;background:linear-gradient(135deg,#f0cf78,#d9a948);color:#2a1f06;box-shadow:0 6px 16px rgba(217,169,72,.32)}
+#zact #jwb svg{width:22px;height:22px}
+#zact #reset{justify-self:center;padding:8px 14px;font-size:13px;font-weight:500;border:0;background:transparent;color:var(--mut);box-shadow:none;gap:6px}
+#zact #reset svg{width:15px;height:15px}
 #zact svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-#jwb b{background:var(--gold);color:#201a08;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px;min-width:18px}
-#t2.zsm #jwb{position:relative}#t2.zsm #jwb span{display:none}#t2.zsm #jwb b{position:absolute;top:-5px;right:-4px;font-size:11px}
-#jw{display:none;position:fixed;inset:0;z-index:40;background:var(--bg);color:var(--ink);flex-direction:column;align-items:center;overflow-y:auto;gap:10px;padding:max(10px,env(safe-area-inset-top)) 14px max(16px,env(safe-area-inset-bottom))}
+#jwb b{background:#2a1f06;color:#f0cf78;border-radius:10px;padding:0 7px;font-size:12px;line-height:18px;min-width:18px}
+#t2.zsm #zact #jwb{position:relative;background:linear-gradient(135deg,#f0cf78,#d9a948);color:#2a1f06;border:0;box-shadow:0 4px 12px rgba(217,169,72,.3)}#t2.zsm #zact #reset{background:var(--zb);border:1px solid var(--zl);color:var(--zf)}#t2.zsm #jwb span{display:none}#t2.zsm #jwb b{position:absolute;top:-5px;right:-4px;font-size:11px}
+#jw{display:none;position:fixed;inset:0;z-index:40;background:#0c1512;color:#f1ead8;flex-direction:column;align-items:center;overflow:hidden;padding:max(8px,env(safe-area-inset-top)) 0 max(10px,env(safe-area-inset-bottom))}
 #jw.on{display:flex}
-#jw .jwh{width:100%;max-width:440px;display:flex;align-items:center;gap:10px}
-#jw .jwh h2{flex:1;margin:0;font:600 19px var(--fd)}
+#jw>*{width:100%;max-width:480px;box-sizing:border-box}
+#jw .jwh{flex:none;display:flex;align-items:center;gap:10px;padding:2px 14px 8px}
+#jw .jwh h2{flex:1;margin:0;font:600 19px var(--fd);color:#f4e3b0}
 #jw button{font:inherit;cursor:pointer}
-#jwx{padding:9px 16px;border-radius:12px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-weight:600;font-size:14px}
-#jwv{width:100%;max-width:440px;height:clamp(320px,56vh,600px);border-radius:16px;overflow:hidden;background:#101c18;touch-action:none;position:relative;flex:none}
+#jwx{padding:8px 16px;border-radius:12px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.08);color:#f1ead8;font-weight:600;font-size:14px}
+#jwv{flex:1 1 0;min-height:0;margin:0 10px;width:auto;max-width:none;align-self:stretch;border-radius:18px;overflow:hidden;background:#101c18;touch-action:none;position:relative}
+@media(min-width:500px){#jwv{margin:0 auto;width:480px}}
 #jwv canvas{width:100%;height:100%;display:block}
 #jwl{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#f1ead8;font-size:15px;background:#101c18}
 #jwl[hidden]{display:none}
-#jw .jwc{width:100%;max-width:440px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;flex-direction:column;gap:8px}
-#jw .jwc small{color:var(--mut);font-size:12.5px}
-#jw .jwch{display:flex;gap:6px;flex-wrap:wrap}
-#jw .jwch button{padding:8px 12px;border-radius:11px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:13.5px;font-weight:600}
-#jw .jwch button.on{background:var(--gold);color:#201a08;border-color:var(--gold)}
-#jw .jwch b{background:var(--ac);color:#fff;border-radius:9px;padding:0 6px;font-size:11.5px}
-#jw .jwch button.on b{background:#201a08;color:var(--gold)}
-#jw .jwz{color:var(--mut);font-size:13.5px}#jw .jwt{color:var(--mut);font-size:13px}#jw .jwt b{color:var(--ink)}
-#jw .jwbar{height:7px;border-radius:4px;background:var(--line);overflow:hidden}#jw .jwbar i{display:block;height:100%;background:var(--gold);transition:width .25s}
-#jwdo{padding:13px;border-radius:13px;border:0;background:var(--gold);color:#201a08;font-weight:700;font-size:15.5px}
+#jw .jwp{flex:none;display:flex;flex-direction:column;gap:10px;padding:10px 14px 0}
+#jw .jwrow{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -14px;padding:0 14px;align-items:center}
+#jw .jwrow::-webkit-scrollbar{display:none}
+#jw .jwch{display:flex;gap:6px;flex:none}
+#jw .jwsep{flex:none;width:1px;height:20px;background:rgba(255,255,255,.2);margin:0 4px}
+#jw .jwch button{flex:none;white-space:nowrap;padding:8px 13px;border-radius:20px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:#f1ead8;font-size:13.5px;font-weight:600}
+#jw .jwch button.on{background:#e0b24f;color:#201a08;border-color:#e0b24f}
+#jw .jwch b{background:#0e6b63;color:#fff;border-radius:9px;padding:0 6px;font-size:11.5px;margin-left:3px}
+#jw .jwch button.on b{background:#201a08;color:#f0cf78}
+#jw .jwc{display:grid;grid-template-columns:1fr auto;gap:2px 12px;align-items:center}
+#jw .jwc .jwn{font:700 16px var(--fd);color:#f4e3b0;min-width:0}
+#jw .jwz{color:#b9c5bd;font-size:13px;grid-column:1}
+#jw .jwt{color:#b9c5bd;font-size:12.5px;grid-column:1/-1;line-height:1.35}#jw .jwt b{color:#f4e3b0}
+#jw .jwc .jwbar{grid-column:1/-1;margin:6px 0 2px}
+#jw .jwbar{height:6px;border-radius:3px;background:rgba(255,255,255,.14);overflow:hidden}#jw .jwbar i{display:block;height:100%;background:#e0b24f;transition:width .25s}
+#jwdo{grid-column:2;grid-row:1/3;padding:0 22px;min-height:48px;border-radius:14px;border:0;background:linear-gradient(135deg,#f0cf78,#d9a948);color:#2a1f06;font-weight:700;font-size:16px}
 #jwdo:disabled{opacity:.4}
 #zjami{text-align:center;color:var(--mut);font-size:13px;margin:12px 0 4px}
 .rgb{text-align:left}.rgb h2{text-align:center}.rgb>.mut{text-align:center;margin:0 0 12px}
@@ -2477,6 +2491,7 @@ body[data-scr=t2][data-zk=bog] #stt{color:#eef5e6}
 @keyframes bgsp{to{transform:rotate(360deg)}}
 #zbk .zk-bog .bgl{transition:opacity .9s ease}
 #zs .zk-bog .zs-ar{opacity:0;height:0!important}
+#zs .zk-bog.lng .zs-ar{opacity:1;height:auto!important;max-height:112px;font-size:23px;color:#fff4d6;text-shadow:0 1px 10px rgba(0,0,0,.9)}#zs .zk-bog.lng .zs-ar span{line-height:1.6}
 #zs .zk-bog .zs-ma{color:#f3f6e8;font-size:15px;line-height:1.35;text-align:center;padding:0 26px;margin-bottom:6px;text-shadow:0 1px 8px rgba(0,0,0,.85)}
 #zs .zk-bog .cb{top:auto;bottom:6px;justify-content:flex-end}
 #zs .zk-bog .zs-n{font-size:96px;line-height:1;font-weight:200;color:#fbf6e4;text-shadow:0 2px 16px rgba(0,0,0,.75)}
@@ -2958,7 +2973,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
 <div id="qdm"><div class="qdc"><b id="qdt"></b><p id="qdb"></p><div id="qdp"><i></i></div><div class="qdbt"><button id="qdn" type="button"></button><button id="qdo" type="button"></button></div></div></div>
 <div class="sheet" id="tqm"><div class="box"><div class="gr"></div><div id="tqmb"></div></div></div>
 <div class="sheet" id="tqs"><div class="box tqrb"><div class="tqrh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg><span>Taqvim eslatmasi</span></div><div id="tqrl"></div><button id="tqro" type="button">Taqvimda ko‘rish</button><button id="tqrx" class="tqrg" type="button">Yopish</button></div></div>
-<div id="jw" role="dialog" aria-label="Jannat bog‘lari"><div class="jwh"><h2>Jannat bog‘lari</h2><button id="jwx" type="button">Yopish</button></div><div id="jwv"><div id="jwl" hidden></div></div><div class="jwc" id="jwi"></div><div class="jwc"><small>Bog‘lar</small><div id="jwgc" class="jwch"></div><small>Saroylar</small><div id="jwpc" class="jwch"></div></div></div>
+<div id="jw" role="dialog" aria-label="Jannat bog‘lari"><div class="jwh"><h2>Jannat bog‘lari</h2><button id="jwx" type="button">Yopish</button></div><div id="jwv"><div id="jwl" hidden></div></div><div class="jwp"><div class="jwrow"><div id="jwgc" class="jwch"></div><span class="jwsep"></span><div id="jwpc" class="jwch"></div></div><div class="jwc" id="jwi"></div></div></div>
 <div id="toast"></div>
 <div class="sheet" id="zvs"><div class="box rgb" role="dialog" aria-label="Tasbeh ko‘rinishi">
   <h2>Tasbeh ko‘rinishi</h2>
@@ -3669,8 +3684,9 @@ const ZK=[
  {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
  {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"},
- {sh:"Subhanallohil Azimi va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ وَبِحَمْدِهِ",tr:"Subhanallohil Azimi va bihamdih",ma:"Ulug‘ Alloh pokdir va Unga hamd bo‘lsin"},
- {sh:"Ixlos surasi",ar:"قُلْ هُوَ {ا‌للَّهُ} أَحَدٌ",tr:"Qul huvallohu ahad",ma:"Bir marta to‘liq Ixlos surasi o‘qiladi"}
+ {sh:"Subhanalloh va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} وَبِحَمْدِهِ، سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ",tr:"Subhanallohi va bihamdihi, Subhanallohil Azim",ma:"Alloh pokdir va Unga hamd bo‘lsin; ulug‘ Alloh pokdir"},
+ {sh:"Ixlos surasi",ar:"قُلْ هُوَ {ا‌للَّهُ} أَحَدٌ {ا‌للَّهُ} الصَّمَدُ لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ",tr:"Qul huvallohu ahad. Allohus-samad. Lam yalid va lam yulad. Va lam yakul-lahu kufuvan ahad.",ma:"Ayting: U Alloh — yagonadir. Alloh behojatdir. U tug‘magan va tug‘ilmagan. Va Unga hech kim tengdosh bo‘lmagan.",lg:1},
+ {sh:"La havla va la quvvata",ar:"لَا حَوْلَ وَلَا قُوَّةَ إِلَّا {بِا‌للَّهِ}",tr:"La havla va la quvvata illa billah",ma:"Alloh yordamisiz hech qanday kuch va quvvat yo‘q"}
 ];
 let Z=get("zikr",null);
 if(!Z)Z={sel:0,max:33,d:{},grand:0};
@@ -3713,7 +3729,7 @@ try{document.fonts&&document.fonts.ready.then(()=>setTimeout(zFit,50))}catch(e){
 addEventListener("resize",()=>zFit());
 function showT(anim){
   const k=ZK[Z.sel],d=zd(),m=zmax();
-  $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="zal">$1</span>');$("ztr").textContent=k.tr;$("zma").textContent=k.ma;
+  $("zar").innerHTML=k.ar.replace(/\{(.+?)\}/g,'<span class="zal">$1</span>');$("zar").className=k.lg?"zlg":k.ar.length>26?"zmd":"";$("ztr").textContent=k.tr;$("zma").textContent=k.ma;
   $("cnt").textContent=d.n;$("zof").textContent=m===Infinity?"cheksiz":"/ "+m;
   zBeads(d.n,m);
   $("zr").textContent=zFmt(d.r);$("zt").textContent=zFmt(d.t);$("zg").textContent=zFmt(Z.grand);
@@ -3766,16 +3782,16 @@ function jwDraw(){
   let h="";
   if(g){
     const x=JG[ix],c=jwCnt(x.zi),r=jwReady(x),n=+JW.pl[x.k]||0,cap=window.JNT&&JLD===2?JNT.cap(x.k):0,full=cap>0&&n>=cap,rest=x.u-(c%x.u);
-    h=`<b>${x.n} bog‘i</b><span class="jwz">${ZK[x.zi].sh}</span><div class="jwbar"><i style="width:${c%x.u*100/x.u}%"></i></div>
-    <span class="jwt">Ekishga tayyor: <b>${r}</b> ta · Ekilgan: <b>${n}${cap?" / "+cap:""}</b></span>
-    <button type="button" id="jwdo" ${r<=0||full||JLD!==2?"disabled":""}>${full?"Bog‘ to‘lgan":"Ekish"}</button>
-    <span class="jwt">${r>0?"":"Tasbeh bo‘limida shu zikrni sanang: yana "+rest+" ta kerak."}</span>`;
+    h=`<b class="jwn">${x.n} bog‘i</b><span class="jwz">${ZK[x.zi].sh}</span>
+    <button type="button" id="jwdo" ${r<=0||full||JLD!==2?"disabled":""}>${full?"To‘lgan":"Ekish"}</button>
+    <div class="jwbar"><i style="width:${c%x.u*100/x.u}%"></i></div>
+    <span class="jwt">Tayyor: <b>${r}</b> · Ekilgan: <b>${n}${cap?" / "+cap:""}</b>${r>0?"":" · Tasbehda yana "+rest+" ta kerak"}</span>`;
   }else{
     const x=JP[ix],have=jwIxl(),done=!!JW.pal[ix];
-    h=`<b>${x.n}</b><span class="jwz">${ZK[JIX].sh}</span><div class="jwbar"><i style="width:${done?100:Math.min(100,Math.max(0,have)*100/x.u)}%"></i></div>
-    <span class="jwt">${done?"Saroy qurilgan":"Ixlos surasi: <b>"+Math.max(0,have)+"</b> / "+x.u}</span>
+    h=`<b class="jwn">${x.n}</b><span class="jwz">${ZK[JIX].sh}</span>
     <button type="button" id="jwdo" ${done||have<x.u||JLD!==2?"disabled":""}>${done?"Qurilgan":"Qurish"}</button>
-    <span class="jwt">${done||have>=x.u?"":"Tasbeh bo‘limida Ixlos surasini sanang: yana "+(x.u-Math.max(0,have))+" ta kerak."}</span>`;
+    <div class="jwbar"><i style="width:${done?100:Math.min(100,Math.max(0,have)*100/x.u)}%"></i></div>
+    <span class="jwt">${done?"Saroy qurilgan":"Ixlos surasi: <b>"+Math.max(0,have)+"</b> / "+x.u+(have>=x.u?"":" · yana "+(x.u-Math.max(0,have))+" ta kerak")}</span>`;
   }
   $("jwi").innerHTML=h;
 }
@@ -3892,7 +3908,7 @@ function bogEnsure(){
   if(window.BOG&&BOG.ready){
     if(!BOG.mount(host)){bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi");return}
     const w=zbgE.querySelector(".bgw");if(w&&!w.dataset.o){w.dataset.o=1;w.style.transition="opacity .5s";w.style.opacity="0";setTimeout(()=>w.remove(),1100)}
-    BOG.setText(zsAr(ZK[Z.sel]));BOG.set(bogFrac());return}
+    BOG.setText((ZK[Z.sel].lg||zsAr(ZK[Z.sel]).length>26)?"":zsAr(ZK[Z.sel]));BOG.set(bogFrac());return}
   if(!host.dataset.pi){const f=bogFrac(),i=f<.15?0:f<.45?1:f<.8?2:3;host.dataset.pi=i;host.style.backgroundImage=`url(${BOGPOS[i]})`}
   if(BOGS===1)return;BOGS=1;
   if(!zbgE.querySelector(".bgw"))zbgE.querySelector(".zk-bog").insertAdjacentHTML("beforeend",'<div class="bgw">Bog‘ tayyorlanmoqda…</div>');
@@ -3936,12 +3952,12 @@ function zskUp(anim){
   const k=ZK[Z.sel],d=zd(),m=zmax(),inf=m===Infinity,n=d.n,f=inf?(n%100)/100:Math.min(n/m,1);
   const fs=f.toFixed(4);zbgE.style.setProperty("--f",fs);if(ZV==="kiswa")zsE.style.setProperty("--f",fs);
   const T=(c,v,h)=>zsE.querySelectorAll(c).forEach(e=>{if(h)e.innerHTML=v;else if(e.textContent!==v)e.textContent=v});
-  const A=zsAr(k);
+  const A=zsAr(k),lng=!!k.lg||A.length>26;{const bz=zsE.querySelector(".zk-bog");if(bz)bz.classList.toggle("lng",lng)}
   if(zsE.dataset.a!==A){zsE.dataset.a=A;T(".tx .zs-ar",`<span>${A}</span>`,1);T(".kd",A,1);T(".kb",A,1);zsFK=""}
   T(".zs-ma",k.ma);T(".zs-n",String(n));
   T(".zs-sub",(inf?"Cheksiz":m+" dan")+" · "+(inf?d.r+" aylana":(d.r+1)+"-aylana"));
   T(".zs-t","Zikr "+(Z.sel+1)+" / "+ZK.length);
-  if(ZV==="bog"){const pc=Math.round(bogFrac()*100);T(".zs-st",pc>=100?"Bog‘ to‘liq yashnadi":pc<6?"Quruq yer":pc<22?"Suv tushmoqda":pc<42?"Ko‘lmak to‘lmoqda":pc<62?"Yoriqlarga suv kirdi":pc<82?"Daraxtlar o‘smoqda":"Bog‘ yashnamoqda");if(window.BOG&&BOG.mounted){BOG.setText(A);BOG.set(bogFrac());const nn=zd().n;if(anim===undefined&&nn>BOGN)BOG.pulse();BOGN=nn}}
+  if(ZV==="bog"){const pc=Math.round(bogFrac()*100);T(".zs-st",pc>=100?"Bog‘ to‘liq yashnadi":pc<6?"Quruq yer":pc<22?"Suv tushmoqda":pc<42?"Ko‘lmak to‘lmoqda":pc<62?"Yoriqlarga suv kirdi":pc<82?"Daraxtlar o‘smoqda":"Bog‘ yashnamoqda");if(window.BOG&&BOG.mounted){BOG.setText(lng?"":A);BOG.set(bogFrac());const nn=zd().n;if(anim===undefined&&nn>BOGN)BOG.pulse();BOGN=nn}}
   const fk=ZV+"|"+Z.sel;if(anim!==undefined||fk!==zsFit){zsFit=fk;zskFit()}
   if(ZV==="zargar"){const M=m===100?100:33,L=inf?n%33:Math.min(n,M);zskJewels(M);const js=zsE.querySelectorAll(".j"),pv=+(zsE.dataset.jl||0);zsE.dataset.jl=L;if(anim!==undefined||js.length!==M||Math.abs(L-pv)>3)js.forEach((e,i)=>e.classList.toggle("l",i<L));else zskMark(js,L,"l",pv)}
   if(ZV==="zanjir"){const M=inf?33:m,rb=zbgE.querySelector(".inn")?.dataset.m!=M;zskBeads(M);const idx=Math.min(inf?n%33:n,M-1),bs=zbgE.querySelectorAll(".bd"),pv=+(zbgE.dataset.bl||0);zbgE.dataset.bl=idx;zskPos();if(anim!==undefined||rb||Math.abs(idx-pv)>3){bs.forEach((e,i)=>{e.classList.toggle("l",i<idx);e.classList.toggle("c",i===idx)})}else{zskMark(bs,idx,"l",pv);zskMark(bs,idx,"c",pv)}}
@@ -7717,7 +7733,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.59";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.60";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
