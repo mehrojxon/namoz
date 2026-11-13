@@ -7741,7 +7741,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.65";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.66";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);

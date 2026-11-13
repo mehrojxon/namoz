@@ -25,6 +25,10 @@ self.addEventListener("fetch", e => {
     e.respondWith(fetch(e.request.url, { cache: "no-store" }).catch(() => caches.match(k).then(r => r || Response.error())));
     return;
   }
+  if (u.searchParams.has("v") && /\/(three\.min|bog|jannat)\.js$/.test(u.pathname)) { // versiyali fayl (?v=6.xx): avval yangisi, internet yo'q bo'lsa saqlangani — eski nusxa yangi sahifa bilan aralashib qolmasin
+    e.respondWith(fetch(e.request.url, { cache: "no-store" }).then(r => { if (r.ok) { const cl = r.clone(); caches.open(C).then(c => c.put(k, cl)); } return r; }).catch(() => caches.match(k).then(r => r || Response.error())));
+    return;
+  }
   e.respondWith(caches.match(k).then(hit => {
     const net = fetch(e.request.url, { cache: "no-store" }).then(r => { if (r.ok) { const cl = r.clone(); caches.open(C).then(c => c.put(k, cl)); } return r; });
     if (hit) { e.waitUntil(net.catch(() => {})); return hit; }
