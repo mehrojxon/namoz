@@ -2812,7 +2812,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
   </div>
   <div id="zstat"><div><b id="zr">0</b><span>Aylanish</span></div><div><b id="zt">0</b><span>Bu zikr</span></div><div><b id="zg">0</b><span>Jami</span></div></div>
   <div id="zseg"></div>
-  <div id="zact"><button id="jwb" type="button" aria-label="Jannat bog‘lari"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-7M12 14c-4 0-6-3-6-6 3 0 6 1.5 6 6zM12 14c4 0 6-3 6-6-3 0-6 1.5-6 6zM12 9c-2-1-3-3-3-5 2 1 3 3 3 5zM12 9c2-1 3-3 3-5-2 1-3 3-3 5z"/></svg><span>Jannat bog‘lari</span><b id="jwn" hidden></b></button><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Shu zikrni nolga qaytarish</button></div>
+  <div id="zact"><button id="jwb" type="button" aria-label="Zikr bog‘i"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21v-7M12 14c-4 0-6-3-6-6 3 0 6 1.5 6 6zM12 14c4 0 6-3 6-6-3 0-6 1.5-6 6zM12 9c-2-1-3-3-3-5 2 1 3 3 3 5zM12 9c2-1 3-3 3-5-2 1-3 3-3 5z"/></svg><span>Zikr bog‘i</span><b id="jwn" hidden></b></button><button id="reset"><svg viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 3-6.2"/><path d="M4 4v5h5"/></svg>Shu zikrni nolga qaytarish</button></div>
   <p id="zjami"></p>
 </section>
 <section class="tab" id="t3">
@@ -2973,7 +2973,7 @@ body[data-scr="tn"]{background-image:none!important;background-color:#061f1c!imp
 <div id="qdm"><div class="qdc"><b id="qdt"></b><p id="qdb"></p><div id="qdp"><i></i></div><div class="qdbt"><button id="qdn" type="button"></button><button id="qdo" type="button"></button></div></div></div>
 <div class="sheet" id="tqm"><div class="box"><div class="gr"></div><div id="tqmb"></div></div></div>
 <div class="sheet" id="tqs"><div class="box tqrb"><div class="tqrh"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5z"/></svg><span>Taqvim eslatmasi</span></div><div id="tqrl"></div><button id="tqro" type="button">Taqvimda ko‘rish</button><button id="tqrx" class="tqrg" type="button">Yopish</button></div></div>
-<div id="jw" role="dialog" aria-label="Jannat bog‘lari"><div class="jwh"><h2>Jannat bog‘lari</h2><button id="jwx" type="button">Yopish</button></div><div id="jwv"><div id="jwl" hidden></div></div><div class="jwp"><div class="jwrow"><div id="jwgc" class="jwch"></div><span class="jwsep"></span><div id="jwpc" class="jwch"></div></div><div class="jwc" id="jwi"></div></div></div>
+<div id="jw" role="dialog" aria-label="Zikr bog‘i"><div class="jwh"><h2>Zikr bog‘i</h2><button id="jwx" type="button">Yopish</button></div><div id="jwv"><div id="jwl" hidden></div></div><div class="jwp"><div class="jwrow"><div id="jwgc" class="jwch"></div><span class="jwsep"></span><div id="jwpc" class="jwch"></div></div><div class="jwc" id="jwi"></div></div></div>
 <div id="toast"></div>
 <div class="sheet" id="zvs"><div class="box rgb" role="dialog" aria-label="Tasbeh ko‘rinishi">
   <h2>Tasbeh ko‘rinishi</h2>
@@ -3685,23 +3685,23 @@ const ZK=[
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
  {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"},
  {sh:"Subhanalloh va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} وَبِحَمْدِهِ، سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ",tr:"Subhanallohi va bihamdihi, Subhanallohil Azim",ma:"Alloh pokdir va Unga hamd bo‘lsin; ulug‘ Alloh pokdir"},
- {sh:"Ixlos surasi",ar:"قُلْ هُوَ {ا‌للَّهُ} أَحَدٌ {ا‌للَّهُ} الصَّمَدُ لَمْ يَلِدْ وَلَمْ يُولَدْ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ",tr:"Qul huvallohu ahad. Allohus-samad. Lam yalid va lam yulad. Va lam yakul-lahu kufuvan ahad.",ma:"Ayting: U Alloh — yagonadir. Alloh behojatdir. U tug‘magan va tug‘ilmagan. Va Unga hech kim tengdosh bo‘lmagan.",lg:1},
  {sh:"La havla va la quvvata",ar:"لَا حَوْلَ وَلَا قُوَّةَ إِلَّا {بِا‌للَّهِ}",tr:"La havla va la quvvata illa billah",ma:"Alloh yordamisiz hech qanday kuch va quvvat yo‘q"}
 ];
 let Z=get("zikr",null);
 if(!Z)Z={sel:0,max:33,d:{},grand:0};
 if(![33,100,0].includes(Z.max))Z.max=Z.max>=99?100:33;
 Z.sel=Math.min(Math.max(+Z.sel||0,0),ZK.length-1);Z.d=Z.d||{};Z.grand=+Z.grand||0;
-/* Jannat bog‘lari: zikr -> daraxt/saroy jadvali. Moslashni o‘zgartirish uchun faqat shu jadval almashtiriladi. */
-const JG=[{k:"xurmo",zi:6,n:"Xurmo",u:100},{k:"anor",zi:5,n:"Anor",u:100},{k:"chinor",zi:1,n:"Chinor",u:100},{k:"chakan",zi:2,n:"Chakan",u:100},{k:"majnun",zi:3,n:"Majnuntol",u:100},{k:"sarv",zi:0,n:"Sarv",u:100}];
-const JP=[{n:"Kichik saroy",u:100},{n:"O‘rta saroy",u:300},{n:"Jannat qasri",u:1000}],JIX=7;
+/* Zikr bog‘i: zikr -> daraxt/saroy jadvali. Moslashni o‘zgartirish uchun faqat shu jadval almashtiriladi. */
+const JG=[{k:"xurmo",zi:0,n:"Xurmo",u:100},{k:"anor",zi:1,n:"Anor",u:100}];
+/* Qur’onda Jannat mevalari sifatida kelmagani uchun hozircha o‘chirilgan turlar (qaytarish uchun JG ga ko‘chiring): {k:"chinor",zi:2,n:"Chinor",u:100},{k:"chakan",zi:3,n:"Chakan",u:100},{k:"majnun",zi:5,n:"Majnuntol",u:100},{k:"sarv",zi:6,n:"Sarv",u:100} */
+const JP=[{n:"Kichik saroy",u:500,zi:4},{n:"O‘rta saroy",u:1500,zi:3},{n:"Katta saroy",u:5000,zi:7}];
 let JW=get("jw2",null);if(!JW||typeof JW!=="object")JW={};JW.c=JW.c||{};JW.pl=JW.pl||{};JW.pal=Array.isArray(JW.pal)&&JW.pal.length===3?JW.pal:[0,0,0];
 const jwSave=()=>{try{localStorage.setItem("jw2",JSON.stringify(JW))}catch(e){}};
 const jwCnt=i=>+JW.c[i]||0;
 const jwTick=i=>{JW.c[i]=jwCnt(i)+1;jwSave()};
 const jwReady=g=>Math.max(0,Math.floor(jwCnt(g.zi)/g.u)-(+JW.pl[g.k]||0));
-const jwIxl=()=>jwCnt(JIX)-JW.pal.reduce((a,v,i)=>a+(v?JP[i].u:0),0);
-function jwBadge(){let n=0;JG.forEach(g=>n+=jwReady(g));JP.forEach((p,i)=>{if(!JW.pal[i]&&jwIxl()>=p.u)n++});const b=$("jwn");if(b){b.hidden=!n;b.textContent=n}}
+const jwPal=i=>jwCnt(JP[i].zi)-(JW.pal[i]?JP[i].u:0);
+function jwBadge(){let n=0;JG.forEach(g=>n+=jwReady(g));JP.forEach((p,i)=>{if(!JW.pal[i]&&jwPal(i)>=p.u)n++});const b=$("jwn");if(b){b.hidden=!n;b.textContent=n}}
 const zd=()=>Z.d[Z.sel]||(Z.d[Z.sel]={n:0,r:0,t:0});
 const zmax=()=>Z.max||Infinity;
 const vib=ms=>navigator.vibrate&&navigator.vibrate(ms);
@@ -3752,7 +3752,7 @@ $("ztap").onclick=()=>{
   showT();
 };
 $("reset").onclick=()=>{BOGP=0;BOGH=0;const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
-/* Jannat bog‘lari: 360° dunyo (jannat.js faqat ochilganda yuklanadi) */
+/* Zikr bog‘i: 360° dunyo (jannat.js faqat ochilganda yuklanadi) */
 let JSEL=["g",0],JLD=0,JOPEN=0;
 function jwLib(){
   if(window.JNT)return Promise.resolve();
@@ -3787,11 +3787,11 @@ function jwDraw(){
     <div class="jwbar"><i style="width:${c%x.u*100/x.u}%"></i></div>
     <span class="jwt">Tayyor: <b>${r}</b> · Ekilgan: <b>${n}${cap?" / "+cap:""}</b>${r>0?"":" · Tasbehda yana "+rest+" ta kerak"}</span>`;
   }else{
-    const x=JP[ix],have=jwIxl(),done=!!JW.pal[ix];
-    h=`<b class="jwn">${x.n}</b><span class="jwz">${ZK[JIX].sh}</span>
+    const x=JP[ix],have=jwPal(ix),done=!!JW.pal[ix];
+    h=`<b class="jwn">${x.n}</b><span class="jwz">${ZK[x.zi].sh}</span>
     <button type="button" id="jwdo" ${done||have<x.u||JLD!==2?"disabled":""}>${done?"Qurilgan":"Qurish"}</button>
     <div class="jwbar"><i style="width:${done?100:Math.min(100,Math.max(0,have)*100/x.u)}%"></i></div>
-    <span class="jwt">${done?"Saroy qurilgan":"Ixlos surasi: <b>"+Math.max(0,have)+"</b> / "+x.u+(have>=x.u?"":" · yana "+(x.u-Math.max(0,have))+" ta kerak")}</span>`;
+    <span class="jwt">${done?"Saroy qurilgan":"Tasbehda: <b>"+Math.max(0,have)+"</b> / "+x.u+(have>=x.u?"":" · yana "+(x.u-Math.max(0,have))+" ta kerak")}</span>`;
   }
   $("jwi").innerHTML=h;
 }
@@ -3802,7 +3802,7 @@ function jwDo(){
     if(jwReady(x)<=0||n>=JNT.cap(x.k))return;
     JW.pl[x.k]=n+1;jwSave();JNT.plant(x.k,n)
   }else{
-    const i=JSEL[1];if(JW.pal[i]||jwIxl()<JP[i].u)return;
+    const i=JSEL[1];if(JW.pal[i]||jwPal(i)<JP[i].u)return;
     JW.pal[i]=1;jwSave();JNT.buildPalace(i)
   }
   jwDraw();jwBadge();vib(30);
@@ -3816,7 +3816,7 @@ $("jw").addEventListener("click",e=>{
 });
 /* Tasbeh ko‘rinishlari */
 const ZVL=[
- ["bog","Bog‘","Quruq yer sanoq bilan Jannat bog‘iga aylanadi: suv, daraxt, yashillik","linear-gradient(#9fb6c9 28%,#8a7a62 40%,#4f7a2a 52%,#1d3a14)"],
+ ["bog","Bog‘","Quruq yer sanoq bilan zikr bog‘iga aylanadi: suv, daraxt, yashillik","linear-gradient(#9fb6c9 28%,#8a7a62 40%,#4f7a2a 52%,#1d3a14)"],
  ["klassik","Klassik","Hozirgi oddiy ko‘rinish","linear-gradient(150deg,#12615a,#082f2c)"],
  ["zulol","Zulol","Butun ekran sekin tiniq suv bilan to‘ladi","linear-gradient(#0d1417 35%,#2fb7ad 40%,#0a4a5a)"],
  ["zargar","Zargar","Oltin siferblat, zumrad ko‘zlar yorishadi","radial-gradient(circle,#16382d 40%,#e8c36a 42%,#6d4e12)"],
@@ -7733,7 +7733,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.60";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.61";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
