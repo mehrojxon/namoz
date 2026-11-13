@@ -3684,7 +3684,7 @@ const ZK=[
  {sh:"La ilaha illalloh",ar:"لَا إِلَهَ إِلَّا {ا‌للَّهُ}",tr:"La ilaha illalloh",ma:"Allohdan o‘zga ibodatga haqli zot yo‘q"},
  {sh:"Astag‘firulloh",ar:"أَسْتَغْفِرُ {ا‌للَّهَ}",tr:"Astag‘firulloh",ma:"Allohdan mag‘firat so‘rayman"},
  {sh:"Salovat",ar:"{ا‌للَّهُمَّ} صَلِّ عَلَى مُحَمَّدٍ صَلَّى {ا‌للَّهُ} عَلَيْهِ وَسَلَّمَ",tr:"Allohumma solli ala Muhammad (sollallohu alayhi va sallam)",ma:"Ey Alloh, Muhammadga (sollallohu alayhi va sallam) salovot (rahmat) yubor"},
- {sh:"Subhanalloh va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} وَبِحَمْدِهِ، سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ",tr:"Subhanallohi va bihamdihi, Subhanallohil Azim",ma:"Alloh pokdir va Unga hamd bo‘lsin; ulug‘ Alloh pokdir"},
+ {sh:"Subhanalloh va bihamdih",ar:"سُبْحَانَ {ا‌للَّهِ} وَبِحَمْدِهِ سُبْحَانَ {ا‌للَّهِ} الْعَظِيمِ",tr:"Subhanallohi va bihamdihi, Subhanallohil Azim",ma:"Alloh pokdir va Unga hamd bo‘lsin; ulug‘ Alloh pokdir"},
  {sh:"La havla va la quvvata",ar:"لَا حَوْلَ وَلَا قُوَّةَ إِلَّا {بِا‌للَّهِ}",tr:"La havla va la quvvata illa billah",ma:"Alloh yordamisiz hech qanday kuch va quvvat yo‘q"}
 ];
 let Z=get("zikr",null);
@@ -3766,14 +3766,23 @@ function jwOpen(){
   if(JLD===2){JNT.resume();return}
   if(JLD===1)return;
   JLD=1;jwMsg("Dunyo tayyorlanmoqda…");
-  jwLib().then(()=>JNT.init($("jwv"),JW,{onLost:()=>{JLD=3;jwMsg("Telefon xotirasi yetmadi. Ilovani yopib qayta oching.")}})).then(()=>{if(JLD===3)return;JLD=2;jwMsg("");jwDraw();if(!JOPEN)JNT.pause()}).catch(()=>{JLD=0;jwMsg("Dunyoni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.")});
+  jwLib().then(()=>JNT.init($("jwv"),JW,{onLost:()=>{JLD=3;jwMsg("Telefon xotirasi yetmadi. Ilovani yopib qayta oching.")}})).then(()=>{if(JLD===3)return;JLD=2;jwMsg("");jwDraw();if(!JOPEN)jwFree()}).catch(()=>{JLD=0;jwMsg("Dunyoni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.")});
 }
 function jwClose(){
   $("jw").classList.remove("on");JOPEN=0;
-  try{if(window.JNT)JNT.pause()}catch(e){}
+  jwFree();
   try{if(ZV!=="klassik")zskUp(true)}catch(e){}
   showT();
 }
+/* Yopilganda 3D dunyo xotiradan to‘liq bo‘shatiladi (Bog‘ ko‘rinishi bilan GPU xotirasi bo‘linmasligi uchun) */
+function jwFree(){try{if(window.JNT&&JLD===2){JNT.destroy();JLD=0}else if(window.JNT)JNT.pause()}catch(e){JLD=0}}
+/* 3D fayllar internetsiz ham ochilishi uchun: internet bor paytda orqada bir marta saqlab qo‘yiladi (saqlangan bo‘lsa qayta yuklanmaydi) */
+function jwPre(){
+  if(!("caches" in window)||navigator.onLine===false)return;
+  const q=["three.min.js","bog.js","jannat.js"];
+  (async()=>{for(const u of q){try{if(await caches.match(u))continue;if(navigator.onLine===false)return;await fetch(u+"?v="+APPV)}catch(e){return}}})()
+}
+setTimeout(jwPre,8000);
 function jwDraw(){
   const g=JSEL[0]==="g",ix=JSEL[1];
   $("jwgc").innerHTML=JG.map((x,i)=>{const r=jwReady(x);return `<button type="button" data-g="${i}" class="${g&&ix===i?"on":""}">${x.n}${r?` <b>${r}</b>`:""}</button>`}).join("");
@@ -3911,7 +3920,7 @@ function bogEnsure(){
   if(!host.dataset.pi){const f=bogFrac(),i=f<.15?0:f<.45?1:f<.8?2:3;host.dataset.pi=i;host.style.backgroundImage=`url(${BOGPOS[i]})`}
   if(BOGS===1)return;BOGS=1;
   if(!zbgE.querySelector(".bgw"))zbgE.querySelector(".zk-bog").insertAdjacentHTML("beforeend",'<div class="bgw">Bog‘ tayyorlanmoqda…</div>');
-  bogLoad().then(()=>BOG.build(bogPre())).then(ok=>{if(ok){BOGS=2;bogEnsure()}else bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi")}).catch(()=>bogFail("Bog‘ ko‘rinishi yuklanmadi. Ilovani yangilab qayta urining"));
+  bogLoad().then(()=>BOG.build(bogPre())).then(ok=>{if(ok){BOGS=2;bogEnsure()}else bogFail("Bu telefonda Bog‘ ko‘rinishi ishlamaydi")}).catch(()=>bogFail(navigator.onLine===false?"Bog‘ ko‘rinishini birinchi marta ochish uchun internet kerak. Internetga ulanib bir marta oching":"Bog‘ ko‘rinishi yuklanmadi. Ilovani yangilab qayta urining"));
 }
 /* Bog‘ tanlangan bo‘lsa, sahna ilova ochilgach orqada tayyorlab qo‘yiladi (sanash ochilganda kutish bo‘lmasin) */
 function bogPrewarm(){if(ZV!=="bog"||BOGS||window.BOG&&BOG.ready)return;BOGS=3;bogLoad().then(()=>BOG.build(bogPre())).then(ok=>{BOGS=ok?2:0;if(ok&&ZV==="bog")bogEnsure()}).catch(()=>{BOGS=0})}
@@ -7732,7 +7741,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.62";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.65";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
