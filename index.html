@@ -3692,8 +3692,7 @@ if(!Z)Z={sel:0,max:33,d:{},grand:0};
 if(![33,100,0].includes(Z.max))Z.max=Z.max>=99?100:33;
 Z.sel=Math.min(Math.max(+Z.sel||0,0),ZK.length-1);Z.d=Z.d||{};Z.grand=+Z.grand||0;
 /* Zikr bog‘i: zikr -> daraxt/saroy jadvali. Moslashni o‘zgartirish uchun faqat shu jadval almashtiriladi. */
-const JG=[{k:"xurmo",zi:0,n:"Xurmo",u:100},{k:"anor",zi:1,n:"Anor",u:100}];
-/* Qur’onda Jannat mevalari sifatida kelmagani uchun hozircha o‘chirilgan turlar (qaytarish uchun JG ga ko‘chiring): {k:"chinor",zi:2,n:"Chinor",u:100},{k:"chakan",zi:3,n:"Chakan",u:100},{k:"majnun",zi:5,n:"Majnuntol",u:100},{k:"sarv",zi:6,n:"Sarv",u:100} */
+const JG=[{k:"xurmo",zi:0,n:"Xurmo",u:100},{k:"anor",zi:1,n:"Anor",u:100},{k:"sidr",zi:2,n:"Sidr",u:100},{k:"uzum",zi:5,n:"Uzum",u:100},{k:"banan",zi:6,n:"Banan",u:100}];
 const JP=[{n:"Kichik saroy",u:500,zi:4},{n:"O‘rta saroy",u:1500,zi:3},{n:"Katta saroy",u:5000,zi:7}];
 let JW=get("jw2",null);if(!JW||typeof JW!=="object")JW={};JW.c=JW.c||{};JW.pl=JW.pl||{};JW.pal=Array.isArray(JW.pal)&&JW.pal.length===3?JW.pal:[0,0,0];
 const jwSave=()=>{try{localStorage.setItem("jw2",JSON.stringify(JW))}catch(e){}};
@@ -7733,7 +7732,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.61";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.62";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);
