@@ -3751,7 +3751,7 @@ $("ztap").onclick=()=>{
   showT();
 };
 $("reset").onclick=()=>{BOGP=0;BOGH=0;const d=zd();d.n=0;d.r=0;d.t=0;vib(40);showT();toast("Nolga qaytarildi")};
-/* Zikr bog‘i: 360° dunyo (jannat.js faqat ochilganda yuklanadi) */
+/* Zikr bog‘i: 360° maskan (jannat.js faqat ochilganda yuklanadi) */
 let JSEL=["g",0],JLD=0,JOPEN=0;
 function jwLib(){
   if(window.JNT)return Promise.resolve();
@@ -3765,8 +3765,8 @@ function jwOpen(){
   jwDraw();
   if(JLD===2){JNT.resume();return}
   if(JLD===1)return;
-  JLD=1;jwMsg("Dunyo tayyorlanmoqda…");
-  jwLib().then(()=>JNT.init($("jwv"),JW,{onLost:()=>{JLD=3;jwMsg("Telefon xotirasi yetmadi. Ilovani yopib qayta oching.")}})).then(()=>{if(JLD===3)return;JLD=2;jwMsg("");jwDraw();if(!JOPEN)jwFree()}).catch(()=>{JLD=0;jwMsg("Dunyoni yuklab bo‘lmadi. Internetni tekshirib, qayta urinib ko‘ring.")});
+  JLD=1;jwMsg("Bog‘ tayyorlanmoqda…");
+  jwLib().then(()=>JNT.init($("jwv"),JW,{onLost:()=>{JLD=3;jwMsg("Telefon xotirasi yetmadi. Ilovani yopib qayta oching.")}})).then(()=>{if(JLD===3)return;JLD=2;jwMsg("");jwDraw();if(!JOPEN)jwFree()}).catch(()=>{JLD=0;jwMsg("Bog‘ yuklanmadi. Internetni tekshirib, qayta urinib ko‘ring.")});
 }
 function jwClose(){
   $("jw").classList.remove("on");JOPEN=0;
@@ -3774,15 +3774,14 @@ function jwClose(){
   try{if(ZV!=="klassik")zskUp(true)}catch(e){}
   showT();
 }
-/* Yopilganda 3D dunyo xotiradan to‘liq bo‘shatiladi (Bog‘ ko‘rinishi bilan GPU xotirasi bo‘linmasligi uchun) */
-function jwFree(){try{if(window.JNT&&JLD===2){JNT.destroy();JLD=0}else if(window.JNT)JNT.pause()}catch(e){JLD=0}}
+function jwFree(){try{if(window.JNT)JNT.pause()}catch(e){}}
 /* 3D fayllar internetsiz ham ochilishi uchun: internet bor paytda orqada bir marta saqlab qo‘yiladi (saqlangan bo‘lsa qayta yuklanmaydi) */
 function jwPre(){
   if(!("caches" in window)||navigator.onLine===false)return;
   const q=["three.min.js","bog.js","jannat.js"];
-  (async()=>{for(const u of q){try{if(await caches.match(u))continue;if(navigator.onLine===false)return;await fetch(u+"?v="+APPV)}catch(e){return}}})()
+  (async()=>{for(const u of q){try{if(await caches.match(u+"?v="+APPV))continue;if(navigator.onLine===false)return;await fetch(u+"?v="+APPV)}catch(e){return}}})()
 }
-setTimeout(jwPre,8000);
+setTimeout(jwPre,20000);
 function jwDraw(){
   const g=JSEL[0]==="g",ix=JSEL[1];
   $("jwgc").innerHTML=JG.map((x,i)=>{const r=jwReady(x);return `<button type="button" data-g="${i}" class="${g&&ix===i?"on":""}">${x.n}${r?` <b>${r}</b>`:""}</button>`}).join("");
@@ -7741,7 +7740,7 @@ $("dls").addEventListener("click",e=>{
   const d=DU.d.find(x=>x.id===+b.dataset.di);if(!d)return;
   imOpen({kind:"DUO",ar:d.arab||"",tl:nap(d.oqilishi)||"",uz:nap(d.manosi)||"",ref:nap(d.manba)||nap(d.sarlavha)||""})
 });
-const APPV="6.66";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
+const APPV="6.68";document.querySelectorAll(".appv").forEach(e=>e.textContent=APPV);
 async function chkUpd(){
   try{const r=await fetch(location.pathname.replace(/[^\/]*$/,"")+"index.html?c="+Date.now(),{cache:"no-store"});if(!r.ok)return;
     const m=(await r.text()).match(/const APPV="([^"]+)"/);

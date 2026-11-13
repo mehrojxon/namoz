@@ -2,7 +2,7 @@
 const C = "namoz-v1";
 const SHELL = ["./", "index.html", "vaqtlar.json", "manifest.json", "icon.svg"];
 // Qur'on bo'limi internetsiz ochilishi uchun kerakli asosiy fayllar
-const CORE = ["quran-meta.json", "quran-text.json", "qp-idx.json", "quran-audio.json", "UthmanicHafs_V22.ttf", "hijriy-taqvim.json", "three.min.js", "bog.js", "jannat.js"]; // three.min.js + bog.js: Bog‘ ko‘rinishi internetsiz ishlashi uchun
+const CORE = ["quran-meta.json", "quran-text.json", "qp-idx.json", "quran-audio.json", "UthmanicHafs_V22.ttf", "hijriy-taqvim.json", "three.min.js", "bog.js"]; // three.min.js + bog.js: Bog‘ ko‘rinishi internetsiz ishlashi uchun
 self.addEventListener("install", e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(SHELL).then(() => Promise.all(CORE.map(u => c.add(u).catch(() => {}))))));
   self.skipWaiting();
@@ -25,10 +25,11 @@ self.addEventListener("fetch", e => {
     e.respondWith(fetch(e.request.url, { cache: "no-store" }).catch(() => caches.match(k).then(r => r || Response.error())));
     return;
   }
-  if (u.searchParams.has("v") && /\/(three\.min|bog|jannat)\.js$/.test(u.pathname)) { // versiyali fayl (?v=6.xx): avval yangisi, internet yo'q bo'lsa saqlangani — eski nusxa yangi sahifa bilan aralashib qolmasin
-    e.respondWith(fetch(e.request.url, { cache: "no-store" }).then(r => { if (r.ok) { const cl = r.clone(); caches.open(C).then(c => c.put(k, cl)); } return r; }).catch(() => caches.match(k).then(r => r || Response.error())));
+  if (u.searchParams.has("v") && /\/(three\.min|bog|jannat)\.js$/.test(u.pathname)) { // versiyali 3D fayl: aynan shu versiya saqlangan bo'lsa darhol, bo'lmasa bir marta olib saqlanadi
+    e.respondWith(caches.match(e.request.url).then(hit => hit || fetch(e.request.url).then(r => { if (r.ok) { const cl = r.clone(); caches.open(C).then(c => c.put(e.request.url, cl)); } return r; }).catch(() => caches.match(k).then(r => r || Response.error()))));
     return;
   }
+
   e.respondWith(caches.match(k).then(hit => {
     const net = fetch(e.request.url, { cache: "no-store" }).then(r => { if (r.ok) { const cl = r.clone(); caches.open(C).then(c => c.put(k, cl)); } return r; });
     if (hit) { e.waitUntil(net.catch(() => {})); return hit; }
